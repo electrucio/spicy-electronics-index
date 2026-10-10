@@ -2,6 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <!-- Google tag (gtag.js), loaded on the published site only: the development server is not counted. -->
+    <script>
+      if (location.hostname === 'electrucio.github.io') {
+        const tag = document.createElement('script')
+        tag.async = true
+        tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-LVYFBZ2LM7'
+        document.head.appendChild(tag)
+      }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LVYFBZ2LM7');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Spicy Electronics Index</title>
     <link rel="icon" type="image/svg+xml" href="./src/logo.svg" />
