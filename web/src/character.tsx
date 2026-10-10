@@ -749,6 +749,25 @@ export function panned(view: [number, number], by: number, log: boolean): [numbe
   return [g(f(view[0]) - by), g(f(view[1]) - by)]
 }
 
+/** The y range that holds every point of the curve with a margin: what the chart opens at and resets to. */
+export function fitRange(ys: number[], log: boolean): [number, number] {
+  const lo = ys.length ? Math.min(...ys) : 0
+  const hi = ys.length ? Math.max(...ys) : 1
+  return log ? [lo / 1.2, hi * 1.2] : [lo - (hi - lo) * 0.05, hi + (hi - lo) * 0.05 || hi + 1]
+}
+
+/** A range part of the way, `t` from 0 to 1, from one range to another, in the axis's own space (decades on a
+ *  log axis), so a zoom or a pan on a log axis moves at an even pace. */
+export function between(a: [number, number], b: [number, number], t: number, log: boolean): [number, number] {
+  const f = (v: number) => (log ? Math.log10(v) : v)
+  const g = (u: number) => (log ? 10 ** u : u)
+  return [g(f(a[0]) + (f(b[0]) - f(a[0])) * t), g(f(a[1]) + (f(b[1]) - f(a[1])) * t)]
+}
+
+/** Slow out, slow in: a quarter of a second that reads as a movement, not a jump. */
+export const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2)
+const GLIDE_MS = 250
+
 /** The cursor's position on one axis: a small label with a halo, inside the plot. */
 function AxisTag({ x, y, anchor, text }: { x: number; y: number; anchor: 'start' | 'middle'; text: string }) {
   return <text x={x} y={y} class="axtag" text-anchor={anchor}>{text}</text>
@@ -773,10 +792,11 @@ function Tag({ x, y, lines, box }: { x: number; y: number; lines: string[]; box:
   )
 }
 
-/** One curve of the list, for the models chosen, overlaid; the axes follow what is shown. The wheel zooms the
- *  x axis around the cursor, a drag pans it, a double click resets; the y axis follows the points in view,
- *  so a 20 ns edge can be read on an 8 µs sweep. The conditions it is taken at (VCE, IC, T…) are the
- *  panel's, so they stay when another model is chosen and go into the address. */
+/** One curve of the list, for the models chosen, overlaid. It opens with the whole curve in view, and the axes
+ *  then stay as the reader set them: a pan moves along the curve at the same scale, a zoom changes only its own
+ *  axis, and only reset (or a double click) fits the whole curve again. The buttons glide to their new view;
+ *  a drag follows the pointer. The conditions it is taken at (VCE, IC, T…) are the panel's, so they stay when
+ *  another model is chosen and go into the address. */
 function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units, choice, onChoice, onAbout }: {
   part: string; m: Measurement; row: CurveRow; shown: Col[]; engine: string; engines: string[]; onEngine: (e: string) => void; primary: string
   units: Record<string, string>; choice: Record<string, Choice>; onChoice: (key: string, v: Choice) => void; onAbout: () => void
@@ -789,7 +809,30 @@ function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units,
   const [yview, setYview] = useState<[number, number] | null>(null)
   const [normed, setNormed] = useState(false)
   const drag = useRef<{ x: number; y: number; view: [number, number]; yview: [number, number] | null; moved: boolean } | null>(null)
-  const reset = () => { setView(null); setYview(null) }
+  // a glide in progress: its frame, and where it is going, so a second click continues from there
+  const glide = useRef<{ frame: number; x: [number, number] | null; y: [number, number] | null } | null>(null)
+  // what is on screen now, and the ranges a null view stands for: written on every draw, read by a glide
+  const drawnNow = useRef<{ x: [number, number]; y: [number, number]; full: [number, number]; fit: [number, number]; logX: boolean; logY: boolean } | null>(null)
+  const stop = () => { if (glide.current) cancelAnimationFrame(glide.current.frame); glide.current = null }
+  useEffect(() => stop, [])
+  /** Move the view to the ranges given (null: the whole curve) over a quarter of a second. */
+  const goTo = (toX: [number, number] | null, toY: [number, number] | null) => {
+    const now = drawnNow.current
+    stop()
+    if (!now) { setView(toX); setYview(toY); return }
+    const from = { x: now.x, y: now.y }
+    const end = { x: toX ?? now.full, y: toY ?? now.fit }
+    const t0 = performance.now()
+    const step = (t: number) => {
+      const k = Math.min(1, (t - t0) / GLIDE_MS)
+      if (k >= 1) { glide.current = null; setView(toX); setYview(toY); return }
+      setView(between(from.x, end.x, ease(k), now.logX))
+      setYview(between(from.y, end.y, ease(k), now.logY))
+      glide.current = { frame: requestAnimationFrame(step), x: toX, y: toY }
+    }
+    glide.current = { frame: requestAnimationFrame(step), x: toX, y: toY }
+  }
+  const reset = () => goTo(null, null)
   // the quantity (y against x) shown, and the value of each selector its curves are taken at: a family
   // (the curve tracer's traces, the Gummel plot's two lines) is drawn whole for the value chosen
   const q = quantities(m).find((o) => o.id === row.qid) ?? quantities(m)[0]!
@@ -807,7 +850,7 @@ function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units,
   const relative = Boolean(norm && normed)
   // another model, another value, another engine: the y axis follows the data again (another curve is
   // another chart altogether: the panel draws one per curve)
-  useEffect(() => { setYview(null); setPinned(null) }, [shown.map((c) => c.i).join(','), JSON.stringify(chosen), relative, engine])
+  useEffect(() => { stop(); setYview(null); setPinned(null) }, [shown.map((c) => c.i).join(','), JSON.stringify(chosen), relative, engine])
   const gx = gridX(grid)
   // a transient keeps [t, y] pairs of its own; everything else sits on the catalogue's grid
   // the selected engine's own curve where it was published (it differs from the primary's by more than 1 %), else the primary's
@@ -848,28 +891,14 @@ function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units,
     const xs = series.flatMap((s) => s.pts.map((p) => p[0]))
     const full: [number, number] = [Math.min(...xs), Math.max(...xs)]
     const [vx0, vx1] = view ?? full
-    // the y axis follows what is in view, plus the point just outside each side, so that a view between
-    // two points still has the line that crosses it
-    const inView = (pts: [number, number][]) => {
-      const inside = pts.map((p, k) => [p, k] as const).filter(([p]) => p[0] >= vx0 && p[0] <= vx1).map(([, k]) => k)
-      const before = pts.reduce((best, p, k) => (p[0] < vx0 ? k : best), -1)
-      const after = pts.findIndex((p) => p[0] > vx1)
-      const keep = new Set(inside)
-      if (before >= 0) keep.add(before)
-      if (after >= 0) keep.add(after)
-      return [...keep].map((k) => pts[k]!)
-    }
-    let ys = series.flatMap((s) => inView(s.pts).map((p) => p[1])).filter((y) => curve.scale !== 'log' || y > 0)
-    if (!ys.length) ys = series.flatMap((s) => s.pts.map((p) => p[1])).filter((y) => curve.scale !== 'log' || y > 0)
-    const x: Axis = [curve.x, xUnit, logX ? 'log' : 'lin', vx0, vx1]
-    const ylo = ys.length ? Math.min(...ys) : 0
-    const yhi = ys.length ? Math.max(...ys) : 1
+    // the y axis holds the whole curve until the reader zooms or pans it: a pan along x keeps the scale
     const logY = curve.scale === 'log'
-    const y: Axis = yview
-      ? [curve.y, yUnit, curve.scale, yview[0], yview[1]]
-      : [curve.y, yUnit, curve.scale, logY ? ylo / 1.2 : ylo - (yhi - ylo) * 0.05, logY ? yhi * 1.2 : yhi + (yhi - ylo) * 0.05 || yhi + 1]
+    const fit = fitRange(series.flatMap((s) => s.pts.map((p) => p[1])).filter((y) => !logY || y > 0), logY)
+    const x: Axis = [curve.x, xUnit, logX ? 'log' : 'lin', vx0, vx1]
+    const y: Axis = [curve.y, yUnit, curve.scale, ...(yview ?? fit)]
     if (x[3] === x[4]) x[4] = x[3] + 1
     if (y[3] === y[4]) y[4] = y[3] * 2 || 1
+    drawnNow.current = { x: [x[3], x[4]], y: [y[3], y[4]], full, fit, logX, logY }
     const pw = W - M.l - M.r
     const ph = H - M.t - M.b
     const px = (v: number) => M.l + place(x, v, pw)
@@ -896,7 +925,6 @@ function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units,
       const fx = ((e.clientX - r.left) / r.width * W - M.l) / pw
       return logX ? 10 ** (Math.log10(vx0) + fx * (Math.log10(vx1) - Math.log10(vx0))) : vx0 + fx * (vx1 - vx0)
     }
-    const xspan = logX ? Math.log10(vx1) - Math.log10(vx0) : vx1 - vx0
     const yspan = logY ? Math.log10(y[4]) - Math.log10(y[3]) : y[4] - y[3]
     const onMove = (e: MouseEvent) => {
       const d = drag.current
@@ -928,18 +956,25 @@ function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units,
       const xv = hit ? (logX ? 10 ** (Math.log10(vx0) + (hit.X - M.l) / pw * (Math.log10(vx1) - Math.log10(vx0))) : vx0 + (hit.X - M.l) / pw * (vx1 - vx0)) : 0
       setNear(hit && sr ? { i: sr.i, k: sr.k, x: hit.X, y: hit.Y, j: 0, xv } : null)
     }
-    const centre = logX ? 10 ** ((Math.log10(vx0) + Math.log10(vx1)) / 2) : (vx0 + vx1) / 2
+    // a button acts on where the view is going, so quick clicks add up instead of starting over mid-glide
+    const goal = glide.current
+    const goalX: [number, number] = goal ? goal.x ?? full : [vx0, vx1]
+    const goalY: [number, number] = goal ? goal.y ?? fit : [y[3], y[4]]
+    const keepX = goal ? goal.x : view
+    const keepY = goal ? goal.y : yview
+    const mid = (r: [number, number], log: boolean) => (log ? 10 ** ((Math.log10(r[0]) + Math.log10(r[1])) / 2) : (r[0] + r[1]) / 2)
+    const spanOf = (r: [number, number], log: boolean) => (log ? Math.log10(r[1]) - Math.log10(r[0]) : r[1] - r[0])
     controls = (
       <span class="zoomctl">
-        <button type="button" title="zoom in, x axis" onClick={() => setView(zoomed([vx0, vx1], centre, 0.5, logX))}><Lens />+x</button>
-        <button type="button" title="zoom out, x axis" onClick={() => setView(zoomed([vx0, vx1], centre, 2, logX))}><Lens />−x</button>
-        <button type="button" title="zoom in, y axis" onClick={() => setYview(zoomed([y[3], y[4]], logY ? 10 ** ((Math.log10(y[3]) + Math.log10(y[4])) / 2) : (y[3] + y[4]) / 2, 0.5, logY))}><Lens />+y</button>
-        <button type="button" title="zoom out, y axis" onClick={() => setYview(zoomed([y[3], y[4]], logY ? 10 ** ((Math.log10(y[3]) + Math.log10(y[4])) / 2) : (y[3] + y[4]) / 2, 2, logY))}><Lens />−y</button>
-        <button type="button" title="pan left" onClick={() => setView(panned([vx0, vx1], xspan * 0.25, logX))}>◀</button>
-        <button type="button" title="pan right" onClick={() => setView(panned([vx0, vx1], -xspan * 0.25, logX))}>▶</button>
-        <button type="button" title="pan up" onClick={() => setYview(panned([y[3], y[4]], -yspan * 0.25, logY))}>▲</button>
-        <button type="button" title="pan down" onClick={() => setYview(panned([y[3], y[4]], yspan * 0.25, logY))}>▼</button>
-        <button type="button" title="back to the whole curve" disabled={!view && !yview} onClick={reset}>reset</button>
+        <button type="button" title="zoom in, x axis" onClick={() => goTo(zoomed(goalX, mid(goalX, logX), 0.5, logX), keepY)}><Lens />+x</button>
+        <button type="button" title="zoom out, x axis" onClick={() => goTo(zoomed(goalX, mid(goalX, logX), 2, logX), keepY)}><Lens />−x</button>
+        <button type="button" title="zoom in, y axis" onClick={() => goTo(keepX, zoomed(goalY, mid(goalY, logY), 0.5, logY))}><Lens />+y</button>
+        <button type="button" title="zoom out, y axis" onClick={() => goTo(keepX, zoomed(goalY, mid(goalY, logY), 2, logY))}><Lens />−y</button>
+        <button type="button" title="pan left" onClick={() => goTo(panned(goalX, spanOf(goalX, logX) * 0.25, logX), keepY)}>◀</button>
+        <button type="button" title="pan right" onClick={() => goTo(panned(goalX, -spanOf(goalX, logX) * 0.25, logX), keepY)}>▶</button>
+        <button type="button" title="pan up" onClick={() => goTo(keepX, panned(goalY, -spanOf(goalY, logY) * 0.25, logY))}>▲</button>
+        <button type="button" title="pan down" onClick={() => goTo(keepX, panned(goalY, spanOf(goalY, logY) * 0.25, logY))}>▼</button>
+        <button type="button" title="back to the whole curve" disabled={!view && !yview && !goal} onClick={reset}>reset</button>
       </span>
     )
     const conds = sels.map((s) => (chosen[s.key] === 'all' ? `every ${s.key}` : s.key === 'span' ? String(chosen[s.key]) : `${s.key} = ${fmtChoice(chosen[s.key], units[s.key] ?? '')}`))
@@ -950,7 +985,7 @@ function Chart({ part, m, row, shown, engine, engines, onEngine, primary, units,
     body = (
       <svg class={`fig${view ? ' zoomed' : ''}`} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={title.join('. ')}
         onMouseMove={onMove} onMouseLeave={() => { setHover(null); setHoverY(null); setNear(null); drag.current = null }}
-        onMouseDown={(e) => { if (e.button === 0) { e.preventDefault(); drag.current = { x: e.clientX, y: e.clientY, view: [vx0, vx1], yview: yview ?? [y[3], y[4]], moved: false } } }}
+        onMouseDown={(e) => { if (e.button === 0) { e.preventDefault(); stop(); drag.current = { x: e.clientX, y: e.clientY, view: [vx0, vx1], yview: [y[3], y[4]], moved: false } } }}
         onMouseUp={() => {
           // a click (a press that did not drag) selects the line under the cursor, or clears the selection
           const d = drag.current

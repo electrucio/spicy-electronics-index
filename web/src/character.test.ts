@@ -1,7 +1,7 @@
 /** The character pane's arithmetic: names a reader can tell apart, keys in the catalogue's order, cells that say why there is no number. */
 import { describe, expect, it } from 'vitest'
 
-import { beyondRatings, cellOf, chartTitle, fitList, jsonMaybeGzip, gridX, hoverExtras, memberFacts, nearestLine, orderKeys, panned, ratingOn, readAt, traceConditions, zoomed } from './character'
+import { between, beyondRatings, cellOf, chartTitle, ease, fitList, fitRange, jsonMaybeGzip, gridX, hoverExtras, memberFacts, nearestLine, orderKeys, panned, ratingOn, readAt, traceConditions, zoomed } from './character'
 import { axisName, firstChoice, fmtChoice, pickCurves, quantities, sameValue, selectorsOf } from './charpick'
 import { colourOf, dashOf, modelLabels } from './key'
 import type { Curve, HoverExtra, Measurement, ModelCharacter, PartModel } from './types'
@@ -208,5 +208,26 @@ describe('the chart\'s own title', () => {
     expect(fitList(['aaaa', 'bbbb', 'cccc', 'dddd'], 20)).toBe('aaaa and 3 more')
     expect(fitList(['a very long first item'], 5)).toBe('a very long first item')
     expect(fitList([], 10)).toBe('')
+  })
+})
+
+describe('the chart\'s view', () => {
+  it('opens on the whole curve, with a margin', () => {
+    expect(fitRange([0, 10], false)).toEqual([-0.5, 10.5])
+    expect(fitRange([1, 100], true)).toEqual([1 / 1.2, 120])
+    expect(fitRange([5, 5], false)).toEqual([5, 5])           // a flat curve: the chart widens it, as before
+  })
+
+  it('glides in the axis\'s own space: decades on a log axis', () => {
+    expect(between([0, 10], [10, 20], 0.5, false)).toEqual([5, 15])
+    expect(between([1, 100], [10, 1000], 0.5, true).map((v) => Number(v.toPrecision(6)))).toEqual([Number((10 ** 0.5).toPrecision(6)), Number((10 ** 2.5).toPrecision(6))])
+    expect(between([1, 2], [3, 4], 1, false)).toEqual([3, 4])
+  })
+
+  it('eases from rest to rest', () => {
+    expect(ease(0)).toBe(0)
+    expect(ease(1)).toBe(1)
+    expect(ease(0.5)).toBeCloseTo(0.5)
+    expect(ease(0.1)).toBeLessThan(0.1)
   })
 })
