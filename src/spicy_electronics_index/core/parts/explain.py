@@ -48,7 +48,7 @@ def _model(part: str) -> str:
     d = models_dir() / "parts"
     for f in d.glob(f"*/{part}.yaml") if d.exists() else []:
         return f"a published recipe at {f.relative_to(models_dir().parent.parent)}"
-    f = spice_definitions()                      # the vendor libraries held here, 388 MB of them
+    f = spice_definitions()                      # every definition in the vendor libraries held here
     if f.exists():
         needle = f'"name": "{part.upper()}"'.encode()
         alt = f'"name": "{part}"'.encode()

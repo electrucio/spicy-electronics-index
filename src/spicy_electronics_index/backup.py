@@ -1,24 +1,28 @@
 """Pack the private trees into one archive to carry off this machine.
 
-    sei backup                 what cannot be regenerated      ~2.6 GB
-    sei backup --level full    + the downloaded vendor files   ~3.8 GB
-    sei backup --level all     + everything still in transit   ~9 GB
+    sei backup                 what cannot be made again
+    sei backup --level full    + what can be fetched or rebuilt again, at a cost
+    sei backup --level all     + the retired repositories and code kept for reference
 
 The archive holds files at the paths they occupy inside the checkout, carries its own `MANIFEST.csv` of
 checksums and its own `restore.py`, so a download years from now needs nothing from this repository to
 be put back.
 
-**Compression buys almost nothing here and bundling buys a great deal.** The OCR is 57,072 files that
-are already gzipped — re-compressing one makes it 112 bytes *bigger* — so anything already compressed is
-stored as-is and only the rest is deflated. What the archive is for is turning 57,000 files into one,
-which is the difference between an upload that finishes and one that does not.
+**Bundling matters more than compression.** The OCR is gzipped page file by page file, so anything
+already compressed is stored as it is and only the rest is deflated. What the archive is for is turning
+hundreds of thousands of files into one, which is the difference between a copy that finishes and one
+that does not.
 
-The default level is deliberately not everything. `index.sqlite` is 3.9 GB and rebuilds from the OCR in
-about eight minutes; the downloaded vendor files are 1.3 GB and every one of them has a URL and a
-checksum in a public ledger, which is exactly how 59,407 definitions were recovered after they were
-deleted by mistake. Backing those up costs more than it saves. What genuinely cannot be fetched again is
-the OCR — the PDFs are gone and the image that read them was deleted — and the curation, which is human
-judgement. Those are the default.
+`essential` is what cannot be made again: the OCR, whose PDFs are gone; the index database, because
+`ingest` adds documents to it but cannot recreate the figure-to-page links the old crawler recorded; the
+vendor model text and its curation, since several vendors block this server; the simulator installers,
+whose makers serve only their latest release; the URL lists and manifests; what people handed over; the
+summariser's answers, which cost GPU hours; the scripts that ran on the borrowed GPU machine; and the
+repository's history from before it was squashed.
+
+`full` adds what has a URL or a recipe and costs time or a site's patience to get again. What is never
+packed is what the steps here write again from the rest: the model catalogue and its matches, the logs,
+the website's build.
 """
 from __future__ import annotations
 
@@ -33,21 +37,34 @@ from spicy_electronics_index.core.config import (
     REPO_ROOT,
     backups,
     census_cache,
+    datasheet_experiments,
+    datasheet_lab,
     datasheets,
+    datasheets_cache,
+    datasheets_text,
     download_manifest,
+    downloads,
     guard_extra_patterns,
+    inbox,
     index_db,
     legacy,
+    llm_cache,
+    material_readme,
     material_root,
     ocr_root,
+    old_history,
     page_sizes,
+    remote_llm,
+    remote_ocr,
+    scratch,
     simulator_vendor,
     simulators,
     source_list,
-    spice_curated,
-    spice_definitions,
     spice_models_root,
+    spice_symbols,
     staging,
+    toragi_index,
+    wanted_sources,
 )
 
 LEVELS = ("essential", "full", "all")
@@ -55,39 +72,48 @@ CHUNK = 1 << 20
 RESTORE_SCRIPT = REPO_ROOT / "scripts" / "restore_private.py"
 # Compressing these again costs time and gains nothing, so they go in as they are.
 ALREADY_COMPRESSED = {".gz", ".zip", ".7z", ".rar", ".xz", ".bz2", ".tgz", ".png", ".jpg", ".jpeg",
-                      ".webp", ".pdf", ".djvu", ".msi", ".exe", ".sqlite"}
+                      ".webp", ".pdf", ".djvu", ".msi", ".exe"}
 
 
 def contents(level: str) -> list[tuple[Path, str]]:
     """Every tree or file to pack at this level, with why it is worth carrying."""
     out: list[tuple[Path, str]] = [
         (ocr_root(), "irreplaceable: the PDFs are gone and the image that read them was deleted"),
-        (page_sizes(), "page geometry; without it 133,000 pages lose their zoom link"),
+        (page_sizes(), "page geometry frozen before the PDFs went; the zoom links depend on it"),
+        (index_db(), "the index: `ingest` cannot recreate the figure-to-page links the old crawler recorded"),
+        (spice_models_root(), "the vendor model text and its curation; several vendors block this server"),
         (source_list("x").parent, "URL lists for sources that cannot be crawled again"),
         (download_manifest("x").parent, "what each schematic source downloaded"),
-        (spice_curated(), "the curation: human judgement, and the symbols and patches with it"),
         (guard_extra_patterns(), "the local patterns the guard checks against"),
+        (material_readme(), "what in this tree must not be lost"),
         (simulator_vendor(), "the simulator installers the images are pinned to; LTspice's and QSPICE's "
                              "makers serve only their latest release"),
+        (old_history(), "the repository's history before it was squashed, with its release assets: the only copy"),
+        (llm_cache(), "the summariser's answers, which cost GPU hours"),
+        (toragi_index(), "the publisher's article index, fetched by hand"),
+        (wanted_sources(), "the lists wanted parts were read from, as they were handed over"),
+        (inbox(), "deliveries gathered by hand, which cannot be fetched again"),
+        (remote_ocr(), "how the OCR ran on the borrowed GPU machine"),
+        (remote_llm(), "how the summariser ran there"),
     ]
-    # Each source's own record of itself: 4.4 MB that reconstructs 1.3 GB of downloads.
-    out += [(p, "the recipe for one source's downloads")
-            for p in sorted(spice_models_root().glob("sources/*/manifest.json"))]
-    out += [(p, "one source's licence note") for p in sorted(spice_models_root().glob("sources/*/SOURCE.md"))]
     if level in ("full", "all"):
         out += [
-            (spice_models_root() / "sources", "the downloaded vendor files themselves"),
-            (datasheets(), "manufacturer datasheets, still needed by the simulation phase"),
+            (downloads("x").parent, "downloads not read yet; each has its URL and checksum in a ledger"),
+            (datasheets(), "manufacturer data sheets, still needed by the simulation phase"),
+            (datasheets_text("x").parent, "the text read out of data sheets and databooks"),
+            (datasheets_cache("x").parent, "the catalogue pages the data-sheet register was read from"),
             (census_cache("x").parent, "the index pages the part census was read from: small, and "
                                        "re-reading them costs a volunteer's site half an hour of crawling"),
-            (simulators(), "the simulation runs: every model measured, and what each run cost"),
+            (scratch(), "work in transit"),
+            (datasheet_lab(), "the data-sheet reader's pages, runs and scores"),
+            (datasheet_experiments(), "earlier trials at reading data sheets"),
+            (simulators(), "the simulation runs, beside the installers"),
         ]
     if level == "all":
         out += [
-            (index_db(), "the schematic index; rebuilds from the OCR in about eight minutes"),
-            (spice_definitions(), "the model catalogue; regenerated from the sources in minutes"),
-            (staging(), "the old code still to be ported"),
-            (legacy(), "the retired repositories"),
+            (staging(), "the two retired repositories, as they were copied in to be ported"),
+            (legacy(), "cancelled work, kept for reference"),
+            (spice_symbols(), "the symbol catalogue; `sei models symbols` writes it again"),
         ]
     return [(p, why) for p, why in out if p.exists()]
 
@@ -139,14 +165,13 @@ caught rather than restored.
 
 ## What is not in here, and why
 
-The public half — the registries, the ledgers, the 1,717 model recipes, the symbols — is in the git
-repository. Clone it; do not look for it here.
+The public half — registries, ledgers, recipes, exports — is in the git repository. Clone it; do not look
+for it here.
 
-At level `essential` the downloaded vendor files and the two big derived indexes are left out on
-purpose. Every downloaded file has its URL and checksum in a public ledger and in the per-source
-manifests, both of which *are* in here, and `sei models recover` fetches them again from those. The
-indexes rebuild from the OCR. What cannot be remade is the OCR itself and the curation, and those are in
-every level.
+At level `essential`, what has a URL or a recipe is left out on purpose: the downloads still to be read,
+the data sheets, the caches and the work in `scratch/`, each of which can be fetched or made again. No
+level holds what the steps write again from what is here: the model catalogue (`make models-index`),
+its matches (`make models-match models-found models-promote`), the logs and the website's build.
 """
 
 
@@ -190,7 +215,7 @@ def build(out_dir: Path, level: str = "essential", dry: bool = False) -> dict:
     tmp.replace(target)
     # A copy also goes beside the archive. Not because it is needed — a zip carries a central
     # directory, so `unzip -j <archive> restore.py` pulls it out in milliseconds without reading the
-    # other 2.4 GB — but so it can be read before deciding to download them.
+    # rest — but so it can be read before deciding to download the rest.
     if RESTORE_SCRIPT.is_file():
         (out_dir / "restore.py").write_bytes(RESTORE_SCRIPT.read_bytes())
     counts["archive"] = str(target)

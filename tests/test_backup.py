@@ -66,11 +66,24 @@ def test_everything_irreplaceable_is_packed(tree):
         assert B.rel(must) in names, must
 
 
-def test_the_downloaded_vendor_files_are_left_out_by_default(tree):
-    """They have a URL and a checksum in a public ledger; that is what recovery reads."""
+def test_the_vendor_model_text_is_essential(tree):
+    """Several vendors block this server: for those, the copy here is the only one."""
     downloaded = put(config.spice_source("acme") / "raw" / "q.lib", ".model Q1 NPN()\n")
-    assert B.rel(downloaded) not in packed("essential")
-    assert B.rel(downloaded) in packed("full")
+    assert B.rel(downloaded) in packed("essential")
+
+
+def test_what_cannot_be_made_again_is_essential_and_what_can_waits_for_full(tree):
+    bundle = put(config.old_history() / "history.bundle", b"git bundle")
+    db = put(config.index_db(), b"SQLite format 3\0")
+    page = put(config.downloads("esp") / "html" / "a.html", "<html></html>")
+    essential, full = packed("essential"), packed("full")
+    assert B.rel(bundle) in essential and B.rel(db) in essential
+    assert B.rel(page) not in essential and B.rel(page) in full
+
+
+def test_an_earlier_backup_is_not_packed_into_the_next(tree):
+    earlier = put(config.backups() / B.archive_name("essential"), b"PK")
+    assert B.rel(earlier) not in packed("all")
 
 
 def test_an_already_compressed_file_is_stored_rather_than_deflated(tree, tmp_path):

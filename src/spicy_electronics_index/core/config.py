@@ -49,7 +49,8 @@ def require(path: Path, why: str) -> Path:
     if not path.exists():
         raise PrivateDataMissing(
             f"{why} needs {path}, which is not here. This step runs on the machine that holds the "
-            f"corpus; set SEI_DATA_ROOT if yours is elsewhere. Everything under data/ works without it."
+            f"corpus; set SEI_MATERIAL or SEI_SPICE_MODELS if yours is elsewhere. Everything under data/ "
+            f"works without it."
         )
     return path
 
@@ -475,8 +476,9 @@ def linkchecks() -> Path:
 
 
 def index_db() -> Path:
-    """The full index: document text and local paths. Rebuildable from the OCR in about eight minutes,
-    so it is in transit, not permanent. Export from it by column allow-list, never wholesale."""
+    """The full index: every document, its pages and their text. `reindex` and `ingest` only add to it —
+    the figure-to-page links the old crawler recorded live nowhere else — so it is backed up with the
+    OCR. Export from it by column allow-list, never wholesale."""
     return material_root() / "index.sqlite"
 
 
@@ -626,6 +628,41 @@ def simulator_vendor() -> Path:
     return simulators() / "vendor"
 
 
+def datasheet_lab() -> Path:
+    """What the data-sheet reader (docker/datasheets) renders, reads and scores: pages, runs, results."""
+    return material_root() / "datasheet_lab"
+
+
+def datasheet_experiments() -> Path:
+    """Earlier trials at reading data sheets, kept for their samples and analysis."""
+    return material_root() / "datasheet_experiments"
+
+
+def ocr_home() -> Path:
+    """HOME inside the OCR image: where PaddleOCR keeps the models it downloads on first use."""
+    return material_root() / "cache_ocr_home"
+
+
+def remote_ocr() -> Path:
+    """The scripts that ran OCR batches on a borrowed GPU machine. They name hosts, so they stay here."""
+    return material_root() / "remote_ocr"
+
+
+def remote_llm() -> Path:
+    """The scripts that served the summarising model on a borrowed GPU machine; private for the same reason."""
+    return material_root() / "remote_llm"
+
+
+def wanted_sources() -> Path:
+    """The lists people handed over that wanted parts were read from: a repair shop's stock, a spreadsheet."""
+    return material_root() / "wanted_sources"
+
+
+def inbox() -> Path:
+    """Deliveries gathered by hand in a browser: a round's zip cannot be fetched again."""
+    return material_root() / "inbox"
+
+
 # --- private: the rest, all of it temporary ---------------------------------------------------------
 def staging(*parts: str) -> Path:
     """The old code, kept until each piece is ported."""
@@ -653,8 +690,19 @@ def backups() -> Path:
     return material_root() / "backups"
 
 
+def old_history() -> Path:
+    """The public repository's history before it was squashed into one commit, as a git bundle, with the
+    release assets of that time. The only copy."""
+    return backups() / "github-2026-10-10"
+
+
 def guard_extra_patterns() -> Path:
     return material_root() / "guard_extra_patterns.txt"
+
+
+def material_readme() -> Path:
+    """What in this tree must not be lost, in the maintainer's words."""
+    return material_root() / "README.md"
 
 
 # --- the map ----------------------------------------------------------------------------------------
@@ -759,6 +807,13 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("datasheet_store", "private", ()),
     ("simulators", "private", ()),
     ("simulator_vendor", "private", ()),
+    ("datasheet_lab", "private", ()),
+    ("datasheet_experiments", "private", ()),
+    ("ocr_home", "private", ()),
+    ("remote_ocr", "private", ()),
+    ("remote_llm", "private", ()),
+    ("wanted_sources", "private", ()),
+    ("inbox", "private", ()),
     ("character_runs", "private", ("qspice",)),
     ("character_pack", "private", ("character-m-11.tar.gz",)),
     ("sim_bench", "public", ()),
@@ -768,8 +823,21 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("logs", "private", ()),
     ("scratch", "private", ()),
     ("backups", "private", ()),
+    ("old_history", "private", ()),
     ("guard_extra_patterns", "private", ()),
+    ("material_readme", "private", ()),
 )
+
+
+def location(name: str) -> Path:
+    """One location by its name, for a caller that cannot import this module (`sei paths --get`, which
+    the Makefile asks). Only the two private roots and locations that take no argument are answered."""
+    if name in ("material_root", "spice_models_root"):
+        return globals()[name]()
+    for known, _visibility, args in LOCATIONS:
+        if known == name and not args:
+            return globals()[name]()
+    raise KeyError(name)
 
 
 def describe() -> list[tuple[str, str, Path, bool]]:

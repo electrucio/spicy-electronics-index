@@ -2,9 +2,9 @@
 
     sei schematics export
 
-The database is a build-time intermediate that the website never sees: it lives on one machine, it is
-3.9 GB, and it is rebuildable from the OCR. What the site reads is what this writes — four kinds of
-plain CSV that a person can open, diff and correct in a pull request.
+The database is a build-time intermediate that the website never sees: it lives on one machine and
+holds every document's text. What the site reads is what this writes — four kinds of plain CSV that a
+person can open, diff and correct in a pull request.
 
   `documents/<source>.csv`  one row per document: its public id, title, link and parent
   `pages/<source>.csv`      one row per page that has anything on it, with the link to that page
