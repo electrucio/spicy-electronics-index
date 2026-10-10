@@ -155,6 +155,42 @@ def test_a_file_that_is_there_and_different_is_never_silently_replaced(tree, tmp
     assert forced.returncode == 0 and mine.read_text() != "something newer\n"
 
 
+def test_a_path_with_a_comma_keeps_its_checksum(tree, tmp_path):
+    """LTspice examples are called things like Id(Vds,Vgs).asc; joined with bare commas, their manifest
+    rows fell apart and they were restored unchecked."""
+    odd = put(config.ocr_root() / "esp" / "Id(Vds,Vgs).jsonl.gz", gzip.compress(b"{}\n"))
+    B.build(tmp_path / "out", "essential")
+    archive = next((tmp_path / "out").glob("*.zip"))
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("restore_private", RESTORE)
+    R = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(R)
+    with zipfile.ZipFile(archive) as zf:
+        assert R.recorded(zf)[B.rel(odd)] == B.digest(odd)[0]
+
+
+def test_verify_only_reads_the_archive_and_writes_nothing(tmp_path):
+    into = tmp_path / "into"
+    put(into / "pyproject.toml", "[project]\nname='x'\n")
+    bad = tmp_path / "bad.zip"
+    name = f"{config.material_root().name}/a.txt"
+    with zipfile.ZipFile(bad, "w") as zf:
+        zf.writestr(name, "what arrived")
+        zf.writestr("MANIFEST.csv", f"path,bytes,sha256\n{name},3,{'0' * 64}\n")
+    out = run_restore(bad, into, "--verify-only")
+    assert out.returncode == 1 and "does not match" in out.stderr
+    assert not (into / name).exists()
+
+
+def test_the_archive_s_own_files_stay_out_of_the_checkout(tree, tmp_path):
+    B.build(tmp_path / "out", "essential")
+    archive = next((tmp_path / "out").glob("*.zip"))
+    into = tmp_path / "restored"
+    put(into / "pyproject.toml", "[project]\nname='x'\n")
+    assert run_restore(archive, into).returncode == 0
+    assert not (into / "RESTORE.md").exists() and not (into / "restore.py").exists()
+
+
 def test_restore_refuses_a_directory_that_is_not_a_checkout(tree, tmp_path):
     B.build(tmp_path / "out", "essential")
     archive = next((tmp_path / "out").glob("*.zip"))

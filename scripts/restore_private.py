@@ -9,7 +9,8 @@ repository root — but not a blind one. Every file was checksummed when the arc
 Nothing already present is overwritten. A file that is already there and already correct is left alone,
 which makes a second run cheap and a partial restore safe to resume. A file that is there and *differs*
 is refused and named: that is either newer work or a corrupted download, and neither should be silently
-replaced. `--force` overwrites those, `--verify-only` writes nothing at all.
+replaced. `--force` overwrites those. `--verify-only` writes nothing: it checks what is on disk and reads
+out of the archive what is not.
 
 Standard library only, so it runs from a plain Python on any machine that has just downloaded the file.
 """
@@ -24,6 +25,8 @@ import zipfile
 from pathlib import Path
 
 MANIFEST = "MANIFEST.csv"
+# What the archive says about itself: never part of the tree, so never unpacked into the checkout.
+ABOUT = {MANIFEST, "RESTORE.md", "restore.py"}
 CHUNK = 1 << 20
 
 
@@ -59,18 +62,21 @@ def safe_target(into: Path, name: str) -> Path | None:
 
 
 def restore(archive: Path, into: Path, *, force: bool = False, verify_only: bool = False) -> dict:
-    counts = {"written": 0, "already_there": 0, "differs": 0, "bad_checksum": 0,
-              "unsafe": 0, "bytes": 0}
+    counts = {"written": 0, "already_there": 0, "checked": 0, "differs": 0, "bad_checksum": 0,
+              "unsafe": 0, "unlisted": 0, "bytes": 0}
     conflicts: list[str] = []
     with zipfile.ZipFile(archive) as zf:
         want = recorded(zf)
-        members = [m for m in zf.namelist() if not m.endswith("/") and m != MANIFEST]
+        members = [m for m in zf.namelist() if not m.endswith("/") and m not in ABOUT]
         for i, name in enumerate(members, 1):
             target = safe_target(into, name)
             if target is None:
                 counts["unsafe"] += 1
                 continue
             expected = want.get(name, "")
+            if not expected:
+                # Nothing to check it against: say so rather than call it correct.
+                counts["unlisted"] += 1
             if target.exists():
                 with open(target, "rb") as f:
                     have, _ = digest(f)
@@ -82,6 +88,14 @@ def restore(archive: Path, into: Path, *, force: bool = False, verify_only: bool
                     conflicts.append(name)
                     continue
             if verify_only:
+                # Not on disk: read it out of the archive, which is the thing being verified.
+                with zf.open(name) as src:
+                    got, _ = digest(src)
+                if expected and got != expected:
+                    counts["bad_checksum"] += 1
+                    conflicts.append(f"{name} (checksum inside the archive does not match)")
+                else:
+                    counts["checked"] += 1
                 continue
             target.parent.mkdir(parents=True, exist_ok=True)
             tmp = target.with_name(target.name + ".part")
@@ -127,7 +141,11 @@ def main(argv=None) -> int:
 
     c = restore(archive, into, force=a.force, verify_only=a.verify_only)
     print(f"{c['written']:,} files restored ({c['bytes'] / 1e9:.2f} GB), "
-          f"{c['already_there']:,} already there and correct")
+          f"{c['already_there']:,} already there and correct"
+          + (f", {c['checked']:,} checked inside the archive" if a.verify_only else ""))
+    if c["unlisted"]:
+        print(f"{c['unlisted']:,} files have no checksum in {MANIFEST}, so they could not be checked",
+              file=sys.stderr)
     if c["unsafe"]:
         print(f"{c['unsafe']} members refused: they named a path outside {into}", file=sys.stderr)
     if c["bad_checksum"]:
@@ -140,7 +158,7 @@ def main(argv=None) -> int:
             print(f"  {name}", file=sys.stderr)
         if not a.force:
             print("Re-run with --force to replace them.", file=sys.stderr)
-    return 1 if (c["bad_checksum"] or c["unsafe"]) else 0
+    return 1 if (c["bad_checksum"] or c["unsafe"] or c["unlisted"]) else 0
 
 
 if __name__ == "__main__":

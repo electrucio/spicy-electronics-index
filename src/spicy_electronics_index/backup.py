@@ -27,7 +27,9 @@ the website's build.
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
+import io
 import sys
 import zipfile
 from datetime import date
@@ -204,9 +206,12 @@ def build(out_dir: Path, level: str = "essential", dry: bool = False) -> dict:
             counts["packed"] += 1
             if i % 5000 == 0:
                 print(f"  {i:,}/{len(seen):,} files …", flush=True)
-        buf = ["path,bytes,sha256"]
-        buf += [f'{r["path"]},{r["bytes"]},{r["sha256"]}' for r in rows]
-        zf.writestr("MANIFEST.csv", "\n".join(buf) + "\n")
+        # Through csv, not by joining with commas: a path may hold one ("Id(Vds,Vgs).asc").
+        buf = io.StringIO()
+        w = csv.DictWriter(buf, fieldnames=["path", "bytes", "sha256"], lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+        zf.writestr("MANIFEST.csv", buf.getvalue())
         zf.writestr("RESTORE.md", readme(level, counts["files"], counts["bytes"]))
         if RESTORE_SCRIPT.is_file():
             zf.write(RESTORE_SCRIPT, "restore.py")
