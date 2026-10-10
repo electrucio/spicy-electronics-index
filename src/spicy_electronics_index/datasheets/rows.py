@@ -110,9 +110,8 @@ def canon(symbol, parameter="") -> str:
 
 
 def conditions(text) -> dict[str, float]:
-    """{NAME: SI value} of a row's test conditions, as docker/datasheets/crosscheck.py's
-    `named_conditions` reads them — magnitudes, a frequency band left out rather than read as its lower
-    edge, zeros and 25 °C (the bench's own) dropped — except that a temperature keeps its sign."""
+    """{NAME: SI value} of a row's test conditions: magnitudes, a frequency band left out rather than read
+    as its lower edge, zeros and 25 °C (the bench's own) dropped, and a temperature keeping its sign."""
     out: dict[str, float] = {}
     t = clean(text or "")
     band = re.search(r"f\s*=\s*[\d.]+\s*\w*\s*(to|~|-)\s*[\d.]+", t, re.I)

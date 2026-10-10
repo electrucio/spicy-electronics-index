@@ -1,0 +1,33 @@
+name: Takedown request
+description: Ask for a link, a document or a whole site to be removed or corrected (TAKEDOWN.md).
+title: "Takedown: "
+labels: ["takedown"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This project lists links and facts, not third-party documents; see TAKEDOWN.md for what happens next.
+        No justification is needed to remove links to your own site.
+  - type: textarea
+    id: what
+    attributes:
+      label: What should be removed or corrected
+      description: The URLs, the source (site) or the files concerned, one per line.
+    validations:
+      required: true
+  - type: dropdown
+    id: who
+    attributes:
+      label: You are
+      options:
+        - The rights holder
+        - The operator of the linked site
+        - Someone acting for one of them
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: more
+    attributes:
+      label: Anything else
+      description: A correction instead of a removal, a deadline, or how to reach you if not here.

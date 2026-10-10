@@ -5,7 +5,7 @@ that 5687 and 6336A exist while BCS47 does not, or that the K1298 on a Japanese 
 That is not pattern knowledge, it is vocabulary, and it has to come from a document that had to be
 complete: a data sheet archive, a manufacturer's numerical index, a selector book.
 
-    sei parts census                       read every active source, then rewrite data/parts/census.csv
+    sei parts census                       read every active source, then rewrite data/parts/census/<source>.csv
     sei parts census --source frank_pocnet --limit 20      try one source, twenty pages of it
     sei parts census --read                parse the pages already cached; ask the network for nothing
 
