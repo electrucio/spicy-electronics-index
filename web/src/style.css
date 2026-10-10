@@ -8,7 +8,7 @@
   /* Dark only, on a ground that runs from black into a very dark red. The surfaces are that ground lifted
      a little, with the same warmth, so a panel reads as part of the page rather than a grey card on it. */
   --ground: #0c0909; --surface: #171112; --sunken: #120d0e; --ink: #e8dedc; --muted: #a8999a;
-  --faint: #7d6d6e; --rule: #2e2224; --accent: #e0864f; --accent-ink: #f0a771;
+  --faint: #7d6d6e; --rule: #2e2224; --accent: #ee560d; --accent-ink: #ee560d;
   /* The lines that say where one part of the page ends: sections, the list's pane, the bar beside it. */
   --edge: #5c4749;
   /* The sticky header's height, measured by main.tsx as it changes; what stays in view starts under it. */
@@ -39,7 +39,7 @@ header.top { position: sticky; top: 0; z-index: 5; background: rgb(8 6 6 / 0.88)
 header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-block: 10px; }
 .brand { font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.02em; color: var(--ink); text-decoration: none;
   display: inline-flex; align-items: center; gap: 0.3em; }
-.brand .logo { height: 1.15em; width: auto; flex: none; }
+.brand .logo { height: 1.55em; width: auto; flex: none; }
 .brand .name { color: var(--ink); min-width: 0; }
 .brand span { color: var(--accent); }
 .hright { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
@@ -361,7 +361,7 @@ pre.sealed { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 24em; o
 dialog.report .linkish { font-size: 0.9rem; }
 button.send { font: 600 0.95rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 18px;
   border: 0; border-radius: 4px; background: var(--accent); color: var(--ground); cursor: pointer; }
-button.send:hover { background: var(--accent-ink); }
+button.send:hover { filter: brightness(1.15); }
 button.send:disabled { opacity: 0.4; cursor: default; }
 dialog.report .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
