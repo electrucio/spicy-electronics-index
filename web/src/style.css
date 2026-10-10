@@ -39,9 +39,9 @@ header.top { position: sticky; top: 0; z-index: 5; background: rgb(8 6 6 / 0.88)
 header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-block: 10px; }
 .brand { font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.02em; color: var(--ink); text-decoration: none;
   display: inline-flex; align-items: center; gap: 0.3em; }
-.brand .logo { height: 1.55em; width: auto; display: block; transform-origin: 93% 12%; }
-/* The pepper rattles once, held by its stem, when the pointer comes onto it: half a second of swings that
-   die away, played again only after the pointer has left. The box around it stays still, so the shaking
+.brand .logo { height: 1.55em; width: auto; display: block; transform-origin: 50% 50%; }
+/* The pepper rattles once about its centre, its two ends swinging opposite ways, when the pointer comes
+   onto it: half a second of swings that die away, played again only after the pointer has left. The box around it stays still, so the shaking
    cannot move the pepper out from under the pointer and start it over. */
 .brand .pepper { display: inline-flex; flex: none; }
 .brand .pepper:hover .logo { animation: rattle 0.5s linear 1; }
@@ -64,10 +64,12 @@ header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wr
 .brand span { color: var(--accent); }
 .hright { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
 .stamp { color: var(--faint); font: 0.78rem var(--mono); }
-/* The licence (licence.tsx): a button in the stamp's own type under it, and its text in the method dialog. */
+/* The licence (licence.tsx): a button in the stamp's own type beside it, and its text in the method dialog. */
 details.licence-more > summary { cursor: pointer; color: var(--muted); }
 details.licence-more[open] > summary { margin-bottom: 10px; }
-.hline { display: flex; flex-direction: column; align-items: inherit; gap: 3px; }
+.hline { display: flex; flex-wrap: wrap; align-items: baseline; row-gap: 2px; }
+/* A thin rule between the items; the dialogs the buttons open are children too, and get none. */
+.hline > :not(dialog) ~ :not(dialog) { margin-left: 10px; padding-left: 10px; border-left: 1px solid var(--edge); }
 .licence-btn { all: unset; cursor: pointer; color: var(--faint); font: 0.78rem var(--mono);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .licence-btn:hover { color: var(--link); }
