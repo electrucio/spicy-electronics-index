@@ -15,6 +15,11 @@ def got(text, **kw):
     ("TLO72 NES534 2N3O55 BC1O9", ["TL072", "NE5534", "2N3055", "BC109"]),      # O/S inside the digits
     ("BC 109 and LM 386, TDA 2030", ["BC109", "LM386", "TDA2030"]),             # split tokens
     ("AC 240 volts, AD 1975", []),                                              # ... but not mains voltage or a year
+    ("AC110/120 - 127/220/240V, AC 110 V, AC110 50Hz, AC 110~120V, AC115/230V", []),    # mains, without its V
+    ("Q1 AC127, AC 125, AC117, AC127/128", ["AC127", "AC125", "AC117", "AC127", "AC128"]),   # ... while the real germanium stays
+    ("KSC75 KSC35 MJ17D KTD02 TIP10 TIP21 TIP80 1N0805", []),                   # headphones, model codes, pins, a footprint
+    ("TIP31C TIP41 TIP29 MJD32 KSP42 KSC945 TIP3055", ["TIP31C", "TIP41", "TIP29", "MJD32", "KSP42", "KSC945", "TIP3055"]),
+    ("3000HZ 3000V 3000PF peak", []),                                            # values, whatever a dictionary once said 3000 was
     ("BC107/8/9 BFY50/51/52 2N3904/2N3906", ["BC107", "BC108", "BC109", "BFY50", "BFY51", "BFY52", "2N3904", "2N3906"]),
     ("VTL5C3/2", ["VTL5C3/2"]),                                                 # owns its slash
     ("MN-3005 2SA1943-O EL34s IRF610-ND", ["MN3005", "2SA1943", "EL34", "IRF610"]),

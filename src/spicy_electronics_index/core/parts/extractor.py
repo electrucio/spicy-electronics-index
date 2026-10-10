@@ -96,6 +96,9 @@ DESIGNATOR_LIKE = {"J111", "J112", "J113", "J174", "J175", "J176", "J177", "J201
 # too short or too generic to trust on their own: need the dictionary, or the token alone in its block, or valve words around
 LOOSE = re.compile(r"^(?:U\d{3}|J\d{3}|AD\d{3,4}[A-Z]{0,3}|AN\d{3,4}|LA\d{4}|BA\d{4,5}[A-Z]?|OP\d{2,3}[A-Z]?|PT\d{4}[A-Z]?|AS\d{4}|IR\d{4}|PC8\d{2}|VT\d{3,4}[A-Z]?|BS\d{3}|R5\d{3}|BL\d{4}|CD\d{4}|SL\d{3,4}[A-Z]?|TA\d{4}[A-Z]?|HA\d{4,5}|XR\d{4}|SG\d{4}|UC\d{4}|S[89]0\d{2}|PN\d{2,4}|CV\d{3,4})$")
 NUMERIC_VALVE = re.compile(r"^\d{3,4}[A-C]?$")
+MAINS = re.compile(r"AC1(?:10|15)")         # mains voltages no germanium type has: AC117 is a real Telefunken type, AC120 and AC100 Vox
+SHORT = re.compile(r"(?:KS[AC]|MJ[EDLWFH]?|KT[ACD]|TIP)\d{2}[A-Z]{0,2}")   # two digits where the real types have three or more, or are few
+TRANSISTOR = {"bjt", "transistor", "darlington"}
 VALVE_WORDS = re.compile(r"\b(?:valves?|tubes?|triodes?|pentodes?|tetrodes?|rectifiers?|heaters?|filaments?|anodes?|plates?|cathodes?|push[\s-]?pull|V\d{1,2}[AB]?)\b", re.I)
 BARE_IC = {"741": "UA741", "709": "UA709", "301": "LM301", "308": "LM308", "555": "NE555", "5532": "NE5532", "5534": "NE5534", "4558": "RC4558",
            "4136": "RC4136", "3080": "CA3080", "3130": "CA3130", "3140": "CA3140", "13600": "LM13600", "13700": "LM13700", "386": "LM386", "3900": "LM3900"}
@@ -336,6 +339,11 @@ def _judge(tok, text, pos, isolated, raw=""):
     k = KNOWN.get(norm(tok)) or KNOWN.get(norm(base_part(tok)))
     if re.fullmatch(r"[AD]C\d{2,3}V", tok):                      # mains / supply voltages, not germanium transistors
         return None
+    # The same voltage without its V: "AC110/120", "AC 110 V", "AC115/230V 50Hz" on every service manual's
+    # power label. A germanium type of that number that neither the census nor the dictionary knows is the
+    # voltage; AC117 and AC127 are real types and stay. AC110 alone came out on 3,864 pages, 99 % of them mains.
+    if MAINS.fullmatch(tok) and not k and norm(tok) not in CENSUS:
+        return None
     if tok in NOT_PARTS or (re.fullmatch(r"\d{1,2}X\d{1,2}[A-Z]{0,3}", tok) and not REAL_X.match(tok)):
         return None
     if LABEL.fullmatch(tok) or FAMILY_X.fullmatch(tok) or PIN_LABEL.fullmatch(tok):
@@ -356,6 +364,16 @@ def _judge(tok, text, pos, isolated, raw=""):
     if re.fullmatch(r"B[A-Z]\d{1,2}[A-Z]?", tok) and not k:           # BD23 5AA, BS1 4DJ: UK postcodes; Pro Electron numbers have three digits
         return None
     fam = family_of(tok)
+    # Two digits in a family whose types run to three or four — KSC945, MJ15003, KTD1304 — or whose
+    # two-digit types are a short list — TIP29 to TIP50: a type the census or the dictionary holds as a
+    # transistor, or nothing. KSC75 and KSC35 are Koss headphones, MJ17D a MiniDisc model code, TIP10 to
+    # TIP81 the timer pins of NEC microcontrollers, KTD02 a test disc.
+    if fam and not k and SHORT.fullmatch(tok):
+        c = CENSUS.get(norm(tok)) or CENSUS.get(norm(base_part(tok)))
+        if not (c and set(c[1].split("/")) & TRANSISTOR):
+            return None
+    if re.fullmatch(r"1N0\d+[A-Z]{0,2}", tok):                    # no JEDEC number starts with a zero: 1N0805 is a footprint
+        return None
     if fam and not k and (r := fix_misread(tok)):
         tok, fixed = r, True
         fam, k = family_of(r), KNOWN.get(norm(r)) or KNOWN.get(norm(base_part(r)))
