@@ -31,7 +31,7 @@ old reading stays where it is, and keeps serving the index, until the new one re
 Boxes are the point. These are big scanned drawings with no text layer, where ctrl+F finds nothing and
 the eye finds nothing either, so a result has to be able to say *where* on the sheet the part is.
 
-Ported from `ocr_raw.py` in the staging tree, behaviour first (rule 7): same page decision, same render
+Ported from `ocr_raw.py` of the retired schematics repository, behaviour first: same page decision, same render
 sizes, same record shape, same version stamp, so what was read before is not read again.
 """
 from __future__ import annotations

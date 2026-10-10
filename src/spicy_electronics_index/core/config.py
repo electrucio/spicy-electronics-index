@@ -9,8 +9,8 @@ No other module joins a path: it asks here. That keeps one rule checkable in one
     PRIVATE  never committed, in two trees with different lifetimes:
              `private_web_spice_models/` is permanent — the vendor model text and symbols the site
              shows its maintainer sealed (`models/seal.py`), which licences forbid publishing;
-             `private_material/` is in transit — the OCR of everything scraped with the map over it,
-             and what has not been ported or exported yet. It ends up holding only the OCR.
+             `private_material/` holds the OCR of everything scraped, with the map and the index over
+             it, and the work in transit around them (`sei backup` says which is which).
 
 Both are `$SEI_SPICE_MODELS` / `$SEI_MATERIAL` if you keep them elsewhere. `.gitignore` and
 `scripts/licence_guard.py` both refuse them. Private accessors are wrapped in `require()` by their caller
@@ -39,7 +39,7 @@ def spice_models_root() -> Path:
 
 
 def material_root() -> Path:
-    """In transit: the OCR of everything scraped, its map, and what is not ported or exported yet."""
+    """The OCR of everything scraped, the index over it, and the work in transit around them."""
     env = os.environ.get("SEI_MATERIAL")
     return Path(env).expanduser() if env else REPO_ROOT / "private_material"
 
@@ -664,13 +664,10 @@ def inbox() -> Path:
 
 
 # --- private: the rest, all of it temporary ---------------------------------------------------------
-def staging(*parts: str) -> Path:
-    """The old code, kept until each piece is ported."""
-    return material_root().joinpath("staging", *parts)
-
-
-def legacy() -> Path:
-    return material_root() / "legacy"
+def shelved() -> Path:
+    """Work set aside — stopped, paused or folded into the project — kept for reference; its README
+    says what each folder is. Nothing reads it."""
+    return material_root() / "shelved"
 
 
 def llm_cache() -> Path:
@@ -817,8 +814,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("character_runs", "private", ("qspice",)),
     ("character_pack", "private", ("character-m-11.tar.gz",)),
     ("sim_bench", "public", ()),
-    ("staging", "private", ()),
-    ("legacy", "private", ()),
+    ("shelved", "private", ()),
     ("llm_cache", "private", ()),
     ("logs", "private", ()),
     ("scratch", "private", ()),

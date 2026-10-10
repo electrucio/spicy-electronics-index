@@ -9,16 +9,15 @@ this is the copy to maintain. Added here, measured on 60 magazine issues: OCR di
 split tokens (BC 109), slash lists (BC107/8/9), designators that VALUE let through (IC12, TR3), numeric-only valves and loose
 families need context or the dictionary, package suffixes folded into base_part.
 
-data/parts/known_parts.csv and rejected_tokens.txt are the dictionary (parts judged real / not real); `--snapshot` rebuilds them
-from the model library and the classified audio-document parts under the private data root. Without them everything still works,
-only with fewer `high` confidences.
+data/parts/known_parts.csv and rejected_tokens.txt are the dictionary (parts judged real / not real), kept by hand. Without them
+everything still works, only with fewer `high` confidences.
 """
 import csv
 import re
 import sys
 from collections import namedtuple
 
-from spicy_electronics_index.core.config import known_parts, rejected_tokens, staging
+from spicy_electronics_index.core.config import known_parts, rejected_tokens
 
 Hit = namedtuple("Hit", "part base raw family kind conf fixed block")      # conf: high | medium | low ; block: index in the page or None
 
@@ -640,35 +639,6 @@ def extract_page(page, min_conf=0.85):
     return settle_valves(hits, page_text)
 
 
-def snapshot():
-    """spice-library dictionary -> known_parts.csv + rejected_tokens.txt (library parts and aliases, parts an LLM pass judged real / not real)."""
-    import json
-    rows, rejected = {}, set()
-    SPICE = staging("spice-library")                       # until the model library is ported
-    lib = json.load(open(SPICE / "catalog/library.json"))
-    for p in lib["parts"]:
-        rows[norm(p["part"])] = (p["part"], p["kind"], "library")
-    for a, t in lib["aliases"].items():
-        kind = next((p["kind"] for p in lib["parts"] if p["part"] == t), "")
-        if len(norm(a)) >= 4 and re.search(r"[A-Z]", norm(a)):
-            rows.setdefault(norm(a), (t, kind, "library alias"))
-    for r in csv.DictReader(open(SPICE / "research/audio-docs-parts/parts_classified.csv", encoding="utf-8")):
-        if r["real"] in ("known", "yes") and r["conf"] != "low":
-            p = r["base_part"] or r["part"]
-            rows.setdefault(norm(p), (p, r["llm_kind"] or r["kind"], "audio docs"))
-        elif r["real"] == "no":
-            rejected.add(r["part"].upper())
-    with open(known_parts(), "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["name", "part", "kind", "from"])
-        w.writerows([n, *v] for n, v in sorted(rows.items()))
-    rejected_tokens().write_text("\n".join(sorted(rejected)) + "\n", encoding="utf-8")
-    print(f"{len(rows)} known names, {len(rejected)} rejected tokens")
-
-
 if __name__ == "__main__":
-    if "--snapshot" in sys.argv:
-        snapshot()
-    else:
-        for h in extract(" ".join(sys.argv[1:]) or sys.stdin.read()):
-            print(h)
+    for h in extract(" ".join(sys.argv[1:]) or sys.stdin.read()):
+        print(h)

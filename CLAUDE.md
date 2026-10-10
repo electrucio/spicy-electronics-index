@@ -57,9 +57,7 @@ public/private line it is on. Those three are always current; this map only says
 7. **No fact without a source.** What a part is, how parts relate, which model is a stand-in for which:
    each names a source a reader can open. An LLM is never a source.
 8. Everything public is in **English**.
-9. **Port, then clean.** Code still in `private_material/staging/` is copied with its behaviour exactly
-   and proved by a golden test before it is tidied.
-10. Commit in small, reviewable steps once `make check` passes. Push and deploy only when the maintainer asks.
+9. Commit in small, reviewable steps once `make check` passes. Push and deploy only when the maintainer asks.
 
 ## Working here
 

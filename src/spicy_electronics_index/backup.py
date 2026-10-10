@@ -2,7 +2,7 @@
 
     sei backup                 what cannot be made again
     sei backup --level full    + what can be fetched or rebuilt again, at a cost
-    sei backup --level all     + the retired repositories and code kept for reference
+    sei backup --level all     + the work set aside in shelved/, kept for reference
 
 The archive holds files at the paths they occupy inside the checkout, carries its own `MANIFEST.csv` of
 checksums and its own `restore.py`, so a download years from now needs nothing from this repository to
@@ -47,7 +47,6 @@ from spicy_electronics_index.core.config import (
     guard_extra_patterns,
     inbox,
     index_db,
-    legacy,
     llm_cache,
     material_readme,
     material_root,
@@ -57,12 +56,12 @@ from spicy_electronics_index.core.config import (
     remote_llm,
     remote_ocr,
     scratch,
+    shelved,
     simulator_vendor,
     simulators,
     source_list,
     spice_models_root,
     spice_symbols,
-    staging,
     toragi_index,
     wanted_sources,
 )
@@ -111,8 +110,7 @@ def contents(level: str) -> list[tuple[Path, str]]:
         ]
     if level == "all":
         out += [
-            (staging(), "the two retired repositories, as they were copied in to be ported"),
-            (legacy(), "cancelled work, kept for reference"),
+            (shelved(), "work set aside: stopped, paused or folded into the project"),
             (spice_symbols(), "the symbol catalogue; `sei models symbols` writes it again"),
         ]
     return [(p, why) for p, why in out if p.exists()]

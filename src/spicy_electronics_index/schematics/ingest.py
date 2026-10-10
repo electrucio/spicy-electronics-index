@@ -14,7 +14,7 @@ its pages, and each page's text (for the full-text search), and leaves `extracto
 is the signal `reindex` already answers to, so the parts are computed there, by the code that owns them,
 and not a second time here.
 
-Ported from `build_index.py` in staging, with two departures that are on purpose:
+Ported from `build_index.py` of the retired schematics repository, with two departures that are on purpose:
 
   * A document's public link is the page a person is meant to open, when the listing recorded one, and
     the file itself otherwise. For a schematic on GitHub that is the blob page, which renders it, rather
