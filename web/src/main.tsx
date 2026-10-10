@@ -76,7 +76,7 @@ function App() {
             href="?"
             onClick={(e) => { e.preventDefault(); go() }}
           >
-            <img class="logo" src={logo} alt="" /><span class="name">Spicy <span>Electronics Index</span></span>
+            <span class="pepper"><img class="logo" src={logo} alt="" /></span><span class="name">Spicy <span>Electronics Index</span></span>
           </a>
           {/* The build's date and the licence, and under them the way to send feedback, from any page. */}
           <div class="hright">

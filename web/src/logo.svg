@@ -2,12 +2,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1110" height="735" viewBox="60 10 740 490" role="img" aria-labelledby="title">
   <title id="title">Spicy Electronics Index</title>
   <defs>
-    <linearGradient id="orange-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
-      <stop offset="0" stop-color="#FA8B31"/>
-      <stop offset="0.28" stop-color="#F5741F"/>
-      <stop offset="0.58" stop-color="#EE590D"/>
-      <stop offset="0.84" stop-color="#DD4D0B"/>
-      <stop offset="1" stop-color="#C8400A"/>
+    <linearGradient id="body-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
+      <stop offset="0" stop-color="#D64A2C"/>
+      <stop offset="0.28" stop-color="#CC3D24"/>
+      <stop offset="0.58" stop-color="#C3331E"/>
+      <stop offset="0.84" stop-color="#B32C1A"/>
+      <stop offset="1" stop-color="#9F2718"/>
     </linearGradient>
     <linearGradient id="yellow-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
       <stop offset="0" stop-color="#E7D257"/>
@@ -16,14 +16,14 @@
       <stop offset="1" stop-color="#B29221"/>
     </linearGradient>
     <linearGradient id="edge-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
-      <stop offset="0" stop-color="#B9501D"/>
-      <stop offset="0.55" stop-color="#A43B0D"/>
-      <stop offset="1" stop-color="#873010"/>
+      <stop offset="0" stop-color="#E85D3D"/>
+      <stop offset="0.55" stop-color="#DD4F32"/>
+      <stop offset="1" stop-color="#D3472D"/>
     </linearGradient>
     <radialGradient id="soft-light" gradientUnits="userSpaceOnUse" cx="350" cy="210" r="270" gradientTransform="translate(350 210) rotate(-32) scale(1 0.38) translate(-350 -210)">
-      <stop offset="0" stop-color="#FFF1CD" stop-opacity="0.18"/>
-      <stop offset="0.45" stop-color="#FFF1CD" stop-opacity="0.09"/>
-      <stop offset="1" stop-color="#FFF1CD" stop-opacity="0"/>
+      <stop offset="0" stop-color="#E65A35" stop-opacity="0.08"/>
+      <stop offset="0.45" stop-color="#E65A35" stop-opacity="0.035"/>
+      <stop offset="1" stop-color="#E65A35" stop-opacity="0"/>
     </radialGradient>
 
     <path id="outline" d="M 87.805,465.703
@@ -49,7 +49,8 @@
       C 88.172,471.262 86.002,470.003 87.805,465.703 Z"/>
     <clipPath id="outline-clip"><use href="#outline"/></clipPath>
   </defs>
-  <use id="body" href="#outline" fill="url(#orange-shade)"/>
+  <use id="body" href="#outline" fill="url(#body-shade)"/>
+  <use id="light" href="#outline" fill="url(#soft-light)"/>
   <g id="pattern" clip-path="url(#outline-clip)" fill="url(#yellow-shade)" stroke="url(#yellow-shade)" stroke-width="5" stroke-linejoin="round">
     <path id="x-1" stroke-width="10" d="M 212.951,164.622
       C 206.842,198.498 202.755,231.41 204.444,256.98
@@ -100,6 +101,5 @@
       C 654.667,233.189 666.773,195.306 671.961,179.07
       C 657.232,161.44 642.723,147.144 623.047,133.593 Z"/>
   </g>
-  <use id="light" href="#outline" fill="url(#soft-light)"/>
-  <use id="edge" href="#outline" fill="none" stroke="url(#edge-shade)" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <use id="edge" href="#outline" fill="none" stroke="url(#edge-shade)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

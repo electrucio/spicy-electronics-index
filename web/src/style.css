@@ -39,15 +39,35 @@ header.top { position: sticky; top: 0; z-index: 5; background: rgb(8 6 6 / 0.88)
 header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-block: 10px; }
 .brand { font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.02em; color: var(--ink); text-decoration: none;
   display: inline-flex; align-items: center; gap: 0.3em; }
-.brand .logo { height: 1.55em; width: auto; flex: none; }
+.brand .logo { height: 1.55em; width: auto; display: block; transform-origin: 93% 12%; }
+/* The pepper rattles once, held by its stem, when the pointer comes onto it: half a second of swings that
+   die away, played again only after the pointer has left. The box around it stays still, so the shaking
+   cannot move the pepper out from under the pointer and start it over. */
+.brand .pepper { display: inline-flex; flex: none; }
+.brand .pepper:hover .logo { animation: rattle 0.5s linear 1; }
+@keyframes rattle {
+  0%, 100% { transform: rotate(0); }
+  8% { transform: rotate(-4.5deg); }
+  16% { transform: rotate(4.5deg); }
+  24% { transform: rotate(-4deg); }
+  32% { transform: rotate(3.5deg); }
+  40% { transform: rotate(-3deg); }
+  48% { transform: rotate(2.5deg); }
+  56% { transform: rotate(-2deg); }
+  64% { transform: rotate(1.5deg); }
+  72% { transform: rotate(-1deg); }
+  80% { transform: rotate(0.6deg); }
+  88% { transform: rotate(-0.3deg); }
+}
+@media (prefers-reduced-motion: reduce) { .brand .pepper:hover .logo { animation: none; } }
 .brand .name { color: var(--ink); min-width: 0; }
 .brand span { color: var(--accent); }
 .hright { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
 .stamp { color: var(--faint); font: 0.78rem var(--mono); }
-/* The licence (licence.tsx): a button in the stamp's own type beside it, and its text in the method dialog. */
+/* The licence (licence.tsx): a button in the stamp's own type under it, and its text in the method dialog. */
 details.licence-more > summary { cursor: pointer; color: var(--muted); }
 details.licence-more[open] > summary { margin-bottom: 10px; }
-.hline { display: flex; flex-wrap: wrap; column-gap: 12px; align-items: baseline; }
+.hline { display: flex; flex-direction: column; align-items: inherit; gap: 3px; }
 .licence-btn { all: unset; cursor: pointer; color: var(--faint); font: 0.78rem var(--mono);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 .licence-btn:hover { color: var(--link); }
