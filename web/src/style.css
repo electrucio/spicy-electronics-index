@@ -45,6 +45,8 @@ header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wr
 .hright { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
 .stamp { color: var(--faint); font: 0.78rem var(--mono); }
 /* The licence (licence.tsx): a button in the stamp's own type beside it, and its text in the method dialog. */
+details.licence-more > summary { cursor: pointer; color: var(--muted); }
+details.licence-more[open] > summary { margin-bottom: 10px; }
 .hline { display: flex; flex-wrap: wrap; column-gap: 12px; align-items: baseline; }
 .licence-btn { all: unset; cursor: pointer; color: var(--faint); font: 0.78rem var(--mono);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
@@ -328,12 +330,12 @@ ul.figkey .swatch { display: inline-block; width: 14px; height: 3px; margin-righ
 @media (max-width: 760px) { .figgrid { grid-template-columns: 1fr; } .figpair { grid-template-columns: 1fr; } }
 .offscale { color: var(--off); }
 
-/* Report a problem (report.tsx): a small button in the header, under the build's date, while a part is
-   open, and a dialog over the page. */
-.report-btn { display: inline-flex; gap: 5px; align-items: center;
+/* Provide feedback (feedback.tsx): a small button in the header, under the build's date, on every page,
+   and a dialog over the page. */
+.feedback-btn { display: inline-flex; gap: 5px; align-items: center;
   font: 600 0.74rem var(--body); padding: 2px 9px; border-radius: 999px; border: 1px solid var(--edge);
   background: var(--surface); color: var(--muted); cursor: pointer; }
-.report-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+.feedback-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
 button.linkish { all: unset; cursor: pointer; color: var(--faint);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 button.linkish:hover { color: var(--link); }
@@ -342,7 +344,6 @@ dialog.report { padding: 0; width: min(560px, calc(100vw - 32px)); border: 1px s
   background: var(--surface); color: var(--ink); box-shadow: 0 16px 48px rgb(0 0 0 / 0.6); }
 dialog.report::backdrop { background: rgb(6 4 4 / 0.7); backdrop-filter: blur(2px); }
 dialog.report .panel-in { padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 12px; }
-dialog.report h3 .pn { color: var(--accent-ink); }
 dialog.report p { margin: 0; }
 dialog.report form { display: flex; flex-direction: column; gap: 10px; }
 dialog.report textarea { font: inherit; font-size: 0.95rem; padding: 8px 10px; min-height: 8em; resize: vertical;

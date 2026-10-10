@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from 'preact/hooks'
 
 import { FamilyPage, MakerPage, SchemePage } from './about'
 import { DATA } from './data'
+import { Feedback } from './feedback'
 import { LICENCE_URL, Licence } from './licence'
 import { Loading } from './loading'
 import { MethodsPage } from './methods'
 import { Browser } from './parts'
-import { Report } from './report'
 import { Unlock } from './unlock'
 import logo from './logo.svg'
 import './style.css'
@@ -78,15 +78,14 @@ function App() {
           >
             <img class="logo" src={logo} alt="" /><span class="name">Spicy <span>Electronics Index</span></span>
           </a>
-          {/* The build's date and the licence, and under them the way to report a problem with the part on
-              screen. */}
+          {/* The build's date and the licence, and under them the way to send feedback, from any page. */}
           <div class="hright">
             <div class="hline">
               {data && <span class="stamp">built {data.m.built}</span>}
               <Licence />
               <Unlock />
             </div>
-            {part && !onTopic && <Report key={part} part={part} />}
+            <Feedback part={onTopic ? undefined : part ?? undefined} />
           </div>
         </div>
       </header>
@@ -105,7 +104,7 @@ function App() {
         A non-commercial project, by a hobbyist for hobbyists: free to use and share with credit, never
         commercially, and with no warranty (<a href={LICENCE_URL}>licence and disclaimer</a>).
         Built from the committed dataset. This project stores links, never documents.{' '}
-        <a href="https://github.com/electrucio/spicy-electronics-index">Source</a>. <Report />
+        <a href="https://github.com/electrucio/spicy-electronics-index">Source</a>.
       </footer>
     </>
   )

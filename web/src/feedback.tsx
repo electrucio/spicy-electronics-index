@@ -1,7 +1,9 @@
 import { useRef, useState } from 'preact/hooks'
 
 /**
- * "Report a problem": a dialog whose text reaches the maintainer through a Google Form.
+ * "Provide feedback": a dialog whose text reaches the maintainer through a Google Form. It is open to any
+ * page, part or none, because feedback is often about no part at all; the part on screen, if any, and the
+ * page's address travel with the message as fields the reader is not shown.
  *
  * A static site has nobody to post to, so the form's own endpoint takes the message and the answers land
  * in the maintainer's sheet. The dialog and its button are this site's; nothing of Google is shown. Google
@@ -14,7 +16,7 @@ export const FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSdqgUQ9-yQNItSrEm8
 /** The form's three questions by the id Google gave each: what the reader wrote, and where they were. */
 export const FIELD = { message: 'entry.371536136', part: 'entry.1742682148', page: 'entry.712592962' }
 
-export function reportBody(message: string, part: string | undefined, page: string): URLSearchParams {
+export function feedbackBody(message: string, part: string | undefined, page: string): URLSearchParams {
   return new URLSearchParams({
     [FIELD.message]: message.trim(),
     [FIELD.part]: part ?? '',
@@ -24,22 +26,18 @@ export function reportBody(message: string, part: string | undefined, page: stri
 
 type State = 'writing' | 'sending' | 'sent' | 'failed'
 
-/** A flag, the usual sign for "tell someone about this". */
-function Flag() {
+/** A speech bubble, the usual sign for "tell us". */
+function Bubble() {
   return (
     <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor"
       stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 14.5V2" />
-      <path d="M3 2.5h8.5l-2 3 2 3H3" />
+      <path d="M2.5 3.5h11v7.5H7l-3 2.5V11H2.5z" />
     </svg>
   )
 }
 
-/**
- * The button and the dialog it opens. `part` names the part the report is about; without it the report
- * is about the site, and the button is a line of text for the footer.
- */
-export function Report({ part }: { part?: string }) {
+/** The button and the dialog it opens. `part` is the part on screen, if any; it is sent, never shown. */
+export function Feedback({ part }: { part?: string }) {
   const [state, setState] = useState<State>('writing')
   const [text, setText] = useState('')
   const dialog = useRef<HTMLDialogElement>(null)
@@ -60,7 +58,7 @@ export function Report({ part }: { part?: string }) {
     if (trap.value) return setState('sent')
     setState('sending')
     try {
-      await fetch(FORM, { method: 'POST', mode: 'no-cors', body: reportBody(text, part, location.href) })
+      await fetch(FORM, { method: 'POST', mode: 'no-cors', body: feedbackBody(text, part, location.href) })
       setText('')
       setState('sent')
     } catch {
@@ -70,13 +68,9 @@ export function Report({ part }: { part?: string }) {
 
   return (
     <>
-      {part ? (
-        <button type="button" class="report-btn" onClick={open} title={`Report a problem with ${part}`}>
-          <Flag /> Report error
-        </button>
-      ) : (
-        <button type="button" class="linkish" onClick={open}>Report a problem with the site</button>
-      )}
+      <button type="button" class="feedback-btn" onClick={open}>
+        <Bubble /> Provide feedback
+      </button>
       {/* The dialog is its own backdrop's target: a click that lands on it and not on the panel inside
           was outside the panel, so it closes — if it also began there, or selecting text in the box and
           letting go outside would throw the dialog away. */}
@@ -87,7 +81,7 @@ export function Report({ part }: { part?: string }) {
         onClick={(e) => downOutside.current && e.target === dialog.current && close()}
       >
         <div class="panel-in">
-          <h3>Report a problem {part ? <>with <span class="pn">{part}</span></> : 'with the site'}</h3>
+          <h3>Provide feedback</h3>
           {state === 'sent' ? (
             <>
               <p>Thanks — sent.</p>
@@ -97,8 +91,8 @@ export function Report({ part }: { part?: string }) {
             <form onSubmit={send}>
               <textarea
                 ref={box}
-                aria-label="What is wrong or missing"
-                placeholder="What is wrong or missing? A page number or a link helps."
+                aria-label="Your feedback"
+                placeholder="Something wrong or missing, an idea, a question… A page number or a link helps."
                 value={text}
                 onInput={(e) => setText(e.currentTarget.value)}
               />
@@ -106,7 +100,7 @@ export function Report({ part }: { part?: string }) {
               <p class="small faint">
                 {state === 'failed'
                   ? 'Could not send — check the connection and try again.'
-                  : 'Goes to the maintainer through a Google Form, with this page’s address. Add an e-mail if you would like a reply.'}
+                  : 'Add an e-mail if you would like a reply.'}
               </p>
               <div class="row">
                 <span />

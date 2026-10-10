@@ -55,8 +55,6 @@ A non-commercial hobby project, made by a hobbyist for hobbyists.
 - ✗ Do not publish a changed version of the index under other terms
 - ✗ Do not rely on it blindly: it comes with **no warranty**, so check what matters against the data sheet
 
-Want to use it commercially? [Open an issue](https://github.com/electrucio/spicy-electronics-index/issues) and ask.
-
 The code (`src/`, `scripts/`, `web/`, `docker/`, `tests/`) is under
 [PolyForm Noncommercial 1.0.0](LICENSES/PolyForm-Noncommercial-1.0.0.txt); everything else, meaning the index
 and the rest of `data/`, the documentation, the drawings and the website, is under

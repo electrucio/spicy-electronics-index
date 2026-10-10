@@ -5,8 +5,8 @@ import { Loading } from './loading'
 
 /**
  * "Non-commercial license & disclaimer": the button beside the build's date, and the dialog that shows the
- * licence in full — the summary with the no-warranty disclaimer, then both legal texts. The summary opens
- * with what the licence allows and what it does not, a tick or a cross on each line, drawn in colour.
+ * licence: the summary — what it allows and what it does not, a tick or a cross on each line, drawn in
+ * colour — and, folded under it, the rest of the file with the no-warranty disclaimer and both legal texts.
  *
  * The texts are the repository's own files, imported raw, so the site cannot say anything the LICENSE
  * file does not. They are a chunk of their own, fetched the first time the dialog opens: a reader who
@@ -24,6 +24,17 @@ const load = (): Promise<Texts> =>
     ['The code: PolyForm Noncommercial License 1.0.0', code.default],
     ['Everything else: CC BY-NC-SA 4.0', rest.default],
   ])
+
+/** The line that ends the summary: it shows, and everything after it is folded. */
+const SUMMARY_END = 'This list is a summary.'
+
+/** The licence file cut after the summary's last line; all of it shown when that line is not found. */
+export function splitSummary(text: string): [shown: string, folded: string] {
+  const lines = text.split('\n')
+  const end = lines.findIndex((l) => l.startsWith(SUMMARY_END))
+  if (end < 0) return [text, '']
+  return [lines.slice(0, end + 1).join('\n'), lines.slice(end + 1).join('\n').replace(/^\n+/, '')]
+}
 
 /**
  * A licence text as written, with its ticks and crosses in the colours of a pass and a fail. A ticked or
@@ -62,14 +73,32 @@ function LicenceDialog({ onClose }: { onClose: () => void }) {
         {/* A chunk named by its hash is gone after the next deploy: a page left open across one says so. */}
         {failed && <p class="muted">Could not load the licence and disclaimer. <a href={LICENCE_URL}>Read it on GitHub</a>.</p>}
         {!failed && !texts && <Loading what="the licence and disclaimer" />}
-        {texts?.map(([title, text]) => (
-          <section key={title} class="stack-s">
-            <h3>{title}</h3>
-            <Text text={text} />
-          </section>
-        ))}
+        {texts && <Folded texts={texts} />}
       </div>
     </dialog>
+  )
+}
+
+/** The summary, then the rest of the licence file and both legal texts behind one fold. */
+function Folded({ texts }: { texts: Texts }) {
+  const [[, summary], ...legal] = texts as [Texts[number], ...Texts]
+  const [shown, folded] = splitSummary(summary)
+  return (
+    <>
+      <Text text={shown} />
+      <details class="licence-more">
+        <summary>The full licence, the disclaimer and the legal texts</summary>
+        <div class="stack-s">
+          {folded && <Text text={folded} />}
+          {legal.map(([title, text]) => (
+            <section key={title} class="stack-s">
+              <h3>{title}</h3>
+              <Text text={text} />
+            </section>
+          ))}
+        </div>
+      </details>
+    </>
   )
 }
 
