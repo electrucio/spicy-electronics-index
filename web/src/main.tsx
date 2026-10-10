@@ -78,14 +78,14 @@ function App() {
           >
             <span class="pepper"><img class="logo" src={logo} alt="" /></span><span class="name">Spicy <span>Electronics Index</span></span>
           </a>
-          {/* The build's date and the licence, and under them the way to send feedback, from any page. */}
+          {/* The build's date, the licence and the way to send feedback, from any page, on one line. */}
           <div class="hright">
             <div class="hline">
               {data && <span class="stamp">built {data.m.built}</span>}
               <Licence />
               <Unlock />
+              <Feedback part={onTopic ? undefined : part ?? undefined} />
             </div>
-            <Feedback part={onTopic ? undefined : part ?? undefined} />
           </div>
         </div>
       </header>

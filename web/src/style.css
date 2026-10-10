@@ -357,12 +357,9 @@ ul.figkey .swatch { display: inline-block; width: 14px; height: 3px; margin-righ
 @media (max-width: 760px) { .figgrid { grid-template-columns: 1fr; } .figpair { grid-template-columns: 1fr; } }
 .offscale { color: var(--off); }
 
-/* Provide feedback (feedback.tsx): a small button in the header, under the build's date, on every page,
-   and a dialog over the page. */
-.feedback-btn { display: inline-flex; gap: 5px; align-items: center;
-  font: 600 0.74rem var(--body); padding: 2px 9px; border-radius: 999px; border: 1px solid var(--edge);
-  background: var(--surface); color: var(--muted); cursor: pointer; }
-.feedback-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+/* Provide feedback (feedback.tsx): the last item of the header's line, in the licence button's type with a
+   speech bubble, and a dialog over the page. */
+.feedback-btn svg { vertical-align: -2px; margin-right: 4px; }
 button.linkish { all: unset; cursor: pointer; color: var(--faint);
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 button.linkish:hover { color: var(--link); }

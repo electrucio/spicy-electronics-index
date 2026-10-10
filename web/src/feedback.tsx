@@ -68,7 +68,7 @@ export function Feedback({ part }: { part?: string }) {
 
   return (
     <>
-      <button type="button" class="feedback-btn" onClick={open}>
+      <button type="button" class="licence-btn feedback-btn" onClick={open}>
         <Bubble /> Provide feedback
       </button>
       {/* The dialog is its own backdrop's target: a click that lands on it and not on the panel inside
