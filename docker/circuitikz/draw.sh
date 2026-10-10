@@ -38,5 +38,5 @@ ET.ElementTree(root).write(p, encoding="utf-8", xml_declaration=True)
 ET.parse(p)
 PY
 cp "$work/$name.svg" "$root/data/bench/drawings/$name.svg"
-cp "$work/$name.png" "$root/private_material/scratch/$name.png" 2>/dev/null || true
+cp "$work/$name.png" "${SEI_MATERIAL:-$root/private_material}/scratch/$name.png" 2>/dev/null || true
 echo "data/bench/drawings/$name.svg ($(wc -c < "$root/data/bench/drawings/$name.svg") bytes)"

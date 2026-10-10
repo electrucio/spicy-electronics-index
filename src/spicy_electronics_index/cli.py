@@ -21,6 +21,7 @@ def main(argv: list[str] | None = None) -> int:
     pa.add_argument("--private", action="store_true", help="only the private data root")
     pa.add_argument("--public", action="store_true", help="only what is committed")
     pa.add_argument("--missing", action="store_true", help="only locations that do not exist here")
+    pa.add_argument("--get", metavar="NAME", help="print one location, resolved, and nothing else (for the Makefile)")
 
     mod = sub.add_parser("models", help="SPICE models").add_subparsers(dest="mod_cmd", required=True)
     mi = mod.add_parser("index", help="find every definition in the model sources and stamp the ledgers")
@@ -157,6 +158,10 @@ def main(argv: list[str] | None = None) -> int:
     si.add_argument("--dry", action="store_true", help="say how much there is to index and write nothing")
     si.add_argument("--sizes", action="store_true",
                     help="only fill in page sizes on documents already indexed without them")
+    sdl = sch.add_parser("deliver", help="take in an archive gathered by hand as a source's downloads")
+    sdl.add_argument("--source", required=True, help="a source with a `delivery:` block")
+    sdl.add_argument("--archive", required=True, help="the archive, relative to that source's download directory")
+    sdl.add_argument("--remove-archive", action="store_true", help="delete it once its members are recorded")
     sr = sch.add_parser("release", help="delete the downloaded files whose text has already been read")
     sr.add_argument("--source", action="append", help="only these sources (repeatable)")
     sr.add_argument("--dry", action="store_true", help="say what would go and delete nothing")
@@ -264,6 +269,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.cmd == "paths":
         from spicy_electronics_index.core import config
+        if args.get:
+            try:
+                print(config.location(args.get))
+            except KeyError:
+                print(f"no location called {args.get!r} without arguments; `sei paths` lists them", file=sys.stderr)
+                return 2
+            return 0
         rows = config.describe()
         if args.public or args.private:
             want = "public" if args.public else "private"
@@ -455,6 +467,12 @@ def main(argv: list[str] | None = None) -> int:
         argv2 += ["--dry"] if args.dry else []
         argv2 += ["--sizes"] if args.sizes else []
         return sch_ingest.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "deliver":
+        from spicy_electronics_index.schematics import deliver as sch_deliver
+        argv2 = ["--source", args.source, "--archive", args.archive]
+        argv2 += ["--remove-archive"] if args.remove_archive else []
+        return sch_deliver.main(argv2)
 
     if args.cmd == "schematics" and args.sch_cmd == "release":
         from spicy_electronics_index.schematics import release as sch_release

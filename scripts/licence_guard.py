@@ -14,6 +14,7 @@ Blocks:
 """
 from __future__ import annotations
 
+import os
 import re
 import subprocess
 import sys
@@ -64,8 +65,9 @@ PUBLIC_URL = re.compile(r"https?://[^\s,\"'<>]+")
 
 
 def local_patterns() -> list[tuple[str, re.Pattern]]:
-    """Extra private patterns (real names, hostnames ...), one regex per line, kept out of git."""
-    f = ROOT / "private_material" / "guard_extra_patterns.txt"
+    """Extra private patterns (real names, hostnames ...), one regex per line, kept out of git. Found where
+    core.config finds them, `$SEI_MATERIAL` included: patterns silently not found are no guard at all."""
+    f = Path(os.environ.get("SEI_MATERIAL") or ROOT / "private_material").expanduser() / "guard_extra_patterns.txt"
     if not f.is_file():
         return []
     lines = [ln.strip() for ln in f.read_text(encoding="utf-8").splitlines()]

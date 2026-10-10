@@ -34,7 +34,7 @@ copy that arrived with a public URL is the one worth publishing. And a file that
 says it is, which in a hand-gathered pile is usually a saved error page, is recorded with that reason
 instead of being stored as a document.
 
-    python -m spicy_electronics_index.schematics.deliver --source passlabs_diyaudio \
+    sei schematics deliver --source passlabs_diyaudio \
         --archive NelsonPass_PassLabs_Esquematicos.zip [--remove-archive]
 """
 from __future__ import annotations

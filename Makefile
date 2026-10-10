@@ -11,7 +11,7 @@ WEB_HOST ?= 0.0.0.0
 WEB_PORT ?= 8026
 
 .DEFAULT_GOAL := help
-.PHONY: vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export backup clean web web-data web-deps serve
+.PHONY: vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
 
 help:  ## show this list
 	@echo "Spicy Electronics Index — make <target>"
@@ -65,6 +65,9 @@ models-missing:  ## (maintainer) what the catalogue recorded that the sources no
 
 models-recover:  ## (maintainer) fetch those files again, checking each against the checksum we had
 	$(RUN) sei models recover
+
+models-fetch:  ## (maintainer) download one URL into a model source; SOURCE=id URL=… [NAME=file] [NOTE='…'] [CURL=1] [FORCE=1]
+	$(RUN) sei models fetch $(SOURCE) --url '$(URL)' $(if $(NAME),--name '$(NAME)') $(if $(NOTE),--note '$(NOTE)') $(if $(CURL),--curl) $(if $(FORCE),--force)
 
 models-verify:  ## (maintainer) check the tree still holds every model file, byte for byte
 	$(RUN) sei models verify
@@ -131,8 +134,7 @@ bench-read:  ## apply the bench's extraction to a waveform you produced; RAW=dc.
 # QSPICE (the default engine), ngspice (the open cross-check) and LTspice (the compatibility check), in
 # images whose every input is pinned; see docker/sim/README.md.
 # The vendor store holds the installers, which may not be redistributed: it is private, like the images.
-SIM_VENDOR ?= private_material/simulators/vendor
-SIM_MODELS ?= private_web_spice_models
+SIM_VENDOR ?= $(shell $(RUN) sei paths --get simulator_vendor)
 SIM_BUILD = docker build --build-context vendor=$(SIM_VENDOR) --build-arg UID=$$(id -u) --build-arg GID=$$(id -g)
 ENGINES ?= qspice ngspice ltspice
 
@@ -150,8 +152,8 @@ sim-images:  ## (maintainer) build the simulator images from the pinned inputs; 
 # A vision-language model on one GPU reads the characteristics tables of manufacturer data sheets; the
 # rows are scored against a hand-read reference and used to hold SPICE models against the sheet. See
 # docker/datasheets/README.md. VLM_MODELS: the folder with the weights (outside the repository).
-DATASHEET_PDFS ?= private_material/datasheets/vendor
-DATASHEET_LAB ?= private_material/datasheet_lab
+DATASHEET_PDFS ?= $(shell $(RUN) sei paths --get datasheet_store)
+DATASHEET_LAB ?= $(shell $(RUN) sei paths --get datasheet_lab)
 GOLDEN ?= docker/datasheets/golden.yaml
 VLM_PORT ?= 8090
 VLM_GPU ?= 1
@@ -289,9 +291,12 @@ ocr-image:  ## (maintainer) build the OCR image; PADDLE_TAG=3.2.2-gpu-cuda11.8-c
 schematics-ocr-recheck:  ## (maintainer) mark what an earlier OCR read from an illegible text layer, to read again; SOURCE='a b' [DRY=1]
 	uv run sei schematics ocr --recheck $(foreach s,$(SOURCE),--source $(s)) $(if $(DRY),--dry)
 
+MATERIAL ?= $(shell $(RUN) sei paths --get material_root)
+OCR_HOME ?= $(shell $(RUN) sei paths --get ocr_home)
 schematics-ocr-docker:  ## (maintainer) the same inside the CUDA image, one shard per GPU; SOURCE='a b' GPU=0 SHARD=0/2
-	docker run --rm --gpus '"device=$(GPU)"' --user $$(id -u):$$(id -g) -e HOME=/repo/private_material/cache_ocr_home \
-	  -v "$(PWD)":/repo spicy-electronics-index-ocr \
+	mkdir -p "$(OCR_HOME)"
+	docker run --rm --gpus '"device=$(GPU)"' --user $$(id -u):$$(id -g) -e HOME=/ocr-home -v "$(OCR_HOME)":/ocr-home \
+	  -e SEI_MATERIAL=/material -v "$(MATERIAL)":/material -v "$(PWD)":/repo spicy-electronics-index-ocr \
 	  schematics ocr $(foreach s,$(SOURCE),--source $(s)) --gpu 0 $(if $(SHARD),--shard $(SHARD))
 
 schematics-verify:  ## (maintainer) find documents lost before anything read them; REPAIR=1 fetches them back
@@ -302,6 +307,9 @@ schematics-prune:  ## (maintainer) drop what a source's rules no longer want; [S
 
 schematics-release:  ## (maintainer) delete downloaded files whose text is already read; [SOURCE='a b'] [DRY=1]
 	$(RUN) sei schematics release $(foreach s,$(SOURCE),--source $(s)) $(if $(DRY),--dry,)
+
+schematics-deliver:  ## (maintainer) take in an archive gathered by hand as a source's downloads; SOURCE=id ARCHIVE=file [REMOVE=1]
+	$(RUN) sei schematics deliver --source $(SOURCE) --archive '$(ARCHIVE)' $(if $(REMOVE),--remove-archive)
 
 schematics-ingest:  ## (maintainer) put what has been read into the index database; [SOURCE='a b'] [LIMIT=n] [DRY=1]
 	$(RUN) sei schematics ingest $(foreach s,$(SOURCE),--source $(s)) $(if $(LIMIT),--limit $(LIMIT)) $(if $(DRY),--dry)
