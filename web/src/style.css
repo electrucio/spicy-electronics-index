@@ -41,23 +41,28 @@ header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wr
   display: inline-flex; align-items: center; gap: 0.3em; }
 .brand .logo { height: 1.55em; width: auto; display: block; transform-origin: 50% 50%; }
 /* The pepper rattles once about its centre, its two ends swinging opposite ways, when the pointer comes
-   onto it: half a second of swings that die away, played again only after the pointer has left. The box around it stays still, so the shaking
+   onto it: most of a second of swings that die away, played again only after the pointer has left. The box around it stays still, so the shaking
    cannot move the pepper out from under the pointer and start it over. */
 .brand .pepper { display: inline-flex; flex: none; }
-.brand .pepper:hover .logo { animation: rattle 0.5s linear 1; }
+.brand .pepper:hover .logo { animation: rattle 0.8s linear 1; }
 @keyframes rattle {
   0%, 100% { transform: rotate(0); }
-  8% { transform: rotate(-4.5deg); }
-  16% { transform: rotate(4.5deg); }
-  24% { transform: rotate(-4deg); }
-  32% { transform: rotate(3.5deg); }
-  40% { transform: rotate(-3deg); }
-  48% { transform: rotate(2.5deg); }
-  56% { transform: rotate(-2deg); }
-  64% { transform: rotate(1.5deg); }
-  72% { transform: rotate(-1deg); }
-  80% { transform: rotate(0.6deg); }
-  88% { transform: rotate(-0.3deg); }
+  6% { transform: rotate(-7deg); }
+  12% { transform: rotate(7deg); }
+  18% { transform: rotate(-6.5deg); }
+  24% { transform: rotate(6deg); }
+  30% { transform: rotate(-5.5deg); }
+  36% { transform: rotate(5deg); }
+  42% { transform: rotate(-4.5deg); }
+  48% { transform: rotate(4deg); }
+  54% { transform: rotate(-3.5deg); }
+  60% { transform: rotate(3deg); }
+  66% { transform: rotate(-2.5deg); }
+  72% { transform: rotate(2deg); }
+  78% { transform: rotate(-1.5deg); }
+  84% { transform: rotate(1deg); }
+  90% { transform: rotate(-0.6deg); }
+  95% { transform: rotate(0.3deg); }
 }
 @media (prefers-reduced-motion: reduce) { .brand .pepper:hover .logo { animation: none; } }
 .brand .name { color: var(--ink); min-width: 0; }
