@@ -32,7 +32,7 @@ export type Dir = 'asc' | 'desc'
 /** The list's columns, each a way of ordering it. A count starts from the most; a name from A. */
 const COLUMNS: { key: Sort; label: string; title: string; num: boolean }[] = [
   { key: 'name', label: 'Part', title: 'Part number', num: false },
-  { key: 'documents', label: 'Mentions', title: 'Documents that print it', num: true },
+  { key: 'documents', label: 'Usages', title: 'Documents that use it', num: true },
   { key: 'models', label: 'SPICE', title: 'SPICE models found for it', num: true },
   { key: 'sheets', label: 'Sheets', title: 'Data sheets and databook pages linked for it', num: true },
 ]
@@ -526,7 +526,7 @@ function Uses({ page, sources, kinds }: { page: PartPage; sources: string[]; kin
   const paper = others.filter((d) => PAPER_KINDS.has(kindOf(d)))
   if (built.length + paper.length + repos.length === 0 && !page.repos?.length && !page.about?.books?.length) return null
   return (
-    <Section title="Where it is used" anchor="where-used">
+    <Section title="Usages" anchor="where-used">
       <Group
         title="Projects and factory schematics" anchor="projects" open
         note="project sites, factory archives and reference works"
