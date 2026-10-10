@@ -1,0 +1,168 @@
+part: PMBT3904
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: nexperia
+  name: PMBT3904
+  def: subckt
+  hash: bd0d73c0130caa7e6c0b59e06b3275110775877d
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMBT3904.txt
+    sha256: 64726923b0d10e88bd284744403b18f0b96edfc88978354aa289f8c2029f8851
+    lines:
+      PMBT3904: [29, 88]
+    fetched: '2026-09-14'
+    note: 'model(s): PMBT3904 (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
+  note: pins from comment words
+- source: spice-model-cd
+  name: QPMBT3904
+  def: model
+  hash: 9987d48e303dc7b9094b05c397ea6b5490f57c0f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/PMBT3904.lib
+    sha256: beda2bdbd839cd99020ff6efe8a0b68ed13f86a09f5b55a1f2f8d47d616eff4e
+    lines:
+      QPMBT3904: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: PMBT3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QPMBT3904
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/PMBT3904.PRM
+      sha256: beda2bdbd839cd99020ff6efe8a0b68ed13f86a09f5b55a1f2f8d47d616eff4e
+  - source: microcap12
+    name: PMBT3904
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+  - source: kicad-spice-library
+    name: PMBT3904D
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: microcap12
+    name: PMBT3904D
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+- source: microcap12
+  name: PMBT3904VS
+  def: subckt
+  hash: af1fa7f0fc2eef17325e2165200d72fe2cfa02ef
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      PMBT3904VS: [49163, 49224]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: PMBT3904YS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: microcap12
+  name: PMBT3904M
+  def: subckt
+  hash: 77da9c2581f7674b11331b00eff0965c40652d6f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      PMBT3904M: [49074, 49134]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PMBT3904
+  def: model
+  hash: d57640adae0761affaabe90f212ef6494ba80653
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PMBT3904: [4248, 4248]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PMBT3904M
+  def: model
+  hash: c7f6cb39fd4805f828f4d3d9adb6587c73080512
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PMBT3904M: [4249, 4249]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PMBT3904VS
+  def: model
+  hash: ad7e73447ebd0883d55c2d56c5dec8ef9c2c1006
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PMBT3904VS: [4250, 4250]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PMBT3904YS
+  def: model
+  hash: ad3055aafa01f00596e369fc95418b704d4e53af
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PMBT3904YS: [4251, 4251]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: PMBT3904D
+  def: model
+  hash: 9987d48e303dc7b9094b05c397ea6b5490f57c0f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+    sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+    lines:
+      PMBT3904D: [11785, 11823]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

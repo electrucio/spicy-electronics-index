@@ -1,0 +1,299 @@
+part: BAT54S
+kind: diode
+priority: 3
+group: schottky
+models:
+- source: microcap12
+  name: BAT54ST
+  def: model
+  hash: fcdce32b4913fed12a02213a1449e414639fd21d
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAT54ST: [187, 188]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: BAT54SDW
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc.lib
+      sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+- source: microcap12
+  name: BAT54S_PH
+  def: subckt
+  hash: ca9b7f2b862f21289046bef525dbe91ce0ef6db9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      BAT54S_PH: [1040, 1065]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAT54S_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_shot.lib
+      sha256: 89422b6d829e90bd8424b8aee8462c0b273938950d3c699f08d950b475f5908d
+- source: microcap12
+  name: BAT54SW
+  def: subckt
+  hash: 4b56e9cae4d9d3708b7d019ffb1c53d86277235f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      BAT54SW: [2312, 2337]
+    fetched: '2026-09-21'
+- source: ltspice-native
+  name: BAT54SHY
+  def: model
+  type: D
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.dio
+    sha256: 696d34dfe538966c80cfe1da259c1043f408777be79f59e4f1c47d82f3af320a
+    lines:
+      BAT54SHY: [482, 482]
+  note: 'same code also in: bordodynov, ltwiki'
+- source: groups-io
+  name: BAT54S
+  def: model
+  hash: 9aa9242e9f7e5ecde239290fccb7f517df70fafb
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAT54S: [202, 202]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: BAT54ST
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: BAT54SW
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: BAT54SDW
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: bordodynov
+  name: BAT54SHM
+  def: model
+  hash: f657b01e4ef52110fc29ad90277d76a145c13762
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Standard/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+    lines:
+      BAT54SHM: [539, 539]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BAT54SHM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: BAT54SHM
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: kicad-spice-library
+    name: BAT54SHM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: BAT54SHM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAT54SHM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAT54SHM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAT54SHM
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: ltwiki
+  name: BAT54S
+  def: subckt
+  hash: 90ad635cd52dc415bda61d799283f767d56daf29
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAT54S.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 950d6bc1f5be7fb2dd59dc5d7b04c3b3f96ea109862b16864820546d2c987dba
+    lines:
+      BAT54S: [2, 26]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: BAT54SFILM
+  def: subckt
+  hash: 9a1abff6e45186635d0adbd320648801af083e11
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+    lines:
+      BAT54SFILM: [641, 648]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: BAT54SW
+  def: subckt
+  hash: bdf454ccb0911b437d3844297b67b045be06a150
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAT54SW.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b0545d48202e5ee3e040c13fc33b4abaefff4a8ef489b65708d3e950e4265164
+    lines:
+      BAT54SW: [2, 26]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: BAT54S
+  def: subckt
+  hash: 406afece3ea068d44b5dc2bb45667d94fa510556
+  type: SUBCKT
+  pins:
+  - a
+  - ka
+  - k
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BAT54S: [12574, 12580]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/DIOD/BAT54S.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 40521b9f917003c79455959c3b8e8e564b5c2628e9f182b04b451f9548f546ca
+  copies:
+  - source: kicad-spice-library
+    name: BAT54S
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: BAT54S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov
+  name: BAT54SHY
+  def: model
+  hash: 31531bb8c5c73a350cc517c56db6f8e9a5d04ce9
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BAT54SHY: [2119, 2119]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: BAT54SHY
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: BAT54SHY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAT54SHY
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: kicad-spice-library
+  name: BAT54S
+  def: model
+  hash: 84ae764172fe10cda0274c9d40e2f976d85e91e1
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
+    sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
+    lines:
+      BAT54S: [224, 226]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://assets.nexperia.com/documents/data-sheet/BAT54_SER.pdf
+  maker: Nexperia
+  doc: BAT54_SER v.5, Product data sheet (BAT54, BAT54A, BAT54C, BAT54S)
+  date: '2012-10-05'

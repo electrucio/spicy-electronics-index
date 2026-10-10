@@ -1,0 +1,120 @@
+part: NUP2105
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: onsemi
+  name: nup2105lt1
+  def: subckt
+  hash: 6e0b17ca369d5e6970dcb724d8cc84c29077b6f8
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  deps:
+  - nup2105l-tvs
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/nup2105l.lib
+    sha256: a94d6f1c5b718de016cdf5a83c0959a98776720666091e2a14198ba1c5f86135
+    lines:
+      nup2105l-tvs: [7, 41]
+      nup2105lt1: [1, 6]
+    fetched: '2026-09-19'
+    note: 'NUP2105L: nup2105lt1, nup2105l-tvs, MDD1, MDR, MDD3, MDRBV'
+- source: onsemi
+  name: nup2105l-tvs
+  def: subckt
+  hash: d0ce44864b88a9959018d62a8144f8145e5d4710
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/nup2105l.lib
+    sha256: a94d6f1c5b718de016cdf5a83c0959a98776720666091e2a14198ba1c5f86135
+    lines:
+      nup2105l-tvs: [7, 41]
+    fetched: '2026-09-19'
+    note: 'NUP2105L: nup2105lt1, nup2105l-tvs, MDD1, MDR, MDD3, MDRBV'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: nup2105l-tvs
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: nup2105lt1
+  def: subckt
+  hash: 3ce155da4d5486b5897061a1587f486b7c39c6d1
+  type: SUBCKT
+  deps:
+  - halfnup2105lt1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      halfnup2105lt1: [199929, 199952]
+      nup2105lt1: [199924, 199927]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: nup2105lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: nup2105lt1
+  def: subckt
+  hash: ffd621141d89c32714abf6e57099c8be23d2f1a8
+  type: SUBCKT
+  deps:
+  - halfnup2105lt1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/on_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+    lines:
+      halfnup2105lt1: [173, 196]
+      nup2105lt1: [168, 171]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: NUP2105
+  def: subckt
+  hash: 87c498931321b2ec40f1a56eb4aef08a92f04251
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  deps:
+  - HALFNUP2105
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Diodos/Avalancha/NUP2105TVS.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: a82ca4db2591080daf6557fec6e6b169e3c383267cc79a74a6c72bc0f4e9b919
+    lines:
+      HALFNUP2105: [21, 52]
+      NUP2105: [13, 17]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: NUP2105
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Diodos/Avalancha/NUP2105TVS.sub
+      sha256: a82ca4db2591080daf6557fec6e6b169e3c383267cc79a74a6c72bc0f4e9b919

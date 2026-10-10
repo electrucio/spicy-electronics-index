@@ -1,0 +1,506 @@
+part: BAV70
+kind: diode
+priority: 3
+group: silicon_signal
+models:
+- source: onsemi
+  name: bav70tt1
+  def: subckt
+  hash: ef379447bd43d9f37300a96ad5f14c785c99e954
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bav70tt1.lib
+    sha256: 43a63002fc06bf4057120a7c758246346da484eaeae2db76bb720149966d4c8e
+    lines:
+      bav70tt1: [1, 47]
+    fetched: '2026-09-19'
+    note: 'BAV70TT1.LIB: bav70tt1, dqemod, dqmod, diomod, dmod'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: bav70tt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: toshiba
+  name: BAV70
+  def: subckt
+  hash: a2d57b6075e4a3900dc8f155c70c6eb42a4518db
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://toshiba.semicon-storage.com/info/docgetzip.jsp?did=100&displang=en
+    member: Toshiba-lib-PSpice_20260827/Switching Diodes/BAV70_PSpice_20250213/BAV70_PSpice_rev1.lib
+    archive_sha256: f167eaf431c0d3c8d292ae0cb4abd1ed4d53ef4f97eb000f7468d1696bd6c51c
+    sha256: e8eb66ff0f715783b68ab2c78be0a508df3a2fd07a8e1d323cb9a67378947258
+    lines:
+      BAV70: [29, 53]
+    fetched: '2026-09-20'
+- source: spice-model-cd
+  name: BAV70
+  def: model
+  hash: a804783b8867b991e12b875c3e4b946e07c34837
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/bav70.lib
+    sha256: 17865cdbd5cb27668fb806d1e1ff4a81c321984f66a23dea51e014cdc583bc72
+    lines:
+      BAV70: [3, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAV70
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: BAV70
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: spice-model-cd
+    name: BAV70-Z
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+- source: spice-model-cd
+  name: BAV70
+  def: model
+  hash: 36670980a98362b113fdba5b7e192f0e74cb75e3
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/DIODE/S_DIODE.LIB
+    sha256: 5b0c047f0241963047cfdccac9eb3038eecfe7d78d04fc568cd0ac9135423c2a
+    lines:
+      BAV70: [99, 107]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAV70
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BAV70/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
+      sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
+- source: spice-model-cd
+  name: BAV70C
+  def: subckt
+  hash: 410203309ad13e583d26dcf6782c2d8b3483a6de
+  type: SUBCKT
+  deps:
+  - BAV70
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/DIODE/S_DIODE.LIB
+    sha256: 5b0c047f0241963047cfdccac9eb3038eecfe7d78d04fc568cd0ac9135423c2a
+    lines:
+      BAV70: [99, 107]
+      BAV70C: [94, 98]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAV70/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+- source: spice-model-cd
+  name: BAV70C/SIE
+  def: subckt
+  hash: 4e5e91bab818cb90e9aa65fdf1756a42f513a7f5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
+    sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
+    lines:
+      BAV70C/SIE: [95, 99]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAV70_ZX
+  def: subckt
+  hash: f3e32b7ffee0630921d5a9fe9ad6a2caf2cdbedb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BAV70_ZX: [1892, 1902]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAV70_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+- source: microcap12
+  name: BAV70C_IN
+  def: subckt
+  hash: f6257c2bd08da0de4cf410b59b88c7e86b36e9bd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/infineon.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: cdae8e9767d8fccbc81f94acb925cc440425a03e902d86cd8c5591d87131e175
+    lines:
+      BAV70C_IN: [3806, 3819]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAV70C_IN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
+      sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+- source: microcap12
+  name: Dbav70lt1g
+  def: model
+  hash: af491d49c8157e942d9a37eb24125c6e6d717232
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Dbav70lt1g: [11109, 11113]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: bav70lt1g
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_diode.lib
+      sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+- source: microcap12
+  name: BAV70T
+  def: model
+  hash: 97627a0a34ce7edc0be9509058f5b667e7dec1d6
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAV70T: [9382, 9383]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAV70W
+  def: model
+  hash: 01458a5b6d310cdb58bac89480e047e4c29ded69
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAV70W: [9386, 9387]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAV70M
+  def: subckt
+  hash: a313c3f0d9db0f30be9b713d107e1dcf90c8f841
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BAV70M: [2991, 3014]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAV70S
+  def: subckt
+  hash: cbe5f7c1abb3a9b027207d3f6dfeed53a2a473c0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BAV70S: [14517, 14546]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BAV70/ZTX
+  def: model
+  hash: 863133a8d5c11c615797f96c3678b849c6dd4a6f
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/Zetex.lib
+    sha256: 801edb075d3bd3995ad94e8dbf3c9a290a89481b1e897b74b75fcb6a6fab8ec0
+    lines:
+      BAV70/ZTX: [394, 396]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: BAV70
+  def: model
+  hash: 643468e7ed4b97efce2f5f49dfd1e18f45e40f36
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/DIODE.LB
+    sha256: b648c925003b172006c0871521a37a1448d9cd5343fd97cd1426d0ec65a8c324
+    lines:
+      BAV70: [24, 25]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAV70
+  def: model
+  hash: c662123a38e7ab4a3421df8dd4d7c72b2d4b2bcc
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/ediode_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e50d524139f4241c5345aa22e759f4b47df02a98f9343c9c753c201ba13d8c9
+    lines:
+      BAV70: [213, 214]
+    fetched: '2026-09-21'
+- source: qspice
+  name: BAV70HY
+  def: model
+  hash: 1e21b07665ab41dd39481f63e2fbde443937da13
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Diode.txt
+    sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+    lines:
+      BAV70HY: [170, 170]
+  copies:
+  - source: bordodynov-qspice
+    name: BAV70HY
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+- source: duncanamps
+  name: XBAV70
+  def: subckt
+  hash: 01c90c54ec7edbe02197efe6a2d12270c050c148
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/diodes/diodeaka.sub
+    sha256: 337f415cc78a5c1ea290a16b8354bda902edc529ef7e4a2348cb0a6632ac3a74
+    lines:
+      XBAV70: [7, 12]
+    fetched: '2026-09-14'
+- source: groups-io
+  name: BAV70
+  def: model
+  hash: 665793416f352c0e6e2a8b5996edd6c9ab01d984
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAV70: [7784, 7784]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: BAV70
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: groups-io
+  name: BAV70T
+  def: model
+  hash: 33be2de56b78ccbc290b2cdc8f05af43663b3ef6
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAV70T: [770, 770]
+    fetched: '2026-10-10'
+- source: groups-io
+  name: BAV70W
+  def: model
+  hash: e8c7af5df5fbe0d98c99c17bfb4d17933aea9d34
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAV70W: [773, 773]
+    fetched: '2026-10-10'
+- source: bordodynov
+  name: BAV70HM
+  def: model
+  hash: 1fcbb8419d1abfce51e60e45bf58981ee988516a
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Standard/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+    lines:
+      BAV70HM: [546, 546]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BAV70HM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: BAV70HM
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: kicad-spice-library
+    name: BAV70HM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: BAV70HM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAV70HM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAV70HM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAV70HM
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: ltwiki
+  name: BAV70
+  def: subckt
+  hash: b8b68ded8ac3f4ff3f0b459e992d15c19e879f54
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ediode.lib
+    sha256: 3a1ee34ce1dccb655cfdf9e5ee520ad37c7f7e97ce94973793706080d52808b9
+    lines:
+      BAV70: [271, 279]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BAV70HY
+  def: model
+  hash: a7974eb569838d5ec1254232cf7125b61691ff64
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BAV70HY: [2249, 2249]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: BAV70HY
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: BAV70HY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAV70HY
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: bordodynov
+  name: BAV70
+  def: subckt
+  hash: fb1ead7e3961e6a2c7a90dab734d5c24b9ca9854
+  type: SUBCKT
+  pins:
+  - A1
+  - K
+  - A2
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/BAV70.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: fb617607480bd09d70d62b4ba063921d1637633d268249c418188b8405e27a9a
+    lines:
+      BAV70: [1, 6]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/DIOD/BAV70.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 79d3a4a8120a5c6654e6909ed2777af34f457e0becc29f0672464d7287a8ce8b
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: BAV70
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/BAV70.sub
+      sha256: fb617607480bd09d70d62b4ba063921d1637633d268249c418188b8405e27a9a
+- source: kicad-spice-library
+  name: BAV70
+  def: model
+  hash: 64efe5cc40370defcccf4d55fa88084d22d9fa12
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIODE3.LIB
+    sha256: 88ceba16090e9038958260ddfeaada17f266d72cde791f865efa4a903dfb91d3
+    lines:
+      BAV70: [1705, 1706]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

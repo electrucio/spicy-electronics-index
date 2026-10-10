@@ -1,0 +1,123 @@
+part: NJL0302D
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: Qnjl0302dg_bjt
+  def: model
+  hash: 2843835d624a271006a18babb132b45f0e9cfd9d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/njl0302d.lib
+    sha256: 6079d1105f1902c1ca78af2fc470955a1d4d64403f1f60ee2a1c81014ecd42f1
+    lines:
+      Qnjl0302dg_bjt: [34, 44]
+    fetched: '2026-09-19'
+- source: onsemi
+  name: njl0302dg
+  def: subckt
+  hash: f21e6862a3cc9448c447404e97dbfa660b5a09d2
+  type: SUBCKT
+  deps:
+  - Dnjl0302dg_diode
+  - Qnjl0302dg_bjt
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/njl0302d.lib
+    sha256: 6079d1105f1902c1ca78af2fc470955a1d4d64403f1f60ee2a1c81014ecd42f1
+    lines:
+      Dnjl0302dg_diode: [59, 63]
+      Qnjl0302dg_bjt: [34, 44]
+      njl0302dg: [1, 19]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: njl0302dg
+  def: subckt
+  hash: 8ef369b5d855772e25220040015d6c5af54a6da6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/on_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+    lines:
+      njl0302dg: [41, 75]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: njL0302dg_bjt
+  def: model
+  hash: 56fee215b6897a526d658fae6016e4f2928e3190
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      njL0302dg_bjt: [984, 984]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: njL0302dg_bjt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: njL0302dg_bjt
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: njL0302dg_bjt
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: njL0302dg_bjt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: njL0302dg_bjt
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: njL0302dg_bjt
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: njL0302dg_bjt
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: njL0302dg_bjt
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: bordodynov-qspice
+  name: njL0302dg_bjt
+  def: model
+  hash: 3ea30300de4c099708dbc718e64366cbe87c4cd7
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      njL0302dg_bjt: [409, 409]
+    fetched: '2026-09-29'

@@ -1,0 +1,81 @@
+part: MM3Z3V0
+kind: zener
+priority: 4
+models:
+- source: onsemi
+  name: mm3z3v0t1g
+  def: subckt
+  hash: 591bb9d3b9c01ffd5ad753fc03aaf5967d1ec442
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/mm3z3v0t1g.sp3
+    sha256: 6437eec6c4f35e6c9d69b51a54a4495058892b53bba14c71e9627b83f508d73f
+    lines:
+      mm3z3v0t1g: [1, 41]
+    fetched: '2026-09-21'
+- source: onsemi
+  name: MM3Z3V0T1G
+  def: subckt
+  hash: 8e077c1458c296b4d5bf4b0b2baf7f786a68267b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mm3zxxxt1g%20(spice%20model).lib
+    sha256: 84e70e932882db54f7f52ec9ee41d3869d701a5d196266cd41751d996acf5d10
+    lines:
+      MM3Z3V0T1G: [74, 93]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: mm3z3v0t1g
+  def: subckt
+  hash: 9954d1172b9a3d9c638676cb85b8092b4e8a7bc4
+  type: SUBCKT
+  deps:
+  - D2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      D2: [212863, 212863]
+      mm3z3v0t1g: [138755, 138784]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MM3Z3V0T1G
+  def: model
+  hash: 53fd753147b4e59991aedf8b42e7b951534695b5
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Zener.txt
+    sha256: 0485ed2002f4a4c8ab0049bd7856b1d45c5c1e987d91693b703a248ec1fd0389
+    lines:
+      MM3Z3V0T1G: [3, 3]
+  copies:
+  - source: bordodynov-qspice
+    name: MM3Z3V0T1G
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Zener.txt
+      sha256: 0485ed2002f4a4c8ab0049bd7856b1d45c5c1e987d91693b703a248ec1fd0389
+- source: kicad-spice-library
+  name: mm3z3v0t1_ON
+  def: subckt
+  hash: 6ff0b26250153adffe2646a80a25b45df249fb36
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/onsemi.lib
+    sha256: ab36300f668bd5cba477d9d9d5c9f2cd9b6cf3535b5988bf1643121ac05899d4
+    lines:
+      mm3z3v0t1_ON: [1356, 1396]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

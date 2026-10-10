@@ -1,0 +1,134 @@
+part: NSL-32
+kind: opto
+priority: 2
+models:
+- source: viva-analog
+  name: NSL32-SR3
+  def: subckt
+  hash: d1c910bd1d30cbf05fe18ea661ff50859b6dbf05
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: https://viva-analog.com/nsl32-sr3-updated-modeling-jcm-c-2020/
+    sha256: 500328c5b1b492b4e6e2f9aa5a81ab4e631986595ea398ddcad40ea6bd530c3b
+    lines:
+      NSL32-SR3: [6, 15]
+    fetched: '2026-09-14'
+    note: TRANSCRIPTION of updated-model-txt.png (made here)
+- source: groups-io
+  name: NSL-32
+  def: subckt
+  hash: 29de00ae846b2a4b1f9c1e70b64ac5da04ea55a3
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_groups.io/Files-sorted-by-message-number/msg_ZZZZZZ/OptocouplerModelTestJig/
+    sha256: ad04b948c802b768806c86512c3be86d05b41bea7011c4ff02dac10e1ccbfe16
+    lines:
+      NSL-32: [2, 16]
+    fetched: '2026-09-20'
+    note: Seccion 4 del encargo. Busqueda por nombre exacto 'NSL-32' en el buscador de ficheros del grupo
+      groups.io/g/LTspice. La ubicacion ya NO es z_yahoo/Lib (como indicaba el encargo) sino una subcarpeta
+      'OptocouplerModelTestJig' dentro de z_groups.io/Files-sorted-by-message-number/msg_ZZZZZZ/ (carpeta
+      temporal real del grupo, no un enlace roto). Autor Noguffay, subido 2022-05-11. Modelo .sub + simbolo
+      .asy del optoacoplador/vactrol NSL-32. Ver README.txt en la carpeta groupsio-ltspice para detalles
+      y ficheros relacionados no descargados (test jig corregido, PDF explicativo).
+    symbol:
+      url: https://groups.io/g/LTspice/files/z_groups.io/Files-sorted-by-message-number/msg_ZZZZZZ/OptocouplerModelTestJig/
+      sha256: a2cc9ebc5c4fd9015afd33b5fa8c05e295f380a486f82466a516001cca24554f
+  copies:
+  - source: groupsio-ltspice
+    name: NSL-32
+    get:
+      url: https://groups.io/g/LTspice/files/z_groups.io/Files-sorted-by-message-number/msg_ZZZZZZ/OptocouplerModelTestJig/
+      sha256: ad04b948c802b768806c86512c3be86d05b41bea7011c4ff02dac10e1ccbfe16
+- source: ltwiki
+  name: Nsl32Sr2
+  def: subckt
+  hash: 53987503e4fb60447d386ff3f27c6bbf87437bca
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - Ldr1
+  - Ldr2
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Led_Ldr.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 3282f51dcda8ec47106974df1d114030dbeec07fad904d0abb4b2734f4d88bff
+    lines:
+      Nsl32Sr2: [18, 37]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Opto/Optoacop/Led_Ldr/Nsl32Sr2.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: f5087cf02f1c7bff95435417209411700019723abda2ca312bc865612d910df9
+- source: bordodynov
+  name: nsl-32sr3
+  def: subckt
+  hash: 5eb0701b969036c1e9a23bbfd22ed26d898b6f9f
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - '1'
+  - '2'
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/NSL-32SR3.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 84edacb753f896ebfedab540cc5d44420567fdb1ed725d624b8ce509c16de0ba
+    lines:
+      nsl-32sr3: [1, 13]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/NSL-32SR3.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 00e2f07f4292513c419b2c5858cffec884dd1ae988a6f0329ef6b33f3c614f28
+  note: 'same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: Nsl32Sr2
+  def: subckt
+  hash: aff89ee7b93302dbb5c6d7871127cabd6830ff44
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - Ldr1
+  - Ldr2
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Led_Ldr.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: dac7fb7c7353483c93343abc0558911694fe11e3f8f116a17303334fcdc84c14
+    lines:
+      Nsl32Sr2: [19, 39]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/Nsl32Sr2.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 98792afc13dd98d89c9abf9bdbb10b006927de124b3a22e6bb359a1f5fe90a8c
+  note: 'same code also in: kicad-spice-library, ltwiki'

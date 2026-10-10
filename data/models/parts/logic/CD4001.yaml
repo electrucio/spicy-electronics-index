@@ -1,0 +1,402 @@
+part: CD4001
+kind: logic
+priority: 3
+models:
+- source: microcap12
+  name: CD4001B
+  def: subckt
+  hash: e52e468fc5cdb20955e608ba5838d726658d42b3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/cmos.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 355bb3dfa2be483f7c2d5b8d729acb8221874a18fbf49607f03a0bfc0d753917
+    lines:
+      CD4001B: [77, 88]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: CD4001B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cmos.lib
+      sha256: 4ee830d7932c2cdfcd5d21972f96c0387c3440d5d449c6554a0016f8b0f4f5b0
+- source: microcap12
+  name: CD4001UB
+  def: subckt
+  hash: 9d71f7f008e43bb9ca06c6fb4aadfb80657f25b3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/cmos.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 355bb3dfa2be483f7c2d5b8d729acb8221874a18fbf49607f03a0bfc0d753917
+    lines:
+      CD4001UB: [99, 110]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: CD4001UB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cmos.lib
+      sha256: 4ee830d7932c2cdfcd5d21972f96c0387c3440d5d449c6554a0016f8b0f4f5b0
+- source: groups-io
+  name: CD4001B
+  def: subckt
+  hash: 138989a71640b257f9cbbbe96584ef9cb454fcef
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40_IN_1
+  - CD40_OUT_1X
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Digital%20CD4000/CD4000.lib
+    sha256: 9adea30f46999c7b547f26aeeb736bce37738f6ccdbe903281ad4ba6e253831e
+    lines:
+      CD4001B: [52, 61]
+      CD40_IN_1: [918, 935]
+      CD40_OUT_1X: [969, 980]
+    fetched: '2026-10-09'
+  copies:
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
+      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/CD4000/CD4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
+- source: ltwiki
+  name: CD4001
+  def: subckt
+  hash: 85d0ec0db6f3763d87b333715124bb60dfbde8b9
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD4001_OUT_1X
+  - CD4001_IN_1
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/CD4001_NEU.LIB
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+    lines:
+      CD4001: [4, 14]
+      CD4001_IN_1: [18, 42]
+      CD4001_OUT_1X: [48, 61]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: CD4001
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: kicad-spice-library
+    name: CD4001
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: ltwiki
+    name: CD4001
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: ltwiki
+    name: CD4001
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/CD_NOR latch(RS-FF) problem with CD4001 solved/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: ltwiki
+    name: CD4001
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/CD_NOR latch(RS-FF) problem
+        with CD4001 solved/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+- source: ltwiki
+  name: CD4001_IN_1
+  def: subckt
+  hash: 6cc2bf0083999647710b127184c3bc3b431d1542
+  type: SUBCKT
+  pins:
+  - in
+  - out
+  - VDD
+  - VGND
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/CD4001_NEU.LIB
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+    lines:
+      CD4001_IN_1: [18, 42]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: CD4001_IN_1
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: kicad-spice-library
+    name: CD4001_IN_1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: ltwiki
+    name: CD4001_IN_1
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: ltwiki
+    name: CD4001_IN_1
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/CD_NOR latch(RS-FF) problem with CD4001 solved/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+  - source: ltwiki
+    name: CD4001_IN_1
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/CD_NOR latch(RS-FF) problem
+        with CD4001 solved/CD4001_NEU.LIB
+      sha256: 82b50532a657b483879aad8cb1b6a12e7da219722a0156da5f5cfdd9d26a8d2a
+- source: ltwiki
+  name: CD4001B
+  def: subckt
+  hash: bd8feda8b96bdcbb349986f2fa6abaa17c605ae5
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40DIO1
+  - CD40_IN_1
+  - DIO2
+  - CD40_OUT_1X
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/CD4000_Don.LIB
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+    lines:
+      CD4001B: [47, 56]
+      CD40DIO1: [785, 785]
+      CD40_IN_1: [799, 815]
+      CD40_OUT_1X: [848, 858]
+      DIO2: [845, 845]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: CD4001B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4000_Don.LIB
+      sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+  - source: kicad-spice-library
+    name: CD4001B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CD4000_Don.LIB
+      sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4000_Don.LIB
+      sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+- source: ltwiki
+  name: CD4001B
+  def: subckt
+  hash: dc1e1c09f07026b732b79f4660ea74e4b19d60fd
+  type: SUBCKT
+  deps:
+  - D_CD4001B
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/cd4000.lib
+    sha256: 01fee132096b681bc7bb8cb653efc6a8a0ea6929099c8aa90057eea83857cba8
+    lines:
+      CD4001B: [103, 109]
+      D_CD4001B: [111, 114]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: CD4001UB
+  def: subckt
+  hash: 346ed615608d389e46dc631c4774d8c800779902
+  type: SUBCKT
+  deps:
+  - D_CD4001UB
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/cd4000.lib
+    sha256: 01fee132096b681bc7bb8cb653efc6a8a0ea6929099c8aa90057eea83857cba8
+    lines:
+      CD4001UB: [122, 128]
+      D_CD4001UB: [130, 133]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: CD4001A
+  def: subckt
+  hash: 3a96f4ed53f45b89955cae8e183b7881b286930e
+  type: SUBCKT
+  deps:
+  - D_CD4001A
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/cd4000.lib
+    sha256: 01fee132096b681bc7bb8cb653efc6a8a0ea6929099c8aa90057eea83857cba8
+    lines:
+      CD4001A: [84, 90]
+      D_CD4001A: [92, 95]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: CD4001B
+  def: subckt
+  hash: 4235ebf600acd491488ea07215032f2a2f542b70
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40_IN_1
+  - CD40_OUT_1X
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/CD4000_v.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: a814b0ca1e4ced9b7963913afd06147754592c9002010ecc1beb635b45e222eb
+    lines:
+      CD4001B: [54, 63]
+      CD40_IN_1: [920, 937]
+      CD40_OUT_1X: [971, 982]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: CD4001B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CD4000_v.lib
+      sha256: 160e7f8bc97f0e71541e67941c2442ebef6888026163a64fe1ea4e92854bef25
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4000_v.lib
+      sha256: a814b0ca1e4ced9b7963913afd06147754592c9002010ecc1beb635b45e222eb
+- source: bordodynov
+  name: CD4001B
+  def: subckt
+  hash: 17b159be5aa96ae961ff8e80e6ef78a6c9a93ce2
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40DIO1
+  - CD40_IN_1
+  - CD40_OUT_1X
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/cd4000.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 794f3386c6ab888d2abf2f2c54ec97b6af582b14e138de0252059e9f07107f08
+    lines:
+      CD4001B: [51, 60]
+      CD40DIO1: [902, 902]
+      CD40_IN_1: [917, 930]
+      CD40_OUT_1X: [965, 976]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: CD4001B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/cd4000.lib
+      sha256: 794f3386c6ab888d2abf2f2c54ec97b6af582b14e138de0252059e9f07107f08
+- source: kicad-spice-library
+  name: CD4001B
+  def: subckt
+  hash: 715a34d877a1ff1e7b76dfb19ae32b62855c058f
+  type: SUBCKT
+  deps:
+  - CD40_IN_1
+  - CD40_OUT_1X
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/cd4000.lib
+    sha256: b30e91bc7f5937fcd4b64fa5f37eabd91619b78de506c64ec29100404f0e5060
+    lines:
+      CD4001B: [51, 60]
+      CD40_IN_1: [917, 934]
+      CD40_OUT_1X: [968, 979]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: CD4001B
+  def: subckt
+  hash: b872172374a2fa60f259728b0e9b494a5663c232
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIGITAL.LIB
+    sha256: 480f028d2ccb230322f645d30135f1297937e1e9dad6433093f763534087750d
+    lines:
+      CD4001B: [694, 714]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: CD4001UB
+  def: subckt
+  hash: e47b530d4536b941793500ca8cf4be67e3cae506
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIGITAL.LIB
+    sha256: 480f028d2ccb230322f645d30135f1297937e1e9dad6433093f763534087750d
+    lines:
+      CD4001UB: [650, 663]
+    fetched: '2026-09-14'

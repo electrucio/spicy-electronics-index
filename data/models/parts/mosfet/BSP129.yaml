@@ -1,0 +1,54 @@
+part: BSP129
+kind: mosfet
+priority: 3
+group: depletion
+models:
+- source: infineon
+  name: BSP129_L0
+  def: subckt
+  hash: 422c055eafa8baee02bf45c42ba989818b849dac
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-power-optimos-n-channel-small-signal-mosfet-240v-400v-600v-800v-spice-simulationmodels-en.zip
+    member: n_channel_small_signal_240V_250V_400V_600V.lib
+    archive_sha256: 34fec523eb3dfe2ed17a48d406de6b6d2a588aec703ce848efff6e6ff4716335
+    sha256: 663431987b9f8669d8e6f3198b983c26808800bdb41ce55f64f1ea622eb6a4e6
+    lines:
+      BSP129_L0: [1959, 1992]
+    fetched: '2026-09-19'
+  copies:
+  - source: bordodynov
+    name: BSP129_L0
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/n_channel_small_signal_240V_250V_400V_600V_L0.lib
+      sha256: a9a794dbfa6710d7ceed62b338d5283457ea8948a617ccfa4f04fcdccf7ce53c
+  - source: kicad-spice-library
+    name: BSP129_L0
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/n_channel_small_signal_240V_250V_400V_600V_L0.lib
+      sha256: a9a794dbfa6710d7ceed62b338d5283457ea8948a617ccfa4f04fcdccf7ce53c
+  - source: ltwiki
+    name: BSP129_L0
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/n_channel_small_signal_240V_250V_400V_600V_L0.lib
+      sha256: a9a794dbfa6710d7ceed62b338d5283457ea8948a617ccfa4f04fcdccf7ce53c
+- source: infineon
+  name: BSP129
+  def: subckt
+  hash: 7f6d401ece3a464e5008e7f060f3e70a1fa54986
+  type: SUBCKT
+  deps:
+  - K_240_d_var
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-power-optimos-n-channel-small-signal-mosfet-240v-400v-600v-800v-spice-simulationmodels-en.zip
+    member: n_channel_small_signal_240V_250V_400V_600V.lib
+    archive_sha256: 34fec523eb3dfe2ed17a48d406de6b6d2a588aec703ce848efff6e6ff4716335
+    sha256: 663431987b9f8669d8e6f3198b983c26808800bdb41ce55f64f1ea622eb6a4e6
+    lines:
+      BSP129: [948, 976]
+      K_240_d_var: [313, 391]
+    fetched: '2026-09-19'

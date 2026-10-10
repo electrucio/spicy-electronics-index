@@ -1,0 +1,729 @@
+part: IRFP9240
+kind: mosfet
+priority: 1
+group: power_vertical
+models:
+- source: infineon
+  name: irfp9240
+  def: subckt
+  hash: c67b0711ea17c85fed56948efc05de45fb525c16
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://web.archive.org/web/19991008142548id_/http://www.irf.com:80/product-info/models/SPICE/irfp9240.spi
+    sha256: 1884c07a5ee9bc7e36d16ab07ae4af0fdd545f57b9ccfd19728587d2343bb16e
+    lines:
+      irfp9240: [1, 60]
+    fetched: '2026-09-14'
+    note: International Rectifier legacy HEXFET SPICE model; original URL http://www.irf.com:80/product-info/models/SPICE/irfp9240.spi
+      (Wayback capture 19991008142548)
+  note: pins from default order (unverified)
+- source: microcap12
+  name: irfp9240_IR
+  def: subckt
+  hash: b003a12d7381d566fade60b857e66572e98876a9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irfp9240_IR: [1441, 1500]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: irfp9240_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: ltspice-native
+  name: IRFP9240
+  def: model
+  type: VDMOS
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.mos
+    sha256: adfdcda82e1b6186f907df2dc3905659a2ea2be2a0887a016d1fd9f1b3b1b40e
+    lines:
+      IRFP9240: [647, 647]
+  note: 'same code also in: bordodynov, kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: IRFP9240
+  def: model
+  hash: 909f56f7296ae524f513bb189341b47c8f7ca048
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+    lines:
+      IRFP9240: [651, 651]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: bordodynov
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: bordodynov-qspice
+    name: IRFP9240
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRFP9240
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: IRFP9240
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: kicad-spice-library
+    name: IRFP9240
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.mos
+      sha256: 4ad1e16da6dfb08f9b1d55a27c28ca4a034db3f309073ce070136378fb658ad0
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: cordell
+  name: irfp9240C
+  def: model
+  hash: efa37214b39754909694a52b645e6e890869f61f
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Install-Test.zip
+    member: Install Test/Cordell Models.txt
+    archive_sha256: 332b487564a6c8eca0f8a1db26ec86109b450af5e75278e32556ad000f9bcd77
+    sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+    lines:
+      irfp9240C: [261, 261]
+    fetched: '2026-09-14'
+    note: Cordell Models 12/07/2010 (older version bundled in zip; RB=10 in small-signal BJTs)
+  copies:
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: bordodynov-qspice
+    name: irfp9240C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Gummel Plot/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Step/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Transfer/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/gm vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: irfp9240C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: diyaudio
+    name: irfp9240C
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+  - source: groups-io
+    name: irfp9240C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+      member: standard.mos
+      sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+  - source: groupsio-ltspice
+    name: irfp9240C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.mos
+      sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+  - source: kicad-spice-library
+    name: irfp9240C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: kicad-spice-library
+    name: irfp9240C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: irfp9240C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/MOS.lib
+      sha256: 5a12451d9b52820cc74b1f3c11955dcfbc99cc0ede851dd12587ebbbc9e9531e
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+- source: spiceypedals
+  name: IRFP9240
+  def: model
+  hash: 459a4ce0f49389ba51b2effd89bedbb28b461356
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PartModels/basic_models/MOS%20power/IRFP9240_PVDMOS.mod
+    sha256: 4b8a6d34ba3964e5a5bb048743e8bbec6da85f786c727c1b257875e8bf0d0aae
+    lines:
+      IRFP9240: [2, 11]
+    fetched: '2026-09-14'
+- source: groups-io
+  name: IRFP9240
+  def: model
+  hash: 403467fb7ca4f6d2086938a83c4bb12583b9c347
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+    member: standard.mos
+    archive_sha256: a20e6e422ae85770aab697f646969e1027bebd814386b6d94cfe77568a493c47
+    sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+    lines:
+      IRFP9240: [620, 620]
+    fetched: '2026-10-10'
+  copies:
+  - source: groupsio-ltspice
+    name: IRFP9240
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.mos
+      sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+  - source: kicad-spice-library
+    name: IRFP9240
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/MOS.lib
+      sha256: 5a12451d9b52820cc74b1f3c11955dcfbc99cc0ede851dd12587ebbbc9e9531e
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: IRFP9240
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+- source: groupsio-ltspice
+  name: irfp9240Ckst
+  def: model
+  hash: a45cd16071ac8eca14781543080d2bd9693c80df
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      irfp9240Ckst: [913, 913]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: irfp9240Ckst
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: irfp9240Ckst
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: irfp9240Ckst
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: irfp9240Ckst
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: irfp9240Ckst
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: irfp9240Ckst
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: irfp9240Ckst
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: irfp9240
+  def: subckt
+  hash: 6208db51fe114c9b379f1e32eb24dca6fbda0b6e
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp9240.spi
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 79c219430dadbc3b0b8ec42b32969a2b04c161fdfb125299013db0ac7c065fe2
+    lines:
+      irfp9240: [1, 60]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irfp9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp9240.spi
+      sha256: 79c219430dadbc3b0b8ec42b32969a2b04c161fdfb125299013db0ac7c065fe2
+  - source: bordodynov
+    name: irfp9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp9240.spi
+      sha256: 79c219430dadbc3b0b8ec42b32969a2b04c161fdfb125299013db0ac7c065fe2
+  - source: kicad-spice-library
+    name: irfp9240
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irfp9240.spi
+      sha256: 924756350a9adc202561f3bda35fddb41450af07e37b6127016f6a6196ae0550
+  - source: ltwiki
+    name: irfp9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp9240.spi
+      sha256: 79c219430dadbc3b0b8ec42b32969a2b04c161fdfb125299013db0ac7c065fe2
+  - source: ltwiki
+    name: irfp9240
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp9240.spi
+      sha256: 79c219430dadbc3b0b8ec42b32969a2b04c161fdfb125299013db0ac7c065fe2
+- source: ltwiki
+  name: IRFP9240
+  def: model
+  hash: d1c62eaef150c6cb56e0e9877471a2a4dc4285e1
+  type: PMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFP9240: [3947, 3950]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: IRFP9240h
+  def: model
+  hash: fd7a6caefc3fa046b7fdd165bbf4c1fd4f36cf5f
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRFP9240h: [1501, 1501]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRFP9240h
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRFP9240h
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRFP9240h
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP9240h
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9240h
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: IRFP9240_
+  def: model
+  hash: 2e3ec710155c476c0d9fc538da180b64c7af3774
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRFP9240_: [1542, 1542]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: IRFP9240_
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRFP9240_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRFP9240_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP9240_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9240_
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: irfp9240C
+  def: model
+  hash: 37f476e326e675924438653c91846cbe4f9b470d
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      irfp9240C: [826, 826]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: irfp9240C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: irfp9240C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: IRFP9240_
+  def: model
+  hash: df0a4dcfda2d29a6bd5f577f89159557456b17dd
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+    sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+    lines:
+      IRFP9240_: [1512, 1512]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: IRFP9240
+  def: subckt
+  hash: d7745ac3913133b0bd99c995737249a46261d1e7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS.LIB
+    sha256: 3a158ee63ad9816d8dcdc0cad0827d2f4646c66b6296d7bbcd2c28d49bf1d219
+    lines:
+      IRFP9240: [112, 135]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: IRFP9240M
+  def: subckt
+  hash: 0eab8a3f0f570192f4e185d4ae290e17c644f85a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRFP9240M: [7147, 7192]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.vishay.com/docs/91239/irfp9240.pdf
+  maker: Vishay Siliconix
+  doc: Document Number 91239, S22-0096-Rev. C
+  date: '2022-01-31'

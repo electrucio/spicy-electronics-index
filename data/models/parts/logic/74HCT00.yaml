@@ -1,0 +1,171 @@
+part: 74HCT00
+kind: logic
+priority: 3
+models:
+- source: microcap12
+  name: 74HCT00
+  def: subckt
+  hash: 7a413b50719bb6c4314c9fc245ab6c30f8fac8b0
+  type: SUBCKT
+  pins:
+  - 1A
+  - 1B
+  - 1Y
+  - 'optional:'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/dig000.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: e16fc85bebf1d2fc6da7b1994359ed7612a26b6f553d24748826327924413fa2
+    lines:
+      74HCT00: [204, 214]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 74HCT00
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
+      sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
+- source: microcap12
+  name: 74HCT00A
+  def: subckt
+  hash: ddee8d14dff830b0e715ad1706252af6435e0ec1
+  type: SUBCKT
+  pins:
+  - A1
+  - B1
+  - Y1
+  - 'OPTIONAL:'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/dig000.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: e16fc85bebf1d2fc6da7b1994359ed7612a26b6f553d24748826327924413fa2
+    lines:
+      74HCT00A: [222, 232]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 74HCT00A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
+      sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
+- source: groups-io
+  name: 74HCT00
+  def: subckt
+  hash: b21f12d8cb318a610cafd04a5625628fad372fce
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VCC
+  - VGND
+  deps:
+  - 74HCT_IN_1
+  - 74HCT_OUT_1X
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Digital%2074HCTxxx/74HCT.lib
+    sha256: 8099ed11f79413969a234f7155695f06b6a3fea73466af6305e94a72d40e1242
+    lines:
+      74HCT00: [32, 41]
+      74HCT_IN_1: [2193, 2206]
+      74HCT_OUT_1X: [2239, 2249]
+    fetched: '2026-10-09'
+  copies:
+  - source: bordodynov
+    name: 74HCT00
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/74hct.lib
+      sha256: 8099ed11f79413969a234f7155695f06b6a3fea73466af6305e94a72d40e1242
+  - source: kicad-spice-library
+    name: 74HCT00
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/74hct.lib
+      sha256: 8099ed11f79413969a234f7155695f06b6a3fea73466af6305e94a72d40e1242
+  - source: ltwiki
+    name: 74HCT00
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/74hct.lib
+      sha256: 8099ed11f79413969a234f7155695f06b6a3fea73466af6305e94a72d40e1242
+  - source: ltwiki
+    name: 74HCT00
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/74hct.lib
+      sha256: 0a65be82a2e80abf9f09b62fb9371b56b3caeddbed5393a290b2632c3252db50
+  - source: ltwiki
+    name: 74HCT00
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/74HCT/74hct.lib
+      sha256: a0a1447b30cf1d9db7f032a74dd783dd089ad0d84fd91f565a1d22b267839856
+- source: ltwiki
+  name: 74HCT00
+  def: subckt
+  hash: 78961334e4cc70212a55aa32d8e89106739109b2
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  - Y
+  - VCC
+  - VGND
+  deps:
+  - DIO1
+  - 74HCT_IN_1
+  - DIO2
+  - 74HCT_OUT_1X
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/74Hct_Don.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b3e62e9da9019ec16f44c316c15dd66e76bfe3cb0495280d0f77bb0fe215aefa
+    lines:
+      74HCT00: [29, 38]
+      74HCT_IN_1: [2080, 2093]
+      74HCT_OUT_1X: [2126, 2136]
+      DIO1: [2066, 2066]
+      DIO2: [2123, 2123]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 74HCT00
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/74Hct_Don.lib
+      sha256: b3e62e9da9019ec16f44c316c15dd66e76bfe3cb0495280d0f77bb0fe215aefa
+  - source: kicad-spice-library
+    name: 74HCT00
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/74Hct_Don.lib
+      sha256: b3e62e9da9019ec16f44c316c15dd66e76bfe3cb0495280d0f77bb0fe215aefa
+  - source: ltwiki
+    name: 74HCT00
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/74Hct_Don.lib
+      sha256: b3e62e9da9019ec16f44c316c15dd66e76bfe3cb0495280d0f77bb0fe215aefa
+- source: kicad-spice-library
+  name: 74hct00
+  def: subckt
+  hash: e627c79114ce33c11a034bb0e589c6feb2df1277
+  type: SUBCKT
+  pins:
+  - in1
+  - in2
+  - out
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Digital%20Logic/74HCT.LIB
+    sha256: 6bc46f07e862956ee5b7f311be7cab4445c9671fca47ac33b5bba090098c53a1
+    lines:
+      74hct00: [17, 25]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

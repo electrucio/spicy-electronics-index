@@ -1,0 +1,41 @@
+part: BUZ901
+kind: mosfet
+priority: 3
+group: power_lateral
+models:
+- source: diyaudio
+  name: BUZ901D
+  def: model
+  hash: 97adb04420f0799806d4676232b4e4c935ec2191
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/audio-lateral-mosfets-for-class-ab-overview-p-spice-urls.170950/post-7059936
+    sha256: e27a3c17bbe5505de8179826b3f9679e12c37d6c15acb702fb18a387f25d03d4
+    lines:
+      BUZ901D: [4, 4]
+    fetched: '2026-10-09'
+- source: diyaudio
+  name: BUZ901D
+  def: subckt
+  hash: 6375e156c3b8dc05345885dd2c8a639c9e340bcd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/buz90x-spice-models.81928/post-945979
+    sha256: 9c03faac6d5afe59b3e3f37dd74afe2f88f24c4e8e501b43da022bfe1159152d
+    lines:
+      BUZ901D: [2, 35]
+    fetched: '2026-10-09'
+- source: diyaudio
+  name: BUZ901P
+  def: subckt
+  hash: 9ef10ee5a5b04088d91e6861a3958cce9381df0f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/buz90x-spice-models.81928/post-945979
+    sha256: 9c03faac6d5afe59b3e3f37dd74afe2f88f24c4e8e501b43da022bfe1159152d
+    lines:
+      BUZ901P: [37, 71]
+    fetched: '2026-10-09'

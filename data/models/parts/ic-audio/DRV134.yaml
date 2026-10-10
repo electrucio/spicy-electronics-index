@@ -1,0 +1,61 @@
+part: DRV134
+kind: ic-audio
+priority: 2
+models:
+- source: microcap12
+  name: DRV134
+  def: subckt
+  hash: 383e638d5084ed9c64f1cd4cc0e9948ee4a13480
+  type: SUBCKT
+  deps:
+  - OP1_134
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      DRV134: [19159, 19201]
+      OP1_134: [19211, 19247]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: DRV134
+  def: subckt
+  hash: 2260357320be7323017f7b3506b3a560be84488b
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/DRV134.SUB
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 515e34e8fadee71923668d94a578155c65747d5fbcf869d6bb1fd5991f836381
+    lines:
+      DRV134: [48, 136]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/DRV134.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: cb40e18478cdacf1cd1c2517eb649ba0ce58e6ac5c5bac639dad11027337bfec
+  copies:
+  - source: kicad-spice-library
+    name: DRV134
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/DRV134.SUB
+      sha256: 515e34e8fadee71923668d94a578155c65747d5fbcf869d6bb1fd5991f836381
+  - source: ltwiki
+    name: DRV134
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/DRV134.SUB
+      sha256: 515e34e8fadee71923668d94a578155c65747d5fbcf869d6bb1fd5991f836381

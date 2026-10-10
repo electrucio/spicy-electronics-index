@@ -1,0 +1,74 @@
+part: SB160
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: sb160
+  def: subckt
+  hash: 9941552d90003848071cf7632c6f5ff5991eb951
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88110/sb160.txt
+    sha256: 88e63bad12e2d2297c1778001c84124c85d44e67ed0f6262e980f13e294ea8c7
+    lines:
+      sb160: [11, 20]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: sb160
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+  - source: kicad-spice-library
+    name: sb160
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+  - source: kicad-spice-library
+    name: sb160_GN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+  - source: microcap12
+    name: sb160_GN
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/gensemi.lib
+      sha256: a91e073b84759dcbe41d4ae51687287a413fc12865804565e488f747b57b3d6c
+- source: groups-io
+  name: SB160
+  def: model
+  hash: f1de7b0a58930028968a59d8d497225ca9ff0e31
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      SB160: [1681, 1681]
+    fetched: '2026-10-10'
+- source: kicad-spice-library
+  name: sb160_GN
+  def: subckt
+  hash: 9941552d90003848071cf7632c6f5ff5991eb951
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+    sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+    lines:
+      sb160_GN: [729, 738]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

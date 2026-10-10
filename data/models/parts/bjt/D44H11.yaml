@@ -1,0 +1,323 @@
+part: D44H11
+kind: bjt
+priority: 3
+group: audio_docs
+models:
+- source: onsemi
+  name: Qd44h11
+  def: model
+  hash: fe681275342003938e08178bdadcb4759d30ab3e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/d44h11.lib
+    sha256: 2b81959f6e18be2ed4c9ba2b0150a5ecdac6a85e06b98cb9cd859a382eae9ede
+    lines:
+      Qd44h11: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: D44H11
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: microcap12
+    name: Qd44h11
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: D44H11
+  def: model
+  hash: c146ded1d6a0f38c873758959d3994bbceacd4f0
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      D44H11: [1474, 1480]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: D44H11_D
+  def: model
+  hash: 769a98011a1f9eed260cec9309b3e2c43e5180c3
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      D44H11_D: [42, 49]
+    fetched: '2026-09-29'
+  copies:
+  - source: groupsio-ltspice
+    name: D44H11_HD
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: D44H11_HD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: D44H11_HD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: D44H11_HD
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: D44H11_HD
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: D44H11_HD
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: groupsio-ltspice
+    name: D44H11_D
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: D44H11_D
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: D44H11_D
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: groupsio-ltspice
+  name: D44H11
+  def: model
+  hash: 6576aa6afa4dc9e5413af1ad2df8a0689c08a3e2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      D44H11: [480, 480]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: D44H11
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: D44H11
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: D44H11
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: D44H11
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: D44H11
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: D44H11
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: D44H11
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: D44H11
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: D44H11
+  def: model
+  hash: de1b1a04d15f56081d58c19e5c8cf10b45bd938a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      D44H11: [7640, 7640]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: D44H11
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: groupsio-ltspice
+    name: D44H11
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: ltwiki
+  name: D44H11
+  def: model
+  hash: 8a44ebc84cf105499142b606c4f5e40355cdf039
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+    sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+    lines:
+      D44H11: [3415, 3418]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: D44H11_HD
+  def: model
+  hash: 7ff539496b3d1d8fb01ba67684bee73382f9d4b8
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      D44H11_HD: [998, 998]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: D44H11_HD
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: D44H11_HD
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: D44H11_D
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: D44H11_D
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: D44H11_D
+  def: model
+  hash: 7ff539496b3d1d8fb01ba67684bee73382f9d4b8
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      D44H11_D: [1159, 1159]
+    fetched: '2026-09-14'
+  note: 'same code also in: ltwiki'
+- source: bordodynov-qspice
+  name: D44H11_HD
+  def: model
+  hash: 3e11d1e79666a89b5ba277f868c1524899d2ac6b
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      D44H11_HD: [581, 581]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov-qspice
+    name: D44H11_D
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+- source: bordodynov-qspice
+  name: D44H11
+  def: model
+  hash: 56c5f0a1c43fb362cb622543ad1ce533b3c8365e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      D44H11: [320, 320]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: D44H11_D
+  def: model
+  hash: 769a98011a1f9eed260cec9309b3e2c43e5180c3
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/Mixer/standard.bjt
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+    lines:
+      D44H11_D: [1102, 1102]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library'

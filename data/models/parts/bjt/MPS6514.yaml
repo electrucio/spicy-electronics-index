@@ -1,0 +1,40 @@
+part: MPS6514
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: MPS6514
+  def: model
+  hash: 29c3ca3973f74f312b5a4378abc7be2bac9e622d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS6514.t
+    sha256: f7ba1ee8e8e252599d6d717380c408cdc68ac6e0578ccb4934732f1b9c39706f
+    lines:
+      MPS6514: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPS6514
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: kicad-spice-library
+    name: MPS6514
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: ltwiki
+    name: MPS6514
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: microcap12
+    name: MPS6514
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918

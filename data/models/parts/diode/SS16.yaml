@@ -1,0 +1,140 @@
+part: SS16
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: Dss16
+  def: model
+  hash: da09a006b1b48d9f406cd5ba0f78dbc9d6ac238e
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/ss16.lib
+    sha256: ff38b3f2e16c89381bfd702b4f6f71ccb92af423d60ec119a5df2de404518e96
+    lines:
+      Dss16: [14, 18]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Dss16
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: vishay
+  name: SS16
+  def: model
+  hash: eb15f10edef3213a8f4c4957ebe826487fd6e717
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/98988/p_ss16.txt
+    sha256: 149ac22732dde069acb3c36d49e739df4ca47cf8fbf9914737f6cef6005762c3
+    lines:
+      SS16: [7, 13]
+    fetched: '2026-09-19'
+- source: vishay
+  name: ss16
+  def: subckt
+  hash: 95c2e7347ec6b23561ff9e78a830030428d50dfd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88206/ss16.txt
+    sha256: 25e00feafbff0bde8c4b8f0b1486fa22caa022a771f602701948f5d19fd32022
+    lines:
+      ss16: [7, 16]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: SS16
+  def: model
+  hash: fe2c7cca35c6cdc471b4e1964ab57d0f6f9730bc
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/gensemi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a91e073b84759dcbe41d4ae51687287a413fc12865804565e488f747b57b3d6c
+    lines:
+      SS16: [1021, 1032]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: SS16
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+  - source: kicad-spice-library
+    name: SS16
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+- source: groups-io
+  name: SS16
+  def: model
+  hash: 1702f3132ee61a82bd2c837c768490ab25239275
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      SS16: [8605, 8605]
+    fetched: '2026-10-10'
+  copies:
+  - source: bordodynov
+    name: SS16
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: SS16
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: groupsio-ltspice
+    name: SS16
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.dio
+      sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+  - source: kicad-spice-library
+    name: SS16
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: SS16
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: ltwiki
+    name: SS16
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: SS16
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: SS16
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+  - source: ltwiki
+    name: SS16
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21

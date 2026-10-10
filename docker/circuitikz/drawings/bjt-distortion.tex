@@ -1,0 +1,53 @@
+% Distortion (bjt-distortion): the set-up a person would wire, semantically the deck's.
+%   VIN in 0 SIN(…), RS in b 1000   a 1 kHz sine through 1 kΩ into the base          -> source v_in (set) + resistor R_S
+%   RL vcc c 5000, VCC vcc 0 10     5 kΩ load to the 10 V supply                      -> resistor R_L + source V_CC (set)
+%   RE e x 260, CX x 0 1            260 Ω of degeneration to a node held at AC ground -> resistor R_E + capacitor C_X
+%   IE x vee 0.001, VEE vee 0 -5    1 mA bias from a current source to -5 V           -> current source I_E (set) + source V_EE (set)
+%   Q1 c b e                        the transistor                                    -> npn
+%   V(c) read                       the output                                        -> voltmeter v_out (measured)
+%   The gain-finding probe run is not drawn.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.8}{Distortion}
+\def\gnd{2.0}
+% the transistor
+\node[npn] (Q) at (4,4.2) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% the collector: the load up to the rail, the output voltmeter beside it
+\draw (Q.C) -- ++(0,0.4) coordinate (cj) to[R, l_=$R_L$] ++(0,1.6) coordinate (rtop);
+\coordinate (vo) at ($(cj)+(2.0,0)$);
+\draw (cj) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$v_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(Q.C)+(-0.15,0.2)$}{c}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(rtop)+(3.4,0)$);
+\draw (rtop) -- (vtop);
+\draw[set] (vtop) to[V, l=$V_{CC}$] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(rtop)+(1.0,0.05)$}{vcc}
+% the base: the source resistance and the signal source
+\coordinate (b) at (Q.B);
+\draw (b) -- ++(-0.3,0) coordinate (bj) to[R, l_=$R_S$] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_=$v_{in}$] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(b)+(-0.15,0.05)$}{b}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the emitter: degeneration to node x, held at AC ground by CX, biased by IE from the negative rail
+\draw (Q.E) to[R, l=$R_E$] ++(0,-1.5) coordinate (x);
+\draw (x) -- ++(-1.3,0) coordinate (cx) to[C, l_=$C_X$] (cx |- 0,-0.9) node[ground]{};
+\draw[set] (x) to[I, l=$I_E$] ++(0,-1.5) coordinate (vee);
+\draw[set] (vee) to[V, l=$V_{EE}$] ++(0,-1.5) coordinate (bot) node[ground, black]{};
+\nodename{anchor=east}{$(Q.E)+(-0.1,-0.2)$}{e}
+\nodename{anchor=south west}{$(x)+(0.1,0.05)$}{x}
+\nodename{anchor=south west}{$(vee)+(0.1,0.05)$}{vee}
+\nodename{anchor=west}{$(bot)+(0.3,0.1)$}{0}
+% the definitions
+\definitions{0,-1.8}{%
+  $v_{in}$ = 1 kHz sine, its level set for 1 V peak at the collector\\[2pt]
+  $R_S = 1$ k\ohm;\quad $R_L = 5$ k\ohm;\quad $V_{CC} = 10$ V;\quad $I_E = 1$ mA;\quad $V_{EE} = -5$ V\\[2pt]
+  $R_E = 260$ \ohm, so $g_m R_E = 10$;\quad $C_X = 1$ F holds node x at AC ground\\[2pt]
+  read $v_{out}$ over the last four of ten cycles: THD, HD2, HD3 by Goertzel%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

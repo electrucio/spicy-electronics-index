@@ -1,0 +1,178 @@
+part: BCW69
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: BCW69
+  def: model
+  hash: 3471838f5da6f432aa6df06efaed47451431af37
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/bcw69.lib
+    sha256: aff6820e3810ec53640e37a98f932ba87134cbcac6203287b11115a7af4fd0a4
+    lines:
+      BCW69: [3, 5]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BCW69
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: BCW69
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: kicad-spice-library
+    name: BCW69
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+      sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+  - source: ltwiki
+    name: BCW69/ZTX
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/Zetex.lib
+      sha256: 801edb075d3bd3995ad94e8dbf3c9a290a89481b1e897b74b75fcb6a6fab8ec0
+  - source: spice-model-cd
+    name: BCW69-Z
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+- source: microcap12
+  name: BCW69_ZX
+  def: subckt
+  hash: e5f677fd1103ff192ffbd5f09ab54ab7db5a22fe
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BCW69_ZX: [2536, 2543]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BCW69_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+- source: microcap12
+  name: BCW69L
+  def: model
+  hash: ca2792f121ed423b5df892d1638832b96b9ef933
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BCW69L: [2383, 2386]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QBCW69
+  def: model
+  hash: 40a5f8d3bc1649fdfecb33bbfa65f12cc8b9f67e
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QBCW69: [279, 282]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: BCW69
+  def: model
+  hash: 0bd5130666f1c395e5b19fc7e979a32a0883379f
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BCW69: [308, 308]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BCW69
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: BCW69
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BCW69
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BCW69
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCW69
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BCW69
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCW69
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: BCW69
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: BCW69
+  def: model
+  hash: 1dfb13402766ce9a61a804aab49ed363e193fb13
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BCW69: [2090, 2090]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: BCW69
+  def: model
+  hash: 3b3849c1e1ac0fb559aee90160df4e97dc1b6a4b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      BCW69: [148, 148]
+    fetched: '2026-09-29'

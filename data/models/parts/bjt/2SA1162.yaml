@@ -1,0 +1,51 @@
+part: 2SA1162
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: toshiba
+  name: 2SA1162
+  def: subckt
+  hash: 4ef9af697fc82ecec08f3241b2b8a6daa7ba9aed
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://toshiba.semicon-storage.com/info/docgetzip.jsp?did=100&displang=en
+    member: Toshiba-lib-PSpice_20260827/Bipolar Transistors/2SA1162_PSpice_20161208/2SA1162.lib
+    archive_sha256: f167eaf431c0d3c8d292ae0cb4abd1ed4d53ef4f97eb000f7468d1696bd6c51c
+    sha256: baee00d6a5eba4b45e55b282cfd8624c41bf2086067ba69a8d719444cc5feae5
+    lines:
+      2SA1162: [12, 50]
+    fetched: '2026-09-20'
+- source: groupsio-ltspice
+  name: 2SA1162
+  def: model
+  hash: 4743e75b976ec287b3f3141419455f47f1d4efd6
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2SA1162: [760, 760]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2sa1162
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jbipolar.lib
+      sha256: 0918e78e635212ebc891072f11282cbf2e370a4163cd9a0794cfc1a50dddf89a
+- source: kicad-spice-library
+  name: Q2SA1162
+  def: model
+  hash: 2ecb18638f60633ba71fd3e26debc9ce5a395c21
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_PNP/TOSHIBA.LIB
+    sha256: 4a5d1e7670eff99dfd5290383e42316cebae59769ce130e15a7f5d9a9a4cbd90
+    lines:
+      Q2SA1162: [641, 657]
+    fetched: '2026-09-14'

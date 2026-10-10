@@ -1,0 +1,36 @@
+part: SE_OUTPUT_XFRMR
+kind: transformer
+group: non-native
+models:
+- source: ltwiki
+  name: SE_OUTPUT_XFRMR
+  def: subckt
+  hash: 468d658659dbac41bffee74e9e6edb35bf1f23a8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/se_xfrmr.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 35fe38d36ff6a79b0fbfb47cc933de826245fc05f613db1f9f7559dfa2118d3e
+    lines:
+      SE_OUTPUT_XFRMR: [1, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: SE_OUTPUT_XFRMR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/se_xfrmr.sub
+      sha256: 35fe38d36ff6a79b0fbfb47cc933de826245fc05f613db1f9f7559dfa2118d3e
+  - source: kicad-spice-library
+    name: SE_OUTPUT_XFRMR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/se_xfrmr.sub
+      sha256: 35fe38d36ff6a79b0fbfb47cc933de826245fc05f613db1f9f7559dfa2118d3e
+  - source: ltwiki
+    name: SE_OUTPUT_XFRMR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/se_xfrmr.sub
+      sha256: 35fe38d36ff6a79b0fbfb47cc933de826245fc05f613db1f9f7559dfa2118d3e

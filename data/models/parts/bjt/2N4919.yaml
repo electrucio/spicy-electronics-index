@@ -1,0 +1,75 @@
+part: 2N4919
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n4919
+  def: model
+  hash: 1b6dd2d2218b189fe303bbe49ef360f11d190e51
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n4919.lib
+    sha256: 323e84ba368d0f423290e31aaabb7099404f3e0b22b04ea0a74172d49e009cb5
+    lines:
+      Q2n4919: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Q2n4919
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: 2N4919
+  def: model
+  hash: f61f2a62f10662ea4bb8000c81c6cda33da4f4f6
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N4919: [2459, 2465]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: Q2N4919
+  def: model
+  hash: 307c021366bd4d526cbb11d5218e6f38bd933c30
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      Q2N4919: [6626, 6626]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N4919
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: groupsio-ltspice
+  name: 2N4919
+  def: model
+  hash: f6908740d3c7b0ccec0a303ad296162799e34481
+  type: PNP
+  deps:
+  - NSC_5F
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N4919: [369, 369]
+      NSC_5F: [6261, 6261]
+    fetched: '2026-09-21'

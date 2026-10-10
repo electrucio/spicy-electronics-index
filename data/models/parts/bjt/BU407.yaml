@@ -1,0 +1,59 @@
+part: BU407
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qbu407
+  def: model
+  hash: 743c834b2980c3f1b8d9d53ac31bfb57373c961a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bu407.lib
+    sha256: 93e7f02b1c905d2eead70b760b7fb6133b50a40323d3c344781b279a4dbc33c0
+    lines:
+      Qbu407: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qbu407
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: BU407
+  def: model
+  hash: ef581b15e5a72ed81f04fb5200d7812c3bcc9239
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      BU407: [1189, 1195]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: BU407D
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/mpbjt.lib
+      sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+- source: groupsio-ltspice
+  name: BU407
+  def: model
+  hash: e704a070a145224ed9c0d14860c39cd0f58a9796
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BU407: [2798, 2798]
+    fetched: '2026-09-21'

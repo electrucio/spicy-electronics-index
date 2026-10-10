@@ -1,0 +1,251 @@
+part: NDS351AN
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: onsemi
+  name: NDS351AN
+  def: subckt
+  hash: d501669ff6e0825f11244b2ad87f014f2a0356a8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/nds351an.mod
+    sha256: 86b95a653c8ccf635f12077ee621fbb52dc0048eac7586cb3f1d4142e77c4248
+    lines:
+      NDS351AN: [3, 48]
+    fetched: '2026-09-19'
+- source: spice-model-cd
+  name: NDS351AN
+  def: subckt
+  hash: ff4f93b79571bb8f7de553ee7b5d81d7bd542179
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/ND/NDS351AN.lib
+    sha256: 3a06e7d46b96ef2822bf62c2c17aac32bc62847dacb0e76d2779bb697255343d
+    lines:
+      NDS351AN: [3, 27]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: NDS351AN_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: NDS351AN_FC
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: NDS351AN
+  def: subckt
+  hash: 84f1db87eb924215a62c3c2ee8954658f1571fa5
+  type: SUBCKT
+  deps:
+  - nmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      NDS351AN: [178073, 178118]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: NDS351AN
+  def: subckt
+  hash: 3f1eeb6ccac8427b29dca34b33dfab45af5ddc8f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      NDS351AN: [1330, 1337]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: NDS351AN_
+  def: model
+  hash: ee36345eb40ba7c4c4817f878f16ec65561124ce
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+    member: standard.mos
+    archive_sha256: a20e6e422ae85770aab697f646969e1027bebd814386b6d94cfe77568a493c47
+    sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+    lines:
+      NDS351AN_: [676, 676]
+    fetched: '2026-10-10'
+  copies:
+  - source: groupsio-ltspice
+    name: NDS351AN_
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.mos
+      sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+  - source: kicad-spice-library
+    name: NDS351AN_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: NDS351AN_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/MOS.lib
+      sha256: 5a12451d9b52820cc74b1f3c11955dcfbc99cc0ede851dd12587ebbbc9e9531e
+  - source: ltwiki
+    name: NDS351AN_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: NDS351AN_
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: NDS351AN_
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+- source: groupsio-ltspice
+  name: NDS351AN
+  def: model
+  hash: 96653b9c7be78db3bbc350286f38c3f74c34417d
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      NDS351AN: [1214, 1214]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: NDS351AN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: NDS351AN
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: NDS351AN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: NDS351AN
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: NDS351AN
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: NDS351AN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: NDS351AN
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: NDS351AN_
+  def: model
+  hash: 872372d6a329300d9cd8fbc4f1722bd5d6e61737
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      NDS351AN_: [816, 816]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: NDS351AN_
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: ltwiki
+    name: NDS351AN_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: NDS351AN_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: NDS351AN_
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: NDS351AN
+  def: subckt
+  hash: fbbef27e4c6012c34e6a01ee4fbe2e58b7a63ea3
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      NDS351AN: [14791, 14837]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/NDS351AN.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 0662e1bf27445b5ba6d418731d99396952f509c14a267d30d1ac2f759c27a5d0
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: NDS351AN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: NDS351AN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

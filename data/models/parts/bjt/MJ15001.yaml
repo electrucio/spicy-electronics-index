@@ -1,0 +1,122 @@
+part: MJ15001
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: Qmj15001
+  def: model
+  hash: 373717b5bb45575d35d39950f1b174c3f5caff7d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mj15001.lib
+    sha256: 211b81e8cee3db7cf5727a028b934b3d714a789d4c5494da8250a16af3c4bb6c
+    lines:
+      Qmj15001: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qmj15001
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: Qmj15001
+  def: model
+  hash: 6a1c15efafd90a7791850afb380cd68d14351c56
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/PowerBJT/MJ15001.LIB
+    sha256: 01719bdb6b1cafc6c7a04627b6691fe46743fba814dd29989c9202d9e80f0f9d
+    lines:
+      Qmj15001: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MJ15001M
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: MJ15001M
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: groupsio-ltspice
+    name: MJ15001M
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: MJ15001M
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MJ15001M
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJ15001M
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: microcap12
+  name: MJ15001
+  def: model
+  hash: f8a64a6c830ed533f2c2ce3c1055216783917741
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJ15001: [1779, 1786]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: MJ15001
+  def: model
+  hash: f6066a4dffb541020cb8d77eb9d7d5df759464af
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJ15001: [3256, 3256]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MJ15001
+  def: subckt
+  hash: 1b93fe32f951612eecf8272497077bd24c0a1d67
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      MJ15001: [73, 82]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mj15001-d.pdf
+  maker: onsemi
+  doc: MJ15001/D Rev. 6 (September 2013) (covers MJ15001 NPN, MJ15002 PNP)

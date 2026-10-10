@@ -1,0 +1,317 @@
+part: NE555
+kind: control
+priority: 2
+models:
+- source: ltspice-native
+  name: NE555
+  def: subckt
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: sub/NE555.sub
+    sha256: ec1f7b7ad7fed806a334512159956b77cdff15b698158d3cf23dc62ff506f74e
+    lines:
+      NE555: [3, 26]
+  note: 'same code also in: bordodynov, kicad-spice-library, ltwiki'
+- source: ltwiki
+  name: NE555
+  def: subckt
+  hash: 350148c0700886cf5ff4f892c0d26f05c81c7cf0
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/New2/TL555.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: a1cd2142091273d4325964316ca6a0f4220f67397a8fd83068be25cab435162c
+    lines:
+      NE555: [80, 101]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Robertugo/Modelos/555/Pwm_Vco/Jerarq/ne555.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: f54cea5b5f62ca5ec313342d1f94291506bba48a67b6a92fcbe51465b34e2242
+  copies:
+  - source: ltwiki
+    name: NE555
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Basso/BassoBook20100103/New2/TL555.sub
+      sha256: a1cd2142091273d4325964316ca6a0f4220f67397a8fd83068be25cab435162c
+- source: ltwiki
+  name: ne555h3
+  def: subckt
+  hash: e02a93756d859ff3c634b866e49248daf33f5efb
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  deps:
+  - norh
+  - srff
+  - noth
+  - comp3
+  - orh
+  - D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Robertugo/PowerCir/Convert/Flyback/Tero/Tero555H3.cir
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 73934004549058646ac6ee0eb484c306b8bcc9118db8b509a2b12ff8eb8d0e9e
+    lines:
+      D: [94, 94]
+      comp3: [87, 92]
+      ne555h3: [33, 54]
+      norh: [70, 77]
+      noth: [79, 85]
+      orh: [61, 68]
+      srff: [55, 59]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Robertugo/Modelos/555/Modelos/Previos/LtSpice/JerJerDig.old/ne555h3.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      sha256: 2478b62ee3d893b1d0da28d4c0ede6a019212bc119228df4f8394db5640e41a0
+- source: ltwiki
+  name: NE555
+  def: subckt
+  hash: 576d9775583bcaeb622bdc0d313a60abe7c53787
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/timers.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+    lines:
+      NE555: [134, 155]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Robertugo/555_all.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 8be6e890f5fffb9cc125ba67adc2d435fc08b9b1187787622bdfbfec7084b8ca
+  copies:
+  - source: bordodynov
+    name: NE555
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+  - source: kicad-spice-library
+    name: NE555
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+  - source: ltwiki
+    name: NE555
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+- source: ltwiki
+  name: NE555
+  def: subckt
+  hash: 03fc3005af014548221747372e864235d904a177
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/NE555.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ec1f7b7ad7fed806a334512159956b77cdff15b698158d3cf23dc62ff506f74e
+    lines:
+      NE555: [3, 26]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Misc/NE555.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 72792da778ead74fbe219e58e8836a844815dda43d1be433a68a8f8e9401c087
+  copies:
+  - source: bordodynov
+    name: NE555
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NE555.sub
+      sha256: ec1f7b7ad7fed806a334512159956b77cdff15b698158d3cf23dc62ff506f74e
+  - source: kicad-spice-library
+    name: NE555
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NE555.sub
+      sha256: ec1f7b7ad7fed806a334512159956b77cdff15b698158d3cf23dc62ff506f74e
+  - source: ltwiki
+    name: NE555
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NE555.sub
+      sha256: ec1f7b7ad7fed806a334512159956b77cdff15b698158d3cf23dc62ff506f74e
+- source: bordodynov
+  name: NE555_R
+  def: subckt
+  hash: cffdad90fcbc2de3a7dbc07b600964ba56144bff
+  type: SUBCKT
+  pins:
+  - GND
+  - TRIG
+  - OUT
+  - RESET
+  - CONT
+  - THRES
+  - DISC
+  - VCC
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      NE555_R: [3023, 3073]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/TIMER/NE555_R.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: a396efce342878559085582618927a5b20b1e0a14e71b908c418d9f08b0e25f3
+  copies:
+  - source: kicad-spice-library
+    name: NE555_R
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: NE555_R
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov
+  name: ne555_ab
+  def: subckt
+  hash: 4151c499608ae6534bb110d117648b0c907f7c48
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ne555_ab.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 36e7495e6420405bfeec50b9c17646307cf8910314c28083bdb0e2aed086cab1
+    lines:
+      ne555_ab: [1, 57]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/TIMER/ne555_AB.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 49f3b9cbb4db07838fb07cc3beed7a3a2bf73d1f950ad22f0bbf96a0facf2f41
+  copies:
+  - source: ltwiki
+    name: ne555_ab
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ne555_ab.sub
+      sha256: 36e7495e6420405bfeec50b9c17646307cf8910314c28083bdb0e2aed086cab1
+- source: bordodynov-qspice
+  name: NE555
+  def: subckt
+  hash: 9b6974d2613724c1d595e0d51fcd95d4d87bbe05
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/NE555.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 625a3053e2f676398652539dc92073f66ce4efd7bbe25560a64c34c9d55e5709
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: NE555
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/NE555.qsym
+      sha256: 625a3053e2f676398652539dc92073f66ce4efd7bbe25560a64c34c9d55e5709
+- source: bordodynov-qspice
+  name: NE555
+  def: subckt
+  hash: a1be799f0bcfb9b48f6891e1b5bef19dff93db6f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/Timers/NE555.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 6e2f99a1327bad35197d6cc46bc6d4765dbf6a78870ac63f44d9f2db5e62ebdd
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: NE555
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/Timers/NE555.qsym
+      sha256: 6e2f99a1327bad35197d6cc46bc6d4765dbf6a78870ac63f44d9f2db5e62ebdd
+- source: bordodynov-qspice
+  name: NE555
+  def: subckt
+  hash: a140f510cb26fc5f4c716ca6f1fe52fc3e33e7f4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Behavioral/analog/NE555.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: e02a26ad307624241432f71f6597b4311d1e925debbc8765df5352ac621ebd32
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/ne555.pdf
+  maker: Texas Instruments
+  doc: SLFS022K, rev. K (first issued Sep 1973)
+  date: 2026-03

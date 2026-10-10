@@ -1,0 +1,397 @@
+part: 6AU6
+kind: tube
+priority: 3
+group: pentode_beam
+models:
+- source: ayumi
+  name: 6AU6
+  def: subckt
+  hash: 089adb26ce60487b73ecea89d3b97bb3dee61021
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6AU6.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 6fde57b3757abd56903cd9bcf944eacbecb01feea7482a8a0a8b4db8cd7faf86
+    lines:
+      6AU6: [10, 30]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ayumi
+  name: 6AU6T
+  def: subckt
+  hash: 3f8741790505a3070c08a98fb8eb05bcb947d860
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6AU6T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 315e9da5108744fa7954e6e5344f3386e65431bb5af151a894fbe93d131594f8
+    lines:
+      6AU6T: [9, 22]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: suusi-tubes
+  name: 6AU6
+  def: subckt
+  hash: d693bbc49c1af886180dc962d2a86729143c9d21
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6AU6: [1285, 1289]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: suusi-tubes
+  name: 6AU6
+  def: subckt
+  hash: 58f2ce9808e8ff2f12340841f81f31eff3ef914d
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      6AU6: [590, 594]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+    note: Suusi Malcolm-Brown extended Koren library, 285 subckts, 20-Apr-2014 (LTspice)
+  note: pins from inline comment
+  copies:
+  - source: groups-io
+    name: 6AU6
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: 6AU6A
+  def: subckt
+  hash: a91d81a8b088026d7b859c8c39915cd053aaa05c
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  - 6AU6
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6AU6: [1285, 1289]
+      6AU6A: [1292, 1296]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: suusi-tubes
+  name: 6AU6A
+  def: subckt
+  hash: 9c37abeb319a8e94e8c8b8e5c44cfcf3168bd5d3
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  - 6AU6
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      6AU6: [590, 594]
+      6AU6A: [597, 601]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+    note: Suusi Malcolm-Brown extended Koren library, 285 subckts, 20-Apr-2014 (LTspice)
+  note: pins from inline comment
+  copies:
+  - source: groups-io
+    name: 6AU6A
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: bordodynov
+  name: 6AU6
+  def: subckt
+  hash: 9e3c5a328984fd8e8097ecd8545986d1b60ccf41
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/nk_pentode.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+    lines:
+      6AU6: [42, 46]
+      DX: [303, 303]
+      PENTODE1: [272, 284]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: groups-io
+    name: 6AU6
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+  - source: kicad-spice-library
+    name: 6AU6
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: ltwiki
+    name: 6AU6
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+- source: bordodynov
+  name: 6AU6A
+  def: subckt
+  hash: c3ed09b6525e303900d85de3780473149c0fad87
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - DX
+  - PENTODE1
+  - 6AU6
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/nk_pentode.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+    lines:
+      6AU6: [42, 46]
+      6AU6A: [49, 53]
+      DX: [303, 303]
+      PENTODE1: [272, 284]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: groups-io
+    name: 6AU6A
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+  - source: kicad-spice-library
+    name: 6AU6A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: ltwiki
+    name: 6AU6A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+- source: bordodynov
+  name: 6AU6
+  def: subckt
+  hash: d208bc694f764a937c3b558fe37f6e70d5c75dcb
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      6AU6: [619, 623]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: ltwiki
+    name: 6AU6
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: bordodynov
+  name: 6AU6A
+  def: subckt
+  hash: 24981402bdafc2b6dff29eb9fed941b7cdb39801
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  - 6AU6
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      6AU6: [619, 623]
+      6AU6A: [626, 630]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: ltwiki
+    name: 6AU6A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: bordodynov
+  name: 6AU6T
+  def: subckt
+  hash: fa67d4c78db647024f76608f7cd7014eee28fc42
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      6AU6T: [1219, 1232]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 6AU6T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: ltwiki
+    name: 6AU6T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: 6AU6
+  def: subckt
+  hash: 5859d96007d1c8f545815dcfc8aa47f6300c92fa
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      6AU6: [520, 540]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 6AU6
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: 6AU6
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: groups-io
+  name: 6AU6
+  def: subckt
+  hash: 29821393bc30891b83583f22fa0eebf81cb90068
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/tube_spice_models.cir.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 4f916889423b2f19f147a732b76fa85641948d30e6b83aeeb4d179337d2e77d2
+    lines:
+      6AU6: [112, 115]
+      DX: [308, 308]
+      PENTODE1: [185, 200]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: X6AU6
+  def: subckt
+  hash: 716fa0d12b3ea187242b4ea85d1b87e80cd7de90
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
+    lines:
+      X6AU6: [71, 104]
+    fetched: '2026-10-09'
+datasheet:
+  url: https://frank.pocnet.net/sheets/127/6/6AU6.pdf
+  maker: Tung-Sol
+  doc: 'Tung-Sol 6AU6-6AU6A, plate #6531 (1962-08-01) pages 1-2; ''Tentative data'' curves plate #4763
+    (1956-09-01) pages 3-4'
+  date: '1962-08-01'

@@ -1,0 +1,61 @@
+part: BZX85C4V7
+kind: zener
+priority: 3
+models:
+- source: ltwiki
+  name: 1N4732A
+  def: subckt
+  hash: 397d3cd70c4ba928fa494ac294029d9679bd4253
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - DF
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Zener_DiodesInc.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 44998eb950913c32209f9f24b702e8290a29c0ec6ee2e81d3a34388e40a89406
+    lines:
+      1N4732A: [41, 48]
+      DF: [6016, 6016]
+    fetched: '2026-09-21'
+  note: 'STAND-IN: model of 1N4732A, not of BZX85C4V7; equivalence declared in catalog/wanted.yaml (see
+    its note); pins from default order (unverified)'
+  copies:
+  - source: bordodynov
+    name: 1N4732A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+  - source: kicad-spice-library
+    name: 1N4732A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+  - source: ltwiki
+    name: 1N4732A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+- source: spice-model-cd
+  name: D1N4732A
+  def: subckt
+  hash: 28c843488c7751a08bab0bd202b4d06a781e7449
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/ZENER.LB
+    sha256: 304e2ababc567483e0e387fdba860dac263b00f29acbc7966994954c43804f7f
+    lines:
+      D1N4732A: [720, 727]
+    fetched: '2026-09-21'
+  note: 'STAND-IN: model of 1N4732A, not of BZX85C4V7; the equivalence is declared in data/models/wanted.yaml'
+datasheet:
+  url: https://www.vishay.com/docs/85607/bzx85.pdf
+  maker: Vishay
+  doc: BZX85, Document Number 85607, Rev. 2.9, 17-Sep-2025

@@ -1,0 +1,177 @@
+part: 6J7
+kind: tube
+priority: 2
+group: audio_docs
+models:
+- source: ayumi
+  name: 6J7
+  def: subckt
+  hash: ef9147cdfd7a64fabe165c9862f8b861edc77fee
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6J7.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 8244fda9f30a0dc4b12d5dc720a01215cba16d0573740f69887b97fbf9192ad3
+    lines:
+      6J7: [10, 30]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ayumi
+  name: 6J7T
+  def: subckt
+  hash: da1c7185e178fa12bbd980dcb9fd4c8a153eb553
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6J7T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 70b7d121d90da44b37f85e60b4474b750cfcf517cb9a925665b0d2f660ddb2da
+    lines:
+      6J7T: [9, 22]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: bordodynov
+  name: 6J7
+  def: subckt
+  hash: 4c30b314c9780c45f96696555a2bb9fd9eeb577a
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      6J7: [1090, 1110]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: 6J7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: bordodynov-qspice
+    name: 6J7
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Tube_Rus.txt
+      sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+  - source: bordodynov-qspice
+    name: 6J7
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: 6J7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: 6J7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: bordodynov
+  name: 6J7T
+  def: subckt
+  hash: 022d773c0a4f3670d961d5f62165ea8d5e783ab5
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      6J7T: [2121, 2134]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: 6J7T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: ltwiki
+    name: 6J7T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: groups-io
+  name: 6J7_T
+  def: subckt
+  hash: 68177fa34bbb52bea9fca8e4f7a43db37750b12b
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/Tube_IM.lib
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+    lines:
+      6J7_T: [2140, 2155]
+    fetched: '2026-10-09'
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6J7_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+  - source: ltwiki
+    name: 6J7_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: bordodynov-qspice
+  name: 6J7_T
+  def: subckt
+  hash: add9fb94f4719f152a50b2aad23ebb9da236fa30
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Tube_Rus.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+    lines:
+      6J7_T: [1283, 1298]
+    fetched: '2026-09-29'

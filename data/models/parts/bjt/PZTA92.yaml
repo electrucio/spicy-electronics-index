@@ -1,0 +1,121 @@
+part: PZTA92
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: onsemi
+  name: Qpzta92t1
+  def: model
+  hash: 922cbe35001de879d215f6dd555b0e86628c02c5
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/pzta92t1.lib
+    sha256: da7aca83301dbeb259a65d7dab3d1306ab2d1aa27159e3b5aa94954f038d6025
+    lines:
+      Qpzta92t1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qpzta92t1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: pzta92t1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: spice-model-cd
+  name: PZTA92
+  def: model
+  hash: a4b791de0e603cdb38c427e95451b9433cd85fd8
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      PZTA92: [1973, 1983]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: PZTA92
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
+      sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+  - source: microcap12
+    name: PZTA92
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/infineon.lib
+      sha256: cdae8e9767d8fccbc81f94acb925cc440425a03e902d86cd8c5591d87131e175
+  - source: spice-model-cd
+    name: PZTA92
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: PZTA92s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: PZTA92/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: PZTA92/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: duncanamps
+  name: QPZTA92
+  def: model
+  hash: 13f6abfc23b507a2fcdbf71e6725076e0dec25b0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QPZTA92: [642, 645]
+    fetched: '2026-09-14'
+  copies:
+  - source: groupsio-ltspice
+    name: PZTA92
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: groupsio-ltspice
+  name: PZTA92T1
+  def: model
+  hash: 3d5dcb871e148fca23ea85eca265f74c1451f56d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PZTA92T1: [4422, 4422]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: PZTA92
+  def: subckt
+  hash: 0a52c7429e15b5fa4677a21f448cc2efb49e9c17
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/PZTA92.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: a485c200e0aa2ec76101e4ac27d8550935ca680c8e48e1f94ec44089666daca2
+    lines:
+      PZTA92: [2, 56]
+    fetched: '2026-09-21'

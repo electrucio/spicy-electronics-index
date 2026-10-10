@@ -1,0 +1,24 @@
+part: BDX53B
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: bdx53b
+  def: subckt
+  hash: d14053c24d69318882ba8a2fc328425c546b20b5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bdx53b.lib
+    sha256: bdc63604944664317b5c9f5069947d947f842a727c636f57e768be46a0a36fc9
+    lines:
+      bdx53b: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: bdx53b
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77

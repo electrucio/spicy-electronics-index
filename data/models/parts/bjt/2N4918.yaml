@@ -1,0 +1,93 @@
+part: 2N4918
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n4918
+  def: model
+  hash: 0bb2dd02abd8a1d716950ce61c551cd641553020
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n4918.lib
+    sha256: 10f99ff9007c877af94e4dc16f8e916a9af5ee9ce73d062c966f9ec68df68c3f
+    lines:
+      Q2n4918: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: ltwiki
+    name: Q2n4918
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
+  - source: ltwiki
+    name: Q2n4918
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
+  - source: microcap12
+    name: Q2n4918
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Q2n4918
+    get:
+      url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
+      member: nud4001p.lib
+      sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
+- source: microcap12
+  name: 2N4918
+  def: model
+  hash: f61f2a62f10662ea4bb8000c81c6cda33da4f4f6
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N4918: [2451, 2457]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: Q2N4918
+  def: model
+  hash: 307c021366bd4d526cbb11d5218e6f38bd933c30
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      Q2N4918: [6623, 6623]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N4918
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: groupsio-ltspice
+  name: 2N4918
+  def: model
+  hash: f6908740d3c7b0ccec0a303ad296162799e34481
+  type: PNP
+  deps:
+  - NSC_5F
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N4918: [368, 368]
+      NSC_5F: [6261, 6261]
+    fetched: '2026-09-21'

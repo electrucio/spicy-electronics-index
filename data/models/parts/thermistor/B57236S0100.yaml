@@ -1,0 +1,28 @@
+part: B57236S0100
+kind: thermistor
+group: non-native
+models:
+- source: bordodynov
+  name: S236_10
+  def: subckt
+  hash: 24ccb74e847006d44d77c29b60e1000c114155db
+  type: SUBCKT
+  deps:
+  - NTC
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ntc.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: cf4d7d215176b3026015c9944507c6289406d2ca49dc9587dcaf3cadb0612cf8
+    lines:
+      NTC: [17, 29]
+      S236_10: [2981, 2991]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: S236_10
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ntc.lib
+      sha256: cf4d7d215176b3026015c9944507c6289406d2ca49dc9587dcaf3cadb0612cf8

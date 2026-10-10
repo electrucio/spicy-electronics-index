@@ -1,0 +1,185 @@
+part: EL90
+kind: tube
+priority: 2
+group: audio_docs
+models:
+- source: suusi-tubes
+  name: EL90
+  def: subckt
+  hash: b8ddfbab5afe988b3e962a16ebf1d93053778af5
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  - 6V6-GTA
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      6V6-GTA: [833, 837]
+      EL90: [1479, 1483]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+    note: Suusi Malcolm-Brown extended Koren library, 285 subckts, 20-Apr-2014 (LTspice)
+  note: pins from inline comment
+  copies:
+  - source: groups-io
+    name: EL90
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: EL90
+  def: subckt
+  hash: a33682fe9e3546526cb8e85cd50ba8d17f32cdc3
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL90: [2088, 2092]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: bordodynov
+  name: EL90
+  def: subckt
+  hash: 9d3baa406ce0810047dfb7451b52d49ebcdbe4dd
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  - 6V6-GTA
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      6V6-GTA: [862, 866]
+      EL90: [1508, 1512]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: ltwiki
+    name: EL90
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: robrobinette
+  name: EL90
+  def: subckt
+  hash: 48899d554499a10122957583cc169ea9ffc3b51f
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - DX
+  - PENTODE1
+  - 6V6-GTA
+  verbatim: true
+  get:
+    url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+    member: Koren_Tubes.INC
+    archive_sha256: 12bc0c4bed1df2e80e812730b710d27f5b4ed3d81d76e9d992e42b9e498580d2
+    sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+    lines:
+      6V6-GTA: [598, 602]
+      DX: [1364, 1364]
+      EL90: [1033, 1037]
+      PENTODE1: [1317, 1329]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: groups-io
+    name: EL90
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+  - source: robrobinette
+    name: EL90
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+- source: ltwiki
+  name: EL90
+  def: subckt
+  hash: 2d02146c666e3fea40787142aea22f00b9917267
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  deps:
+  - 6V6GTA
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      6V6GTA: [2652, 2664]
+      EL90: [2668, 2670]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: EL90
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: EL90
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: EL90
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: EL90
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: EL90
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: EL90
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734

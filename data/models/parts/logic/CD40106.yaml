@@ -1,0 +1,226 @@
+part: CD40106
+kind: logic
+priority: 4
+models:
+- source: microcap12
+  name: CD40106B
+  def: subckt
+  hash: f6ac0652d03b41efe6581d4999cd19953805d7dd
+  type: SUBCKT
+  pins:
+  - A
+  - ABAR
+  - 'OPTIONAL:'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/cmos.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 355bb3dfa2be483f7c2d5b8d729acb8221874a18fbf49607f03a0bfc0d753917
+    lines:
+      CD40106B: [4143, 4155]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: CD40106B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cmos.lib
+      sha256: 4ee830d7932c2cdfcd5d21972f96c0387c3440d5d449c6554a0016f8b0f4f5b0
+- source: groups-io
+  name: CD40106B
+  def: subckt
+  hash: ff4b36d2be998275988f9a7646984c8ed5477c50
+  type: SUBCKT
+  pins:
+  - A
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40_IN_S_1
+  - CD40_OUT_2X
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Digital%20CD4000/CD4000.lib
+    sha256: 9adea30f46999c7b547f26aeeb736bce37738f6ccdbe903281ad4ba6e253831e
+    lines:
+      CD40106B: [756, 764]
+      CD40_IN_S_1: [939, 954]
+      CD40_OUT_2X: [985, 996]
+    fetched: '2026-10-09'
+  copies:
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
+      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/CD4000/CD4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
+- source: ltwiki
+  name: CD40106B
+  def: subckt
+  hash: 824e0921b7ef84274f876f42c26ad1e1e0def50c
+  type: SUBCKT
+  pins:
+  - A
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40DIO1
+  - CD40_IN_S_1
+  - DIO2
+  - CD40_OUT_2X
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/CD4000_Don.LIB
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+    lines:
+      CD40106B: [702, 710]
+      CD40DIO1: [785, 785]
+      CD40_IN_S_1: [819, 833]
+      CD40_OUT_2X: [863, 873]
+      DIO2: [845, 845]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: CD40106B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4000_Don.LIB
+      sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+  - source: kicad-spice-library
+    name: CD40106B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CD4000_Don.LIB
+      sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4000_Don.LIB
+      sha256: 47fa60aec4237b21d853cfde5dffd06191f4bd16165aaab6bf2ac16c64839a0d
+- source: ltwiki
+  name: CD40106B
+  def: subckt
+  hash: 901d851725caccb37df2cf64a35fe19985251876
+  type: SUBCKT
+  deps:
+  - D_CD40106B
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/cd4000.lib
+    sha256: 01fee132096b681bc7bb8cb653efc6a8a0ea6929099c8aa90057eea83857cba8
+    lines:
+      CD40106B: [4473, 4479]
+      D_CD40106B: [4481, 4484]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: CD40106B
+  def: subckt
+  hash: 18699af5d13598bc8e1c367676d10a596030589c
+  type: SUBCKT
+  pins:
+  - A
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40_IN_S_1
+  - CD40_OUT_2X
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/CD4000_v.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: a814b0ca1e4ced9b7963913afd06147754592c9002010ecc1beb635b45e222eb
+    lines:
+      CD40106B: [758, 766]
+      CD40_IN_S_1: [941, 956]
+      CD40_OUT_2X: [987, 998]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: CD40106B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CD4000_v.lib
+      sha256: 160e7f8bc97f0e71541e67941c2442ebef6888026163a64fe1ea4e92854bef25
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CD4000_v.lib
+      sha256: a814b0ca1e4ced9b7963913afd06147754592c9002010ecc1beb635b45e222eb
+- source: bordodynov
+  name: CD40106B
+  def: subckt
+  hash: 34047e83bc690502698ce27f23fdbd9ed8b0fb5c
+  type: SUBCKT
+  pins:
+  - A
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40_IN_S_1
+  - CD40_OUT_2X
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/cd4000.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 794f3386c6ab888d2abf2f2c54ec97b6af582b14e138de0252059e9f07107f08
+    lines:
+      CD40106B: [755, 763]
+      CD40_IN_S_1: [934, 950]
+      CD40_OUT_2X: [981, 992]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: CD40106B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/cd4000.lib
+      sha256: 794f3386c6ab888d2abf2f2c54ec97b6af582b14e138de0252059e9f07107f08
+- source: kicad-spice-library
+  name: CD40106B
+  def: subckt
+  hash: e111356858d3a96ab493b6a1df37c1f11229661a
+  type: SUBCKT
+  pins:
+  - A
+  - Y
+  - VDD
+  - VGND
+  deps:
+  - CD40_IN_S_1
+  - CD40_OUT_2X
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/cd4000.lib
+    sha256: b30e91bc7f5937fcd4b64fa5f37eabd91619b78de506c64ec29100404f0e5060
+    lines:
+      CD40106B: [755, 763]
+      CD40_IN_S_1: [938, 953]
+      CD40_OUT_2X: [984, 995]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

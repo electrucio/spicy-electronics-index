@@ -1,0 +1,46 @@
+part: AD8544
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8544
+  def: subckt
+  hash: 2f819543ab866478a7c3a9451dc2c8389818ff52
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/AD8544.cir?modelType=spice-models
+    sha256: 47589588649d1d8f892f438b2656e08d7fa5337f889a1f93c0f2648578e2cb6e
+    lines:
+      AD8544: [28, 111]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: AD8544_AD
+  def: subckt
+  hash: d42b94ab05df4c74e720b769c2102a79ef900648
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8544_AD: [1571, 1654]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8544_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0

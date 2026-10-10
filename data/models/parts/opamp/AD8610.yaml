@@ -1,0 +1,64 @@
+part: AD8610
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8610
+  def: subckt
+  hash: ed495d6cf492a6cbee34b2925708bfcba5acaa5c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8610.cir
+    sha256: de2d72335d933c6db0ed87802289a03adebf9bff4e4e648de1386c5a9beb756e
+    lines:
+      AD8610: [33, 138]
+    fetched: '2026-09-20'
+- source: microcap12
+  name: AD8610
+  def: subckt
+  hash: a9546c371f3b721b87788fe9db92cdf39b4d5fa8
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8610: [75021, 75128]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8610
+  def: subckt
+  hash: 21d6e528f9b4037f9f95b789d19c7654467ea514
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad8610.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: dc7f9394e3f96ac3e02fe90d4bf6216d206f05539d480668d24c49ba68c6758c
+    lines:
+      AD8610: [19, 126]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD8610.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 09ebf500a6ecdba2bcec625c6b7b5aa29a1137088c31e9f974b00ccf80d503bc
+  note: pins from comment words
+datasheet:
+  url: https://www.analog.com/media/en/technical-documentation/data-sheets/ad8610_8620.pdf
+  maker: Analog Devices
+  doc: AD8610/AD8620 Data Sheet, Rev. F
+  date: 2008-05

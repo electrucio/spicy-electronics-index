@@ -1,0 +1,102 @@
+part: LM3080
+kind: ota
+priority: 2
+models:
+- source: ltwiki
+  name: LM3080/NS
+  def: subckt
+  hash: 79e4560dd2a74ba0f23920d6865244ce76ab166b
+  type: SUBCKT
+  pins:
+  - IN-
+  - IN+
+  - VEE
+  - BIAS
+  - OUT
+  - VCC
+  deps:
+  - lm3080
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Ota.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+    lines:
+      LM3080/NS: [113, 171]
+      lm3080: [196, 213]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/OpAmp.Add/lm3080.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 9539919034b0f0f09bd30c167e84943f36572ba44aa0de3af45d51a524c964bd
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: LM3080/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: kicad-spice-library
+    name: LM3080/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: ltwiki
+    name: LM3080/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+- source: ltwiki
+  name: lm3080
+  def: subckt
+  hash: 43d6024c79d95fae741542929d8f6fba33a4f877
+  type: SUBCKT
+  pins:
+  - IN-
+  - IN+
+  - VEE
+  - BIAS
+  - OUT
+  - VCC
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Ota.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+    lines:
+      lm3080: [196, 213]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Robertugo/3080.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: e6b54f11fe5a1594663891e6f146316224c18dea9b43424021edb82707bf55ce
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: lm3080
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: kicad-spice-library
+    name: lm3080
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: ltwiki
+    name: lm3080
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+datasheet:
+  url: https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8885/LM3080-Datasheet.pdf
+  maker: National Semiconductor (TI literature SNOSBQ5A)
+  doc: LM3080 Operational Transconductance Amplifier, Feb 1995 (TL/H/7148), in TI wrapper SNOSBQ5A, marked
+    OBSOLETE

@@ -1,0 +1,35 @@
+part: LM385
+kind: regulator
+priority: 4
+models:
+- source: ltwiki
+  name: LM385
+  def: subckt
+  hash: ae73f5a818ff48d1eb07a12478306186e64721b5
+  type: SUBCKT
+  pins:
+  - A
+  - REF
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+    lines:
+      LM385: [1749, 1780]
+    fetched: '2026-09-14'
+  note: pins from comment words
+- source: ltwiki
+  name: LM385
+  def: subckt
+  hash: 2511628bd33ce5919d30e4d1c5b21e2b7410a784
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      LM385: [2655, 2668]
+    fetched: '2026-09-21'

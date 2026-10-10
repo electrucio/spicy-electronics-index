@@ -1,0 +1,478 @@
+part: MJL21193
+kind: bjt
+priority: 1
+group: power_output
+models:
+- source: onsemi
+  name: Qmjl21193
+  def: model
+  hash: a4fc826ed3dee280a234ef20015af34edf31ed77
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mjl21193.lib
+    sha256: 2dc6fd6ce2746291135c6017fc24030f9485b02b121749ddde2a462d523b68e1
+    lines:
+      Qmjl21193: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qmjl21193
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: mjl21193
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mjl21193.sp3
+      sha256: af4f6af15f9b75a6d1c2c1c9e18b6b2c393e34ccded5a1670e3550ba85f9e552
+- source: spice-model-cd
+  name: Qmjl21193
+  def: model
+  hash: e2bcc5a4ee6acf244fd9f30dab1ad5cc1aefaaae
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/PowerBJT/MJL21193.LIB
+    sha256: 8a3cf527035e31e3b88a0aea755f6f64833defa2bcb72c6736001f02493daf99
+    lines:
+      Qmjl21193: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: mjl21193
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_powbjt.lib
+      sha256: 88828d7a2e59690284185f63603712cda84ab642abd65fee1f239a7aca6f38bb
+  - source: microcap12
+    name: mjl21193
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_powbjt.lib
+      sha256: fca3b3421fa8e11f35bf81024e0fca7fc3b0d6644ab70ac81827475a47168548
+- source: cordell
+  name: mjl21193C
+  def: model
+  hash: 42f4b57744295307a7755fe8ee5cce05ebc5742a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Install-Test.zip
+    member: Install Test/Cordell Models.txt
+    archive_sha256: 332b487564a6c8eca0f8a1db26ec86109b450af5e75278e32556ad000f9bcd77
+    sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+    lines:
+      mjl21193C: [169, 178]
+    fetched: '2026-09-14'
+    note: Cordell Models 12/07/2010 (older version bundled in zip; RB=10 in small-signal BJTs)
+  copies:
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: bordodynov-qspice
+    name: mjl21193C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Gummel Plot/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Step/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Transfer/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/gm vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: mjl21193C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: groupsio-ltspice
+    name: mjl21193C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: mjl21193C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: mjl21193c
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: mjl21193C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: mjl21193C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: mjl21193C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: groupsio-ltspice
+    name: MJL21193_CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: bordodynov-qspice
+  name: MJl21193_C
+  def: model
+  hash: 068177259461b0984ffad681f168f0657cf8aee7
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      MJl21193_C: [76, 76]
+    fetched: '2026-09-29'
+- source: diyaudio
+  name: mjl21193
+  def: model
+  hash: ee8b420f5006bd7abcdbc424e365cab4307c7d3b
+  type: PNP
+  deps:
+  - TF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+    lines:
+      TF: [1854, 1897]
+      mjl21193: [689, 698]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: MJl21193_C
+  def: model
+  hash: bb17bc5724a1509315b0a51ca757b4e12ce297b7
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MJl21193_C: [1129, 1129]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MJl21193_C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: MJl21193_C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MJl21193_C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJl21193_C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MJl21193_C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groupsio-ltspice
+  name: mjl21193
+  def: model
+  hash: ee63663633db45ea9d4b7c9c7e15e74483a7a3e1
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      mjl21193: [953, 953]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: mjl21193
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: mjl21193
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: mjl21193
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: mjl21193
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: mjl21193
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: mjl21193
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groupsio-ltspice
+  name: MJL21193
+  def: model
+  hash: b56049d679b1278fe360f99d251a581942b43b7f
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJL21193: [3404, 3404]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: mjl21193C
+  def: model
+  hash: 59b2c1771cb21459680e23ad1f7b8638d7399c02
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      mjl21193C: [986, 986]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: mjl21193C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: mjl21193C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: mjl21193C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: mjl21193C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: MJl21193_C
+  def: model
+  hash: f46abb6baac692eb1fa83d79a88df56d1cd1a4fc
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      MJl21193_C: [448, 448]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: mjl21193c
+  def: model
+  hash: 42f4b57744295307a7755fe8ee5cce05ebc5742a
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+    lines:
+      mjl21193c: [480, 480]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mjl21193-d.pdf
+  maker: onsemi
+  doc: MJL21193/D Rev. 7 (September 2013)

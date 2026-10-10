@@ -1,0 +1,781 @@
+part: 2N3904
+kind: bjt
+priority: 1
+group: small_signal_npn
+models:
+- source: onsemi
+  name: Q2n3904
+  def: model
+  hash: fc8da1966b85debefc2b943b7914ab9517836cbd
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n3904.lib
+    sha256: 5608c109b8d68d57798557991cee506661d031916f589325fad5ed10d82ccbf7
+    lines:
+      Q2n3904: [15, 25]
+    fetched: '2026-09-14'
+    note: 'model(s): Q2n3904 (NPN .model)'
+  copies:
+  - source: microcap12
+    name: Q2n3904
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: central-semi
+  name: 2N3904
+  def: model
+  hash: 5cee74e03ea50c1e65f580b90d1b08d662ad7236
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N3904.LIB
+    sha256: 97764c845cad8e3c2becc9fdb7fb05dd69ac26e55259ba381660d05116788e6c
+    lines:
+      2N3904: [24, 49]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N3904 (NPN .model)'
+  copies:
+  - source: microcap12
+    name: 2N3904
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+- source: spice-model-cd
+  name: 2N3904
+  def: model
+  hash: b246501eb7e57d75772147a6b01a47d01023fd6e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/2N/2N3904.t
+    sha256: 63ce1395349428f9c5434881ddc6d27a74e21fb8af45a61afd212d7653713950
+    lines:
+      2N3904: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: Q2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+      sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+  - source: kicad-spice-library
+    name: Q2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/TRT-Electronics/2n3904.lib
+      sha256: e7cda3bf9bfd53ed5b60648f4074b8c96847ea1ce35894419451adeda78d6f8d
+  - source: ltwiki
+    name: Q2N3904
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: ltspice-native
+  name: 2N3904
+  def: model
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.bjt
+    sha256: 15e7c7fa149dbdc97bb647f77681999a38fb4c324928beb4f1fa2a589288f587
+    lines:
+      2N3904: [14, 17]
+  note: 'same code also in: kicad-spice-library'
+- source: spice-model-cd
+  name: Q2N3904
+  def: model
+  hash: cc59f09fc73622e40f5a7b8448dc11f2ea0de99e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BIPOLAR.LB
+    sha256: bc06e66b73b3f9efd1d6681dcf3667599ed3205c8775c71f528f6c3cb22af447
+    lines:
+      Q2N3904: [263, 266]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: Q2N3904
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/bipolar.txt
+      sha256: 39488a5d05bc9e8639ef14d46055456cb298d497e88eaa170113e153ab076333
+- source: microcap12
+  name: 2N3904
+  def: model
+  hash: ce1811fdc640d39b119947a3dfdfb22cc29a81ba
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      2N3904: [688, 691]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 2N3904
+  def: model
+  hash: 571e13ede0af81cdba30f92c31c5eea647604036
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+    lines:
+      2N3904: [5, 5]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: bordodynov
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: groupsio-ltspice
+    name: 2N3904
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: 2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: 2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: kicad-spice-library
+    name: 2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+- source: cordell
+  name: 2N3904C
+  def: model
+  hash: cc4a37d34218e5d23ceb465fb666f5af1c873e91
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Install-Test.zip
+    member: Install Test/Cordell Models.txt
+    archive_sha256: 332b487564a6c8eca0f8a1db26ec86109b450af5e75278e32556ad000f9bcd77
+    sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+    lines:
+      2N3904C: [9, 18]
+    fetched: '2026-09-14'
+    note: Cordell Models 12/07/2010 (older version bundled in zip; RB=10 in small-signal BJTs)
+  copies:
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Gummel Plot/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Step/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Transfer/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/gm vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2N3904C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: kicad-spice-library
+    name: 2N3904C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: 2N3904C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: 2N3904C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: 2N3904C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+- source: cordell
+  name: 2N3904C
+  def: model
+  hash: 4470ce4ef6fb9ecde7faedfeee9de27f31db91ec
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Cordell-Models.txt
+    sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+    lines:
+      2N3904C: [28, 37]
+    fetched: '2026-09-14'
+    note: 'Cordell Models 04/20/2011 (current site file, HTTP Last-Modified 2024-09-15): 63 .model (BJT
+      GP, NJF, VDMOS, D)'
+  copies:
+  - source: diyaudio
+    name: 2N3904
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+  - source: bordodynov-qspice
+    name: 2N3904C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: ltwiki
+    name: 2N3904c
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: groupsio-ltspice
+    name: 2N3904_CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: duncanamps
+  name: Q2N3904
+  def: model
+  hash: 9cdc5d654ccd7b75744dbf658aa4a191050a428d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      Q2N3904: [80, 81]
+    fetched: '2026-09-14'
+    note: 39 subckts, 158 .model
+- source: bordodynov-qspice
+  name: 2N3904_C
+  def: model
+  hash: 79182ff41a6e90850b4f8ba8c9aa7da5d87c0a89
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      2N3904_C: [194, 194]
+    fetched: '2026-09-29'
+- source: spiceypedals
+  name: 2N3904_NPN
+  def: model
+  hash: 468b860241111ef77303801da10d7b86b055537d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PedalNetlists/HarmonicPercolatorV2.cir
+    sha256: 9bc237bcf9e33f22c7a7a21029ec1e5dc7d19d23ff90e02a9c651b6243b16299
+    lines:
+      2N3904_NPN: [74, 74]
+    fetched: '2026-09-14'
+  copies:
+  - source: spiceypedals
+    name: 2N3904_NPN
+    get:
+      url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PedalNetlists/ZvexFuzzFactoryV0.cir
+      sha256: fd02c526fbb056cce699be7f3110ba51b29665aefc7987846fff37a52589a85c
+- source: spiceypedals
+  name: 2N3904
+  def: model
+  hash: 6ec1560c3d5c04fded03b2dd4ecc2c5d81d3038e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PedalNetlists/MxrDynacompV1.cir
+    sha256: e067bd4f19d6ac55b7c7439f618b8cc074cfad05820d2739a7408b23010aa12c
+    lines:
+      2N3904: [117, 117]
+    fetched: '2026-09-14'
+- source: spiceypedals
+  name: 2N3904
+  def: model
+  hash: e7e470bae57d7a1f3cd563ae142b4297cd923b55
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PedalNetlists/ElectroharmonixBigMuffPiV3.cir
+    sha256: 93bd700c9dd407bb4074483f0db4adbbbbf9036dfcf857d45168f62d828c98f3
+    lines:
+      2N3904: [115, 115]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: 2n3904T
+  def: model
+  hash: 56355873dbac828e9319f80d991be08988103cca
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2n3904T: [244, 244]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2n3904T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: 2n3904T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: 2n3904T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: 2n3904T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2n3904T
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: 2n3904T
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2n3904T
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: 2n3904T
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: 2N3904_C
+  def: model
+  hash: 41294a17a6fb65094011b66a919b8cfb8c19140e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2N3904_C: [1185, 1185]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 2N3904_C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: 2N3904_C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: groupsio-ltspice
+  name: 2N3904
+  def: model
+  hash: 0c60ef7b9eceec1008fd3576955cb67cb25948ed
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N3904: [265, 265]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: 2N3904
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: groupsio-ltspice
+  name: 2N3904T
+  def: model
+  hash: 5acc277ead48b7a617d57487b9a7ea4511910041
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N3904T: [267, 267]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: 2N3904
+  def: model
+  hash: bec48c1a2616b933bc694b3744ae14a30b0abc2d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/Standard.zip
+    member: Standard/standard.bjt
+    archive_sha256: 97e47470aefa994e7cdf520fc8a8a1d24f9598060b213146903870757a7a4687
+    sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+    lines:
+      2N3904: [230, 230]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+  - source: kicad-spice-library
+    name: 2N3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: 2n3904
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Compare_Stab_HV/Sum.txt
+      sha256: 06baa867d3e80fdc84e10bf910294100c0a3aa834c04ddbf002390e08608b373
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+- source: bordodynov
+  name: 2N3904
+  def: model
+  hash: 5ed64056b6fc11932ef05a1c94decc90108efb87
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2N3904: [257, 257]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2N3904
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: 2N3904_C
+  def: model
+  hash: 6f931a620bdc42a5fbbe1096b13d3e7907fa7237
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2N3904_C: [1217, 1217]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 2N3904_C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2N3904_C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: 2N3904
+  def: model
+  hash: c5b30d2bf837a405c4c2c9815bf02e3e19228e36
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      2N3904: [151, 151]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: 2n3904T
+  def: model
+  hash: 069eaf1652e52c59c1b5eb8b56a5609094a61618
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      2n3904T: [155, 155]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: 2N3904_C
+  def: model
+  hash: 7aa7813b85d759348b53bcd113b4d68f6ac40cd7
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      2N3904_C: [722, 722]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: Q2N3904
+  def: model
+  hash: a9a6cdd36725ab2d09184d15a18b60a01fb68148
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_NPN/TOSHIBA.LIB
+    sha256: 48d4fd1df68108bb9d61af444d53f63e19fc48d39cebc6bc9ff3a11eb947f336
+    lines:
+      Q2N3904: [152, 171]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/2n3903-d.pdf
+  maker: onsemi
+  doc: 2N3903/D Rev. 9 (August 2021)

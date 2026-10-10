@@ -1,0 +1,109 @@
+part: D44H8
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qd44h8
+  def: model
+  hash: fe681275342003938e08178bdadcb4759d30ab3e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/d44h8.lib
+    sha256: d4daa8c616c492a3078ad8d1980d1603e373ee4ec9a570d246a157a05ea4ade1
+    lines:
+      Qd44h8: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qd44h8
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: D44H8
+  def: model
+  hash: c146ded1d6a0f38c873758959d3994bbceacd4f0
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      D44H8: [1514, 1520]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: D44H8
+  def: model
+  hash: de1b1a04d15f56081d58c19e5c8cf10b45bd938a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      D44H8: [7632, 7632]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: D44H8
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: ltwiki
+  name: D44H8
+  def: model
+  hash: 8a44ebc84cf105499142b606c4f5e40355cdf039
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+    sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+    lines:
+      D44H8: [3401, 3404]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: D44H8
+  def: subckt
+  hash: ce7e770495cb52384eb12ba90af0582d58e04b1a
+  type: SUBCKT
+  deps:
+  - Q1
+  - Q2
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      D44H8: [13627, 13635]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/D44H8.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 405c941bd1ef6416b4faa3005a8551ea6ab9cdd24c9b52a52b6b176a48a4ae67
+  copies:
+  - source: kicad-spice-library
+    name: D44H8
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: D44H8
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

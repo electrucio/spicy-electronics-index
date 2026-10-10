@@ -1,0 +1,89 @@
+part: MPSW01
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: MPSW01A
+  def: model
+  hash: d62448582691729b828f0495da8f1019f34f1c62
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSW01A: [3225, 3229]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: MPSW01
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: lbr_txt/msbjt_lbr.lib
+      sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+- source: duncanamps
+  name: QMPSW01A
+  def: model
+  hash: c34d2d4e2d2df6cda3d350db023573d98725e697
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QMPSW01A: [689, 691]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MPSW01A
+  def: model
+  hash: 7eb095cded1622a43799fff08ea34b3662b42a13
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSW01A: [3670, 3670]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSW01A
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: ltwiki
+    name: MPSW01
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: groupsio-ltspice
+  name: MPSW01
+  def: model
+  hash: b026f1854c084dbca604e1e8dae425119e40f9d0
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSW01: [5890, 5890]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPSW01
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: kicad-spice-library
+    name: MPSW01
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2

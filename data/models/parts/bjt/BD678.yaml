@@ -1,0 +1,35 @@
+part: BD678
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: bd678a
+  def: subckt
+  hash: 961d117e2e1cea94e94c4b44f0ec3163e0768d72
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bd678a.lib
+    sha256: 67371b4899d399125e3a2b526fd6051f31d50b46481225fd59a9341ef2e60b49
+    lines:
+      bd678a: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: bd678a
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: microcap12
+    name: bd678
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: bd678
+    get:
+      url: https://www.onsemi.com/download/models/lib/bd678.lib
+      sha256: 09ced355701e11de9d8b96c040c62f2d520f8777d855ce265e2eff9f312d0204

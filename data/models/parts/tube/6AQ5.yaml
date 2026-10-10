@@ -1,0 +1,214 @@
+part: 6AQ5
+kind: tube
+priority: 3
+group: pentode_beam
+models:
+- source: reefman
+  name: 6AQ5
+  def: subckt
+  hash: a139a1d03ecfc9fb9d84c0e95d5302ec47e594c8
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - BTetrodeDE
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      6AQ5: [1394, 1403]
+      BTetrodeDE: [2232, 2249]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: gist-chanmix51
+  name: 6AQ5
+  def: subckt
+  hash: 8f50b198db5d727dc5c928c205e4ea39adffabe2
+  type: SUBCKT
+  pins:
+  - P
+  - S
+  - G
+  - K
+  verbatim: true
+  get:
+    url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/tetrodes_pentodes.sub
+    sha256: 0fa0693ffb28a6feb0753065feebe9afca2c89d56bc472599c0fa8b802433d99
+    lines:
+      6AQ5: [225, 240]
+    fetched: '2026-09-14'
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: 6AQ5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tetrodes_pentodes.sub
+      sha256: 165fae3b104add1b7940b82d806c5bf00ced5f8d21273fce8fe98ad45c793af2
+  - source: groups-io
+    name: 6AQ5
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/tetrodes_pentodes.sub
+      sha256: 165fae3b104add1b7940b82d806c5bf00ced5f8d21273fce8fe98ad45c793af2
+  - source: ltwiki
+    name: 6AQ5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tetrodes_pentodes.sub
+      sha256: 165fae3b104add1b7940b82d806c5bf00ced5f8d21273fce8fe98ad45c793af2
+- source: groups-io
+  name: T6AQ5-A
+  def: subckt
+  hash: 17bff5322c441b82e2700c6622743167dd40502c
+  type: SUBCKT
+  pins:
+  - '1'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/vacuum.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: f413206ecdaa9fec4395d59e22f22f60cf44c4512e1b74987e6340785e9629e2
+    lines:
+      T6AQ5-A: [560, 576]
+    fetched: '2026-10-09'
+  copies:
+  - source: kicad-spice-library
+    name: T6AQ5-A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/VACUUM.LIB
+      sha256: 0472033f0b2f47bbafdd587955b3163fe983f3989575bcbeaf1794eaf2d5af9f
+- source: ltwiki
+  name: 6AQ5ry
+  def: subckt
+  hash: 123b4f61c34e3bc7ccb3fa082545454907c8c3e6
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  deps:
+  - Igrid
+  - TETRO1
+  - 6V6GT_RY
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      6AQ5ry: [2563, 2565]
+      6V6GT_RY: [2552, 2562]
+      Igrid: [2974, 2978]
+      TETRO1: [2939, 2949]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 6AQ5ry
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6AQ5ry
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6AQ5ry
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6AQ5ry
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6AQ5ry
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6AQ5ry
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+- source: ltwiki
+  name: 6AQ5A
+  def: subckt
+  hash: 2d02146c666e3fea40787142aea22f00b9917267
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  deps:
+  - 6V6GTA
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      6AQ5A: [2665, 2667]
+      6V6GTA: [2652, 2664]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 6AQ5A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6AQ5A
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6AQ5A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6AQ5A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6AQ5A
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6AQ5A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+datasheet:
+  url: https://frank.pocnet.net/sheets/093/6/6AQ5.pdf
+  maker: General Electric
+  doc: ET-T885 (6AQ5 / 5AQ5), supersedes ET-T271D of 6-53
+  date: 1955-06

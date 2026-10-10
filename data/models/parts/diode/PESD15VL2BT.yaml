@@ -1,0 +1,42 @@
+part: PESD15VL2BT
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: nexperia
+  name: PESD15VL2BT
+  def: subckt
+  hash: bb8fb10e4798d3f6ce70214e1f5e30c9f9d2865c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD15VL2BT.txt
+    sha256: ee5cc2a938015ee088b1b2a37651574577edebc19f070dd346d18285e0625d6a
+    lines:
+      PESD15VL2BT: [33, 67]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: PESD15VL2BT
+  def: subckt
+  hash: ec8acc9527cadd6de621fd86c716781ef939a69b
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      PESD15VL2BT: [2526, 2543]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PESD15VL2BT
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD15VL2BT.PRM
+      sha256: 992f2efdf3a2271be299e7ff02b210107c75569ac3a648875dec6a5b24f10825

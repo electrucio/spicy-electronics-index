@@ -1,0 +1,39 @@
+part: NTCLE100E3159_B0
+kind: thermistor
+group: non-native
+models:
+- source: vishay
+  name: NTCLE100E3159_B0
+  def: subckt
+  hash: bd71f424eaccdd4377dcf941dd1804428a99c516
+  type: SUBCKT
+  deps:
+  - NTC_BASE
+  verbatim: true
+  get:
+    url: http://www.vishay.com/docs/29171/ltspice_ntc_tfpt_pts_model.zip
+    member: ltspice_ntc_tfpt_pts_model/VISHAY_LTSPICE_Therm_MC.lib
+    archive_sha256: 76a8fe81ccf5752c22b5ddb0a5f3ce6ddcb8af3e4b050498e2c465d051b64feb
+    sha256: 48a15269d14ca17ea647f061d05c1dfe74ba5b39aeb785bb264c546e76291824
+    lines:
+      NTCLE100E3159_B0: [1905, 1921]
+      NTC_BASE: [25, 49]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://www.vishay.com/docs/29171/ltspice_ntc_tfpt_pts_model.zip
+      member: ltspice_ntc_tfpt_pts_model/NTCLE100E3159_B0.asy
+      archive_sha256: 76a8fe81ccf5752c22b5ddb0a5f3ce6ddcb8af3e4b050498e2c465d051b64feb
+      sha256: dd3a9d72cdf916edfb652a641029928d617c7e18381a1ce3adfd64799d78a205
+  copies:
+  - source: bordodynov
+    name: NTCLE100E3159_B0
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/VISHAY_LTSPICE_Therm_MC.lib
+      sha256: 68f765d6bd2f1121ee4c5ebae58cb344028112316c9ed2eafa505ed1a9d7a9bc
+  - source: ltwiki
+    name: NTCLE100E3159_B0
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/VISHAY_LTSPICE_Therm_MC.lib
+      sha256: 68f765d6bd2f1121ee4c5ebae58cb344028112316c9ed2eafa505ed1a9d7a9bc

@@ -1,0 +1,255 @@
+part: IRF250
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: infineon
+  name: IRF250P224
+  def: subckt
+  hash: 3a8bce49a0237e7493f18f88234a2a11a7e90743
+  type: SUBCKT
+  pins:
+  - DRAIN
+  - GATE
+  - SOURCE
+  - TJ
+  - TCASE
+  deps:
+  - S3_250_n1sp_var
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-250v-n-channel-simulationmodels-en.zip
+    member: OptiMOS3_250V_LTSpice.lib
+    archive_sha256: 5d2f3111c0314e2dbe52facaf5e3503c4b72beca674c8d29724f935a8554182f
+    sha256: 1b1363b235b21c0bccce92430e98b026b098a4aa94114da80d99d3d442c70ea2
+    lines:
+      IRF250P224: [726, 764]
+      S3_250_n1sp_var: [188, 309]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: infineon
+  name: IRF250P225
+  def: subckt
+  hash: 41520beb317dd84a399f94c4c949724d318b2300
+  type: SUBCKT
+  pins:
+  - DRAIN
+  - GATE
+  - SOURCE
+  - TJ
+  - TCASE
+  deps:
+  - S3_250_n1sp_var
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-250v-n-channel-simulationmodels-en.zip
+    member: OptiMOS3_250V_LTSpice.lib
+    archive_sha256: 5d2f3111c0314e2dbe52facaf5e3503c4b72beca674c8d29724f935a8554182f
+    sha256: 1b1363b235b21c0bccce92430e98b026b098a4aa94114da80d99d3d442c70ea2
+    lines:
+      IRF250P225: [768, 805]
+      S3_250_n1sp_var: [188, 309]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: microcap12
+  name: irf250_IR
+  def: subckt
+  hash: 0bc3cf21fdffd527b9104a412b05193b9d289749
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf250_IR: [2246, 2305]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/IrfNmosFet.lib
+      sha256: e34cb81ed38fc5228d4544f69c106f994942a5a06965064598fe10f739a57b37
+  - source: bordodynov
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf250.spi
+      sha256: a6f3187ed8e4ba5c8cb2f1030b1b5c16b6666b89372c001f627c8fe6fa8575af
+  - source: bordodynov
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf250.spi
+      sha256: a6f3187ed8e4ba5c8cb2f1030b1b5c16b6666b89372c001f627c8fe6fa8575af
+  - source: kicad-spice-library
+    name: irf250
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/IrfNmosFet.lib
+      sha256: e34cb81ed38fc5228d4544f69c106f994942a5a06965064598fe10f739a57b37
+  - source: kicad-spice-library
+    name: irf250
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf250.spi
+      sha256: 61c0e0c2ecbd59cee644726b14c3d04f68b6461ee604f931e5f69b72609b5b6f
+  - source: kicad-spice-library
+    name: irf250
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irf250
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/IrfNmosFet.lib
+      sha256: e34cb81ed38fc5228d4544f69c106f994942a5a06965064598fe10f739a57b37
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf250.spi
+      sha256: a6f3187ed8e4ba5c8cb2f1030b1b5c16b6666b89372c001f627c8fe6fa8575af
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf250.spi
+      sha256: a6f3187ed8e4ba5c8cb2f1030b1b5c16b6666b89372c001f627c8fe6fa8575af
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Smps/Ltc/lt1843/irf_mosfet.lib
+      sha256: 32493c0a135172116748fc862a7eca6f4488bf34d1a22a56d288645e832e84f7
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Smps/Ltc/3phase PFC using LT1249/Irf nmosfet.lib
+      sha256: 38b7ab7698deed078accc7ff29859963108c0f0a05f2c6d127ea9db801a541bb
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/IrfNmosFet.lib
+      sha256: e34cb81ed38fc5228d4544f69c106f994942a5a06965064598fe10f739a57b37
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf250.spi
+      sha256: a6f3187ed8e4ba5c8cb2f1030b1b5c16b6666b89372c001f627c8fe6fa8575af
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/Ltc/lt1843/irf_mosfet.lib
+      sha256: 32493c0a135172116748fc862a7eca6f4488bf34d1a22a56d288645e832e84f7
+  - source: ltwiki
+    name: irf250
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/Ltc/3phase PFC using LT1249/Irf nmosfet.lib
+      sha256: 38b7ab7698deed078accc7ff29859963108c0f0a05f2c6d127ea9db801a541bb
+  - source: kicad-spice-library
+    name: irf250_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+  - source: kicad-spice-library
+    name: IRF250M
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+- source: microcap12
+  name: IRF250
+  def: model
+  hash: ff4df5dd64639074dad780d83f72a36dcfd456ca
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/mpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f3a8113e6ad33c866f8d396d65b1d1e98d8b1d17ebaf3390dd611a3181d4fd37
+    lines:
+      IRF250: [236, 240]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRF250
+  def: model
+  hash: f62d53c012d817df16d392f98408af515b337e0b
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF250: [860, 863]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF250
+  def: subckt
+  hash: 6ba64ca63ec1c9256678a72dfbcd149f92e1006f
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS.LIB
+    sha256: 3a158ee63ad9816d8dcdc0cad0827d2f4646c66b6296d7bbcd2c28d49bf1d219
+    lines:
+      IRF250: [1304, 1324]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: irf250_IR
+  def: subckt
+  hash: 0bc3cf21fdffd527b9104a412b05193b9d289749
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+    sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+    lines:
+      irf250_IR: [2246, 2305]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRF250M
+  def: subckt
+  hash: 0bc3cf21fdffd527b9104a412b05193b9d289749
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRF250M: [1348, 1393]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

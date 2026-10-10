@@ -1,0 +1,239 @@
+part: 1N4735
+kind: zener
+priority: 4
+models:
+- source: onsemi
+  name: D1N4735A
+  def: subckt
+  hash: 548e681e177d281a73ed0d4c520f0f9151dc0553
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/1n4735a%20(spice%20model).lib
+    sha256: e8fc30028a1f91a4229ff6bffbec13f256dc0eb5f417f49b32c27fb713d299cd
+    lines:
+      D1N4735A: [6, 23]
+    fetched: '2026-09-19'
+    note: '1N4735A (Spice Model): D1N4735A, MDD1, MDR, MDD2, MDRBV'
+  note: pins from default order (unverified)
+- source: onsemi
+  name: D1N4735
+  def: model
+  hash: 9d16c0d37a4e176ccc8e23e9a570892d4f59944c
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    member: NCV887x_WEB MODEL rev2/diode.lib
+    archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
+    sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+    lines:
+      D1N4735: [25376, 25378]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 1N4735
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Zener2.txt
+      sha256: 2e0fdc403dadd3e234e6b722d8c0eefa14c22ecac0fcb958bee7403f858faa34
+  - source: kicad-spice-library
+    name: D1N4735
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+      sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+  - source: ltwiki
+    name: D1N4735
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/diode.lib
+      sha256: 3312e896de50ad3b983aacc61fb142ca5ef79f0824d6bc9427974e94d4c93c7a
+  - source: microcap12
+    name: D1N4735
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: D1N4735
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      member: NCV887x_WEB MODEL rev2/diode.lib
+      sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: microcap12
+  name: 1N4735A
+  def: subckt
+  hash: 5f3ac28595432bc07e6489529ba5eb2b68645df3
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      1N4735A: [367, 387]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: 1N4735A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/1N4735A.PRM
+      sha256: 3f6ad88b70ee30a4278a1213afefeb80165e98c3d1150847eef24d5cac4ee6cf
+- source: ltwiki
+  name: 1N4735A
+  def: subckt
+  hash: 062a481441ea85d4752c0dd80d176a50a1af5851
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - DF
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Zener_DiodesInc.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 44998eb950913c32209f9f24b702e8290a29c0ec6ee2e81d3a34388e40a89406
+    lines:
+      1N4735A: [71, 78]
+      DF: [6016, 6016]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: 1N4735A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+  - source: kicad-spice-library
+    name: 1N4735A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+  - source: ltwiki
+    name: 1N4735A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+- source: spice-model-cd
+  name: D1N4735A
+  def: subckt
+  hash: 1b90ce714e7d304c2992f88a99ce852b7f09eda1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/ZENER.LB
+    sha256: 304e2ababc567483e0e387fdba860dac263b00f29acbc7966994954c43804f7f
+    lines:
+      D1N4735A: [747, 754]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: 1N4735
+  def: model
+  hash: bfe4c48610eee7ee26ddde9d9e34ddd956bc7c9d
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/mzener_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 6b7a2c2666d2b9a978e58fb22a2ff7ad608771adfd274f58efadb88cfa7dc9cd
+    lines:
+      1N4735: [609, 610]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: D1N4735
+  def: model
+  hash: 4d058548b88e1bfca581522f4deefda26a2ee7d0
+  type: D
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/diodes/zener.mod
+    sha256: 53758db14bf58c6f53e5655b57def938fd7ebbaee865e81ef7ad3ba689a7f192
+    lines:
+      D1N4735: [116, 117]
+    fetched: '2026-09-14'
+    note: 77 .model
+- source: groups-io
+  name: 1N4735
+  def: model
+  hash: aae77c36c2435dbfd18a7dcd518338d79ccc91a6
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      1N4735: [4417, 4417]
+    fetched: '2026-10-10'
+- source: ltwiki
+  name: 1N4735A
+  def: subckt
+  hash: 83e8ff624f6755e947d04606ebd7f526243012b5
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Diodos/Zener/1n4736.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 6b064772cdb842752fbacda9b8ae1d3c027c309b96d076cc76c3f45701ee7f13
+    lines:
+      1N4735A: [42, 62]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: 1N4735A
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Diodos/Zener/1n4736.sub
+      sha256: 6b064772cdb842752fbacda9b8ae1d3c027c309b96d076cc76c3f45701ee7f13
+- source: bordodynov
+  name: 1N4735
+  def: model
+  hash: 1cb25b9ace16ea257dd93d4bb00b3c9fbe1d1e7a
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      1N4735: [1818, 1818]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: 1N4735
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: 1N4735
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: 1N4735
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

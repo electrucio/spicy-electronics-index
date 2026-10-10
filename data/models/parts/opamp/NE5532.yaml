@@ -1,0 +1,119 @@
+part: NE5532
+kind: opamp
+priority: 1
+models:
+- source: bordodynov
+  name: NE5532TI_SN
+  def: subckt
+  hash: 22a5ef53d3343a6fdb8fe66cb2f18844071b848b
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/OpAmp_Nazar_Shtybel.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+    lines:
+      NE5532TI_SN: [1498, 1619]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov-qspice
+    name: NE5532TI_SN
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/Opamp/NE5532TI.qsym
+      sha256: 58442b7019e50bf9dfc847c2aa90db77aacccdc173bcac49fad5caa4e2525f34
+  - source: bordodynov-qspice
+    name: NE5532TI_SN
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/Opamp/NE5532TI.qsym
+      sha256: 58442b7019e50bf9dfc847c2aa90db77aacccdc173bcac49fad5caa4e2525f34
+  - source: ltwiki
+    name: NE5532TI_SN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_Nazar_Shtybel.lib
+      sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+  - source: ltwiki
+    name: NE5532TI_SN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_Nazar_Shtybel.lib
+      sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+- source: ltwiki
+  name: NE5532
+  def: subckt
+  hash: b2fc8682a5c9e6a1f1733ce60afa1b35148a9574
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/TI/NE553x.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 7b937dff803cc78a682d8e71deed484d90f657584406f255beec85b67fd697f8
+    lines:
+      NE5532: [62, 96]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/TI/NE5532.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 691281b9dd2a18daadae68d1ae4b562709d88302159a5bad9f3fa30b49caa0cd
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: NE5532
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NE553x.lib
+      sha256: 7b937dff803cc78a682d8e71deed484d90f657584406f255beec85b67fd697f8
+- source: bordodynov
+  name: NE5532
+  def: subckt
+  hash: d13968cde1649a9365b9d2d29656d7416a6d2e71
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/NE553x.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0b90f4ac73ed328341114e02953781ab5106be95fb2e65cc4ff6535bd0e08564
+    lines:
+      NE5532: [64, 101]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/NE5532.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: db18bc7971f18ba5345623130b97a1b4d4a4dd858d83b3c0c066d6ccdd6f5906
+  note: pins from comment words
+  copies:
+  - source: ltwiki
+    name: NE5532
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NE553x.lib
+      sha256: 0b90f4ac73ed328341114e02953781ab5106be95fb2e65cc4ff6535bd0e08564
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/ne5532.pdf
+  maker: Texas Instruments
+  doc: SLOS075J, rev. J, Jan 2015 (classic spec; tables 7.5, 7.6)

@@ -1,0 +1,49 @@
+part: EF40
+kind: tube
+priority: 3
+group: audio_docs
+models:
+- source: suusi-tubes
+  name: EF40
+  def: subckt
+  hash: bb6315258da169d4f03fa79d055fd5dfea0fe29d
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  - EF86
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EF40: [1710, 1714]
+      EF86: [1808, 1812]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: groups-io
+  name: EF40
+  def: subckt
+  hash: 34a9a7a148661f734d5b0cbf99a3dcef1cf88220
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  - EF86
+  - EF806
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      EF40: [1574, 1578]
+      EF806: [1616, 1620]
+      EF86: [1602, 1606]
+      PENTODE1: [2373, 2386]
+    fetched: '2026-10-09'

@@ -1,0 +1,100 @@
+part: PF5102
+kind: jfet
+priority: 3
+group: audio_docs
+models:
+- source: interfet
+  name: PF5102-GEN
+  def: model
+  hash: 058df42652ef23bdea2632063602019f3ef552e9
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      PF5102-GEN: [550, 550]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: microcap12
+  name: PF5102
+  def: model
+  hash: 07855e658ab86bdb424445003e7d0c120c3354a9
+  type: NJF
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/jfet.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: da01b606f4ee2c390ba6c0cac218a9ffa5bf9c45d404fcc5deda34e1ec837a62
+    lines:
+      PF5102: [723, 724]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PF5102
+  def: model
+  hash: 894b11bddbe89cc4ff45062d9d99205f8e37e0d2
+  type: NJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      PF5102: [906, 906]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: PF5102
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: PF5102
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: PF5102
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: PF5102
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: PF5102
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: PF5102
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: PF5102
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+- source: ltwiki
+  name: PF5102
+  def: model
+  hash: 46d2a8e8f645047f922d880d97d9f2d728d49bff
+  type: NJF
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jfet.lib
+    sha256: aef97ee6dd81ee2b11feabe7d88ff256a613f7a10f89b82d1b7f2ca49b772ab7
+    lines:
+      PF5102: [2250, 2253]
+    fetched: '2026-09-21'

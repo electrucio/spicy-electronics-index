@@ -1,0 +1,256 @@
+part: EZ81
+kind: tube
+priority: 2
+group: rectifier
+models:
+- source: ayumi
+  name: 6CA4
+  def: subckt
+  hash: cc3048cfad1cf59c70da6581ee5b3e73e8d26d03
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6CA4.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 5f3affe54d55184843618171018f401e07d4054e1fdcea9fd5a25ccab67b25c7
+    lines:
+      6CA4: [5, 7]
+    fetched: '2026-09-14'
+  note: found under the alias 6CA4; pins from names
+- source: suusi-tubes
+  name: EZ81
+  def: subckt
+  hash: 274866bbe2fc65cd89ef607dac57612bbb373e0d
+  type: SUBCKT
+  pins:
+  - A1
+  - A2
+  - C
+  deps:
+  - DULEREC
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      DULEREC: [2089, 2092]
+      EZ81: [879, 882]
+    fetched: '2026-09-14'
+    note: Suusi Malcolm-Brown extended Koren library, 285 subckts, 20-Apr-2014 (LTspice)
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: EZ81
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+  - source: ltwiki
+    name: EZ81
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: suusi-tubes
+  name: EZ81
+  def: subckt
+  hash: ecbdeb57e689f8de2cf130d596e20cda99db2ecd
+  type: SUBCKT
+  pins:
+  - A1
+  - A2
+  - C
+  deps:
+  - RECP2
+  - DULERECP2
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      DULERECP2: [3013, 3016]
+      EZ81: [191, 194]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: suusi-tubes
+  name: 6CA4
+  def: subckt
+  hash: 6f3b7dda00f3a8040672b764faff45b8bfb119ce
+  type: SUBCKT
+  pins:
+  - A1
+  - A2
+  - C
+  deps:
+  - RECP2
+  - DULERECP2
+  - EZ81
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6CA4: [87, 90]
+      DULERECP2: [3013, 3016]
+      EZ81: [191, 194]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+  note: found under the alias 6CA4; pins from inline comment
+- source: bordodynov
+  name: 6CA4
+  def: subckt
+  hash: eddd9a962b96d54c8d6bab3128cba23b72d4eefb
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      6CA4: [110, 112]
+    fetched: '2026-09-21'
+  note: found under the alias 6CA4; pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: 6CA4
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: ltwiki
+    name: 6CA4
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+- source: groups-io
+  name: EZ81
+  def: subckt
+  hash: 7987e8658768c9bdbb1ec422a3bfd701b0308188
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      DULERECP2: [2530, 2540]
+      EZ81: [258, 261]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: 6CA4
+  def: subckt
+  hash: 5a5aa40ce100b59e5489266c15d3c05661e8f2af
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  - EZ81
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      6CA4: [168, 171]
+      DULERECP2: [2530, 2540]
+      EZ81: [258, 261]
+    fetched: '2026-10-09'
+  note: found under the alias 6CA4
+- source: bordodynov
+  name: EZ81
+  def: subckt
+  hash: 3735400c52be07e4a935747d929062acf6b54dd7
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      EZ81: [623, 630]
+    fetched: '2026-09-14'
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: EZ81
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: bordodynov
+  name: EZ81
+  def: subckt
+  hash: 26a9f5c2594e0a61a1af450ada117b83fe270244
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  deps:
+  - VRECTIFIER
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/vrectifier.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 6f39b4729541ad16b04e62a45667127a910029cc5c095d49dc8622ca11a85443
+    lines:
+      EZ81: [79, 84]
+      VRECTIFIER: [19, 35]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: EZ81
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/vrectifier.txt
+      sha256: 6f39b4729541ad16b04e62a45667127a910029cc5c095d49dc8622ca11a85443
+- source: bordodynov
+  name: 6CA4
+  def: subckt
+  hash: 1f299b2b042319b3d684df560d1d5430d571f102
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      6CA4: [611, 618]
+    fetched: '2026-09-14'
+  note: found under the alias 6CA4; pins from names
+  copies:
+  - source: ltwiki
+    name: 6CA4
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+datasheet:
+  url: https://frank.pocnet.net/sheets/030/e/EZ81.pdf
+  maker: Philips
+  doc: 938 4321/4322 + sheets A-E
+  date: '1960-05-05'

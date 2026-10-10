@@ -1,0 +1,268 @@
+part: BC337-25
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: spice-model-cd
+  name: QBC337-25
+  def: model
+  hash: 589ec8e9c1f582b114ea49c9c6edec24fea92d94
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC337-25.lib
+    sha256: cbc88b19db538e280e50f4b2d1c97e6c7a16edd84eb6be1d070a0f0912777bef
+    lines:
+      QBC337-25: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: QBC337-25
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC337-25.PRM
+      sha256: cbc88b19db538e280e50f4b2d1c97e6c7a16edd84eb6be1d070a0f0912777bef
+  - source: kicad-spice-library
+    name: QBC337-25/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC337-25/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+- source: spice-model-cd
+  name: BC337-25
+  def: model
+  hash: b18662a4a169bbb4547c4364d135057d547aef4d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BIPOLAR.LB
+    sha256: bc06e66b73b3f9efd1d6681dcf3667599ed3205c8775c71f528f6c3cb22af447
+    lines:
+      BC337-25: [66, 69]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC337_25
+  def: model
+  hash: 74d87a54343a56a165224976d236920fe4533e9e
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC337_25: [1381, 1384]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BC337-25
+  def: model
+  hash: 6b2554c7529572b94334bfca84ad7b645f4dc3ee
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+    lines:
+      BC337-25: [39, 39]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: bordodynov
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: bordodynov-qspice
+    name: BC337-25
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/KT-Cordell models.txt
+      sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+  - source: kicad-spice-library
+    name: BC337-25
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BC337-25
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: kicad-spice-library
+    name: BC337-25
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groups-io
+  name: BC337-25
+  def: model
+  hash: 2e1bea25528e7179c82c7a289b19c4287e19fbc2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/my_own_npn_pnp_bjt.lib
+    sha256: d97ef82afacbe1a4ce42b30dc83690ef9a3fc4b91215652785b4d0d8e05f7e08
+    lines:
+      BC337-25: [93, 101]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: BC337-25
+  def: model
+  hash: c14c5de0ed6c991bd39616c1709cefba0724101b
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC337-25: [1830, 1830]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: BC337-25
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: groupsio-ltspice
+  name: BC337-25
+  def: model
+  hash: 5ecb9c9c8eeede3fa7541baf339ecfd0e4a14b4c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BC337-25: [374, 374]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BC337-25
+  def: model
+  hash: 3d56987b3840544202e3631d401b28373800b5b6
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/Standard.zip
+    member: Standard/standard.bjt
+    archive_sha256: 97e47470aefa994e7cdf520fc8a8a1d24f9598060b213146903870757a7a4687
+    sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+    lines:
+      BC337-25: [358, 358]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC337-25
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+  - source: kicad-spice-library
+    name: BC337-25
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: BC337-25
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+- source: bordodynov-qspice
+  name: BC337-25
+  def: model
+  hash: f4ee59d781f1fc0aec3cc00387a4702d81c4811d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/bipolar.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 39488a5d05bc9e8639ef14d46055456cb298d497e88eaa170113e153ab076333
+    lines:
+      BC337-25: [74, 77]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: BC337-25
+  def: model
+  hash: d5f76d759e6c03886fe136f2966282f448a1787c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BC337-25: [209, 209]
+    fetched: '2026-09-29'

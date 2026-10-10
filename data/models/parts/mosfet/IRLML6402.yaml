@@ -1,0 +1,98 @@
+part: IRLML6402
+kind: mosfet
+priority: 3
+group: power_vertical
+models:
+- source: microcap12
+  name: irlml6402
+  def: subckt
+  hash: 87075aa111af8e916d1f0e95d4e9bfbea5b47b46
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irlml6402: [59161, 59216]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irlml6402
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irlml6402.spi
+      sha256: 974602da15b5db34496edc8c4438e90f81a4f28e3a1a6ff2c4c438eb8e093a8e
+  - source: bordodynov
+    name: irlml6402
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irlml6402.spi
+      sha256: 974602da15b5db34496edc8c4438e90f81a4f28e3a1a6ff2c4c438eb8e093a8e
+  - source: ltwiki
+    name: irlml6402
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irlml6402.spi
+      sha256: 974602da15b5db34496edc8c4438e90f81a4f28e3a1a6ff2c4c438eb8e093a8e
+  - source: ltwiki
+    name: irlml6402
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irlml6402.spi
+      sha256: 974602da15b5db34496edc8c4438e90f81a4f28e3a1a6ff2c4c438eb8e093a8e
+  - source: ltwiki
+    name: irlml6402
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irlml6402.spi
+      sha256: 974602da15b5db34496edc8c4438e90f81a4f28e3a1a6ff2c4c438eb8e093a8e
+- source: bordodynov
+  name: IRLML6402
+  def: model
+  hash: 093efa781ad7273c547c1303af53f487ac17b3bc
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRLML6402: [1555, 1555]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRLML6402
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: ltwiki
+    name: IRLML6402
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRLML6402
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRLML6402
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRLML6402
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3

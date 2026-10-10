@@ -1,0 +1,33 @@
+part: Winding_LCR
+kind: magnetic-core
+group: non-native
+models:
+- source: bordodynov
+  name: Winding_LCR
+  def: subckt
+  hash: f56db195d3e478f163df79220cbb6edb28e911ff
+  type: SUBCKT
+  deps:
+  - core
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Transformers.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0e1c5cc85ad963aa2767dde6268d39f64d53f061effd16303a6eaec24a9a583f
+    lines:
+      Winding_LCR: [62, 71]
+      core: [83, 88]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/TRANSFORMerAB/Winding_LCR.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 43758700cd24f000cd819a742d7609a30df21061060fa15b9be2b19870c52a8e
+  copies:
+  - source: ltwiki
+    name: Winding_LCR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Transformers.lib
+      sha256: 0e1c5cc85ad963aa2767dde6268d39f64d53f061effd16303a6eaec24a9a583f

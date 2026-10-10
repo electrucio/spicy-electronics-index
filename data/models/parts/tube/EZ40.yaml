@@ -1,0 +1,78 @@
+part: EZ40
+kind: tube
+priority: 3
+group: audio_docs
+models:
+- source: suusi-tubes
+  name: EZ40
+  def: subckt
+  hash: f39ee1d1d6ef9c9007f7533950a046c80be408d0
+  type: SUBCKT
+  pins:
+  - A1
+  - A2
+  - C
+  deps:
+  - DULEREC
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      DULEREC: [2089, 2092]
+      EZ40: [867, 870]
+    fetched: '2026-09-14'
+    note: Suusi Malcolm-Brown extended Koren library, 285 subckts, 20-Apr-2014 (LTspice)
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: EZ40
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+  - source: ltwiki
+    name: EZ40
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: suusi-tubes
+  name: EZ40
+  def: subckt
+  hash: 99837f8a0acec69e80568f73fddacd9e95d167bb
+  type: SUBCKT
+  pins:
+  - A1
+  - A2
+  - C
+  deps:
+  - RECP2
+  - DULERECP2
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      DULERECP2: [3013, 3016]
+      EZ40: [173, 176]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: groups-io
+  name: EZ40
+  def: subckt
+  hash: 0b796d7602a046db3508a412e61c08af4bdb0de9
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      DULERECP2: [2530, 2540]
+      EZ40: [240, 243]
+    fetched: '2026-10-09'

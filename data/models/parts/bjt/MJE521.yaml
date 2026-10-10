@@ -1,0 +1,67 @@
+part: MJE521
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmje521
+  def: model
+  hash: f52e64c1a9c506c8d4f3f02ee43149fa2d37bbbf
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mje521.lib
+    sha256: 005fb6f15e7518b2f7f07b80462976c725ee75fdcc9973525033d30e0b3282ed
+    lines:
+      Qmje521: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmje521
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mje521
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: groupsio-ltspice
+  name: MJE521
+  def: model
+  hash: b9ca12f952f1d2c196aeb335138bcd5da58b03eb
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJE521: [7787, 7787]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MJE521
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MJE521
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+  - source: groupsio-ltspice
+    name: MJE521K
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MJE521K
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034

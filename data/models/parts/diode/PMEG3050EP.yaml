@@ -1,0 +1,73 @@
+part: PMEG3050EP
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: nexperia
+  name: PMEG3050EP
+  def: subckt
+  hash: 246e126423698aa776465ae74d2f9aedb16b5f9f
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3050EP.txt
+    sha256: 4d2336f3fb90ffb76135d01c2fbf88cd47634c0cc989dfca74652b1319c7a73c
+    lines:
+      PMEG3050EP: [33, 50]
+    fetched: '2026-09-19'
+    note: 'PMEG3050EP: PMEG3050EP, PMEG3050EP'
+  note: pins from comment words
+  copies:
+  - source: microcap12
+    name: PMEG3050EP
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: groupsio-ltspice
+  name: PMEG3050EP
+  def: model
+  hash: b8adeb7a60fdc4e2684732dbaea3db2ffab4b647
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.dio
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+    lines:
+      PMEG3050EP: [173, 173]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: PMEG3050EP
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: PMEG3050EP
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: kicad-spice-library
+    name: PMEG3050EP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: ltwiki
+    name: PMEG3050EP
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: PMEG3050EP
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

@@ -1,0 +1,225 @@
+part: KT90
+kind: tube
+priority: 3
+group: audio_docs
+models:
+- source: suusi-tubes
+  name: KT90
+  def: subckt
+  hash: 9981a6bf8c66eeb10820fdbc4740d618ec2164e8
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      KT90: [2144, 2148]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: bordodynov
+  name: KT90
+  def: subckt
+  hash: e3cebc2cebc09c3594ac639c0b3c16723e84fc04
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  deps:
+  - Igrid
+  - TETRO2
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Rydel_tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+    lines:
+      Igrid: [859, 863]
+      KT90: [682, 692]
+      TETRO2: [828, 842]
+    fetched: '2026-09-21'
+  copies:
+  - source: groups-io
+    name: KT90
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
+      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
+  - source: groups-io
+    name: KT90
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Rydel_tubes.lib
+      sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
+  - source: ltwiki
+    name: KT90
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Rydel_tubes.lib
+      sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+  - source: bordodynov
+    name: KT90RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: KT90RY
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: KT90RY
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: KT90RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: KT90RY
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: KT90RY
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: KT90RY
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+- source: bordodynov
+  name: KT90
+  def: subckt
+  hash: e3cebc2cebc09c3594ac639c0b3c16723e84fc04
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  deps:
+  - Igrid
+  - TETRO2
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Rydel_tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+    lines:
+      Igrid: [859, 863]
+      KT90: [682, 692]
+      TETRO2: [828, 842]
+    fetched: '2026-09-14'
+  note: 'same code also in: ltwiki'
+- source: bordodynov
+  name: KT90TR
+  def: subckt
+  hash: c93c88dc417b3e7f8c92cb463ea76a15d70f96ca
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  deps:
+  - Igrid
+  - TRIO1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Rydel_tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+    lines:
+      Igrid: [859, 863]
+      KT90TR: [695, 704]
+      TRIO1: [796, 798]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: KT90TR
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
+      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
+  - source: groups-io
+    name: KT90TR
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Rydel_tubes.lib
+      sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
+  - source: ltwiki
+    name: KT90TR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Rydel_tubes.lib
+      sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+- source: groups-io
+  name: KT90
+  def: subckt
+  hash: 7cdebda01d97f773ddee7d99e18e2e4b6aa049cf
+  type: SUBCKT
+  deps:
+  - Igrid
+  - TETRO2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
+    sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+    lines:
+      Igrid: [614, 619]
+      KT90: [42, 50]
+      TETRO2: [587, 600]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: KT90
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/lampes.lib
+      sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
+- source: groups-io
+  name: KT90TR
+  def: subckt
+  hash: 664795c9f3af8ac34f5139104793270f52cfffb4
+  type: SUBCKT
+  deps:
+  - Igrid
+  - TRIO1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
+    sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+    lines:
+      Igrid: [614, 619]
+      KT90TR: [400, 408]
+      TRIO1: [557, 560]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: KT90TR
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/lampes.lib
+      sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e

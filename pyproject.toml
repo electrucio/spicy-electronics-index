@@ -1,0 +1,60 @@
+[project]
+name = "spicy-electronics-index"
+version = "0.0.1"
+description = "Non-commercial database for analog-audio electronics: schematic references by part number, SPICE models, datasheets and model verification."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "PolyForm-Noncommercial-1.0.0" }
+dependencies = [
+    "lhafile>=0.3.1",
+    "pyyaml>=6",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+# `sei schematics ocr` reads documents: PyMuPDF renders and gives the text layer, Pillow opens the
+# TIFFs MuPDF cannot. The OCR engine itself (paddleocr, paddlepaddle-gpu) is not here on purpose —
+# it is CUDA-bound and belongs in the container, `docker/ocr.Dockerfile`. Without it this still reads
+# every page that has a text layer. Install with `uv sync --extra ocr`.
+ocr = ["pymupdf>=1.24", "pillow>=10", "numpy>=1.26"]
+# `sei parts benchmark --build` and `sei parts judge` ask a model to label a vocabulary once, and
+# commit what it said. Nothing the site serves goes near it. Install with `uv sync --extra llm`.
+llm = ["openai>=1.40"]
+# `sei models seal` encrypts the model text the site shows its maintainer (AES-GCM); only the
+# maintainer runs it, and the site opens it with the browser's own WebCrypto. `uv sync --extra seal`.
+seal = ["cryptography>=42"]
+
+[project.scripts]
+sei = "spicy_electronics_index.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.urls]
+Repository = "https://github.com/electrucio/spicy-electronics-index"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spicy_electronics_index"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+extend-exclude = ["private_web_spice_models", "private_material"]
+
+[tool.ruff.lint]
+# Real problems (pyflakes) and import hygiene, not style preferences: much of this code is a
+# deliberate verbatim port and is not reformatted until a golden test covers it (CLAUDE.md rule 7).
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/core/test_parts.py" = ["E731"]   # verbatim port; kept comparable to its original
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Two areas may name a test after the same stage — tests/models/test_verify.py and
+# tests/schematics/test_verify.py — and the default import mode cannot hold both.
+addopts = "--import-mode=importlib"

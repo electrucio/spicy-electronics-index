@@ -1,0 +1,47 @@
+part: PESD1CAN
+kind: diode
+priority: 3
+group: tvs
+models:
+- source: nexperia
+  name: PESD1CAN
+  def: subckt
+  hash: 070a021b0b75e5f4cde06bd02e471c515d9373ad
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD1CAN.txt
+    sha256: 7b91dbc46cb7a48ebc58cbb86851cb39b3ea52ddbaa2f85a79e4b5d16798ba58
+    lines:
+      PESD1CAN: [33, 65]
+    fetched: '2026-09-19'
+    note: 'PESD1CAN: PESD1CAN, DIODE1, DIODE2'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: PESD1CAN
+  def: subckt
+  hash: e646037ee570047925bf8e9c869bcd610a35508f
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      PESD1CAN: [2640, 2657]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PESD1CAN
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD1CAN.PRM
+      sha256: f9ee849849b4037154f48896c0364a3e8fa28fc8b016988ad42d3e7c969ca8f2

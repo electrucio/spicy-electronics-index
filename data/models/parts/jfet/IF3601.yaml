@@ -1,0 +1,48 @@
+part: IF3601
+kind: jfet
+priority: 3
+group: n_channel
+models:
+- source: interfet
+  name: IF3601-M
+  def: model
+  hash: 8768cdb3fb7f4ec8750e34564253aec326b2b853
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      IF3601-M: [867, 867]
+    fetched: '2026-09-21'
+- source: interfet
+  name: IF3601-H
+  def: model
+  hash: f6c8d52cc29f9f1dcb11a935ea995744501ac381
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      IF3601-H: [868, 868]
+    fetched: '2026-09-21'
+- source: qspice
+  name: IF3601
+  def: model
+  hash: aa7c692d80d574c365e1681acd2344b9ef6271f1
+  type: NJF
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NJF.txt
+    sha256: 1eecb317d294dfd7730c4f9070b7f3da9fc4938412714089b87d1948f46fc741
+    lines:
+      IF3601: [152, 152]
+  copies:
+  - source: bordodynov-qspice
+    name: IF3601
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NJF.txt
+      sha256: 1eecb317d294dfd7730c4f9070b7f3da9fc4938412714089b87d1948f46fc741

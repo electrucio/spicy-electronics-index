@@ -1,0 +1,89 @@
+part: IRLD024
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: spice-model-cd
+  name: IRLD024
+  def: subckt
+  hash: a9e4dbd09308b3660196b80bf5199bc7e1664e51
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRLD024: [1106, 1113]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: IRLD024
+  def: model
+  hash: 057a85a0aac2bc1f5e68b8cc2c1b7e678132145b
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      IRLD024: [1186, 1186]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRLD024
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: IRLD024
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRLD024
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRLD024
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRLD024
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRLD024
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRLD024
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: kicad-spice-library
+  name: IRLD024
+  def: subckt
+  hash: 7bf5695f1c23303254ecb38497c9d9f6f3275cb6
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRLD024: [5518, 5540]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

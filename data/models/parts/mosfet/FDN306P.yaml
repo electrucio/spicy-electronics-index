@@ -1,0 +1,40 @@
+part: FDN306P
+kind: mosfet
+priority: 4
+group: small_signal
+models:
+- source: onsemi
+  name: FDN306P
+  def: subckt
+  hash: 7050851b8395daf47f325705c72079e56a02eaf1
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/fdn306p.lib
+    sha256: 9cdc783f653e02c8a578f06bc479f992b34f9f95a0342f93c144bf66624f1554
+    lines:
+      FDN306P: [3, 43]
+    fetched: '2026-09-19'
+    note: 'FDN306P: FDN306P, RbreakMOD, DbodyMOD, DbreakMOD, RdrainMOD, M_MOD'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: FDN306P
+  def: subckt
+  hash: bc770ce32b61fa3452fece3b117dd373d9a6fd56
+  type: SUBCKT
+  deps:
+  - pmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FDN306P: [100727, 100767]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'

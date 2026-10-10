@@ -1,0 +1,63 @@
+part: DTC115E
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: onsemi
+  name: DTC115EE_npn
+  def: subckt
+  hash: 76c4761f37aa048f2d06f0379e377e544069d6b2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/dtc115ee.lib
+    sha256: 0c70e35b234444e3ecc509f99c2d08f2f37a502cb487ee471220cb49aab133ed
+    lines:
+      DTC115EE_npn: [3, 33]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: DTC115EE_npn
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: DTC115EE
+  def: subckt
+  hash: f9a7063e91205d6e1c1ee5c2ae891f1d8f0d21ab
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Rohm_Transistor.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    lines:
+      DTC115EE: [32891, 32925]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: DTC115EEB
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTC115EKA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTC115EM
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTC115EUA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e

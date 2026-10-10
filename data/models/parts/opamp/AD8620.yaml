@@ -1,0 +1,48 @@
+part: AD8620
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8620
+  def: subckt
+  hash: ed495d6cf492a6cbee34b2925708bfcba5acaa5c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8620.cir
+    sha256: 76dbda0c576b36dc25458add4177ce93f02f5fac099851f4a16f40f57663a6f5
+    lines:
+      AD8620: [33, 138]
+    fetched: '2026-09-20'
+- source: ltwiki
+  name: AD8610
+  def: subckt
+  hash: 21d6e528f9b4037f9f95b789d19c7654467ea514
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad8610.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: dc7f9394e3f96ac3e02fe90d4bf6216d206f05539d480668d24c49ba68c6758c
+    lines:
+      AD8610: [19, 126]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD8610.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 09ebf500a6ecdba2bcec625c6b7b5aa29a1137088c31e9f974b00ccf80d503bc
+  note: 'STAND-IN: model of AD8610, not of AD8620; equivalence declared in catalog/wanted.yaml (see its
+    note); pins from comment words'
+datasheet:
+  url: https://www.analog.com/media/en/technical-documentation/data-sheets/ad8610_8620.pdf
+  maker: Analog Devices
+  doc: AD8610/AD8620 Data Sheet, Rev. F
+  date: 2008-05

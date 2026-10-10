@@ -1,0 +1,592 @@
+part: MJE15033
+kind: bjt
+priority: 1
+group: driver_vas
+models:
+- source: onsemi
+  name: Qmje15033
+  def: model
+  hash: 317172da1ac56f140b6cae47f7cae18ba5e021af
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mje15033.lib
+    sha256: 0b17869b05c7a4d004753960c4d4eecb21501f674ec80ceb72bc52935491d56c
+    lines:
+      Qmje15033: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: Qmje15033
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/KT-Cordell models.txt
+      sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+  - source: kicad-spice-library
+    name: mje15033
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_powbjt.lib
+      sha256: 88828d7a2e59690284185f63603712cda84ab642abd65fee1f239a7aca6f38bb
+  - source: ltwiki
+    name: mje15033
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: Qmje15033
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: microcap12
+    name: mje15033
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_powbjt.lib
+      sha256: fca3b3421fa8e11f35bf81024e0fca7fc3b0d6644ab70ac81827475a47168548
+  - source: microcap12
+    name: Qmje15033
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: spice-model-cd
+    name: Qmje15033
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/PowerBJT/MJE15033.LIB
+      sha256: bbfcf152ef29f88f7d6c59f8009ef818bfa3a90055b50d3918c89765e5702d80
+- source: cordell
+  name: MJE15033C
+  def: model
+  hash: ba84c52768d39d71b57e53a78a764804ad40dab0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Install-Test.zip
+    member: Install Test/Cordell Models.txt
+    archive_sha256: 332b487564a6c8eca0f8a1db26ec86109b450af5e75278e32556ad000f9bcd77
+    sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+    lines:
+      MJE15033C: [155, 165]
+    fetched: '2026-09-14'
+    note: Cordell Models 12/07/2010 (older version bundled in zip; RB=10 in small-signal BJTs)
+  copies:
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Gummel Plot/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Step/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Transfer/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/gm vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: MJE15033C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: kicad-spice-library
+    name: MJE15033C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: MJE15033C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: MJE15033C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: MJE15033C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+- source: cordell
+  name: MJE15033C
+  def: model
+  hash: 9181176e54fab76c6c4b10c2a6f342c542550f75
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Cordell-Models.txt
+    sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+    lines:
+      MJE15033C: [323, 333]
+    fetched: '2026-09-14'
+    note: 'Cordell Models 04/20/2011 (current site file, HTTP Last-Modified 2024-09-15): 63 .model (BJT
+      GP, NJF, VDMOS, D)'
+  copies:
+  - source: bordodynov-qspice
+    name: MJE15033C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: groupsio-ltspice
+    name: MJE15033c
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: ltwiki
+    name: MJE15033c
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: groupsio-ltspice
+    name: MJE15033_CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: bordodynov-qspice
+  name: MJE15033_C
+  def: model
+  hash: 6fa6d4748b1d5c5c70e7bdbe6f4485f82ea4a6c2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      MJE15033_C: [88, 88]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: MJE15033_A
+  def: model
+  hash: 9a6f3225e512f6402411075fd884357252fc34a5
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      MJE15033_A: [89, 89]
+    fetched: '2026-09-29'
+- source: diyaudio
+  name: MJE15033
+  def: model
+  hash: 89e2f8664a1bc2e08ccb2b7ab95b47c9a733be7d
+  type: PNP
+  deps:
+  - TF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+    lines:
+      MJE15033: [675, 685]
+      TF: [1854, 1897]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: MJE15033_A
+  def: model
+  hash: c13edb48be3964f579e1680b1d6794f94f913f02
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MJE15033_A: [1142, 1142]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MJE15033_A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: MJE15033_A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MJE15033_A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJE15033_A
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MJE15033_A
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groupsio-ltspice
+  name: MJE15033_C
+  def: model
+  hash: 8571910f8a78e27431b0950782a84fbd948b4f6c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MJE15033_C: [1141, 1141]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: MJE15033_C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MJE15033_C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: groupsio-ltspice
+  name: Qmje15033
+  def: model
+  hash: d43a6b1406a55e832728a22a3ef8332ef4431cc6
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      Qmje15033: [849, 849]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: Qmje15033
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: Qmje15033
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: Qmje15033
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: Qmje15033
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: Qmje15033
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: Qmje15033
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: Qmje15033
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: Qmje15033
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: Qmje15033
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MJE15033
+  def: model
+  hash: 8f21c3f781d4a72368dbf0d0747c9799b39dd761
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJE15033: [3291, 3291]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: MJE15033_C
+  def: model
+  hash: 7ab5790655722f0dbb69539a7fd89bb3c8d1f696
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MJE15033_C: [1173, 1173]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MJE15033_C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJE15033_C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: MJE15033c
+  def: model
+  hash: 929acc2ab6a59e48402bda3cc8eafeba73f5ec19
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MJE15033c: [1375, 1375]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MJE15033c
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJE15033c
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: MJE15033c
+  def: model
+  hash: 906c90b0c341b2176d4c888099f2ddcab4259847
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      MJE15033c: [532, 532]
+    fetched: '2026-09-29'
+  copies:
+  - source: kicad-spice-library
+    name: MJE15033c
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+- source: bordodynov-qspice
+  name: MJE15033_C
+  def: model
+  hash: 58dda0cc207013c2231a9b360518062838087009
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      MJE15033_C: [453, 453]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: MJE15033_A
+  def: model
+  hash: e7cbeffea7421ee427829203548158633abc5b62
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      MJE15033_A: [454, 454]
+    fetched: '2026-09-29'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mje15032-d.pdf
+  maker: onsemi
+  doc: MJE15032/D Rev. 7 (December 2024)

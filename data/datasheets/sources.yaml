@@ -1,0 +1,555 @@
+# Where a part's data sheet is catalogued by the manufacturer that publishes it, and what the catalogue
+# page says about the part in the manufacturer's own terms: the category it files the part under, its
+# production status, and the title and revision of the data sheet. `sei datasheets register` reads
+# them into data/datasheets/datasheets.csv, facts and links only — the page's own prose stays on the page.
+#
+# Only parts this index already holds are asked for: the census says which parts a catalogue lists, the
+# index says which of those anybody printed, and asking for the other sixteen thousand would cost the
+# manufacturer's server without telling a reader anything.
+# status: proposed | active | paused | blocked
+ti_products:
+  maker: texas-instruments
+  census: ti_datasheets
+  page: 'https://www.ti.com/product/{part}'
+  status: active
+  delay: 1.5
+  keep: 250_000                 # the data sheet link sits 60-100 KB into a long page (ATL431: 61.5 KB)
+  notes: 'robots.txt allows /product/ with Crawl-delay 1; read on 2026-09-27 at one page every 1.5 s.
+    A product page carries its category, status and part number in meta tags and the data sheet as a
+    link whose text is its title and revision. A part TI no longer has a page for answers 404 and is
+    recorded as such.'
+renesas_products:
+  maker: renesas
+  census: renesas_products
+  page: 'https://www.renesas.com/en/products/{lower}'
+  status: paused
+  keep: 0                      # the status and breadcrumb sit 225 KB into the page: keep all of it
+  notes: 'robots.txt allows ClaudeBot and anthropic-ai by name, with no crawl delay; read at the default
+    one page every three seconds. The product page gives the breadcrumb (its last step is the category),
+    a status label, the product''s title and the data sheet link — named only "Datasheet", so the data
+    sheet has no title of its own here and the product''s title is kept as the name.
+    Paused 2026-09-27: every page, the first included, answers 429 with cf-mitigated: challenge — a
+    Cloudflare bot challenge, not a complaint about pace. Try again later; never solve it.'
+onsemi_docs:
+  kind: document sitemap
+  maker: onsemi
+  sitemaps:
+    - https://www.onsemi.com/sitemap_com_documents_1.xml
+    - https://www.onsemi.com/sitemap_com_documents_2.xml
+    - https://www.onsemi.com/sitemap_com_documents_3.xml
+    - https://www.onsemi.com/sitemap_com_documents_4.xml
+  keep: '/download/data-sheet/pdf/'
+  strip: '-d$'                   # bc546-d.pdf is the sheet whose first part is BC546
+  status: active
+  delay: 10                      # robots.txt: Crawl-delay 10
+  notes: 'The document sitemaps list 6,449 data sheets (and application notes, which are not read here).
+    robots.txt allows /download/ and asks for ten seconds between requests. A sheet''s file name is its
+    first part; the sheet says which others it covers.'
+nxp_docs:
+  kind: document sitemap
+  maker: nxp
+  sitemaps:
+    - https://www.nxp.com/sitemaps/sitemap_en_collateral.xml.gz
+  keep: '/docs/en/data-sheet/'
+  status: active
+  delay: 3
+  notes: 'The collateral sitemap lists 4,707 data sheets under /docs/en/data-sheet/, named after their
+    first part. robots.txt allows them and names no delay; read at the default three seconds.'
+that_datasheets:
+  kind: document page
+  maker: that
+  pages:
+    - https://thatcorp.com/ic-product-datasheets/
+    - https://thatcorp.com/archived-datasheets/
+  keep: '/datashts/[^/]+\.pdf$'
+  all: true                      # 34 sheets: read them all
+  strip: '^THAT_|_Datasheet$|data$'
+  split: '[_-]'                  # THAT_1606-1646 is first the 1606
+  prefix: THAT                   # the sheets write "THAT 1646" and "1646"; the index, THAT1646
+  series: 3                      # the 1240 series is 1240, 1243, 1246; the 1250 is another product
+  own_only: true                 # a sheet names the parts it pairs with (1570 -> 1510) on its first page
+  status: active
+  delay: 3
+  notes: 'robots.txt allows everything. Two pages, current and archived data sheets, link every sheet
+    under /datashts/ (34 on 2026-09-27).'
+jj_datasheets:
+  kind: document page
+  maker: jj-electronic
+  pages:
+    - https://www.jj-electronic.com/en/download
+  keep: '/images/stories/product/(preamplifying|power|rectifying)_tubes/.+\.pdf$'
+  all: true                      # 36 tube sheets; the capacitor catalogues and amplifier manuals are left
+  own_only: true                 # a tube sheet covers the types in its file name (el34_e34l) and no other
+  status: active
+  delay: 3
+  notes: 'robots.txt disallows only the Joomla system folders. The download page links every tube sheet;
+    a sheet names its type and, for EL34/E34L, both.'
+linearsystems_datasheets:
+  kind: product pages
+  maker: linear-systems
+  sitemaps:
+    - https://www.linearsystems.com/sitemap.xml
+  sitemaps_keep: 'dynamic-(jfet|bipolar|mosfets|dmos|currentregulating|lowleakage|voltagecontrolled|bifet)'
+  pages_keep: 'linearsystems\.com/[a-z-]+/[a-z0-9-]+$'
+  sheet_link: '<a [^>]*href="(https://www\.linearsystems\.com/_files/ugd/[^"]+\.pdf)"[^>]*aria-label="Datasheet"'
+  title_strip: '\s*(Series)?\s*(\|.*)?$'
+  keep: '/_files/ugd/[^/]+\.pdf$'
+  all: true                      # about 70 products
+  own_only: true                 # the LSK489 sheet names the LSK389 to compare with it
+  titles: false                  # the PDF title fields are copied from other sheets (LS350's says ID100)
+  status: active
+  delay: 3
+  notes: 'A Wix site: robots.txt allows everything but lightboxes. The product-collection sitemaps name
+    each product page; the page links its data sheet as the button labelled "Datasheet" (its SPICE model
+    is another PDF button, not taken), and its title names the part. PDF names are hashes.'
+diotec_products:
+  kind: catalogue
+  maker: diotec
+  status: active
+  delay: 3
+  notes: 'robots.txt disallows only the CMS folders. /en/all-products.html links 23 product families;
+    /request/family/<FAM>/products/en is the table each family page draws: the article, its data sheet
+    and its life cycle. A column lists competitors'' names the maker cross-references — not its parts,
+    not read.'
+toshiba_parametric:
+  kind: catalogue
+  maker: toshiba
+  status: active
+  delay: 3
+  notes: 'robots.txt allows /parametric/ and /info/docget.jsp and names no delay. The parametric search
+    page carries its menu (68 tables, 8 of them the not-recommended and discontinued lists); getHeaderData
+    and getRowData give each table. The data sheet is a docget link, which answers with the dated PDF.
+    Parts whose discontinuation is complete (2SC1815) are gone from every table.'
+infineon_tables:
+  kind: catalogue
+  maker: infineon
+  status: active
+  delay: 3
+  notes: 'robots.txt allows *.json and /assets/row/public/, and names no delay. The row sitemap names 930
+    product tables; each family table''s JSON gives its parts, family, ordering-code status and data sheet.
+    Tables built from a collection answer empty.'
+st_wayback:
+  kind: wayback
+  maker: stmicroelectronics
+  prefixes:
+    - www.st.com/resource/en/datasheet/
+  keep: '/resource/en/datasheet/[^/]+\.pdf$'
+  families: true                 # ST files some sheets under the family: l78.pdf, l79l.pdf
+  status: active
+  delay: 10                     # the archive refused connections at one request every 3 s (2026-09-27)
+  notes: 'st.com closes the connection on anything but a browser, so its own address cannot be read. The
+    Internet Archive has captured its data sheet addresses (11,525 on 2026-09-27, 7,344 distinct files);
+    web.archive.org publishes no robots rules and its CDX API is made for this. Each sheet is read from the
+    archived copy; ST''s own address is what is linked, with the copy beside it.'
+adi_wayback:
+  kind: wayback
+  maker: analog-devices
+  prefixes:
+    - www.analog.com/media/en/technical-documentation/data-sheets/
+  keep: '/data-sheets/[^/]+\.pdf$'
+  numbered: [LT, LTC, LTM]       # Linear Technology filed LT1028 as 1028fd.pdf
+  status: active
+  delay: 10                     # the archive refused connections at one request every 3 s (2026-09-27)
+  notes: 'analog.com closes the connection on anything but a browser. The Internet Archive holds 23,224
+    captures under its data sheet folder (17,157 addresses), which covers Linear Technology, Maxim and
+    Hittite sheets too. Linear Technology''s numeric names (1028fd.pdf) are given back their prefix.'
+vishay_gateways:
+  kind: catalogue
+  maker: vishay
+  gateways: [diodes, mosfets, analog-switches, optocouplers, photo-detectors, power-ics, solid-state-relays, ir-receiver-modules, leds]
+  status: active
+  delay: 3
+  notes: 'robots.txt disallows only /search, /marcom and record views for general agents. The sitemap
+    names a third of the products; the gateway pages list them all in their page data (docid and part
+    numbers). Only products naming a known part are asked for further: the product page gives the data
+    sheet and its category.'
+nisshinbo_products:
+  kind: catalogue
+  maker: nisshinbo
+  status: active
+  delay: 3
+  notes: 'robots.txt disallows *.pdf and *.csv for every agent, and nothing else of use here. The English
+    page sitemap names 1,317 product pages after their product; each page''s download block links the
+    data sheet. The link is published; the PDF is never fetched.'
+secos_products:
+  kind: catalogue
+  maker: secos
+  categories: [ic/lvr, ic/avr, ic/ldo, ic/asr, ic/aa, ic/oa, ic/com, ic/pho, diode/sr, diode/sr/lvf, diode/sr/sic,
+               diode/gr, diode/fr, diode/sf, diode/sf/llsf, diode/he, diode/ss/sky, diode/ss/swt, diode/ss/pin,
+               diode/br, diode/br/ns, diode/zd, diode/tvs, diode/tvs/esd, transistor/dt, transistor/mos,
+               transistor/sst, transistor/mpt, thyristor/sil]
+  status: active
+  delay: 3
+  notes: 'SeCoS (Taiwan). robots.txt allows everything. The site''s own script asks /api/product/<category>
+    for a whole category at once — each part and its data sheet; the categories are the ones that
+    script names (read 2026-09-27).'
+tsc_products:
+  kind: catalogue
+  maker: taiwan-semiconductor
+  status: active
+  delay: 3
+  notes: 'www.taiwansemi.com has no robots.txt and services.taiwansemi.com allows everything. The product
+    filter''s skeleton gives the category tree, and products_v2 each leaf with status, family and data
+    sheet. Sheet names carry spaces and are published percent-encoded.'
+tt_datasheets:
+  kind: catalogue
+  maker: tt-electronics
+  products: [Semiconductors, RF Power MOSFETs, Optoelectronics]
+  status: active
+  delay: 3
+  notes: 'TT Electronics (Semelab, Optek). No robots.txt. The data sheet search page asks
+    /api/search/resource for type 8 and receives all 1,790 sheets in one page; a sheet''s name packs the
+    parts it covers ("2N6766 IRF250", "BDX66 A,B,C").'
+kexin_products:
+  kind: catalogue
+  maker: kexin
+  ca_issuer: http://crt.sectigo.com/SectigoPublicServerAuthenticationCADVR36.crt
+  status: active
+  delay: 3
+  notes: 'Kexin. robots.txt disallows /admin/, /api/, member and inquiry pages. /en/products
+    carries the whole catalogue in its page data: 5,070 rows, each with its data sheet. The server omits
+    the intermediate certificate, which is fetched from the address its certificate names.'
+central_wayback:
+  kind: wayback
+  maker: central
+  prefixes:
+    - my.centralsemi.com/datasheets/
+    - www.centralsemi.com/pdfs/products/
+    - centralsemi.com/pdfs/products/
+    - www.centralsemi.com/pdf/
+    - centralsemi.com/pdf/
+    - www.centralsemi.com/leadedpdf/
+    - centralsemi.com/leadedpdf/
+  keep: '(?i)centralsemi\.com/(datasheets|pdfs/products|pdf|leadedpdf)/[^/]+\.pdf$'
+  strip: '(?:[_&]|%20|-(?=\d)).*$'   # 2N5550_2N5551 -> 2N5550, 1n4728a-4764a -> 1N4728A, BD136%20Series -> BD136
+  status: active
+  delay: 10
+  notes: 'centralsemi.com refuses scripts (403). The Internet Archive holds its data sheet folders
+    from 1998 to 2026, named after their parts. get_document.php carries the name in its query and is
+    not listed.'
+burrbrown_wayback:
+  kind: wayback
+  maker: burr-brown
+  prefixes:
+    - www.burr-brown.com/products/catalog/datasheets/pdf/
+  keep: '/datasheets/pdf/[^/]+\.pdf$'
+  status: active
+  delay: 10
+  notes: 'Burr-Brown''s own site before TI bought it in 2000: 187 data sheets captured in 1996, named
+    after their parts.'
+kec_products:
+  kind: catalogue
+  maker: kec
+  categories: {3: Diodes, 4: Bipolar transistors, 6: MOSFETs, 7: Amplifiers, 8: Power management}
+  status: active
+  delay: 3
+  notes: 'KEC. robots.txt disallows /gsadmin/, /lib/, /se/ and /data/ (so the discontinued-products
+    PDF is not read). The product finder''s table answers a plain GET, 16 rows a page per category; each
+    row''s PDF button is image_product.asp, which serves the sheet from an allowed path.'
+cdil_products:
+  kind: catalogue
+  maker: cdil
+  categories: [transistors, metal-can-transistors, power-transistors, diodes, rectifiers, mosfets, triacs, regulators, tvs]
+  status: active
+  delay: 3
+  notes: 'CDIL (Continental Device India). robots.txt names ClaudeBot and anthropic-ai in the same group
+    as every agent: /api/, /search, ?format=json and the like are off limits, product pages are not. A
+    category page lists its products and the types each title names; only those naming a known part are
+    opened, and the page links its data sheet under /s/.'
+archive_databooks:
+  kind: databooks
+  query: 'collection:bitsavers AND (title:databook OR title:"data book" OR title:"data manual" OR title:transistor OR title:semiconductor OR title:linear OR title:diode OR title:thyristor OR title:rectifier OR title:optoelectronic OR title:"small signal" OR title:"power device" OR title:audio OR title:interface)'
+  include: '(?:components|motorola|national|fairchild|signetics|sgs|harris|rca|ti|burrBrown|analogDevices|linearTechnology|siliconix|unitrode|plessey|ferranti|mullard|philips|valvo|siemens|telefunken|toshiba|hitachi|nec|sanyo|sony|matsushita|panasonic|rohm|mitsubishi|fujitsu|oki|samsung|gi|intersil|precisionMonolithics|raytheon|sprague|teledyne|ge|westinghouse|thomson|itt|exar|ssm|thatCorporation|crystalSemiconductor) ::'
+  exclude: '(?:appNotes|card reader|32000|modem|MOS LSI|Bipolar LSI|memory|microprocessor|microcomputer|graphics|scsi|datapro|ethernet|dram|sram|eprom|fpga|pld|pal |gate array|asic|DATA Book|Tabulation|8051|z80|68000|8086)'
+  status: active
+  delay: 5                      # gentle on the archive, which refused connections at 3 s on web.archive.org
+  notes: 'bitsavers'' scans of makers'' databooks as the Internet Archive holds them (archive.org''s
+    robots.txt answers 400, which RFC 9309 reads as no rules). The archive has read every scan: _djvu.xml
+    gives the text page by page and _page_numbers.json the printed numbers, so no PDF is fetched. A page
+    covers the parts named in its first lines; a page naming more than four is an index. D.A.T.A.
+    tabulations (one line per device, hundreds a page) are another kind of source and are left out here.'
+rohm_wayback:
+  kind: wayback
+  maker: rohm
+  prefixes:
+    - fscdn.rohm.com/en/products/databook/datasheet/
+    - fscdn.rohm.com/en/products/databook/datasheet-nrnd/
+    - rohmfs.rohm.com/en/products/databook/datasheet/
+    - www.rohm.com/products/databook/
+    - www.rohm.co.jp/products/databook/
+  keep: '/databook/(?:datasheet(?:-nrnd)?/.*|[a-z_]+/pdf/[^/]*?)(?<!-j)\.pdf$'
+  strip: '(?:(?:hzg|fh)?(?:t1\d\d[a-z]?|t2l|t1l|tl)|fra)?(?:-[ej])?$'   # dan202kt146-e -> DAN202K
+  status: active
+  delay: 10
+  notes: 'rohm.com refuses scripts (403). The Internet Archive holds its data sheet folders: fscdn.rohm.com
+    (current, with a not-recommended-for-new-design folder holding the DTC/DTA digital transistors), the older
+    CDN rohmfs, and the old English and Japanese-site databooks. fscdn names carry taping codes (T146, TL,
+    FRA), which are stripped; Japanese editions (-j) are left.'
+
+toshiba_wayback:
+  kind: wayback
+  maker: toshiba
+  prefixes:
+    - www.semicon.toshiba.co.jp/td/en/
+    - www.semicon.toshiba.co.jp/td/ja/
+  keep: '(?i)/td/(?:en|ja)/.+\.pdf$'
+  strip: '^(?:en_|ja_)?\d{8}_|_datasheet$'   # ja: 20011207_TA7317P_datasheet.pdf
+  status: active
+  delay: 10
+  notes: 'Toshiba''s semiconductor site before 2017 (semicon.toshiba.co.jp) filed its English data sheets
+    under /td/en/<category>/, named en_<date>_<PART>_datasheet.pdf: 17,921 captured. Discontinued parts
+    (2SA1015, 2SC1815 and the like) are gone from Toshiba''s current site and only here.'
+
+archive_databooks_more:
+  kind: databooks
+  query: mediatype:texts AND NOT collection:(bitsavers OR inlibrary OR printdisabled OR manuals_electronics_japanese
+    OR dticarchive OR arxiv OR pubmed OR usfederalcourts OR journals OR government-documents) AND NOT identifier:(manuallib-id-*
+    OR manualzilla-id-* OR manualslib-id-* OR manualzz-id-* OR japanese-manual-* OR Panel_* OR DTIC_* OR gov.uscourts*)
+    AND title:(transistor OR transistors OR transistoren OR transistori OR semiconductor OR semiconductors OR halbleiter
+    OR semiconducteurs OR diode OR diodes OR dioden OR thyristor OR thyristors OR rectifier OR rectifiers OR databook
+    OR "data book" OR "data handbook" OR datenbuch OR "data manual" OR "tube manual" OR "receiving tube" OR "receiving
+    tubes" OR "electron tubes" OR röhren OR roehren OR "valve data" OR "valve manual" OR "linear integrated" OR
+    "linear circuits" OR "integrated circuits" OR "linear data" OR "short form" OR "condensed catalog" OR 規格表 OR
+    互換表 OR "tube substitution" OR "valve equivalents" OR vergleichstabelle OR vergleichsliste OR taschentabelle)
+  include: ^(?=.*(?:transist|semicond|halbleiter|diode|dioden|thyrist|rectifier|zener|röhren|rohren|electron tubes?|receiving
+    tubes?|radio tubes?|vacuum tube|tube manual|\bvalves?\b|linear|integrated circuits|\bICs?\b|data.?book|datenbuch|data
+    handbook))(?=.*(?:mullard|philips|valvo|siemens|telefunken|\baeg\b|\bitt\b|intermetall|toshiba|hitachi|\bnec\b|sanyo|matsushita|panasonic|mitsubishi|sony|samsung|gold
+    ?star|\bgs\b|\brca\b|general electric|\bge\b|sylvania|tung.sol|raytheon|western electric|motorola|fairchild|texas
+    instruments|signetics|national semi|\bsgs\b|\bates\b|thomson|\brft\b|\bveb\b|tesla|tungsram|amperex|brimar|mazda|marconi|\bstc\b|eimac|taylor|sprague|westinghouse|international
+    rectifier|siliconix|zetex|plessey|ferranti|consumer.semiconductor|vacuum tube manual))
+  exclude: memory|memories|microprocessor|microcomputer|microcontroller|\bdsp\b|logic|\bttl\b|\becl\b|cmos|eprom|\bram\b|interface|telecom|network|modem|scsi|gate
+    array|fpga|x-?ray|medical|optimus|theory|principles|design|seminar|circuits (manual|book)|applications?\b|tester|checker|service|repair|schemat|radioricevitore|projects|microwave|transmitting|phototube|neon|ballast|hall
+    effect|sensor|display|optocoupler|laser|price|preis|規格表|互換表|substitut|equivalen|vergleich|cross.?ref|replacement|interchang|tabelle|d\.a\.t\.a\.|discontinued|selection
+    guide|selector|short.?form|shortform|condensed|master index|avo valve|avo international|\.doc\b|metrology|warranty|lab
+    notes|\bssd\b|portfolio|seminar|course
+  exclude_ids: ^(manualsbase-id|manualsplus|TNM_|NationalSemiconductor-)
+  exclude_titles: ^IC Datasheet
+  status: active
+  delay: 5
+  notes: 'Makers'' data books and tube manuals on archive.org outside bitsavers: Philips Data Handbooks, Siemens,
+    Telefunken, Valvo, ITT, Mullard, RFT, Toshiba, NEC, Sony, Samsung, RCA RC-13 to RC-30, GE, Sylvania (455 books
+    on 2026-09-27). Lending-only items (inlibrary, printdisabled) have no public text and are left, as are tabulations
+    and substitution guides, which head no page. The maker is the one the title names.'
+
+hitachi_wayback:
+  kind: wayback
+  maker: hitachi
+  prefixes:
+  - www.hitachi.co.jp/Sicd/English/Products/
+  keep: (?i)/Sicd/English/Products/[a-z]+/[^/]+\.pdf$
+  strip: ^e(?=[0-9h])|_.*$
+  status: active
+  delay: 10
+  notes: 'Hitachi''s semiconductor site before Renesas (2003): English sheets named e<PART>.pdf in transis/, diode/,
+    linear/, logic/, opt/ (1,361 captured). e2SA1031_32.pdf is the 2SA1031 and its sibling.'
+renesas_docs_wayback:
+  kind: wayback
+  maker: renesas
+  prefixes:
+  - documentation.renesas.com/eng/products/
+  - documentation.renesas.com/doc/products/
+  - www.renesas.com/avs/resource/japan/eng/pdf/
+  keep: (?i)/(?:products|pdf)/(?:transistor|diode|linear|logic|assp|opt|opto|power)/(?!rjj|j\d|r\d\d[a-z]{2}\d{4}jj)[^/]+\.pdf$
+  strip: ^(?:r[a-z]{2}\d\d[a-z]\d{4}|r\d\d[a-z]{2}\d{4}(?:[ej]j(?:\d{4})?)?|[a-z]\d{6,8})_|(?:ds)?(?:_[^/]*)?$
+  status: active
+  delay: 10
+  notes: 'Renesas'' document server of 2003-2015 (Hitachi and Mitsubishi discretes and linear parts): <document
+    number>_<part>.pdf, 1,642 English files. Japanese editions left.'
+renesas_dst_wayback:
+  kind: wayback
+  maker: renesas
+  prefixes:
+  - www.renesas.com/en/document/dst/
+  - www.renesas.com/ja/document/dst/
+  - www.renesas.com/jp/ja/document/dst/
+  keep: /document/dst/[^/]+$
+  strip: -.*$
+  pdf_suffix: false
+  status: active
+  delay: 10
+  notes: 'renesas.com answers scripts with a Cloudflare challenge. Its data sheet addresses (/document/dst/<part>-data-sheet...)
+    carry no .pdf, but the archive serves them as PDFs: 12,264 English and 9,581 Japanese. The only place NEC''s
+    legacy uPC and 2SA/2SC sheets are named by part (NEC''s own sites name them by document number); several exist
+    only in Japanese.'
+njr_wayback:
+  kind: wayback
+  maker: new-japan-radio
+  prefixes:
+  - www.njr.com/semicon/PDF/
+  - www.njr.com/electronic_device/PDF/
+  - semicon.njr.co.jp/eng/PDF/
+  - www.njr.co.jp/electronic_device/PDF/
+  - www.njr.co.jp/products/semicon/PDF/
+  keep: (?i)/PDF/(?:old_pdf/)?[^/]+_E\.pdf$
+  strip: _.*$
+  status: active
+  delay: 10
+  notes: 'New Japan Radio before Nisshinbo: English sheets named <PART>_E.pdf, old_pdf/ holding discontinued parts
+    (NJM4556A, NJM4560, NJM2068). 889 files.'
+sanyo_wayback:
+  kind: wayback
+  maker: sanyo
+  prefixes:
+  - service.semic.sanyo.co.jp/semi/ds_pdf_e/
+  - service.semic.sanyo.co.jp/semi/ds_pdf_j/
+  keep: /ds_pdf_[ej]/[^/]+\.pdf$
+  strip: -.*$
+  status: active
+  delay: 10
+  notes: 'Sanyo Semiconductor before onsemi: <PART>.pdf, 213 English files; ds_e/ is named by document number.'
+panasonic_wayback:
+  kind: wayback
+  maker: panasonic
+  prefixes:
+  - www.semicon.panasonic.co.jp/ds4/
+  - industrial.panasonic.com/content/data/SC/ds/ds4/
+  keep: (?i)/ds4/[^/]+_(?:_?[EJ]|[A-Z][EJ]D)(?:_discon)?\.pdf$
+  strip: _.*$
+  status: active
+  delay: 10
+  notes: 'Panasonic semiconductor sheets, ds4 folder on both hosts, discontinued ones (_discon) included: 1,526
+    English files.'
+national_wayback:
+  kind: wayback
+  maker: national
+  prefixes:
+  - national.com/ds/
+  - www.national.com/ds/
+  - cache.national.com/ds/
+  - www.national.com/ds.cgi/
+  keep: (?i)national\.com/ds(?:\.cgi)?/[a-z0-9]+/[^/]+\.pdf$
+  status: active
+  delay: 10
+  notes: 'National Semiconductor before TI (2011): ds/<2 letters>/<PART>.pdf, 1,506 files.'
+fairchild_wayback:
+  kind: wayback
+  maker: fairchild
+  prefixes:
+  - www.fairchildsemi.com/ds/
+  - fairchildsemi.com/ds/
+  - www.fairchildsemi.com/datasheets/
+  keep: (?i)fairchildsemi\.com/(?:ds|datasheets)/[a-z0-9]{2}/[^/]+\.pdf$
+  status: active
+  delay: 10
+  notes: 'Fairchild before onsemi (2016): ds/<2 letters>/<PART>.pdf, 6,746 files, many parts onsemi dropped (CD40xx,
+    1N47xx, BC23x, MC78xx, 2N3702).'
+harris_wayback:
+  kind: wayback
+  maker: harris
+  prefixes:
+  - www.semi.harris.com/datasheets/
+  keep: (?i)/datasheets/[^/]+/[^/]+/[^/]+\.pdf$
+  status: active
+  delay: 10
+  notes: 'Harris Semiconductor (RCA''s CA/CD line) before Intersil (1999): datasheets/<cat>/<part>/<part>.pdf, 1,357
+    files.'
+intersil_wayback:
+  kind: wayback
+  maker: intersil
+  prefixes:
+  - www.intersil.com/content/dam/intersil/documents/
+  keep: (?i)/documents/[a-z0-9-]{4}/[^/]+\.pdf$
+  strip: -.*$
+  status: active
+  delay: 10
+  notes: 'Intersil before Renesas: documents/<4 chars>/<part>.pdf, 1,667 files; the older fn folder is named by FN number.'
+motorola_wayback:
+  kind: wayback
+  maker: motorola
+  prefixes:
+  - mot-sps.com/books/
+  keep: (?i)/books/[a-z]+\d+/pdf/[^/]+\.pdf$
+  strip: rev\d*[a-z]?$
+  status: active
+  delay: 10
+  notes: 'Motorola SPS data books online (late 1990s): books/dlNNN/pdf/<part>rev<N>.pdf, 2,297 files.'
+zetex_wayback:
+  kind: wayback
+  maker: zetex
+  prefixes:
+  - www.zetex.com/3.0/pdf/
+  keep: (?i)/3\.0/pdf/[^/]+\.pdf$
+  status: active
+  delay: 10
+  notes: 'Zetex before Diodes Inc. (2008): 3.0/pdf/<part>.pdf, 989 files (ZTX, FMMT, ZVN/ZVP).'
+nxp_old_wayback:
+  kind: wayback
+  maker: nxp
+  prefixes:
+  - www.nxp.com/documents/data_sheet/
+  - www.nxp.com/acrobat_download/datasheets/
+  keep: (?i)/(?:acrobat_download/datasheets|documents/data_sheet)/[^/]+\.pdf$
+  strip: (?:_CNV)?_\d+$
+  status: active
+  delay: 10
+  notes: 'NXP''s folders before /docs/en/data-sheet/: 6,386 files, discontinued Philips parts among them. semiconductors.philips.com
+    is not in the archive''s index.'
+cq_tables:
+  kind: databooks
+  mode: table
+  items: [TransistorManual1997, TransistorSubstitutionManual1995, FETManual1997, japanese-fetdata-1983,
+          85-fet-manual, 4000BCMOSDeviceManual1995, 74SeriseTTLICManual1995, 88-ttl-ic-manual]
+  status: active
+  delay: 5
+  notes: 'CQ Publishing''s 規格表 (device tables) on archive.org, each with the archive''s text layer: the
+    1997 transistor tables alone list most Japanese transistors of the 1970s-90s, one line each, with the
+    maker. A tabulation is not a data sheet: the page link is published as a line in a table, and only
+    for parts this index holds, at most on the first two pages a part appears.'
+data_tables:
+  kind: databooks
+  mode: table
+  items: [bitsavers_derivationates1962DATATransistorCharacteristicsTab_14876005,
+          bitsavers_derivationates1969DATABookTransistorEdition27_68742623,
+          bitsavers_derivationates1969DATABookDiscontinuedTransistorsE_13030206,
+          bitsavers_derivationates1970DATABookTransistorEdition29_59466334,
+          bitsavers_derivationates1971DATABookTransistorEdition30_62558541,
+          bitsavers_derivationates1971DATABookDiodeandSCREdition281971_146282590,
+          bitsavers_derivationates1973DATALinearIntegratedCircuitEditi_31332760,
+          bitsavers_derivationates1977DATABookTransistorEdition43_48710793,
+          bitsavers_derivationates1977DATAInterfaceIntegratedCircuitsE_57730417,
+          bitsavers_derivationates1980DATABookTransistorDiscontinuedDe_42973284,
+          bitsavers_derivationates1982DATABookTransistorEdition53Volum_111125681,
+          bitsavers_derivationates1983DATALinearIntegratedCircuitsEdit_63902558,
+          bitsavers_derivationates1985DATABookObsoleteLinearEdition4_35017009,
+          bitsavers_derivationates1987DATABookDiodesEdition54_123911610,
+          bitsavers_derivationates1987DATABookOptoelectronicsEdition21_128086334,
+          bitsavers_derivationates1976DATADigitalIntegratedCircuitBook_111799455,
+          bitsavers_derivationates1987DATABookDigitalIntegratedCircuit_164375670]
+  status: active
+  delay: 5
+  notes: 'Derivation and Tabulation Associates'' D.A.T.A. books (1962-1987) as bitsavers scanned them: every
+    transistor, diode and linear IC of their day tabulated with its maker and main ratings. A line in a
+    table, not a data sheet; kept only for parts this index holds, on the first two pages each appears.'
+archive_manuallib:
+  kind: catalogue
+  query: 'identifier:manuallib-id-* AND title:handbook'
+  status: active
+  delay: 5
+  notes: 'About 36,500 single data sheets on archive.org, uploaded from a manuals site into the makers''
+    manuals_* collections and titled "<MAKER> <PART> handbook". The title names the part and its maker;
+    the archive item is linked. Only names this project knows, standing as words of the title, are kept.'
+wrh_books:
+  kind: databooks
+  pages:
+    - https://www.worldradiohistory.com/Archive-Catalogs/Suppliers/Supplier-Library.htm
+    - https://www.worldradiohistory.com/BOOKSHELF-ARH/Bookshelf-RCA.htm
+    - https://www.worldradiohistory.com/BOOKSHELF-ARH/Bookshelf-GE.htm
+  keep: '(Mullard-(Technical-Handbook|Data-book|Semiconductors-manual|Valve-data-book|Valves-and-Electron-Tubes)|Philips-(Electronic-Valves|Electron-tubes-Part-4)|Sylvania-(Technical-manual|Radio-Tubes-Technical)|Tung-Sol-Electronic-Tubes|GE-Tubes-Essential|Transistor(%20|-)Manual|Semiconductor-Almanac|RCA.*(Transistor|Solid|Semiconductor|Receiving|Tube))[^/]*\.pdf$'
+  include: '.'
+  exclude: '$^'
+  status: active
+  delay: 5
+  notes: 'World Radio History''s scans of makers'' data books: the Mullard Technical Handbooks (1971-87),
+    Philips Electronic Valves, Sylvania and Tung-Sol tube manuals, RCA and GE transistor manuals. robots.txt
+    allows /Archive-Catalogs/ and /BOOKSHELF-ARH/. The PDFs carry an OCR layer; each is read here, its text
+    kept in the private tree, and the page of the PDF is linked.'
+datasheet_live:
+  kind: catalogue
+  min_docs: 3
+  status: active
+  delay: 3
+  notes: 'The last resort, asked only about parts printed in three or more documents that no other source
+    gives a sheet for. robots.txt allows everything but its full-text search, at two seconds; no terms of
+    use were found. Its PDFs are its own watermarked copies (apparently Datasheet Archive''s files), so the
+    part page names them as copies held by datasheet.live, with the maker as the site files them;
+    cross-reference books and "n/a" makers are left.'

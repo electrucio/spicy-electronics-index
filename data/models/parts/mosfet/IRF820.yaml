@@ -1,0 +1,257 @@
+part: IRF820
+kind: mosfet
+priority: 3
+group: power_vertical
+models:
+- source: infineon
+  name: irf820
+  def: subckt
+  hash: 466df458c5d7706072bc661ade0c670810ee6b9d
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://web.archive.org/web/19991011023437id_/http://www.irf.com:80/product-info/models/SPICE/irf820.spi
+    sha256: b2d1cf8773152a0bb383865a8249a24e5c8573c91add950b8de467ef7584278f
+    lines:
+      irf820: [1, 60]
+    fetched: '2026-09-14'
+    note: International Rectifier legacy HEXFET SPICE model; original URL http://www.irf.com:80/product-info/models/SPICE/irf820.spi
+      (Wayback capture 19991011023437)
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf820
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf820.spi
+      sha256: cbf1141f75a220709e88c04a0d844a465a075317a907ccd91114936f61c75896
+  - source: bordodynov
+    name: irf820
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf820.spi
+      sha256: cbf1141f75a220709e88c04a0d844a465a075317a907ccd91114936f61c75896
+  - source: kicad-spice-library
+    name: irf820
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf820.spi
+      sha256: 47d9c275976557f8d907950d2ff28f33fe7b50d8712d494f0cfd82eee617be4c
+  - source: ltwiki
+    name: irf820
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf820.spi
+      sha256: cbf1141f75a220709e88c04a0d844a465a075317a907ccd91114936f61c75896
+  - source: ltwiki
+    name: irf820
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf820.spi
+      sha256: cbf1141f75a220709e88c04a0d844a465a075317a907ccd91114936f61c75896
+  - source: ltwiki
+    name: irf820
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf820.spi
+      sha256: cbf1141f75a220709e88c04a0d844a465a075317a907ccd91114936f61c75896
+- source: microcap12
+  name: irf820_IR
+  def: subckt
+  hash: 3c6369d883d1e00ffa4f90216149dcef34b77976
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf820_IR: [4358, 4417]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: irf820_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: microcap12
+  name: IRF820
+  def: model
+  hash: 4989d2c910fef731210eb78375161c068281593b
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRF820: [649, 653]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: IRF820
+  def: subckt
+  hash: d077259e35e7c9a9cf93b5a296c4cdb619a2812e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRF820: [474, 481]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: IRF820
+  def: model
+  hash: f8cc19cb7a75b34913aaf855ce809e384568a109
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/mpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f3a8113e6ad33c866f8d396d65b1d1e98d8b1d17ebaf3390dd611a3181d4fd37
+    lines:
+      IRF820: [593, 597]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: XIRF820
+  def: subckt
+  hash: fbc08e9a332691520ee5042722ef1a691c44cedd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/mosfets/nemos3t.mod
+    sha256: 927fa85ad71152c8e20938dc7e7d15797d8626ce84f73137e1062849f663ce76
+    lines:
+      XIRF820: [470, 491]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: IRF820
+  def: model
+  hash: 28ef7f1bfd12d6554143371b2e50d5774d26d6c2
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      IRF820: [1107, 1107]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRF820
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: IRF820
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF820
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF820
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF820
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF820
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF820
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: IRF820
+  def: model
+  hash: 05f66ffde74883f172f629d47e05792a20b289ae
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF820: [1553, 1556]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF820
+  def: subckt
+  hash: cd81f10b20b7b6ceb7dc9b401e5c867eb4233976
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS.LIB
+    sha256: 3a158ee63ad9816d8dcdc0cad0827d2f4646c66b6296d7bbcd2c28d49bf1d219
+    lines:
+      IRF820: [3254, 3274]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRF820
+  def: model
+  hash: 1ebb0a26872f5484b83af50cd72e5db4d01199f6
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL1.LIB
+    sha256: 8a0af54a34c8e405d5f54f85a9836846c3926f39a0926309907c5f1c3820df13
+    lines:
+      IRF820: [370, 400]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: IRF820M
+  def: subckt
+  hash: 104f725ed93b71e77f6640a527a63ace9842e11c
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRF820M: [4256, 4301]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.vishay.com/docs/91059/91059.pdf
+  maker: Vishay Siliconix
+  doc: Document Number 91059, S21-0852-Rev. D
+  date: '2021-08-16'

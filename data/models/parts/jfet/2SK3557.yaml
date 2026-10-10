@@ -1,0 +1,54 @@
+part: 2SK3557
+kind: jfet
+priority: 2
+group: listed
+models:
+- source: groupsio-ltspice
+  name: 2SK3557
+  def: model
+  hash: 606e31dfd3196803d2834f7e52cd43503b716dfe
+  type: NJF
+  deps:
+  - MCH5908
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      2SK3557: [520, 520]
+      MCH5908: [518, 519]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 2SK3557
+  def: model
+  hash: 5d0390bbfbee9489d4ee45d5f1b377395ade4ea0
+  type: NJF
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.jft
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+    lines:
+      2SK3557: [1026, 1026]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 2SK3557
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: ltwiki
+    name: 2SK3557
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2SK3557
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a

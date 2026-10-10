@@ -1,0 +1,592 @@
+"""sei — command line entry point.
+
+Subcommands are named after the pipeline stage they run, so the command, the ledger column and STATUS.md
+all use one vocabulary; `sei --help` is always the truth. `status`, `paths` and `web build` need nothing
+but the repository; everything else reads or writes the private data root.
+"""
+from __future__ import annotations
+
+import argparse
+import sys
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(prog="sei", description="Non-commercial database for analog-audio electronics.")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    st = sub.add_parser("status", help="what has been processed and what comes next, per source")
+    st.add_argument("--write", action="store_true", help="rewrite STATUS.md instead of printing")
+
+    pa = sub.add_parser("paths", help="where everything is, and which side of the public/private line it is on")
+    pa.add_argument("--private", action="store_true", help="only the private data root")
+    pa.add_argument("--public", action="store_true", help="only what is committed")
+    pa.add_argument("--missing", action="store_true", help="only locations that do not exist here")
+
+    mod = sub.add_parser("models", help="SPICE models").add_subparsers(dest="mod_cmd", required=True)
+    mi = mod.add_parser("index", help="find every definition in the model sources and stamp the ledgers")
+    mi.add_argument("--source", action="append", help="only these sources (repeatable)")
+    mi.add_argument("--missing", action="store_true", help="what a previous catalogue had and the tree lacks")
+    mi.add_argument("--stats", action="store_true", help="also print counts per source")
+    mi.add_argument("-o", "--out", help="where to write the catalogue")
+
+    mf = mod.add_parser("fetch", help="download one URL into a source")
+    mf.add_argument("source")
+    mf.add_argument("--url", required=True)
+    mf.add_argument("--name", help="file name to store it under")
+    mf.add_argument("--note", default="")
+    mf.add_argument("--curl", action="store_true", help="some vendors answer curl and nothing else")
+    mf.add_argument("--force", action="store_true", help="fetch it again even if this source already holds it")
+    mig = mod.add_parser("ingest", help="take in a delivery gathered by hand: its files and what was not found")
+    mig.add_argument("path", help="a zip or a directory")
+    mig.add_argument("--dry", action="store_true", help="say what would happen and change nothing")
+    mv = mod.add_parser("verify", help="whether this tree still holds every model file it was given")
+    mv.add_argument("--source", action="append", help="only these sources (repeatable)")
+    mv.add_argument("--repair", action="store_true", help="fetch back what is lost or no longer matches")
+    mv.add_argument("--limit", type=int, default=0, help="at most this many repairs per source")
+    mod.add_parser("match", help="find, for every wanted part, each definition that could be its model")
+    mod.add_parser("found", help="group those matches into distinct models, with where each copy can be had")
+    mod.add_parser("symbols", help="read every LTspice symbol the model sources ship, and the model each places")
+    mnm = mod.add_parser("named", help="the distinct codes published under a name, as a line of non_native.yaml")
+    mnm.add_argument("name")
+    mnm.add_argument("--source", help="only the codes this source publishes")
+    mcl = mod.add_parser("claims", help="what each recipe model's author declares it models, and for which simulator")
+    mcl.add_argument("--kind", help="only one kind (opamp, bjt, …)")
+    mcl.add_argument("--stats", action="store_true", help="count what would be read and write nothing")
+    mkn = mod.add_parser("kinship", help="how each recipe model's card is related to the others: same physics, derived, template")
+    mkn.add_argument("--kind")
+    mcd = mod.add_parser("cards", help="what each recipe model's card cannot represent: the parameters it lacks")
+    mcd.add_argument("--force", action="store_true")
+    mcd.add_argument("--kind", help="only one kind (bjt, jfet, diode, …)")
+    mcd.add_argument("--part", help="only one part")
+    mrc = mod.add_parser("reconcile", help="join every definition file to the download it came from")
+    mrc.add_argument("--source", action="append", help="only these sources (repeatable)")
+    mrc.add_argument("--write", action="store_true", help="record the ledger rows and folders found")
+    mp = mod.add_parser("promote", help="write the public recipe for every curated part")
+    mp.add_argument("--kind", help="only one kind (bjt, jfet, ...)")
+    mp.add_argument("--dry", action="store_true", help="say what would be written and write nothing")
+    msl = mod.add_parser("seal", help="the recipes' model text, encrypted for the maintainer's eyes on the site")
+    msl.add_argument("--part", help="only this part")
+    msl.add_argument("--new-passphrase", action="store_true", help="write a random passphrase file, once")
+    mr = mod.add_parser("recover", help="fetch again what the catalogue says the tree has lost")
+    mr.add_argument("--source")
+    mr.add_argument("--limit", type=int, default=0)
+    mr.add_argument("--dry", action="store_true")
+
+    bch = sub.add_parser("bench", help="every transistor model measured at the catalogue's conditions").add_subparsers(
+        dest="bench_cmd", required=True)
+    bch_c = bch.add_parser("character", help="characterise every recipe transistor model at the catalogue's conditions, in one image")
+    bch_c.add_argument("--engine", default="qspice", choices=("qspice", "ngspice", "ltspice"))
+    bch_c.add_argument("--kind", action="append")
+    bch_c.add_argument("--part", action="append")
+    bch_c.add_argument("--hash", action="append", help="only the model whose hash starts so (repeatable); with --force, rerun it")
+    bch_c.add_argument("--workers", type=int)
+    bch_c.add_argument("--pack", type=int, default=10)
+    bch_c.add_argument("--limit", type=int, default=0)
+    bch_c.add_argument("--force", action="store_true")
+    bch.add_parser("character-publish", help="publish the characterisation per model hash, with the deck digests to repeat it")
+    bch.add_parser("character-release", help="(maintainer) pack the records and upload them as this catalogue version's release asset")
+    bch.add_parser("character-fetch", help="download the released records the manifest names, check and unpack them")
+    bdk = bch.add_parser("deck", help="regenerate the exact deck behind a published number from your own copy of the card")
+    bdk.add_argument("measurement")
+    bdk.add_argument("--card", required=True)
+    bdk.add_argument("--name", required=True)
+    bdk.add_argument("--engine", default="ngspice", choices=("qspice", "ngspice", "ltspice"))
+    bdk.add_argument("--polarity")
+    bdk.add_argument("--hash")
+    bdk.add_argument("--out", default=".")
+    brd = bch.add_parser("read", help="apply the bench's extraction to a waveform you produced")
+    brd.add_argument("raw")
+    brd.add_argument("--measurement", required=True)
+    brd.add_argument("--deck", required=True)
+    brd.add_argument("--engine", default="ngspice", choices=("qspice", "ngspice", "ltspice"))
+    brd.add_argument("--polarity", default="npn")
+    brd.add_argument("--hash")
+    bme = bch.add_parser("methods", help="the measurement catalogue: check it, print it, or rewrite the docs' copy")
+    bme.add_argument("--markdown", action="store_true", help="print the catalogue as the docs print it")
+    bme.add_argument("--write", action="store_true", help="rewrite the generated section of docs/model-characterisation.md")
+
+    sch = sub.add_parser("schematics", help="the schematic index").add_subparsers(
+        dest="sch_cmd", required=True)
+    sd = sch.add_parser("download", help="fetch a source whose URLs are already listed")
+    sd.add_argument("--source", action="append", required=True, help="a source with a `list:` block (repeatable)")
+    sd.add_argument("--limit", type=int, default=0, help="only the first N URLs of the list")
+    sd.add_argument("--delay", type=float, default=0.0, help="seconds between two requests to one host")
+    sd.add_argument("--dry", action="store_true", help="say what would be fetched and fetch nothing")
+    sd.add_argument("--detach", action="store_true", help="run it in the background, under a lock, into a log")
+    sd.add_argument("--after", help="wait for that job to finish first (its name, as its log is called)")
+    sd.add_argument("--wait-hours", type=float, default=24.0, help="how long to wait for it before giving up")
+
+    sl = sch.add_parser("list", help="gather a source's file URLs again from the site's own listing")
+    sl.add_argument("--source", action="append", required=True, help="a source with a lister (repeatable)")
+    sl.add_argument("--limit", type=int, default=0, help="at most this many listing pages fetched")
+    sl.add_argument("--delay", type=float, default=0.0, help="seconds between two requests to one host")
+    sl.add_argument("--dry", action="store_true", help="say what would be added and add nothing")
+
+    st = sch.add_parser("toragi", help="トランジスタ技術: coverage by year and by issue, from the lists and ledgers")
+    st.add_argument("--source", action="append", help="only these sources (default: toragi, toragi_trbn and toragi_support)")
+
+    sc = sch.add_parser("crawl", help="walk a site from its start pages and take what it shows")
+    sc.add_argument("--source", action="append", required=True, help="a source with a `crawl:` block (repeatable)")
+    sc.add_argument("--max", type=int, default=None, help="pages to fetch before stopping; 0 runs until the queue is empty")
+    sc.add_argument("--delay", type=float, default=0.0, help="seconds between two requests to one host")
+    sc.add_argument("--detach", action="store_true", help="run it in the background, under a lock, into a log")
+    sc.add_argument("--after", help="wait for that job to finish first (its name, as its log is called)")
+    sc.add_argument("--wait-hours", type=float, default=24.0, help="how long to wait for it before giving up")
+    so = sch.add_parser("ocr", help="read what is downloaded and not read yet, page by page, with boxes")
+    so.add_argument("--source", action="append", required=True, help="a source with documents downloaded (repeatable)")
+    so.add_argument("--limit", type=int, default=0, help="at most this many documents")
+    so.add_argument("--gpu", type=int, default=None, help="which GPU to give the OCR")
+    so.add_argument("--shard", default="0/1", help="k/n: every nth document, for running several at once")
+    so.add_argument("--dry", action="store_true", help="say how much there is to read and read nothing")
+    so.add_argument("--recheck", action="store_true",
+                    help="mark what an earlier version read from an illegible text layer, to be read again")
+
+    sv = sch.add_parser("verify", help="whether the tree still holds what was downloaded, and whether it matters")
+    sv.add_argument("--source", action="append", help="only these sources (repeatable)")
+    sv.add_argument("--deep", action="store_true", help="read every file and check it against its checksum")
+    sv.add_argument("--repair", action="store_true", help="fetch back what was lost before anything read it")
+    sv.add_argument("--retry", action="append", metavar="REASON",
+                    help="first forget refusals recorded under this reason (repeatable)")
+    sv.add_argument("--limit", type=int, default=0, help="at most this many repairs")
+    sp = sch.add_parser("prune", help="drop what a source's rules no longer want, and say it was on purpose")
+    sp.add_argument("--source", action="append", help="only these sources (repeatable)")
+    sp.add_argument("--dry", action="store_true", help="say what would go and delete nothing")
+    si = sch.add_parser("ingest", help="put the documents that have been read into the index database")
+    si.add_argument("--source", action="append", help="only these sources (repeatable)")
+    si.add_argument("--limit", type=int, default=0, help="at most this many documents per source")
+    si.add_argument("--dry", action="store_true", help="say how much there is to index and write nothing")
+    si.add_argument("--sizes", action="store_true",
+                    help="only fill in page sizes on documents already indexed without them")
+    sr = sch.add_parser("release", help="delete the downloaded files whose text has already been read")
+    sr.add_argument("--source", action="append", help="only these sources (repeatable)")
+    sr.add_argument("--dry", action="store_true", help="say what would go and delete nothing")
+    sr.add_argument("--all-kinds", action="store_true",
+                    help="release the CAD sources too, which are kept by default")
+    sr = sch.add_parser("reindex", help="read the corpus again with the current extractor, from the OCR on disk")
+    sr.add_argument("--source", action="append", help="only these sources (repeatable)")
+    sr.add_argument("--limit", type=int, default=0, help="at most this many documents")
+    sr.add_argument("--workers", type=int, default=12, help="how many processes read at once")
+    sr.add_argument("--dry", action="store_true", help="say how much there is to read and write nothing")
+
+    ss = sch.add_parser("summarise", help="one line per published use: what that part does on that page")
+    ss.add_argument("--source", action="append", help="only these sources (repeatable)")
+    ss.add_argument("--limit", type=int, default=0, help="at most this many pages per source")
+    ss.add_argument("--workers", type=int, default=4, help="calls in flight (the server has four slots)")
+    ss.add_argument("--detach", action="store_true", help="run it in the background, under a lock, into a log")
+    ss.add_argument("--dry", action="store_true", help="say what would be asked and ask nothing")
+    ss.add_argument("--preview", action="store_true",
+                    help="write what has been answered so far, with its links, and stop")
+
+    se = sch.add_parser("export", help="write the index into data/, where the site is built from")
+    se.add_argument("--source", action="append", help="only these sources (repeatable)")
+    se.add_argument("--dry", action="store_true", help="count what would be written and write nothing")
+
+    pt = sub.add_parser("parts", help="the part vocabulary: which numbers exist and what they are").add_subparsers(
+        dest="pt_cmd", required=True)
+    pj = pt.add_parser("judge", help="decide which census names mean a component in this corpus")
+    pj.add_argument("--collect", action="store_true", help="walk the corpus and gather the evidence")
+    pj.add_argument("--ask", action="store_true", help="put the evidence to a model (spends money)")
+    pj.add_argument("--per-source", type=int, default=60)
+    pj.add_argument("--budget", type=float, default=15.0)
+    pj.add_argument("--model", default="gpt-5-mini")
+
+    pb = pt.add_parser("benchmark", help="labelled decisions on real pages, and today's score against them")
+    pb.add_argument("--build", action="store_true", help="sample pages and label them (spends money)")
+    pb.add_argument("--per-source", type=int, default=6, help="documents sampled per source")
+    pb.add_argument("--budget", type=float, default=12.0, help="dollars this run may spend")
+    pb.add_argument("--model", default="gpt-5")
+
+    pe = pt.add_parser("explain", help="why a part gives nothing: the extractor, or no document that has it")
+    pe.add_argument("part", nargs="+")
+
+    pc = pt.add_parser("census", help="read the lists that say which part numbers exist, and link them")
+    pc.add_argument("--source", action="append", help="only these sources (repeatable)")
+    pc.add_argument("--read", action="store_true", help="parse the pages already cached; fetch nothing")
+    pc.add_argument("--limit", type=int, default=0, help="at most this many pages fetched, per source")
+    pc.add_argument("--delay", type=float, default=0.0, help="seconds between two requests to one host")
+
+    dsh = sub.add_parser("datasheets", help="what manufacturers' catalogues say about the parts").add_subparsers(
+        dest="dsh_cmd", required=True)
+    dsh.add_parser("rows", help="publish the characteristics rows of the reference sheets, each located on its page")
+    dsh.add_parser("figures", help="publish the reference sheets' figures: where each is and what it plots")
+    dcr = dsh.add_parser("crops", help="crop each published row from its PDF, for the site (never committed)")
+    dcr.add_argument("--force", action="store_true", help="make every crop again")
+    dsr = dsh.add_parser("register", help="read category, status and data sheet of each indexed part")
+    dsr.add_argument("--source", action="append", help="only these sources (repeatable)")
+    dsr.add_argument("--limit", type=int, default=0, help="at most this many pages asked for, per source")
+    dsr.add_argument("--reread", action="store_true", help="read the cached pages again with today's parser")
+
+    dpo = dsh.add_parser("polarity", help="check the pages a search found for which way round each transistor is")
+    dpo.add_argument("files", nargs="+", help="JSON lines: part, polarity, url")
+
+    dsl = dsh.add_parser("links", help="every data sheet an archive lists for each part, from its cached index")
+    dsl.add_argument("--source", action="append", help="only these sources (repeatable)")
+
+    dsv = dsh.add_parser("harvest", help="read the data sheets a maker's sitemap lists, to learn what each covers")
+    dsv.add_argument("--source", action="append", help="only these sources (repeatable)")
+    dsv.add_argument("--limit", type=int, default=0, help="at most this many sheets fetched, per source")
+    dsv.add_argument("--list-only", action="store_true", help="read the sitemaps and say how many would be fetched")
+    dsv.add_argument("--reread", action="store_true", help="read the kept text again with today's reader")
+
+    dsc = dsh.add_parser("catalogue", help="read a maker's whole product list: each part, its status and its sheet")
+    dsc.add_argument("--source", action="append", help="only these sources (repeatable)")
+    dsc.add_argument("--refresh", action="store_true", help="ask for every table again")
+
+    dsb = dsh.add_parser("databooks", help="the pages of old databooks that head a known part")
+    dsb.add_argument("--source", action="append", help="only these sources (repeatable)")
+    dsb.add_argument("--limit", type=int, default=0, help="at most this many books fetched")
+    dsb.add_argument("--list-only", action="store_true", help="say how many books the search keeps")
+    dsb.add_argument("--reread", action="store_true", help="read the kept text again with today's reader")
+
+    ds = sub.add_parser("datasets", help="the distilled research datasets").add_subparsers(
+        dest="ds_cmd", required=True)
+    dr = ds.add_parser("repos", help="read how much attention each open-source project has")
+    dr.add_argument("--all", action="store_true", help="read every repository again, however recent")
+    dr.add_argument("--limit", type=int, default=0)
+    dr.add_argument("--days", type=int, default=30, help="how old a reading may be")
+
+    bk = sub.add_parser("backup", help="pack the private trees into one archive to carry off this machine")
+    bk.add_argument("--level", choices=("essential", "full", "all"), default="essential")
+    bk.add_argument("--out", help="where to write it")
+    bk.add_argument("--dry", action="store_true", help="say what would be packed and write nothing")
+
+    web = sub.add_parser("web", help="the static site").add_subparsers(dest="web_cmd", required=True)
+    wb = web.add_parser("build", help="write the site's data from data/ (never reads the private root)")
+    wb.add_argument("--out", help="output directory (default: web/public/data)")
+    web.add_parser("symbol-drawings", help="(maintainer) draw every symbol a recipe links as SVG, from the private tree")
+
+    args = ap.parse_args(argv)
+
+    if args.cmd == "status":
+        from spicy_electronics_index import status
+        print(status.write() if args.write else status.render())
+        return 0
+
+    if args.cmd == "paths":
+        from spicy_electronics_index.core import config
+        rows = config.describe()
+        if args.public or args.private:
+            want = "public" if args.public else "private"
+            rows = [r for r in rows if r[1] == want]
+        if args.missing:
+            rows = [r for r in rows if not r[3]]
+        if not rows:
+            print("nothing to show")
+            return 0
+        width = max(len(name) for name, *_ in rows)
+        print(f"spice models: {config.spice_models_root()}")
+        print(f"material:     {config.material_root()}\n")
+        for name, visibility, path, exists in rows:
+            mark = " " if exists else "?"
+            try:
+                shown = path.relative_to(config.REPO_ROOT)
+            except ValueError:
+                shown = path
+            print(f"{mark} {visibility:8s} {name:{width}s}  {shown}")
+        if any(not exists for *_, exists in rows):
+            print("\n? = not present here. Private locations are absent unless you hold the corpus.")
+        return 0
+
+    if args.cmd == "models" and args.mod_cmd == "index":
+        from spicy_electronics_index.models import index as model_index
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--missing"] if args.missing else []
+        argv2 += ["--stats"] if args.stats else []
+        argv2 += ["-o", args.out] if args.out else []
+        return model_index.main(argv2)
+
+    if args.cmd == "models" and args.mod_cmd == "verify":
+        from spicy_electronics_index.models import verify as model_verify
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--repair"] if args.repair else []
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        return model_verify.main(argv2)
+
+    if args.cmd == "models" and args.mod_cmd == "ingest":
+        from spicy_electronics_index.models import ingest as model_ingest
+        return model_ingest.main([args.path] + (["--dry"] if args.dry else []))
+
+    if args.cmd == "models" and args.mod_cmd == "match":
+        from spicy_electronics_index.models import match as model_match
+        return model_match.main([])
+
+    if args.cmd == "models" and args.mod_cmd == "reconcile":
+        from spicy_electronics_index.models import reconcile as model_reconcile
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        return model_reconcile.main(argv2 + (["--write"] if args.write else []))
+
+    if args.cmd == "models" and args.mod_cmd == "found":
+        from spicy_electronics_index.models import found as model_found
+        return model_found.main([])
+
+    if args.cmd == "models" and args.mod_cmd == "symbols":
+        from spicy_electronics_index.models import symbols as model_symbols
+        return model_symbols.main([])
+
+    if args.cmd == "models" and args.mod_cmd == "named":
+        from spicy_electronics_index.models import found as model_found
+        return model_found.main_named([args.name, *(["--source", args.source] if args.source else [])])
+
+    if args.cmd == "bench" and args.bench_cmd == "character":
+        from spicy_electronics_index.bench import character as bench_character
+        argv2 = ["--engine", args.engine, "--pack", str(args.pack), "--limit", str(args.limit)]
+        for k in args.kind or []:
+            argv2 += ["--kind", k]
+        for p in args.part or []:
+            argv2 += ["--part", p]
+        for h in args.hash or []:
+            argv2 += ["--hash", h]
+        if args.workers:
+            argv2 += ["--workers", str(args.workers)]
+        return bench_character.main(argv2 + (["--force"] if args.force else []))
+
+    if args.cmd == "bench" and args.bench_cmd == "character-publish":
+        from spicy_electronics_index.bench import character_publish
+        return character_publish.main([])
+
+    if args.cmd == "bench" and args.bench_cmd in ("character-release", "character-fetch"):
+        from spicy_electronics_index.bench import character_release
+        return character_release.main([args.bench_cmd.split("-", 1)[1]])
+
+    if args.cmd == "bench" and args.bench_cmd == "deck":
+        from spicy_electronics_index.bench import deck as bench_deck
+        argv2 = [args.measurement, "--card", args.card, "--name", args.name, "--engine", args.engine, "--out", args.out]
+        argv2 += (["--polarity", args.polarity] if args.polarity else []) + (["--hash", args.hash] if args.hash else [])
+        return bench_deck.main(argv2)
+
+    if args.cmd == "bench" and args.bench_cmd == "read":
+        from spicy_electronics_index.bench import deck as bench_deck
+        argv2 = [args.raw, "--measurement", args.measurement, "--deck", args.deck, "--engine", args.engine,
+                 "--polarity", args.polarity] + (["--hash", args.hash] if args.hash else [])
+        return bench_deck.read_main(argv2)
+
+    if args.cmd == "bench" and args.bench_cmd == "methods":
+        from spicy_electronics_index.bench import catalogue
+        return catalogue.main((["--markdown"] if args.markdown else []) + (["--write"] if args.write else []))
+
+    if args.cmd == "models" and args.mod_cmd == "kinship":
+        from spicy_electronics_index.models import kinship
+        return kinship.main(["--kind", args.kind] if args.kind else [])
+
+    if args.cmd == "models" and args.mod_cmd == "claims":
+        from spicy_electronics_index.models import claims as model_claims
+        return model_claims.main((["--kind", args.kind] if args.kind else []) + (["--stats"] if args.stats else []))
+
+    if args.cmd == "models" and args.mod_cmd == "cards":
+        from spicy_electronics_index.models import cards as model_cards
+        argv2 = (["--kind", args.kind] if args.kind else []) + (["--part", args.part] if args.part else [])
+        return model_cards.main(argv2 + (["--force"] if args.force else []))
+
+    if args.cmd == "models" and args.mod_cmd == "promote":
+        from spicy_electronics_index.models import promote as model_promote
+        argv2 = ["--kind", args.kind] if args.kind else []
+        argv2 += ["--dry"] if args.dry else []
+        return model_promote.main(argv2)
+
+    if args.cmd == "models" and args.mod_cmd == "seal":
+        from spicy_electronics_index.models import seal as model_seal
+        argv2 = ["--part", args.part] if args.part else []
+        return model_seal.main(argv2 + (["--new-passphrase"] if args.new_passphrase else []))
+
+    if args.cmd == "models" and args.mod_cmd in ("fetch", "recover"):
+        from spicy_electronics_index.models import fetch as model_fetch
+        if args.mod_cmd == "fetch":
+            argv2 = ["fetch", args.source, "--url", args.url, "--note", args.note]
+            argv2 += ["--name", args.name] if args.name else []
+            argv2 += ["--curl"] if args.curl else []
+            argv2 += ["--force"] if args.force else []
+        else:
+            argv2 = ["recover"]
+            argv2 += ["--source", args.source] if args.source else []
+            argv2 += ["--limit", str(args.limit)] if args.limit else []
+            argv2 += ["--dry"] if args.dry else []
+        return model_fetch.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "download":
+        from spicy_electronics_index.schematics import download as sch_download
+        argv2 = [x for pair in (("--source", s) for s in args.source) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--delay", str(args.delay)] if args.delay else []
+        argv2 += ["--dry"] if args.dry else []
+        argv2 += ["--after", args.after, "--wait-hours", str(args.wait_hours)] if args.after else []
+        return sch_download.main(argv2 + (["--detach"] if args.detach else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "list":
+        from spicy_electronics_index.schematics import listing as sch_listing
+        argv2 = [x for pair in (("--source", s) for s in args.source) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--delay", str(args.delay)] if args.delay else []
+        return sch_listing.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "toragi":
+        from spicy_electronics_index.schematics import toragi as sch_toragi
+        return sch_toragi.main([x for pair in (("--source", s) for s in args.source or []) for x in pair])
+
+    if args.cmd == "schematics" and args.sch_cmd == "crawl":
+        from spicy_electronics_index.schematics import crawl as sch_crawl
+        argv2 = [x for pair in (("--source", s) for s in args.source) for x in pair]
+        argv2 += ["--max", str(args.max)] if args.max is not None else []
+        argv2 += ["--delay", str(args.delay)] if args.delay else []
+        argv2 += ["--after", args.after, "--wait-hours", str(args.wait_hours)] if args.after else []
+        return sch_crawl.main(argv2 + (["--detach"] if args.detach else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "ocr":
+        from spicy_electronics_index.schematics import ocr as sch_ocr
+        argv2 = [x for pair in (("--source", s) for s in args.source) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--gpu", str(args.gpu)] if args.gpu is not None else []
+        argv2 += ["--shard", args.shard] if args.shard != "0/1" else []
+        argv2 += ["--recheck"] if args.recheck else []
+        return sch_ocr.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "verify":
+        from spicy_electronics_index.schematics import verify as sch_verify
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--deep"] if args.deep else []
+        argv2 += [x for pair in (("--retry", r) for r in args.retry or []) for x in pair]
+        argv2 += ["--repair"] if args.repair else []
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        return sch_verify.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "ingest":
+        from spicy_electronics_index.schematics import ingest as sch_ingest
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--dry"] if args.dry else []
+        argv2 += ["--sizes"] if args.sizes else []
+        return sch_ingest.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "release":
+        from spicy_electronics_index.schematics import release as sch_release
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--dry"] if args.dry else []
+        argv2 += ["--all-kinds"] if args.all_kinds else []
+        return sch_release.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "prune":
+        from spicy_electronics_index.schematics import prune as sch_prune
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--dry"] if args.dry else []
+        return sch_prune.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "reindex":
+        from spicy_electronics_index.schematics import reindex as sch_reindex
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--workers", str(args.workers)]
+        return sch_reindex.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "summarise":
+        from spicy_electronics_index.schematics import summarise as sch_summarise
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit), "--workers", str(args.workers)]
+        argv2 += ["--detach"] if args.detach else []
+        argv2 += ["--preview"] if args.preview else []
+        return sch_summarise.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "export":
+        from spicy_electronics_index.schematics import export as sch_export
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        return sch_export.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "parts" and args.pt_cmd == "judge":
+        from spicy_electronics_index.core.parts import judge
+        argv2 = ["--per-source", str(args.per_source), "--budget", str(args.budget), "--model", args.model]
+        argv2 += ["--collect"] if args.collect else []
+        return judge.main(argv2 + (["--ask"] if args.ask else []))
+
+    if args.cmd == "parts" and args.pt_cmd == "benchmark":
+        from spicy_electronics_index.core.parts import benchmark
+        argv2 = ["--per-source", str(args.per_source), "--budget", str(args.budget), "--model", args.model]
+        return benchmark.main(argv2 + (["--build"] if args.build else []))
+
+    if args.cmd == "parts" and args.pt_cmd == "explain":
+        from spicy_electronics_index.core.parts import explain
+        return explain.main(args.part)
+
+    if args.cmd == "parts" and args.pt_cmd == "census":
+        from spicy_electronics_index.core.parts import census
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--delay", str(args.delay)] if args.delay else []
+        return census.main(argv2 + (["--read"] if args.read else []))
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "register":
+        from spicy_electronics_index.datasheets import register
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        return register.main(argv2 + (["--reread"] if args.reread else []))
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "polarity":
+        from spicy_electronics_index.datasheets import polarity
+        return polarity.main(args.files)
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "links":
+        from spicy_electronics_index.datasheets import links
+        return links.main([x for pair in (("--source", s) for s in args.source or []) for x in pair])
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "harvest":
+        from spicy_electronics_index.datasheets import harvest
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--list-only"] if args.list_only else []
+        return harvest.main(argv2 + (["--reread"] if args.reread else []))
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "catalogue":
+        from spicy_electronics_index.datasheets import catalogues
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        return catalogues.main(argv2 + (["--refresh"] if args.refresh else []))
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "rows":
+        from spicy_electronics_index.datasheets import rows as sheet_rows
+        return sheet_rows.main([])
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "figures":
+        from spicy_electronics_index.datasheets import figures as sheet_figures
+        return sheet_figures.main([])
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "crops":
+        from spicy_electronics_index.datasheets import crops as sheet_crops
+        return sheet_crops.main(["--force"] if args.force else [])
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "databooks":
+        from spicy_electronics_index.datasheets import databooks
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--list-only"] if args.list_only else []
+        return databooks.main(argv2 + (["--reread"] if args.reread else []))
+
+    if args.cmd == "datasets" and args.ds_cmd == "repos":
+        from spicy_electronics_index.datasets import repos as ds_repos
+        argv2 = ["--days", str(args.days)] + (["--all"] if args.all else [])
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        return ds_repos.main(argv2)
+
+    if args.cmd == "backup":
+        from spicy_electronics_index import backup
+        argv2 = ["--level", args.level] + (["--out", args.out] if args.out else [])
+        return backup.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "web" and args.web_cmd == "symbol-drawings":
+        from spicy_electronics_index.web import asy as web_asy
+        return web_asy.main([])
+
+    if args.cmd == "web" and args.web_cmd == "build":
+        from spicy_electronics_index.web import build as web_build
+        manifest = web_build.build(args.out)
+        t = manifest["totals"]
+        missing = [k for k, v in manifest["have"].items() if not v]
+        first = manifest["sizes"].get("parts.json", 0) + manifest["sizes"].get("sources.json", 0)
+        print(f"{sum(manifest['sizes'].values()) / 1e6:.0f} MB  "
+              f"{t['sources']} schematic sources, {t['modelSources']} model sources, "
+              f"{manifest.get('parts', 0):,} part pages")
+        print(f"{first / 1024:.0f} KB before compression is what a visitor loads to start searching")
+        if missing:
+            print(f"not built yet: {', '.join(missing)}")
+        return 0
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

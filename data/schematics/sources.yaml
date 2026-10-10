@@ -1,0 +1,1601 @@
+# Registry of schematic/reference sources. status: proposed | active | paused | blocked | excluded
+# Add a site here (status: proposed) to have it crawled; its progress is in state/<id>.csv and STATUS.md.
+#
+# What belongs here is a document read for its circuits: a schematic, or one where the schematic is the
+# point of it. A service manual qualifies; a user manual does not, and radiomanual was 69% user manuals
+# by weight before its deny pattern said so.
+#
+# A data sheet does not belong here either, and for a different reason. It is not a worse document, it
+# is another kind: it says what a part is, not what anyone built with it. The census already holds one
+# per part and links it — that is where a reader who wants the data sheet is sent. This pillar answers
+# the other question, "where is this part actually used", and a document is worth its place here only
+# if it helps answer that. 13,749 Renesas data sheets were kept out on 2026-09-25 on this ground; they
+# are a category to work with later, on their own terms.
+#
+# `era` is measured, not judged: a source is modern where 8% or more of the parts it has published
+# belong to a family newer than 1995, mixed above 2.5%, vintage below. See `sei status`.
+abeltronics:
+  kind: factory
+  title: Abeltronics
+  home_url: https://www.abeltronics.co.uk/
+  status: active
+  crawl:
+    start:
+    - https://www.abeltronics.co.uk/products/
+    allow: '^/(products|pdf)/'
+    max: 0
+    complete: true
+  notes: 'Crawled to the end on 2026-09-25: 92 pages, 31 PDFs and 467 photographs. The /diagrams.php
+    the catalogue named is a 404; what it has hangs off /products/ and /pdf/.'
+adi_wiki_eval:
+  kind: factory
+  title: Analog Devices eval-board wiki (evaluation board schematics and user guides)
+  home_url: https://wiki.analog.com/resources/eval/user-guides/
+  status: blocked
+  era: modern
+  blocked_reason: 'its robots.txt disallows every Claude and AI agent name outright, while allowing *'
+  notes: 'A clean index of ADI evaluation boards, each with its schematic, BOM and layout — the modern
+    analogue material this corpus is emptiest in, and exactly what the reference-design plan wanted.
+
+    It is refused, and refused in the one place a site has for saying so. Its robots.txt gives
+    `User-agent: *` everything but /_export/, and then names anthropic-ai, ClaudeBot, Claude-Web,
+    Claude-User, Claude-SearchBot, GPTBot, CCBot, PerplexityBot and twenty more with `Disallow: /`.
+    That is not a complaint about pace, which rule 3 now tells apart: it is a site allowing ordinary
+    crawlers and refusing this kind of reader by name, and no delay makes it into a yes.
+
+    Checked on 2026-09-25. Worth re-reading in a year — a robots.txt is a sentence, not a law, and
+    sites change theirs. analog.com itself is a separate matter: it does not answer this machine at
+    all (HTTP/2 INTERNAL_ERROR, then timeout), which is a technical block and not a refusal.'
+adi_eval:
+  kind: delivery
+  title: Analog Devices circuit notes and evaluation-board guides, fetched by hand
+  home_url: https://www.analog.com/en/resources/reference-designs/circuits-from-the-lab.html
+  status: active
+  era: modern
+  list:
+    role: application_note
+  delivery:
+    role: application_note
+    link:
+    - match: '^CN/[Cc][Nn]-?(\d+)\.pdf$'
+      url: 'https://www.analog.com/media/en/reference-design-documentation/reference-designs/CN{1}.pdf'
+    - match: '^UG/.*?(UG-\d+)\.pdf$'
+      url: 'https://www.analog.com/media/en/technical-documentation/user-guides/{1}.pdf'
+  notes: 'The examples of use that adi_wiki_eval would have given, fetched in a browser by the maintainer
+    instead: ADI refuses this by name in robots.txt and permits `User-agent: *` everything, and a person
+    in Chrome is that visitor. Hand-picked, never enumerated — 23 documents chosen against the 483 ADI
+    parts the census knows and no document in this corpus uses. Circuit notes (CN0xxx) are complete
+    application circuits with measured results; evaluation-board user guides (UG-xxx) carry the board''s
+    own schematic and BOM. Delivered 2026-09-25.
+
+    The link patterns are written from the file names and are unverified: analog.com does not answer this
+    machine at all, so nothing here could check that a CN number maps to that media path. Check one by
+    hand before trusting the links, or correct them.'
+adi_appnotes:
+  kind: site
+  title: Analog Devices application notes
+  home_url: https://www.analog.com/
+  status: proposed
+  notes: 'As above. robots.txt was empty on 2026-09-22, so nothing is disallowed; use the default delay
+    anyway. Linear Technology notes now live here too, which is where much of the discrete analogue
+    material is.'
+aion:
+  kind: site
+  title: Aion FX
+  home_url: https://aionfx.com/
+  status: active
+  era: mixed
+amb:
+  kind: site
+  title: AMB Laboratories
+  home_url: https://www.amb.org/audio/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.amb.org/audio/
+    allow: ^/audio/
+    max: 400
+ampgarage_threads:
+  kind: forum
+  title: Amp Garage
+  home_url: https://ampgarage.com/
+  status: excluded
+  blocked_reason: user forums are out of scope
+amz-muzique:
+  kind: site
+  title: AMZ / Muzique (Jack Orman)
+  home_url: https://www.muzique.com/
+  status: active
+  crawl:
+    start:
+    - https://www.muzique.com/
+    allow: '^/'
+    max: 0
+    complete: true
+  notes: 'Jack Orman''s articles and circuit notes. Crawled to the end on 2026-09-24: 5,808 files
+    held. The site writes some links without their scheme — www.muzique.com/news/ — which buried a
+    hostname in the path and made a circle 3,937 rows long before the crawler learnt to refuse it.'
+archive_databooks:
+  kind: reference
+  title: Semiconductor databooks (bitsavers mirror on archive.org)
+  home_url: https://archive.org/details/bitsavers
+  status: proposed
+  notes: '1,040 databook items on 2026-09-22. Wanted for two things at once: the numerical index pages are
+    the semiconductor half of data/parts/census.csv, and the book itself is a reference a search can link
+    to when no schematic uses the part. The 1982 D.A.T.A. Book Transistor Edition
+    (bitsavers_derivationates1982DATABookTransistorEdition53Volum_111125681) is open and already carries a
+    _djvu.txt, so it needs no OCR pass at all.'
+archive_instruments:
+  kind: reference
+  title: Test and instrumentation manuals (bitsavers mirror on archive.org)
+  home_url: https://archive.org/details/bitsavers
+  status: proposed
+  notes: 'Oscilloscope, generator and meter manuals: discrete analogue design, thoroughly archived,
+    sharing almost all of its vocabulary with audio. 565 Tektronix items on 2026-09-22. The claim that
+    bitsavers.org must be avoided was wrong on both halves and is corrected here on 2026-09-24: it
+    answers 301 to robots.txt, not 403, and serves an 84 MB databook at 200 — and a non-200 robots.txt
+    does not mean "disallowed" anyway. RFC 9309 leaves a crawler free after a 4xx, and core.http already
+    parses any non-200 reply as an empty robots.txt, which allows everything. Either host will do; the
+    archive.org mirror is still the kinder one, being built to be read by machines.'
+archive_service_manuals:
+  kind: factory
+  title: Service manuals on archive.org
+  home_url: https://archive.org/
+  status: proposed
+  notes: 'Hi-fi and pro-audio service manuals held as open archive.org items, reached through the same
+    metadata API the Elektor work used, with per-page deep links. Counted on 2026-09-22 with deliberately
+    naive queries: 721 items under subject "service manual" for amplifier/receiver/tuner, 167 by title for
+    Sansui, Pioneer, Marantz, Technics and Luxman together. The Elektor lesson says a proper sweep by
+    title, subject and identifier pattern finds several times that. Brings the solid-state hi-fi vocabulary
+    the corpus is thinnest in (2SC3334, KSA1220, 2SK1298 are all absent today). Proposed: set active and
+    write its lister.'
+audiocircuit:
+  ocr:
+    dpi: 300
+  kind: factory
+  title: AudioCircuit
+  home_url: https://audiocircuit.dk/
+  status: active
+  list:
+    role: schematic
+  notes: '39,546 factory PDFs over 409 brand pages, the whole of the sitemap as it stood on
+    2026-09-22. robots.txt allows everything and the site publishes that sitemap, which is how the
+    list is refreshed when it ages. The first 11,791 are held (34 GB, averaging 2.9 MB each); the
+    run that took them had read the shorter 2026-09-18 list into memory before the fuller one was
+    gathered, and a list is read once, at the start. The rest are queued behind the crawls.'
+bartola:
+  kind: site
+  title: Bartola Valves
+  home_url: https://www.bartola.co.uk/valves/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.bartola.co.uk/valves/
+    allow: ^/valves/
+    max: 500
+    cdn: i\d\.wp\.com
+barton_musical:
+  kind: site
+  title: Barton Musical Circuits
+  home_url: https://www.bartonmusicalcircuits.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.bartonmusicalcircuits.com/synthstuff.html
+    allow: '^/[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)?/index\.html$'
+    figures: false
+    max: 200
+  notes: 'Michael Barton sells bare boards and publishes the schematic of each as a PDF — small, single
+    purpose analogue modules, mostly still in production parts. robots.txt is served empty, which under
+    RFC 9309 is no restriction at all. Checked 2026-09-25.
+
+    Shape, 2026-09-27: synthstuff.html lists every module, one page each at /<module>/index.html, and
+    each page links its documentation.pdf ("how to build it, including schematics and parts list").
+    The links are written `href=" phaser/index.html"`, with a space inside the quotes, which the
+    crawler resolves; the other images on a page are a photo of the module and a drill guide, so
+    figures are off.'
+books:
+  kind: book
+  title: Books, linked to their public pages
+  home_url: ''
+  status: active
+  era: modern
+  notes: '50 of 78 are indexed: 23 link to a page of a public PDF, 11 to the archive.org page, 16 to its search inside. The
+    other 28 keep their OCR but are not indexed, because their only URL is a publisher''s landing page, which the reader cannot
+    check on the spot.'
+ci2n_figures:
+  kind: reference
+  title: Figures from the CI2N dataset, credited to their papers
+  home_url: https://github.com/LAD021/ci2n_datasets
+  status: active
+  notes: 'Hand-added on 2026-09-24, one figure. The dataset annotates no text, so 200 of its images whose
+    Labelme imagePath names the source paper were read with the project OCR; one real part number came out
+    (2SC5007) and was checked by eye. The document is the paper, by the DOI Crossref gave for the title;
+    its page links to the figure in the dataset repository, pinned to a commit, because that is where a
+    reader sees the part. Not worth reading the rest: see data/datasets/registry.yaml.'
+circuitsnips:
+  kind: site
+  title: CircuitSnips (shared KiCad subcircuits)
+  home_url: https://circuitsnips.com/
+  status: excluded
+  era: modern
+  notes: '4,311 KiCad subcircuits on 2026-09-25, each with a described function, a category, tags and a
+    licence, enumerable over its own /api/search. Excluded because it is derivative and we can take the
+    original: of a hundred "amplifier" results sampled, a hundred were re-imports from GitHub
+    repositories, each carrying the attribution that says so. The `openhw_*` sources reach those same
+    designs whole rather than in fragments.
+
+    Worth remembering for something else. Every snippet carries a sentence saying what the circuit does
+    — "dual low-power op-amp configured for single-supply operation" — which is exactly what `summarise`
+    produces by asking a model. That makes it a test set for that stage, written by people, and this is
+    the note to come back to when that stage needs one.'
+dirtbox:
+  kind: site
+  title: Dirtbox Layouts
+  home_url: https://dirtboxlayouts.blogspot.com/
+  status: active
+  list:
+    role: layout
+    figures: true
+    cdn: '(bp\.blogspot\.com|blogger\.googleusercontent\.com)$'
+  notes: 'Vero layouts published as blog posts: the drawing is an image on Blogger''s own host, so the
+    post is fetched and its images with it. robots.txt allows everything but /search and /share-widget.
+    1,784 posts listed on 2026-09-18.'
+diyaudio:
+  kind: forum
+  title: diyAudio (attachments only)
+  home_url: https://www.diyaudio.com/
+  status: active
+  list:
+    role: schematic
+    delay: 5
+  notes: 'Active since 2026-09-25, as a list of attachment URLs and not a crawl. The thread pages are
+    behind a browser check that this project does not answer; the attachments themselves are served to a
+    plain request, and robots.txt still allows everything, so only attachments are fetched, at one
+    request every five seconds. The list came out of a labelled pass over 16,792 threads (an LLM read
+    the first post, the sampled replies and the attachment names): 2,651 threads present an electronics
+    project whose schematic is posted or linked, and from those only the author''s attachments whose
+    names say schematic, circuit, LTspice or document. Images with meaningless names are a later list,
+    to be sorted by count_designators() after download. Speaker projects and PCB-only threads are out.
+
+    History. Forums were out of scope until 2026-09-22, when the maintainer reversed it: the Pass Labs
+    subforum alone carries Nelson Pass''s own project PDFs, and none of them is held — 2SA992 is on one
+    document here, and the DIY Front End 2022 sheet that uses it is not among them. The reversal comes
+    with his rule, and it is the whole of the entry: **index the attachments, never the conversation**,
+    and among attachments only schematics or projects worked out to some degree — not breadboard photos,
+    not measurement plots without a circuit, not chat. The signals for that already exist and are
+    measured, not guessed: count_designators() and count_values() in core.parts say whether a page has a
+    circuit on it, and core.adfilter drops the rest. A thread page is fetched to find what it links to
+    and is never itself a document. robots.txt on 2026-09-22 is "Allow: /" with a sitemap, so nothing is
+    being worked around. Proposed: needs its own crawler (attachment links, not thread text), a labelled
+    sample to set the "worked out" threshold, and the maintainer''s go on the scale before it runs.'
+diyaudioheaven:
+  kind: site
+  title: DIY-Audio-Heaven
+  home_url: https://diyaudioheaven.wordpress.com/
+  status: active
+  crawl:
+    start:
+    - https://diyaudioheaven.wordpress.com/
+    allow: ^/
+    max: 400
+    cdn: files\.wordpress\.com|i\d\.wp\.com
+    complete: true
+  notes: 'Crawled to the end on 2026-09-23: 1,444 pages on the last pass, 8,583 files held,
+    nearly all of them the measurement plots the site exists for. Re-run with --refresh later.'
+djerickson:
+  kind: site
+  title: Dave Erickson
+  home_url: https://www.djerickson.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.djerickson.com/
+    allow: ^/
+    max: 400
+drtube:
+  kind: factory
+  title: Dr. Tube
+  home_url: https://www.drtube.com/
+  status: active
+  era: vintage
+effectslayouts:
+  kind: site
+  title: Effects Layouts
+  home_url: https://effectslayouts.blogspot.com/
+  status: active
+  list:
+    role: layout
+    figures: true
+    cdn: '(bp\.blogspot\.com|blogger\.googleusercontent\.com)$'
+  notes: '877 posts listed on 2026-09-18; same shape as the other two layout blogs.'
+el34world:
+  kind: factory
+  title: EL34 World — schematics
+  home_url: https://el34world.com/schematics.htm
+  status: active
+  era: vintage
+elby_designs:
+  kind: site
+  title: Elby Designs (Panther and Serge-derived modules)
+  home_url: https://www.elby-designs.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.elby-designs.com/webtek/webtek.htm
+    allow: '^/webtek/.*\.html?$'
+    deny: '(?i)(overlay|3d|/kh-|carrier|panel|drill|warranty|compliance|synths-how_to)[^/]*$'
+    figures: '(?i)(^|/)schem[^/]*$'
+    max: 3000
+  notes: 'Laurie Biddulph publishes build documents with schematics for the Panther series and a long
+    line of Serge- and CGS-derived modules. Allowed without reservation and easy to list: robots.txt is
+    `User-agent: * / Allow: *` and names a sitemap at https://www.elby-designs.com/sitemap.xml. Checked
+    2026-09-25.
+
+    Shape, 2026-09-27. The sitemap is the shop (ShopFactory, 493 product pages) and names no document;
+    each product links into a separate documentation tree under /webtek/, which is what is walked, from
+    webtek.htm. Two kinds of module in it, published differently. The CGS designs (Ken Stone''s) show
+    the schematic as images named schem_<module>.gif beside photographs of the panel, the board and
+    the wiring, so figures are taken only by that name. The Euro-Serge line publishes no schematic at
+    all - build guides with silk-screen overlays and 3D views - and every module has kit lists as PDF:
+    kc- (component kit, a BOM with the real ICs: CGS01 is two CD4011 and a CD4017), kf- (full kit, the
+    same plus hardware) and kh- (hardware only: knobs and jacks). The kit lists are taken as parts
+    lists; the hardware list, overlays, 3D views, panel carriers and drilling drawings are denied.'
+electronics_illustrated:
+  kind: magazine
+  title: Electronics Illustrated
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+electronics_world_us:
+  kind: magazine
+  title: Electronics World
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+electronicsrevived:
+  kind: reference
+  title: ElectronicsRevived (dead; nothing archived)
+  home_url: https://web.archive.org/web/2026/http://electronicsrevived.com/
+  status: excluded
+  notes: 'The EEVblog manual archive of 12,000 files, gone. What the Wayback Machine kept is 111 HTML
+    pages and two PDFs: the crawler walked the index and never followed it to the manuals. Checked on
+    2026-09-24 against the CDX index. Nothing to recover, and no reason to look again.'
+electrosmash:
+  kind: site
+  title: ElectroSmash (MAS Effects mirror / Wayback)
+  home_url: https://electrosmash.mas-effects.com/
+  status: active
+  era: vintage
+  notes: 'Circuit analyses of pedals, amplifiers and the chips in them — schematic, measurements and an
+    explanation of why each stage is there, which is a better document than most schematics on their own.
+
+    electrosmash.com itself is gone: it does not answer at all as of 2026-09-25, not a 404 but no
+    connection. What is crawled is the MAS Effects mirror, rebuilt from a 2022 Wayback capture, and a
+    mirror''s robots.txt is not the author''s permission — so this was a question rather than an
+    assumption. The maintainer of this index has the author''s permission, given directly, and recorded
+    it on 2026-09-25. That is why the mirror is read straight rather than through the archive.'
+elektor:
+  kind: magazine
+  title: Elektor (English edition)
+  home_url: https://archive.org/details/ElektorMagazine
+  status: active
+  era: vintage
+  notes: '1974-1989 and 2004-2015 come from the archive.org item ElektorMagazine, 1990-2003 from the separate Elektor_Uk_*
+    items. 2022-2024 has no public copy anywhere: the one real gap.'
+elementary_electronics:
+  kind: magazine
+  title: Elementary Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+elmchan:
+  kind: site
+  title: ELM by ChaN — Electronic Handiworks
+  home_url: https://elm-chan.org/he_e.html
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://elm-chan.org/he_e.html
+    allow: ^/(works|docs|he_|junk)
+    max: 400
+esp:
+  kind: site
+  title: Elliott Sound Products
+  home_url: https://sound-au.com/
+  status: active
+  era: mixed
+eti_uk:
+  kind: magazine
+  title: Electronics Today International
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+everyday_electronics:
+  kind: magazine
+  title: Everyday Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+expanon:
+  kind: site
+  title: Experimentalists Anonymous
+  home_url: https://www.experimentalistsanonymous.com/
+  status: active
+  era: vintage
+fendersupport:
+  kind: factory
+  title: Fender service manuals
+  home_url: https://support.fender.com/hc/en-us/sections/42423674805531-INSTRUMENT-SERVICE-MANUALS
+  status: active
+  list:
+    role: service_manual
+  notes: 'The index page is served only to a browser, but the manuals themselves sit on the content
+    network and answer normally (checked 2026-09-22). 281 URLs gathered on 2026-09-19.'
+firstwatt:
+  kind: site
+  title: First Watt
+  home_url: https://www.firstwatt.com/
+  status: active
+  era: vintage
+geofex:
+  kind: site
+  title: Geofex — The Technology of… (R. G. Keen)
+  home_url: http://www.geofex.com/
+  status: active
+  crawl:
+    start:
+    - http://www.geofex.com/
+    allow: '^/'
+    max: 0
+    complete: true
+  notes: 'The canonical series on why each classic pedal circuit sounds as it does. The front page
+    is a frameset written in FrontPage and carries no links of its own; the crawler follows its four
+    frames. Crawled to the end on 2026-09-24: 210 pages, 768 files held, 95 of them PDF.'
+ggg:
+  kind: site
+  title: General Guitar Gadgets
+  home_url: https://generalguitargadgets.com/
+  status: active
+  era: vintage
+givemefile:
+  kind: reference
+  title: GiveMeFile (dead; files unnamed)
+  home_url: https://web.archive.org/web/2015/http://givemefile.net/
+  status: proposed
+  notes: 'Dead since 2015. 158,587 archived URLs, of which 156,680 are HTML and 1,096 are ZIP — and every
+    zip is behind download.php?id=236422312, so nothing says what any of them holds without fetching all
+    1,096 first. Left proposed rather than excluded: the answer is a gamble, not a certainty. Checked on
+    2026-09-24 against the CDX index.'
+groupdiy_threads:
+  kind: forum
+  title: GroupDIY
+  home_url: https://groupdiy.com/
+  status: excluded
+  blocked_reason: user forums are out of scope
+guitarwork:
+  kind: reference
+  title: Guitarwork.ru (dead; Wayback copy)
+  home_url: https://web.archive.org/web/2026/http://guitarwork.ru/
+  status: active
+  list:
+    role: schematic
+  wayback:
+    domain: guitarwork.ru
+    kind: schematic
+    origin: community
+    types: [image/jpeg, image/gif]
+  notes: 'Guitar amplifier schematics, dead, last captured June 2026. It published no PDFs at all: of
+    its 5,541 archived URLs, 1,470 are JPEG and they are the schematics themselves — Marshall JCM 800
+    2204, Ampeg V4 Preamp, Gibson Maestro GA-78RV. 1,727 images held on 2026-09-25.'
+gyraf:
+  kind: site
+  title: Gyraf Audio DIY
+  home_url: https://www.gyraf.dk/gy_pd/gyraf_diy.html
+  status: active
+  crawl:
+    start:
+    - https://www.gyraf.dk/gy_pd/gyraf_diy.html
+    allow: '^/(gy_pd|schematics|nrg)'
+    max: 0
+    complete: true
+  notes: 'Studio processors: GSSL and G1176 compressors, Pultec-style EQs. Crawled to the end on
+    2026-09-24: 21 pages, 320 files held, 38 of them PDF.'
+hands_on_electronics:
+  kind: magazine
+  title: Hands-On Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+hardwarex:
+  kind: journal
+  title: HardwareX (peer-reviewed open hardware), read through Europe PMC
+  home_url: https://www.hardware-x.com/
+  status: active
+  era: modern
+  list:
+    role: schematic
+  europepmc:
+    query: 'JOURNAL:"HardwareX" AND OPEN_ACCESS:Y'
+    kind: schematic
+    origin: community
+  notes: '744 papers on 2026-09-25, 723 of them open access, 99 naming KiCad and 151 an amplifier. A
+    journal that will not publish a design it cannot give away, which means every paper points at its
+    own files, and the subject is modern analogue instrumentation described by the people who built it.
+
+    The paper itself is not fetched. Elsevier serves the PDF and does not serve it to this machine, and
+    europepmc.org/articles/<id>?pdf=render answers 403. What is read is the open-access full text, to
+    find the design files — the better half anyway, because a .kicad_sch names its parts in fields and a
+    paper names them in prose. One paper measured on 2026-09-25 said ADS1299 sixty-three times and
+    linked eeg_acq.kicad_sch in a GitHub repository. The paper stays on every row as `paper`, which is
+    the citation the site should show.
+
+    Left undone: the papers that keep their files on Zenodo, the OSF or Mendeley Data instead of GitHub.
+    Those are archives of a whole project, which the hand-delivery path takes and this lister only
+    counts.'
+hifisonix:
+  kind: site
+  title: hifisonix — Andrew "Bonsai" Marsh
+  home_url: https://www.hifisonix.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.hifisonix.com/articles/
+    - https://www.hifisonix.com/projects/
+    sitemap: https://www.hifisonix.com/wp-sitemap.xml
+    allow: '^/(articles|projects)/'
+    deny: '(?i)/uploads/.*(price-list|specifications|specs-only|product_information|user-instructions|drilling|pcb-dimensions|-wiring|board-layout|-layout\.|copper|overlay|silk-screen|single-sided|record-reviews|review-of-|on-bullshit|einstein|saturn-guidance|the-economy|upc1237|lm308a|psmn4r3|_en\.pdf)'
+    max: 300
+    complete: true
+  notes: 'One engineer''s working library of analogue audio, and one of the densest sources in this
+    registry. 151 PDFs on 2026-09-26, of two kinds. His own designs — Ovation 250, SC-1 and Symphony, the
+    e-Amp, the sx, nx, nx2, kx and kx2 amplifiers, the ax-Amp, the X-Altra preamplifiers, HPA-1, the
+    Ripple Eater supplies, the RIAA phono stages, speaker protection — each written up as a design
+    document with the schematic in it, which is exactly what this pillar is for. And the classics he
+    keeps beside them: Locanthi 1966, JLH''s ten-watt class A, Leach, Stan Curtis, the Quad 405 from
+    Wireless World, Baxandall on noise in transistor circuits, Solomon''s op-amp tutorial, Otala and
+    Jung on TIM.
+
+    Permission. The robots.txt is 24 lines and every one of them is a comment: it carries Cloudflare''s
+    content-signals preamble and declares no signal at all, which by the preamble''s own clause (c)
+    neither grants nor restricts. The footer says "All content copyright hifisonix, unless stated
+    otherwise. Please do not reproduce the content on this site without permission." That is a request
+    not to republish, which rules 1 and 2 already answer: the file is read on this machine, the parts and
+    the link are published, and the file is released once read. Nothing of his is ever redistributed.
+
+    The sitemap is in the `crawl:` block rather than a `sitemap:` lister because what it names are pages,
+    not documents. Its /articles/ index shows nine of the 86 and the rest are behind JavaScript, so the
+    sitemap seeds the frontier and the crawl finds the PDFs each article links — which also means every
+    document is recorded with the article that introduced it, and that is the link a reader should get.
+
+    `deny` drops 31 of the 151: price lists, base-plate drilling, PCB dimensions, silkscreen and copper
+    layers, wiring diagrams, user instructions, specification sheets, four data sheets (uPC1237, LM308A,
+    PSMN4R3) which belong to the census and not here, the Pioneer receiver''s user manual as against its
+    schematic — and On Bullshit, Einstein''s path to relativity, the Saturn guidance system and a piece
+    on the economy, which are his reading and not his circuits.
+
+    Crawled to the end on 2026-09-29: 97 PDFs, 217 figures (152 JPEG, 53 PNG, 9 BMP, 3 GIF), 357 pages
+    walked. Of the 135 PDFs the walked pages link, 16 are denied and 25 live on other hosts — makers''
+    data sheets, Cordell, Leach, First Watt, Linear Audio — which are not his. Of his own, two are dead
+    links: the kx of December 2020, and a kx2 whose file is held under its later name,
+    kx2-Amplifier-November-2022.pdf. Two more, OPEX-1 and AFEC V3.0, are linked through the address of an
+    old server, 178.62.51.182, which the crawl does not take for his host; they were fetched by hand from
+    www.hifisonix.com under the same path.
+
+    The first full walk spent 143 of its 300 pages on ?currency=GBP, the shop''s currency switcher on
+    every page, which is why `currency=` is now in the crawl''s NEVER. The nine BMPs are the e-Amp of
+    2011 — circuit diagram, the three compensation schemes, protection, SOA, the thermal sensor.'
+hobbyist_specials:
+  kind: magazine
+  title: Hobbyist specials
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+kallhovde:
+  kind: factory
+  title: Kallhovde (dead; Wayback copy)
+  home_url: https://web.archive.org/web/2026/http://www.kallhovde.com/
+  status: active
+  list:
+    role: service_manual
+  wayback:
+    domain: kallhovde.com
+    kind: service_manual
+    origin: factory
+  notes: 'A mirror of Pioneer and other hi-fi service documents, dead, last captured June 2026. Of the
+    five dead sites checked against the Wayback CDX index on 2026-09-24, the only one whose documents
+    the archive actually kept. 1,256 of its 1,258 PDFs are held; one is larger than the 120 MB cap.'
+keithsnook:
+  kind: site
+  title: Keith Snook — Wireless World articles
+  home_url: https://keith-snook.info/
+  status: active
+  era: vintage
+kerrywong:
+  kind: site
+  title: Kerry D. Wong
+  home_url: https://www.kerrywong.com/
+  status: blocked
+  blocked_reason: the domain does not answer from this server; retry from elsewhere
+  crawl:
+    start:
+    - https://www.kerrywong.com/
+    allow: ^/(20\d\d/|blog/)
+    max: 500
+kitspace:
+  kind: site
+  title: Kitspace (ready-to-order electronics projects)
+  home_url: https://kitspace.org/
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    list_url: https://raw.githubusercontent.com/kitspace/kitspace-v2/master/boards.txt
+    kind: schematic
+    origin: community
+  notes: 'Kitspace keeps its whole catalogue in one text file — boards.txt, 151 GitHub repositories on
+    2026-09-25 — which is a better list than any crawl of the site could make, and it is the list its
+    own maintainers edit. Their Gitea instance at gitea.kitspace.dev does not answer this machine and is
+    not needed.'
+limpkin:
+  kind: site
+  title: Limpkin's blog
+  home_url: https://www.limpkin.fr/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.limpkin.fr/
+    allow: ^/
+    max: 250
+ludens:
+  kind: site
+  title: Ludens — Manfred Mornhinweg
+  home_url: https://www.ludens.cl/Electron/Electron.html
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.ludens.cl/Electron/Electron.html
+    allow: ^/Electron/
+    max: 400
+madbean:
+  kind: site
+  title: MadBean Pedals
+  home_url: https://www.madbeanpedals.com/
+  status: active
+  crawl:
+    start:
+    - https://www.madbeanpedals.com/projects/index.html
+    allow: '^/projects/'
+    max: 0
+    complete: true
+  notes: 'PCB projects documented as one PDF each: schematic, BOM and layout. Crawled to the end
+    on 2026-09-24: two pages were all it took, 253 files held, 121 of them PDF.'
+mfos:
+  kind: site
+  title: Music From Outer Space (Ray Wilson)
+  home_url: https://musicfromouterspace.com/
+  status: active
+  crawl:
+    start:
+    - https://musicfromouterspace.com/
+    allow: '^/'
+    max: 0
+    complete: true
+  notes: 'Music From Outer Space: Ray Wilson''s synthesiser projects. Crawled to the end on
+    2026-09-24 — one page, 56 files. Its schematics are images, not PDFs.'
+mikroe:
+  kind: factory
+  title: MikroElektronika Click boards
+  home_url: https://www.mikroe.com/click
+  status: blocked
+  era: modern
+  blocked_reason: 'robots.txt names about thirty agents that may read it and gives `User-agent: *` a
+    flat Disallow: /'
+  notes: 'Roughly 1,500 add-on boards, each with its own schematic, and heavily analogue — current
+    sense, ADCs, amplifiers, sensor front ends. On volume and on subject it would have been one of the
+    best modern sources in this registry.
+
+    It says no, and how it says it is worth recording. Its robots.txt lists some thirty agents that may
+    crawl public content — Googlebot, bingbot, GPTBot, ClaudeBot, Claude-User, Claude-SearchBot among
+    them — and then gives `User-agent: *` a flat `Disallow: /`. We are not ClaudeBot: this is a personal
+    indexer run by one person, so the group that applies to us is `*`, and `*` is refused. Putting a
+    name from the allow-list in our User-Agent to get in is precisely the disguise rule 3 forbids, so
+    this is blocked rather than argued with.
+
+    Checked on 2026-09-25. Asking them is the way in, and they publish an llms.txt, which suggests they
+    have thought about readers of this kind.'
+modern_electronics:
+  kind: magazine
+  title: Modern Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+mutable_instruments:
+  kind: site
+  title: Mutable Instruments (Émilie Gillet), from the archive
+  home_url: https://pichenettes.github.io/mutable-instruments-documentation/
+  status: active
+  era: mixed
+  list:
+    role: schematic
+  wayback:
+    domain: mutable-instruments.net
+    keep: '/(schematics|documents)/'
+    kind: schematic
+    origin: factory
+  notes: 'The reference for modern eurorack, and the one source this registry could not read. The
+    repository pichenettes/eurorack publishes 35 schematics and every one of them is EAGLE''s pre-6
+    binary format — `\x10\x80d\x00` and then a blob — which no reader here will ever open. All 65 of
+    openhw_eurorack''s unreadable files were this, blades, blinds, braids and branches among them.
+
+    The way round it is that she also published them as PDF, and the Wayback Machine kept 196 of them:
+    45 under static/schematics, 18 under archive/schematics, and four circuit analyses she wrote herself
+    under archive/documents — pole_mixing, smr4_analysis, svf_analysis. `keep` takes those and leaves the
+    user manuals and the panel drawings. mutable-instruments.net now serves one page pointing at GitHub,
+    so the archive is the only copy; the company closed in 2022.'
+neurochrome:
+  kind: site
+  title: Neurochrome
+  home_url: https://neurochrome.com/
+  status: active
+  era: modern
+  crawl:
+    start:
+    - https://neurochrome.com/
+    allow: ^/(products|pages|blogs|collections)/
+    max: 250
+    cdn: cdn\.shopify\.com|neurochrome\.com
+one-electron:
+  kind: site
+  title: One Electron
+  home_url: https://www.one-electron.com/
+  status: active
+  crawl:
+    start:
+    - https://www.one-electron.com/
+    allow: '^/'
+    max: 0
+    complete: true
+  notes: 'Valve output and power transformers, and the amplifier projects built around them. Crawled
+    to the end on 2026-09-25: 111 pages, 1,395 PDFs — far more than its size suggested.'
+nonlinearcircuits:
+  kind: site
+  title: Nonlinear Circuits (eurorack modules, schematics published)
+  home_url: https://www.nonlinearcircuits.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.nonlinearcircuits.com/modules
+    sitemap: https://www.nonlinearcircuits.com/sitemap.xml
+    allow: '^/modules/p/[^/]+$'
+    deny: '(?i)(panel|pnl|template|drill)[^/]*\.pdf$'
+    figures: false
+    max: 400
+  notes: 'Andrew Fitch publishes the schematic of every module. Registered proposed rather than crawled
+    because nobody has walked it yet, not because of any doubt about permission.
+
+    On permission there is a trap worth writing down. Its robots.txt is the Squarespace template, which
+    opens with a list of some thirty AI agent names — anthropic-ai and ClaudeBot among them — and looks
+    exactly like a refusal. It is not: the names run straight into `User-agent: *` with no rule in
+    between, so under RFC 9309 they are one group, and the rules that follow are the ordinary
+    Squarespace path exclusions (/search, /api/, /config). Content is allowed. `http.allowed()` reads
+    this correctly as it stands; the eye does not. Checked 2026-09-25.
+
+    Shape, 2026-09-27: the sitemap names 159 module pages at /modules/p/<name>, and each links its PDFs
+    under /s/ (Squarespace''s file store): 312 of them, about half a "build and BOM" document and half
+    a panel template. The build document is the BOM as text and then the schematic, drawn, on the
+    pages after it (FROLIC: two pages of text, eight of drawing), so it is the one taken; the panel
+    templates are drilling drawings and are denied by name. The product photos are not figures.'
+ohwr:
+  kind: site
+  title: Open Hardware Repository (CERN)
+  home_url: https://ohwr.org/
+  status: blocked
+  era: modern
+  blocked_reason: 'every design file is on gitlab.com, whose robots.txt disallows /api/v*, /*/uploads/
+    and /*/*.git/*'
+  notes: '190 projects on 2026-09-25, 27 of them tagged analogue: 32-bit ADC front ends, ultra-low-noise
+    amplifiers, a high-voltage FMC card, a 24-bit 8-channel acquisition board. Precision analogue of a
+    grade nothing else in this registry has.
+
+    The git repositories hold exactly one file, a .ohwr.yaml manifest. The design files are attachments
+    on each project wiki, and gitlab.com refuses all three ways to them: the API (Disallow: /api/v*),
+    the attachments themselves (Disallow: /*/uploads/) and cloning the wiki over HTTP (Disallow:
+    /*/*.git/*). The wiki pages are readable and the files they name are not. That is a refusal and not
+    a matter of pace — no delay turns it into a yes — so rule 3 says blocked, and says to keep the link
+    a person can follow, which is the project page on ohwr.org.
+
+    The way in is to ask, and it is a good bet: every .ohwr.yaml carries a maintainer name and a CERN
+    address, the projects are published under CERN-OHL, and reuse is the whole purpose of the registry.
+    That is a letter to write, not a request to make more slowly.'
+olimex:
+  kind: factory
+  title: Olimex (the design files of every board)
+  home_url: https://github.com/OLIMEX
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    orgs: [OLIMEX]
+    kind: schematic
+    origin: factory
+  notes: 'A manufacturer that publishes the CAD of everything it sells: 154 repositories on 2026-09-25,
+    and the OLINUXINO repository alone holds 300 schematic files and 285 PDFs. Mostly single-board
+    computers, so the analogue is in the power supplies, the audio codecs and the sensor inputs rather
+    than in the whole board — but it is modern silicon in a shipping product, which is what this pillar
+    is short of.'
+onsemi_appnotes:
+  kind: site
+  title: onsemi application notes
+  home_url: https://www.onsemi.com/
+  status: blocked
+  blocked_reason: 'their WAF answers 403 to this machine, for robots.txt and for documents alike'
+  notes: 'Corrected on 2026-09-24. The 403 on robots.txt is not a refusal of permission: RFC 9309 says a
+    4xx there leaves a crawler free, and core.http agrees — a reply that is not 200 is parsed as an empty
+    robots.txt, which allows everything. What blocks us is the same 403 on the documents themselves
+    (AND8177-D.PDF), so this is a technical block on this IP, not a policy one, and a browser on another
+    network may well be served. Their model files are already held through data/models/sources/onsemi.yaml.'
+openhw_eurorack:
+  kind: site
+  title: Eurorack and synth-DIY repositories, from the lists people keep
+  home_url: https://github.com/newdigate/eurorack-awesome
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    list_url: https://raw.githubusercontent.com/newdigate/eurorack-awesome/master/README.md
+    repos:
+    - GroundGrown/eurorack-modules
+    - QuinnFreedman/modular
+    - DrJ3RK/DrJ3RK
+    - odeliy/noise-reap
+    - odeliy/schema-cave
+    - diysynth/EURORACK-MODULES
+    - Fihdi/Eurorack
+    skip:
+    - KiCad/kicad-source-mirror
+    - FreeCAD/FreeCAD
+    - user-attachments/assets
+    - psykon/awesome-synth
+    - newdigate/eurorack-awesome-db
+    - azonenberg/pcb-checklist
+    - THX2112/Eurorack-Panel-Designer
+    ext: ['.kicad_sch', '.sch', '.pdf']
+    keep: '(?i)sch'
+    kind: schematic
+    origin: community
+  notes: 'DrJ3RK and schema-cave publish their schematics as PDF and no CAD at all — 105 files between
+    them — so `.pdf` is in `ext` and `keep` says which PDF is a schematic rather than a datasheet or a
+    build note. It costs the `.brd` files, whose paths do not say "sch"; they carry no part fields this
+    pipeline can read anyway.
+
+    A list a person keeps beats a list a topic makes. eurorack-awesome names fifty-six
+    repositories chosen by somebody who builds these; the topic sweep finds five hundred and fifty-four
+    of mixed worth. Measured on 2026-09-25: 38 of the 56 hold CAD, 440 files and 100 PDFs between them,
+    with pichenettes/eurorack (Mutable Instruments) at 70 and CATs-Eurosynth at 63.
+
+    `repos` are the ones sdiy.info names and the list does not: GroundGrown alone has 112 CAD files and
+    QuinnFreedman 50, while DrJ3RK and schema-cave publish their schematics as PDF rather than as
+    sources. `skip` is the other half of reading somebody else''s list — it links KiCad and FreeCAD
+    themselves, and KiCad''s tree holds hundreds of .kicad_sch demonstration files that no one built.'
+openhw_instruments:
+  kind: site
+  title: Open scientific instruments (KiCad and EAGLE sources)
+  home_url: https://github.com/topics/open-hardware
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    repos:
+    - jankae/LibreVNA
+    - matthew-yates/MYSTAT
+    - thomasdob/tdstat
+    - iorodeo/potentiostat
+    - iorodeo/cheapstat
+    - IMTEK-FreiStat/FreiStat-Hardware
+    - hunstat2/HunStat2
+    - OpenBCI/V3_Hardware_Design_Files
+    - OpenBCI/Ganglion_Hardware_Design_Files
+    - upsidedownlabs/BioAmp-v1.5
+    - wntrblm/Castor_and_Pollux
+    kind: schematic
+    origin: community
+  notes: 'Complete instruments published as their own CAD sources — a vector network analyser, four
+    potentiostats, EEG and biopotential front ends. Measured before any of it was fetched: three of these
+    boards hold 27 distinct semiconductors and not one was in this index. ADL5801, SI5351C, RFSA3714 and
+    THS4521IDGKR are in no family and no catalogue either, and they are read anyway because a design
+    declared them — see schematics/cad.py. The GitHub API is the way in and the HTML never is: one call
+    per repository names every file in it.'
+openhw_orgs:
+  kind: site
+  title: SparkFun and Adafruit hardware repositories
+  home_url: https://github.com/sparkfun
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    orgs: [sparkfun, adafruit, OpenBCI]
+    kind: schematic
+    origin: community
+  notes: 'sparkfun has 1,485 public repositories and adafruit 2,027, holding 106 .kicad_sch and 531 EAGLE
+    .sch between them on 2026-09-24. It was left proposed while a filter for digital breakouts was
+    wanted, and on 2026-09-25 that turned out to be the wrong place to filter: a path pattern cannot see
+    whether a board has an analogue chain on it, and the thing that can is the extractor. A breakout with
+    nothing but an MCU yields part numbers this index already has or does not want, and costs one request
+    and a few kilobytes to find out. So it is active, and what it actually contributes is measured after
+    the fact rather than guessed before it.'
+openhw_parts:
+  kind: site
+  title: Designs on GitHub that use a part still in production
+  home_url: https://github.com/search?q=extension%3Akicad_sch
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    parts:
+      from: [spice_definitions]
+      modern: true
+      max: 1500
+      ext: [kicad_sch]
+    avoid: [openhw_topics, openhw_eurorack, openhw_instruments, kitspace, openhw_orgs, hardwarex, olimex]
+    most: 20
+    skip:
+    - KiCad/kicad-source-mirror
+    - oomlout/oomlout_oomp_project_src
+    - oomlout/oomlout_oomp_project_bot
+    - oomlout/oomlout_oomp_project_bot_v_2
+    - kitspace-test-repos/kicad6-file-collection
+    - FOSSEE/eSim
+    - ekkus93/ai-kicad-designer
+    kind: schematic
+    origin: community
+  notes: 'The direction that fights the bias instead of adding to it. Every other source here answers
+    "what did somebody publish"; this one asks "who uses this part", of a list of parts still in
+    production, so the answer cannot be a valve amplifier from 1974.
+
+    Seeded from spice_definitions on purpose: a part that has a SPICE model *and* a published design
+    using it is the row this whole project exists to produce. 1,411 of those 39,610 parts are modern by
+    `parts.MODERN`, so the cap of 1,500 takes all of them, at one code search every fifteen seconds —
+    about six hours. Measured before registering it: TL072 appears in 1,276 .kicad_sch files, NE5532 in
+    1,600, OPA1612 in 89, LT3045 in 97, ADG1419 in 11, THAT1512 in 5, PGA2320 in none.
+
+    And a second correction, from running it. It listed 85,142 files from 3,694 repositories, where my
+    sample had projected one or two thousand. The sample counted repositories per part and was right
+    about that; what it could not see is that a repository is not one design. A sixth of those files came
+    from five of them: oomlout''s parts catalogue, a KiCad 6 file collection kept for testing, eSim''s
+    examples and two student forks of those. So `most: 20` throws away any repository holding more
+    schematics than a board has sheets, which keeps 83% of the repositories and 20% of the files, and
+    `skip` names the five worst by hand.
+
+    Measured on 2026-09-25 over 40 seeds spread through the whole list, not the first 40: 125 distinct
+    repositories, 3.3 per part, and 26 of the 40 parts with no published design at all. So this is not
+    the flood the first four seeds suggested — AD8000, AD8132, AD8436 and AD8615 answered with 95 of
+    those 125 between them, and the obscure end of the Maxim catalogue answers with nothing. What it
+    buys is relevance rather than volume: every file it finds holds a part that has a SPICE model.
+
+    `avoid` matters here more than anywhere. A popular repository is exactly what both a topic sweep and
+    a part search find, and each source keeps its own list and ledger, so without it the same file would
+    be fetched twice and counted as two uses.
+
+    Only .kicad_sch for the first run. EAGLE .sch would double the cost for what the measurements say is
+    roughly a tenth of the files, and it can be added when this has been paid for once.'
+openhw_topics:
+  kind: site
+  title: Open hardware by GitHub topic (audio and analogue)
+  home_url: https://github.com/topics/eurorack
+  status: active
+  era: modern
+  list:
+    role: schematic
+  github:
+    topics:
+    - eurorack
+    - eurorack-diy
+    - synthesizer-diy
+    - analog-synthesizer
+    - diy-audio
+    - audio-electronics
+    - analog-circuits
+    skip:
+    - KiCad/kicad-source-mirror
+    - FreeCAD/FreeCAD
+    kind: schematic
+    origin: community
+  notes: 'Measured on 2026-09-25 before it was registered: 554 repositories under these seven topics,
+    185 of them holding a schematic, 1,376 schematic files and 1,256 PDFs between them. The bulk is
+    eurorack, and eurorack is the opposite of a museum — a VCF laid out this year, on parts a
+    distributor still stocks, where the analogue signal chain is the point of the module rather than
+    something bolted to a microcontroller.
+
+    88 of those 185 repositories carry no licence at all. That changes nothing about indexing them, by
+    rule 2, and everything about ever republishing one, which this project does not do.'
+passdiy:
+  kind: site
+  title: Pass DIY
+  home_url: https://www.passdiy.com/
+  status: active
+  era: vintage
+passlabs:
+  kind: site
+  title: Pass Labs
+  home_url: https://www.passlabs.com/
+  status: active
+passlabs_diyaudio:
+  kind: delivery
+  title: Nelson Pass and Pass Labs, gathered by hand
+  home_url: https://www.diyaudio.com/community/forums/pass-labs.18/
+  status: active
+  list:
+    role: schematic
+  delivery:
+    role: schematic
+    link:
+    - match: '^diyAudio/([^/]+)/'
+      url: https://www.diyaudio.com/community/threads/{1}/
+    - match: '^firstwatt\.com/(.+)$'
+      url: https://www.firstwatt.com/{1}
+    links:
+      Recuperados_WaybackMachine/800abrochure1.tif: https://web.archive.org/web/20030509050501/http://www.passlabs.com:80/temp/800abrochure1.tif
+      Recuperados_WaybackMachine/800abrochure2.tif: https://web.archive.org/web/20030509052438/http://www.passlabs.com:80/temp/800abrochure2.tif
+      Recuperados_WaybackMachine/800abrochure3.tif: https://web.archive.org/web/20030509055028/http://www.passlabs.com:80/temp/800abrochure3.tif
+      Recuperados_WaybackMachine/800abrochure4.tif: https://web.archive.org/web/20030509062302/http://www.passlabs.com:80/temp/800abrochure4.tif
+      Recuperados_WaybackMachine/F1_SRV_MAN.doc: https://web.archive.org/web/20051110050605/http://passlabs.com:80/np/F1_SRV_MAN.doc
+      Recuperados_WaybackMachine/GC-BOOTSTRAP-1a.pdf: https://web.archive.org/web/20040729140051/http://www.passlabs.com:80/np/GC-BOOTSTRAP-1a.pdf
+      Recuperados_WaybackMachine/GC-BOOTSTRAP-2a.pdf: https://web.archive.org/web/20040729065433/http://www.passlabs.com:80/np/GC-BOOTSTRAP-2a.pdf
+      Recuperados_WaybackMachine/GC-OUTPUT-BIAS-1a.pdf: https://web.archive.org/web/20040729083521/http://www.passlabs.com:80/np/GC-OUTPUT-BIAS-1a.pdf
+      Recuperados_WaybackMachine/GC-SS-3a.pdf: https://web.archive.org/web/20040714044100/http://www.passlabs.com:80/np/GC-SS-3a.pdf
+      Recuperados_WaybackMachine/GC-SS-5a.pdf: https://web.archive.org/web/20040729065345/http://www.passlabs.com:80/np/GC-SS-5a.pdf
+      Recuperados_WaybackMachine/GC-VAR-BAL-FDBK-1a.pdf: https://web.archive.org/web/20040729075936/http://www.passlabs.com:80/np/GC-VAR-BAL-FDBK-1a.pdf
+      Recuperados_WaybackMachine/GC-ZEN-ALEPH-1a.pdf: https://web.archive.org/web/20041025133908/http://www.passlabs.com:80/np/GC-ZEN-ALEPH-1a.pdf
+      Recuperados_WaybackMachine/PLH.pdf: https://web.archive.org/web/20051029111536/http://www.passlabs.com:80/np/PLH.pdf
+      Recuperados_WaybackMachine/leaving_class_a.pdf: https://web.archive.org/web/20191122155242/https://www.passdiy.com/download.php?download_file=/images/uploads/project/leaving_class_a.pdf
+      Recuperados_WaybackMachine/prod_b4_man.pdf: https://web.archive.org/web/20240213163308/https://www.firstwatt.com/wp-content/uploads/2024/01/prod_b4_man.pdf
+      Recuperados_WaybackMachine/stasis1photo.jpg: https://web.archive.org/web/20030509015607/http://www.passlabs.com:80/temp/stasis1photo.jpg
+      Recuperados_WaybackMachine/stasis2-3schem.tif: https://web.archive.org/web/20030509022952/http://www.passlabs.com:80/temp/stasis2-3schem.tif
+      Recuperados_WaybackMachine/stasis_telarc2.jpg: https://web.archive.org/web/20030509033115/http://www.passlabs.com:80/temp/stasis_telarc2.jpg
+      Recuperados_WaybackMachine/stasisproj1.jpg: https://web.archive.org/web/20030509034542/http://www.passlabs.com:80/temp/stasisproj1.jpg
+      Recuperados_WaybackMachine/stasisproj2.jpg: https://web.archive.org/web/20030509041820/http://www.passlabs.com:80/temp/stasisproj2.jpg
+      Recuperados_WaybackMachine/sweet_spot.pdf: https://web.archive.org/web/20191024053003/https://www.passdiy.com/download.php?download_file=/images/uploads/project/sweet_spot.pdf
+      Recuperados_WaybackMachine/thr_fe89.tif: https://web.archive.org/web/20051110051309/http://passlabs.com:80/np/thr_fe89.tif
+      Recuperados_WaybackMachine/thr_fe90.tif: https://web.archive.org/web/20050106061022/http://www.passlabs.com:80/np/thr_fe90.tif
+      Recuperados_WaybackMachine/thr_os89.tif: https://web.archive.org/web/20051110051336/http://passlabs.com:80/np/thr_os89.tif
+      Recuperados_WaybackMachine/z4pcbmech.tif: https://web.archive.org/web/20030509055541/http://www.passlabs.com:80/temp/z4pcbmech.tif
+      Recuperados_WaybackMachine/z4pcbtop.tif: https://web.archive.org/web/20030509062039/http://www.passlabs.com:80/temp/z4pcbtop.tif
+  notes: 'An archive the maintainer gathered himself and handed over on 2026-09-23: Nelson Pass designs
+    saved out of the Pass Labs subforum thread by thread, plus a set recovered from the Wayback Machine
+    and one file from firstwatt.com. The folder a file sits in is the thread it was posted in, and those
+    slugs resolve, so each one carries the public page a reader can be sent to; the recovered set carries
+    none and stays out of anything published. Eight of its files are byte-identical to documents firstwatt
+    already holds. It is a delivery and not a crawl: nothing here was fetched by this project.'
+paulvdiy:
+  kind: site
+  title: Paul's DIY electronics blog
+  home_url: https://www.paulvdiyblogs.net/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.paulvdiyblogs.net/
+    allow: ^/(20\d\d/|p/)
+    max: 300
+    cdn: blogger\.googleusercontent\.com|bp\.blogspot\.com
+pedalpcb:
+  kind: site
+  title: PedalPCB
+  home_url: https://www.pedalpcb.com/
+  status: active
+  era: mixed
+phonoclone:
+  kind: site
+  title: RJM Audio — Phonoclone
+  home_url: https://phonoclone.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://phonoclone.com/
+    allow: ^/
+    max: 300
+pisotones:
+  kind: site
+  title: Pisotones
+  home_url: https://www.pisotones.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.pisotones.com/
+    allow: ^/
+    max: 500
+    complete: true
+  notes: 'Crawled to the end on 2026-09-23: the queue emptied after 4,084 files. Re-run with
+    --refresh to pick up whatever the site publishes next.'
+pmillett:
+  kind: site
+  title: Pete Millett
+  home_url: http://www.pmillett.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - http://www.pmillett.com/
+    allow: ^/
+    deny: (?i)books|tubebooks|/file_downloads/|\.zip$
+    max: 400
+popular_electronics:
+  kind: magazine
+  title: Popular Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+practical_electronics:
+  kind: magazine
+  title: Practical Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+practical_wireless:
+  kind: magazine
+  title: Practical Wireless
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+qrplabs:
+  kind: site
+  title: QRP Labs
+  home_url: https://qrp-labs.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://qrp-labs.com/
+    allow: ^/
+    max: 400
+    complete: true
+  notes: 'Crawled to the end on 2026-09-23: 562 pages on the last pass, 6,412 files held, 416 of
+    them PDF. It links itself over http and answers over https, which left 297 rows looking owed
+    until a walked page began stamping both spellings.'
+radio_constructor:
+  kind: magazine
+  title: The Radio Constructor
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+radio_electronics:
+  kind: magazine
+  title: Radio-Electronics
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+radio_tv_experimenter:
+  kind: magazine
+  title: Radio-TV Experimenter
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+radiomanual:
+  kind: reference
+  title: Radiomanual.eu
+  home_url: https://www.radiomanual.eu/
+  status: active
+  crawl:
+    start:
+    - https://www.radiomanual.eu/schemari.html
+    allow: '^/schemi/'
+    deny: '(?i)^/schemi/(transito|ManualExchange)/|_(user|broch|review|leaflet|catalog|advert|quick|installation|preparations|getting)[_0-9.]'
+    max: 0
+    complete: true
+  notes: 'Amateur and commercial radio manuals. Crawled to the end on 2026-09-25: 11 pages, and the
+    whole collection hangs off the schemari.html index. The deny pattern refuses everything with no
+    schematic in it, which on this site was most of it — of the first 3,247 files taken, 1,603 were
+    user manuals and 12.0 GB of the 17.5 had no circuit at all, the same manual kept in six languages.
+    2,738 PDFs held. Fifteen scans are larger than the 120 MB core.http will download and are written
+    down as such rather than fetched to the cap and thrown away on every run.'
+redcircuits:
+  kind: site
+  title: RED Free Circuit Designs
+  home_url: https://www.redcircuits.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.redcircuits.com/
+    allow: ^/[A-Za-z_]+\d*\.htm
+    max: 400
+renesas_appnotes:
+  kind: factory
+  title: Renesas application notes and white papers (with the Intersil analogue legacy)
+  home_url: https://www.renesas.com/
+  status: active
+  era: modern
+  list:
+    role: application_note
+    delay: 15
+  sitemap:
+    url: https://www.renesas.com/sitemap.xml
+    keep: '/en/document/(apn|whp|man)/'
+    kind: application_note
+  notes: 'robots.txt names ClaudeBot and anthropic-ai and allows them both, with a policy at
+    renesas.com/llms.txt: of every manufacturer checked on 2026-09-24 the only one that says yes to this
+    by name. Its sitemap lists 8,783 application notes, white papers and manuals.
+
+    Measured on 2026-09-25, and the reason rule 3 now tells a refusal from a complaint about pace: 411
+    documents came without a word, then Cloudflare answered 429 with `cf-mitigated: challenge` across
+    the whole site, the front page included. Slowing from one request every three seconds to one every
+    six changed nothing, so it was not the per-request pace alone — the morning had also walked its 118
+    sitemaps three times over, about a hundred megabytes of XML, and the third walk was avoidable. The
+    challenge cleared on its own in about seventy-five minutes. It was never a withdrawal of permission.
+
+    Resumed at one request every fifteen seconds, and the sitemaps are cached now, so a re-list costs
+    nothing. If it trips again the next pace to try is thirty seconds, then an hour of the day when
+    nothing else of ours is running.'
+runoffgroove:
+  kind: site
+  title: Runoffgroove
+  home_url: https://www.runoffgroove.com/
+  status: active
+  crawl:
+    start:
+    - https://www.runoffgroove.com/
+    allow: '^/'
+    max: 0
+    complete: true
+  notes: 'Pedal projects worked out from first principles, most with a PDF. Crawled to the end on
+    2026-09-24: 49 pages, 256 files, 38 of them PDF.'
+schematicheaven:
+  kind: factory
+  title: Schematic Heaven (mirror)
+  home_url: https://schematicheaven.net/
+  status: active
+  era: vintage
+  notes: '6 of 1,728 files fail: one 404, five do not serve a real PDF.'
+schematics_ca:
+  kind: reference
+  title: Schematics.ca (dead; nothing archived)
+  home_url: https://web.archive.org/web/2025/http://schematics.ca/
+  status: excluded
+  notes: 'Dead since March 2025. Of its 7,164 archived URLs, 6,783 are HTML and not one is a PDF; the
+    260 images left are the site''s own furniture. Checked on 2026-09-24 against the CDX index.'
+schematics_unlimited:
+  kind: factory
+  title: Schematics Unlimited
+  home_url: https://www.schematicsunlimited.com/
+  status: excluded
+  blocked_reason: every file is behind a CAPTCHA; never bypass it
+schmitzbits:
+  kind: site
+  title: René Schmitz — Synth DIY
+  home_url: https://www.schmitzbits.de/synth.html
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.schmitzbits.de/synth.html
+    - https://www.schmitzbits.de/
+    allow: ^/
+    max: 300
+semimuseum:
+  kind: reference
+  title: Transistor Museum — semiconductormuseum.com
+  home_url: https://www.semiconductormuseum.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.semiconductormuseum.com/
+    allow: ^/
+    max: 1500
+    figures: false
+sjostrom:
+  kind: site
+  title: Sjöström Audio
+  home_url: https://sjostromaudio.com/pages/
+  status: active
+  era: modern
+  crawl:
+    start:
+    - https://sjostromaudio.com/pages/
+    allow: ^/pages/
+    max: 500
+sm0vpo:
+  kind: reference
+  title: Harry's Homebrew — SM0VPO
+  home_url: https://www.sm0vpo.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.sm0vpo.com/
+    allow: ^/
+    max: 600
+    complete: true
+  notes: 'Crawled to the end on 2026-09-23: 296 pages on the last pass, 8,511 files held, 6,991 of
+    them PDF. Most of its pages are third-party datasheets it hosts, so it is a reference source:
+    shown apart, never counted as a schematic. 44 of its PDFs are truncated at source. Its pages
+    saved as MHTML under /_pdf/ yield URLs with a quote in them, which the crawler now drops.'
+synfo:
+  kind: factory
+  title: synfo.nl — service notes
+  home_url: https://www.synfo.nl/pages/servicemanuals.html
+  status: active
+  era: vintage
+  notes: 56 links in its index return 404.
+tagboard:
+  kind: site
+  title: Tagboard Effects
+  home_url: https://tagboardeffects.blogspot.com/
+  status: active
+  list:
+    role: layout
+    figures: true
+    cdn: '(bp\.blogspot\.com|blogger\.googleusercontent\.com)$'
+  notes: '1,254 posts listed on 2026-09-18, many of them commercial pedals that exist nowhere else.'
+techlib:
+  kind: site
+  title: Techlib — Charles Wenzel
+  home_url: https://techlib.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://techlib.com/
+    allow: ^/
+    max: 500
+thetubestore:
+  kind: factory
+  title: The Tube Store — schematics
+  home_url: https://www.thetubestore.com/
+  status: active
+  era: vintage
+ti_appnotes:
+  kind: factory
+  title: Texas Instruments application notes, reference designs and EVM guides
+  home_url: https://www.ti.com/design-development/analog-circuits.html
+  status: active
+  era: modern
+  list:
+    role: application_note
+  sitemap:
+    url: https://www.ti.com/lit/sitemapindex-standard.xml
+    keep: '/lit/pdf/(sboa|sbaa|sloa|snoa|snva|slva|slua|slyt|tidu|tidr|tidt|sbou|slou|sbau|snvu|sluu|sllu|slvu)[0-9]'
+    kind: application_note
+  notes: 'Application notes are schematics with real part numbers in them, and the same vendor vouches
+    for the SPICE models, which makes this the companion of pillar 2. robots.txt allows the document
+    paths, asks for Crawl-delay 1, and names the sitemap index that led here — /sitemap.xml is a 404
+    and the real one is written down only in robots.txt. Downloaded whole on 2026-09-25: 8,841 of
+    8,841, 9.7 GB, from a literature sitemap of 69,513 documents. `keep` takes the analog application
+    notes (sboa amplifiers, sbaa converters, sloa/snoa analog, snva/slva/slua power, slyt the design
+    journal), the TIDA reference design guides, and the evaluation-module user guides, which carry the
+    board''s own schematic; it leaves the marketing bulletins, the processor and wireless manuals, and
+    the data sheets, which are a category of their own. Every file is born digital and carries a text
+    layer, so it needs no OCR engine at all. Read on 2026-09-25 it gives 7,805 parts, 6,974 of them new
+    to the index and 4,824 from families newer than 1995 — the whole corpus held 291 of those before.'
+toragi:
+  kind: magazine
+  title: トランジスタ技術 (Transistor Gijutsu, CQ出版社) — the free sample pages, 2004 onwards
+  home_url: https://toragi.cqpub.co.jp/magazine/
+  status: active
+  ocr:
+    lang: japan
+  era: modern
+  list:
+    role: sample
+    delay: 2
+  toragi:
+    since: 2004
+  notes: 'The Japanese monthly, 1964 to date, whose modern years are the analogue and mixed-signal
+    material this corpus is emptiest in. Measured on 2026-09-25. The site is WordPress and says so
+    in the one place that counts: robots.txt disallows /wp-admin/ and nothing else. Its media API
+    lists every upload — 4,342 PDFs, 192 ZIPs — in 44 requests, so nothing here is guessed from a
+    file name. 4,233 of the PDFs hang off one of the 274 issue pages (/magazine/YYYYMM/, 2004-01 to
+    2026-10, twelve a year), and 109 hang off nothing; the `magazine` endpoint maps a parent post
+    to its YYYYMM. 3,252 of the PDFs were uploaded in 2022, which is the migration of the old
+    TRBN pages (see toragi_trbn) and will duplicate them byte for byte.
+
+    What a sample is: the first page or two of an article (2026-4-p037-038.pdf), about 1 MB, one per
+    article, seventeen to twenty an issue, plus the table of contents, the English digest and the
+    corrections (teiseiYYYYMM.pdf, /teiseiYYYY/, /category/correction/). Never the whole article.
+    The file name carries the start page and, since 2025, the issue; the issue for the older ones
+    comes from the parent post, and the article title from TR.txt — the publisher''s own index of
+    20,054 articles in 738 issues, CP932 CSV, shipped free in TRDBWin25.zip and kept private.
+
+    The ZIPs under /downloadYYYY/ (2010 to 2026) are program sources for the articles. They are
+    listed with their issue and left unopened: a sketch is not a document read for its circuit.
+    The ones that turn out to hold KiCad or EAGLE files can be opened later with cad.py.
+
+    Tech Village (cc.cqpub.co.jp, no robots.txt) sells the full PDFs and shows each issue''s table
+    of contents, but its item pages carry no sample link — only a link back here. It is a
+    catalogue, not a source, and is not listed. The plan with every measurement is in the
+    maintainer''s notes (toragi-cq-corpus).
+
+    Listed on 2026-09-26: 4,739 rows — 4,108 samples, of which 3,946 have their row in TR.txt, 74
+    tables of contents, 59 supplements, 52 corrections, 16 digests, 396 program archives recorded
+    and not fetched, 40 with no issue at all. About seventeen samples an issue from 2010 on, and
+    roughly one article in two has one: the short columns do not. The server hands a PDF over at
+    about 70 KB/s whatever the client, so the 4 GB take some thirteen hours at one request every
+    two seconds; that is its pace and it is kept.
+
+    Stopped by choice on 2026-09-26 with 2,043 PDFs held (1.6 GB), 2026-10 back to about 2020.
+    Measured over what was held, two samples in a hundred show anything like a schematic: the
+    circuit is on the pages CQ sells. The schematics CQ gives away are in toragi_support and
+    toragi_zips, and that is where the effort went. The ledger keeps every row, so the same
+    download command resumes where this stopped if the samples are ever wanted for their text.'
+toragi_support:
+  kind: magazine
+  title: トランジスタ技術 support material — the appendix boards and projects, whole, 2008–2021
+  home_url: https://toragi.cqpub.co.jp/Portals/0/support/
+  status: active
+  ocr:
+    lang: japan
+  era: modern
+  list:
+    role: support
+    delay: 2
+  toragi_support: {}
+  notes: 'Where the schematics are. A sample is the first page of an article and the circuit is on
+    the pages CQ sells; what it published whole is the support material of its appendix boards and
+    featured projects — circuit.pdf, pisoc_sch.pdf, the LV-1 headphone amplifier and DAC, a
+    full-digital RF transceiver in ten sheets — under Portals/0/support/ and Portals/0/download/ on
+    the current host and, mirrored, under toragi/2008-2020/Portals/0/ on the old one. That is the
+    DotNetNuke tree of 2008 to 2021, and no page indexes it any more. The Wayback Machine''s CDX
+    index names every file it captured there, 2,110 files in 550 MB on 2026-09-26 — 346 PDFs, 87
+    ZIPs, the rest photographs — and the six checked were all still served live by CQ. So the list
+    comes from the archive''s index and the files come from CQ; a file CQ no longer serves is listed
+    again from the archive, by capture date, on the next run. Photographs are left out by name and
+    the board/ folders too: the LV-1 tree keeps its schematics under circuit/ and its copper under
+    board/. The ZIPs are listed and not fetched here; they are opened separately, since one in ten
+    holds the schematic as a PDF or a CAD file.'
+toragi_zips:
+  kind: delivery
+  title: トランジスタ技術 program archives, opened for the schematics inside
+  home_url: https://toragi.cqpub.co.jp/download2026/
+  status: active
+  ocr:
+    lang: japan
+  era: modern
+  delivery:
+    role: support
+    link:
+    - match: '(?i)^([^!]+\.lzh)\.zip!'
+      url: 'https://{1}'
+    - match: '^([^!]+\.zip)!'
+      url: 'https://{1}'
+  notes: 'The ZIPs under /downloadYYYY/ and the old support trees are the programs that go with the
+    articles, and about one in ten also carries the circuit — as a PDF drawn from the CAD, sometimes
+    the CAD source itself. They are fetched by hand to the scratch area, opened, and packed again with
+    only the members worth holding, each under the path of its public URL, so the link rule above
+    turns the member key back into the archive CQ serves. Sources, binaries and screenshots stay out.
+
+    The old download archive (1997–2008, www.cqpub.co.jp/toragi/download/) is 462 more, 243 MB,
+    listed from the Wayback index and still served by CQ; most are LHA. One in eight of a first
+    sample carried OrCAD/PSpice designs, .DSN with the .net and .cir netlists beside them, which
+    name every part and its model in plain text. An LHA archive is repacked as a ZIP, so its key
+    ends .lzh.zip and the first link rule strips that back to the URL.'
+toragi_trbn:
+  kind: magazine
+  title: トランジスタ技術 back numbers on the old CQ site, 1997–2008
+  home_url: https://www.cqpub.co.jp/toragi/TRBN/html/backnumber.htm
+  status: active
+  ocr:
+    lang: japan
+  era: mixed
+  list:
+    role: sample
+    delay: 2
+  toragi_trbn: {}
+  notes: 'The previous generation of the same thing, still served. robots.txt forbids /script/,
+    /search/ and /shared/ and nothing under /toragi/. backnumber.htm (CP932) links one page per
+    issue, TRBN/contents/YYYY/TRYYYYMM.htm for 1998 to 2008 (upper-case .HTM in 1998 and 1999),
+    and each page links its sample PDFs under contents/YYYY/trYYMM/ — 17 for 2005-01, one checked
+    at 281 KB and application/pdf. The download archive is behind two frames,
+    download/html/dl_frame.htm → dl_year.htm (1997 to 2008) and download.htm, 390 article pages
+    with their files. Whatever 2004–2008 shares with the WordPress uploads of 2022 is the same
+    bytes under two URLs: both are kept, and the report says so by sha256. The tabid CMS of
+    2008–2020 (toragi/2008-2020/tabid/92/Default.html) links only navigation, banners and CSS
+    under Portals/0/; it is followed where linked and never enumerated.
+
+    Done on 2026-09-26: 1,031 PDFs held, 270 MB, every one distinct, one 404. The sample PDFs
+    begin in August 2002 — the 1998–2001 pages list the articles and link nothing — so it is 61
+    for 2002, 151 for 2003 and 160 to 200 a year for 2004 to 2007, about the same count as the
+    WordPress copies of those years. 903 of the 1,032 links had a title beside them on the page,
+    and 829 have their row in TR.txt, by start page where the name carries one (p113-114.pdf) and
+    by title where it does not (0501sp1.pdf).'
+tonepad:
+  kind: site
+  title: Tonepad
+  home_url: https://www.tonepad.com/
+  status: active
+tubecad:
+  kind: site
+  title: Tube CAD Journal
+  home_url: https://www.tubecad.com/
+  status: active
+  era: mixed
+  crawl:
+    start:
+    - https://www.tubecad.com/
+    allow: ^/(20\d\d|articles|index)
+    max: 800
+    complete: true
+  notes: 'Crawled to the end on 2026-09-24, after four days: 721 pages on the last pass, 16,395
+    files held over 399 MB. It runs to about 37 files a page, nearly all of them the PNG figures the
+    journal draws its circuits as — 83 PDFs in the whole site.'
+valvewizard:
+  kind: site
+  title: The Valve Wizard
+  home_url: https://www.valvewizard.co.uk/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.valvewizard.co.uk/
+    allow: ^/
+    max: 300
+vintagefender:
+  kind: factory
+  title: Vintage Fender Amp Repair — library
+  home_url: https://www.vintagefenderamprepair.com/
+  status: active
+  era: vintage
+vk3ye:
+  kind: site
+  title: VK3YE — Peter Parker
+  home_url: https://www.vk3ye.com/
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://www.vk3ye.com/
+    allow: ^/
+    max: 300
+wireless_world:
+  kind: magazine
+  title: Wireless World
+  home_url: https://www.worldradiohistory.com/
+  status: active
+  era: vintage
+xdevs:
+  kind: site
+  title: xDevs
+  home_url: https://xdevs.com/
+  status: active
+  era: modern
+  crawl:
+    start:
+    - https://xdevs.com/
+    allow: ^/(article|fix|review|guide|teardown)/
+    figures: false
+    max: 400
+    complete: false
+  notes: 'Teardowns and repairs of test gear, each article a long photo essay. The schematics are in
+    the service manuals it links, not in the photographs: of the first 29.9 GB taken, 27.9 GB were
+    11,336 JPEGs of instrument internals — 123 of them had anything circuit-like in the name — and
+    2.0 GB were the 668 PDFs that are the point. `figures: false` leaves the photographs where they
+    are; it is the one source here whose drawings are not images.'
+yusynth:
+  kind: site
+  title: YuSynth — Yves Usson
+  home_url: https://yusynth.net/Modular/index_en.html
+  status: active
+  era: vintage
+  crawl:
+    start:
+    - https://yusynth.net/Modular/index_en.html
+    allow: ^/Modular/
+    max: 400

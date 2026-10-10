@@ -1,0 +1,59 @@
+part: LM7924
+kind: regulator
+priority: 2
+models:
+- source: groups-io
+  name: LM7924
+  def: subckt
+  hash: 6872c8c0b018316e4274e69c014bada64fc11682
+  type: SUBCKT
+  deps:
+  - LM7909-24
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Linear%20Regulators/LM79xxTest.zip
+    member: LM79xx.txt
+    archive_sha256: 05d418b9357d4598efe46408faeaf1221712b08624021d1bcb4d34cb8ee4254f
+    sha256: e82dde2bbece4b3881dfdbe1e9c34ef93a64e6190a0f5f2502ea17ac1c1d7b46
+    lines:
+      LM7909-24: [132, 192]
+      LM7924: [64, 67]
+    fetched: '2026-10-10'
+- source: bordodynov
+  name: LM7924
+  def: subckt
+  hash: e866665932d6fba9689f517582f7827fbe04f0bc
+  type: SUBCKT
+  pins:
+  - IN
+  - GND
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/regulators.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+    lines:
+      LM7924: [1103, 1184]
+    fetched: '2026-09-14'
+  note: 'pins from simulation: of the 6 node orders only IN GND OUT regulates to about -24 V at Vin-Vout
+    5 V / 5 mA, Vin-Vout 15 V / 5 mA, Vin-Vout 5 V / 100 mA (orders tried: IN OUT GND: -23 V, -32.8 V,
+    947 V; IN GND OUT: -23.6 V, -23.5 V, -23.6 V; OUT IN GND: -27.5 V, -37.5 V, -27.3 V; OUT GND IN: -22.1
+    V, -31.9 V, 1.64 V; GND IN OUT: 34.4 V, 28.7 V, 64.2 V; GND OUT IN: 5.42 V, 5.28 V, 1.01e+03 V)'
+  copies:
+  - source: kicad-spice-library
+    name: LM7924
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/regulators.lib
+      sha256: 0b15463dadbf7c99cb3692aa563c298dd2a488e40122b87c0094158001d08f4c
+  - source: ltwiki
+    name: LM7924
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+datasheet:
+  url: https://www.onsemi.com/pub/Collateral/MC7900-D.PDF
+  maker: onsemi (Motorola MC7900 series)
+  doc: MC7900/D data sheet (MC7900 series); MC7924B/MC7924C table

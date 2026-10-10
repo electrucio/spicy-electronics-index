@@ -1,0 +1,544 @@
+part: KSA1381
+kind: bjt
+priority: 1
+group: driver_vas
+models:
+- source: onsemi
+  name: KSA1381
+  def: model
+  hash: 44039bec0ca8e3c7b2208478733a628d6ff50e3b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/ksa1381.lib
+    sha256: 6ed8eaf6e9bdb6eebd81482c6796edc05e9ce1bd3c89c0c0fd15a17b965ae746
+    lines:
+      KSA1381: [6, 31]
+    fetched: '2026-09-14'
+    note: 'model(s): KSA1381 (PNP .model)'
+  copies:
+  - source: ltwiki
+    name: KSA1381
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: microcap12
+    name: KSA1381
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: KSA1381
+  def: model
+  hash: 4066b202c48dd2b6659e8a81572179afee9f21d2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/ksa1381_rev1.lib
+    sha256: ee84c102fccec5abd7d2cff929b7d614928459542f08a444a7e208c586e0b20d
+    lines:
+      KSA1381: [6, 31]
+    fetched: '2026-09-19'
+- source: cordell
+  name: 2SA1381C
+  def: model
+  hash: fee8387f07e48ef3558dca7e7301a7f43e970287
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Install-Test.zip
+    member: Install Test/Cordell Models.txt
+    archive_sha256: 332b487564a6c8eca0f8a1db26ec86109b450af5e75278e32556ad000f9bcd77
+    sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+    lines:
+      2SA1381C: [87, 96]
+    fetched: '2026-09-14'
+    note: Cordell Models 12/07/2010 (older version bundled in zip; RB=10 in small-signal BJTs)
+  note: found under the alias 2SA1381
+  copies:
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_5/Gummel Plot/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Step/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/DC Transfer/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/Bata vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_6/gm vs Ic/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 2SA1381C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: kicad-spice-library
+    name: 2SA1381C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: 2SA1381C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: 2SA1381C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: ltwiki
+    name: 2SA1381C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+- source: cordell
+  name: 2SA1381C
+  def: model
+  hash: 091c0b8db4412ffd57d07e09f8872ebdddbbfb96
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Cordell-Models.txt
+    sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+    lines:
+      2SA1381C: [145, 154]
+    fetched: '2026-09-14'
+    note: 'Cordell Models 04/20/2011 (current site file, HTTP Last-Modified 2024-09-15): 63 .model (BJT
+      GP, NJF, VDMOS, D)'
+  note: found under the alias 2SA1381
+  copies:
+  - source: bordodynov-qspice
+    name: 2SA1381C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: ltwiki
+    name: 2SA1381c
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: diyaudio
+    name: 2SA1381
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+- source: bordodynov-qspice
+  name: 2SA1381_C
+  def: model
+  hash: 8e848c72bf25b6bb4c3efd87393304c3f4697dd3
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      2SA1381_C: [176, 176]
+    fetched: '2026-09-29'
+  note: found under the alias 2SA1381
+  copies:
+  - source: ltwiki
+    name: 2SA1381_C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: bordodynov-qspice
+  name: KSA1381
+  def: model
+  hash: 549a56852ddd01a42cae45e2e4c0623d64739797
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Cabirio-BJTmodels.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: a8397ba50980c5bd73b844e361c9e1071abfaa7024baef57e0c6e3cb631aa876
+    lines:
+      KSA1381: [453, 461]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov-qspice
+    name: KSA1381
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+- source: diyaudio
+  name: KSA1381
+  def: model
+  hash: 398f7f7e53659bc169ab7703a46407f1d449a618
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/cabirio-bjtmodels-txt.1435021/
+    sha256: 81cfae0119349f05ef5b6bb9e8d1c7bdd43589abc3499c93eb8eb12b5778f59e
+    lines:
+      KSA1381: [466, 474]
+    fetched: '2026-09-20'
+- source: groupsio-ltspice
+  name: KSA1381
+  def: model
+  hash: cb7acad10d57bee5d4f9af4753f1ab5b34ebc827
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      KSA1381: [844, 844]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: KSA1381
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: KSA1381
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: KSA1381
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: KSA1381
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: KSA1381
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: 2SA1381C
+  def: model
+  hash: 5d2fbc1359180eadf54c59664379196faa0016ad
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2SA1381C: [936, 936]
+    fetched: '2026-09-21'
+  note: found under the alias 2SA1381
+  copies:
+  - source: bordodynov-qspice
+    name: 2SA1381C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: 2SA1381C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: groupsio-ltspice
+    name: 2SA1381_CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: groupsio-ltspice
+  name: 2SA1381_C
+  def: model
+  hash: 9447ccfa2333eae786156e9e122b94712d1eba13
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2SA1381_C: [1168, 1168]
+    fetched: '2026-09-21'
+  note: found under the alias 2SA1381
+  copies:
+  - source: kicad-spice-library
+    name: 2SA1381_C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+- source: groupsio-ltspice
+  name: KSA1381
+  def: model
+  hash: 530c40c2f968c23a55122a67cd891265ea1cfbcc
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      KSA1381: [3077, 3077]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: KSA1381
+  def: model
+  hash: 8dcbbd403c1df1e004f4c444ce56b0cc0dd80c4c
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      KSA1381: [878, 878]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: KSA1381
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: KSA1381
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: 2SA1381C
+  def: model
+  hash: 667cd882bdc33c889d5adf2d42145d88d5acd5f7
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2SA1381C: [970, 970]
+    fetched: '2026-09-14'
+  note: found under the alias 2SA1381
+  copies:
+  - source: ltwiki
+    name: 2SA1381C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA1381C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: 2SA1381_C
+  def: model
+  hash: 38e45f1baf62c988e2a20579bbb984854c9e4941
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2SA1381_C: [1200, 1200]
+    fetched: '2026-09-14'
+  note: found under the alias 2SA1381
+  copies:
+  - source: ltwiki
+    name: 2SA1381_C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA1381_C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: 2SA1381_C
+  def: model
+  hash: a472da9bdb9a3cf3215ef3788108ca82c1894e69
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      2SA1381_C: [465, 465]
+    fetched: '2026-09-29'
+  note: found under the alias 2SA1381
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/ksa1381-d.pdf
+  maker: onsemi
+  doc: KSA1381/D Rev. 1
+  date: 2022-08

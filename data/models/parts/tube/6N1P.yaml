@@ -1,0 +1,471 @@
+part: 6N1P
+kind: tube
+priority: 2
+group: triode
+models:
+- source: ltspice-native
+  name: '61'
+  def: subckt
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  - Tj
+  - Id
+  deps:
+  - '2'
+  - '1'
+  - '3'
+  - '4'
+  - '7'
+  - '6'
+  - '5'
+  - '13'
+  - '11'
+  - '12'
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: sub/Contrib/Wolfspeed/WS_HalfBridge.lib
+    sha256: e10f8192144c855e81d4fee236de3d332999b240939c927eca20c14deaf0da69
+    lines:
+      '1': [114, 116]
+      '11': [805, 855]
+      '12': [857, 909]
+      '13': [911, 969]
+      '2': [118, 122]
+      '3': [125, 129]
+      '4': [131, 141]
+      '5': [144, 146]
+      '6': [149, 151]
+      '61': [1635, 1685]
+      '7': [152, 155]
+  note: found under the alias 6Н1П
+- source: microcap12
+  name: 6N1P
+  def: subckt
+  hash: 07379578bee7d1ba79d00c8ea94467824da59fd3
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  deps:
+  - TRIODENH
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/tube.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5b2ef34cfabef1e3c493bee1f1c2141b5f0c275e98a8054aae2dc4f0565c15d4
+    lines:
+      6N1P: [269, 276]
+      TRIODENH: [133, 193]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: groups-io
+    name: 6N1P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/tube.lib
+      sha256: 5b2ef34cfabef1e3c493bee1f1c2141b5f0c275e98a8054aae2dc4f0565c15d4
+  - source: kicad-spice-library
+    name: 6N1P
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/tube.lib
+      sha256: 262788d442a90ac3bd8a66b49be0759e832c1efcd1fd8c1142c326796abcfbe1
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: reefman
+  name: 6N1P-EV
+  def: subckt
+  hash: 3ad99c0d7b63275c6eea66c3628a8f0810c9d30a
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - C
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      6N1P-EV: [2073, 2081]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+  copies:
+  - source: kurtblum
+    name: 6N1P
+    get:
+      url: https://kurtblum.com/wp-content/uploads/2020/11/PP-Preamp_04.zip
+      member: 6N1P.inc
+      sha256: 8b40e08ac065bc08e4d427fb780b5f0fec95245bf6d8d6538078bd09300c01d0
+- source: duncanamps
+  name: 6N1P
+  def: subckt
+  hash: f871f3e953ea28dbfb43c0104dd483200e6d965d
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/valves/6n1p.inc
+    sha256: 0151a8fc9cb6324b0d5940e55e59cb2e62e8c30a6817ac359b3102485e94928f
+    lines:
+      6N1P: [25, 82]
+    fetched: '2026-09-14'
+    note: subckt 6N1P (A G K)
+  note: pins from names
+- source: suusi-tubes
+  name: 6N1P
+  def: subckt
+  hash: f62a675b3f0a580d021895769e33c2bd6b1d37b9
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6N1P: [687, 691]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: ltwiki
+  name: 6N1P
+  def: subckt
+  hash: 474c1d097d017c59643d0b6ddbc2c61f8a917334
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - C
+  deps:
+  - DX
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/nk_triode.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 363865e784b6e6be0e0b1416cf67965cdfdc62d86f58137402e912b0066d85f0
+    lines:
+      6N1P: [185, 189]
+      DX: [205, 205]
+      TRIODE: [192, 202]
+    fetched: '2026-09-21'
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_triode.sub
+      sha256: 363865e784b6e6be0e0b1416cf67965cdfdc62d86f58137402e912b0066d85f0
+  - source: kicad-spice-library
+    name: 6N1P
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_triode.sub
+      sha256: 363865e784b6e6be0e0b1416cf67965cdfdc62d86f58137402e912b0066d85f0
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_triode.sub
+      sha256: 363865e784b6e6be0e0b1416cf67965cdfdc62d86f58137402e912b0066d85f0
+- source: gist-chanmix51
+  name: 6N1P
+  def: subckt
+  hash: 45fc1bb442beb118d2cadf1e126985f12042b6d1
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: true
+  get:
+    url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
+    sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
+    lines:
+      6N1P: [387, 394]
+    fetched: '2026-09-14'
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: groups-io
+    name: 6N1P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: groups-io
+  name: 6N1P
+  def: subckt
+  hash: 266475625de6b662330deabdf9632c55d6f05ccb
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/Tube_IM.lib
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+    lines:
+      6N1P: [552, 567]
+    fetched: '2026-10-09'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/6n1p.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 15c39fd1006e246b3c2df012af42105936dd51db9bb5bf58f6f027843c29cbdc
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+  - source: bordodynov-qspice
+    name: 6N1P
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Tube_Rus.txt
+      sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: groups-io
+  name: 6N1P
+  def: subckt
+  hash: 398b6e4b7dbfcd6cb33f1d7002b1a7aa2f43127f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+    sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+    lines:
+      6N1P: [463, 478]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: 6N1P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/triodes.sub
+      sha256: 4c16ec2433d437b1f515598927e42172d6c65f599b4f6b85bf335e71a4cd0489
+  - source: groups-io
+    name: 6N1P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: groups-io
+    name: 6N1P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM_.lib
+      sha256: c566b67be9fb11d115442fa420fb3718e61cbd01bd84f11bb118d78e8b9ba1e5
+- source: groups-io
+  name: 6N1P_AN
+  def: subckt
+  hash: 7545bad6dca3fa0c84c2bedcdc493d62a91b5551
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/triodes.sub
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+    lines:
+      6N1P_AN: [404, 417]
+    fetched: '2026-10-09'
+  copies:
+  - source: bordodynov
+    name: 6N1P_AN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: ltwiki
+    name: 6N1P_AN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: groups-io
+  name: X6N1P
+  def: subckt
+  hash: f2f93004859dd2ae1712fdfb0577f0e4971870db
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      X6N1P: [718, 729]
+    fetched: '2026-10-09'
+- source: ltwiki
+  name: 6N1P
+  def: subckt
+  hash: 412ee76463782e22b48b9a3ef99d5e91c93cf1ab
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  deps:
+  - Triodo
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      6N1P: [1132, 1135]
+      Triodo: [3149, 3161]
+    fetched: '2026-09-21'
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6N1P
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6N1P
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+- source: ltwiki
+  name: '61'
+  def: subckt
+  hash: 6a1afa05acdd9435230fb8e338bb35869443a30a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Analisis/MonteCarlo/Monte carlo toolbox_3/vmc.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f0ee14467ffa5948bd912d29adf4c51edd958dab020fd1685a3eb6bc338a8f18
+    lines:
+      '61': [66, 68]
+    fetched: '2026-09-21'
+  note: found under the alias 6Н1П
+  copies:
+  - source: ltwiki
+    name: '61'
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Analisis/MonteCarlo/Monte carlo toolbox_3/vmc.lib
+      sha256: f0ee14467ffa5948bd912d29adf4c51edd958dab020fd1685a3eb6bc338a8f18
+- source: bordodynov
+  name: 6N1P
+  def: subckt
+  hash: 980102f836b4def3c9695f4889e1f135179bd645
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  deps:
+  - TRIODENH
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/new_triodes.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+    lines:
+      6N1P: [586, 593]
+      TRIODENH: [559, 584]
+    fetched: '2026-09-14'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: 6N1P
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/new_triodes.txt
+      sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+  - source: ltwiki
+    name: 6N1P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/new_triodes.txt
+      sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+datasheet:
+  url: https://frank.pocnet.net/sheets/164/6/6N1Pspec.pdf
+  maker: Svetlana
+  doc: Svetlana Technical Data 6N1P Dual Audio Triode (2 pages)

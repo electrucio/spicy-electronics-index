@@ -1,0 +1,56 @@
+part: OPA211
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: OPA211
+  def: subckt
+  hash: ebfa20950ff01509d7af604ee67e12deb5210a70
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA211: [62712, 62939]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: OPA211
+  def: subckt
+  hash: e0d17694430e81701a86f3bc557dcacb5ecbe39c
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/OPA211.mod
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4957fd2437119c81a11d74a6382c23715116a373881e9dc38b1d21793b46c568
+    lines:
+      OPA211: [18, 245]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/OPA211.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 6e933f4ab99ab227ece80a0173e440089da0770787f3d34e4f3c0a3ac7fc27c9
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+  copies:
+  - source: kicad-spice-library
+    name: OPA211
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPA211.mod
+      sha256: 4957fd2437119c81a11d74a6382c23715116a373881e9dc38b1d21793b46c568
+  - source: ltwiki
+    name: OPA211
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPA211.mod
+      sha256: 4957fd2437119c81a11d74a6382c23715116a373881e9dc38b1d21793b46c568

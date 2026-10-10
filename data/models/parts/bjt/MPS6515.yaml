@@ -1,0 +1,87 @@
+part: MPS6515
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: MPS6515
+  def: model
+  hash: 6a838ba6852712afb0b987e8d24f87592d852ce0
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS6515.t
+    sha256: b62583404d409d41eca1e0fd36da36e74c872d18c4fb88ed40147dfd290c7b00
+    lines:
+      MPS6515: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPS6515
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: kicad-spice-library
+    name: MPS6515
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MPS6515
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: ltwiki
+    name: MPS6515
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: microcap12
+    name: MPS6515
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: MPS6515
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: bordodynov
+  name: MPS6515
+  def: model
+  hash: 2e8fd52af326858075a580b0dd8d3e9212400ffc
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MPS6515: [1594, 1594]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: MPS6515
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: ltwiki
+    name: MPS6515
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPS6515
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3

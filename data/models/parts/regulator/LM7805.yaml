@@ -1,0 +1,266 @@
+part: LM7805
+kind: regulator
+priority: 2
+models:
+- source: groups-io
+  name: LM7805
+  def: subckt
+  hash: b36aa87b0232c3b7fb87677c16fed91485661af1
+  type: SUBCKT
+  pins:
+  - IN
+  - GND
+  - OUT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Linear%20Regulators/78xx%20Series.zip
+    member: regulators.lib
+    archive_sha256: 7a7d0fc7c148769c674d3dff9a2febe813e34996839aee4e9ac3c4f24311d19f
+    sha256: 82059ec92b8b4cffa722efd461e1898d7d3310ed8a905ce8446e4391579cc6e9
+    lines:
+      LM7805: [8, 66]
+    fetched: '2026-10-10'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/VolReg/xreg.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 88a71f2d2952234bf5dac796efc8aace027639ab9dc179a17bd4008bfb9c3d28
+  note: 'pins from simulation: of the 6 node orders only IN GND OUT regulates to about 5 V at Vin-Vout
+    5 V / 5 mA, Vin-Vout 15 V / 5 mA, Vin-Vout 5 V / 100 mA (orders tried: IN OUT GND: -5 V, -5 V, -64.7
+    V; IN GND OUT: 5 V, 5 V, 5 V; OUT IN GND: 7.87 V, 17.8 V, 7.87 V; OUT GND IN: 5.96 V, 14 V, -1.8 V;
+    GND IN OUT: -0.717 V, -0.712 V, -0.855 V; GND OUT IN: -3.24 V, -3.24 V, -55.1 V)'
+  copies:
+  - source: bordodynov
+    name: LM7805
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+  - source: kicad-spice-library
+    name: LM7805
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/regulators.lib
+      sha256: 0b15463dadbf7c99cb3692aa563c298dd2a488e40122b87c0094158001d08f4c
+  - source: ltwiki
+    name: LM7805
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+  - source: ltwiki
+    name: LM7805
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
+      sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+- source: ltwiki
+  name: LM7805C
+  def: subckt
+  hash: 4e2e6bec74ddc453f949d23195d7bc30c369d109
+  type: SUBCKT
+  pins:
+  - IN
+  - OUT
+  - V00
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/Ixdd404/IXDD404lt.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: a752c4e6632ab543e460f417a6175adcb5c03beb4460f6a30fc9d07971f524d3
+    lines:
+      LM7805C: [234, 237]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: LM7805C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/Ixdd404/IXDD404lt.lib
+      sha256: a752c4e6632ab543e460f417a6175adcb5c03beb4460f6a30fc9d07971f524d3
+  - source: ltwiki
+    name: LM7805C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/ixdd414/IXDD414lt.lib
+      sha256: 9215f7da91a8cf0b58c8a40ada17cb50cb1c12d9d886800459478aa347ca5245
+  - source: ltwiki
+    name: LM7805C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/ixdd414/IXDD414lt.lib
+      sha256: 9215f7da91a8cf0b58c8a40ada17cb50cb1c12d9d886800459478aa347ca5245
+- source: ltwiki
+  name: LM7805C
+  def: subckt
+  hash: 9877bbb26586b3fee960513462eefd81783ed6f1
+  type: SUBCKT
+  pins:
+  - VIN
+  - VOUT
+  - VCOM
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/IXDI430YI/IXDI430YI_lt.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 96e0b71b479e8e77f5cb91a3e4847b33a1c8052e809f14489fed4c85c2cb0d2d
+    lines:
+      LM7805C: [142, 146]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: LM7805C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/IXDI430YI/IXDI430YI_lt.lib
+      sha256: 96e0b71b479e8e77f5cb91a3e4847b33a1c8052e809f14489fed4c85c2cb0d2d
+  - source: ltwiki
+    name: LM7805C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/IXDN430YI/IXDN430YI_lt.lib
+      sha256: 7cbee7c2923148c93468fc0076bbd116b30f2a263e1f43dad3597e71c21ac265
+  - source: ltwiki
+    name: LM7805C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/IXDN430YI/IXDN430YI_lt.lib
+      sha256: 7cbee7c2923148c93468fc0076bbd116b30f2a263e1f43dad3597e71c21ac265
+- source: ltwiki
+  name: LM7805C
+  def: subckt
+  hash: 562afd1532289be1fe5684d83395a04d9abd2c1d
+  type: SUBCKT
+  deps:
+  - x_LM78XX
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      LM7805C: [4849, 4852]
+      x_LM78XX: [4741, 4845]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: UA7805C
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+      sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+- source: ltwiki
+  name: UA7805/TEMP
+  def: subckt
+  hash: 9cd933162d9bb2a862992592c0ee8dc021751859
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      UA7805/TEMP: [4880, 5264]
+    fetched: '2026-09-21'
+  note: found under the alias UA7805
+- source: bordodynov
+  name: LM7805
+  def: subckt
+  hash: d1c5b99e10f30c789e1b24ee18b13eabd5ac18c2
+  type: SUBCKT
+  pins:
+  - IN
+  - VGND
+  - OUT
+  deps:
+  - lm78xx
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/LM78xx.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 85a79b9c4224eedd7b333dc306ea7ae90a39a5d92242196b6fbd370eeb3300bc
+    lines:
+      LM7805: [9, 12]
+      lm78xx: [27, 70]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/VolReg/LM78xx.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 892c79df378fe1aff9b921d19c3c39966cdbf33d05f4f22bfc37c5c0d69e2dbc
+  note: pins from names
+  copies:
+  - source: kicad-spice-library
+    name: LM7805
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/LM78xx.txt
+      sha256: 85a79b9c4224eedd7b333dc306ea7ae90a39a5d92242196b6fbd370eeb3300bc
+  - source: ltwiki
+    name: LM7805
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM78xx.txt
+      sha256: 85a79b9c4224eedd7b333dc306ea7ae90a39a5d92242196b6fbd370eeb3300bc
+- source: bordodynov-qspice
+  name: LM7805C
+  def: subckt
+  hash: ea87234536fdb978afa3da11fb1ace9511af352e
+  type: SUBCKT
+  pins:
+  - INPUT
+  - OUTPUT
+  - GROUND
+  deps:
+  - x_LM78XX
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/VoltReg/LM7805C.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 849cd076ba4eaa05e9285be34a7f6388372f8eb5facea851f1625dcc5e41d0e9
+    fetched: '2026-09-29'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: LM7805C
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/VoltReg/LM7805C.qsym
+      sha256: 849cd076ba4eaa05e9285be34a7f6388372f8eb5facea851f1625dcc5e41d0e9
+  - source: kicad-spice-library
+    name: LM7805C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+      sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+  - source: kicad-spice-library
+    name: UA7805C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+      sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+- source: kicad-spice-library
+  name: UA7805C
+  def: subckt
+  hash: ea87234536fdb978afa3da11fb1ace9511af352e
+  type: SUBCKT
+  pins:
+  - INPUT
+  - OUTPUT
+  - GROUND
+  deps:
+  - x_LM78XX
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+    sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+    lines:
+      UA7805C: [1747, 1750]
+      x_LM78XX: [1632, 1736]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias UA7805; pins from names
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/lm7805.pdf
+  maker: Texas Instruments (National Semiconductor)
+  doc: SNOSBT0L, rev. L (first issued Feb 2000); table 6.6 LM340/LM7805
+  date: 2016-09

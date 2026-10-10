@@ -1,0 +1,212 @@
+part: LM2901
+kind: comparator
+priority: 2
+models:
+- source: ti
+  name: LM2901
+  def: subckt
+  hash: c081d23c912052802bc412c0a2074198555ecde9
+  type: SUBCKT
+  pins:
+  - IN+
+  - IN-
+  - Vcc
+  - GND
+  - OUT
+  deps:
+  - VINRANGE_393
+  - 4ORGATE
+  - INPUTRANGE
+  - Difference
+  - ORGATE
+  - VCC_Range
+  - Supply_Enable
+  - SUPPLY_BUFFER1
+  - Supply_Buffer
+  - DESD
+  - DIGLEVSHIFT
+  - Output_Stage_SHIZ
+  - MID_SUPPLY
+  - INVERTER
+  - Output_Stage_SMID
+  - Output_Stage_SVOL
+  - Output_Stage
+  - Prop_Delay
+  - HPA_COMPHYS
+  - Input_Buffer
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SLCJ010
+    member: lm2901.lib
+    archive_sha256: ec028444e0ce80957f31c6b1146caf77a71efaf903e1684fa070667ddc94b03b
+    sha256: 622338a26a2f7cd185f254f7596c729f52e8c8ac69585009a8feae129c8d7296
+    lines:
+      4ORGATE: [204, 207]
+      DESD: [209, 220]
+      DIGLEVSHIFT: [158, 163]
+      Difference: [181, 185]
+      HPA_COMPHYS: [149, 156]
+      INPUTRANGE: [95, 105]
+      INVERTER: [165, 168]
+      Input_Buffer: [87, 89]
+      LM2901: [54, 75]
+      MID_SUPPLY: [170, 173]
+      ORGATE: [175, 179]
+      Output_Stage: [113, 128]
+      Output_Stage_SHIZ: [142, 146]
+      Output_Stage_SMID: [136, 140]
+      Output_Stage_SVOL: [130, 134]
+      Prop_Delay: [107, 111]
+      SUPPLY_BUFFER1: [187, 190]
+      Supply_Buffer: [91, 93]
+      Supply_Enable: [77, 85]
+      VCC_Range: [192, 196]
+      VINRANGE_393: [198, 202]
+    fetched: '2026-09-14'
+- source: spice-model-cd
+  name: LM2901
+  def: subckt
+  hash: 6396a99e0e0c2a2bdcdf527a4dcb8b0577f870af
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/STMicroelectronics/Standard%20Linear%20ICs/Spice/lm2901.txt
+    sha256: 109fbc63341f9f203f3a6cadeb5146f810df035a5845e254509d08412e03f3f4
+    lines:
+      LM2901: [25, 70]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: LM2901_TI
+  def: subckt
+  hash: d7082c46cfde7514a6bc8b091aa7cfe0006586d8
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      LM2901_TI: [1768, 1789]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: LM2901
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/LM2901.5_1
+      sha256: 0e7725454b234811f4ad6f546697305d3073d3b5e27ebb9be0716b35960876fa
+  - source: kicad-spice-library
+    name: LM2901_TI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
+      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
+  - source: kicad-spice-library
+    name: LM2901T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
+      sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
+- source: bordodynov
+  name: LM2901
+  def: subckt
+  hash: b8b55d584a1ae1fc35201cf1446f5a045a821ec2
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/LM2901.5_1
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 814772ac795437b24bd6829988de65604185b81db5fe5a5a1607b71a8a3c0c59
+    lines:
+      LM2901: [10, 33]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Comparator/LM2901.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 5f41195faf1e6af59a833d5a5b1b07524be91a902cff4c474f9933eeb4b79e22
+  note: pins from comment words
+  copies:
+  - source: ltwiki
+    name: LM2901
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM2901.5_1
+      sha256: 814772ac795437b24bd6829988de65604185b81db5fe5a5a1607b71a8a3c0c59
+- source: kicad-spice-library
+  name: LM2901T
+  def: subckt
+  hash: d7082c46cfde7514a6bc8b091aa7cfe0006586d8
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
+    sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
+    lines:
+      LM2901T: [494, 515]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words
+- source: kicad-spice-library
+  name: LM2901_TI
+  def: subckt
+  hash: d7082c46cfde7514a6bc8b091aa7cfe0006586d8
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
+    sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
+    lines:
+      LM2901_TI: [1366, 1387]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words
+- source: kicad-spice-library
+  name: LM2901S
+  def: subckt
+  hash: 06b64fd327ef7a1aabea428440255f7a94ab57b2
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS.LIB
+    sha256: 9dca4e312e997d808a21cfa05a667948fe085291fa3433406b85d9d7e53a4832
+    lines:
+      LM2901S: [654, 698]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/lm2901.pdf
+  maker: Texas Instruments
+  doc: SLCS006Z, Oct 1979, revised May 2025 (LM139/239/339/2901 family); table 6.11 LM2901/LM2901V/LM2901AV,
+    6.15 switching

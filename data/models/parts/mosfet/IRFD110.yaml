@@ -1,0 +1,49 @@
+part: IRFD110
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: IRFD110
+  def: model
+  hash: 3570f39dc3759f8f0de85bdf3b5da63824694d5f
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRFD110: [1125, 1129]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRFD110
+  def: model
+  hash: 62eb9ce49b1e860901f43a8a03cc8243a8487174
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFD110: [2183, 2186]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRFD110
+  def: subckt
+  hash: 55ef0ccca9be220f89d88cb4ef174409ebc8e343
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRFD110: [1360, 1382]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

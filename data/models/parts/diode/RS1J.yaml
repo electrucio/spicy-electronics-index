@@ -1,0 +1,115 @@
+part: RS1J
+kind: diode
+priority: 4
+group: rectifier
+models:
+- source: onsemi
+  name: RS1J
+  def: model
+  hash: e141deeb7a9977fe60f5b5000f3771637ac208f4
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/rs1a_rs1m%20spice%20model.lib
+    sha256: 42f955dbd58b053a4b22d1715928d4c58ef0ae3526acbdf30ae7ec6093a5688c
+    lines:
+      RS1J: [62, 67]
+    fetched: '2026-09-19'
+- source: vishay
+  name: rs1j
+  def: model
+  hash: cd7521b62681ffb631478ff7d827b667afe6f087
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87887/p_rs1j.txt
+    sha256: cd8b5b1041a3023831fb83f45b6432888eddd48f6efd8488be9f199f38a690f8
+    lines:
+      rs1j: [7, 10]
+    fetched: '2026-09-19'
+    note: 'Power Rectifiers, PSpice Models (*.txt): rs1j'
+- source: vishay
+  name: rs1j
+  def: model
+  hash: 13cbf697a3e43d07b9098708265485daef2cde9b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87886/rs1j.txt
+    sha256: bb16028b567ca9905af0c219935801836d9c14feda888498edb82554a87295fe
+    lines:
+      rs1j: [7, 10]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: RS1J
+  def: model
+  hash: 7bdb2a95d704a0bf867c3b374c6b4fc56d47eddb
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      RS1J: [10875, 10876]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: RS1JB
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc.lib
+      sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+- source: qspice
+  name: RS1J
+  def: model
+  hash: 35fc982d57a457ed4d400df63b9533691b14d5bb
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Diode.txt
+    sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+    lines:
+      RS1J: [94, 94]
+  copies:
+  - source: bordodynov-qspice
+    name: RS1J
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+  - source: bordodynov-qspice
+    name: RS1JB
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+  - source: qspice
+    name: RS1JB
+    get:
+      installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+      file: Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+- source: groups-io
+  name: RS1J
+  def: model
+  hash: 505f866cb54c8e021c2806a424108e6ae417d646
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      RS1J: [2303, 2303]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: RS1JB
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7

@@ -1,0 +1,51 @@
+part: MPS8598
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: MPS8598
+  def: model
+  hash: b3aaa4e427803c79272493032fb6b00541bd1f76
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS8598.t
+    sha256: 1cd5e1dda54471d8bd17c015c10e70408901a697446e3568ca59bbfc2e1b0f1c
+    lines:
+      MPS8598: [1, 4]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MPS8598
+  def: model
+  hash: 387930170629bf3a3550528401330dddd3695d74
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPS8598: [3121, 3125]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: MPS8598
+  def: model
+  hash: 0b82a5d4f01ca9ac11125ab2f9af928880854874
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPS8598: [3622, 3622]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPS8598
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b

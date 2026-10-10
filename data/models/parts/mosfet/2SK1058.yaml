@@ -1,0 +1,205 @@
+part: 2SK1058
+kind: mosfet
+priority: 1
+group: power_lateral
+models:
+- source: microcap12
+  name: 2SK1058
+  def: model
+  hash: c42450cbb640991c5116b35367fa37cd05e1be34
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/hpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4d5b32208d929ab48abe098ba755d57094bc9faadd8f519bd904aecfc7f1115a
+    lines:
+      2SK1058: [775, 779]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: 2SK1058
+  def: subckt
+  hash: 48acbce270a2d68efec67a27738bf9e6a559da57
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/HIFI_LIB.LIB
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 2c719b8865adc17f4b3d57ce6224e2820c26e3169c65abe6d91c40c7a42125a3
+    lines:
+      2SK1058: [1182, 1205]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: 2SK1058
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/HIFI_LIB2.LIB
+      sha256: 49df04a1199d79a97f768a480c3a071b51d03aede2939ebfebafd349c08e8837
+  - source: groups-io
+    name: 2SK1058-ICAP
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/HIFI_LIB.LIB
+      sha256: 2c719b8865adc17f4b3d57ce6224e2820c26e3169c65abe6d91c40c7a42125a3
+  - source: groups-io
+    name: 2SK1058-ICAP
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/HIFI_LIB2.LIB
+      sha256: 49df04a1199d79a97f768a480c3a071b51d03aede2939ebfebafd349c08e8837
+- source: groups-io
+  name: 2SK1058
+  def: model
+  hash: 723feb67fc794c8b3686cab3bc8311ec03ec5548
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+    member: standard.mos
+    archive_sha256: a20e6e422ae85770aab697f646969e1027bebd814386b6d94cfe77568a493c47
+    sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+    lines:
+      2SK1058: [1013, 1013]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: 2SK1058
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+      member: standard.mos
+      sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+- source: groupsio-ltspice
+  name: 2SK1058
+  def: model
+  hash: 9bf606b7a40cc57bbc04d56c9863fb98d484edc9
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      2SK1058: [811, 811]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2SK1058
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: 2SK1058
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: 2SK1058
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: 2SK1058
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/MOS.lib
+      sha256: 5a12451d9b52820cc74b1f3c11955dcfbc99cc0ede851dd12587ebbbc9e9531e
+  - source: ltwiki
+    name: 2SK1058
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: 2SK1058
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: 2SK1058
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: 2SK1058
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: 2SK1058
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: 2SK1058
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+- source: bordodynov
+  name: 2SK1058h
+  def: model
+  hash: e8307229b9dbe1d7cc875f707a4166737bf5ccd6
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      2SK1058h: [1511, 1511]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: 2SK1058h
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: 2SK1058h
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: 2SK1058h
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: 2SK1058h
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: 2SK1058h
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: 2SK1058_
+  def: model
+  hash: e83a4f285b442221d197238d45cd6e001eb3147d
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+    sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+    lines:
+      2SK1058_: [1505, 1505]
+    fetched: '2026-09-14'
+    note: Bordodynov VDMOS collection for LTspice IV
+datasheet:
+  url: https://www.renesas.com/en/document/dst/2sk1056-2sk1057-2sk1058-datasheet
+  maker: Renesas (ex-Hitachi)
+  doc: 2SK1056, 2SK1057, 2SK1058, REJ03G0906-0200 Rev.2.00 (previous ADE-208-1244)
+  date: '2005-09-07'

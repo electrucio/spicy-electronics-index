@@ -1,0 +1,317 @@
+part: IRFP9140
+kind: mosfet
+priority: 2
+group: power_vertical
+models:
+- source: infineon
+  name: irfp9140n
+  def: subckt
+  hash: 75abd847c0b15d6ca8ae003742ea4fde99ecdb92
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://web.archive.org/web/20011030054349id_/http://www.irf.com:80/product-info/models/spice/irfp9140n.spi
+    sha256: 2289f5e02247c63f2107326c540cfaaf19f34dd48a0e761748583335823365fa
+    lines:
+      irfp9140n: [1, 56]
+    fetched: '2026-09-14'
+    note: International Rectifier legacy HEXFET SPICE model; original URL http://www.irf.com:80/product-info/models/spice/irfp9140n.spi
+      (Wayback capture 20011030054349)
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irfp9140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp9140n.spi
+      sha256: 2289f5e02247c63f2107326c540cfaaf19f34dd48a0e761748583335823365fa
+  - source: bordodynov
+    name: irfp9140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp9140n.spi
+      sha256: 2289f5e02247c63f2107326c540cfaaf19f34dd48a0e761748583335823365fa
+  - source: kicad-spice-library
+    name: irfp9140n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irfp9140n.spi
+      sha256: 8930658be65c80a9b117f4b66622fd338fdb58b7b45655d70962232dc802cf05
+  - source: ltwiki
+    name: irfp9140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp9140n.spi
+      sha256: 2289f5e02247c63f2107326c540cfaaf19f34dd48a0e761748583335823365fa
+  - source: ltwiki
+    name: irfp9140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp9140n.spi
+      sha256: 2289f5e02247c63f2107326c540cfaaf19f34dd48a0e761748583335823365fa
+  - source: ltwiki
+    name: irfp9140n
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp9140n.spi
+      sha256: 2289f5e02247c63f2107326c540cfaaf19f34dd48a0e761748583335823365fa
+  - source: microcap12
+    name: irfp9140n
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/irf.lib
+      sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+- source: ltwiki
+  name: IRFP9140
+  def: model
+  hash: e160e60e8f38868b75dfe9087d11068a0ce25b3b
+  type: PMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFP9140: [3919, 3922]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: irfp9140C
+  def: model
+  hash: 4a0041c95d9ff436e7fab7414df580cf32dd27d4
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      irfp9140C: [1447, 1447]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: irfp9140C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: irfp9140C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: irfp9140C
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: irfp9140C
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: irfp9140C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: irfp9140C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: IRFP9140__
+  def: model
+  hash: 31844849f60e85a2d31b28716edd5de9e728e8c2
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRFP9140__: [1453, 1453]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRFP9140__
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: bordodynov-qspice
+    name: IRFP9140
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRFP9140__
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: IRFP9140
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRFP9140__
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP9140
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP9140__
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9140
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9140__
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9140
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: IRFP9140
+  def: model
+  hash: 31844849f60e85a2d31b28716edd5de9e728e8c2
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRFP9140: [1507, 1507]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: IRFP9140h
+  def: model
+  hash: 8e169f6cf2cd5d01adfcf1f58ffdeb873c192100
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRFP9140h: [1527, 1527]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRFP9140h
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRFP9140h
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRFP9140h
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP9140h
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP9140h
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov-qspice
+  name: IRFP9140h
+  def: model
+  hash: cd24b1714b218037a72c75080f0db9ed115b08fe
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/MOS/IRFP9140h.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: ce26fbd222edf47ae00a0413c2417b00b11fd32d40a5b550dfa614b5b8828577
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: IRFP9140h
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/MOS/IRFP9140h.qsym
+      sha256: ce26fbd222edf47ae00a0413c2417b00b11fd32d40a5b550dfa614b5b8828577
+- source: ltwiki
+  name: IRFP9140_
+  def: model
+  hash: ccdcf6a92339d95c062f76b808f50e672997c597
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+    sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+    lines:
+      IRFP9140_: [1514, 1514]
+    fetched: '2026-09-14'
+    note: Bordodynov VDMOS collection for LTspice IV
+- source: kicad-spice-library
+  name: IRFP9140_
+  def: model
+  hash: 12d8bb0b28d929a5c45876866e42d6708a0ef7e9
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+    sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+    lines:
+      IRFP9140_: [1528, 1528]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRFP9140
+  def: subckt
+  hash: 74b174eb15690cfb99cb8fdb37e43d674915f58b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRFP9140: [3682, 3704]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.vishay.com/docs/91238/sihfp914.pdf
+  maker: Vishay Siliconix
+  doc: IRFP9140, Document Number 91238, S22-0058-Rev. C
+  date: '2022-01-31'

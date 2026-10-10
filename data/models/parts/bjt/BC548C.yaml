@@ -1,0 +1,222 @@
+part: BC548C
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: onsemi
+  name: BC548C
+  def: model
+  hash: 9315ee6706af39a091bf17f3d47ab5cfd5f0663d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/bc548c.mod
+    sha256: ea9cf38b0bbf6911d35e3672a2d806679e303aecbab6271f0a89fcf379dcce8c
+    lines:
+      BC548C: [3, 11]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: BC548C
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: spice-model-cd
+    name: BC548C
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/BC/BC548C.lib
+      sha256: c6350bd9e270bb4400cbc31e26af5d1298756bef1ec83884653fa8939b869841
+- source: spice-model-cd
+  name: QBC548C
+  def: model
+  hash: a3bc049e999d90b6ac0c5c56bd71501f92b05f1b
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC548C.lib
+    sha256: 76b50ffe8d29f7a2dc0212cec5b13d73a5927038b7a64939e7f8827a3e646eab
+    lines:
+      QBC548C: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: QBC548C/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC548C/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+- source: ltwiki
+  name: BC548C/SIE
+  def: model
+  hash: d850d19eaa4f3781a8f650693e3560375f3f2318
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/siemens.lib
+    sha256: 243664dd487b615b87bd321416060f6822da14486fcece9fd2e3ded453189d81
+    lines:
+      BC548C/SIE: [258, 268]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC548C/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+- source: microcap12
+  name: BC548C
+  def: model
+  hash: 79e5bdd9e31e7322ce0ff553006d0c0c268e66f4
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC548C: [1795, 1798]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: BC548C
+  def: model
+  hash: 5f4499299afb2d425e01b896bdc56c8f53c62367
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/my_own_npn_pnp_bjt.lib
+    sha256: d97ef82afacbe1a4ce42b30dc83690ef9a3fc4b91215652785b4d0d8e05f7e08
+    lines:
+      BC548C: [201, 209]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: BC548C
+  def: model
+  hash: 874aa0348fb5ab425030b536033deb4072305205
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BC548C: [387, 387]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BC548C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: BC548C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BC548C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BC548C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC548C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BC548C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC548C
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: BC548C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: BC548C
+  def: model
+  hash: 119b10b62a40c979f69238a6e6e97720af64d124
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC548C: [1874, 1874]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: BC548C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: ltwiki
+  name: BC548C
+  def: model
+  hash: a92090d438aa52447e87e84057e7a45c295b5353
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ebipolar.lib
+    sha256: 76bb4b024f91527c84cb28203cc0af1797ab5ba1a0382d82a59198a26a2ba783
+    lines:
+      BC548C: [177, 181]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: BC548C
+  def: model
+  hash: d6e1dc9ae284edaedbf4302924792fa73dc6239c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BC548C: [225, 225]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: BC548C
+  def: model
+  hash: 874aa0348fb5ab425030b536033deb4072305205
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+    sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+    lines:
+      BC548C: [368, 368]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/bc546-d.pdf
+  maker: onsemi
+  doc: BC546/D Rev. 8
+  date: 2021-08

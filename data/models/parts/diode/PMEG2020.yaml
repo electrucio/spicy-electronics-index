@@ -1,0 +1,266 @@
+part: PMEG2020
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: nexperia
+  name: PMEG2020EH
+  def: subckt
+  hash: 7aa7d998b56d6d4a36b42a368cad1a3eb1ff59dd
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2020EH.txt
+    sha256: 324d5dc93c9a95a689e53d358b8f1ddc8194753dcc4bf923e497cf8a38d2e953
+    lines:
+      PMEG2020EH: [33, 49]
+    fetched: '2026-09-19'
+    note: 'PMEG2020EH: PMEG2020EH, PMEG2020EH'
+  note: pins from comment words
+  copies:
+  - source: ltwiki
+    name: PMEG2020EJ
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2020EJ.PRM
+      sha256: 8a0b7159195dd74c64dca0f2f32e9b148710f75844b24a840c0e3fd231a9875c
+  - source: microcap12
+    name: PMEG2020EJ
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+  - source: microcap12
+    name: PMEG2020EH
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: microcap12
+  name: PMEG2020AEA
+  def: subckt
+  hash: 809d011b67263497a25875aca67d3233ce94fef3
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      PMEG2020AEA: [3362, 3384]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2020AEA.PRM
+      sha256: 48c3126842fedd9f35bb6874959001ec123295a8f2f94ec010adad99b46b3e76
+- source: microcap12
+  name: PMEG2020CPA
+  def: subckt
+  hash: 89e191e27218fdcca16b3448d32c6420bfc1b060
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      PMEG2020CPA: [25370, 25409]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: PMEG2020AEA
+  def: model
+  hash: 6559e3751cf4ecd283210b05838051a1e62cf836
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.dio.bak
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+    lines:
+      PMEG2020AEA: [46, 46]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: bordodynov
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+  - source: bordodynov-qspice
+    name: PMEG2020AEA
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: groupsio-ltspice
+    name: PMEG2020AEA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.dio
+      sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+  - source: kicad-spice-library
+    name: PMEG2020AEA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: PMEG2020AEA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: PMEG2020AEA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
+      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.dio.bak
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: groups-io
+  name: PMEG2020AEA
+  def: model
+  hash: 6f49ff3a48418d0160d940d3403924f035f40d59
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
+    sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+    lines:
+      PMEG2020AEA: [82, 82]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: PMEG2020AEA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio
+      sha256: 7a8c775b562871d34029ca77fefa3188c91dc2e1ce4d25979a317f653d32d8b3
+  - source: groups-io
+    name: PMEG2020AEA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: PMEG2020AEA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: kicad-spice-library
+    name: PMEG2020AEA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: kicad-spice-library
+    name: PMEG2020AEA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: PMEG2020AEA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+- source: ltwiki
+  name: PMEG2020AEA
+  def: model
+  hash: 345d656d250ddd07d066395bf97feb1c0d99d089
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/standard3.dio
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
+    lines:
+      PMEG2020AEA: [59, 59]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: PMEG2020AEA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard3.dio
+      sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
+- source: ltwiki
+  name: PMEG2020EJ
+  def: subckt
+  hash: 7aa7d998b56d6d4a36b42a368cad1a3eb1ff59dd
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2020EJ.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 8a0b7159195dd74c64dca0f2f32e9b148710f75844b24a840c0e3fd231a9875c
+    lines:
+      PMEG2020EJ: [2, 24]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)

@@ -1,0 +1,79 @@
+part: ULN2003A
+kind: control
+priority: 3
+models:
+- source: bordodynov
+  name: ULN2003LV
+  def: subckt
+  hash: 80c650929874f63e3a38ad4d836661186351943b
+  type: SUBCKT
+  pins:
+  - B[1]
+  - B[2]
+  - B[3]
+  - B[4]
+  - B[5]
+  - B[6]
+  - B[7]
+  - E
+  - COM
+  - C[7]
+  - C[6]
+  - C[5]
+  - C[4]
+  - C[3]
+  - C[2]
+  - C[1]
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/ULN2003LV.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 6600ae812ac8fa690e96715b74ea1d330e08b9d84cb45c1fe5b9703ec9207356
+    lines:
+      ULN2003LV: [2, 48]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Darlington/ULN2003LV.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 54af2612c773ab7501a61bc98098f1df8ef110a2b9d558e8c85016d96dd08791
+  note: 'found under the alias ULN2003; same code also in: ltwiki'
+- source: bordodynov
+  name: ULN2003
+  def: subckt
+  hash: d1399e8be39e3e3e95d525b836c6986ab60a4d20
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ULN2003.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 884d04e428f9d79e7b2dfe9c6c3bf167b0770a70a148bf23037da6adfe28d604
+    lines:
+      ULN2003: [2, 69]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Darlington/ULN2003.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: fa86df8464b994fa436d9548e545466c3c68ac5e9e7bf019cccdbb16119a9516
+  copies:
+  - source: ltwiki
+    name: ULN2003
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ULN2003.sub
+      sha256: 884d04e428f9d79e7b2dfe9c6c3bf167b0770a70a148bf23037da6adfe28d604
+- source: kicad-spice-library
+  name: ULN2003
+  def: subckt
+  hash: dc2efef0601e8115783c1f04381bf34b6af9295f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ULN2003.sub
+    sha256: 7ff2e1390b081ba21dc136e5065ad8418f24e4b9bb3a947bd34a739708a0be46
+    lines:
+      ULN2003: [2, 69]
+    fetched: '2026-09-14'

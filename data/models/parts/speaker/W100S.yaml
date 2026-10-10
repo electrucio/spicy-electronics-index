@@ -1,0 +1,41 @@
+part: W100S
+kind: speaker
+group: non-native
+models:
+- source: ltwiki
+  name: W100S4Ohm
+  def: subckt
+  hash: 3fa91885de2599c081306e26d1017e3bb58c6887
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/parlante.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad
+    lines:
+      W100S4Ohm: [594, 602]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Miscel/Visation.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 5135379a372ef876373cd1185a782212ee5a760e4f58615e3e671a045f0665df
+  copies:
+  - source: bordodynov
+    name: W100S4Ohm
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/parlante.lib
+      sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad
+  - source: kicad-spice-library
+    name: W100S4Ohm
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/parlante.lib
+      sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad
+  - source: ltwiki
+    name: W100S4Ohm
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/parlante.lib
+      sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad

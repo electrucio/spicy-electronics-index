@@ -1,0 +1,134 @@
+part: AD811
+kind: opamp
+priority: 3
+models:
+- source: spice-model-cd
+  name: AD811/AD
+  def: subckt
+  hash: 9738f7535c7663c97afaf484929a1f4fc700b44f
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD811/AD: [23416, 23502]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD811/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: AD811/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+- source: ltwiki
+  name: AD811
+  def: subckt
+  hash: 1eb87e70163d4c474f33c0f3a5369f9a0bdab5fa
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+    lines:
+      AD811: [7017, 7103]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD811.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 8c80298ff7971629a74cc3fb36751984cd4238abbe7da931a33149b4b04a1106
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD811
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: kicad-spice-library
+    name: AD811
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD811
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD811
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad811.cir
+      sha256: 289305edcbe1e40b51398933e22e4038a5f4c79a159e20dfcafa3ab8fdda14db
+- source: microcap12
+  name: AD811_AD
+  def: subckt
+  hash: 58ee2403d6b275f8ebc6635f2439e943705407e5
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD811_AD: [18341, 18427]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD811_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: kicad-spice-library
+  name: AD811
+  def: subckt
+  hash: 05e5d929d8c5d2b4e10a37f4f7edbeef2d29fced
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD1.LIB
+    sha256: 326d6fe909452b3ea297abe120b0e7db044659dc736ad2b678cec97d1e4e7777
+    lines:
+      AD811: [3341, 3427]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words

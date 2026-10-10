@@ -1,0 +1,77 @@
+part: TLV2371
+kind: opamp
+priority: 3
+models:
+- source: ti
+  name: TLV2371
+  def: subckt
+  hash: 4a9355859d60cce9aa1e28a5470e7b1f02f5992f
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SLOC062
+    member: tlv2371.lib
+    archive_sha256: 7d1689b82ac9467151b5b13469fdbd0c95485ff636d40387b9fc35387e73bc98
+    sha256: 4d9f7bbdfd5a7e2b4c14ce902d4e9cbd50516ca39e362cf54d409beb6f1d4019
+    lines:
+      TLV2371: [73, 286]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: ti
+    name: TLV2371
+    get:
+      url: https://www.ti.com/lit/zip/SBOM369
+      member: TLV2371_TINA_AIO/TLV2371.LIB
+      sha256: 635411c11659149d9561a98de389bc0b40bcb4b69572408470f27d4d1e03e045
+- source: microcap12
+  name: TLV2371
+  def: subckt
+  hash: 0a506944cbf7b281560e679051121b55f9b3b7a6
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      TLV2371: [59248, 59491]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: TLV2371
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: kicad-spice-library
+    name: TLV2371
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: TLV2371
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: TLV2371
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47

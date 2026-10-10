@@ -1,0 +1,454 @@
+part: MJE340
+kind: bjt
+priority: 1
+group: driver_vas
+models:
+- source: onsemi
+  name: mje340
+  def: model
+  hash: 31705727eccedcb9ed2c49f599a20ebcb644946f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/mje340.sp3
+    sha256: 339fee968b60a1cba4af93b897f6c437e307ca68634dca7b8ed9b91f9e7cc028
+    lines:
+      mje340: [12, 22]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: mje340
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: Qmje340
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: microcap12
+    name: Qmje340
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmje340
+    get:
+      url: https://www.onsemi.com/download/models/lib/mje340.lib
+      sha256: 335c6295058acd6d90d9ad226658be0604bcc5a268e155e719d01d90a3c5febf
+  - source: spice-model-cd
+    name: Qmje340
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/PowerBJT/MJE340.LIB
+      sha256: 80f48a61bed861c0acc6c6f6e7e8650b44734c6f1ec4814d8b3df2db46c84f45
+- source: spice-model-cd
+  name: MJE340
+  def: model
+  hash: ba90244d101d9534420d869888666ce8f6bbe58c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BJTPWR.LB
+    sha256: d6d6b87bad9bc60f921d7865ee3cfe7791d745515ad2c54cd335cf3cd2941826
+    lines:
+      MJE340: [72, 75]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: MJE340
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/bjtpwr.txt
+      sha256: f669b76a9269ad7cdf214a7ce81a85e86ffcaca55ff93502dad839b018b33fd2
+- source: microcap12
+  name: MJE340
+  def: model
+  hash: 10c5bcab01db14788a17173b42850c6f8d1981b8
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJE340: [2112, 2116]
+    fetched: '2026-09-21'
+- source: cordell
+  name: MJE340C
+  def: model
+  hash: f2d9d6fd2bfa4c9c5117df3c4e73fd5334557bf7
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Cordell-Models.txt
+    sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+    lines:
+      MJE340C: [282, 292]
+    fetched: '2026-09-14'
+    note: 'Cordell Models 04/20/2011 (current site file, HTTP Last-Modified 2024-09-15): 63 .model (BJT
+      GP, NJF, VDMOS, D)'
+  copies:
+  - source: bordodynov-qspice
+    name: MJE340C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: diyaudio
+    name: MJE340c
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+  - source: groupsio-ltspice
+    name: MJE340c
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: MJE340c
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MJE340c
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: groupsio-ltspice
+    name: MJE340_CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: duncanamps
+  name: XMJE340
+  def: subckt
+  hash: 1f5289f14700c59565e60931d71133baeee5a277
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      XMJE340: [522, 529]
+    fetched: '2026-09-14'
+- source: bordodynov-qspice
+  name: MJE340_C
+  def: model
+  hash: bea9d9e33ea1b49cefbe23bfd719c78dfaa64e3c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      MJE340_C: [106, 106]
+    fetched: '2026-09-29'
+  copies:
+  - source: groupsio-ltspice
+    name: MJE340_C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: MJE340_C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MJE340_C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: bordodynov-qspice
+  name: MJE340
+  def: model
+  hash: f88d89f52b7516da0876d8905dda770c1382d238
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Cabirio-BJTmodels.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: a8397ba50980c5bd73b844e361c9e1071abfaa7024baef57e0c6e3cb631aa876
+    lines:
+      MJE340: [481, 489]
+    fetched: '2026-09-29'
+- source: diyaudio
+  name: MJE340
+  def: model
+  hash: f2640853a1b9025c87adc5b4578318edcaa5f4f4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/cabirio-bjtmodels-txt.1435021/
+    sha256: 81cfae0119349f05ef5b6bb9e8d1c7bdd43589abc3499c93eb8eb12b5778f59e
+    lines:
+      MJE340: [494, 502]
+    fetched: '2026-09-20'
+- source: groups-io
+  name: MJE340
+  def: model
+  hash: 7593aca6c572937a0c2f44457d5846857918e801
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/my_own_npn_pnp_bjt.lib
+    sha256: d97ef82afacbe1a4ce42b30dc83690ef9a3fc4b91215652785b4d0d8e05f7e08
+    lines:
+      MJE340: [504, 514]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: mje340
+  def: model
+  hash: 33f6f176eb35dc9e3584fcf7b244d917c92e02b2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      mje340: [1045, 1045]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: mje340
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov
+    name: qmje340
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: mje340
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: qmje340
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: mje340
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: mje340
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: qmje340
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: mje340
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: mje340
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: qmje340
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: mje340
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: mje340
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MJE340
+  def: model
+  hash: c04705dab56610045b0ddabaff622f059527c342
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJE340: [7745, 7745]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MJE340
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MJE340
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: bordodynov
+  name: MJE340_C
+  def: model
+  hash: 67f0f6808d2c1a9dffde40e2b580308a477b20d1
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MJE340_C: [1188, 1188]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MJE340_C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJE340_C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: MJE340c
+  def: model
+  hash: 2463514728ab09351bda6efa93f28e65d5df98c3
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MJE340c: [1372, 1372]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: MJE340c
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: ltwiki
+    name: MJE340c
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MJE340c
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: mje340
+  def: model
+  hash: 4653676faa96a94c2f0e7699de793b8160d03994
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      mje340: [638, 638]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov-qspice
+    name: qmje340
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+- source: bordodynov-qspice
+  name: MJE340_C
+  def: model
+  hash: f827ac1a6aab94a56b633be56a7e5c1d3d4befbd
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      MJE340_C: [706, 706]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: MJE340c
+  def: model
+  hash: f2d9d6fd2bfa4c9c5117df3c4e73fd5334557bf7
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+    lines:
+      MJE340c: [504, 504]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: MJE340
+  def: subckt
+  hash: 516d138692d516687e1bed69c50abd6f456c2365
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      MJE340: [703, 712]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mje340-d.pdf
+  maker: onsemi
+  doc: MJE340/D Rev. 15 (April 2026)

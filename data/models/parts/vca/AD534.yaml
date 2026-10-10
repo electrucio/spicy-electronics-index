@@ -1,0 +1,47 @@
+part: AD534
+kind: vca
+priority: 2
+models:
+- source: ltwiki
+  name: ad534
+  def: subckt
+  hash: 24b3d615872912bda9e6e5d298e40e6d42368d3f
+  type: SUBCKT
+  pins:
+  - X1
+  - X2
+  - SF
+  - Y1
+  - Y2
+  - V+
+  - OUT
+  - Z1
+  - Z2
+  - V-
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Multiplicadores/ad534/ad534.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ce14e646cbba8081082efd214ea6ce3b7425e8299a3803bf0d7587a2c5ea94de
+    lines:
+      ad534: [4, 58]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Multiplicadores/ad534/ad534.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 2c8b691921277f28727bd23acd586eaab179e326ffb0c5f5bba5cc2e2e03c978
+  copies:
+  - source: ltwiki
+    name: ad534
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Multiplicadores/ad534/ad534.sub
+      sha256: ce14e646cbba8081082efd214ea6ce3b7425e8299a3803bf0d7587a2c5ea94de
+datasheet:
+  url: https://www.analog.com/media/en/technical-documentation/data-sheets/AD534.pdf
+  maker: Analog Devices
+  doc: AD534 Rev. D (2013)

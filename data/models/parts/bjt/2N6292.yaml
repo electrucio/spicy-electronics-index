@@ -1,0 +1,94 @@
+part: 2N6292
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n6292
+  def: model
+  hash: c265da4115b72a8e011be3b83cda2c5b1c5fbed7
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6292.lib
+    sha256: efe493ecfa7cdb28e4a84536d5abf5a52315554632bc1e064988cb00c4728e68
+    lines:
+      Q2n6292: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Q2n6292
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: central-semi
+  name: 2N6292
+  def: model
+  hash: 638579f4f41b0e3c4fc57cc89fa5d764ce5df55c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N6292.LIB
+    sha256: 220a5ea483a74d7201b69bb23cb94f22f3c758104d888e1ae4cf586cc653f898
+    lines:
+      2N6292: [24, 48]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: 2N6292
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+- source: microcap12
+  name: 2N6292
+  def: model
+  hash: ea73a4f58b263c5ce3e0315ef746d860fb1c9261
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N6292: [576, 583]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: Q2N6292
+  def: model
+  hash: 0f84fce179e4952012fb979cfdfdfe68948c03f4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      Q2N6292: [7104, 7104]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N6292
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: groupsio-ltspice
+  name: 2N6292
+  def: model
+  hash: 6d29c18df2503f3eef4db5465a1c4d16e0f1a655
+  type: NPN
+  deps:
+  - NSC_4E
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N6292: [571, 571]
+      NSC_4E: [6241, 6241]
+    fetched: '2026-09-21'

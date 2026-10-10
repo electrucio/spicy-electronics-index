@@ -1,0 +1,79 @@
+part: PZTA14
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: PZTA14
+  def: subckt
+  hash: 0cd0ddaa60f01fdb5c53468a2ac48b238bb279de
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/pzta14.lib
+    sha256: 27ef7e1093d8b6f068b6a9a83bdfcf7b0da29bd266bffd80d6ac1efc449c7ea4
+    lines:
+      PZTA14: [12, 43]
+    fetched: '2026-09-19'
+- source: spice-model-cd
+  name: PZTA14
+  def: subckt
+  hash: c7bd4e2b26cf3674defd3ad9c9a5d2953e62b454
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/PZTA14.lib
+    sha256: 6f8505fe0dba58daca8ae3b53f56c8c30e137c7e1d4423de8ac214701a9d1dfc
+    lines:
+      PZTA14: [2, 66]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PZTA14
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/PZTA14.PRM
+      sha256: 6f8505fe0dba58daca8ae3b53f56c8c30e137c7e1d4423de8ac214701a9d1dfc
+- source: microcap12
+  name: PZTA14_PH
+  def: subckt
+  hash: a4136335c9b102bc4fee667fb21308e311dcf78e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      PZTA14_PH: [14660, 14724]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: PZTA14_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: microcap12
+  name: PZTA14
+  def: subckt
+  hash: d2507f6b04362c8de454e8402d59e91d61fcd67c
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      PZTA14: [219491, 219522]
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'

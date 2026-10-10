@@ -1,0 +1,137 @@
+part: 1N5821
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: D1n5821rl
+  def: model
+  hash: 141bcb5036f3426a3a0f31684f3e6bf746c20503
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/1n5821rl.lib
+    sha256: 3e25ae2dd722bee65cf041fb7a6d614422d808238e2b3c4cf16022eadf0576ba
+    lines:
+      D1n5821rl: [12, 16]
+    fetched: '2026-09-19'
+    note: '1N5821: D1n5821rl'
+  copies:
+  - source: microcap12
+    name: D1n5821rl
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: 1n5821rl
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_diode.lib
+      sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+- source: onsemi
+  name: D1N5821
+  def: model
+  hash: 6d79266c70dfca6d0e3722503accfbed7ddfcfa6
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    member: NCV887x_WEB MODEL rev2/diode.lib
+    archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
+    sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+    lines:
+      D1N5821: [21272, 21273]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: D1N5821
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/diode.lib
+      sha256: 3312e896de50ad3b983aacc61fb142ca5ef79f0824d6bc9427974e94d4c93c7a
+  - source: microcap12
+    name: D1N5821
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: D1N5821
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      member: NCV887x_WEB MODEL rev2/diode.lib
+      sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: stmicro
+  name: 1N5821
+  def: model
+  hash: 2367065833e987ff22124d70e181248b740dd39f
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+    member: ST_POWER_SCHOTTKY_V10.LIB
+    archive_sha256: 36169e895d25ae28c8b2cf6461de0a0da374c1f60d105dbfb8faee880ea76ca6
+    sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
+    lines:
+      1N5821: [582, 583]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 1N5821
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: ltwiki
+    name: 1N5821RL
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+- source: microcap12
+  name: 1N5821
+  def: model
+  hash: a4af42086e15373a4a7620cc45eea5a313171545
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
+    lines:
+      1N5821: [361, 362]
+    fetched: '2026-09-21'
+- source: qspice
+  name: 1N5821
+  def: model
+  hash: a91c260c0c69224ea4aac32e85cd43a8db8282d8
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Schottky.txt
+    sha256: 77d471af2ae9494b08252dd53e648f3cafcfb17d1844579217cf4886f41604b2
+    lines:
+      1N5821: [23, 23]
+  copies:
+  - source: bordodynov-qspice
+    name: 1N5821
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Schottky.txt
+      sha256: 77d471af2ae9494b08252dd53e648f3cafcfb17d1844579217cf4886f41604b2
+- source: ltwiki
+  name: 1N5821RL
+  def: model
+  hash: 2367065833e987ff22124d70e181248b740dd39f
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+    lines:
+      1N5821RL: [6506, 6507]
+    fetched: '2026-09-14'

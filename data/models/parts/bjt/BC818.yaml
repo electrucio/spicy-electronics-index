@@ -1,0 +1,186 @@
+part: BC818
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: spice-model-cd
+  name: BC818C
+  def: subckt
+  hash: 151a9689fd48819c53ff6838cb057081def6d9db
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  deps:
+  - BC818
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC818: [533, 543]
+      BC818C: [522, 532]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: BC818/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BC818C
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+- source: spice-model-cd
+  name: BC818
+  def: model
+  hash: 663004930e64802e251b04ccb713aae25602c3d3
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC818: [533, 543]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC818
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BC818
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: spice-model-cd
+    name: BC818/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: QBC818
+  def: model
+  hash: 89630a17f3cf3ab0c51865deea32d08fe4705b62
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC818.lib
+    sha256: da836273e54e277e13e8f17a7851c7d980e77e1b0eecd47d025f408ab07e90a2
+    lines:
+      QBC818: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: QBC818/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC818/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+  - source: kicad-spice-library
+    name: QBC818W/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC818W/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+  - source: spice-model-cd
+    name: QBC818W
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC818W.lib
+      sha256: 60d8af58808e4c0c893ec800bc41dd3bdf562adc51cd117d55b2cfb47ec566cc
+- source: spice-model-cd
+  name: BC818C/SIE
+  def: subckt
+  hash: 42096d6ef915adca5b0943cb1095a03c33b4a132
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+    sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+    lines:
+      BC818C/SIE: [517, 527]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC818C_IN
+  def: subckt
+  hash: 29accdaf43ca769ebd4dcabbbf9e9890b62f7efa
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/infineon.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: cdae8e9767d8fccbc81f94acb925cc440425a03e902d86cd8c5591d87131e175
+    lines:
+      BC818C_IN: [2586, 2607]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: BC818C_IN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
+      sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+- source: microcap12
+  name: BC818
+  def: model
+  hash: 9e0190d725fe74a844fd61519f161aaae63d3a52
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      BC818: [251, 254]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BC818
+  def: model
+  hash: 15be83dad0cc90280285118edde16d974f3f0aed
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC818: [4987, 4987]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC818
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+- source: kicad-spice-library
+  name: BC818s
+  def: model
+  hash: 2d432b4a6bd9b1e062338ba1d129b9e907262e62
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+    sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+    lines:
+      BC818s: [513, 523]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

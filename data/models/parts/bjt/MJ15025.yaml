@@ -1,0 +1,134 @@
+part: MJ15025
+kind: bjt
+priority: 2
+group: power_output
+models:
+- source: onsemi
+  name: mj15025
+  def: model
+  hash: bd482dde6bc1771777d8ba60cf2e2866e980d09d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/mj15025.sp3
+    sha256: c31fe2aac0ed74bddf1b21e9c528a451aced0b24d0750b7fdffac49ed4a54f4a
+    lines:
+      mj15025: [12, 22]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MJ15025
+  def: model
+  hash: c7743905808a0373126a0b0124c65a2f948ad587
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJ15025: [3388, 3395]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: mj15025
+  def: model
+  hash: 0ec220d382aa5fc46f7a84eb5a1b7fa8df8d1101
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      mj15025: [807, 807]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: mj15025
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: mj15025
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: mj15025
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: mj15025
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: mj15025
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: mj15025
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: mj15025
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: mj15025
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: mj15025
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MJ15025
+  def: model
+  hash: 6d0ef8df396d63d6550fae498fce69f9d06feace
+  type: PNP
+  deps:
+  - MJ15023
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJ15023: [3263, 3263]
+      MJ15025: [3265, 3265]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: mj15025
+  def: model
+  hash: 0ec220d382aa5fc46f7a84eb5a1b7fa8df8d1101
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+    lines:
+      mj15025: [783, 783]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mj15023-d.pdf
+  maker: onsemi
+  doc: MJ15023/D Rev. 12 (August 2013) (covers MJ15023, MJ15025)

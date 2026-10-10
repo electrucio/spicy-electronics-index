@@ -1,0 +1,47 @@
+part: CORELIN
+kind: magnetic-core
+group: non-native
+models:
+- source: bordodynov
+  name: CORELIN
+  def: subckt
+  hash: 272598ef27e2c2e087b04bcb8a023117079671ea
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Core.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
+    lines:
+      CORELIN: [110, 115]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Alternative_a_transformer/CORELIN.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      sha256: bb12d2145c989add20b981062dc5c5aab9a1b474ed3eba336358b4b96aad9bab
+  copies:
+  - source: bordodynov
+    name: CORELIN
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mutual_Ind_K_F(V)/Core.lib
+      sha256: b90c98dadaa64400fd509c2cce4b79a82c5718e3bb9224795d88a2456abf62df
+  - source: kicad-spice-library
+    name: CORELIN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Core.lib
+      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
+  - source: ltwiki
+    name: CORELIN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Core.lib
+      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
+  - source: ltwiki
+    name: CORELIN
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mutual_Ind_K_F(V)/Core.lib
+      sha256: b90c98dadaa64400fd509c2cce4b79a82c5718e3bb9224795d88a2456abf62df

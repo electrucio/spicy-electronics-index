@@ -1,0 +1,188 @@
+part: MPSA93
+kind: bjt
+priority: 3
+group: small_signal_pnp
+models:
+- source: spice-model-cd
+  name: MPSA93
+  def: model
+  hash: a4b791de0e603cdb38c427e95451b9433cd85fd8
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      MPSA93: [2033, 2043]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: MPSA93
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: MPSA93s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: MPSA93/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: MPSA93/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: MPSA93
+  def: model
+  hash: 1029ee3afe2f092fb9aee9e101b7439175241885
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPSA93.t
+    sha256: 48fcc055f3097e960a9c6102a1e32415d41a44b2a7008fbd1cdc42785d04134f
+    lines:
+      MPSA93: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPSA93
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MPSA93
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: microcap12
+  name: MPSA93
+  def: model
+  hash: ca45db4ac60351ea6862d88609f41a63556997ed
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSA93: [3211, 3215]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: MPSA93
+  def: model
+  hash: d61215f265423e9dedcc7226d872ee5ea74e2e53
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MPSA93: [1072, 1072]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MPSA93
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: MPSA93
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: MPSA93
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MPSA93
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MPSA93
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA93
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MPSA93
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA93
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MPSA93
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: ltwiki
+  name: MPSA93
+  def: model
+  hash: d61215f265423e9dedcc7226d872ee5ea74e2e53
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+    lines:
+      MPSA93: [1037, 1037]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library'
+- source: kicad-spice-library
+  name: MPSA93
+  def: model
+  hash: 582c136a4f2c8c106af57d840f2a9aad56392319
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_PNP/TOSHIBA.LIB
+    sha256: 4a5d1e7670eff99dfd5290383e42316cebae59769ce130e15a7f5d9a9a4cbd90
+    lines:
+      MPSA93: [2173, 2187]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: MPSA93s
+  def: model
+  hash: a4b791de0e603cdb38c427e95451b9433cd85fd8
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+    sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+    lines:
+      MPSA93s: [994, 1004]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mpsa92-d.pdf
+  maker: onsemi
+  doc: MPSA92/D Rev. 6 (July 2010) - MPSA92, MPSA93

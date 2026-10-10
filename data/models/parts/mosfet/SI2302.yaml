@@ -1,0 +1,91 @@
+part: SI2302
+kind: mosfet
+priority: 3
+group: small_signal
+models:
+- source: vishay
+  name: Si2302ADS
+  def: subckt
+  hash: 3976eeb5990b711ef6d5583159fcc193ef048981
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/76814/si2302ad.txt
+    sha256: 4a7406bf86ee6b55814d1befb27ab67dd9641d0781999fc0fd4b41e2562c8037
+    lines:
+      Si2302ADS: [4, 28]
+    fetched: '2026-09-19'
+    note: 'MOSFETs, PSpice Models (*.txt): Si2302ADS, NMOS, PMOS, DBD, RTEMP'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: Si2302ADS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaymosfet.lib
+      sha256: 23bc5e3e06c64162cbb4b96205c8a4b30b08d7cfd780d41fd3043fede09671f7
+- source: vishay
+  name: Si2302CDS
+  def: subckt
+  hash: 0527b6bfc25a0b4d8d04565c0cad1554e8e6cfde
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/68508/si2302cd.txt
+    sha256: e0061a262fa362f425d354e070181ffe492555cccdbf77cda96e06befe5fef99
+    lines:
+      Si2302CDS: [8, 35]
+    fetched: '2026-09-19'
+    note: 'MOSFETs, PSpice Models (*.txt): Si2302CDS, NMOS, PMOS, DBD, RTEMP'
+  note: pins from names
+- source: microcap12
+  name: si2302n_SI
+  def: subckt
+  hash: c9ea422caf74504bdd8922f30ee450c258ea44c5
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishay.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 525bcef2341b5f067abbf14c7fa605f190361346e3c33a98d0d48361d5c29543
+    lines:
+      si2302n_SI: [1534, 1558]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: si2302n_SI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/vishay.lib
+      sha256: ac28d4292eda0d5bc84b0d744df3927070a13ab71e97f3d47a5958dcd0b4a8d5
+- source: kicad-spice-library
+  name: SI2302n
+  def: subckt
+  hash: 78c5b43cf260dad976f54ad01d463f8210a84e53
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SILICONX.LIB
+    sha256: 1939c14a18c06438238d8755b55a2bad3bfda92563363e4bd0d13750f60f07f4
+    lines:
+      SI2302n: [1983, 2002]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

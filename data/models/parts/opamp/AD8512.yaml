@@ -1,0 +1,47 @@
+part: AD8512
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: AD8512
+  def: subckt
+  hash: 238ef9d5003b588f7fce06477b16022c79c2b8bb
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8512: [75148, 75253]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8512
+  def: subckt
+  hash: d1db3f963bc6723fde4a4143e9adfb3e85ae0dcf
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad8512.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 0cc4160fda0fb1ebf3a6077e307f4726c41a75bac87e1c5069f5a46c727f4341
+    lines:
+      AD8512: [19, 124]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD8512.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 2c9875677691a882662cfcbeb129637e74c9d68c940af266fd01edceec553aa7
+  note: pins from comment words

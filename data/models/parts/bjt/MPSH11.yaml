@@ -1,0 +1,38 @@
+part: MPSH11
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: MPSH11
+  def: model
+  hash: e3f89a8988c8d3fbf8e9bc6635a1c6cd8ff12cfc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mpsh11.lib
+    sha256: 3641778619ae4e6998020fd181f079d51512acc4ca3e7927c4336034a206df0d
+    lines:
+      MPSH11: [6, 16]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: MPSH11
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: groupsio-ltspice
+  name: MPSH11
+  def: model
+  hash: 5319f307300d98a4b07d5ddcb444565a4e5f10c5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSH11: [3654, 3654]
+    fetched: '2026-09-21'

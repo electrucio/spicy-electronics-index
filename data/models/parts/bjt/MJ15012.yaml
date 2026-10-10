@@ -1,0 +1,38 @@
+part: MJ15012
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmj15012
+  def: model
+  hash: afa2ec2191d2431a6ce029874c53fede3a6f1629
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mj15012.lib
+    sha256: bb0d60c27067d4eb1c1253d53f7b8b649c098d007afe0825b67afe3bcdf66bbc
+    lines:
+      Qmj15012: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmj15012
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MJ15012
+  def: model
+  hash: 417401421f3e71639b875f0fb62c1cee19a1e9a7
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJ15012: [3350, 3355]
+    fetched: '2026-09-21'

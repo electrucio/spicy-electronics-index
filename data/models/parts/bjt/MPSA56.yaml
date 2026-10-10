@@ -1,0 +1,347 @@
+part: MPSA56
+kind: bjt
+priority: 3
+group: small_signal_pnp
+models:
+- source: onsemi
+  name: Qmpsa56
+  def: model
+  hash: 9a9c235a79c1375ab1aa661f574bc7a679bf373d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mpsa56.lib
+    sha256: b576bdb59858feebf4beb92915cc3556245a76880e737a7b4cbdca6cb0488935
+    lines:
+      Qmpsa56: [14, 24]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qmpsa56
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: central-semi
+  name: MPSA56
+  def: model
+  hash: 79038d3fee2d7c3502c3c6dde6b76e2e9c9212e6
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/MPSA56.LIB
+    sha256: 29bfadc56d85e9851172dabc4d64148b71c20a9e4f0f62815f67aabeeb4c3d26
+    lines:
+      MPSA56: [24, 49]
+    fetched: '2026-09-14'
+    note: 'model(s): MPSA56 (PNP .model)'
+  copies:
+  - source: microcap12
+    name: MPSA56
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+- source: spice-model-cd
+  name: MPSA56
+  def: model
+  hash: 8c6b99e5445d85b963281a9b633d5550ce6f220d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPSA56.t
+    sha256: d2850d9b78cfd16a07c61d6e526c4af1140e5c37b30459ac64069dd3481251cc
+    lines:
+      MPSA56: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSA56
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: microcap12
+  name: MPSA56
+  def: model
+  hash: 5143dff59580cb4b6fec92228462903e226084b6
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSA56: [3198, 3201]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QMPSA56
+  def: model
+  hash: c34f67837fb908d2a90e99d23c1c106103d551e4
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMPSA56: [585, 588]
+    fetched: '2026-09-14'
+- source: bordodynov-qspice
+  name: MPSA56
+  def: model
+  hash: ad0799a8df7d5f9ff403dd7767d6a96e74e8f4df
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Cabirio-BJTmodels.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: a8397ba50980c5bd73b844e361c9e1071abfaa7024baef57e0c6e3cb631aa876
+    lines:
+      MPSA56: [235, 242]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov-qspice
+    name: MPSA56
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: diyaudio
+    name: MPSA56
+    get:
+      url: https://www.diyaudio.com/community/attachments/cabirio-bjtmodels-txt.1435021/
+      sha256: 81cfae0119349f05ef5b6bb9e8d1c7bdd43589abc3499c93eb8eb12b5778f59e
+- source: diyaudio
+  name: MPSA56
+  def: model
+  hash: 89a680f9cdd1be0840893f5504f2ee504e1266c9
+  type: PNP
+  deps:
+  - TF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+    lines:
+      MPSA56: [262, 266]
+      TF: [1854, 1897]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: MPSA56
+  def: model
+  hash: 52f78c99846b01731aecc6ffd730f99dde961d48
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MPSA56: [818, 818]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MPSA56
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: MPSA56
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MPSA56
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MPSA56
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA56
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MPSA56
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA56
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MPSA56
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MPSA56/NS
+  def: model
+  hash: 35b54f454920ce26255b7d84b987b62e85041f7b
+  type: PNP
+  deps:
+  - MPSA56
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MPSA56: [818, 818]
+      MPSA56/NS: [821, 821]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: MPSA56/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MPSA56/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MPSA56/NS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MPSA56/NS
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MPSA56/NS
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MPSA56
+  def: model
+  hash: 6138f66a3b6995cd55b2555f4fee2d6d65789ee7
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSA56: [3643, 3643]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: MPSA56
+  def: subckt
+  hash: 4e40111584932a66c844d73ac89002f06e371b29
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/MPSA56.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: d7cb7762d1a2f5a762c94160d48100841da80a8d1dbba9ec4dface40d3327494
+    lines:
+      MPSA56: [2, 53]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+- source: bordodynov
+  name: MPSA56/NS
+  def: model
+  hash: c620d0a4d2533d43c3e0c7909d9e8e2b77233445
+  type: PNP
+  deps:
+  - '2'
+  - MPSA56
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MPSA56: [851, 851]
+      MPSA56/NS: [855, 855]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MPSA56/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA56/NS
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: MPSA56/NS
+  def: model
+  hash: bf6624a8148babf7e3214323737f42bac06fe19c
+  type: PNP
+  deps:
+  - MPSA56
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      MPSA56: [745, 745]
+      MPSA56/NS: [339, 339]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: MPSA56
+  def: model
+  hash: 889d20b3e8f8e707db5bf56bdd29ba777a38e0c8
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+    sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+    lines:
+      MPSA56: [299, 301]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: MPSA56
+  def: model
+  hash: f1a8400910d0a3c6aa64718f446645ae725b482c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_PNP/TOSHIBA.LIB
+    sha256: 4a5d1e7670eff99dfd5290383e42316cebae59769ce130e15a7f5d9a9a4cbd90
+    lines:
+      MPSA56: [1693, 1705]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mpsa05-d.pdf
+  maker: onsemi
+  doc: MPSA05/D Rev. 3 (April 2007) - covers MPSA05/06/55/56

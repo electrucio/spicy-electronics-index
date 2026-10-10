@@ -1,0 +1,281 @@
+part: IRF710
+kind: mosfet
+priority: 2
+group: audio_docs
+models:
+- source: microcap12
+  name: IRF710
+  def: model
+  hash: 1a4da2aba7be49834586871aafc0a41ed44fddd1
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRF710: [537, 541]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: IRF710
+  def: subckt
+  hash: a73ba03cf70c29dc5949d1867eaed21206cdd0b6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRF710: [218, 225]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: IRF710
+  def: model
+  hash: 211fc3d8bc2577107a546911507964314ffb7878
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/mpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f3a8113e6ad33c866f8d396d65b1d1e98d8b1d17ebaf3390dd611a3181d4fd37
+    lines:
+      IRF710: [530, 534]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: XIRF710
+  def: subckt
+  hash: e71fece577e810de944984d156f4749bfb38bcc5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/mosfets/nemos3t.mod
+    sha256: 927fa85ad71152c8e20938dc7e7d15797d8626ce84f73137e1062849f663ce76
+    lines:
+      XIRF710: [370, 391]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: IRF710
+  def: model
+  hash: 26f4ec46cdeeb33d4bb95f709b2b79a75c19ce1b
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      IRF710: [1075, 1075]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRF710
+  def: model
+  hash: 621eecb00476983db09f739b5283d1e8426e1f3d
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF710: [1443, 1446]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: IRF710
+  def: model
+  hash: ad459f4a45f24274ff963bbc7bf7a7d056d842ca
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRF710: [1508, 1508]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRF710_
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: bordodynov-qspice
+    name: IRF710
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF710_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: IRF710
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF710
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF710_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF710
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF710_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF710
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF710_
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF710
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov
+  name: IRF710_
+  def: model
+  hash: ad459f4a45f24274ff963bbc7bf7a7d056d842ca
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRF710_: [1454, 1454]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: IRF710h
+  def: model
+  hash: d5251f24bf9860d203c9a0b71a07ff564c25c46a
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRF710h: [1528, 1528]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRF710h
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF710h
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF710h
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF710h
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF710h
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov-qspice
+  name: IRF710h
+  def: model
+  hash: 4f139c73e4b0896cc6c0a929091ac4d7f5c5dc96
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/MOS/IRF710h.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 6855ffeacfb4ee5bf21962c117ff865f5f1c40986440b0729c080acb2bef7b4e
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: IRF710h
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/MOS/IRF710h.qsym
+      sha256: 6855ffeacfb4ee5bf21962c117ff865f5f1c40986440b0729c080acb2bef7b4e
+- source: ltwiki
+  name: IRF710_
+  def: model
+  hash: 043702522aa614e87cfa6f6ea9a2153ed8a8029f
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+    sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+    lines:
+      IRF710_: [1518, 1518]
+    fetched: '2026-09-14'
+    note: Bordodynov VDMOS collection for LTspice IV
+- source: kicad-spice-library
+  name: IRF710
+  def: subckt
+  hash: 9273a07212402269b3a1b71efd8132c4883783d7
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS.LIB
+    sha256: 3a158ee63ad9816d8dcdc0cad0827d2f4646c66b6296d7bbcd2c28d49bf1d219
+    lines:
+      IRF710: [3154, 3174]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRF710
+  def: model
+  hash: f0c10c87a3b2abb93fd66437b3df189fb7a47f77
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL1.LIB
+    sha256: 8a0af54a34c8e405d5f54f85a9836846c3926f39a0926309907c5f1c3820df13
+    lines:
+      IRF710: [271, 301]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

@@ -1,0 +1,109 @@
+part: LMV324
+kind: opamp
+priority: 2
+models:
+- source: ltwiki
+  name: lmv324
+  def: subckt
+  hash: c60d604a733f54b5bb4f64ad02e099e6960ef04b
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OpAmp_NSC.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 640cf42a735c898a54951becb5657cb42ecbfd75453e22e5d739958213f9cf2c
+    lines:
+      lmv324: [13099, 13240]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: lmv324
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_NSC.lib
+      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
+  - source: kicad-spice-library
+    name: lmv324
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_NSC.lib
+      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
+  - source: ltwiki
+    name: lmv324
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_NSC.lib
+      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
+- source: bordodynov
+  name: lmv324/NS
+  def: subckt
+  hash: 5a38e63388278de4c21039e390d9c4aa38975571
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/ns_models.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+    lines:
+      lmv324/NS: [19185, 19326]
+    fetched: '2026-09-14'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: lmv324/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: lmv324/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: lmv324/NS
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+- source: microcap12
+  name: lmv324_NS
+  def: subckt
+  hash: ed3c8ccdd819d005c89803f075fb0e7b23ea1479
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nation.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+    lines:
+      lmv324_NS: [29519, 29660]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: lmv324_NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
+      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac

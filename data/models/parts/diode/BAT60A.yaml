@@ -1,0 +1,101 @@
+part: BAT60A
+kind: diode
+priority: 3
+group: schottky
+models:
+- source: spice-model-cd
+  name: BAT60A
+  def: subckt
+  hash: fa55cc9615c2ec35dffee81705ceaf357947a42e
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/DIODE/Sidi.lib
+    sha256: a29477b10bb53cf870b534d604ed24a11d2821191cba0567cb9bc5d4576932b0
+    lines:
+      BAT60A: [436, 449]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: BAT60A_IN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
+      sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+  - source: microcap12
+    name: BAT60A_IN
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/infineon.lib
+      sha256: cdae8e9767d8fccbc81f94acb925cc440425a03e902d86cd8c5591d87131e175
+- source: spice-model-cd
+  name: BAT60A
+  def: model
+  hash: 2f0774502b6afd97c533c41334818481b3fdf2dc
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/DIODE/S_DIODE.LIB
+    sha256: 5b0c047f0241963047cfdccac9eb3038eecfe7d78d04fc568cd0ac9135423c2a
+    lines:
+      BAT60A: [33, 34]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: BAT60A/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
+      sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
+- source: bordodynov
+  name: BAT60A
+  def: model
+  hash: 534b7c7e300602c8c0b8fd5e865a813af2f137f7
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BAT60A: [1923, 1923]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: BAT60A
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: BAT60A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAT60A
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: kicad-spice-library
+  name: BAT60A/SIE
+  def: subckt
+  hash: dc12cf2d3d08222e0ff85a40c5e4d4ccf22529ec
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+    sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+    lines:
+      BAT60A/SIE: [6996, 7008]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

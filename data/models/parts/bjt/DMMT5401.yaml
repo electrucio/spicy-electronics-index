@@ -1,0 +1,126 @@
+part: DMMT5401
+kind: bjt
+priority: 3
+group: small_signal_pnp
+models:
+- source: diodes-inc
+  name: DMMT5401
+  def: subckt
+  hash: a50a21359148369eba9d9ef34ead3023fca5178b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/3323/DMMT5401.spice.txt
+    sha256: ba932265a79f5084da2790f45b0397d46182b9e88d81e247296425e30f715b62
+    lines:
+      DMMT5401: [28, 36]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: DMMT5401
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc_BJT.lib
+      sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+- source: groupsio-ltspice
+  name: DMMT5401
+  def: model
+  hash: 2d5e081d27585e89f068d1078640c8c7ecb158e5
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      DMMT5401: [1256, 1256]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: DMMT5401
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: DMMT5401
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Amplifier_classA_and_AB/models.lib
+      sha256: b7a1e9b31a8dde47f8de8b4e81ee13a4d4d5d57f59a29ef1c175e0595ba418ae
+  - source: ltwiki
+    name: DMMT5401
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferZoutCurrentAC/models.lib
+      sha256: 68455c852f18e43fef0ad6e4f13d356c2b0c258617469256c2e8102798ad8941
+  - source: ltwiki
+    name: dmmt5401
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferAB/models.lib
+      sha256: a8b7a15655a8ba40b18db15c13881fd06688e7e4ab223f2b3549f55834013495
+  - source: ltwiki
+    name: dmmt5401
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferAB/models.lib
+      sha256: a8b7a15655a8ba40b18db15c13881fd06688e7e4ab223f2b3549f55834013495
+- source: bordodynov
+  name: DMMT5401
+  def: model
+  hash: 606dd01820327330d8ebdfbc8db0ac4f3ba8c207
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      DMMT5401: [1287, 1287]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: DMMT5401
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: DMMT5401
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: DMMT5401
+  def: model
+  hash: f0e0303b3f3a1b9a9dbebd4596f2828796736c4c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      DMMT5401: [499, 499]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: dmmt5401
+  def: model
+  hash: 2d5e081d27585e89f068d1078640c8c7ecb158e5
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/AmpliferAB/models.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: a8b7a15655a8ba40b18db15c13881fd06688e7e4ab223f2b3549f55834013495
+    lines:
+      dmmt5401: [7, 7]
+    fetched: '2026-09-14'

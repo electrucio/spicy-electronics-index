@@ -1,0 +1,24 @@
+{
+ "passphrase": "  café sealed fixture  ",
+ "iterations": 1000,
+ "part": "TESTQ1",
+ "rows": [
+  {
+   "source": "invented",
+   "name": "TESTQ1",
+   "hash": "0123456789abcdef0123456789abcdef01234567"
+  },
+  {
+   "source": "ltspice-native",
+   "name": "TESTQ1"
+  }
+ ],
+ "texts": [
+  "* TESTQ1 from invented: https://example.org/testq1.lib\n.model TESTQ1 NPN(IS=1f BF=100) ; 10 Ω base\n",
+  "* TESTQ1 from ltspice-native: ships with LTspice\n.subckt TESTQ1 C B E\nQ1 C B E QIN\n.ends\n.model QIN NPN(BF=50)\n"
+ ],
+ "models": {
+  "0123456789abcdef0123456789abcdef01234567": "* TESTQ1 from invented: https://example.org/testq1.lib\n.model TESTQ1 NPN(IS=1f BF=100) ; 10 Ω base\n",
+  "ltspice-native:TESTQ1": "* TESTQ1 from ltspice-native: ships with LTspice\n.subckt TESTQ1 C B E\nQ1 C B E QIN\n.ends\n.model QIN NPN(BF=50)\n"
+ }
+}

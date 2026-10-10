@@ -1,0 +1,159 @@
+part: MMBTA56
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmmbta56lt1
+  def: model
+  hash: 77e25199da96e985f00adda1751c25373ea0c4a2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta56lt1.lib
+    sha256: bc905e32908d7ea1605959973d9b12519cc84e80ecae23b5255e3d53e3135126
+    lines:
+      Qmmbta56lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbta56lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbta56lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: microcap12
+  name: MMBTA56
+  def: model
+  hash: 4d91874dbd0a6984685d79fe270fea0aada4d434
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBTA56: [1714, 1718]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MMBTA56
+  def: model
+  hash: fb46ed2240bf0c3a450354314228b37c6480152a
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      MMBTA56: [736, 740]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBTA56
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: duncanamps
+  name: QMMBTA56
+  def: model
+  hash: c6d9e5fd55a3babd00bdae3f211ed554f8c1e2c0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMMBTA56: [532, 535]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBTA56
+  def: model
+  hash: c7ee52061908e27cf36a6789fdfb793a6c54f196
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBTA56: [3469, 3469]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MMBTA56
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: groupsio-ltspice
+    name: MMBTA56
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: MMBTA56
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MMBTA56
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MMBTA56
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MMBTA56
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MMBTA56
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MMBTA56
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MMBTA56
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: bordodynov-qspice
+  name: MMBTA56
+  def: model
+  hash: 7a74c9b9176d6d10b92d0e3d779744dcb83fa046
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      MMBTA56: [316, 316]
+    fetched: '2026-09-29'

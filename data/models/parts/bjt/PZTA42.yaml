@@ -1,0 +1,183 @@
+part: PZTA42
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: onsemi
+  name: Qpzta42t
+  def: model
+  hash: c7124498a74fed343b1632cc922b0c8fd289434c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/pzta42t.lib
+    sha256: 8ad0be8796a170d343ac75cd4e0b705182dddad394412da9979aff844048b5e4
+    lines:
+      Qpzta42t: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qpzta42t
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: PZTA42
+  def: model
+  hash: 9f5c2c8e8aa742172cc6a462c32ea0458dbbaf2e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      PZTA42: [1733, 1743]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: PZTA42
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: spice-model-cd
+    name: PZTA42
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: PZTA42s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: PZTA42/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: PZTA42/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: PZTA42
+  def: subckt
+  hash: 9ddbd6a81eecb0e72860499ad01cab9ddd587fa9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/PZTA42.lib
+    sha256: 52fc09c738072072c6cbbb70893ad4791de11eda53f51463898d2df4ff39edbd
+    lines:
+      PZTA42: [2, 70]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PZTA42
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/PZTA42.PRM
+      sha256: 52fc09c738072072c6cbbb70893ad4791de11eda53f51463898d2df4ff39edbd
+- source: microcap12
+  name: PZTA42_PH
+  def: subckt
+  hash: 324e6883929505f02337a32b4ef24d935efc529f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      PZTA42_PH: [14728, 14796]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: PZTA42_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: groupsio-ltspice
+  name: PZTA42
+  def: model
+  hash: 38b9fdcf8bafa240a98c528ca2582c72796eb7b2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      PZTA42: [1008, 1008]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: PZTA42
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: PZTA42
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: kicad-spice-library
+    name: PZTA42
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: PZTA42
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: PZTA42
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: PZTA42
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: PZTA42
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: PZTA42
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: PZTA42
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: PZTA42T1
+  def: model
+  hash: a70cd3a45ae63305b3128975926cc45b9ada30a8
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PZTA42T1: [4419, 4419]
+    fetched: '2026-09-21'

@@ -1,0 +1,384 @@
+part: BCX56
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: nexperia
+  name: BCX56
+  def: subckt
+  hash: 2c1d9edf17c9595b58835c6d14023ca32434c2ed
+  type: SUBCKT
+  pins:
+  - E
+  - C
+  - B
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCX56.txt
+    sha256: 20cc4bb7ac7590108095667fbb57e7282b7583ab142e32fe4eea1f2fcd6c1a65
+    lines:
+      BCX56: [28, 69]
+    fetched: '2026-09-19'
+    note: 'BCX56: BCX56, MAIN'
+  note: pins from comment words
+- source: diodes-inc
+  name: BCX56
+  def: model
+  hash: eb676ac8a93eb57dc6f87a5ad68ee2ff9491351a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2769/BCX56.spice.txt
+    sha256: 4fcf09cb023d4bbec431bf976449056e9fa695d345b929f623d9bf87bd652195
+    lines:
+      BCX56: [19, 23]
+    fetched: '2026-09-19'
+  copies:
+  - source: diodes-inc
+    name: BCX56
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8426/collection.spice.txt
+      sha256: ca5759f37375eed975f03f72dafec9c3338930de6cfafaecda91fdca1fd33379
+  - source: ltwiki
+    name: BCX56
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ZETEX/LIB/zmodels.lib
+      sha256: 8d3fb488666b5f813a666d5c589ac6c7779a2c44a4b38799b2a41ca0006368e7
+  - source: microcap12
+    name: BCX56_ZX
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/zetex.lib
+      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+- source: spice-model-cd
+  name: BCX56
+  def: model
+  hash: 57ed6bea7be3216e56ee864e6b253c0d7fe5e58e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BCX56: [2309, 2319]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BCX56s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: spice-model-cd
+    name: BCX56
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: spice-model-cd
+    name: BCX56
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: BCX56/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BCX56/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: qspice
+  name: BCX56
+  def: model
+  hash: f2eb82a2f7f1d7adbd226bc0a391ea908dcba29a
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      BCX56: [1001, 1006]
+  copies:
+  - source: bordodynov-qspice
+    name: BCX56
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: groupsio-ltspice
+  name: BCX56Z
+  def: model
+  hash: a6e1927f53a5c3705d83617882f3b9f39ff6a37e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BCX56Z: [399, 399]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BCX56Z
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: BCX56Z
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BCX56Z
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BCX56Z
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCX56Z
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BCX56Z
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCX56Z
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: BCX56Z
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: BCX56S
+  def: model
+  hash: 681ee2ec60bcbfd53fb6bb013f5dc292cb1534d1
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BCX56S: [398, 398]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BCX56S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: BCX56S
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BCX56S
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BCX56S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCX56S
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BCX56S
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCX56S
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: BCX56S
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: BCX56S
+  def: model
+  hash: 2f800dd59c8c9fd60ba963027ae6b9f55befbd6a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BCX56S: [2115, 2115]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BCX56Z
+  def: model
+  hash: cbccf744b291b52924e12841c605f4c1279d0e7d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BCX56Z: [2116, 2116]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BCX56
+  def: model
+  hash: c5e1f04eba8b1700eb3ec2ab70581982361728a6
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BCX56: [2114, 2114]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BCX56
+  def: subckt
+  hash: 69734ef3b71f93589e5c598bfb74063882db3e19
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BCX56.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 72bdbccb2547610977f63500b7a59544de1917c2ce382ff68cd82c448821e9dc
+    lines:
+      BCX56: [2, 45]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+- source: bordodynov
+  name: BCX56
+  def: model
+  hash: 273a8bfcd6d146e7eab2377f1a9301ba511d26c9
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      BCX56: [1608, 1608]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: BCX56
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: ltwiki
+    name: BCX56
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCX56
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: BCX56S
+  def: model
+  hash: e565c9c73cff865fb2ead28257048b4c0dc4dd3f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BCX56S: [236, 236]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: BCX56Z
+  def: model
+  hash: 1a31d0133111b23eedfc95afd5041a11c539a45d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BCX56Z: [237, 237]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: BCX56
+  def: model
+  hash: 01af0f657607e48767de03b186b77f567ddb7093
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+    sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+    lines:
+      BCX56: [1588, 1588]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: BCX56
+  def: model
+  hash: 7462b0e00401ce1a14b4bc6dd87ec139cbf5c64a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+    sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+    lines:
+      BCX56: [4072, 4076]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: BCX56_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca

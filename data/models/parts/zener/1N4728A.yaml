@@ -1,0 +1,58 @@
+part: 1N4728A
+kind: zener
+priority: 3
+models:
+- source: spice-model-cd
+  name: D1N4728A
+  def: subckt
+  hash: aa8b90279c15fe4053d264af8636415a60d78913
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/ZENER.LB
+    sha256: 304e2ababc567483e0e387fdba860dac263b00f29acbc7966994954c43804f7f
+    lines:
+      D1N4728A: [684, 691]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 1N4728A
+  def: model
+  hash: 2553c7c63f28e2ee72d3c4b1765a937fec0959b5
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      1N4728A: [1430, 1430]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: 1N4728A
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: kicad-spice-library
+    name: 1N4728A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: ltwiki
+    name: 1N4728A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: 1N4728A
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+datasheet:
+  url: https://www.vishay.com/docs/85816/1n4728a.pdf
+  maker: Vishay
+  doc: 1N4728A to 1N4761A, Document Number 85816, Rev. 2.7, 07-Nov-2024

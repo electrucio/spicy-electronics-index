@@ -1,0 +1,239 @@
+part: TIP142
+kind: bjt
+priority: 2
+group: power_output
+models:
+- source: onsemi
+  name: tip142
+  def: subckt
+  hash: 79119c045a29ee59d22628e06bee9e846e5ba463
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip142.lib
+    sha256: 2906ce78af5d575f9107280b0b53219426dc36d929716e377dc11f7deff5f95b
+    lines:
+      tip142: [12, 50]
+    fetched: '2026-09-14'
+    note: 'model(s): tip142 (.subckt 1 2 3), dmodel (D .model), qmodel (NPN .model), q1model (NPN .model)'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: TIP142
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/NPNdarlington.lib
+      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+- source: onsemi
+  name: TIP142
+  def: subckt
+  hash: f5d169fff3673d137fc23f9ec6d45537ebe8d27f
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip140_141_142.lib
+    sha256: a9211d9b1ffff951b1a36ceb1bfde63716b74955a5070bd3611191c1a341fc5c
+    lines:
+      TIP142: [21, 83]
+    fetched: '2026-09-19'
+    symbol:
+      url: https://ltwiki.org/images/c/c4/TIP142.asy
+      sha256: fc53d316941b49be90e547312d75bec5592543b0d0b027048e92f81793411b91
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TIP121&131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: kicad-spice-library
+    name: TIP142
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/TIP121%26131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: https://ltwiki.org/images/4/49/TIP142.sub
+      sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TIP121&131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/TIP142_test/TIP140_141_142.lib
+      sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/TIP121&131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/TIP142_test/TIP140_141_142.lib
+      sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
+- source: microcap12
+  name: tip142
+  def: subckt
+  hash: 5ac75195a5dde00102f000a2a341f607cf13c5d3
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+      tip142: [224741, 224779]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: tip142
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: TIP142_FC
+  def: subckt
+  hash: 5bfb7986b1dc45f55f93caadc23758eccef69408
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/fairch.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+    lines:
+      TIP142_FC: [8524, 8554]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: TIP142_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+- source: groups-io
+  name: TIP142
+  def: subckt
+  hash: 7122a7e9d6fce31ec216700f6e78198cdc22761e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/HIFI_LIB.LIB
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 2c719b8865adc17f4b3d57ce6224e2820c26e3169c65abe6d91c40c7a42125a3
+    lines:
+      TIP142: [1422, 1434]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: TIP142
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/HIFI_LIB2.LIB
+      sha256: 49df04a1199d79a97f768a480c3a071b51d03aede2939ebfebafd349c08e8837
+- source: groups-io
+  name: TIP142-ICAP
+  def: subckt
+  hash: 9d139d16df4daf655ef9b92f7d44be41401c8e80
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/HIFI_LIB.LIB
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 2c719b8865adc17f4b3d57ce6224e2820c26e3169c65abe6d91c40c7a42125a3
+    lines:
+      TIP142-ICAP: [2928, 2942]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: TIP142-ICAP
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/HIFI_LIB2.LIB
+      sha256: 49df04a1199d79a97f768a480c3a071b51d03aede2939ebfebafd349c08e8837
+- source: ltwiki
+  name: TIP142
+  def: subckt
+  hash: 9ee7633bf819b43be078f6a0d6644e697a9701f2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      TIP142: [2634, 2672]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: TIP142
+  def: subckt
+  hash: 2f26af0d79827841cf23a387d563cfcee5d67b94
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      TIP142: [1149, 1161]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/tip140-d.pdf
+  maker: onsemi
+  doc: TIP140/D Rev. 8 (June 2024)

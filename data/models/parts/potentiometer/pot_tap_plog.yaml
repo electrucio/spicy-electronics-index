@@ -1,0 +1,36 @@
+part: pot_tap_plog
+kind: potentiometer
+group: non-native
+models:
+- source: ltwiki
+  name: pot_tap_plog
+  def: subckt
+  hash: 60a63cf233b9c9d60a20fe4da1e75b8e486ea207
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Pote.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: d4780f3354e48dbfb6b4441599e3226a191267ab5e5d184221b5f0ce4efaa48c
+    lines:
+      pot_tap_plog: [343, 365]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: pot_tap_plog
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
+  - source: kicad-spice-library
+    name: pot_tap_plog
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Pote.lib
+      sha256: d4780f3354e48dbfb6b4441599e3226a191267ab5e5d184221b5f0ce4efaa48c
+  - source: ltwiki
+    name: pot_tap_plog
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07

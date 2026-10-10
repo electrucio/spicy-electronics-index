@@ -1,0 +1,24 @@
+part: MMBT100
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: MMBT100
+  def: model
+  hash: f5c6417878fce557f3c3fc001e725e866b7ba2ec
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt100.lib
+    sha256: 5ba54c5057f93c996cf6ba97864be137791104a548089a74f3c3c3fd27a45638
+    lines:
+      MMBT100: [5, 59]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: MMBT100
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86

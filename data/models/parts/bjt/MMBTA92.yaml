@@ -1,0 +1,147 @@
+part: MMBTA92
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: onsemi
+  name: MMBTA92
+  def: model
+  hash: 4b9fb278178e93e69d291adf46ece17dd7acb904
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta92.lib
+    sha256: 7bfb8598c2730d4df39f5fd3bc0a16a86ee36cd4635bfc95840cecd8dc60e10d
+    lines:
+      MMBTA92: [6, 16]
+    fetched: '2026-09-14'
+    note: 'model(s): MMBTA92 (PNP .model)'
+  copies:
+  - source: microcap12
+    name: MMBTA92
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: Qmmbta92lt1
+  def: model
+  hash: 922cbe35001de879d215f6dd555b0e86628c02c5
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta92lt1.lib
+    sha256: 9eb1f7f88a2dadc7ede2fbdb4bcbe2827059c86abe350489a5586b081fc17e3a
+    lines:
+      Qmmbta92lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbta92lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbta92lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: microcap12
+  name: MMBTA92_PH
+  def: subckt
+  hash: 005a686578325242fda5256a022134bd28bfa58b
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      MMBTA92_PH: [7156, 7207]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: MMBTA92
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/MMBTA92.PRM
+      sha256: 2afa0bdfa5e2f4a5331bb2d584d3b68020ebd497fcc60496fd46eb10c4d81119
+  - source: kicad-spice-library
+    name: MMBTA92_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: qspice
+  name: MMBTA92
+  def: model
+  hash: acf9117fffef0423fd67fb7421b8a408e9d3171f
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      MMBTA92: [1123, 1127]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBTA92
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: duncanamps
+  name: QMMBTA92
+  def: model
+  hash: a9626db3b68bb69d24a3f76958b1375c47ed9e90
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMMBTA92: [539, 541]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBTA92
+  def: model
+  hash: f080b3903696908f5509c9d8b0eb5c8c774e1685
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBTA92: [3471, 3471]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MMBTA92_PH
+  def: subckt
+  hash: 005a686578325242fda5256a022134bd28bfa58b
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+    sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+    lines:
+      MMBTA92_PH: [7156, 7207]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

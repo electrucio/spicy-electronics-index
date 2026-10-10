@@ -1,0 +1,108 @@
+part: TS912
+kind: opamp
+priority: 3
+models:
+- source: stmicro
+  name: TS912
+  def: subckt
+  hash: 027edcf206d231d255fdb9373ff7d4c51c9689da
+  type: SUBCKT
+  pins:
+  - INN
+  - INP
+  - OUT
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/ts912_spice.zip
+    member: ts912_spice.txt
+    archive_sha256: c5fbb8f3ae755731fbcab17f2ad070ee972e768d5d36a224f2082f56cfdb6d63
+    sha256: b54918461d7d322699084b8aae70af9f1523443808e194da654e4ff960ad720e
+    lines:
+      TS912: [25, 84]
+    fetched: '2026-09-21'
+  note: pins from numbered connections table
+  copies:
+  - source: bordodynov
+    name: TS912
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_ST.lib
+      sha256: d90f4c4fd1a82f698bcdd91bde8be169c258e283648fef8a669e0d1ced09e50a
+  - source: kicad-spice-library
+    name: TS912
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_ST.lib
+      sha256: d90f4c4fd1a82f698bcdd91bde8be169c258e283648fef8a669e0d1ced09e50a
+  - source: ltwiki
+    name: TS912
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_ST.lib
+      sha256: d90f4c4fd1a82f698bcdd91bde8be169c258e283648fef8a669e0d1ced09e50a
+  - source: ltwiki
+    name: TS912
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/Op Amps/ts912.lib
+      sha256: b54918461d7d322699084b8aae70af9f1523443808e194da654e4ff960ad720e
+- source: spice-model-cd
+  name: TS912
+  def: subckt
+  hash: aa7d3aa355338b92e9fafc2cb37ada66e01f434b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/STMicroelectronics/Standard%20Linear%20ICs/Spice/ts912.txt
+    sha256: b8a5c97615d9bf9aeea2bb5a6f0f0db4e54ede614b5f72ba8aa45aef395b518c
+    lines:
+      TS912: [25, 84]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: TS912_ST
+  def: subckt
+  hash: 0130550a9e4d04bc6deee30b559bb8b41c1b7ace
+  type: SUBCKT
+  pins:
+  - INN
+  - OUT
+  - INP
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/stmicro.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 8b10b5822cbfd368b6a77b5f8ab8c41c191aef0d5459ab81e192ea85054beec6
+    lines:
+      TS912_ST: [2163, 2222]
+    fetched: '2026-09-21'
+  note: pins from numbered connections table
+  copies:
+  - source: kicad-spice-library
+    name: TS912_ST
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/stmicro.lib
+      sha256: 1bc5bba150b91fb1bdf69c3ffa1deb78a4f08951827cad399705cdc2a9ab5e9a
+- source: kicad-spice-library
+  name: TS912S
+  def: subckt
+  hash: cf9301b4409634e03515686c8b0cfc03809716f0
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS2.LIB
+    sha256: de2cf3e62490babc0d41be58bf08dd647938f83af9f43fdc287064f7024c1cfa
+    lines:
+      TS912S: [991, 1049]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

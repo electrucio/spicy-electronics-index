@@ -1,0 +1,210 @@
+part: IRFP140
+kind: mosfet
+priority: 2
+group: power_vertical
+models:
+- source: infineon
+  name: irfp140n
+  def: subckt
+  hash: c04438d4321681ce3a14d49e6a0dd8fbe05b9ce3
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://web.archive.org/web/19991008014629id_/http://www.irf.com:80/product-info/models/SPICE/irfp140n.spi
+    sha256: 511061535a4182540a1b58581c87edd592f0cf7eb8e0abd55c833cbdfbbc92b9
+    lines:
+      irfp140n: [1, 60]
+    fetched: '2026-09-14'
+    note: International Rectifier legacy HEXFET SPICE model; original URL http://www.irf.com:80/product-info/models/SPICE/irfp140n.spi
+      (Wayback capture 19991008014629)
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irfp140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp140n.spi
+      sha256: 511061535a4182540a1b58581c87edd592f0cf7eb8e0abd55c833cbdfbbc92b9
+  - source: bordodynov
+    name: irfp140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp140n.spi
+      sha256: 511061535a4182540a1b58581c87edd592f0cf7eb8e0abd55c833cbdfbbc92b9
+  - source: kicad-spice-library
+    name: irfp140n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irfp140n.spi
+      sha256: 47ae493de6b09aa61a132b7c9acecc33dbc7d6c865236cdd94fef2378a4dc812
+  - source: ltwiki
+    name: irfp140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp140n.spi
+      sha256: 511061535a4182540a1b58581c87edd592f0cf7eb8e0abd55c833cbdfbbc92b9
+  - source: ltwiki
+    name: irfp140n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp140n.spi
+      sha256: 511061535a4182540a1b58581c87edd592f0cf7eb8e0abd55c833cbdfbbc92b9
+  - source: ltwiki
+    name: irfp140n
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp140n.spi
+      sha256: 511061535a4182540a1b58581c87edd592f0cf7eb8e0abd55c833cbdfbbc92b9
+- source: microcap12
+  name: irfp140n_IR
+  def: subckt
+  hash: 30583b1e07e4ba76ebb0dad1ae6026d061bc973b
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irfp140n_IR: [6220, 6279]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: IRFP140N
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+  - source: kicad-spice-library
+    name: irfp140n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irfp140n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irfp140n_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: microcap12
+  name: IRFP140
+  def: model
+  hash: 9309f8ab0971b5186bb11837eae30c386d136e07
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRFP140: [1447, 1451]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRFP140
+  def: model
+  hash: 6e1a38459c8625d202bde0657c56baa7ac23e63d
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFP140: [3639, 3642]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRFP140
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: IRFP140
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: ltwiki
+    name: IRFP140
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP140
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRFP140
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: kicad-spice-library
+  name: IRFP140N
+  def: subckt
+  hash: 30583b1e07e4ba76ebb0dad1ae6026d061bc973b
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRFP140N: [6657, 6702]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRFP140
+  def: subckt
+  hash: 5c5d76720c786003ebacd9debaac15e597ee9483
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRFP140: [3331, 3353]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRFP140
+  def: model
+  hash: ac5e29449a852e27956f70f22db06d1d4eb917f1
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL1.LIB
+    sha256: 8a0af54a34c8e405d5f54f85a9836846c3926f39a0926309907c5f1c3820df13
+    lines:
+      IRFP140: [403, 433]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.vishay.com/docs/91202/irfp140.pdf
+  maker: Vishay Siliconix
+  doc: Document Number 91202, S22-0045-Rev. C
+  date: '2022-01-24'

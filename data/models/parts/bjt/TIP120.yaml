@@ -1,0 +1,126 @@
+part: TIP120
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: tip120
+  def: subckt
+  hash: a47cd4e9856ada15d21545266187ad192cdd42c3
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip120.lib
+    sha256: 94017247134066826999d2b663d2518f46ad535b676d6b23695c5dffc8f68c6a
+    lines:
+      tip120: [12, 50]
+    fetched: '2026-09-14'
+    note: 'model(s): tip120 (.subckt 1 2 3), dmodel (D .model), qmodel (NPN .model), q1model (NPN .model)'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: TIP120
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: TIP120
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP120
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP120
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/NPNdarlington.lib
+      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: microcap12
+    name: tip120
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: bordodynov
+  name: TIP120
+  def: subckt
+  hash: 1a907119751a014e857309b9eba49a6d9def71b2
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  deps:
+  - Rb
+  - Q1
+  - Q2
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+      TIP120: [13319, 13331]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Darlington/TIP120.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 7ab9e326704f03d7c5aebaaa26793cba3996460166e3b3b9d7348413abc08985
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: TIP120
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: TIP120
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: ltwiki
+  name: TIP120
+  def: subckt
+  hash: 7d7e290b4a1145516a045eb33b273dd96e98f875
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/Darlington/Sborka.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 91aa798c8b8a7a83698b2fab0fcc70a30e5b712372f83fcd632ff426617126c5
+    lines:
+      TIP120: [22, 34]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/TIP120.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      sha256: 0d8e8e06bd363a4e0e856437b2d8591f340011b1b47fa8b2166212683c0c88e4
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: TIP120
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+      sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1

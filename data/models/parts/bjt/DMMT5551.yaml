@@ -1,0 +1,194 @@
+part: DMMT5551
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: diodes-inc
+  name: DMMT5551
+  def: subckt
+  hash: b9131a574efe2cee8ad5627e5d968cda26f71b84
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/3324/DMMT5551.spice.txt
+    sha256: 3ea514d0bd1b47471cf91ac8b1017b0216362f75a8ef0fbb0abca32b6a339c5e
+    lines:
+      DMMT5551: [28, 36]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: DMMT5551
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc_BJT.lib
+      sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+- source: diodes-inc
+  name: DMMT5551S
+  def: subckt
+  hash: 502e5146911ecbb22d541dc1dbbb0aaca26541d2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/3325/DMMT5551S.spice.txt
+    sha256: 3ffdca6235c80dc3fa2a333b703c0407fa42f0d78785fe95366f0e30fbb55d3e
+    lines:
+      DMMT5551S: [28, 36]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: DMMT5551S
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc_BJT.lib
+      sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+- source: groupsio-ltspice
+  name: DMMT5551
+  def: model
+  hash: e3f57990556ad992bd6266ec9a0c5ce09bf1c77d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      DMMT5551: [1257, 1257]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: DMMT5551
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: DMMT5551
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Amplifier_classA_and_AB/models.lib
+      sha256: b7a1e9b31a8dde47f8de8b4e81ee13a4d4d5d57f59a29ef1c175e0595ba418ae
+  - source: ltwiki
+    name: DMMT5551
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferZoutCurrentAC/models.lib
+      sha256: 68455c852f18e43fef0ad6e4f13d356c2b0c258617469256c2e8102798ad8941
+  - source: ltwiki
+    name: dmmt5551
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferAB/models.lib
+      sha256: a8b7a15655a8ba40b18db15c13881fd06688e7e4ab223f2b3549f55834013495
+  - source: ltwiki
+    name: dmmt5551
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferAB/models.lib
+      sha256: a8b7a15655a8ba40b18db15c13881fd06688e7e4ab223f2b3549f55834013495
+- source: bordodynov
+  name: DMMT5551_
+  def: model
+  hash: 3771473f60318c6d7bbb1f4872c72326a5e4ea70
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      DMMT5551_: [1289, 1289]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: DMMT5551_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: DMMT5551_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: DMMT5551_
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: DMMT5551
+  def: model
+  hash: bd22b80371aab46ac35f8c17a3d83ed747442d28
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      DMMT5551: [1288, 1288]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: DMMT5551
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: DMMT5551
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: DMMT5551
+  def: model
+  hash: dcb3ecf2647333402e90d3f0cddd97c053e54131
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      DMMT5551: [765, 765]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: DMMT5551_
+  def: model
+  hash: ea2b3c1ae0131413566b5da1625cf8b0ad9aa7c9
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      DMMT5551_: [766, 766]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: dmmt5551
+  def: model
+  hash: e3f57990556ad992bd6266ec9a0c5ce09bf1c77d
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/AmpliferAB/models.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: a8b7a15655a8ba40b18db15c13881fd06688e7e4ab223f2b3549f55834013495
+    lines:
+      dmmt5551: [6, 6]
+    fetched: '2026-09-14'

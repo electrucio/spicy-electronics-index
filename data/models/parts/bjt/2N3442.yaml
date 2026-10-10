@@ -1,0 +1,48 @@
+part: 2N3442
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: Q2n3442
+  def: model
+  hash: 2f7ae092ec6fb34030cf82320b98cc167d6d2d5a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n3442.lib
+    sha256: fbc657e7120a68b152644bf9f3f6ae044b4130960e25771aecf1257ddc6cbfaa
+    lines:
+      Q2n3442: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: groupsio-ltspice
+    name: 2N3442
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: microcap12
+    name: Q2n3442
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: 2N3442
+  def: model
+  hash: e8d81a970dd36c5fde21dfcf73ded08a1ca07932
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N3442: [38, 43]
+    fetched: '2026-09-21'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/2n3442-d.pdf
+  maker: onsemi
+  doc: 2N3442/D Rev. 11 (February 2006)

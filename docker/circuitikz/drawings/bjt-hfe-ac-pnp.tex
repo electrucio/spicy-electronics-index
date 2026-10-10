@@ -1,0 +1,40 @@
+% AC current gain (bjt-hfe-ac): the set-up a person would wire, semantically the deck's.
+%   IBT0 0 bt0 DC <ib> AC 1   the base bias for the ladder current with AC on top -> current source I_B + i_b (set)
+%   VCT0 ct0 0 5              the collector supply, 5 V; its current is IC + ic  -> source V_CE (set) + ammeter I_C + i_c (measured: the AC part)
+%   QT0 ct0 bt0 0 DUT         the transistor, emitter grounded                   -> npn
+%   One copy per ladder current and collector voltage (5 and 10 V) in the deck; the drawing shows one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{AC current gain, PNP}
+\def\gnd{1.0}
+% the transistor
+\node[pnp, yscale=-1] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$I_C + i_c$}
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{ct}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(ctop)+(2.6,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, invert, l=$V_{CE}$] (vtop |- 0,\gnd) node[ground, black]{};
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, invert, l_=$I_B + i_b$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{bt}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_B$: the DC bias for $I_C = 100$ \textmu A, 1 mA, 10 mA, 100 mA, 1 A, 10 A (one copy each)\\[2pt]
+  $V_{CE} = 5$ and 10 V;\quad $i_b = 1$ A of AC, the simulator's unit signal, not a real amplitude\\[2pt]
+  read $i_c$, the AC part of the collector current;\quad $h_{fe} = i_c / i_b$ at $f = 1$ kHz\\[2pt]
+  PNP: every source reversed; values written as magnitudes%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

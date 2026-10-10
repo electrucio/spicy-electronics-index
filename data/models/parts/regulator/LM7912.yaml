@@ -1,0 +1,176 @@
+part: LM7912
+kind: regulator
+priority: 4
+models:
+- source: spiceypedals
+  name: LM7912
+  def: subckt
+  hash: 1f93ecd6068f4acf1d4969536760fc46bddf9da6
+  type: SUBCKT
+  pins:
+  - GND
+  - IN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PartModels/basic_models/Power-Regulators/7912.lib
+    sha256: 8aba20ec7dd82beda61c087f77d414b130533cdc9d5252821d7590aa4db33d0e
+    lines:
+      LM7912: [3, 83]
+    fetched: '2026-09-14'
+  note: pins from LM79 package pin numbers (unverified)
+  copies:
+  - source: groups-io
+    name: LM7912
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Linear%20Regulators/lm7905_7912_7915.lib
+      sha256: 5db12fcb180ba85eb887270680492fcc199886331a78eea1183889df52426541
+  - source: kicad-spice-library
+    name: LM7912
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/lm7905_7912_7915.lib
+      sha256: 5db12fcb180ba85eb887270680492fcc199886331a78eea1183889df52426541
+  - source: ltwiki
+    name: LM7912
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
+      sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+- source: groups-io
+  name: LM7912
+  def: subckt
+  hash: 1adf09ada7a1e6bcce383b80689c6cb0fc87f429
+  type: SUBCKT
+  deps:
+  - LM7909-24
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Linear%20Regulators/LM79xxTest.zip
+    member: LM79xx.txt
+    archive_sha256: 05d418b9357d4598efe46408faeaf1221712b08624021d1bcb4d34cb8ee4254f
+    sha256: e82dde2bbece4b3881dfdbe1e9c34ef93a64e6190a0f5f2502ea17ac1c1d7b46
+    lines:
+      LM7909-24: [132, 192]
+      LM7912: [46, 49]
+    fetched: '2026-10-10'
+- source: ltwiki
+  name: LM7912C
+  def: subckt
+  hash: f505d72572a856d12bbd1e0fd1eec57ccc2f0874
+  type: SUBCKT
+  deps:
+  - x_LM79XX
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      LM7912C: [10420, 10428]
+      x_LM79XX: [10284, 10362]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: LM7912
+  def: subckt
+  hash: 9e1b9a0a0aef6fb07097ef9f381b06e1a6c71aca
+  type: SUBCKT
+  pins:
+  - INPUT
+  - GROUND
+  - OUTPUT
+  deps:
+  - LM79XX
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/regulators.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+    lines:
+      LM7912: [919, 924]
+      LM79XX: [838, 916]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/VolReg/LM7912.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 462e31f496a46a49db564212a9a6bd1a459d7cdd8804f005f566d45dde6dbe7c
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: LM7912
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/lm7905_7912_7915.lib
+      sha256: e1945dcaa615cbe04e8e71408bca74a4f57b58e3b6d6e98f1e395634a1ace97e
+  - source: ltwiki
+    name: LM7912
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+  - source: ltwiki
+    name: LM7912
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/lm7905_7912_7915.lib
+      sha256: e1945dcaa615cbe04e8e71408bca74a4f57b58e3b6d6e98f1e395634a1ace97e
+- source: kicad-spice-library
+  name: LM7912
+  def: subckt
+  hash: 793b2380df9747834bcf3c02762482674de55341
+  type: SUBCKT
+  pins:
+  - GND
+  - IN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/regulators.lib
+    sha256: 0b15463dadbf7c99cb3692aa563c298dd2a488e40122b87c0094158001d08f4c
+    lines:
+      LM7912: [838, 919]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from LM79 package pin numbers (unverified)
+- source: kicad-spice-library
+  name: LM7912C
+  def: subckt
+  hash: 2fdb63e84c085faa81c338d2ce1bcb7435f64e92
+  type: SUBCKT
+  pins:
+  - INPUT
+  - OUTPUT
+  - GROUND
+  deps:
+  - x_LM79XX
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+    sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+    lines:
+      LM7912C: [2021, 2026]
+      x_LM79XX: [1885, 1963]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from names
+- source: kicad-spice-library
+  name: MC7912C
+  def: subckt
+  hash: 2fdb63e84c085faa81c338d2ce1bcb7435f64e92
+  type: SUBCKT
+  pins:
+  - INPUT
+  - OUTPUT
+  - GROUND
+  deps:
+  - x_LM79XX
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+    sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+    lines:
+      MC7912C: [2048, 2053]
+      x_LM79XX: [1885, 1963]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias MC7912; pins from names

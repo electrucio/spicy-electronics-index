@@ -1,0 +1,304 @@
+part: 6P3S
+kind: tube
+priority: 3
+group: pentode_beam
+models:
+- source: ltspice-native
+  name: '63'
+  def: subckt
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  - Tj
+  - Id
+  deps:
+  - '2'
+  - '1'
+  - '3'
+  - '4'
+  - '7'
+  - '6'
+  - '5'
+  - '13'
+  - '11'
+  - '12'
+  - '22'
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: sub/Contrib/Wolfspeed/WS_HalfBridge.lib
+    sha256: e10f8192144c855e81d4fee236de3d332999b240939c927eca20c14deaf0da69
+    lines:
+      '1': [114, 116]
+      '11': [805, 855]
+      '12': [857, 909]
+      '13': [911, 969]
+      '2': [118, 122]
+      '22': [1023, 1075]
+      '3': [125, 129]
+      '4': [131, 141]
+      '5': [144, 146]
+      '6': [149, 151]
+      '63': [1741, 1799]
+      '7': [152, 155]
+  note: found under the alias 6П3С
+- source: groups-io
+  name: 6P3S_T
+  def: subckt
+  hash: 00dbf0a8c7d43c4fd1876efee6bda1a4393fefd6
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/Tube_IM.lib
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+    lines:
+      6P3S_T: [498, 513]
+    fetched: '2026-10-09'
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6P3S_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+  - source: ltwiki
+    name: 6P3S_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: groups-io
+  name: 6P3S
+  def: subckt
+  hash: f4c2f75a985d79344e333ab420d4a1733d98162e
+  type: SUBCKT
+  pins:
+  - P
+  - G1
+  - C
+  - G2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/Tube_IM.lib
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+    lines:
+      6P3S: [624, 640]
+    fetched: '2026-10-09'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/6p3s.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: e4cb5c49cb01005bec67a311279b978a84d9295dcd87cb7ee91aaf777fde80d6
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6P3S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+  - source: ltwiki
+    name: 6P3S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: groups-io
+  name: 6P3S
+  def: subckt
+  hash: 07e3ce5fcb9ae3038484ed07c63e8067f99dc7d3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/triodes.sub
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 4c16ec2433d437b1f515598927e42172d6c65f599b4f6b85bf335e71a4cd0489
+    lines:
+      6P3S: [357, 372]
+    fetched: '2026-10-09'
+- source: ltwiki
+  name: 6P3S_T
+  def: subckt
+  hash: 608215d7ba1b7534c5877fdcfc532b30be6d175e
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  deps:
+  - Triodo
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      6P3S_T: [1117, 1120]
+      Triodo: [3149, 3161]
+    fetched: '2026-09-21'
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6P3S_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6P3S_T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6P3S_T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6P3S_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6P3S_T
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6P3S_T
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+- source: ltwiki
+  name: 6P3S
+  def: subckt
+  hash: 4a6cea65f84b6acd7c01f2d96b4125da09f87c48
+  type: SUBCKT
+  pins:
+  - P
+  - G2
+  - G1
+  - K
+  deps:
+  - Tetro
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      6P3S: [2055, 2058]
+      Tetro: [3163, 3176]
+    fetched: '2026-09-21'
+  note: pins from inline comment
+  copies:
+  - source: bordodynov
+    name: 6P3S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6P3S
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6P3S
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6P3S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6P3S
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6P3S
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+- source: ltwiki
+  name: '63'
+  def: subckt
+  hash: 826d612834fb549eaf3679de6cc3b6ed19802cb5
+  type: SUBCKT
+  pins:
+  - A
+  - B
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Analisis/MonteCarlo/Monte carlo toolbox_3/vmc.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f0ee14467ffa5948bd912d29adf4c51edd958dab020fd1685a3eb6bc338a8f18
+    lines:
+      '63': [78, 82]
+    fetched: '2026-09-21'
+  note: found under the alias 6П3С
+  copies:
+  - source: ltwiki
+    name: '63'
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Analisis/MonteCarlo/Monte carlo toolbox_3/vmc.lib
+      sha256: f0ee14467ffa5948bd912d29adf4c51edd958dab020fd1685a3eb6bc338a8f18
+- source: bordodynov-qspice
+  name: 6P3S_T
+  def: subckt
+  hash: 3f28d3d8d3d64d3ef6e56a5e5b7eec397de75078
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Tube_Rus.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+    lines:
+      6P3S_T: [1686, 1701]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: 6P3S
+  def: subckt
+  hash: 596cfd6c09c3ac3d083713147269692410dce080
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Tube_Rus.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+    lines:
+      6P3S: [1665, 1683]
+    fetched: '2026-09-29'
+datasheet:
+  url: https://frank.pocnet.net/sheets/084/6/6P3S-E.pdf
+  maker: Soviet (factory sheet, частные ТУ 3.301.915 ТУ)
+  doc: 6П3С-Е beam tetrode in glass envelope, 2-page sheet (print order 'Зак. 110')

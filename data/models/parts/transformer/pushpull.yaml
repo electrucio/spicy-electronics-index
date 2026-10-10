@@ -1,0 +1,41 @@
+part: pushpull
+kind: transformer
+group: non-native
+models:
+- source: ltwiki
+  name: pushpull
+  def: subckt
+  hash: 36f178778fdda648502904ec64677a0948d05a0b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Trafos.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+    lines:
+      pushpull: [380, 390]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Magnetic/pushpull.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 9aa34afcc3d5ae81908c6aaad8929b595dfe032eb8f313819ffbda4120f7e853
+  copies:
+  - source: bordodynov
+    name: pushpull
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: kicad-spice-library
+    name: pushpull
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: ltwiki
+    name: pushpull
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e

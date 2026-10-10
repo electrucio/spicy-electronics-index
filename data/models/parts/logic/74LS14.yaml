@@ -1,0 +1,59 @@
+part: 74LS14
+kind: logic
+priority: 3
+models:
+- source: microcap12
+  name: 74LS14
+  def: subckt
+  hash: 52452ad6e15694bb4f92bbf884e362c1b2ba7294
+  type: SUBCKT
+  pins:
+  - 1A
+  - 1Y
+  - 'optional:'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/dig000.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: e16fc85bebf1d2fc6da7b1994359ed7612a26b6f553d24748826327924413fa2
+    lines:
+      74LS14: [2416, 2426]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 74LS14
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
+      sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
+- source: ltwiki
+  name: 74LS14
+  def: subckt
+  hash: e98d6426a36288a02dffa005b2a3364ddac384e0
+  type: SUBCKT
+  deps:
+  - D_LS14
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/74ls.lib
+    sha256: 1a3fc139003ba53119805e469c8c7d464ec28fab6ab216986e6ed79e137bdb4b
+    lines:
+      74LS14: [249, 258]
+      D_LS14: [260, 263]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: 74LS14
+  def: subckt
+  hash: ebacf6a4619e777c0d3911d10f954633c7861ed9
+  type: SUBCKT
+  pins:
+  - in
+  - out
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Digital%20Logic/74LS.LIB
+    sha256: 0a2ff4e3c383374b23688a26c5653c8324b1ec14e703ce604cfa201863e589ca
+    lines:
+      74LS14: [236, 246]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

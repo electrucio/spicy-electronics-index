@@ -1,0 +1,63 @@
+part: IRF240
+kind: mosfet
+priority: 2
+group: audio_docs
+models:
+- source: microcap12
+  name: IRF240
+  def: model
+  hash: 54474da903cd29153fc163db4ab472c0a07650c4
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRF240: [208, 212]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: IRF240
+  def: model
+  hash: 9bb4b96df9d78cc4b9abe12e086e06491dd73780
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/mpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f3a8113e6ad33c866f8d396d65b1d1e98d8b1d17ebaf3390dd611a3181d4fd37
+    lines:
+      IRF240: [215, 219]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRF240
+  def: model
+  hash: 315472254cd02cb572abdfe6d78bd698c4f33787
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF240: [818, 821]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF240
+  def: subckt
+  hash: d5f482ff9bc3d7f5f3b5851d8e0d852207d445c7
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS.LIB
+    sha256: 3a158ee63ad9816d8dcdc0cad0827d2f4646c66b6296d7bbcd2c28d49bf1d219
+    lines:
+      IRF240: [3854, 3874]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

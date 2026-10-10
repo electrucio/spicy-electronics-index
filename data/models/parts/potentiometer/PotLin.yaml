@@ -1,0 +1,72 @@
+part: PotLin
+kind: potentiometer
+group: non-native
+models:
+- source: ltwiki
+  name: PotLin
+  def: subckt
+  hash: 2d64417bbf877e8f8e4736a45079795b09ecbbeb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Pote.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: d4780f3354e48dbfb6b4441599e3226a191267ab5e5d184221b5f0ce4efaa48c
+    lines:
+      PotLin: [62, 68]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Pot&Sw/potentiometer_standard.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 4bf4dc53738d45c9e4dac81fda310ac268f937e4fa9f4a1c44b8262dce092a21
+  copies:
+  - source: bordodynov
+    name: PotLin
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
+  - source: kicad-spice-library
+    name: PotLin
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Pote.lib
+      sha256: d4780f3354e48dbfb6b4441599e3226a191267ab5e5d184221b5f0ce4efaa48c
+  - source: ltwiki
+    name: PotLin
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
+- source: bordodynov
+  name: potlin
+  def: subckt
+  hash: 0c889df184717e47bd7fa6d45c28f4e4f2681f13
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/potentiometer.cir
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 787a4f374e4268ec4138ac26f58e27e9e31bf4817bffb641888c8dddf03e1cce
+    lines:
+      potlin: [14, 18]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/pot_.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: c2c9241a89c8a8fed003207dff60becc5c980d802b8941a119d67cec1355a4f8
+  copies:
+  - source: kicad-spice-library
+    name: potlin
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/potentiometer.cir
+      sha256: 787a4f374e4268ec4138ac26f58e27e9e31bf4817bffb641888c8dddf03e1cce
+  - source: ltwiki
+    name: potlin
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/potentiometer.cir
+      sha256: 787a4f374e4268ec4138ac26f58e27e9e31bf4817bffb641888c8dddf03e1cce

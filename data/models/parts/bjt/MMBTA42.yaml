@@ -1,0 +1,183 @@
+part: MMBTA42
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: onsemi
+  name: Qmmbta42lt1
+  def: model
+  hash: 59be537056cb4adb49b72902af89fa0b43505b58
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta42lt1.lib
+    sha256: 5ffb737aac31f1d3e876b9b28590c476d771e705957742d15b85c8716e2a6ef4
+    lines:
+      Qmmbta42lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbta42lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbta42lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: nexperia
+  name: MMBTA42
+  def: subckt
+  hash: c9a7c5003792bd46f2bc3a57e7605e7fcd19ea99
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/MMBTA42.txt
+    sha256: d6448e6982cba734a7bb07830be5d5ccc1f77d7ccc53f97c1eb1a3ffa3d6f32d
+    lines:
+      MMBTA42: [29, 89]
+    fetched: '2026-09-19'
+    note: 'MMBTA42: MMBTA42, MMBTA42, DIODE'
+  note: pins from comment words
+- source: microcap12
+  name: MMBTA42_PH
+  def: subckt
+  hash: 19dc20d40c0825bf0ed3d1fe926c5ab28a7301cc
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      MMBTA42_PH: [7101, 7152]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: MMBTA42
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/MMBTA42.PRM
+      sha256: 0402913e4e78adfc9167d6f910484c8af9087186284c29416052f3e95d564a83
+  - source: kicad-spice-library
+    name: MMBTA42_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: qspice
+  name: MMBTA42
+  def: model
+  hash: 09d6aedaea4ee797458888cf93438ba63e159adc
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBTA42: [1276, 1280]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBTA42
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: duncanamps
+  name: QMMBTA42
+  def: model
+  hash: 08151c1337be9eb2bd0faa5a085409888b7db75e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QMMBTA42: [557, 559]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBTA42
+  def: model
+  hash: 00fd969a120638716dd76ae2282cf11a122dd13c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBTA42: [3466, 3466]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: MMBTA42
+  def: model
+  hash: 6ab95dd6dda1d587353badb31831a85fe7191cfa
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      MMBTA42: [1814, 1814]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MMBTA42
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MMBTA42
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: MMBTA42
+  def: model
+  hash: edd0deee7b190b25d1b0c82cd383cff922e9a5a0
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      MMBTA42: [1059, 1059]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: MMBTA42_PH
+  def: subckt
+  hash: 19dc20d40c0825bf0ed3d1fe926c5ab28a7301cc
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+    sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+    lines:
+      MMBTA42_PH: [7101, 7152]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

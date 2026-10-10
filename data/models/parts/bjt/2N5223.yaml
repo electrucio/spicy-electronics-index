@@ -1,0 +1,43 @@
+part: 2N5223
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: 2N5223
+  def: model
+  hash: 37db10e2b53b3ef593245fdb549da56e388a0fc4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/2N/2N5223.t
+    sha256: 8057d7b18a88ed57d4f49ea4bd6fdf856b699b8e325343b62e6a9581044b0a15
+    lines:
+      2N5223: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: 2N5223
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: Q2N5223
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: microcap12
+  name: 2N5223
+  def: model
+  hash: 69fe3f696b6c06e6b537f8b9176579117dbbd751
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      2N5223: [937, 940]
+    fetched: '2026-09-21'

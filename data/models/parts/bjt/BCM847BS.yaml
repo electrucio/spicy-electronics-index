@@ -1,0 +1,59 @@
+part: BCM847BS
+kind: bjt
+priority: 2
+group: matched_pairs
+models:
+- source: microcap12
+  name: BCM847BS
+  def: subckt
+  hash: cc71e49e844dfc63a187cbf753aa677d523f1abb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_complex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 54753ca5ae9f13c277d26074a3a93f34627ecb135ebd2a3db7f69d41f71f5ff1
+    lines:
+      BCM847BS: [2, 48]
+    fetched: '2026-09-21'
+- source: modwiggler
+  name: QBCM847BS
+  def: model
+  hash: 674f71efa7bcf7376f077e0f0518b1ae6c9131f6
+  type: NPN
+  verbatim: true
+  get:
+    url: https://modwiggler.com/forum/download/file.php?id=30774
+    sha256: 68bf504d8e24d9d75de21281de11bbbd9bde1c0ee169b32369822f8c8c448f0b
+    lines:
+      QBCM847BS: [80, 118]
+    fetched: '2026-10-09'
+  copies:
+  - source: modwiggler
+    name: QBCM847BS
+    get:
+      url: https://modwiggler.com/forum/download/file.php?id=136096
+      member: SA571.CIR
+      sha256: a282b74f6026a7818dd17195a34a8e4cda79295aaef934de0ca3a30081415d08
+- source: ltwiki
+  name: bcm847bs
+  def: model
+  hash: dff80a8ff59901ec4559a47c9be8bd2343a3a1b0
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/Amplifier_classA_and_AB/models.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: b7a1e9b31a8dde47f8de8b4e81ee13a4d4d5d57f59a29ef1c175e0595ba418ae
+    lines:
+      bcm847bs: [2, 2]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: bcm847bs
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferZoutCurrentAC/models.lib
+      sha256: 68455c852f18e43fef0ad6e4f13d356c2b0c258617469256c2e8102798ad8941

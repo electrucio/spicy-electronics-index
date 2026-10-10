@@ -1,0 +1,70 @@
+# The lists the part-number census is read from: which vocabulary each one settles, and on whose
+# authority. status: proposed | active | paused | blocked | excluded
+#
+# A source earns its place by having had to be complete about something. A data sheet archive knows
+# every valve type that shipped; a manufacturer's numerical index knows every device in that book. The
+# corpus cannot settle this on its own: a type number is not real because it was read often, and the
+# reads that are wrong are often the frequent ones (1N007 is on nineteen documents and does not exist).
+#
+# Each entry names the public URL that vouches for every part it contributes. That URL is published in
+# data/parts/census.csv next to the part, so the evidence for the fact and the reference link the site
+# offers for that part are the same link.
+frank_pocnet:
+  kind: datasheet archive
+  title: Frank Philipse's electron Tube Data sheets
+  home_url: https://frank.pocnet.net/
+  index_url: https://frank.pocnet.net/sheets0.html
+  covers: tube
+  status: active
+  notes: 'A-Z index of every valve type with a data sheet, each entry linking to the PDF whose file name
+    is the type number: no OCR in the path at all. Serves no robots.txt, so everything is allowed; read
+    at the default one request every three seconds. It settles the class the extractor is weakest at —
+    numeric valve names, which were a hand-written list of about twenty types (5687, 6336A, 6528 and
+    7236 were all invisible), and names that collide with a resistor value (6V6 read as 6.6 V).'
+spice_definitions:
+  kind: model library
+  title: The SPICE model libraries this project already holds
+  home_url: https://github.com/electrucio/spicy-electronics-index
+  covers: bjt, jfet, mosfet, diode, ic
+  status: active
+  notes: 'Read from the definition index built for the model pillar — 75 vendors, 986,872 definitions —
+    so it costs no network at all. A library also holds internal sub-circuits, passives and test
+    fixtures, so a name is taken as a part only on one of three signals: the definition has a real device
+    type, or the vendor named the file after it, or the extractor''s own families recognise the shape.
+    Passive-component vendors are excluded whole. It is the semiconductor half of the census: the tube
+    half is frank_pocnet. The evidence URL is the vendor file the definition came from, or that vendor''s
+    home page when the ledger cannot name the file.'
+ti_datasheets:
+  kind: manufacturer catalogue
+  title: Texas Instruments data sheets, one per part
+  maker: texas-instruments          # an organisation of makers.yaml: who is listing its own parts
+  home_url: https://www.ti.com/
+  index_url: https://www.ti.com/lit/gpn/sitemap-datasheets-standard.xml
+  part_from: '/lit/gpn/([^/?#]+)$'
+  covers: ic, opamp, adc, dac, regulator, mosfet, bjt, diode
+  status: active
+  notes: 'A manufacturer had to be complete about its own catalogue, which is what this census asks of a
+    source, and TI publishes the result: a sitemap naming one data sheet per part at /lit/gpn/<part>.
+    21,817 parts on 2026-09-24, and the URL is the data sheet — the evidence for the fact and the
+    reference link the site can offer are the same link, with no OCR anywhere in the path. It settles
+    the vocabulary the corpus is emptiest in: the extractor''s families were derived from magazines of
+    1960-1990 and have no ADS, DAC, REF, TPS, ISO, AMC or THS in them, so eight TI application notes
+    full of ADS7822 and ADS1286 yielded no parts at all. Every entry is "semiconductor" because the
+    sitemap says which parts exist and not what they are; that kind is generic on purpose and agrees
+    with any family but a valve.'
+renesas_products:
+  kind: manufacturer catalogue
+  title: Renesas product catalogue, including the Intersil analogue legacy
+  maker: renesas
+  home_url: https://www.renesas.com/
+  index_url: https://www.renesas.com/sitemap.xml
+  part_from: '/products/([^/]+)/part-details/'
+  covers: ic, opamp, adc, dac, regulator, mosfet
+  status: active
+  notes: 'The second manufacturer asked for its own catalogue, and the first that had to be asked
+    twice: its sitemap is an index of 117, and the type number is the folder a part page sits in —
+    /products/isl6388/part-details/isl6388irtz-t is one orderable variant of ISL6388. Renesas absorbed
+    Intersil, so this is where a great deal of analogue silicon from the 1990s onward is catalogued and
+    still supported. robots.txt names ClaudeBot and anthropic-ai and allows them both, with a policy at
+    renesas.com/llms.txt: of every manufacturer checked on 2026-09-24 it is the only one that says yes
+    to this by name.'

@@ -1,0 +1,108 @@
+part: PMBT2369
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: nexperia
+  name: PMBT2369
+  def: subckt
+  hash: 50fc7ec42ce1a76adbd40b651838faf4f00ce89a
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMBT2369.txt
+    sha256: 2a54fb5db227e3e9f96001a5de7fc36c511dc62c6158dfc8d9ee5dafd5e8b247
+    lines:
+      PMBT2369: [28, 69]
+    fetched: '2026-09-14'
+    note: 'model(s): PMBT2369 (.subckt 1 2 3), MAIN (NPN .model)'
+  note: pins from comment words
+- source: spice-model-cd
+  name: PMBT2369
+  def: subckt
+  hash: aca2e9f491ec55cf1776dcac377c48db52112944
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/PMBT2369.lib
+    sha256: 3f8117617a37cf787b3e6f778bfd6d315675096e8c561c226cd5e78ec30b07b5
+    lines:
+      PMBT2369: [2, 51]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: PMBT2369
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/PMBT2369.PRM
+      sha256: 3f8117617a37cf787b3e6f778bfd6d315675096e8c561c226cd5e78ec30b07b5
+  - source: kicad-spice-library
+    name: PMBT2369_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: microcap12
+    name: PMBT2369_PH
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+- source: groupsio-ltspice
+  name: PMBT2369
+  def: model
+  hash: fb452e978de9c27a31db36569e4d6c7e74de74fc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PMBT2369: [4245, 4245]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: QPMBT2369/PLP
+  def: model
+  hash: e50c9d03e43ece44509f391cdbe0f51d3278a24a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+    sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+    lines:
+      QPMBT2369/PLP: [6280, 6318]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: QPMBT2369/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+- source: kicad-spice-library
+  name: PMBT2369_PH
+  def: subckt
+  hash: aca2e9f491ec55cf1776dcac377c48db52112944
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+    sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+    lines:
+      PMBT2369_PH: [11602, 11651]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

@@ -1,0 +1,73 @@
+part: BDV64B
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qbdv64b
+  def: model
+  hash: d793785429ad4f132914fdaf05e51de5417e57b6
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bdv64b.lib
+    sha256: 0f8210cee9e3d4007bb0d8533f57554acbf3c4476e080ccca9685e9bbe13428a
+    lines:
+      Qbdv64b: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qbdv64b
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: bdv64b
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: bordodynov
+  name: BDV64B
+  def: subckt
+  hash: 662cb0e55c13aac9427e8628fe55507c8c21204c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/PNPdarlington.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+    lines:
+      BDV64B: [599, 610]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: BDV64B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+  - source: bordodynov-qspice
+    name: BDV64B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+  - source: kicad-spice-library
+    name: BDV64B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+  - source: kicad-spice-library
+    name: BDV64B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+      sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+  - source: ltwiki
+    name: BDV64B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586

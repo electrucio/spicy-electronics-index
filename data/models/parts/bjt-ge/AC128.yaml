@@ -1,0 +1,282 @@
+part: AC128
+kind: bjt-ge
+priority: 1
+models:
+- source: germaniumbjts
+  name: AC128
+  def: model
+  hash: 90517429b4d85fdf61edea95e001e388e622d83d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/grwhitehead/germaniumbjts/7838a40f939eaee39b37afef1dac031ef45c276a/germaniumbjts.lib
+    sha256: d246c840f9610bfce04d744505ce414dcae0f52d9fdffe9f1ef2ff07c441e873
+    lines:
+      AC128: [7, 7]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit 7838a40
+- source: hagtech
+  name: AC128
+  def: model
+  hash: 297064e8a236e7c9d7f8ab03b62800b2716d1f5a
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.hagtech.com/pdf/ac128model.pdf
+    sha256: 5154be347ad7d1aa24bbfd67e6223bc65f8447639b03731b3e6976a482467ee7
+    lines:
+      AC128: [3, 14]
+    fetched: '2026-09-14'
+    note: .MODEL text copied from the PDF
+  copies:
+  - source: diyaudio
+    name: AC128
+    get:
+      url: https://www.diyaudio.com/community/attachments/lin-1956-amplifier-and-germanium-models-zip.1642963/
+      sha256: 13115647726b2cef332c9af2fcad7a417d900e8d66d0c34f2c4992bdde82cbd0
+  - source: diyaudio
+    name: AC128
+    get:
+      url: https://www.diyaudio.com/community/threads/new-germanium-pnp-transistor-spice-model.348207/
+      sha256: a72813e13cd4e826917114a8fc2bd3377cc1f4ec3eee7d47eb1a2ee8b4afdece
+  - source: diyaudio-germanio
+    name: AC128
+    get:
+      url: https://www.diyaudio.com/community/attachments/lin-1956-amplifier-and-germanium-models-zip.1642963/
+      sha256: 13115647726b2cef332c9af2fcad7a417d900e8d66d0c34f2c4992bdde82cbd0
+  - source: diyaudio-germanio
+    name: AC128
+    get:
+      url: https://www.diyaudio.com/community/threads/new-germanium-pnp-transistor-spice-model.348207/
+      sha256: a72813e13cd4e826917114a8fc2bd3377cc1f4ec3eee7d47eb1a2ee8b4afdece
+- source: germanium-apm
+  name: AC128
+  def: model
+  hash: 871109ca8f3c0d730c7bed7dd5a4b6bc355ca4a2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/rauschenbach/Germanium_Apm/b83d8aaa9faae6a1c4bfd5b9f07cc08cc239b64e/Germanium.lib
+    sha256: 730a441f388dfd3a78ccf06d17ecd9a8b27b9ef50b530cfce8f6411c8d6250af
+    lines:
+      AC128: [14, 14]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit b83d8aa
+- source: groups-io
+  name: AC128
+  def: model
+  hash: 337d024566954cb38b5ec19a98d807f6a465fdeb
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Germanium/Germanium.lib
+    sha256: ecf123dfc87c5454687a9b0c68c5b6aa633fb7e47d1ede1b1100afbd5916ab63
+    lines:
+      AC128: [15, 15]
+    fetched: '2026-09-20'
+  copies:
+  - source: kicad-spice-library
+    name: AC128
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: AC128
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: AC128
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: AC128
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: diystompboxes
+  name: AC128
+  def: model
+  hash: 723c4e70c60fe6e331f742876317a5f0610e7699
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diystompboxes.com/smfforum/index.php?topic=78932.0
+    sha256: 4fb5bdeacdad89663be3dee2441d3a857fd71d0d7e5c8670c32fb8304f0ef123
+    lines:
+      AC128: [12, 16]
+    fetched: '2026-09-20'
+  copies:
+  - source: diyaudio
+    name: AC128_X
+    get:
+      url: https://www.diyaudio.com/community/threads/ac128-pnp-germanium-transistor-spice-model-rare.117257/post-1425650
+      sha256: 079edce0e0582e8f252f5232975b03ec0e556d6bf0159883595474551bf9aebc
+  - source: diyaudio
+    name: AC128_X
+    get:
+      url: https://www.diyaudio.com/community/threads/ac128-pnp-germanium-transistor-spice-model-rare.117257/
+      sha256: 7544a031848aee5a54a79846072979d00315366ecac5de9beb9fd76dca26d6fb
+  - source: diyaudio-germanio
+    name: AC128_X
+    get:
+      url: https://www.diyaudio.com/community/threads/ac128-pnp-germanium-transistor-spice-model-rare.117257/
+      sha256: 7544a031848aee5a54a79846072979d00315366ecac5de9beb9fd76dca26d6fb
+- source: groups-io
+  name: AC128
+  def: model
+  hash: 84ac77236469be8cc1539bb4a037f95d06ccf047
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Examples/Apps/Electric%20Guitar%20Fuzz%20Effect/Distortion%20Preamp/ac128.mod
+    sha256: 1abe629385da8411958c1cd71b537ae57522a726081b50d28278e4222bd5fecd
+    lines:
+      AC128: [3, 6]
+    fetched: '2026-09-20'
+  copies:
+  - source: groups-io
+    name: AC128
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/my_own_npn_pnp_bjt.lib
+      sha256: d97ef82afacbe1a4ce42b30dc83690ef9a3fc4b91215652785b4d0d8e05f7e08
+  - source: groupsio-ltspice
+    name: AC128
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: groupsio-ltspice
+    name: AC128
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: diystompboxes
+  name: AC128
+  def: model
+  hash: 9e871e9f9217038cca4408152dafb8d3c7de4d92
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diystompboxes.com/smfforum/index.php?topic=78932.0
+    sha256: adfe930a1b749513833791af4df2b5ab8ec72624fc9ba936383bb5550ee23f3e
+    lines:
+      AC128: [85, 95]
+    fetched: '2026-09-20'
+  copies:
+  - source: bordodynov-qspice
+    name: AC128
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/AC125 Spice model.txt
+      sha256: 3fd7ab0bebbffdc4111d9ef6de01cb54e20e5730303d7de36ef6fde33cef16e9
+- source: diyaudio
+  name: AC128
+  def: model
+  hash: 6ce54ea1d7d1d517083e5b1950227ff5e867555c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/ac128-pnp-germanium-transistor-spice-model-rare.117257/post-1425650
+    sha256: 079edce0e0582e8f252f5232975b03ec0e556d6bf0159883595474551bf9aebc
+    lines:
+      AC128: [30, 33]
+    fetched: '2026-09-20'
+  copies:
+  - source: diyaudio
+    name: AC128
+    get:
+      url: https://www.diyaudio.com/community/threads/ac128-pnp-germanium-transistor-spice-model-rare.117257/post-1425650
+      sha256: 079edce0e0582e8f252f5232975b03ec0e556d6bf0159883595474551bf9aebc
+- source: diyaudio
+  name: AC128K
+  def: model
+  hash: 74c9484d2f60608c6d956a2c5ae5c59e2b96844b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/lin-1956-amplifier-and-germanium-models-zip.1642963/
+    sha256: 13115647726b2cef332c9af2fcad7a417d900e8d66d0c34f2c4992bdde82cbd0
+    lines:
+      AC128K: [27, 27]
+    fetched: '2026-09-20'
+  copies:
+  - source: diyaudio-germanio
+    name: AC128K
+    get:
+      url: https://www.diyaudio.com/community/attachments/lin-1956-amplifier-and-germanium-models-zip.1642963/
+      sha256: 13115647726b2cef332c9af2fcad7a417d900e8d66d0c34f2c4992bdde82cbd0
+- source: groupsio-ltspice
+  name: AC128
+  def: model
+  hash: 60c01cc0e6f7d1f0468c576c9f0e4608824ebd3b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      AC128: [236, 236]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: AC128
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+- source: bordodynov
+  name: AC128
+  def: model
+  hash: 06e35de6599a545f34063457ed8db42c0026ebd8
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      AC128: [250, 250]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: AC128
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: AC128
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: AC128
+  def: model
+  hash: cafd7a9fd824368a5dd9b91f55384455e5deed5e
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      AC128: [103, 103]
+    fetched: '2026-09-29'
+datasheet:
+  url: https://www.worldradiohistory.com/Archive-Catalogs/Suppliers/MNO/Mullard-Technical-Handbook-Book1-Part1-1974-695-pages.pdf
+  maker: mullard
+  doc: Mullard Technical Handbook Book 1 Part 1 (1974), AC128 pages 1-8 (handbook PDF pages 86-93)
+  date: 1974-06

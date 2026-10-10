@@ -1,0 +1,212 @@
+part: SI1308EDL
+kind: mosfet
+priority: 3
+group: power_vertical
+models:
+- source: vishay
+  name: Si1308EDL
+  def: subckt
+  hash: bf60dcc3e21f060e2ece4e1f49e46d8c4c5b528f
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  deps:
+  - Si1308EDL_esd
+  - Si1308EDL_mos
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_PS_RC.txt
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+    lines:
+      Si1308EDL: [106, 109]
+      Si1308EDL_esd: [137, 147]
+      Si1308EDL_mos: [110, 136]
+    fetched: '2026-09-19'
+  note: pins from names
+  copies:
+  - source: vishay
+    name: Si1308EDL
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS_RC.LIB
+      sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+  - source: vishay
+    name: Si1308EDL
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS.LIB
+      sha256: 7a303019e15a9fbd85e34855756fe9532c585ba9adb49a595cfd8b1e54d8e2c4
+  - source: vishay
+    name: Si1308EDL
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS.TXT
+      sha256: 7a303019e15a9fbd85e34855756fe9532c585ba9adb49a595cfd8b1e54d8e2c4
+- source: vishay
+  name: Si1308EDL_mos
+  def: subckt
+  hash: 43e2ac8e7494e7c769cc7a2e251289136348e315
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_PS_RC.txt
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+    lines:
+      Si1308EDL_mos: [110, 136]
+    fetched: '2026-09-19'
+  note: pins from names
+  copies:
+  - source: vishay
+    name: Si1308EDL_mos
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS_RC.LIB
+      sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+  - source: vishay
+    name: Si1308EDL_mos
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS.LIB
+      sha256: 7a303019e15a9fbd85e34855756fe9532c585ba9adb49a595cfd8b1e54d8e2c4
+  - source: vishay
+    name: Si1308EDL_mos
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS.TXT
+      sha256: 7a303019e15a9fbd85e34855756fe9532c585ba9adb49a595cfd8b1e54d8e2c4
+- source: vishay
+  name: Si1308EDL_esd
+  def: subckt
+  hash: c233f129b1ca4fbf198b0d153789ad3400f7b880
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_PS_RC.txt
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+    lines:
+      Si1308EDL_esd: [137, 147]
+    fetched: '2026-09-19'
+  copies:
+  - source: vishay
+    name: Si1308EDL_esd
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS_RC.LIB
+      sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+  - source: vishay
+    name: Si1308EDL_esd
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS.LIB
+      sha256: 7a303019e15a9fbd85e34855756fe9532c585ba9adb49a595cfd8b1e54d8e2c4
+  - source: vishay
+    name: Si1308EDL_esd
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS.TXT
+      sha256: 7a303019e15a9fbd85e34855756fe9532c585ba9adb49a595cfd8b1e54d8e2c4
+- source: vishay
+  name: Si1308EDL_PS_RC
+  def: subckt
+  hash: 7a4fdeb262f3c4c52bf079a2c6f92dd017a7ddfe
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  deps:
+  - Si1308EDL_esd
+  - Si1308EDL_mos
+  - Si1308EDL
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_PS_RC.txt
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+    lines:
+      Si1308EDL: [106, 109]
+      Si1308EDL_PS_RC: [9, 104]
+      Si1308EDL_esd: [137, 147]
+      Si1308EDL_mos: [110, 136]
+    fetched: '2026-09-19'
+  note: pins from names
+  copies:
+  - source: vishay
+    name: Si1308EDL_PS_RC
+    get:
+      url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+      member: Si1308EDL_PS_RC.LIB
+      sha256: d3a6bab548d9862420582957ec4aa6d0c7101d62ed5c19fa891cf8a1c400f55d
+- source: vishay
+  name: Si1308EDL
+  def: subckt
+  hash: c6e75817b7a31d6f79534628c60b541875511995
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  deps:
+  - Si1308EDL_esd
+  - Si1308EDL_mos
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_HS.TXT
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: abd9c4b57aa61f53ee3011a754a1d9b45dd9879accc213277b1232d8aa3e7868
+    lines:
+      Si1308EDL: [7, 10]
+      Si1308EDL_esd: [38, 48]
+      Si1308EDL_mos: [11, 37]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: vishay
+  name: Si1308EDL_mos
+  def: subckt
+  hash: 9703c9547572a8f6764d394e611871f0cc917d6e
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_HS.TXT
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: abd9c4b57aa61f53ee3011a754a1d9b45dd9879accc213277b1232d8aa3e7868
+    lines:
+      Si1308EDL_mos: [11, 37]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: vishay
+  name: Si1308EDL_esd
+  def: subckt
+  hash: 039204f947474a9c78c14d4bf8aea6a7e06bfa56
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/64539/si1308edl_ps.zip
+    member: Si1308EDL_HS.TXT
+    archive_sha256: adb91c4a07af675ea8a2d699c36767a5f0146fab5deda18d5959e5371807bda4
+    sha256: abd9c4b57aa61f53ee3011a754a1d9b45dd9879accc213277b1232d8aa3e7868
+    lines:
+      Si1308EDL_esd: [38, 48]
+    fetched: '2026-09-19'

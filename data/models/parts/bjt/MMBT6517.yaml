@@ -1,0 +1,56 @@
+part: MMBT6517
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmmbt6517lt1
+  def: model
+  hash: fcf1d0fd6ba5691c6a9e6314326c7e5518cf08fd
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt6517l.lib
+    sha256: fdc928f8f85ab690d7dcdb5eb29d6ddf37bf6d367291bd1fca34b84b7fe672bd
+    lines:
+      Qmmbt6517lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbt6517lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbt6517lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: duncanamps
+  name: QMMBT6517
+  def: model
+  hash: 52acd308989d46c3ada2da58a838c621e8a6b47e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QMMBT6517: [545, 547]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBT6517
+  def: model
+  hash: db126bbb50539bf17d58c9653c1f9478dda9f4a9
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT6517: [3459, 3459]
+    fetched: '2026-09-21'

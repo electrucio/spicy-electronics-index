@@ -1,0 +1,47 @@
+part: BCW70
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: BCW70
+  def: subckt
+  hash: 536239405cb3e434c88d82e602467df75560aef6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BCW70: [41571, 41635]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BCW70L
+  def: model
+  hash: 94e8795b30417c549342b151e53e0bce6dd77c3d
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BCW70L: [2389, 2392]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BCW70
+  def: model
+  hash: a4e17994a01746f52f9813d483e88e5ec1543e4d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BCW70: [2091, 2091]
+    fetched: '2026-09-21'

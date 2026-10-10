@@ -1,0 +1,59 @@
+part: NE556
+kind: control
+priority: 4
+models:
+- source: ltwiki
+  name: NE556
+  def: subckt
+  hash: f0573ac4dce95a9926e3e4743923ea33c44c0f5f
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  deps:
+  - NE555
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/timers.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+    lines:
+      NE555: [134, 155]
+      NE556: [389, 392]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Robertugo/556All.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 0cf4732cf6b7749e3390985d42e5367e2d0d6e70af26680d3c1f8b157886f980
+  copies:
+  - source: bordodynov
+    name: NE556
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+  - source: kicad-spice-library
+    name: NE556
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+  - source: ltwiki
+    name: NE556
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85

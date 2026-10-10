@@ -1,0 +1,79 @@
+part: PZT3904
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: spice-model-cd
+  name: PZT3904
+  def: model
+  hash: a2c216ff83ee83c51a96452db3436725692af818
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      PZT3904: [2201, 2211]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: PZT3904
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: PZT3904s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: PZT3904/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: PZT3904/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: microcap12
+  name: PZT3904
+  def: model
+  hash: 0b94a01f56a0e1d281be7c35889ecb1a5e29e18c
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      PZT3904: [1114, 1118]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PZT3904
+  def: model
+  hash: 132efeeea379a9f0a1beeb5842184dd35e5ccd78
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PZT3904: [4414, 4414]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: PZT3904/SIE
+  def: model
+  hash: a2c216ff83ee83c51a96452db3436725692af818
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+    sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+    lines:
+      PZT3904/SIE: [6080, 6090]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

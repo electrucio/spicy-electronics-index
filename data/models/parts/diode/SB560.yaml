@@ -1,0 +1,80 @@
+part: SB560
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: SB560
+  def: subckt
+  hash: 66e32eb3ae55c8c2c135b815be14a5b4956e9114
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88116/sb560.txt
+    sha256: 2c3e3493c68065168f0603bd1faf264d75d8b341b4b8b6ebf42aa80c7996fc80
+    lines:
+      SB560: [9, 35]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: SB560_GN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+  - source: microcap12
+    name: SB560_GN
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/gensemi.lib
+      sha256: a91e073b84759dcbe41d4ae51687287a413fc12865804565e488f747b57b3d6c
+  - source: kicad-spice-library
+    name: SB560
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+  - source: spice-model-cd
+    name: SB560
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Rectifiers/Schottky/sb560.lib
+      sha256: 2c3e3493c68065168f0603bd1faf264d75d8b341b4b8b6ebf42aa80c7996fc80
+- source: kicad-spice-library
+  name: SB560
+  def: subckt
+  hash: 71ba0a408452fd75f2d48abe35c0b31adf848506
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - dio
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+    sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+    lines:
+      SB560: [1029, 1055]
+      dio: [2849, 2874]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: SB560
+  def: subckt
+  hash: 66e32eb3ae55c8c2c135b815be14a5b4956e9114
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+    sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+    lines:
+      SB560: [656, 682]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

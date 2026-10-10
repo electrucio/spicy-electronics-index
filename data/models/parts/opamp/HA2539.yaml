@@ -1,0 +1,86 @@
+part: HA2539
+kind: opamp
+priority: 3
+models:
+- source: ltwiki
+  name: HA-2539/HA
+  def: subckt
+  hash: bfc307dcf7edd1f66e29cbd75e4f73f0e63044e9
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/harris.lib
+    sha256: 5e556916203cdb4cc4a4e500efe41f531e4c2b12aa26d4d3181891c94ce0c506
+    lines:
+      HA-2539/HA: [536, 594]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: HA2539_HA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/harris.lib
+      sha256: 3df9ec7bb851307d4735247552477715a96e385a042ed70c567e3b275f7800dd
+  - source: microcap12
+    name: HA2539_HA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/harris.lib
+      sha256: 190c7c57e3a78c6c8f34b0825f273cea47f2b55f746f22e6dcbcdeab099926c4
+- source: ltwiki
+  name: HA2539
+  def: subckt
+  hash: 29d485601da61c963bff3c61b1956dd79bd46459
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+    lines:
+      HA2539: [5613, 5671]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: HA2539
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: bordodynov
+    name: HA2539
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: kicad-spice-library
+    name: HA2539
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: HA2539
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: HA2539
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788

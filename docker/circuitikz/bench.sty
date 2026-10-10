@@ -1,0 +1,53 @@
+% The house style of the bench drawings: one sans typeface, three colours (blue = set by the bench, red = measured,
+% green = node names as the deck spells them), meters that show their terminals, a title and colour key, and the
+% definitions under the circuit, mathematical where the deck is.
+\ProvidesPackage{bench}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{helvet}
+\RequirePackage{sansmath}
+\renewcommand{\familydefault}{\sfdefault}
+\sansmath
+\RequirePackage{amsmath}
+\RequirePackage{textcomp}
+% the ohm sign: Helvetica has none (a box); Computer Modern Sans has one at slot 10 of its OT1 encoding, and that
+% font is Type 1, so dvisvgm exports the glyph as a path (a T1/TS1 cm font would be traced from Metafont bitmaps)
+\newcommand{\ohm}{{\fontencoding{OT1}\fontfamily{cmss}\selectfont\char10}}
+% the same font for the capital Greek letters in maths (\Delta, \Omega…), which Helvetica would show as boxes
+\DeclareSymbolFont{sfgreek}{OT1}{cmss}{m}{n}
+\DeclareMathSymbol{\Delta}{\mathalpha}{sfgreek}{1}
+\DeclareMathSymbol{\Omega}{\mathalpha}{sfgreek}{10}
+\RequirePackage[american]{circuitikz}
+\RequirePackage{xcolor}
+\definecolor{set}{RGB}{26,89,204}
+\definecolor{meas}{RGB}{204,38,25}
+\definecolor{nodec}{RGB}{13,128,64}
+\ctikzset{bipoles/length=1.1cm, current/distance=0.6}
+% a node name as the deck spells it
+% (OT1 cmtt is Type 1; the T1 typewriter font would be traced from Metafont bitmaps and come out ragged)
+\newcommand{\nodename}[3]{\node[#1, inner sep=1pt, text=nodec, font=\scriptsize\fontencoding{OT1}\fontfamily{cmtt}\selectfont] at (#2) {#3};}
+% the title and the colour key under it
+\newcommand{\benchtitle}[2]{%
+  \node[anchor=west, font=\Large] at (#1) {#2};
+  \node[anchor=west, font=\scriptsize, yshift=-0.55cm] at (#1) {%
+    \textcolor{set}{$\bullet$ set by the bench}\quad \textcolor{meas}{$\bullet$ measured}\quad
+    \textcolor{nodec}{$\bullet$ node names in the deck}};}
+% the definitions, one line each, under the circuit: \definitions{(x,y)}{line\\line}
+\newcommand{\definitions}[2]{\node[anchor=north west, align=left, font=\small, inner sep=0pt] at (#1) {#2};}
+% a vertical ammeter from (bottom) to (top): the wire runs straight through a circle, two terminal dots, A at the side
+\newcommand{\ammeter}[3]{%
+  \path (#1) -- (#2) coordinate[midway] (m);
+  \draw (#1) -- (#2);
+  \draw[meas, thick] (m) circle (0.34);
+  \fill[meas] ($(m)+(0,0.17)$) circle (0.045) ($(m)-(0,0.17)$) circle (0.045);
+  \node[meas, font=\scriptsize, anchor=west, inner sep=1pt] at ($(m)+(0.08,0)$) {A};
+  \node[meas, anchor=west, inner sep=2pt] at ($(m)+(0.42,0)$) {#3};}
+% a vertical voltmeter from (bottom) to (top): the two leads stop short inside the circle, V between them
+\newcommand{\voltmeter}[3]{%
+  \path (#1) -- (#2) coordinate[midway] (m);
+  \draw (#1) -- ($(m)-(0,0.34)$) ($(m)+(0,0.34)$) -- (#2);
+  \draw[meas, thick] (m) circle (0.34);
+  \draw[meas] ($(m)-(0,0.34)$) -- ($(m)-(0,0.2)$) ($(m)+(0,0.34)$) -- ($(m)+(0,0.2)$);
+  \fill[meas] ($(m)+(0,0.2)$) circle (0.045) ($(m)-(0,0.2)$) circle (0.045);
+  \node[meas, font=\scriptsize, inner sep=0pt] at (m) {V};
+  \node[meas, anchor=east, inner sep=2pt] at ($(m)-(0.42,0)$) {#3};}
+\usetikzlibrary{calc}

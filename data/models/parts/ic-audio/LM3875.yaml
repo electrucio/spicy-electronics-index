@@ -1,0 +1,63 @@
+part: LM3875
+kind: ic-audio
+priority: 3
+models:
+- source: ti
+  name: LM3875
+  def: subckt
+  hash: b33d1428272c32c38f2674398a6b1c19a29847fa
+  type: SUBCKT
+  pins:
+  - Vinm
+  - Vinp
+  - VCC
+  - VEE
+  - Vout
+  deps:
+  - VCLAMP
+  - RNOISE_LESS_WILIM
+  - INPUT
+  - TF
+  - PSRR
+  - VCLAMP_W_SENSE
+  - GND_FLOAT
+  - VNSE
+  - FEMT
+  - AMETER
+  - GBW_SLEW_SE
+  - CMRR
+  - AMP
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNAM084
+    member: LM3875.LIB
+    archive_sha256: 634ce3f2f155024862ba005fe80da8514ef58405c31719dbc91403076e1a185c
+    sha256: 4fee0f36724531623b8aea1f730dd28897aee79060e66794ccf88ae8772ec567
+    lines:
+      AMETER: [165, 169]
+      AMP: [49, 132]
+      CMRR: [336, 345]
+      FEMT: [374, 412]
+      GBW_SLEW_SE: [246, 258]
+      GND_FLOAT: [154, 156]
+      INPUT: [471, 477]
+      LM3875: [44, 46]
+      PSRR: [354, 364]
+      RNOISE_LESS_WILIM: [278, 280]
+      TF: [194, 237]
+      VCLAMP: [267, 269]
+      VCLAMP_W_SENSE: [179, 184]
+      VNSE: [423, 461]
+    fetched: '2026-09-14'
+  copies:
+  - source: ti
+    name: LM3875
+    get:
+      url: https://www.ti.com/lit/zip/SNAM086
+      member: LM3875.LIB
+      sha256: 1dd1c9a8f1c3e54fd384dff1f2c7ce6eb02a90ae83d646a621ae72411a81793a
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/lm3875.pdf
+  maker: Texas Instruments (National Semiconductor)
+  doc: SNAS083D, rev. D (June 1999, revised April 2013)
+  date: 2013-04

@@ -1,0 +1,87 @@
+part: MJ11016
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: mj11016g
+  def: subckt
+  hash: edbd155b1be4481a9d14e8215924eb744377f780
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mj11016.lib
+    sha256: b4ecbca7ec6199df85c1fafe37e3df8e2e0a660222b005e4be1f48b7774508e7
+    lines:
+      mj11016g: [1, 50]
+    fetched: '2026-09-14'
+    note: 'model(s): mj11016g (.subckt 1 2 3), dmodel (D .model), qmodel (NPN .model), q1model (NPN .model)'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: mj11016g
+  def: subckt
+  hash: 8329702e3fb5e954b7a13b0b87c9e7a17bfd6bfb
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      mj11016g: [136047, 136085]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: mj11016
+  def: subckt
+  hash: 6768262c17331638d3d7a566e5efcfc7ae161b41
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/on_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+    lines:
+      mj11016: [4801, 4839]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: mj11016
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: mj11016
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: mj11016
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mj11012-d.pdf
+  maker: onsemi
+  doc: MJ11012/D Rev. 5 (September 2008) (covers MJ11012, MJ11016 NPN; MJ11015 PNP)

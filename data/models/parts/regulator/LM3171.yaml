@@ -1,0 +1,60 @@
+part: LM3171
+kind: regulator
+priority: 3
+models:
+- source: ltwiki
+  name: LM317-1
+  def: subckt
+  hash: 92f7744a5ea0051f0713ede93af4529e7b8a8356
+  type: SUBCKT
+  pins:
+  - ADJ
+  - OUT
+  - IN
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/VolReg/regulators.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 3a5a237a61cd02955ecdd4e705bbce05b7983f9ff1c8ba1c060cf6ae30015c3d
+    lines:
+      LM317-1: [279, 351]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/VolReg/LM317-1.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: e1e5e1d09d0b0236f32733ab0f79325c6524e9cbfdfc315bf57ccfac41294a12
+  note: pins from LM317 package pin numbers (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: LM317-1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/regulators.lib
+      sha256: 0b15463dadbf7c99cb3692aa563c298dd2a488e40122b87c0094158001d08f4c
+- source: bordodynov
+  name: LM317-1
+  def: subckt
+  hash: cc8a8dd6d9639365ddf0f117243605ac3c1f7e43
+  type: SUBCKT
+  pins:
+  - ADJ
+  - OUT
+  - IN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/regulators.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+    lines:
+      LM317-1: [1738, 1810]
+    fetched: '2026-09-14'
+  note: pins from LM317 package pin numbers (unverified)
+  copies:
+  - source: ltwiki
+    name: LM317-1
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2

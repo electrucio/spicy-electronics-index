@@ -1,0 +1,51 @@
+part: HA4741
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: HA4741_HA
+  def: subckt
+  hash: a154a556b6f2ee8b41535ccdbd2e10e46925b4de
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/harris.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 190c7c57e3a78c6c8f34b0825f273cea47f2b55f746f22e6dcbcdeab099926c4
+    lines:
+      HA4741_HA: [127, 162]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: HA4741_HA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/harris.lib
+      sha256: 3df9ec7bb851307d4735247552477715a96e385a042ed70c567e3b275f7800dd
+- source: kicad-spice-library
+  name: HA4741
+  def: subckt
+  hash: 792998aac69e58d145f644d4634bf8f6cac8bab1
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/HARRIS2.LIB
+    sha256: 5ff106ed7e994e503696c3aa4ab53bfe4e3aed7744504eeae26542d9f5b31648
+    lines:
+      HA4741: [1013, 1048]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words

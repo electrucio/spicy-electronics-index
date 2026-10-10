@@ -1,0 +1,72 @@
+part: G12H-100
+kind: speaker
+group: non-native
+models:
+- source: duncanamps
+  name: G12H100
+  def: subckt
+  hash: 4ce1ff4e2aaff97fd1367d4da350d548d9dcf278
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/loudspeakers/g12h100.inc
+    sha256: c3fe07ed41b44f7b0672b714cc102c4ebc87b38791478bfc0e6e40a10f642c23
+    lines:
+      G12H100: [30, 40]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: G12H100
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/speaker.lib
+      sha256: 31c96be11af350cdfcb7e352b5e6c9b3e24c4eada5b9b632385aa7ac4b475a69
+  - source: bordodynov-qspice
+    name: G12H100
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/speaker.txt
+      sha256: 92a3ba2ea947730f9537c01ca53e43bab270da6a5b68badf763cb37b842ec4c2
+  - source: kicad-spice-library
+    name: G12H100
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/speaker.lib
+      sha256: 31c96be11af350cdfcb7e352b5e6c9b3e24c4eada5b9b632385aa7ac4b475a69
+  - source: ltwiki
+    name: G12H100
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/speaker.lib
+      sha256: 31c96be11af350cdfcb7e352b5e6c9b3e24c4eada5b9b632385aa7ac4b475a69
+- source: ltwiki
+  name: G12H100
+  def: subckt
+  hash: 5886cf5a4a35ae1dbf5af471c8b7622fe6c18d06
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/parlante.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad
+    lines:
+      G12H100: [550, 560]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: G12H100
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/parlante.lib
+      sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad
+  - source: kicad-spice-library
+    name: G12H100
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/parlante.lib
+      sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad
+  - source: ltwiki
+    name: G12H100
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/parlante.lib
+      sha256: b2db5dbd8a8e13d2d86f18236c78cc2a5e5596584d9589675f6c028e7c29ecad

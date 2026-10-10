@@ -1,0 +1,585 @@
+part: BC850
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: nexperia
+  name: BC850C
+  def: subckt
+  hash: 1b02fda230c7a2353eb2f9a983a1cb6f8ae30a28
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC850C.txt
+    sha256: ef3fc2c3776eaf52acbfb5b7955eda8efd9fa714dd2158aa015ac42610bca399
+    lines:
+      BC850C: [34, 93]
+    fetched: '2026-09-14'
+    note: 'model(s): BC850C (.subckt 1 2 3), Transistor (NPN .model), Diode (D .model)'
+  note: pins from default order (unverified)
+- source: nexperia
+  name: BC850B
+  def: subckt
+  hash: ae7950dea199189403b8c3965ef733555b975386
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC850B.txt
+    sha256: 89611a395e96b32a8d587a6e113730a6b3bdb9e7c1af6f8fb00ef6efbc216e28
+    lines:
+      BC850B: [34, 92]
+    fetched: '2026-09-14'
+    note: 'model(s): BC850B (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
+  note: pins from default order (unverified)
+- source: spice-model-cd
+  name: BC850
+  def: model
+  hash: 027842152fcc70928d944f605c88e4b70cff9755
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC850: [793, 803]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: BC850
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: kicad-spice-library
+    name: BC850
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: ltwiki
+    name: BC850
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: spice-model-cd
+    name: BC850
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: spice-model-cd
+    name: BC850/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: BC850B
+  def: model
+  hash: dae34065612e552bb8b2c4876bb2822ed29f3c9d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/bc850b.lib
+    sha256: 5c75b56f69e4fd7af326684a8ca91d2b73862a58b1b267b4960dda9dbab9f117
+    lines:
+      BC850B: [3, 5]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC850B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: BC850B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: kicad-spice-library
+    name: BC850B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+  - source: ltwiki
+    name: BC850B/ZTX
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/Zetex.lib
+      sha256: 801edb075d3bd3995ad94e8dbf3c9a290a89481b1e897b74b75fcb6a6fab8ec0
+  - source: spice-model-cd
+    name: BC850B-Z
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+- source: spice-model-cd
+  name: BC850C
+  def: subckt
+  hash: 9302044c0216023fda14e9ad80499cb5f784ad40
+  type: SUBCKT
+  deps:
+  - BC850
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC850: [793, 803]
+      BC850C: [782, 792]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: BC850C
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: BC850/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+- source: spice-model-cd
+  name: BC850C/SIE
+  def: subckt
+  hash: 81defea582989ac5f14c0e56389202014a571237
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+    sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+    lines:
+      BC850C/SIE: [777, 787]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC850B_ZX
+  def: subckt
+  hash: 0359e0a5a1d887e55b8c5ae59bebe7bfe13f50ae
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BC850B_ZX: [2367, 2374]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC850B_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+- source: microcap12
+  name: BC850BW
+  def: model
+  hash: 674f71efa7bcf7376f077e0f0518b1ae6c9131f6
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BC850BW: [39638, 39676]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: BC850CW
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: microcap12
+  name: BC850C
+  def: model
+  hash: 6540f23ab7dd07f87c2b408d00ebd43fb505e9be
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      BC850C: [341, 344]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC850B
+  def: model
+  hash: 272b0754fd8722c99c97762ffb4f9e071205178a
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      BC850B: [335, 338]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC850BL
+  def: model
+  hash: 96286f5f8cae9a2495fe6b8780747874bcb6892f
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC850BL: [2167, 2170]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC850CL
+  def: model
+  hash: bef8e3d4fd56d9c9164e6db53ac2aa68ae6b0c73
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC850CL: [2173, 2176]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QBC850B
+  def: model
+  hash: 760e271cebe12a3beebbfe9b166922a2dca992a6
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QBC850B: [262, 264]
+    fetched: '2026-09-14'
+- source: bordodynov-qspice
+  name: BC850C
+  def: model
+  hash: 0b7c4551094ab3fab79458dec0e97b49ee5b3829
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      BC850C: [220, 220]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov-qspice
+    name: BC850B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/KT-Cordell models.txt
+      sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+- source: groupsio-ltspice
+  name: BC850C
+  def: model
+  hash: 37d749c246771a74d1476928fecd1ebba1afa07a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC850C: [1968, 1968]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: groupsio-ltspice
+    name: BC850C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: BC850C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BC850C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: BC850B
+  def: model
+  hash: 55dd4acf8a4b3fadbea5225977bfddaa87809606
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BC850B: [593, 593]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BC850B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: BC850B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BC850B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BC850B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC850B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BC850B
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC850B
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: BC850B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: BC850B
+  def: model
+  hash: 217f5eb05ee67e92cc32d1c09238126b295998e5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC850B: [5263, 5263]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: BC850B
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: groupsio-ltspice
+    name: BC850B
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: ltwiki
+  name: BC850C
+  def: subckt
+  hash: 230f00982628cc9f5faebdeb1be895e7f08639df
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Sborka.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 55d381efe69d73abbf8e0958d7127c7e8ddf40acbdeb0090e1e38866735cf8c7
+    lines:
+      BC850C: [1233, 1254]
+      Rb: [44, 49]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/SBORKA/BJT/BC850C.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: cad0505e1eed8d340743f0feb07450bef8ad2768a929f02ebeaf264f5684ff37
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/SW_subckt/Sbor.lib
+      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+- source: ltwiki
+  name: BC850C
+  def: model
+  hash: c1ccf544529386c8052b5395022152a2234cd286
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ebipolar.lib
+    sha256: 76bb4b024f91527c84cb28203cc0af1797ab5ba1a0382d82a59198a26a2ba783
+    lines:
+      BC850C: [495, 499]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BC850B
+  def: model
+  hash: 14122fb1a986d6bb494926d0180159b443d503e8
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ebipolar.lib
+    sha256: 76bb4b024f91527c84cb28203cc0af1797ab5ba1a0382d82a59198a26a2ba783
+    lines:
+      BC850B: [488, 491]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BC850C
+  def: subckt
+  hash: 2305b1a5a741c774b36349e6740837d9721c2f9b
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BC850C: [2338, 2359]
+      Rb: [564, 570]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/BC850C.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 4183bf926335d5a0dc809492b49d4cb9acd3abc01c926ce048449f8a3bdbd11b
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: BC850C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: BC850C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov-qspice
+  name: BC850C
+  def: model
+  hash: ad9891ec6bb3b11276d2cc307d2a0cd2c1f763b2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BC850C: [374, 374]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: BC850B
+  def: model
+  hash: c5a877c3aafabbf5d38b869ea2cf23396f4f9bbc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BC850B: [373, 373]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: BC850s
+  def: model
+  hash: 01b081ae3471e7214e46534c043fca302113511f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+    sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+    lines:
+      BC850s: [123, 133]
+    fetched: '2026-09-14'

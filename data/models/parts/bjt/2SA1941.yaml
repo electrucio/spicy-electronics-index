@@ -1,0 +1,85 @@
+part: 2SA1941
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: groupsio-ltspice
+  name: 2SA1941
+  def: model
+  hash: abf93e252ec1d35b1e3ee467485d0a9f875a43da
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2SA1941: [1102, 1102]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 2SA1941
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: 2SA1941
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: 2SA1941
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: bordodynov
+  name: 2SA1941
+  def: model
+  hash: c1f7eded41bb25d62572ce1472de6140bf3d1862
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2SA1941: [1134, 1134]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: 2SA1941
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA1941
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: kicad-spice-library
+  name: Q2SA1941
+  def: model
+  hash: e990e89f8e4526f1765f7bb507a5b6bcca582f92
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_PNP/TOSH_PWR.LIB
+    sha256: 1b6e2abc4bd76907b3e01ab4be9719410ab5dcdb3a022627e0d970a62cb14e7c
+    lines:
+      Q2SA1941: [5975, 5991]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://toshiba.semicon-storage.com/info/docget.jsp?did=20422&prodName=2SA1941
+  maker: toshiba
+  doc: 2SA1941 (English data sheet, listed on the Toshiba product page as Nov 2013)
+  date: '2013-11-01'

@@ -1,0 +1,39 @@
+part: 2N5679
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: 2N5679
+  def: model
+  hash: bbe4b401c7d0d5b2b55b864e54c1e43af119be6e
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      2N5679: [1011, 1015]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: 2N5679
+  def: model
+  hash: 12b3ed9acf4c1f81854d688c563c2db3b630f8e5
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N5679: [493, 493]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N5679
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b

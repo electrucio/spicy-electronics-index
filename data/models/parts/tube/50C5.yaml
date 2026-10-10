@@ -1,0 +1,47 @@
+part: 50C5
+kind: tube
+priority: 2
+group: audio_docs
+models:
+- source: diyaudio
+  name: 50C5_AN
+  def: subckt
+  hash: 663c7faf5f8a61ac4f07cc34cd74adbff947e8d4
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3924684
+    sha256: 46848a098afac30b11fdbb08f49acaf681d6f028f6cdfc32c280980c49cd2608
+    lines:
+      50C5_AN: [15, 35]
+    fetched: '2014-05-12'
+    note: 'Modelo pentodo Ayumi 50C5_AN completo, por jazbo8 post #475, titulo "Ayumi 50C5 Model". Nota
+      del autor: inexacto para Ep<50V. Descargado a diyaudio/50C5_AN_ayumi.lib. Hilo tambien tiene post
+      dedicado "50C5 pentode LTSpice model" (threads/50c5-pentode-ltspice-model.177648) con discusion
+      adicional de Mosquito/Alain Poitras no explorada a fondo por prioridad de tiempo.'
+  note: pins from names
+  copies:
+  - source: diyaudio-tubos-valvulas
+    name: 50C5_AN
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3924684
+      sha256: 46848a098afac30b11fdbb08f49acaf681d6f028f6cdfc32c280980c49cd2608
+- source: groups-io
+  name: X50C5
+  def: subckt
+  hash: 0227e2f4a39c33861235f327ad5368d514e15458
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
+    lines:
+      X50C5: [329, 362]
+    fetched: '2026-10-09'

@@ -1,0 +1,38 @@
+part: 1SS82
+kind: diode
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: 1SS82
+  def: model
+  hash: 3d2c4274161cdb658004e0055767393d93c91073
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/jdiode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9dc71fe7c749f72bf7f403b150927867b778a6e4f20a80abb20a35bc7192553
+    lines:
+      1SS82: [35, 36]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: d1ss82
+  def: model
+  hash: fb17a4cb2b7c03c9b8d3b3d02ef07007ac1991d2
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_1.lib
+    sha256: b7c26c0e324a48b2fec85863b141ac2f595fc0835e8e5aa44c9da8189051c5f6
+    lines:
+      d1ss82: [68, 69]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  copies:
+  - source: kicad-spice-library
+    name: d1ss82
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/diode.lib
+      sha256: b7c26c0e324a48b2fec85863b141ac2f595fc0835e8e5aa44c9da8189051c5f6

@@ -1,0 +1,39 @@
+% Reverse gain (bjt-reverse): the set-up a person would wire, semantically the deck's.
+%   VR er 0 1      the emitter held at 1 V; its current is the reverse collector current -> source V_E (set) + ammeter I_E (measured)
+%   BR 0 br I=…    the base drive, a log sweep                                          -> current source I_B (set)
+%   QR 0 br er     the transistor, collector grounded, emitter at 1 V                   -> npn drawn upside down
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Reverse gain, PNP}
+\def\gnd{1.0}
+% the transistor
+\node[pnp] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.E)+(0.15,-0.55)$) {DUT\\upside down};
+% collector to ground
+\draw (Q.C) -- (Q.C |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.C)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.E)+(0,1.7)$);
+\ammeter{Q.E}{ctop}{$I_E$}
+\nodename{anchor=west}{$(Q.E)+(0.1,0.25)$}{er}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(ctop)+(3.0,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, invert, l=$V_E$] (vtop |- 0,\gnd) node[ground, black]{};
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, invert, l_=$I_B$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{br}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_B = 10^{k}\,\mathrm{A}$, $k = -9,\,-8.95,\,\dots,\,0$ \quad (20 points per decade, 1 nA to 1 A)\\[2pt]
+  $V_E = 1$ V, collector grounded: the transistor runs backwards\\[2pt]
+  read $I_E$, the collector current of the reversed transistor;\quad $h_{FE,reverse} = I_E / I_B$ at 1 mA\\[2pt]
+  PNP: every source reversed; values written as magnitudes%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

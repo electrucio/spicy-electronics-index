@@ -1,0 +1,102 @@
+part: MJ15023
+kind: bjt
+priority: 2
+group: power_output
+models:
+- source: onsemi
+  name: Qmj15023
+  def: model
+  hash: ba1dbce8d2f8b71ecb3a07b7cecb5857919c3223
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mj15023.lib
+    sha256: 7086c953a889b188287e50342a14f23f619915cc08ddda12c37789cc9f9e8786
+    lines:
+      Qmj15023: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: groupsio-ltspice
+    name: MJ15023
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MJ15023
+    get:
+      url: http://ltwiki.org/files/adventures_with_analog/APT-1_amplifier/apt-1-bjt.mod
+      sha256: 61d62749810f1ee82ba7294a3d8f3a0bb90d572c708e6aa46254125ea8f45348
+  - source: microcap12
+    name: Qmj15023
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: Qmj15023
+  def: model
+  hash: 0922d5b93e929c178ec043421a98fb370c01f6f8
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/PowerBJT/MJ15023.LIB
+    sha256: 8742696f7bccee9ebdcaf820d9733f648c0ba599f8d198da25638eb912a27ff1
+    lines:
+      Qmj15023: [14, 24]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: MJ15023
+  def: model
+  hash: 81fe4516dede05b0699f740b681d619c195b8e7f
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BJTPWR.LB
+    sha256: d6d6b87bad9bc60f921d7865ee3cfe7791d745515ad2c54cd335cf3cd2941826
+    lines:
+      MJ15023: [58, 61]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: MJ15023
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/bjtpwr.txt
+      sha256: f669b76a9269ad7cdf214a7ce81a85e86ffcaca55ff93502dad839b018b33fd2
+- source: microcap12
+  name: MJ15023
+  def: model
+  hash: c7743905808a0373126a0b0124c65a2f948ad587
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJ15023: [3379, 3386]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MJ15023
+  def: subckt
+  hash: bf36be3a0be2f64e3dae0be781ecf575ad778d25
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      MJ15023: [117, 126]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mj15023-d.pdf
+  maker: onsemi
+  doc: MJ15023/D Rev. 12 (August 2013) (covers MJ15023, MJ15025)

@@ -1,0 +1,37 @@
+part: 2N3711
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: 2N3711
+  def: model
+  hash: 9269ee0ccb05384782c2e92ce06b6c5fc242659a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/2N/2N3711.t
+    sha256: b3d41514e6398704df5d737d7218d8fef2ec861cb53096dd4e2faad890609a02
+    lines:
+      2N3711: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N3711
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: groupsio-ltspice
+  name: 2N3711
+  def: model
+  hash: c2e45ac967c771dc1f8f4f5fb2fa5e60ea1309bc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N3711: [230, 230]
+    fetched: '2026-09-21'

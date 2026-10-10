@@ -1,0 +1,63 @@
+part: FDN338P
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: onsemi
+  name: FDN338P
+  def: subckt
+  hash: c5d976ddea607a0578368de7545a7098ef1c3052
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/fdn338p.mod
+    sha256: 4998c1792126578c411834e1c6494bb39fbacce9a4918011c319018a451f57f7
+    lines:
+      FDN338P: [3, 48]
+    fetched: '2026-09-19'
+- source: spice-model-cd
+  name: FDN338P
+  def: subckt
+  hash: cd8145e8027b968d5d1a71727c574671fee56553
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/FD/FDN338P.lib
+    sha256: fffe2ee4cdd49a5f3df274c290960c18dfae6ef2f2346ebe0350ecd808760af8
+    lines:
+      FDN338P: [3, 26]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: FDN338P_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: FDN338P_FC
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: FDN338P
+  def: subckt
+  hash: 90120cb31cb231460868d8d4109b12c20af73d74
+  type: SUBCKT
+  deps:
+  - pmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FDN338P: [101044, 101089]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'

@@ -1,0 +1,55 @@
+part: ECX10N20
+kind: mosfet
+priority: 2
+group: power_lateral
+models:
+- source: exicon
+  name: ECX10N20
+  def: subckt
+  hash: 07588072d0cb425d70050f91b498e915a26bf2fc
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://us.profusion.uk/media/assets/product/documents/ECX10N20.txt
+    sha256: 90ffd2339f8dc4363c0dcc77846d1e4feea6c314b5e03c6dd890a4b0d185fb7c
+    lines:
+      ECX10N20: [1, 74]
+    fetched: '2026-09-14'
+    note: ECX10N20 lateral MOSFET SPICE model (PEDC Swansea, 1999, Level-1 subckt), from Profusion (Exicon
+      distributor)
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: ECX10N20
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/exicon_mosfet.lib
+      sha256: a4592d488914f08380aae349ae1f97b8d307f0e09f94cf7e218af8aad2d2929a
+  - source: ltwiki
+    name: ECX10N20
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/exicon_mosfet.lib
+      sha256: a4592d488914f08380aae349ae1f97b8d307f0e09f94cf7e218af8aad2d2929a
+- source: microcap12
+  name: ECX10N20
+  def: model
+  hash: 1494f45a755ec71112d8a140c7311917d8fa1067
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/profmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 58b94e8ea84dba579a8f6c334d2d78630cd77955e852f5bd1afeca3ce57c3b3c
+    lines:
+      ECX10N20: [96, 100]
+    fetched: '2026-09-21'
+datasheet:
+  url: https://www.exicon.info/PDFs/ecx10n20.pdf
+  maker: Exicon
+  doc: ECX10N20-W6, Rev 3.3

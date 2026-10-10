@@ -1,0 +1,76 @@
+part: 2SA1832
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: toshiba
+  name: 2SA1832
+  def: subckt
+  hash: 0cf074231dbec1809fee41d513e7e602ced73f2e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://toshiba.semicon-storage.com/info/docget.jsp?did=55824&prodName=2SA1832&displang=en
+    member: 2SA1832.lib
+    archive_sha256: 8c355a1d361a6f71a7ec3e621cd0560b961ac21deabbe604be5ca3d13596ff9f
+    sha256: 1a71aa49eb099c2bbdc9117c8b80bf9a8591006061eeccf13001bca7437858ba
+    lines:
+      2SA1832: [12, 51]
+    fetched: '2026-09-21'
+  copies:
+  - source: toshiba
+    name: 2SA1832
+    get:
+      url: https://toshiba.semicon-storage.com/info/docgetzip.jsp?did=100&displang=en
+      member: Toshiba-lib-PSpice_20260827/Bipolar Transistors/2SA1832_PSpice_20161208/2SA1832.lib
+      sha256: 1a71aa49eb099c2bbdc9117c8b80bf9a8591006061eeccf13001bca7437858ba
+- source: bordodynov
+  name: 2SA1832
+  def: model
+  hash: 8fd74d21df01811bff570b7cc045c73757bc0ab5
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2SA1832: [1595, 1595]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: 2SA1832
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA1832
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: 2SA1832
+  def: model
+  hash: 58aaecb0d9240fdf7048daa3533c0e1944aa91e2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      2SA1832: [645, 645]
+    fetched: '2026-09-29'
+  copies:
+  - source: kicad-spice-library
+    name: 2SA1832
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528

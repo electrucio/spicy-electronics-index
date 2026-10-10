@@ -1,0 +1,47 @@
+part: OPA551
+kind: opamp
+priority: 3
+models:
+- source: ti
+  name: OPA551
+  def: subckt
+  hash: 9469ad17800e87793ea4ccc34c9341edd6e6fdce
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  - COMP2
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOM289
+    member: OPA551_TINA_AIO/OPA551.LIB
+    archive_sha256: 7fe514a881f371623fc4fb6c53feac9943024e0c5cc5e69b33a509d252084760
+    sha256: 39077cb3a64d7e23c0849f021068edd0e2383b0a768e56669ecb4f1223ab68a8
+    lines:
+      OPA551: [46, 425]
+    fetched: '2026-09-19'
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+  copies:
+  - source: ti
+    name: OPA551
+    get:
+      url: https://www.ti.com/lit/zip/SBOM090
+      member: OPA551_PSPICE_AIO/OPA551.LIB
+      sha256: f6a290d95ae324c5e64ef0d21a72c53e4c8d4f8a919bae60193e7ff5db1dd8fc
+- source: microcap12
+  name: OPA551
+  def: subckt
+  hash: 52232cf653750b29da9d3fde7149cd6163109251
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA551: [30885, 30954]
+    fetched: '2026-09-21'

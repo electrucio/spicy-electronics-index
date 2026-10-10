@@ -1,0 +1,175 @@
+part: BCP53
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: onsemi
+  name: Qbcp53m
+  def: model
+  hash: 40c17df65338469ae0ce382996694e2ba93b2a0b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bcp53m_model.lib
+    sha256: c09690bb48fff251f4dc6eec70d9f9cab59a791052ef8609f1ebc242ffa9c0d4
+    lines:
+      Qbcp53m: [24, 34]
+    fetched: '2026-09-19'
+- source: nexperia
+  name: BCP53
+  def: subckt
+  hash: 7e062c653346418cd8f25476b854dd9e13b1189b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCP53.txt
+    sha256: 64b656f122e5cb7c9a72c3399bc925f81340810eed1bc50d7439a6d6daa3f791
+    lines:
+      BCP53: [34, 92]
+    fetched: '2026-09-14'
+- source: spice-model-cd
+  name: BCP53
+  def: model
+  hash: eda00be79821db733334c6de73a31ff1bb54daeb
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BCP53: [1637, 1647]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BCP53
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
+      sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+  - source: microcap12
+    name: BCP53
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/infineon.lib
+      sha256: cdae8e9767d8fccbc81f94acb925cc440425a03e902d86cd8c5591d87131e175
+  - source: spice-model-cd
+    name: BCP53
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: BCP53s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: BCP53/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BCP53/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: bordodynov-qspice
+  name: BCP53
+  def: model
+  hash: aec1d9a8ad0ef9eeda06c8a1d6980a7ed0a12390
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      BCP53: [103, 103]
+    fetched: '2026-09-29'
+  copies:
+  - source: ltwiki
+    name: BCP53
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: groupsio-ltspice
+  name: BCP53
+  def: model
+  hash: ea631f27abaca196124b993e5b9843b9e4b4ebca
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BCP53: [1154, 1154]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BCP53
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+- source: groupsio-ltspice
+  name: BCP53
+  def: model
+  hash: bd61fefea343ceb80608826d328a03ff248bd874
+  type: PNP
+  deps:
+  - BC636
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC636: [1909, 1909]
+      BCP53: [2003, 2003]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BCP53
+  def: model
+  hash: 43c052946eae01acc63f1171b47fe7d25183dd5d
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      BCP53: [1186, 1186]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BCP53
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BCP53
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: BCP53
+  def: model
+  hash: 7970e47f04f407679469f6a20fb25aa0f7f87a19
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      BCP53: [459, 459]
+    fetched: '2026-09-29'

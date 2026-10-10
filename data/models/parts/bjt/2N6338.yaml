@@ -1,0 +1,107 @@
+part: 2N6338
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n6338
+  def: model
+  hash: 6ecf9071bb6a44277bfe0e70e90fd36f3a68a052
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6338.lib
+    sha256: 16aa8eb6d006d4283df527c01a24b825753674f10c039c2bc2a8207adac16040
+    lines:
+      Q2n6338: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Q2n6338
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: 2N6338
+  def: model
+  hash: 1dc5923d95c06a76df81dedf94d6fee742650845
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N6338: [612, 619]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: 2n6338
+  def: model
+  hash: 3ced0b6ba20eb2856857754e07e2587a09fe8af2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2n6338: [1249, 1249]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2n6338
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: 2n6338
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: 2n6338
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2n6338
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groupsio-ltspice
+  name: q2n6338
+  def: model
+  hash: fe0a9f536fd5e92a9dbc23a626ea34805ece9dd5
+  type: NPN
+  deps:
+  - 2n6338
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2n6338: [1249, 1249]
+      q2n6338: [1250, 1250]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: 2n6338
+  def: model
+  hash: 3d1b1d1d738b32ea7c33eb5a02e499e2d401b750
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      2n6338: [759, 759]
+    fetched: '2026-09-29'

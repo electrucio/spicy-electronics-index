@@ -1,0 +1,158 @@
+part: MMBTH10
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: MMBTH10
+  def: model
+  hash: ca3f829f19b183e3efa295fd18a0f901f5081424
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbth10.lib
+    sha256: 60d1bc34cd3cc206f6e0b249ef4dcc74e65f5014ef0be6ead8ad3eefa1bb47aa
+    lines:
+      MMBTH10: [7, 14]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: MMBTH10
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: mmbth10lt1
+  def: model
+  hash: 45fe3b72509fb0d2429cbe755a4289fe98d771dc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbth10lt1.lib
+    sha256: 2b7282c1346b79b9bf94ce8b9e3737bff633415fa9c28742c0cdd3f6503c62e5
+    lines:
+      mmbth10lt1: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: mmbth10lt1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_small.lib
+      sha256: 03de7eeee5291d83d8017fe3dafdab3fd5afa7d3bb2da1da44bf953eb4973e5a
+  - source: microcap12
+    name: mmbth10lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_small.lib
+      sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
+  - source: microcap12
+    name: Qmmbth10lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: groupsio-ltspice
+  name: MMBTH10
+  def: model
+  hash: 8b3b79165c2db788689765303fc9b5e8c1acafe1
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MMBTH10: [910, 910]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: MMBTH10
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MMBTH10
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MMBTH10
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MMBTH10
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MMBTH10
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MMBTH10
+  def: model
+  hash: 5319f307300d98a4b07d5ddcb444565a4e5f10c5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBTH10: [3473, 3473]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: MMBTH10
+  def: model
+  hash: a238b389d7c585715e86b3972379b4f483fe3ec7
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      MMBTH10: [944, 944]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MMBTH10
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MMBTH10
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: MMBTH10
+  def: model
+  hash: 8e662573e7468d3589a37611093651a741f933b2
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      MMBTH10: [552, 552]
+    fetched: '2026-09-29'

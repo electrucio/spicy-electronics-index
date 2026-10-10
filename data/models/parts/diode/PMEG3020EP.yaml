@@ -1,0 +1,77 @@
+part: PMEG3020EP
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: nexperia
+  name: PMEG3020EJ
+  def: subckt
+  hash: 113b7e12c99924c072f989a69ff9a3129675e2b0
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3020EJ.txt
+    sha256: 8242745d2d0874607818f45b24f038847f0f95509d87ec68b1d6e7d3699c5ad1
+    lines:
+      PMEG3020EJ: [33, 49]
+    fetched: '2026-09-19'
+    note: 'PMEG3020EJ: PMEG3020EJ, PMEG3020EJ'
+  note: 'found under the alias PMEG3020E; same code also in: ltwiki; pins from comment words'
+- source: nexperia
+  name: PMEG3020EH
+  def: subckt
+  hash: 113b7e12c99924c072f989a69ff9a3129675e2b0
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3020EH.txt
+    sha256: cd54d0ee2f1b5c9a2b589823257dc166537d0fb17e6a05b66da3f1371cd4c275
+    lines:
+      PMEG3020EH: [33, 49]
+    fetched: '2026-09-19'
+    note: 'PMEG3020EH: PMEG3020EH, PMEG3020EH'
+  note: 'found under the alias PMEG3020E; same code also in: ltwiki; pins from comment words'
+- source: nexperia
+  name: PMEG3020EP
+  def: subckt
+  hash: 44c36ee2d5acc39c484f9990c9f1c6e94c82fe5a
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3020EP.txt
+    sha256: 5e27facf037bb8ece70c70f9f2c44b315a5586a80803029c6c854623445e3215
+    lines:
+      PMEG3020EP: [33, 50]
+    fetched: '2026-09-19'
+    note: 'PMEG3020EP: PMEG3020EP, PMEG3020EP'
+  note: pins from comment words
+  copies:
+  - source: microcap12
+    name: PMEG3020EP
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: microcap12
+  name: PMEG3020EPA
+  def: subckt
+  hash: 85c3e40e1e81323f4f20f2f87caf3dd56c6d37e2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      PMEG3020EPA: [26327, 26349]
+    fetched: '2026-09-21'

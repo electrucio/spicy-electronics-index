@@ -1,0 +1,155 @@
+part: IRF230
+kind: mosfet
+priority: 2
+group: audio_docs
+models:
+- source: microcap12
+  name: irf230_IR
+  def: subckt
+  hash: b090b1f2108028abdc08badafdbaeb9d85a92861
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf230_IR: [121, 180]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: irf230_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: microcap12
+  name: IRF230
+  def: model
+  hash: b449e09ec493131989d43aceea2e70b95fceb1a5
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRF230: [166, 170]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: IRF230
+  def: model
+  hash: f458372a2b7b556594914141b70efffa90f51081
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/mpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f3a8113e6ad33c866f8d396d65b1d1e98d8b1d17ebaf3390dd611a3181d4fd37
+    lines:
+      IRF230: [208, 212]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: irf230
+  def: subckt
+  hash: 3f6f0a7d9a2880081a553fceddfbc0bfd01849da
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf230.spi
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 6ad6f43f5ea11360e79bc6de05a7543bc6af71217ab28d67da4aba5b0752bff2
+    lines:
+      irf230: [1, 60]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf230.spi
+      sha256: 6ad6f43f5ea11360e79bc6de05a7543bc6af71217ab28d67da4aba5b0752bff2
+  - source: bordodynov
+    name: irf230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf230.spi
+      sha256: 6ad6f43f5ea11360e79bc6de05a7543bc6af71217ab28d67da4aba5b0752bff2
+  - source: kicad-spice-library
+    name: irf230
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf230.spi
+      sha256: 4e8f1e2aed52b2e3ea374be61d4a39e9d76f415ab5fa89f5648549a5ca622e62
+  - source: ltwiki
+    name: irf230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf230.spi
+      sha256: 6ad6f43f5ea11360e79bc6de05a7543bc6af71217ab28d67da4aba5b0752bff2
+  - source: ltwiki
+    name: irf230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf230.spi
+      sha256: 6ad6f43f5ea11360e79bc6de05a7543bc6af71217ab28d67da4aba5b0752bff2
+- source: ltwiki
+  name: IRF230
+  def: model
+  hash: bb322817c0b82447b036a1792ab81f191940695c
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF230: [776, 779]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF230
+  def: subckt
+  hash: e765a3a37ad993187c65e555778df5c1fabcc1a6
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS.LIB
+    sha256: 3a158ee63ad9816d8dcdc0cad0827d2f4646c66b6296d7bbcd2c28d49bf1d219
+    lines:
+      IRF230: [1204, 1224]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRF230M
+  def: subckt
+  hash: 3dc2af521c11e2c2c0223b26978c81c3d214e55c
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRF230M: [1299, 1344]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

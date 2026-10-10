@@ -1,0 +1,212 @@
+part: IRFP044
+kind: mosfet
+priority: 2
+group: audio_docs
+models:
+- source: microcap12
+  name: irfp044n_IR
+  def: subckt
+  hash: aeed5064cb6e7800645e2c49e616839c49cdb375
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irfp044n_IR: [5980, 6039]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: IRFP044N
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+  - source: kicad-spice-library
+    name: irfp044n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irfp044n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irfp044n_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: microcap12
+  name: IRFP044
+  def: model
+  hash: b5ee8303986154728ac3bfd0c9f65a8b779add4d
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRFP044: [1426, 1430]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: IRFP044N
+  def: subckt
+  hash: 609739301f67ef49a80bdf4757c6fc1dca8dac39
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: DATA/S_BUCK_VM.cir
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: b8b98bc06e260909b5d731b1bb36a6e90fac98d7545cb1eeda681af45dc12b6d
+    lines:
+      IRFP044N: [1053, 1081]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: irfp044n
+  def: subckt
+  hash: 4e78a5e47735dd9aeecce9222d18693e83d56329
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
+    lines:
+      irfp044n: [1330, 1389]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irfp044n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp044n.spi
+      sha256: 1fd0cc2fcb151c03cedfe8dd4c9a87545822e41562b9ab466e4aaac097fb25aa
+  - source: bordodynov
+    name: irfp044n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp044n.spi
+      sha256: 1fd0cc2fcb151c03cedfe8dd4c9a87545822e41562b9ab466e4aaac097fb25aa
+  - source: kicad-spice-library
+    name: irfp044n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irfp044n.spi
+      sha256: b0410aec762e2027416fcdf45c808c9b12664bddf9915a7fd68acdea2a72f432
+  - source: ltwiki
+    name: irfp044n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp044n.spi
+      sha256: 1fd0cc2fcb151c03cedfe8dd4c9a87545822e41562b9ab466e4aaac097fb25aa
+  - source: ltwiki
+    name: irfp044n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp044n.spi
+      sha256: 1fd0cc2fcb151c03cedfe8dd4c9a87545822e41562b9ab466e4aaac097fb25aa
+  - source: ltwiki
+    name: irfp044n
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Smps/HalfVm/Power456.lib
+      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
+  - source: ltwiki
+    name: irfp044n
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
+      sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
+  - source: ltwiki
+    name: irfp044n
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp044n.spi
+      sha256: 1fd0cc2fcb151c03cedfe8dd4c9a87545822e41562b9ab466e4aaac097fb25aa
+  - source: ltwiki
+    name: irfp044n
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/HalfVm/Power456.lib
+      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
+- source: ltwiki
+  name: IRFP044
+  def: model
+  hash: 5baf4d1ae035ec59ab81c6b800f49ebe53f1c2c4
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFP044: [3625, 3628]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRFP044N
+  def: subckt
+  hash: aeed5064cb6e7800645e2c49e616839c49cdb375
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRFP044N: [6461, 6506]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRFP044
+  def: subckt
+  hash: efaa7f72b87ba2688c78fe707027860dfdbf3dfb
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRFP044: [3223, 3245]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: irfp044n_IR
+  def: subckt
+  hash: aeed5064cb6e7800645e2c49e616839c49cdb375
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+    sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+    lines:
+      irfp044n_IR: [5980, 6039]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

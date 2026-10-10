@@ -1,0 +1,55 @@
+part: MJE172
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: onsemi
+  name: Qmje172
+  def: model
+  hash: 31e8d0306e05241ff73582015852153a7814beb5
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mje172.lib
+    sha256: 10ef9ce231ee218a9d8537ce17ef25890e3b2ff4b4eb72480106357f31e35575
+    lines:
+      Qmje172: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qmje172
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MJE172
+  def: model
+  hash: 073b98a9dcfbc2fe43a558179e07f016501d899f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJE172: [3478, 3485]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: MJE172
+  def: model
+  hash: f6d8657cfff05faddc5dc84ebfb15f4318d7104f
+  type: PNP
+  deps:
+  - MJE171
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJE171: [3298, 3298]
+      MJE172: [3299, 3299]
+    fetched: '2026-09-21'

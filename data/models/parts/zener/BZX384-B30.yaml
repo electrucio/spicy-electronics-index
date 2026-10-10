@@ -1,0 +1,169 @@
+part: BZX384-B30
+kind: zener
+priority: 4
+models:
+- source: nexperia
+  name: BZX384-B30
+  def: subckt
+  hash: 884f8881b0c9de9faef94bc1abdcc8b59e1fe076
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZX384-B30.txt
+    sha256: 5fb0f922a416f92252cd77180792bb6d67b1f47ee0067962507ae0b2e152c927
+    lines:
+      BZX384-B30: [37, 67]
+    fetched: '2026-09-19'
+    note: 'BZX384-B30: BZX384-B30, DIODE1, DIODE2'
+  note: pins from comment words
+- source: microcap12
+  name: BZX384-B30
+  def: subckt
+  hash: 2a2c002577e13c1ea7717225504c04ee32c1b1e6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      BZX384-B30: [1249, 1261]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BZX384-B30
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX384-B30.PRM
+      sha256: 5b1cdda5223fb8b561c764a2218b3ddb21095ba143207ebefe0f7486ba5769bd
+- source: groups-io
+  name: BZX384B30
+  def: model
+  hash: 2579477b4efccbfa7c0f9b6c1bd41d6096fb45d0
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BZX384B30: [8177, 8177]
+    fetched: '2026-10-10'
+  copies:
+  - source: bordodynov
+    name: BZX384B30
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: BZX384B30
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: groupsio-ltspice
+    name: BZX384B30
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.dio
+      sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+  - source: kicad-spice-library
+    name: BZX384B30
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: BZX384B30
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: ltwiki
+    name: BZX384B30
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BZX384B30
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BZX384B30
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+  - source: ltwiki
+    name: BZX384B30
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+- source: bordodynov
+  name: BZX384B7V5
+  def: model
+  hash: ef36a85367fd60e9fbb412a2b33166ca915fd0a8
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BZX384B7V5: [256, 256]
+    fetched: '2026-09-14'
+  note: 'found under the alias BZX384; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: BZX384B8V2
+  def: model
+  hash: da8533d3a3847275471d4dd9ea77bc86bbfbdee3
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BZX384B8V2: [257, 257]
+    fetched: '2026-09-14'
+  note: 'found under the alias BZX384; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: BZX384B9V1
+  def: model
+  hash: 6654cbd5ab8c29ff790bdad249022c7729f70aac
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BZX384B9V1: [258, 258]
+    fetched: '2026-09-14'
+  note: 'found under the alias BZX384; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: BZX384B10
+  def: model
+  hash: 4e65dc81a254268751b123d38685764fbe6f5403
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BZX384B10: [259, 259]
+    fetched: '2026-09-14'
+  note: 'found under the alias BZX384; same code also in: kicad-spice-library, ltwiki'

@@ -1,0 +1,138 @@
+part: MMBD4148
+kind: diode
+priority: 4
+group: silicon_signal
+models:
+- source: onsemi
+  name: MMBD4148SE
+  def: subckt
+  hash: 7a9ca92a37e510f917c4f8bbca52cdd67faf9319
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbd4148se.lib
+    sha256: a31a14b89e45556eecaa2718f2ee229b6c6344db06c01e9b287e9e4e8110d394
+    lines:
+      MMBD4148SE: [6, 17]
+    fetched: '2026-09-19'
+- source: diodes-inc
+  name: MMBD4148PLM
+  def: model
+  hash: 0cf863fc9fbb7d563787c63d14b759c384746d5e
+  type: D
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/1557/MMBD4148PLM.spice.txt
+    sha256: 690baafd14a0e85f66ff5afb973fc3f59db8e85eb86f0354f0eaa9fdda8fa3df
+    lines:
+      MMBD4148PLM: [18, 19]
+    fetched: '2026-09-19'
+  copies:
+  - source: diodes-inc
+    name: MMBD4148PLM
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8348/collection.spice.txt
+      sha256: a574bf04bdb37004ffcdf1735f89e9ac6e60c5be2713ccd0124603550eedfa96
+  - source: microcap12
+    name: MMBD4148PLM
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc.lib
+      sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+- source: spice-model-cd
+  name: MMBD4148
+  def: model
+  hash: 38c8db86d49ba541228bf40a73d4c23997af4add
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MM/MMBD4148.t
+    sha256: e7d68a9d910eaf2a88336c7c2e1c477c8ed7925bf481da8f78cbb5cab7e2b7a2
+    lines:
+      MMBD4148: [1, 1]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: MMBD4148
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: MMBD4148
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: MMBD4148W
+  def: model
+  hash: 01458a5b6d310cdb58bac89480e047e4c29ded69
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      MMBD4148W: [9456, 9457]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MMBD4148SE
+  def: subckt
+  hash: 76fe74186b551f298d13a11912f4f714ac6562e5
+  type: SUBCKT
+  deps:
+  - D2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      D2: [212863, 212863]
+      MMBD4148SE: [139643, 139654]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: MMBD4148PLM
+  def: model
+  hash: 70d367e008971ae4dac556a9e91015fb5e1ca73d
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      MMBD4148PLM: [824, 824]
+    fetched: '2026-10-10'
+- source: groups-io
+  name: MMBD4148
+  def: model
+  hash: 047e3a470cc13c3c05445eaa7efd61b13a5125bf
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      MMBD4148: [655, 655]
+    fetched: '2026-10-10'
+- source: groups-io
+  name: MMBD4148W
+  def: model
+  hash: e8c7af5df5fbe0d98c99c17bfb4d17933aea9d34
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      MMBD4148W: [827, 827]
+    fetched: '2026-10-10'

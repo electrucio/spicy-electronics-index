@@ -1,0 +1,98 @@
+part: BC636
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: spice-model-cd
+  name: BC636
+  def: model
+  hash: eda00be79821db733334c6de73a31ff1bb54daeb
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC636: [1577, 1587]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: BC636
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: BC636s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: BC636/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BC636/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: BC636
+  def: model
+  hash: 7ed37ba6936160be386cfaa4f1cd21ba2414fef4
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BIPOLAR.LB
+    sha256: bc06e66b73b3f9efd1d6681dcf3667599ed3205c8775c71f528f6c3cb22af447
+    lines:
+      BC636: [115, 118]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: BC636
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/bipolar.txt
+      sha256: 39488a5d05bc9e8639ef14d46055456cb298d497e88eaa170113e153ab076333
+- source: microcap12
+  name: BC636
+  def: model
+  hash: 0e773be0f92715bed8920a25230a9ba53ee4608a
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC636: [1957, 1960]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BC636
+  def: model
+  hash: 79b3b81e0caefb98acf8796ce30bcf8cf3edfbac
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC636: [1909, 1909]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: BC636/SIE
+  def: model
+  hash: eda00be79821db733334c6de73a31ff1bb54daeb
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+    sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+    lines:
+      BC636/SIE: [5404, 5414]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

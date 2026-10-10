@@ -1,0 +1,222 @@
+"""How one part's matches become its distinct models, and where each copy is said to come from."""
+from __future__ import annotations
+
+import json
+
+from spicy_electronics_index.models import found as F
+
+LIB = """* a vendor library
+.model Q2N3904 NPN(IS=1E-14 BF=300)
+.subckt AMP1 1 2 3
+Q1 1 2 3 QINNER
+.ends
+.model QINNER NPN(IS=2E-14
++ BF=100)
+"""
+
+
+def test_a_subcircuit_brings_what_it_references_first():
+    defs = F.blocks(LIB)
+    assert [nm for _, nm, _ in F.closure(defs, "amp1")] == ["QINNER", "AMP1"]
+    assert F.spans(LIB)["qinner"] == (6, 7)
+
+
+def h(text: str, name: str) -> str:
+    return F.code_hash(F.closure(F.blocks(text), name))
+
+
+def test_copies_that_differ_only_in_comments_case_and_spacing_are_one_model():
+    a = "* from the vendor\n.model Q1 NPN(IS=1E-14  BF=300) ; typical\n"
+    b = ".MODEL q1 npn(is=1e-14 bf=300)\n"
+    assert h(a, "Q1") == h(b, "q1")
+    assert h(a, "Q1") != h(".model Q1 NPN(IS=1E-14 BF=301)\n", "Q1")
+
+
+def test_a_copy_that_only_renamed_the_model_is_the_same_model():
+    assert h(".model Q2N3904 NPN(IS=1E-14 BF=300)\n", "Q2N3904") == h(".model 2N3904 NPN(IS=1E-14 BF=300)\n", "2N3904")
+    sub = ".subckt {n} C B E\nQ1 C B E {m}\n.ends\n.model {m} NPN(BF=50)\n"
+    assert h(sub.format(n="TIP31", m="QT"), "TIP31") == h(sub.format(n="XTIP31", m="QINNER"), "XTIP31")
+
+
+def test_a_model_rewritten_with_its_parameters_sorted_and_defaults_dropped_is_the_same_model():
+    """Bordodynov's MJ15001M is Motorola's 1997 Qmj15001, sorted, on one line, without CJS=0 PTF=0 KF=0 AF=1."""
+    motorola = ".MODEL Qmj15001 npn\n+IS=1.23312e-13 BF=115.914 VAF=10\n+CJS=0 PTF=0 KF=0 AF=1\n"
+    bordodynov = ".MODEL MJ15001M NPN (BF=115.914 IS=1.23312E-13 VAF=10)\n"
+    assert h(motorola, "Qmj15001") == h(bordodynov, "MJ15001M")
+    assert h(".model D1 D(IS=1.2n)\n", "D1") == h(".model D1 D(IS=1.2E-9)\n", "D1")
+    assert h(motorola, "Qmj15001") != h(bordodynov.replace("VAF=10", "VAF=11"), "MJ15001M")
+    assert h(".model Q1 PNP(BF=100)\n", "Q1") != h(".model Q1 NPN(BF=100)\n", "Q1")
+
+
+def tree(tmp_path, files: dict[str, str], manifest: dict[str, dict] | None = None):
+    for rel, text in files.items():
+        p = tmp_path / rel
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text, encoding="utf-8")
+    for source, man in (manifest or {}).items():
+        (tmp_path / "sources" / source / "manifest.json").write_text(json.dumps(man), encoding="utf-8")
+    return tmp_path
+
+
+def cand(source, file, name="Q2N3904", match="exact"):
+    return {"source": source, "file": file, "name": name, "kind": "model", "type": "NPN", "pins": [],
+            "match": match, "encrypted": False, "mfg": None}
+
+
+def test_the_same_code_in_several_sources_is_credited_to_the_most_original(tmp_path):
+    same = ".model Q2N3904 NPN(IS=1E-14 BF=300)\n"
+    root = tree(tmp_path, {"sources/kicad-spice-library/raw/a.lib": same,
+                           "sources/onsemi/raw/2N3904.LIB": "* onsemi\n" + same,
+                           "sources/bordodynov/raw/b.lib": ".model Q2N3904 NPN(IS=1E-14 BF=200)\n"})
+    entry = {"candidates": [cand("kicad-spice-library", "sources/kicad-spice-library/raw/a.lib"),
+                            cand("onsemi", "sources/onsemi/raw/2N3904.LIB"),
+                            cand("bordodynov", "sources/bordodynov/raw/b.lib")]}
+    groups, n = F.groups_for(entry, F.Files(root))
+    assert n == 2
+    assert [(g["best"]["source"], len(g["members"])) for g in groups] == [("onsemi", 2), ("bordodynov", 1)]
+
+
+def test_a_grade_match_is_dropped_when_the_part_has_a_model_of_its_own(tmp_path):
+    root = tree(tmp_path, {"sources/acme/raw/a.lib": ".model BC549C NPN(BF=500)\n.model BC549 NPN(BF=300)\n"})
+    entry = {"candidates": [cand("acme", "sources/acme/raw/a.lib", "BC549C"),
+                            cand("acme", "sources/acme/raw/a.lib", "BC549", "grade")]}
+    groups, _ = F.groups_for(entry, F.Files(root))
+    assert [g["best"]["name"] for g in groups] == ["BC549C"]
+
+
+def test_another_simulators_syntax_is_never_a_candidate(tmp_path):
+    root = tree(tmp_path, {"sources/ayumi/extracted/simetrix/t.lib": ".subckt 12AX7 P G K\n.ends\n"})
+    entry = {"candidates": [dict(cand("ayumi", "sources/ayumi/extracted/simetrix/t.lib", "12AX7"), kind="subckt")]}
+    assert F.groups_for(entry, F.Files(root)) == ([], 0)
+
+
+def test_a_model_read_out_of_an_archive_is_had_from_the_archive(tmp_path):
+    root = tree(tmp_path, {"sources/bordodynov/extracted/lib/cmp/standard.bjt": ".model MJ15001M NPN(BF=115)\n"},
+                {"bordodynov": {"fetched": "2026-09-14", "files": [
+                    {"path": None, "url": "http://bordodynov.ltwiki.org/lib.zip", "sha256": "ab" * 32}]}})
+    prov = F.provenance(root, "sources/bordodynov/extracted/lib/cmp/standard.bjt", "bordodynov", "cd" * 32)
+    assert prov["url"] == "http://bordodynov.ltwiki.org/lib.zip"
+    assert prov["member"] == "cmp/standard.bjt"
+    assert prov["archive"]["sha256"] == "ab" * 32
+
+
+def test_a_file_listed_in_the_manifest_is_had_from_its_own_url(tmp_path):
+    rel = "sources/spice-model-cd/raw/Motorola/Spice/PowerBJT/MJ15001.LIB"
+    url = "https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/PowerBJT/MJ15001.LIB"
+    root = tree(tmp_path, {rel: ".model Qmj15001 npn\n"},
+                {"spice-model-cd": {"fetched": "2026-09-21",
+                                    "files": [{"path": "raw/Motorola/Spice/PowerBJT/MJ15001.LIB", "url": url}]}})
+    assert F.provenance(root, rel, "spice-model-cd", "ef" * 32)["url"] == url
+
+
+def test_a_model_record_names_its_lines_its_dependencies_and_its_copies(tmp_path):
+    root = tree(tmp_path, {"sources/acme/raw/a.lib": LIB, "sources/ltwiki/raw/b.lib": LIB})
+    entry = {"kind": "ic-audio", "group": "", "priority": 2,
+             "candidates": [dict(cand("ltwiki", "sources/ltwiki/raw/b.lib", "AMP1"), kind="subckt"),
+                            dict(cand("acme", "sources/acme/raw/a.lib", "AMP1"), kind="subckt")]}
+    got = F.find({"AMP1": entry}, root)["AMP1"]
+    assert got["distinct"] == 1
+    (m,) = got["models"]
+    assert (m["source"], m["def"], m["type"], m["deps"]) == ("ltwiki", "subckt", "SUBCKT", ["QINNER"])
+    assert m["provenance"]["lines"] == {"QINNER": [6, 7], "AMP1": [3, 5]}
+    (copy,) = m["copies"]
+    assert (copy["source"], copy["file"], copy["name"]) == ("acme", "sources/acme/raw/a.lib", "AMP1")
+    assert copy["provenance"]["lines"] == {"QINNER": [6, 7], "AMP1": [3, 5]}
+
+
+def test_a_folder_with_its_own_manifest_is_published_under_its_source():
+    assert F.registered("vishay/semis") == "vishay"
+    assert F.rank("vishay/semis") == F.rank("vishay")
+
+
+def test_dependencies_come_in_the_same_order_in_every_run():
+    """A set iterates in PYTHONHASHSEED's order; the recipes changed on every run until this was sorted."""
+    import subprocess
+    import sys
+    code = ("from spicy_electronics_index.models import found as F\n"
+            "t='.subckt X 1 2\\nQ2 1 2 0 QB\\nQ1 1 2 0 QA\\nR1 1 2 RC\\n.ends\\n.model QA NPN\\n.model QB NPN\\n"
+            ".subckt RC 1 2\\nR 1 2 1k\\n.ends\\n'\n"
+            "print([n for _, n, _ in F.closure(F.blocks(t), 'X')])")
+    runs = {subprocess.run([sys.executable, "-c", code], capture_output=True, text=True,
+                           env={"PYTHONHASHSEED": seed}).stdout for seed in ("1", "2", "3", "4")}
+    assert runs == {"['QA', 'QB', 'RC', 'X']\n"}
+
+
+def test_a_file_copied_out_of_an_installed_product_says_so_instead_of_linking_the_installer(tmp_path):
+    root = tree(tmp_path, {"sources/qspice/extracted/NJF.txt": ".model J111 NJF\n"},
+                {"qspice": {"fetched": "2026-09-20", "files": [
+                    {"url": "https://getqspice.com/InstallQSPICE.exe", "path": None},
+                    {"url": "https://getqspice.com/bytes", "path": None,
+                     "installed": {"product": "QSPICE (Qorvo)", "into": "extracted", "var": "QSPICE"}}]}})
+    prov = F.provenance(root, "sources/qspice/extracted/NJF.txt", "qspice", "ab" * 32)
+    assert (prov["url"], prov["origin"], prov["installed_file"]) == (None, "QSPICE (Qorvo)", "$QSPICE/NJF.txt")
+    assert prov["fetched"] == "2026-09-20" and prov["file"] == "sources/qspice/extracted/NJF.txt"
+
+
+def test_an_archive_unpacked_at_its_root_gives_the_member_its_full_path(tmp_path):
+    url = "http://www.spectrum-soft.com/download/mc12cd.zip"
+    root = tree(tmp_path, {"sources/microcap12/extracted/LIBRARY/mpbjt.lib": ".model MJ15001 NPN\n"},
+                {"microcap12": {"files": [{"url": url, "path": None, "sha256": "cd" * 32, "unpacked_to": "extracted"}]}})
+    prov = F.provenance(root, "sources/microcap12/extracted/LIBRARY/mpbjt.lib", "microcap12", "ef" * 32)
+    assert (prov["url"], prov["member"], prov["archive"]["sha256"]) == (url, "LIBRARY/mpbjt.lib", "cd" * 32)
+
+
+def test_a_card_chosen_by_its_line_keeps_its_own_identity_when_a_later_one_shares_its_name(tmp_path):
+    """A simulator (and `blocks`) keep the last of two definitions with one name; the bench measured each by
+    its line, and each result must join the model it was measured on."""
+    root = tree(tmp_path, {"sources/acme/raw/twice.lib":
+                           ".model Q2N3904 NPN(IS=1E-14 BF=300)\n.model Q2N3904 NPN(IS=1E-14 BF=200)\n"})
+    files = F.Files(root)
+    first, second = F.hash_at(files, "sources/acme/raw/twice.lib", 1), F.hash_at(files, "sources/acme/raw/twice.lib", 2)
+    assert first and second and first != second
+    assert second == F.code_hash(F.closure(files.get("sources/acme/raw/twice.lib")[0], "Q2N3904"))
+    assert F.hash_at(files, "sources/acme/raw/twice.lib", 3) is None     # no definition starts there
+
+
+def test_a_model_inside_an_example_schematic_folder_is_never_a_candidate():
+    assert F.excluded("sources/bordodynov/extracted/example/examples/Bordodynov/bjt/2SC2099/2SC2099.sub")
+    assert not F.excluded("sources/bordodynov/extracted/lib/cmp/standard.bjt")
+
+
+
+def test_a_model_published_nowhere_is_never_a_candidate():
+    # the maintainer's own folders and his hand-edited copy of Cordell's file: no link leads to them
+    assert F.excluded("sources/electrucio/raw/powersupply/psu_cvcc/LM317HV.sub")
+    assert F.excluded("sources/cordell/raw/local-copy/Cordell-Models.txt")
+    assert not F.excluded("sources/cordell/raw/Cordell-Models.txt")
+
+
+def test_a_non_native_row_keeps_only_the_code_it_names_and_its_copies(tmp_path):
+    ours = ".subckt SPEAKER 1 2\nR1 1 2 8\n.ends\n"
+    root = tree(tmp_path, {"sources/duncanamps/raw/spk.inc": ours,
+                           "sources/bordodynov/raw/speaker.lib": "* a copy\n" + ours,
+                           "sources/kicad-spice-library/raw/x.lib": ".subckt SPEAKER 1 2\nR1 1 2 4\n.ends\n"})
+    cands = [dict(cand("duncanamps", "sources/duncanamps/raw/spk.inc", "SPEAKER", "named"), kind="subckt"),
+             dict(cand("bordodynov", "sources/bordodynov/raw/speaker.lib", "SPEAKER", "named"), kind="subckt"),
+             dict(cand("kicad-spice-library", "sources/kicad-spice-library/raw/x.lib", "SPEAKER", "named"), kind="subckt")]
+    groups, _ = F.groups_for({"candidates": cands}, F.Files(root))
+    pinned = next(g["hash"] for g in groups if g["best"]["source"] == "duncanamps")
+    got = F.find({"Munro speaker": {"kind": "speaker", "group": "non-native", "priority": None,
+                                    "candidates": cands, "pins": [pinned]}}, root)["Munro speaker"]
+    assert got["distinct"] == 1 and [m["source"] for m in got["models"]] == ["duncanamps"]
+    assert [c["source"] for c in got["models"][0]["copies"]] == ["bordodynov"]   # the other SPEAKER is not it
+
+
+def test_a_named_row_may_take_a_model_from_an_example_but_never_from_an_unpublished_file():
+    example = "sources/bordodynov/extracted/example/examples/LtSpicePlus/Spk/ELS.lib"
+    assert F.excluded(example) and not F.excluded(example, named=True)
+    assert F.excluded("sources/electrucio/raw/x.sub", named=True)
+    assert F.excluded("sources/cordell/raw/local-copy/Cordell-Models.txt", named=True)
+
+
+def test_an_archive_that_carries_its_own_top_folder_keeps_it_in_the_member(tmp_path):
+    """Bordodynov's lib.zip holds lib/cmp/standard.bjt and was unpacked straight into extracted/."""
+    import zipfile
+    root = tree(tmp_path, {"sources/bordodynov/extracted/lib/cmp/standard.bjt": ".model MJ15001M NPN(BF=115)\n"},
+                {"bordodynov": {"fetched": "2026-09-14", "files": [
+                    {"path": "raw/lib.zip", "url": "http://bordodynov.ltwiki.org/lib.zip", "sha256": "ab" * 32}]}})
+    (root / "sources/bordodynov/raw").mkdir(parents=True)
+    with zipfile.ZipFile(root / "sources/bordodynov/raw/lib.zip", "w") as z:
+        z.writestr("lib/cmp/standard.bjt", ".model MJ15001M NPN(BF=115)\n")
+    prov = F.provenance(root, "sources/bordodynov/extracted/lib/cmp/standard.bjt", "bordodynov", "cd" * 32)
+    assert prov["member"] == "lib/cmp/standard.bjt"

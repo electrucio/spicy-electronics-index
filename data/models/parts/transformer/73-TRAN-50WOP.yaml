@@ -1,0 +1,40 @@
+part: 73-TRAN-50WOP
+kind: transformer
+group: non-native
+models:
+- source: duncanamps
+  name: trace50
+  def: subckt
+  hash: e7c2c17e27ed85b5c5269a52e887d6ac8829160e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/transformers/trace50.lib
+    sha256: 78fb125b81c7b1952b3ed9297e5882f01725809735ed5574fc0845ed38a8df38
+    lines:
+      trace50: [15, 40]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: trace50
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: kicad-spice-library
+    name: trace50
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: ltwiki
+    name: trace50
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: ltwiki
+    name: trace50
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e

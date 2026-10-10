@@ -1,0 +1,117 @@
+part: LM4562
+kind: opamp
+priority: 2
+models:
+- source: diyaudio
+  name: LM4562
+  def: subckt
+  hash: cdb370039468fd8d7d2d0444046b99d20ea3e6db
+  type: SUBCKT
+  deps:
+  - AMETER
+  - CMRR
+  - FEMT
+  - GBW_SLEW_SE
+  - GND_FLOAT
+  - IDEAL_DIODE
+  - INPUT
+  - PSRR
+  - RNOISE_LESS_WILIM
+  - TF
+  - VCLAMP
+  - VCLAMP_W_SENSE
+  - VNSE
+  - AMP
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+    lines:
+      AMETER: [1825, 1829]
+      AMP: [1709, 1792]
+      CMRR: [1996, 2005]
+      FEMT: [2034, 2072]
+      GBW_SLEW_SE: [1906, 1918]
+      GND_FLOAT: [1814, 1816]
+      IDEAL_DIODE: [1801, 1805]
+      INPUT: [2131, 2137]
+      LM4562: [1705, 1707]
+      PSRR: [2014, 2024]
+      RNOISE_LESS_WILIM: [1938, 1940]
+      TF: [1854, 1897]
+      VCLAMP: [1927, 1929]
+      VCLAMP_W_SENSE: [1839, 1844]
+      VNSE: [2083, 2121]
+    fetched: '2026-10-09'
+- source: bordodynov
+  name: LM4562
+  def: subckt
+  hash: 7237a0d58c10acd23bc10b337a5f6ae91dd83770
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - VCLAMP
+  - RNOISE_LESS_WILIM
+  - IDEAL_DIODE
+  - INPUT
+  - TF
+  - PSRR
+  - VCLAMP_W_SENSE
+  - GND_FLOAT
+  - VNSE
+  - FEMT
+  - AMETER
+  - GBW_SLEW_SE
+  - CMRR
+  - AMP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/LM4562.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ecc4e5fc6bac10d9c6c672e6d49067a13daf390d103737b5f68871787c0b659f
+    lines:
+      AMETER: [166, 170]
+      AMP: [50, 133]
+      CMRR: [350, 359]
+      FEMT: [388, 426]
+      GBW_SLEW_SE: [260, 272]
+      GND_FLOAT: [155, 157]
+      IDEAL_DIODE: [142, 146]
+      INPUT: [485, 491]
+      LM4562: [42, 48]
+      PSRR: [368, 378]
+      RNOISE_LESS_WILIM: [292, 294]
+      TF: [195, 251]
+      VCLAMP: [281, 283]
+      VCLAMP_W_SENSE: [180, 185]
+      VNSE: [437, 475]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/LM4562.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 0b5653b23a99a7ed1330063217a87828bf8978b8878d186e6221e3836cf48a0f
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: LM4562
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/LM4562.txt
+      sha256: ecc4e5fc6bac10d9c6c672e6d49067a13daf390d103737b5f68871787c0b659f
+  - source: ltwiki
+    name: LM4562
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM4562.txt
+      sha256: ecc4e5fc6bac10d9c6c672e6d49067a13daf390d103737b5f68871787c0b659f
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/lm4562.pdf
+  maker: Texas Instruments (National Semiconductor)
+  doc: SNAS326K, rev. K (first issued Aug 2006)
+  date: 2013-12

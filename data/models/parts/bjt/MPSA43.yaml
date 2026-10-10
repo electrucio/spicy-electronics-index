@@ -1,0 +1,234 @@
+part: MPSA43
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: spice-model-cd
+  name: MPSA43
+  def: model
+  hash: 9f5c2c8e8aa742172cc6a462c32ea0458dbbaf2e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      MPSA43: [1841, 1851]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: MPSA43
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: MPSA43s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: MPSA43/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: MPSA43/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: MPSA43
+  def: model
+  hash: 4331f506b0883da7066c2c7d7e181e7be09bef5f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPSA43.t
+    sha256: 8e455f6d04378ab89fe9a6c5301e8f98799e21f92326392c8f070b73024e3733
+    lines:
+      MPSA43: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSA43
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: microcap12
+  name: MPSA43
+  def: model
+  hash: c12bb356d3ee9a0810cc4c11be210b888828cfc9
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSA43: [3173, 3177]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: MPSA43
+  def: model
+  hash: 7635ff791bc1f1196fee93bcda2e3e24238739ff
+  type: NPN
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/adventures_with_analog/APT-1_amplifier/apt-1-bjt.mod
+    sha256: 61d62749810f1ee82ba7294a3d8f3a0bb90d572c708e6aa46254125ea8f45348
+    lines:
+      MPSA43: [6, 6]
+    fetched: '2026-09-14'
+    note: BJT models used in APT-1 power amp sim
+- source: groups-io
+  name: MPSA43
+  def: model
+  hash: e96729fc0e6c569beacb47e338e21eca1338efd0
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/my_own_npn_pnp_bjt.lib
+    sha256: d97ef82afacbe1a4ce42b30dc83690ef9a3fc4b91215652785b4d0d8e05f7e08
+    lines:
+      MPSA43: [614, 622]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: MPSA43
+  def: model
+  hash: 52ae6c1c8b4b89db4fcd3a4897d111fa8e96d908
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MPSA43: [485, 485]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MPSA43
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: MPSA43
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MPSA43
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MPSA43
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA43
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MPSA43
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MPSA43
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MPSA43
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MPSA43
+  def: model
+  hash: 03b2794bfe004a89158a2bb2411864407c888e61
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSA43: [5017, 5017]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPSA43
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: bordodynov-qspice
+  name: MPSA43
+  def: model
+  hash: 26cd57423358d631d9049a40e20371423a84aff5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      MPSA43: [325, 325]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: MPSA43
+  def: model
+  hash: 7add01b1596c3acea1ee48ec982c8b7eb71937b9
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+    sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+    lines:
+      MPSA43: [430, 432]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: MPSA43
+  def: model
+  hash: 52ae6c1c8b4b89db4fcd3a4897d111fa8e96d908
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+    sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+    lines:
+      MPSA43: [466, 466]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: MPSA43
+  def: model
+  hash: 635bef403f124ccd5a4f57a8cd236fcfb9bc71c4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_NPN/TOSHIBA.LIB
+    sha256: 48d4fd1df68108bb9d61af444d53f63e19fc48d39cebc6bc9ff3a11eb947f336
+    lines:
+      MPSA43: [2169, 2185]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mpsa42-d.pdf
+  maker: onsemi
+  doc: MPSA42/D Rev. 8 (February 2013) - MPSA42, MPSA43

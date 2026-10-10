@@ -1,0 +1,85 @@
+part: BDV65B
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qbdv65b
+  def: model
+  hash: b6ebe4742f6c7265044c042e5a768712b7d51f31
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bdv65b.lib
+    sha256: 5cabdd0fecb7b2b6c74ede99c60f2f21c139ccd677a54820074607d43f756ea7
+    lines:
+      Qbdv65b: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qbdv65b
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: bdv65b
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: bordodynov
+  name: BDV65B
+  def: subckt
+  hash: ae88b0f6682e91a82cdb5cf745e11b694dd0f2d4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/NPNdarlington.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+    lines:
+      BDV65B: [756, 767]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BDV65B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: BDV65B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: BDV65B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: BDV65B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: BDV65B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+- source: kicad-spice-library
+  name: BDV65B
+  def: subckt
+  hash: 09eaeaff495e875d93999a534c4d584fe7b9bbf4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      BDV65B: [419, 431]
+    fetched: '2026-09-14'

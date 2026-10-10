@@ -1,0 +1,45 @@
+part: 1N5333
+kind: zener
+priority: 4
+models:
+- source: onsemi
+  name: d1n5333b
+  def: subckt
+  hash: 9aae16f8bb0480c8ac49400dc7d7176a18af6cb1
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/1n5333b.lib
+    sha256: 2bedf1aba6c8348a8ed9d8fd21d723df702757aa7eb9b3251cbd72c7aa75418c
+    lines:
+      d1n5333b: [1, 41]
+    fetched: '2026-09-19'
+    note: '1N5333B.LIB: d1n5333b, MD1, MDR, MD3, MD2, MDRBV'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: 1n5333b
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_diode.lib
+      sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+- source: microcap12
+  name: d1n5333b
+  def: subckt
+  hash: d07ef37c714a8a0eff361f3f497e6b55b146287b
+  type: SUBCKT
+  deps:
+  - D2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      D2: [212863, 212863]
+      d1n5333b: [638, 667]
+    fetched: '2026-09-21'

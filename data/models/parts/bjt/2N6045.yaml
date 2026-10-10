@@ -1,0 +1,36 @@
+part: 2N6045
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6045
+  def: subckt
+  hash: 8cc757a429469ad30030b104a0e49d07aaf61cdc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6045.lib
+    sha256: ce097a2327101ea4c68c7019ae7bf72a27371c30b7507b14e9277b44a3d74633
+    lines:
+      2n6045: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: 2n6045
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: Q2N6045
+  def: subckt
+  hash: a65c62cfd2fb6dcbc900d9e1f4d3de0e23183ecb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      Q2N6045: [1952, 1990]
+    fetched: '2026-09-21'

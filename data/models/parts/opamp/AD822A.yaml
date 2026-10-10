@@ -1,0 +1,294 @@
+part: AD822A
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD822A
+  def: subckt
+  hash: 6b95fdb21547d7c3f61447ea43027b2df1880ddc
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad822a.cir?modelType=spice-models
+    sha256: 0cab31425658618c22e4e474ba9dc191ffa1390166b6fbb9fd1507b48d596215
+    lines:
+      AD822A: [30, 102]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD822a.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 6dd0433fb0b8296936d3a345b29b5cd8e905670dd3f813352afd54fd57f559a4
+  note: found under the alias AD822; pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD822A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: groups-io
+    name: AD822A
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Opto/HCNR200/Safetran.lib
+      sha256: 716ffbf5ee4816aaad01f8a4ef05d74d30590eaad07482d222545f0f13d7f18d
+  - source: kicad-spice-library
+    name: AD822A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: AD822A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: AD822A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: AD822A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad822a.cir
+      sha256: d34ab03304f0e6dd383ee565a7012ffb1222bdaeb8f4e51a89e828e86c28f154
+  - source: bordodynov
+    name: AD822S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+- source: spice-model-cd
+  name: AD822/AD
+  def: subckt
+  hash: e1ca97e26a7bb2c7b8aaa30e3bccc41b2b289c1d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD822/AD: [26405, 26476]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: AD822/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: AD822/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+- source: spice-model-cd
+  name: AD822A/AD
+  def: subckt
+  hash: 832cf25a4a2a9a371b44504e5a4b1e6b0aef0a8e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD822A/AD: [26498, 26570]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: AD822A/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: AD822A/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+- source: ltwiki
+  name: AD822A
+  def: subckt
+  hash: 65eeeed8df4601609f5ffb6c115eb6d7cd6bd0f7
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+    lines:
+      AD822A: [7630, 7702]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD822A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: kicad-spice-library
+    name: AD822A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD822A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+- source: bordodynov
+  name: AD822B
+  def: subckt
+  hash: f2793a30959691572fbd03c4b0bc7cb5632992d0
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/OpAmp_AD.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+    lines:
+      AD822B: [7723, 7795]
+    fetched: '2026-09-14'
+  note: 'found under the alias AD822; same code also in: kicad-spice-library, ltwiki; pins from comment
+    words'
+- source: microcap12
+  name: AD822_AD
+  def: subckt
+  hash: 81d1d82e23d58c0ccd4c8f5b1696d119bef37a46
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD822_AD: [55722, 55793]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: AD822_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: microcap12
+  name: AD822A_AD
+  def: subckt
+  hash: d9795448f5a469576c1673b3860f8c9acc6e41d0
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD822A_AD: [55633, 55705]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: AD822A_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: ltwiki
+  name: AD822B
+  def: subckt
+  hash: ddf1035a09abc47b95a3d2d0bb49bb9114e31b3e
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad822b.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 27add44ecc81f36afec6ef476bcf15c90e8449e1cd3f4835e1c2342aea349243
+    lines:
+      AD822B: [21, 93]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD822b.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 24a17a8bd54d7f885a09c2634665f71e4290173db6f9222950294b702547db1c
+  note: found under the alias AD822; pins from comment words
+- source: bordodynov
+  name: AD822A
+  def: subckt
+  hash: 6b95fdb21547d7c3f61447ea43027b2df1880ddc
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Opamp5.Lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+    lines:
+      AD822A: [515, 587]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD822a.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 6dd0433fb0b8296936d3a345b29b5cd8e905670dd3f813352afd54fd57f559a4
+  note: 'same code also in: kicad-spice-library, ltwiki; pins from comment words'
+- source: kicad-spice-library
+  name: AD822A
+  def: subckt
+  hash: e47038ace5374e418ea439260d5d26bfe2964175
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD8.LIB
+    sha256: 3fb259cb22007e43e51828e915f7b20ac57456fc6ba703d24f00048301fc0fbe
+    lines:
+      AD822A: [588, 660]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words

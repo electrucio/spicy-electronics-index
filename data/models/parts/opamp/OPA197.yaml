@@ -1,0 +1,73 @@
+part: OPA197
+kind: opamp
+priority: 3
+models:
+- source: bordodynov
+  name: OPA197
+  def: subckt
+  hash: 8c5e78eb1ce694595a38276c2f1522dd77e79158
+  type: SUBCKT
+  pins:
+  - IN+
+  - IN-
+  - VCC
+  - VEE
+  - OUT
+  deps:
+  - VCCS_LIM_GR
+  - VCCS_LIM_3
+  - VCCS_EXT_LIM
+  - CLAMP_AMP_HI
+  - OL_SENSE
+  - CLAMP_AMP_LO
+  - FEMT
+  - VCCS_LIM_ZO
+  - VCCS_LIM_IQ
+  - VCCS_LIM_4
+  - VCCS_LIM_2
+  - VCCS_LIM_CLAWn
+  - VNSE
+  - VCCS_LIM_1
+  - VCCS_LIM_CLAWp
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/OPA197.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 734f214117fdd6fc7da9b053bca9e665630393446235e226877629020fab4121
+    lines:
+      CLAMP_AMP_HI: [223, 227]
+      CLAMP_AMP_LO: [320, 324]
+      FEMT: [233, 252]
+      OL_SENSE: [229, 231]
+      OPA197: [33, 221]
+      VCCS_EXT_LIM: [254, 257]
+      VCCS_LIM_1: [333, 338]
+      VCCS_LIM_2: [340, 345]
+      VCCS_LIM_3: [259, 264]
+      VCCS_LIM_4: [266, 271]
+      VCCS_LIM_CLAWn: [285, 292]
+      VCCS_LIM_CLAWp: [273, 283]
+      VCCS_LIM_GR: [326, 331]
+      VCCS_LIM_IQ: [294, 297]
+      VCCS_LIM_ZO: [347, 352]
+      VNSE: [299, 318]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/OPA197.ASY
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 85ea19d4e856d805d873a0fe4086bc0387764094712c584d8629d6caa2b8bb92
+  note: pins from names
+  copies:
+  - source: kicad-spice-library
+    name: OPA197
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPA197.sub
+      sha256: 734f214117fdd6fc7da9b053bca9e665630393446235e226877629020fab4121
+  - source: ltwiki
+    name: OPA197
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPA197.sub
+      sha256: 734f214117fdd6fc7da9b053bca9e665630393446235e226877629020fab4121

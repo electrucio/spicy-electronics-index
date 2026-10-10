@@ -1,0 +1,466 @@
+part: IRF9640
+kind: mosfet
+priority: 2
+group: power_vertical
+models:
+- source: infineon
+  name: irf9640
+  def: subckt
+  hash: 7c23a09da3497c8285333c7d1b27d47eadece1f6
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://web.archive.org/web/19991011150848id_/http://www.irf.com:80/product-info/models/SPICE/irf9640.spi
+    sha256: 79f86d5c7531a8ac3c58daa9077bec5d648119b5db1b7bb74c27dc4565052f31
+    lines:
+      irf9640: [1, 60]
+    fetched: '2026-09-14'
+    note: International Rectifier legacy HEXFET SPICE model; original URL http://www.irf.com:80/product-info/models/SPICE/irf9640.spi
+      (Wayback capture 19991011150848)
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9640.spi
+      sha256: 79f86d5c7531a8ac3c58daa9077bec5d648119b5db1b7bb74c27dc4565052f31
+  - source: bordodynov
+    name: irf9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9640.spi
+      sha256: 79f86d5c7531a8ac3c58daa9077bec5d648119b5db1b7bb74c27dc4565052f31
+  - source: kicad-spice-library
+    name: irf9640
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf9640.spi
+      sha256: 73b67fbd503b47061074079e9b427418c6940c585859ff1cfacbf2b3234eff7c
+  - source: ltwiki
+    name: irf9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9640.spi
+      sha256: 79f86d5c7531a8ac3c58daa9077bec5d648119b5db1b7bb74c27dc4565052f31
+  - source: ltwiki
+    name: irf9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9640.spi
+      sha256: 79f86d5c7531a8ac3c58daa9077bec5d648119b5db1b7bb74c27dc4565052f31
+  - source: ltwiki
+    name: irf9640
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf9640.spi
+      sha256: 79f86d5c7531a8ac3c58daa9077bec5d648119b5db1b7bb74c27dc4565052f31
+- source: microcap12
+  name: irf9640_IR
+  def: subckt
+  hash: 217bc8c45345a2fa21cd61120ae0132b3ef20d37
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf9640_IR: [4599, 4658]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: irf9640_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: microcap12
+  name: irf9640_AM
+  def: subckt
+  hash: 26c1f981dec06821601c9659f2f7a01d8e89b75b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/apex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 32f28a857c59ee06357aefa4dd0d238a912620a115f0f2130bd11c66ffbb1144
+    lines:
+      irf9640_AM: [5330, 5389]
+    fetched: '2026-09-21'
+- source: ltspice-native
+  name: IRF9640
+  def: model
+  type: VDMOS
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.mos
+    sha256: adfdcda82e1b6186f907df2dc3905659a2ea2be2a0887a016d1fd9f1b3b1b40e
+    lines:
+      IRF9640: [765, 765]
+  note: 'same code also in: bordodynov, kicad-spice-library, ltwiki'
+- source: spice-model-cd
+  name: IRF9640
+  def: subckt
+  hash: b410f394c584b7c88007a6ac8daa608c102fe9ac
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRF9640: [586, 593]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: IRF9640
+  def: model
+  hash: ed09ed66dae366ab64e3db666aaf85dae12d509e
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+    lines:
+      IRF9640: [769, 769]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRF9640__
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: bordodynov
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: bordodynov-qspice
+    name: IRF9640__
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: bordodynov-qspice
+    name: IRF9640
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF9640__
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: IRF9640
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: IRF9640
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: kicad-spice-library
+    name: IRF9640
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.mos
+      sha256: 4ad1e16da6dfb08f9b1d55a27c28ca4a034db3f309073ce070136378fb658ad0
+  - source: ltwiki
+    name: IRF9640__
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF9640__
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF9640__
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: ltwiki
+    name: IRF9640__
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: duncanamps
+  name: XIRF9640
+  def: subckt
+  hash: 82faa9bca6627a3810a191c6ce37e917114c582e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/mosfets/pemos3t.mod
+    sha256: 2b35f40940cb9b50a73c177b0e275c6d01b16cbd84930ffc8662152c8b43bf3a
+    lines:
+      XIRF9640: [190, 211]
+    fetched: '2026-09-14'
+- source: groups-io
+  name: IRF9640
+  def: model
+  hash: 14a48b2b430003e346063a3fd7a79baa4cb5bfc7
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+    member: standard.mos
+    archive_sha256: a20e6e422ae85770aab697f646969e1027bebd814386b6d94cfe77568a493c47
+    sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+    lines:
+      IRF9640: [577, 577]
+    fetched: '2026-10-10'
+  copies:
+  - source: groupsio-ltspice
+    name: IRF9640
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.mos
+      sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+  - source: kicad-spice-library
+    name: IRF9640
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/MOS.lib
+      sha256: 5a12451d9b52820cc74b1f3c11955dcfbc99cc0ede851dd12587ebbbc9e9531e
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: IRF9640
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+- source: groupsio-ltspice
+  name: IRF9640_
+  def: model
+  hash: 8e8ee0eb9ec2c4bab92c8afc5a7a158dda80afac
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      IRF9640_: [1121, 1121]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRF9640_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: IRF9640_
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF9640_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF9640_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF9640_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF9640_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF9640_
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: IRF9640
+  def: model
+  hash: 3787632abf40058edae70489386ff121b674eb64
+  type: PMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF9640: [1945, 1948]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: IRF9640h
+  def: model
+  hash: fd7a6caefc3fa046b7fdd165bbf4c1fd4f36cf5f
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRF9640h: [1522, 1522]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRF9640h
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF9640h
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF9640h
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF9640h
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF9640h
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: bordodynov-qspice
+  name: IRF9640h
+  def: model
+  hash: 658856b0645970d3750db7cbe7965bb4dce10be8
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/MOS/IRF9640h.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: e6c8f4db54b531e1a94c57dd5c7f7ffd6119e54a6b6d1dc75b3ea9afed910cb6
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: IRF9640h
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/MOS/IRF9640h.qsym
+      sha256: e6c8f4db54b531e1a94c57dd5c7f7ffd6119e54a6b6d1dc75b3ea9afed910cb6
+- source: kicad-spice-library
+  name: IRF9640
+  def: subckt
+  hash: a267e78988aa68b506740a7aca82c47eeab69716
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRF9640: [847, 869]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: IRF9640S
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+      sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+- source: kicad-spice-library
+  name: irf9640
+  def: subckt
+  hash: fc0c1fc777e10a270a15513d521e805d763a02c2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+    sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+    lines:
+      irf9640: [8464, 8582]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: IRF9640M
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+datasheet:
+  url: https://www.vishay.com/docs/91086/irf9640.pdf
+  maker: Vishay Siliconix
+  doc: IRF9640, Document Number 91086, S21-0867-Rev. D
+  date: '2021-08-16'

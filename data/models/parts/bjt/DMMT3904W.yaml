@@ -1,0 +1,45 @@
+part: DMMT3904W
+kind: bjt
+priority: 3
+group: matched_pairs
+models:
+- source: microcap12
+  name: DMMT3904W
+  def: model
+  hash: ea83fdec1f87ada4104212de82656a480995871c
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      DMMT3904W: [2486, 2490]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: DMMT3904W
+  def: subckt
+  hash: afd6f71b24a590152bb90a4792894e64e693f927
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/DMMT3904W.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 6f2e0b4e86b5b7a602e80ae9bf03246e12ea8ccdba0c301aa940b629f3250b83
+    lines:
+      DMMT3904W: [3, 12]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/DMMT3904W.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 768eba31ca9a4259a65bf5718d7e398940743b28be403f65e57ab0247c71d88c
+  copies:
+  - source: ltwiki
+    name: DMMT3904W
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/DMMT3904W.sub
+      sha256: 6f2e0b4e86b5b7a602e80ae9bf03246e12ea8ccdba0c301aa940b629f3250b83

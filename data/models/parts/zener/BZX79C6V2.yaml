@@ -1,0 +1,224 @@
+part: BZX79C6V2
+kind: zener
+priority: 2
+models:
+- source: nexperia
+  name: BZX84-C6V2
+  def: model
+  hash: 3341e2b85c4c38d019f81f405f19eb83f806f5e3
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZX84-C6V2.txt
+    sha256: 409f099b43beadb6e71b7d563bb2adb58db60e5ffaa9167ccef1554a1d0dc9fb
+    lines:
+      BZX84-C6V2: [28, 39]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of BZX84-C6V2, not of BZX79C6V2; equivalence declared in catalog/wanted.yaml
+    (see its note)'
+  copies:
+  - source: ltwiki
+    name: BZX84C6V2
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C6V2.PRM
+      sha256: b04bed1055d2b2395a2e7ab430918429c1026f237a03047ff282e868307f2f07
+- source: diodes-inc
+  name: DI_BZX84C6V2
+  def: subckt
+  hash: 3e6533f1b44d51c53dcf333aba819bfb1862d76e
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/887/BZX84C6V2.spice.txt
+    sha256: e111c9ce9fc7e18a9908147a2b2521253244f0506b876601a2ace6b5771fe020
+    lines:
+      DI_BZX84C6V2: [19, 27]
+    fetched: '2026-09-19'
+  note: 'STAND-IN: model of DI_BZX84C6V2, not of BZX79C6V2; equivalence declared in catalog/wanted.yaml
+    (see its note); pins from default order (unverified)'
+  copies:
+  - source: bordodynov
+    name: DI_BZX84C6V2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/zener.lib
+      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+  - source: kicad-spice-library
+    name: DI_BZX84C6V2
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
+      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+  - source: kicad-spice-library
+    name: DI_BZX84C6V2
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
+      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
+  - source: ltwiki
+    name: DI_BZX84C6V2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/zener.lib
+      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+  - source: ltwiki
+    name: DI_BZX84C6V2
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/DIODES.COM/ZENER/LIB/zener.lib
+      sha256: 6a9b1f3823ca8671b8cd73d91b5565680e6e287ecafcdc8f90055614b7dd5629
+- source: spice-model-cd
+  name: BZX84C6V2
+  def: model
+  hash: dafc013905e6b5b82b2c11044e41b90df14816f0
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/znewmods.lib
+    sha256: 40372fd3658df08e99fdcc96353e1c4dbbfcf004d493c1e461581157969a4e3a
+    lines:
+      BZX84C6V2: [40, 42]
+    fetched: '2026-09-21'
+  note: 'STAND-IN: model of BZX84-C6V2, not of BZX79C6V2; the equivalence is declared in data/models/wanted.yaml'
+  copies:
+  - source: kicad-spice-library
+    name: BZX84C6V2
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+  - source: microcap12
+    name: BZX84C6V2
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/zetex.lib
+      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+- source: ltwiki
+  name: BZX84C6V2
+  def: subckt
+  hash: a8c14885f061d229fbdd7e5d539c20afad194dc7
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - DF
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Zener_DiodesInc.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 44998eb950913c32209f9f24b702e8290a29c0ec6ee2e81d3a34388e40a89406
+    lines:
+      BZX84C6V2: [3153, 3160]
+      DF: [6016, 6016]
+    fetched: '2026-09-21'
+  note: 'STAND-IN: model of BZX84C6V2, not of BZX79C6V2; equivalence declared in catalog/wanted.yaml (see
+    its note); pins from default order (unverified)'
+  copies:
+  - source: bordodynov
+    name: BZX84C6V2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+  - source: kicad-spice-library
+    name: BZX84C6V2
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+  - source: ltwiki
+    name: BZX84C6V2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Zener_DiodesInc.lib
+      sha256: ae0d0b4352e26a1d406418807419ae5abea815ddaec54567653d10423d9a61b1
+- source: spice-model-cd
+  name: BZX79-6V2
+  def: subckt
+  hash: c7771f8492a4c8027d7e3b4b23dd7cd6f03c6b0b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/ZENER.LB
+    sha256: 304e2ababc567483e0e387fdba860dac263b00f29acbc7966994954c43804f7f
+    lines:
+      BZX79-6V2: [105, 112]
+    fetched: '2026-09-21'
+  note: 'STAND-IN: model of BZX796V2, not of BZX79C6V2; the equivalence is declared in data/models/wanted.yaml'
+- source: ltwiki
+  name: BZX84C6V2
+  def: model
+  hash: 3341e2b85c4c38d019f81f405f19eb83f806f5e3
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C6V2.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b04bed1055d2b2395a2e7ab430918429c1026f237a03047ff282e868307f2f07
+    lines:
+      BZX84C6V2: [6, 17]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of BZX84C6V2, not of BZX79C6V2; equivalence declared in catalog/wanted.yaml (see
+    its note)'
+- source: bordodynov
+  name: BZX84C6V2
+  def: model
+  hash: 6cc9edbfe6b9cd2aed216973000419a3f5d6efea
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BZX84C6V2: [227, 227]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of BZX84C6V2, not of BZX79C6V2; equivalence declared in catalog/wanted.yaml (see
+    its note)'
+  copies:
+  - source: bordodynov-qspice
+    name: BZX84C6V2
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: kicad-spice-library
+    name: BZX84C6V2
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: ltwiki
+    name: BZX84C6V2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BZX84C6V2
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: kicad-spice-library
+  name: BZX796V2
+  def: model
+  hash: aacff720354629fc5be5abbf0b34cfac68a3432c
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIODE.LIB
+    sha256: c68f4b4a28eb0e866fb8e516b6a6a37a779ac80fed8a2ef16a3afcfb80c522e5
+    lines:
+      BZX796V2: [892, 893]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: 'STAND-IN: model of BZX796V2, not of BZX79C6V2; equivalence declared in catalog/wanted.yaml (see
+    its note)'
+datasheet:
+  url: https://assets.nexperia.com/documents/data-sheet/BZX79.pdf
+  maker: Nexperia
+  doc: BZX79 series, Product data sheet, 2002 Feb 27 (NXP Semiconductors layout; supersedes 1999 May 25)

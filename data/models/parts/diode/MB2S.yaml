@@ -1,0 +1,63 @@
+part: MB2S
+kind: diode
+priority: 4
+group: bridge
+models:
+- source: onsemi
+  name: MB2S
+  def: model
+  hash: 1b989360ad7e93ad42bdb629321fdbbdf423928a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mb2s.lib
+    sha256: 066a3988d51126c1644f1d9b3714fe12c66501deb700b866f57f4920ece3d5f9
+    lines:
+      MB2S: [6, 9]
+    fetched: '2026-09-19'
+    note: 'MB2S: MB2S'
+  copies:
+  - source: microcap12
+    name: MB2S
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: vishay
+  name: MB2S
+  def: model
+  hash: 897d30ca88afef4aefccdeb042cd8f764dfd0d00
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/98590/p_mb2s.txt
+    sha256: 1daf7263ba979c39100315c055501649c71001de6898845d7d83218dcf76f719
+    lines:
+      MB2S: [9, 11]
+    fetched: '2026-09-19'
+- source: bordodynov
+  name: MB2S
+  def: subckt
+  hash: 57638d21dbd4b8ff16a982e0c3e82584478a4be7
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/diode_fullbridge.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 2e0399bfb1c1da49c79e1aa6fffe5fac3c723bb9e1a559d02d15e385ccf8376f
+    lines:
+      MB2S: [1486, 1505]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MB2S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/diode_fullbridge.lib
+      sha256: 2e0399bfb1c1da49c79e1aa6fffe5fac3c723bb9e1a559d02d15e385ccf8376f

@@ -1,0 +1,149 @@
+part: CA3130
+kind: opamp
+priority: 3
+models:
+- source: ltwiki
+  name: ca3130
+  def: subckt
+  hash: aa57de3c4be03954519cfbd492cb1e7cf79986f9
+  type: SUBCKT
+  pins:
+  - COMP1
+  - INN
+  - INP
+  - VN
+  - NC
+  - OUT
+  - VP
+  - COMP2
+  deps:
+  - PMOS
+  - NPN
+  - D
+  - BZX84C8V2L
+  - NMOS
+  - 1N750
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/CA3130.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 6987c331be55d2800574a18b4b98410eedb0d802635bd54c8dbb6cca63ee2428
+    lines:
+      1N750: [66, 69]
+      BZX84C8V2L: [70, 71]
+      D: [61, 61]
+      NMOS: [64, 64]
+      NPN: [62, 62]
+      PMOS: [65, 65]
+      ca3130: [2, 29]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Robertugo/ca31X0.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: cc50c658c45fbb2a541f82aab81c5725fc9328cc33f0d8cc661906c7b56f29d0
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+  copies:
+  - source: bordodynov
+    name: ca3130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CA3130.Lib
+      sha256: 6987c331be55d2800574a18b4b98410eedb0d802635bd54c8dbb6cca63ee2428
+  - source: kicad-spice-library
+    name: ca3130
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/CA3130.Lib
+      sha256: 6987c331be55d2800574a18b4b98410eedb0d802635bd54c8dbb6cca63ee2428
+  - source: ltwiki
+    name: ca3130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/CA3130.Lib
+      sha256: 6987c331be55d2800574a18b4b98410eedb0d802635bd54c8dbb6cca63ee2428
+- source: bordodynov
+  name: ca3130
+  def: subckt
+  hash: 80832f50f796b2dddade714f970037bd81c52981
+  type: SUBCKT
+  pins:
+  - '1'
+  - '36'
+  - '15'
+  - '20'
+  - '12'
+  - '11'
+  - '6'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ca3130.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: abc2504ee6ee4900660424e68744bfe0a31f1f7fd6ae3d1c0b3e3a05bc0ba902
+    lines:
+      ca3130: [1, 79]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/ca3130.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: f2f65b954dc5cb67b05cebc25f6f8922af89ae17bae4ffa6dd4dd8575c40da37
+  copies:
+  - source: ltwiki
+    name: ca3130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ca3130.sub
+      sha256: abc2504ee6ee4900660424e68744bfe0a31f1f7fd6ae3d1c0b3e3a05bc0ba902
+  - source: ltwiki
+    name: ca3130
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Ca3130/ca3130.sub
+      sha256: abc2504ee6ee4900660424e68744bfe0a31f1f7fd6ae3d1c0b3e3a05bc0ba902
+- source: bordodynov
+  name: ca3130a
+  def: subckt
+  hash: 6600823e5b5b612e0761c7974b8ae0edc6b7453b
+  type: SUBCKT
+  pins:
+  - '1'
+  - '36'
+  - '15'
+  - '20'
+  - '12'
+  - '11'
+  - '6'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ca3130.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: abc2504ee6ee4900660424e68744bfe0a31f1f7fd6ae3d1c0b3e3a05bc0ba902
+    lines:
+      ca3130a: [81, 159]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/ca3130a.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 1416959ab5d3f24223bee52674bc2468fab80a501200e93be07167eeadab0cff
+  copies:
+  - source: ltwiki
+    name: ca3130a
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ca3130.sub
+      sha256: abc2504ee6ee4900660424e68744bfe0a31f1f7fd6ae3d1c0b3e3a05bc0ba902
+  - source: ltwiki
+    name: ca3130a
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Ca3130/ca3130.sub
+      sha256: abc2504ee6ee4900660424e68744bfe0a31f1f7fd6ae3d1c0b3e3a05bc0ba902
+datasheet:
+  url: https://www.renesas.com/us/en/document/dst/ca3130-ca3130a-datasheet
+  maker: Intersil / Renesas
+  doc: FN817 Rev.6.00
+  date: '2005-08-01'

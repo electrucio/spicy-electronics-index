@@ -1,0 +1,24 @@
+part: MJE700
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: mje700
+  def: subckt
+  hash: c5ed6340c61f8f02270251100c84983fee8dca90
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mje700.lib
+    sha256: ae620abb22f8c58c254a5c679ceaca288501e6bcd8bb80478818fc3e1745d072
+    lines:
+      mje700: [12, 50]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: mje700
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77

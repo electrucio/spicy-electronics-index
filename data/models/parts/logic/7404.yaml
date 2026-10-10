@@ -1,0 +1,78 @@
+part: '7404'
+kind: logic
+priority: 4
+models:
+- source: microcap12
+  name: '7404'
+  def: subckt
+  hash: 0b29f165222dd25fd763abba2ea4ae7df2fee357
+  type: SUBCKT
+  pins:
+  - 1A
+  - 1Y
+  - 'optional:'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/dig000.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: e16fc85bebf1d2fc6da7b1994359ed7612a26b6f553d24748826327924413fa2
+    lines:
+      '7404': [735, 745]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: '7404'
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/Digdemo.lib
+      sha256: b7ab1358a8efaedd185ca5711baa8575cfd38323b80e46595be9fc4a9f312dd3
+  - source: kicad-spice-library
+    name: '7404'
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
+      sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
+- source: microcap12
+  name: 7404_P
+  def: subckt
+  hash: 609fedff86144c0b6c85ea0ce6c6af1ad2cda49c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: DATA/dig_power.cir
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 72a369f649f1d5790d2b962956803ddafe9951b40239b5620bd8e47eee077772
+    lines:
+      7404_P: [746, 756]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: '7404'
+  def: subckt
+  hash: 244fac7b881b6445919735a442947b43fbdf834d
+  type: SUBCKT
+  deps:
+  - D_04
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/7400.lib
+    sha256: 8cb1e590d7c3c1544728275fb1b4d5feb4dd468e1a2c18c1a24f811ec26c6d27
+    lines:
+      '7404': [94, 100]
+      D_04: [102, 105]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: '7404'
+  def: subckt
+  hash: c684a0caa7aecc5cdca9241c0bd795454f72961c
+  type: SUBCKT
+  pins:
+  - in
+  - out
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Digital%20Logic/7400.LIB
+    sha256: 7e433d8e83e759aa2eca1214d803925b982dcb3b5299fe4e7d9ec31997346a2d
+    lines:
+      '7404': [51, 58]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

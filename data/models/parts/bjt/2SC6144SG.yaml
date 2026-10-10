@@ -1,0 +1,85 @@
+part: 2SC6144SG
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: onsemi
+  name: 2SC6144SG
+  def: subckt
+  hash: 471f4d81fa9987670372b4ebeed8b9686a61278d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/2sc6144sg-spice-d.zip
+    member: 2SC6144SG-SPICE-D.rev0/2SC6144SG-SPICE-D.lib
+    archive_sha256: 2c74c9fd9bd0348a7b523a90fcd0872e7fe48eb35879b15585aed20cc3249a43
+    sha256: f1147fe406f0366100ff6fc923b8c44688c3b77375f3bf5da0f93dc82479bebf
+    lines:
+      2SC6144SG: [5, 27]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: 2SC6144SG
+  def: subckt
+  hash: 12edafcaba72918fd9cad5f281d6d0a57c58ec6c
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      2SC6144SG: [5690, 5707]
+      Q1: [78385, 78412]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 2SC6144SG
+  def: model
+  hash: e4edd1d85d195c91d0317f1b5e69031367901d30
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2SC6144SG: [1812, 1812]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 2SC6144SG
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SC6144SG
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: 2SC6144SG
+  def: model
+  hash: 498707651654aabae0a5412f43726878c249321d
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      '2': [332, 332]
+      2SC6144SG: [1057, 1057]
+    fetched: '2026-09-29'

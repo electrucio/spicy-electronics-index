@@ -1,0 +1,94 @@
+part: 2N6107
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n6107
+  def: model
+  hash: e29a976bdd2b91a67ffa4b3be94919e3d9dea3f0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6107.lib
+    sha256: 530863cd453c96e5fe871c892d864a86139b1a791f216f7703b9a58d92d1c701
+    lines:
+      Q2n6107: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Q2n6107
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: central-semi
+  name: 2N6107B
+  def: subckt
+  hash: 469859ab3d5fe20de590f16393b3b56a0678e2c4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N6107.LIB
+    sha256: 69db2e5c95b77ffaae779e3e59c1feee7386523a9e467d67c3534cce038c0da0
+    lines:
+      2N6107B: [25, 34]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: 2N6107B
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+- source: microcap12
+  name: 2N6107
+  def: model
+  hash: 011e0df69fdc6a56acda3f4b5f05e167fdc1fa47
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N6107: [2608, 2615]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: Q2N6107
+  def: model
+  hash: 2391bff133194a5a94394351e8fa8861460cb737
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      Q2N6107: [6907, 6907]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N6107
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: groupsio-ltspice
+  name: 2N6107
+  def: model
+  hash: ae266e2be76ca153b875444ca222cdd93e3f74d6
+  type: PNP
+  deps:
+  - NSC_5E
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N6107: [545, 545]
+      NSC_5E: [6256, 6256]
+    fetched: '2026-09-21'

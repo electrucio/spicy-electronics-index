@@ -1,0 +1,54 @@
+part: 1N5242B
+kind: zener
+priority: 3
+models:
+- source: kicad-spice-library
+  name: 1N5242B
+  def: subckt
+  hash: f12b071ed22e2b2a8668386a951c5df1f00043e8
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - zd1n5242b
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+    sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+    lines:
+      1N5242B: [2811, 2813]
+      zd1n5242b: [3042, 3061]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: cordell
+  name: 1N5242BC
+  def: model
+  hash: 295d6c364ea40040cb459240fdbc5b0beec7cfa9
+  type: D
+  verbatim: true
+  get:
+    url: https://www.cordellaudio.com/book/Cordell-Models.txt
+    sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+    lines:
+      1N5242BC: [619, 619]
+    fetched: '2026-09-14'
+    note: 'Cordell Models 04/20/2011 (current site file, HTTP Last-Modified 2024-09-15): 63 .model (BJT
+      GP, NJF, VDMOS, D)'
+  copies:
+  - source: bordodynov-qspice
+    name: 1N5242BC
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
+  - source: diyaudio
+    name: 1N5242BC
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+datasheet:
+  url: https://web.archive.org/web/2024id_/https://www.onsemi.com/pdf/datasheet/1n5221b-d.pdf
+  maker: onsemi
+  doc: 1N5221B - 1N5252B, Publication Order Number 1N5221B/D, Rev. 5, November 2023

@@ -1,0 +1,82 @@
+part: PESD5V0L1BA
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: nexperia
+  name: PESD5V0L1BA
+  def: subckt
+  hash: 7c4696a4e5da828d160dbcd9b22dc6d08ed565fd
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD5V0L1BA.txt
+    sha256: 4560118d961bf91be5124ae08ef30981173c34eba6915e7e4d07d80acb8137b0
+    lines:
+      PESD5V0L1BA: [32, 66]
+    fetched: '2026-09-19'
+    note: 'PESD5V0L1BA: PESD5V0L1BA, DIODE1, DIODE2'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: PESD5V0L1BA
+  def: subckt
+  hash: bd3ef67cc851ff397b2e02928158d62767ff138d
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      PESD5V0L1BA: [3106, 3121]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: PESD5V0L1BA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD5V0L1BA.PRM
+      sha256: ca9851f5faa4da3c5032056c828d680ec994c599281bbda21a08bd544db5d5de
+- source: bordodynov
+  name: PESD5V0L1BA
+  def: subckt
+  hash: 477761feee521e774b60c2ca35dab7ba2ebf904b
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/PESDxxx.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ff3b4d96c3410ac7dab23c71f52fb60399171b2f9f91d47d80801d9864f1935e
+    lines:
+      PESD5V0L1BA: [16, 54]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/TRANSIL/PESDxxx.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 7f54c24d46933451c002b3c0413d067199557460552bf5a2284085f1c34722b9
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: PESD5V0L1BA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/PESDxxx.txt
+      sha256: ff3b4d96c3410ac7dab23c71f52fb60399171b2f9f91d47d80801d9864f1935e
+  - source: ltwiki
+    name: PESD5V0L1BA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PESDxxx.txt
+      sha256: ff3b4d96c3410ac7dab23c71f52fb60399171b2f9f91d47d80801d9864f1935e

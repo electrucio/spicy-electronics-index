@@ -1,0 +1,35 @@
+part: IRFD120
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: ltwiki
+  name: IRFD120
+  def: model
+  hash: 62d6b17f9b0343dbd764398d14948ad29d305e09
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFD120: [2197, 2200]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRFD120
+  def: subckt
+  hash: f902c1a1bdb51f64a604e33979226703590f941e
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRFD120: [1387, 1409]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

@@ -1,0 +1,59 @@
+part: AD8616
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8616
+  def: subckt
+  hash: f8b96b6880e891d4365bf022962a2d4e681e86c2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/AD8616.cir?modelType=spice-models
+    sha256: f9ce46a9c70bf3241707a08ff21b74ee6aba07b0b0d9d4822cb21e4a26f39106
+    lines:
+      AD8616: [28, 116]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: AD8616
+  def: subckt
+  hash: 19279d068393853844e47a354c5283a8e6c77a8c
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8616: [80811, 80899]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8616
+  def: subckt
+  hash: 3a22ee9ef33d9c6de49f27912541a9245cef842a
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad8616.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: da8981326be86484396a900a52f4863344ae5928e6b3a0d7da4607d179e53d04
+    lines:
+      AD8616: [20, 108]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD8616.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 6fa88ba2cd776bb621011511ca803f6eba4dcd94a62484b978b5226bdb51be4b
+  note: pins from comment words

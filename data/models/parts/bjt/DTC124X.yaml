@@ -1,0 +1,57 @@
+part: DTC124X
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: onsemi
+  name: DTC124XE_npn
+  def: subckt
+  hash: 2a30aad2cf05bbda47dce81d1c641afdc09a3348
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/dtc124xe.lib
+    sha256: e9845753996aac58b1108b28f6c08a812dcf6f5c837abc516072405af92ac1ea
+    lines:
+      DTC124XE_npn: [3, 33]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: DTC124XE_npn
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: DTC124XE
+  def: subckt
+  hash: a72a38bc8c25f7caa48773154fa327c9831bea07
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Rohm_Transistor.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    lines:
+      DTC124XE: [34336, 34370]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: DTC124XKA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTC124XM
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTC124XUA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e

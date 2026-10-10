@@ -1,0 +1,83 @@
+part: SS26
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: Dss26
+  def: model
+  hash: 5d6f8a5523821128b38ebf8557ba6ca2f8d82f71
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/ss26.lib
+    sha256: ea602767da4112ed2c696d1cd3c732566de265c564bb9c23a4b88fdfd13fe716
+    lines:
+      Dss26: [14, 18]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Dss26
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: SS26FL
+  def: model
+  hash: b130f67f65359e2444c9b0bf277e4af7eca62d2a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/ss26fl.lib
+    sha256: 175189ba7c0035523b525bb7c40ec12865b1ff296f95680613a3727dbc4500e5
+    lines:
+      SS26FL: [7, 11]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: SS26FL
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: vishay
+  name: ss26
+  def: subckt
+  hash: 52542ffcef8b05f5299fe8dfa43293e39d6e9a28
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88169/ss26.txt
+    sha256: 38533e80dc649c3bb2278f8d27329ad9ac26f48027536f98cf54f5065d43771d
+    lines:
+      ss26: [10, 19]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: ss26
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+  - source: microcap12
+    name: ss26
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaydiode.lib
+      sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+- source: vishay
+  name: SS26S
+  def: model
+  hash: 148fa8d12fffe047cdb47a700b8166145746a98a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/98354/p_ss26s.txt
+    sha256: 575f2caab3988d8d168d4dfeb2a6c8f54aa3ab41076478aed393b4054843769a
+    lines:
+      SS26S: [20, 32]
+    fetched: '2026-09-19'

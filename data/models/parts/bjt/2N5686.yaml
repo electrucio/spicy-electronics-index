@@ -1,0 +1,44 @@
+part: 2N5686
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n5686
+  def: model
+  hash: 05eebcbbe9f4cb39280f3a80bd30560717b20b8e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n5686.lib
+    sha256: 5495bb161c7cce35eed56a0ff76b0a0b0061666df604f9c9273df42c67b25600
+    lines:
+      Q2n5686: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: groupsio-ltspice
+    name: 2N5686
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: microcap12
+    name: Q2n5686
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: 2N5686
+  def: model
+  hash: c273f563ce29e016bcda0ab93c97fe29a66da196
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N5686: [406, 413]
+    fetched: '2026-09-21'

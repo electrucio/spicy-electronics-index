@@ -1,0 +1,113 @@
+part: EL156
+kind: tube
+priority: 3
+group: audio_docs
+models:
+- source: ayumi
+  name: EL156T
+  def: subckt
+  hash: 5d027c621ac421cbf4a06f324e7be9adcf2c1e26
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EL156T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: d88bfa38d27798baad1a3610b869fab292ed12b4fc59154834c9aa6396012ceb
+    lines:
+      EL156T: [9, 22]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ayumi
+  name: EL156
+  def: subckt
+  hash: 95b43c97649aca09c2edf7f46216cd0b21fb89fd
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EL156.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: f9d97f1f50a7ef0e59dc0ec3e9d60dbeb86921dfc9b40d7e2ba24061ec9584cd
+    lines:
+      EL156: [10, 30]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: bordodynov
+  name: EL156T
+  def: subckt
+  hash: c510cb3851558f6500818a3816b7f596ab05c4a1
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      EL156T: [3397, 3410]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: EL156T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: ltwiki
+    name: EL156T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: EL156
+  def: subckt
+  hash: 9487e3ec681289e654561d8ab097077bc3fe2e89
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      EL156: [2020, 2040]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: EL156
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: EL156
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3

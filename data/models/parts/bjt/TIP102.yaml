@@ -1,0 +1,83 @@
+part: TIP102
+kind: bjt
+priority: 4
+group: power_output
+models:
+- source: onsemi
+  name: tip102
+  def: subckt
+  hash: 2eca179060c64ab796027e49f486c52acdd721ee
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip102.lib
+    sha256: fe8bdd76f256b74b1ba31aedfdebca7483e2e388ca81f433bc5b01455e011291
+    lines:
+      tip102: [1, 50]
+    fetched: '2026-09-14'
+    note: 'model(s): tip102 (.subckt 1 2 3), dmodel (D .model), qmodel (NPN .model), q1model (NPN .model)'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: TIP102
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: TIP102
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP102
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP102
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/NPNdarlington.lib
+      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: microcap12
+    name: tip102
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: TIP102
+  def: subckt
+  hash: c8613685dcf9e2e47cd11bd6237bc81a95158f1f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      TIP102: [2362, 2400]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: TIP102
+  def: subckt
+  hash: f22126e964286a12ae96d0f5b85c700c5e3191ea
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      TIP102: [843, 855]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

@@ -1,0 +1,181 @@
+part: BAS19
+kind: diode
+priority: 4
+group: silicon_signal
+models:
+- source: spice-model-cd
+  name: BAS19
+  def: model
+  hash: 9120677c261eb8d737eb34a306ff7bd38dbe547a
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/bas19.lib
+    sha256: d75851d120ee84e58ead66898f9a901db2a5bf747d1c182aef73ff5c332b4a39
+    lines:
+      BAS19: [3, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAS19
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: BAS19
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: spice-model-cd
+    name: BAS19-Z
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+- source: microcap12
+  name: BAS19_ZX
+  def: subckt
+  hash: 019543df9a7a45d1431f47e8e2db1d58d7040a5b
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BAS19_ZX: [1847, 1857]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: BAS19_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+- source: microcap12
+  name: BAS19W
+  def: model
+  hash: 9939ef1f49b9991bbfe5cb51ad865a487c63eb93
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAS19W: [9285, 9286]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BAS19/ZTX
+  def: model
+  hash: 066ce5daaa9790aa0243235fbf4ddb10648971f6
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/Zetex.lib
+    sha256: 801edb075d3bd3995ad94e8dbf3c9a290a89481b1e897b74b75fcb6a6fab8ec0
+    lines:
+      BAS19/ZTX: [364, 366]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: bas19
+  def: model
+  hash: a052cd4c9f03ca1db9b1a9387551a4d8d92c0dae
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/DIODE.LB
+    sha256: b648c925003b172006c0871521a37a1448d9cd5343fd97cd1426d0ec65a8c324
+    lines:
+      bas19: [54, 55]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAS19
+  def: model
+  hash: 172bd658ee907dfa03a128e8e6da3ca3877b7e3d
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/ediode_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e50d524139f4241c5345aa22e759f4b47df02a98f9343c9c753c201ba13d8c9
+    lines:
+      BAS19: [61, 62]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: DBAS19
+  def: model
+  hash: 62c6f21556f3590af8bf458faa0888682eca524b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/diodes/diode.mod
+    sha256: bb58d6a99a7204cfa89803598a0331243f10c11afb1b6279fb56fec2ae14c941
+    lines:
+      DBAS19: [158, 159]
+    fetched: '2026-09-14'
+- source: groups-io
+  name: BAS19
+  def: model
+  hash: 5cd3a75716fcba58506745ad765438d99a746670
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAS19: [7772, 7772]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: BAS19
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: groups-io
+  name: BAS19W
+  def: model
+  hash: e86433fecd3ec876957a25656b75ab917d7cd038
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAS19W: [698, 698]
+    fetched: '2026-10-10'
+- source: ltwiki
+  name: BAS19
+  def: model
+  hash: fbb524bd4de7be14dc9b8673714345a942dedd82
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ediode.lib
+    sha256: 3a1ee34ce1dccb655cfdf9e5ee520ad37c7f7e97ce94973793706080d52808b9
+    lines:
+      BAS19: [121, 122]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: BAS19
+  def: model
+  hash: e83e5ad507678c94c9076e91033b1ed4da576a53
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIODE3.LIB
+    sha256: 88ceba16090e9038958260ddfeaada17f266d72cde791f865efa4a903dfb91d3
+    lines:
+      BAS19: [1690, 1691]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

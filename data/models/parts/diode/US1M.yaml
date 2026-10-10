@@ -1,0 +1,139 @@
+part: US1M
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: nexperia
+  name: US1M
+  def: subckt
+  hash: dcac91861206f07e5d4405e5109596d7c3cf21a7
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/US1M.txt
+    sha256: 2080f6096f93bec840e46b43bcfc3d2f46bc1a7bc6ef150a38c48ef6fa332922
+    lines:
+      US1M: [37, 66]
+    fetched: '2026-09-19'
+    note: 'US1M: US1M, DIODE1, DIODE2'
+  note: pins from comment words
+- source: vishay
+  name: us1m
+  def: model
+  hash: ab4ec2d45948ec26569275da77b31e177609ce00
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/98132/_p_us1m.txt
+    sha256: 9e68c1ed7a82125766a76b66b5a54523f76a12c17025d580ab3429dd37515c88
+    lines:
+      us1m: [4, 5]
+    fetched: '2026-09-19'
+- source: vishay
+  name: us1m
+  def: model
+  hash: 3c34ac75beac0d0bcbdb3827b5663c218cc50ab1
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89605/us1m.txt
+    sha256: 7b2de4c1ea22c54b1c8ce2df2b53a26b3799a34a08c5163ff50ebf9b5d0f5407
+    lines:
+      us1m: [7, 10]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: US1M
+  def: model
+  hash: a2a3acb16776c6a81f055f088c3059625566df1a
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      US1M: [11095, 11096]
+    fetched: '2026-09-21'
+  copies:
+  - source: groups-io
+    name: US1M
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: qspice
+  name: US1M
+  def: model
+  hash: 4540aef29fc8f266997bdafefddb6ff81d705fe8
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Diode.txt
+    sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+    lines:
+      US1M: [155, 155]
+  copies:
+  - source: bordodynov-qspice
+    name: US1M
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+- source: groupsio-ltspice
+  name: US1M
+  def: model
+  hash: e21b39ef8758edb305cd3cbe55b35f39c204beeb
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.dio
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+    lines:
+      US1M: [265, 265]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: US1M
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+- source: bordodynov
+  name: US1M
+  def: model
+  hash: 254fb806284ecb94b04713ab1e026e8dd21c3c6e
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      US1M: [323, 323]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: US1M
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: US1M
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: US1M
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

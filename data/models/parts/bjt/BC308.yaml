@@ -1,0 +1,126 @@
+part: BC308
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: spice-model-cd
+  name: BC308AP
+  def: model
+  hash: 3471838f5da6f432aa6df06efaed47451431af37
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/bc308ap.lib
+    sha256: 087f9b2258c2db2991fa1bd3468a3c7825bbe3c7d1953c3d2311049e1dc898fd
+    lines:
+      BC308AP: [3, 5]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC308AP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: BC308AP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: kicad-spice-library
+    name: BC308AP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+      sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+  - source: spice-model-cd
+    name: BC308AP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+- source: microcap12
+  name: BC308AP_ZX
+  def: subckt
+  hash: 2a74c5e3398d950cf1db57554fc7a3b735286aa7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BC308AP_ZX: [2134, 2141]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC308AP_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+- source: microcap12
+  name: BC308A
+  def: model
+  hash: 1dae202f7f621eec2bde4e95bb08df839f5d2bf4
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC308A: [1267, 1270]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC308B
+  def: model
+  hash: da5757282496b8662a36ca7a15e1f02e65f54d7d
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC308B: [1273, 1276]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC308C
+  def: model
+  hash: dd52ea27ff9f154cefbbce6c10d71eda5274b3df
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC308C: [1279, 1282]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QBC308AP
+  def: model
+  hash: 40a5f8d3bc1649fdfecb33bbfa65f12cc8b9f67e
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QBC308AP: [163, 166]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: BC308
+  def: model
+  hash: 1b524371512fc3c30bac30bc947fddedd5397066
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC308: [1816, 1816]
+    fetched: '2026-09-21'

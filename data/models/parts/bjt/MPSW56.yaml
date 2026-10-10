@@ -1,0 +1,63 @@
+part: MPSW56
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: MPSW56
+  def: model
+  hash: 50fe67940826876c60da397e55af1383cc12529f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSW56: [3276, 3279]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QMPSW56
+  def: model
+  hash: 131adc2894208d8de4adcb33c0747459fd849a4c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMPSW56: [605, 608]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MPSW56
+  def: model
+  hash: 718156e1f7455686bf0d96f0d5da3f8a100e06c4
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSW56: [3678, 3678]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSW56
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: kicad-spice-library
+  name: MPSW56
+  def: model
+  hash: 2af9b1b9b2d6828383f9cfdbf377bbb40baf6fb2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+    sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+    lines:
+      MPSW56: [313, 315]
+    fetched: '2026-09-14'

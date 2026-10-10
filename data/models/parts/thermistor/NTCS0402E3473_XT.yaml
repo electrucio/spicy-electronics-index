@@ -1,0 +1,39 @@
+part: NTCS0402E3473_XT
+kind: thermistor
+group: non-native
+models:
+- source: vishay
+  name: NTCS0402E3473_XT
+  def: subckt
+  hash: b8097914935e151f01d9b0560ad5deba84ff60af
+  type: SUBCKT
+  deps:
+  - NTC_BASE
+  verbatim: true
+  get:
+    url: http://www.vishay.com/docs/29171/ltspice_ntc_tfpt_pts_model.zip
+    member: ltspice_ntc_tfpt_pts_model/VISHAY_LTSPICE_Therm_MC.lib
+    archive_sha256: 76a8fe81ccf5752c22b5ddb0a5f3ce6ddcb8af3e4b050498e2c465d051b64feb
+    sha256: 48a15269d14ca17ea647f061d05c1dfe74ba5b39aeb785bb264c546e76291824
+    lines:
+      NTCS0402E3473_XT: [609, 625]
+      NTC_BASE: [25, 49]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://www.vishay.com/docs/29171/ltspice_ntc_tfpt_pts_model.zip
+      member: ltspice_ntc_tfpt_pts_model/NTCS0402E3473_XT.asy
+      archive_sha256: 76a8fe81ccf5752c22b5ddb0a5f3ce6ddcb8af3e4b050498e2c465d051b64feb
+      sha256: df431803a6ebd3a2d394ec8d0f4e7795bb1bcde187c2fb352f6238c10b787a26
+  copies:
+  - source: bordodynov
+    name: NTCS0402E3473_XT
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/VISHAY_LTSPICE_Therm_MC.lib
+      sha256: 68f765d6bd2f1121ee4c5ebae58cb344028112316c9ed2eafa505ed1a9d7a9bc
+  - source: ltwiki
+    name: NTCS0402E3473_XT
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/VISHAY_LTSPICE_Therm_MC.lib
+      sha256: 68f765d6bd2f1121ee4c5ebae58cb344028112316c9ed2eafa505ed1a9d7a9bc

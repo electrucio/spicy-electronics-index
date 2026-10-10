@@ -1,0 +1,36 @@
+part: MJF127
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: mjf127
+  def: subckt
+  hash: 72943e32bd404d995c1ad37baf9829f18c58a63b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mjf127.lib
+    sha256: dd2010d2d7f8ff39b6dc77d9e734677c9857531d2efb8bac54cb87cdb56c864b
+    lines:
+      mjf127: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: mjf127
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: MJF127
+  def: subckt
+  hash: 35f149d8f89ca2210aa5dbcd163c0cba42f44359
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      MJF127: [1292, 1330]
+    fetched: '2026-09-21'

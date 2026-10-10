@@ -1,0 +1,233 @@
+/** Filtering and ordering the parts list, which is the only logic the browser still does for itself. */
+import { describe, expect, it } from 'vitest'
+
+import { byDate, hasBit, ofDevice, order, pageHref, partPath, repoOf, sameSources, search, typeOf } from './parts'
+import type { DeviceKind, PartRow } from './types'
+
+/** The menu, in menu order; a part row carries one bit per entry, the way the built index does. */
+const MENU: DeviceKind[] = [
+  { key: 'tube', label: 'Valves', n: 3 },
+  { key: 'bjt', label: 'Silicon BJT', n: 3 },
+  { key: 'jfet', label: 'JFET', n: 1 },
+  { key: 'opto', label: 'Optocouplers', n: 0 },
+]
+const TUBE = 1 << 0
+const BJT = 1 << 1
+const JFET = 1 << 2
+const rows: PartRow[] = [
+  ['12AX7', 2478, 3588, 6, TUBE],
+  ['12AX7A', 40, 55, 0, TUBE],
+  ['ECC83', 900, 1200, 3, TUBE],
+  ['BC108', 700, 900, 0, BJT],
+  ['BC108B', 12, 14, 2, BJT],
+  // a JEDEC number: the family pattern cannot tell a transistor from a JFET, so it is both
+  ['2N3055', 1500, 1900, 9, BJT | JFET],
+]
+
+describe('search', () => {
+  it('says nothing until there is something to go on', () => {
+    expect(search(rows, '')).toEqual([])
+    expect(search(rows, '1')).toEqual([])
+  })
+
+  it('puts an exact match first, even when others have far more behind them', () => {
+    expect(search(rows, 'BC108B')[0]?.[0]).toBe('BC108B')
+  })
+
+  it('answers an order code with the type it starts with, after everything else', () => {
+    // AD817ARZ is on no page; AD817 is. BC108B typed in full still finds BC108B first, BC108 after it.
+    expect(search(rows, 'BC108BZ').map((r) => r[0])).toEqual(['BC108B', 'BC108'])
+    expect(search(rows, 'BC1').map((r) => r[0])).toEqual(['BC108', 'BC108B'])    // two letters never answer for a code
+  })
+
+  it('prefers what starts with the query over what merely contains it', () => {
+    const names = search(rows, '108').map((r) => r[0])
+    expect(names).toContain('BC108')
+    expect(names).toContain('BC108B')
+  })
+
+  it('ignores punctuation and case, because nobody types a part number the same way twice', () => {
+    expect(search(rows, '12ax7').map((r) => r[0])[0]).toBe('12AX7')
+    expect(search(rows, '2n-3055').map((r) => r[0])[0]).toBe('2N3055')
+  })
+})
+
+describe('the order of the list', () => {
+  it('puts the most used first by default, which is what the front page shows', () => {
+    expect(order(rows, 'documents').map((r) => r[0])[0]).toBe('12AX7')    // 2,478 documents
+  })
+
+  it('breaks a tie on documents by models, and then by name', () => {
+    const tied: PartRow[] = [['B', 10, 0, 1, BJT], ['A', 10, 0, 1, BJT], ['C', 10, 0, 5, BJT]]
+    expect(order(tied, 'documents').map((r) => r[0])).toEqual(['C', 'A', 'B'])
+  })
+
+  it('can be asked for the parts with the most models instead', () => {
+    expect(order(rows, 'models').map((r) => r[0])[0]).toBe('2N3055')      // 9 models
+  })
+
+  it('can be asked for plain alphabetical order', () => {
+    expect(order(rows, 'name').map((r) => r[0])).toEqual(
+      [...rows].map((r) => r[0]).sort((a, b) => a.localeCompare(b)),
+    )
+  })
+
+  it('turns round when a heading is clicked again, and a tie still reads most used first', () => {
+    expect(order(rows, 'documents', 'asc').map((r) => r[0])[0]).toBe('BC108B')     // 12 documents
+    expect(order(rows, 'name', 'desc').map((r) => r[0])[0]).toBe('ECC83')
+    const tied: PartRow[] = [['B', 10, 0, 1, BJT], ['A', 90, 0, 1, BJT]]
+    expect(order(tied, 'models', 'asc').map((r) => r[0])).toEqual(['A', 'B'])
+  })
+
+  it('orders by data sheets, a part without the count having none', () => {
+    const sheets: PartRow[] = [['A', 1, 1, 0, BJT, -1, 3], ['B', 1, 1, 0, BJT], ['C', 1, 1, 0, BJT, -1, 40]]
+    expect(order(sheets, 'sheets').map((r) => r[0])).toEqual(['C', 'A', 'B'])
+  })
+
+  it('leaves the rows it was given alone', () => {
+    const before = rows.map((r) => r[0])
+    order(rows, 'name')
+    expect(rows.map((r) => r[0])).toEqual(before)
+  })
+})
+
+describe('the link to a page', () => {
+  const doc = 'https://e.org/amp.pdf'
+
+  it('is rebuilt from the document it belongs to', () => {
+    expect(pageHref(doc, '#page=2&zoom=200,55,523&h=792'))
+      .toBe('https://e.org/amp.pdf#page=2&zoom=200,55,523&h=792')
+  })
+
+  it('is left alone when it was stored whole', () => {
+    expect(pageHref(doc, 'https://elsewhere.org/x.pdf#page=9'))
+      .toBe('https://elsewhere.org/x.pdf#page=9')
+  })
+
+  it('is the document itself when there is no suffix', () => {
+    expect(pageHref(doc, '')).toBe(doc)
+  })
+
+  it('does not mistake a fragment that looks like a scheme', () => {
+    expect(pageHref(doc, '/page/n4/mode/2up')).toBe('https://e.org/amp.pdf/page/n4/mode/2up')
+  })
+})
+
+describe('filtering by kind of device', () => {
+  it('shows only that kind', () => {
+    expect(ofDevice(rows, 'tube', MENU).map((r) => r[0])).toEqual(['12AX7', '12AX7A', 'ECC83'])
+  })
+
+  it('keeps an ambiguous part under every device it could be', () => {
+    expect(ofDevice(rows, 'bjt', MENU).map((r) => r[0])).toContain('2N3055')
+    expect(ofDevice(rows, 'jfet', MENU).map((r) => r[0])).toContain('2N3055')
+  })
+
+  it('leaves everything alone when no kind is chosen', () => {
+    expect(ofDevice(rows, '', MENU)).toHaveLength(rows.length)
+  })
+
+  it('returns nothing rather than everything for a device this index has none of', () => {
+    expect(ofDevice(rows, 'opto', MENU)).toEqual([])
+  })
+})
+
+describe('the chosen order survives typing in the box', () => {
+  // A part with no use at all and one model used to come above a part on hundreds of documents,
+  // because typing anything dropped the sort and fell back to a weight that counted a model as 25 uses.
+  const rows: PartRow[] = [
+    ['TL071', 3, 0, 4, 0],
+    ['TL072', 900, 0, 1, 0],
+    ['TL07', 0, 0, 9, 0],
+  ]
+
+  it('orders the matches by uses when that is what was asked for', () => {
+    expect(search(rows, 'TL07', 'documents').map((r) => r[0])).toEqual(['TL07', 'TL072', 'TL071'])
+  })
+
+  it('orders them by models when that is what was asked for', () => {
+    expect(search(rows, 'TL07', 'models').map((r) => r[0])).toEqual(['TL07', 'TL071', 'TL072'])
+  })
+
+  it('still puts an exact match first, whatever the order', () => {
+    expect(search(rows, 'TL072', 'models')[0]?.[0]).toBe('TL072')
+  })
+})
+
+describe('partPath', () => {
+  it('keeps a slash as a directory and encodes the rest', () => {
+    expect(partPath('APT1608LSECK/J3-PRV')).toBe('APT1608LSECK/J3-PRV')
+    expect(partPath('TL072')).toBe('TL072')
+    expect(partPath('A B#C')).toBe('A%20B%23C')
+    expect(partPath('Core')).toBe('Core~e')
+  })
+})
+
+describe('sameSources', () => {
+  it('reads a part page only with the index it was built against', () => {
+    expect(sameSources({ ss: 'a1' }, 'a1')).toBe(true)
+    expect(sameSources({ ss: 'b2' }, 'a1')).toBe(false)       // a cached parts.json from the last deploy
+    expect(sameSources({}, 'a1')).toBe(true)                   // a page from before there were stamps
+    expect(sameSources({ ss: 'b2' }, undefined)).toBe(true)    // an index from before there were stamps
+  })
+})
+
+describe('a GitHub address', () => {
+  it('is filed under its repository', () => {
+    expect(repoOf('https://github.com/sparkfun/Thing/blob/HEAD/a.brd')).toBe('sparkfun/Thing')
+  })
+
+  it('is told apart from anything else', () => {
+    expect(repoOf('https://gitlab.com/a/b')).toBeNull()
+    expect(repoOf('https://github.com/sparkfun')).toBeNull()
+  })
+})
+
+describe('the kind of part in the list', () => {
+  it('is the device menu entry it answers to', () => {
+    expect(typeOf(['BC108', 1, 1, 0, BJT, 0], MENU)).toBe('Silicon BJT')
+  })
+
+  it('is the finer entry when a source says which way round it is, and not its device as well', () => {
+    // the finer entry sits under its device, as the built menu has it
+    const menu: DeviceKind[] = [
+      { key: 'bjt', label: 'Silicon BJT', n: 2 },
+      { key: 'bjt-npn', label: 'NPN silicon BJT', n: 1, parent: 'bjt' },
+      { key: 'jfet', label: 'JFET', n: 1 },
+    ]
+    const [SI, NPN, J] = [1 << 0, 1 << 1, 1 << 2]
+    expect(typeOf(['BC547', 1, 1, 0, SI | NPN, 0], menu)).toBe('NPN silicon BJT')
+    expect(typeOf(['2N3904', 1, 1, 0, SI | NPN | J, -1], menu)).toBe('NPN silicon BJT / JFET')
+    expect(typeOf(['BC109', 1, 1, 0, SI, 0], menu)).toBe('Silicon BJT')
+    expect(ofDevice([['BC547', 1, 1, 0, SI | NPN, 0], ['BC109', 1, 1, 0, SI, 0]], 'bjt-npn', menu)
+      .map((r) => r[0])).toEqual(['BC547'])
+  })
+
+  it('is every entry it could be when nothing narrows it', () => {
+    expect(typeOf(['2N3055', 1, 1, 0, BJT | JFET, -1], MENU)).toBe('Silicon BJT / JFET')
+    expect(typeOf(['X1', 1, 1, 0, 0, -1], MENU)).toBe('')
+  })
+
+  it('reads entries past the 32nd, which bit operators would wrap onto the first ones', () => {
+    // the passive entries sit at the end of a menu longer than 32: 1 << 40 is 256 in JavaScript
+    const long: DeviceKind[] = Array.from({ length: 42 }, (_, i) => ({ key: `k${i}`, label: `K${i}`, n: 1 }))
+    long[31] = { key: 'passive', label: 'Passives and hardware', n: 1 }
+    long[40] = { key: 'relay', label: 'Relays', n: 1, parent: 'passive' }
+    const relay = 2 ** 31 + 2 ** 40
+    expect(hasBit(relay, 40) && hasBit(relay, 31)).toBe(true)
+    expect(hasBit(relay, 8) || hasBit(relay, 0)).toBe(false)
+    expect(typeOf(['G5V-2', 1, 1, 3, relay, -1], long)).toBe('Relays')
+    expect(ofDevice([['G5V-2', 1, 1, 3, relay, -1], ['BC109', 1, 1, 0, 2 ** 8, 0]], 'relay', long)
+      .map((r) => r[0])).toEqual(['G5V-2'])
+    expect(ofDevice([['BC109', 1, 1, 0, 2 ** 8, 0]], 'k8', long)).toHaveLength(1)
+  })
+})
+
+describe("a magazine's issues", () => {
+  const doc = (y: string, t: string) => ({ s: 0, t, u: '', y, schematic: 0, p: [] })
+
+  it('are in date order, a month-dated issue inside its year, an undated one last', () => {
+    const got = byDate([doc('', 'none'), doc('1985-08', 'aug'), doc('1979', 'y79'), doc('1985-02', 'feb')])
+    expect(got.map((d) => d.t)).toEqual(['y79', 'feb', 'aug', 'none'])
+  })
+})

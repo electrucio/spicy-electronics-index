@@ -1,0 +1,216 @@
+part: ZTX458
+kind: bjt
+priority: 3
+group: audio_docs
+models:
+- source: diodes-inc
+  name: ZTX458
+  def: model
+  hash: 0fa35b9693b2e15f48452e23b7b8a64d07f6ef8a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2548/ZTX458.spice.txt
+    sha256: b465ca79a50281b36f85ffaa70a5a5eb8efcefccddac86981722504bce8ac6d6
+    lines:
+      ZTX458: [19, 23]
+    fetched: '2026-09-19'
+  copies:
+  - source: diodes-inc
+    name: ZTX458
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8423/collection.spice.txt
+      sha256: 29a331433039eecc5f40d2202d1675ada0c61df76aa492b6773e7c4107fbac71
+- source: spice-model-cd
+  name: ZTX458
+  def: model
+  hash: e226492e2d274f78bdf158ef06545984b87e634f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/ztx458.lib
+    sha256: ec443b4ae7cdad57d627692d7f18b7ca326e6fd3812186f68be16c9515dca3a9
+    lines:
+      ZTX458: [3, 6]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: ZTX458
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: ZTX458
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: kicad-spice-library
+    name: ZTX458
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+  - source: spice-model-cd
+    name: ZTX458
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+  - source: ltwiki
+    name: ZTX458/ZTX
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/Zetex.lib
+      sha256: 801edb075d3bd3995ad94e8dbf3c9a290a89481b1e897b74b75fcb6a6fab8ec0
+- source: microcap12
+  name: ZTX458_ZX
+  def: subckt
+  hash: 624204f5b2dc848d1232cd83656f9dde89d620d4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      ZTX458_ZX: [4086, 4095]
+    fetched: '2026-09-21'
+- source: qspice
+  name: ZTX458
+  def: model
+  hash: ac6cb753affe539e49a39ef25a9a6f3f076b4fae
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      ZTX458: [1311, 1316]
+  copies:
+  - source: bordodynov-qspice
+    name: ZTX458
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: duncanamps
+  name: QZTX458
+  def: model
+  hash: 3f531263172a617c4048787116d2a040c76d3678
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QZTX458: [870, 873]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: ZTX458
+  def: model
+  hash: d504204e9de1ac50c89d71b5985fd54991273aa9
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      ZTX458: [1226, 1226]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: ZTX458
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: ZTX458
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: kicad-spice-library
+    name: ZTX458
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: ZTX458
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: ZTX458
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groupsio-ltspice
+  name: ZTX458
+  def: model
+  hash: 16af8ed5bbceb9c3e75eaa36a62b522fc3f81b1e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      ZTX458: [5439, 5439]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: ZTX458
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: ltwiki
+  name: ZTX458
+  def: model
+  hash: d75e3a263c6ffaa8bcc27d030e6affc23e729162
+  type: NPN
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ZETEX/LIB/zmodels.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 8d3fb488666b5f813a666d5c589ac6c7779a2c44a4b38799b2a41ca0006368e7
+    lines:
+      ZTX458: [4633, 4637]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: ZTX458
+  def: model
+  hash: e226492e2d274f78bdf158ef06545984b87e634f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+    sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+    lines:
+      ZTX458: [1071, 1074]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: ZTX458_ZX
+  def: subckt
+  hash: 437b56544d15197bc2496c3b2975f2a3c120aaa6
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+    sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+    lines:
+      ZTX458_ZX: [5038, 5046]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

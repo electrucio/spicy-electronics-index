@@ -1,0 +1,64 @@
+part: MMBTH24
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: MMBTH24
+  def: model
+  hash: 7e3475dd09e990a8034013ae8ca9e44db221eea2
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBTH24: [938, 942]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MMBTH24
+  def: model
+  hash: 4e0f023e716ca12dcedb24b657aeb309760b5b59
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBTH24: [498, 502]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBTH24
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: duncanamps
+  name: QMMBTH24
+  def: model
+  hash: e6eb70d9aa194e31f1b522b5db91ecf5cc415023
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QMMBTH24: [563, 565]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBTH24
+  def: model
+  hash: ec2c6c3edf06cb137d0711fa24bb210509e070de
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBTH24: [3474, 3474]
+    fetched: '2026-09-21'

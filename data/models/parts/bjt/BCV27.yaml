@@ -1,0 +1,127 @@
+part: BCV27
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: onsemi
+  name: BCV27
+  def: subckt
+  hash: 58f385e65b79dc58d5d75e961be75ec8297c41db
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bcv27.lib
+    sha256: a9d706dcb94750c89121d8b06e82077fd1d7825c875c7d3dc65dfcdbf01fb072
+    lines:
+      BCV27: [10, 49]
+    fetched: '2026-09-19'
+    note: 'BCV27: BCV27, QNPN'
+  note: pins from comment words
+- source: nexperia
+  name: BCV27
+  def: subckt
+  hash: 2edad3e03ebdea21d7bee12671377dc633eee68e
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCV27.txt
+    sha256: dca60d798bc08ceaf6d96e63895629ce02068580e581ba5f4975143a715c17d9
+    lines:
+      BCV27: [39, 82]
+    fetched: '2026-09-19'
+    note: 'BCV27: BCV27, BCV27'
+  note: pins from default order (unverified)
+- source: spice-model-cd
+  name: BCV27
+  def: subckt
+  hash: d6b74c204645c4d44ac053f56a817c5b20f24153
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BCV27.lib
+    sha256: b3bfc4b49ce0cce9cff145c574afc0f3d7d7c2ebf4e0aa957feed33d045c880f
+    lines:
+      BCV27: [2, 66]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BCV27
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BCV27.PRM
+      sha256: b3bfc4b49ce0cce9cff145c574afc0f3d7d7c2ebf4e0aa957feed33d045c880f
+- source: microcap12
+  name: BCV27_PH
+  def: subckt
+  hash: ff9cdc57d15bc804bb5c1b16659e72d803aefac1
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      BCV27_PH: [2891, 2955]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: BCV27_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: microcap12
+  name: BCV27
+  def: subckt
+  hash: 3f263ef76e470d456ef0f3b533b3902d2b4a7af3
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      BCV27: [12110, 12149]
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BCV27
+  def: model
+  hash: 42f90d7a82d66f10c4f9a20b40fde4c4585d4201
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BCV27: [2021, 2021]
+    fetched: '2026-09-21'

@@ -1,0 +1,162 @@
+part: 2N5400
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: spice-model-cd
+  name: 2N5400
+  def: model
+  hash: 08af34b4971be2833668bf6c2542e23b969f268a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/2N/2N5400.t
+    sha256: f2257cdf6e0b6c1d8b7ec8e0c79e8197b01d0999d8caee373a109f56d6d5c4a2
+    lines:
+      2N5400: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N5400
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: microcap12
+  name: 2N5400
+  def: model
+  hash: b17b7e0be3f7f30a8e03db1a376ebb37bfa170fb
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      2N5400: [961, 964]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: 2N5400
+  def: model
+  hash: d25b8df9383c1caa497972b6b66266408e7e7cc8
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/adventures_with_analog/APT-1_amplifier/apt-1-bjt.mod
+    sha256: 61d62749810f1ee82ba7294a3d8f3a0bb90d572c708e6aa46254125ea8f45348
+    lines:
+      2N5400: [2, 2]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: 2N5400
+  def: model
+  hash: bb9a619e4a7f83ef818d32631b562a632d8ff43c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2N5400: [353, 353]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 2N5400
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: 2N5400
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: 2N5400
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: 2N5400
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: 2N5400
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: 2N5400
+  def: model
+  hash: 50f19df50d942eb6afd21e94bcacf7133a4b1928
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N5400: [470, 470]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 2N5400
+  def: model
+  hash: a01cabb7894f1557f8608a409af8d6cc1a90c6a3
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2N5400: [369, 369]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 2N5400
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2N5400
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: 2N5400
+  def: model
+  hash: 52d712f046e3317fa981bdda0b65f9542f944311
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      2N5400: [180, 180]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: Q2N5400
+  def: model
+  hash: 80e71354230b9c8379ac23246634c1fa9f233e5d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_PNP/TOSHIBA.LIB
+    sha256: 4a5d1e7670eff99dfd5290383e42316cebae59769ce130e15a7f5d9a9a4cbd90
+    lines:
+      Q2N5400: [398, 414]
+    fetched: '2026-09-14'

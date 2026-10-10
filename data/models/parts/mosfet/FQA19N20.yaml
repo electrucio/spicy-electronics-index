@@ -1,0 +1,35 @@
+part: FQA19N20
+kind: mosfet
+priority: 2
+group: power_vertical
+models:
+- source: microcap12
+  name: FQA19N20_FC
+  def: subckt
+  hash: 0e6629db91aa2e2697366189ebffea2ef3fa5ba8
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/fairch.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+    lines:
+      FQA19N20_FC: [4673, 4697]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: FQA19N20_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+datasheet:
+  url: http://fairchildsemi.com:80/ds/FQ/FQA19N20.pdf
+  maker: Fairchild Semiconductor
+  doc: FQA19N20 QFET, April 2000
+  date: 2000-04

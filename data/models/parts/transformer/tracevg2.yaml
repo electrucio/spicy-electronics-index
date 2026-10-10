@@ -1,0 +1,40 @@
+part: tracevg2
+kind: transformer
+group: non-native
+models:
+- source: duncanamps
+  name: tracevg2
+  def: subckt
+  hash: ce9d2d64a4e5efa15bbb3218ebbfc4933a445239
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/transformers/tracevg2.lib
+    sha256: 38280c7df7a4fc5f9f569d280bff2fb55fa12b32388324d30e875c3af6f0c876
+    lines:
+      tracevg2: [22, 50]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: tracevg2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: kicad-spice-library
+    name: tracevg2
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: ltwiki
+    name: tracevg2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e
+  - source: ltwiki
+    name: tracevg2
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Trafos.Lib
+      sha256: bf818e682b47fcb29e2c91cd98d0c93c2a1ec13c9d9e8bf7acd755ee0d33507e

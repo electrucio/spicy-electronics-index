@@ -1,0 +1,36 @@
+part: MSS1P3L
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: mss1p3l
+  def: subckt
+  hash: 018ed68630b87356e96f70680b492bb02f95b1fd
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89721/mss1p3l.txt
+    sha256: f3062bdac7ed23d6c8f0f5bf10ed6e4d6e66d40e362ba0e9572a1a7590e964d2
+    lines:
+      mss1p3l: [7, 16]
+    fetched: '2026-09-19'
+    note: 'Schottky, SPICE 3 Models (*.txt): mss1p3l, legd, grd'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: mss1p3l
+  def: subckt
+  hash: c7c5db786cc006a2f378132385d6d658df173513
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishaydiode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+    lines:
+      mss1p3l: [8219, 8228]
+    fetched: '2026-09-21'

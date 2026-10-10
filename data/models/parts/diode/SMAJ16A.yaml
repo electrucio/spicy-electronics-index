@@ -1,0 +1,55 @@
+part: SMAJ16A
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: vishay
+  name: smaj16a
+  def: subckt
+  hash: 1b947a7d530cce12beb3b268dd690fb7339b71e7
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89521/p_smaj16.txt
+    sha256: 97f7747267de1f17e90b736a79c39478b9465ae27bbafaec85b14c2e471cdc5a
+    lines:
+      smaj16a: [17, 59]
+    fetched: '2026-09-19'
+    note: 'TransZorb®TVS, PSpice Models (*.txt): smaj16a, DFMOD, RLMOD, DBDMOD, RBVCMOD'
+  note: pins from comment words
+  copies:
+  - source: microcap12
+    name: smaj16a
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaydiode.lib
+      sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+- source: vishay
+  name: smaj16a
+  def: subckt
+  hash: 00bc5802cd111a25a083378ed8ab9ac861a74533
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89542/smaj16a.txt
+    sha256: 5f3c321c35b81375a8b7a7531af3960404a5d29d2a5f0ccec52bec8800b1d57a
+    lines:
+      smaj16a: [17, 59]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: SMAJ16A
+  def: subckt
+  hash: fea9f330513613d57aecfa1edcbc4e9ad2f6f2f5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Littelfuse_TVS.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: dcd9d3f9fbfb1e09ed0e64872d8efa2d598ed0fa98684cbaa9fa705eb9da652a
+    lines:
+      SMAJ16A: [2213, 2218]
+    fetched: '2026-09-21'

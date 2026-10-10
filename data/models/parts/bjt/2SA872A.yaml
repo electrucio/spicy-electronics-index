@@ -1,0 +1,63 @@
+part: 2SA872A
+kind: bjt
+priority: 3
+group: small_signal_pnp
+models:
+- source: groupsio-ltspice
+  name: 2SA872A
+  def: model
+  hash: 12d3855bd4318874b3cbada5f7f757f8f0929a5d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2SA872A: [928, 928]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2sa872a
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jbipolar.lib
+      sha256: 0918e78e635212ebc891072f11282cbf2e370a4163cd9a0794cfc1a50dddf89a
+- source: ltwiki
+  name: 2SA872
+  def: model
+  hash: 32f49675a5159f2ec826e3dacb6dc77ffa0f50e3
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+    lines:
+      2SA872: [825, 825]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library'
+- source: bordodynov
+  name: 2SA872
+  def: model
+  hash: a1f4ed6529a48d05d36714b4eb2d718cdbc161c2
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2SA872: [884, 884]
+    fetched: '2026-09-14'
+  note: 'same code also in: ltwiki'
+datasheet:
+  url: https://doc.platan.ru/pdf/datasheets/hitachi/2SA872.pdf
+  maker: hitachi
+  doc: 2SA872, 2SA872A Silicon PNP Epitaxial ADE-208-1001 (Z) 1st. Edition
+  date: 2001-03

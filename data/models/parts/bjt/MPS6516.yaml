@@ -1,0 +1,29 @@
+part: MPS6516
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: MPS6516
+  def: model
+  hash: a4843cb1490913f07628f5fc88d060809ca3c9cb
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS6516.t
+    sha256: 126782f21d10ffd342c020498f78018a6a36a3e9865a1ba42684d8ba7d396e15
+    lines:
+      MPS6516: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPS6516
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MPS6516
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b

@@ -1,0 +1,50 @@
+# The two private trees, never committed. Never `git add -f` anything under either.
+#   private_web_spice_models/  vendor model text and symbols: what the site shows in private mode
+#   private_material/          OCR, its map, and everything still in transit
+private_web_spice_models/
+private_material/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Web
+node_modules/
+web/dist
+# built by `make web-data` from data/; never committed
+web/public/data/
+
+# Simulator output
+*.raw
+*.op.raw
+*.log
+*.net.bak
+
+# Secrets and local config
+.env
+.env.*
+config.toml
+*_key.txt
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+
+# Credentials never live in the tree; they belong in ~/.config/spicy-electronics-index/. This is a net under the
+# guard, not a place to keep them: a file matched here is still a file to move out and delete.
+example_decodo.txt
+*_key.txt
+*credential*
+*.env
+# the characterisation records: a release asset per catalogue version (bench/character_release.py)
+data/verification/models/??/

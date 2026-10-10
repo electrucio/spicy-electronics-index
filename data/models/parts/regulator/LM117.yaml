@@ -1,0 +1,140 @@
+part: LM117
+kind: regulator
+priority: 4
+models:
+- source: ltwiki
+  name: Lm117uC
+  def: subckt
+  hash: a2fa940c2a1ea6c928937b1823ca96a4c1003dc9
+  type: SUBCKT
+  pins:
+  - VIN
+  - ADJ
+  - VOUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+    lines:
+      Lm117uC: [755, 827]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ltwiki
+  name: LM117PSp
+  def: subckt
+  hash: 66257c20125dd22b07a015c6f149f3432966e54e
+  type: SUBCKT
+  pins:
+  - IN
+  - ADJ
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+    lines:
+      LM117PSp: [836, 879]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ltwiki
+  name: LM117
+  def: subckt
+  hash: 38cd3196ba6c483cb9dd34cd9ea876335e18464b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      LM117: [9520, 9563]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: LM117HV
+  def: subckt
+  hash: 406f3db6e08d5a5825725e6cbe0a898355c17630
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      LM117HV: [9619, 9718]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: LM117_MC
+  def: subckt
+  hash: d78a58a4abc9f1c93776fe627f609487cdfdf503
+  type: SUBCKT
+  pins:
+  - VIN
+  - ADJ
+  - VOUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/LM117_MC.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 89ab78ffbef8ec8b9c09fca5ccce269ef44ca931805bf25d6cace5f05fdaa263
+    lines:
+      LM117_MC: [1, 67]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/VolReg/LM117_MC.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: f8b84d9c988b7c5524fddfcddb23eb8ad568ddd91546e4e346fb0ecb5366f05c
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: LM117_MC
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM117_MC.sub
+      sha256: 89ab78ffbef8ec8b9c09fca5ccce269ef44ca931805bf25d6cace5f05fdaa263
+  - source: bordodynov
+    name: LM117
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM117.txt
+      sha256: 731daf583599ea19041e20af584012b630ab38f0db70f209dda83bdf3165c38a
+  - source: bordodynov-qspice
+    name: LM117
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/VoltReg/LM117.qsym
+      sha256: a0a5fc86e0f6d0bcaf8466359dcb50350dc7b0bd2ba4c7bf6d710d42d5d1612f
+  - source: bordodynov-qspice
+    name: LM117
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/VoltReg/LM117.qsym
+      sha256: a0a5fc86e0f6d0bcaf8466359dcb50350dc7b0bd2ba4c7bf6d710d42d5d1612f
+  - source: ltwiki
+    name: LM117
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM117.txt
+      sha256: 731daf583599ea19041e20af584012b630ab38f0db70f209dda83bdf3165c38a
+- source: ltwiki
+  name: LM117
+  def: subckt
+  hash: d78a58a4abc9f1c93776fe627f609487cdfdf503
+  type: SUBCKT
+  pins:
+  - VIN
+  - ADJ
+  - VOUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/LM117.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 731daf583599ea19041e20af584012b630ab38f0db70f209dda83bdf3165c38a
+    lines:
+      LM117: [1, 70]
+    fetched: '2026-09-14'
+  note: pins from names

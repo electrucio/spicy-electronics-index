@@ -1,0 +1,43 @@
+part: MMBT5550
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmmbt5550lt1g
+  def: model
+  hash: ae3a009fcc9f3816c6c0fb48bef6db53df2f73a0
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt5550lt1g.lib.lib
+    sha256: f1db44b645596f2dacdfd0f414c9321594cdd10471ca084083335c841cc9fa92
+    lines:
+      Qmmbt5550lt1g: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbt5550lt1g
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: mmbt5550lt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt5550lt1g.sp3.sp3
+      sha256: bce0b9b83c55f0dd75c537d85c2786f29b93ef6cdf62b64df022d7b4c8d73954
+- source: groupsio-ltspice
+  name: MMBT5550
+  def: model
+  hash: 68a2922891eac9f62ad5eaf75c9aa3a16c09729d
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT5550: [3454, 3454]
+    fetched: '2026-09-21'

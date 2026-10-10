@@ -1,0 +1,35 @@
+part: RLY
+kind: relay
+group: non-native
+models:
+- source: bordodynov
+  name: RLY
+  def: subckt
+  hash: e4a632c24f92a3fbaf391b978dd440aeb94ab472
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/relay-custom.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 2097d1abe87250259e98a0b57be8374ed60325a9a71d3206e59e53204163d366
+    lines:
+      RLY: [367, 378]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Relays/RLY.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: b74d4d4738df5c59f68b1c757abeba89e348bdcc9496fab8925309d11675ef76
+  copies:
+  - source: kicad-spice-library
+    name: RLY
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/relay-custom.lib
+      sha256: 2097d1abe87250259e98a0b57be8374ed60325a9a71d3206e59e53204163d366
+  - source: ltwiki
+    name: RLY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/relay-custom.lib
+      sha256: 2097d1abe87250259e98a0b57be8374ed60325a9a71d3206e59e53204163d366

@@ -1,0 +1,87 @@
+part: TTA004B
+kind: bjt
+priority: 2
+group: driver_vas
+models:
+- source: bordodynov-qspice
+  name: TTA004B_BJT
+  def: model
+  hash: a625d7b8e40ec59a91ee40722becdde147cf913e
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      TTA004B_BJT: [327, 358]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: TTA004B
+  def: model
+  hash: ad3c3b8efc62978c119effd42d2aa03f512a2527
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Cabirio-BJTmodels.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: a8397ba50980c5bd73b844e361c9e1071abfaa7024baef57e0c6e3cb631aa876
+    lines:
+      TTA004B: [510, 517]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov-qspice
+    name: TTA004B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: diyaudio
+    name: TTA004B
+    get:
+      url: https://www.diyaudio.com/community/attachments/cabirio-bjtmodels-txt.1435021/
+      sha256: 81cfae0119349f05ef5b6bb9e8d1c7bdd43589abc3499c93eb8eb12b5778f59e
+- source: bordodynov
+  name: TTA004B
+  def: model
+  hash: 96d1553c10e4036ff8ddc21065616f338c175f42
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      TTA004B: [1578, 1578]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: TTA004B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: TTA004B
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: kicad-spice-library
+  name: TTA004B
+  def: model
+  hash: d4dba37e6c0342ec8b3bb1a185f0f51408f0e53a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+    sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+    lines:
+      TTA004B: [1558, 1558]
+    fetched: '2026-09-21'

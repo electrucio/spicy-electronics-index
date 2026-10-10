@@ -1,0 +1,35 @@
+part: DPDT
+kind: relay
+group: non-native
+models:
+- source: bordodynov
+  name: DPDT
+  def: subckt
+  hash: 842d35262e8676aab7574b78af002e266437448e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/DPDT2.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ecc0fa5c4b3ef2cf9ea70ecc3def0bf56b31340556addec6e319a1593205d1fe
+    lines:
+      DPDT: [2, 19]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Relays/DPDT2.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 9a2ce9e71252573ff49a338d054ea0837413d0f2066e35721dee2210d91b0a1c
+  copies:
+  - source: kicad-spice-library
+    name: DPDT
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/DPDT2.sub
+      sha256: ecc0fa5c4b3ef2cf9ea70ecc3def0bf56b31340556addec6e319a1593205d1fe
+  - source: ltwiki
+    name: DPDT
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/DPDT2.sub
+      sha256: ecc0fa5c4b3ef2cf9ea70ecc3def0bf56b31340556addec6e319a1593205d1fe

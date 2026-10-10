@@ -1,0 +1,81 @@
+part: ZXTP08400BFF
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: diodes-inc
+  name: ZXTP08400BFF
+  def: model
+  hash: 252ed99ac79b1cc225cd647584d800364742fc06
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2603/ZXTP08400BFF.spice.txt
+    sha256: 8fa87c9caf85cc3c56de9351d85a90c421ff2a1c5b6f825c167c718d7a6aa095
+    lines:
+      ZXTP08400BFF: [19, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: bordodynov
+    name: ZXTP08400BFF
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: ZXTP08400BFF
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: bordodynov-qspice
+    name: ZXTP08400BFF
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: ZXTP08400BFF
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: ZXTP08400BFF
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: ZXTP08400BFF
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: microcap12
+    name: ZXTP08400BFF
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/zetex.lib
+      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+- source: qspice
+  name: ZXTP08400BFF
+  def: model
+  hash: 30d81195194b431ccbbc6c1c73f1119768b2872c
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      PNP: [2, 2]
+      ZXTP08400BFF: [1210, 1214]
+  copies:
+  - source: bordodynov-qspice
+    name: ZXTP08400BFF
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c

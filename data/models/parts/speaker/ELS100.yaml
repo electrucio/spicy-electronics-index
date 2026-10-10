@@ -1,0 +1,31 @@
+part: ELS100
+kind: speaker
+group: non-native
+models:
+- source: ltwiki
+  name: ELS100
+  def: subckt
+  hash: 7e11c3a3762d4d3dfc409b710b30f25628ee4be1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Audio/Parlantes/Z-imp-freq table/EL_SPEAKERS.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 1ed8233022359bee831cd188cf338ca272f6d2cd1dc3c6ece2f1d628f9e6346a
+    lines:
+      ELS100: [4, 12]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: ELS100
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Audio/Parlantes/Z-imp-freq table/EL_SPEAKERS.lib
+      sha256: 1ed8233022359bee831cd188cf338ca272f6d2cd1dc3c6ece2f1d628f9e6346a
+  - source: ltwiki
+    name: ELS100
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Audio/Parlantes/Z-imp-freq table/EL_SPEAKERS.lib
+      sha256: 1ed8233022359bee831cd188cf338ca272f6d2cd1dc3c6ece2f1d628f9e6346a

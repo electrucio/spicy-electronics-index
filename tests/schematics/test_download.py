@@ -1,0 +1,316 @@
+"""The download stage: what it stores, what it refuses, and what it never asks for twice.
+
+No network: `core.http.get` is replaced by a small server of canned answers that records every URL it
+was asked for, which is how "polite" and "resumable" are asserted here.
+"""
+from __future__ import annotations
+
+import json
+
+import pytest
+
+from spicy_electronics_index.core import config
+from spicy_electronics_index.core.http import Response
+from spicy_electronics_index.core.ledger import Ledger
+from spicy_electronics_index.schematics import download as D
+
+REGISTRY = """
+audiocircuit: {kind: factory, title: AudioCircuit, home_url: 'https://ac.example/', status: active,
+               list: {role: schematic}}
+layouts: {kind: site, title: Layouts, home_url: 'https://lay.example/', status: active,
+          list: {role: layout, figures: true, cdn: 'cdn\\.example$'}}
+later: {kind: site, title: Not yet, home_url: 'https://soon.example/', status: proposed,
+        list: {role: schematic}}
+"""
+
+PDF = b"%PDF-1.4\n" + b"x" * 4000
+GIF = b"GIF89a" + b"x" * 4000
+TINY_GIF = b"GIF89a" + b"x" * 50
+PAGE = b"""<html><body>
+  <a href="https://cdn.example/big/fuzz.png"><img src="https://cdn.example/small/fuzz.png"></a>
+  <img src="https://cdn.example/img/site-logo.png">
+  <img src="https://elsewhere.example/img/other.png">
+  <img src="/local/schematic.gif">
+</body></html>"""
+PNG = b"\x89PNG\r\n\x1a\n" + b"x" * 9000
+
+
+class Server:
+    """Canned answers by URL, and the record of what was asked."""
+
+    def __init__(self, answers):
+        self.answers = answers
+        self.asked: list[str] = []
+
+    def get(self, url, **kw):
+        self.asked.append(url)
+        answer = self.answers.get(url)
+        if answer is None:
+            return Response(404, url)
+        return answer(url) if callable(answer) else answer
+
+
+@pytest.fixture
+def site(tmp_path, monkeypatch):
+    """A registry, a URL list per source, and a private root, all under tmp_path."""
+    data = tmp_path / "data"
+    (data / "schematics").mkdir(parents=True)
+    (data / "schematics" / "sources.yaml").write_text(REGISTRY, encoding="utf-8")
+    monkeypatch.setattr(config, "PUBLIC_DATA", data)
+    monkeypatch.setenv("SEI_MATERIAL", str(tmp_path / "material"))
+    (tmp_path / "material" / "source_lists").mkdir(parents=True)
+    return data
+
+
+def write_list(source: str, assets: list[dict]) -> None:
+    with open(config.source_list(source), "w", encoding="utf-8") as f:
+        for a in assets:
+            f.write(json.dumps(a) + "\n")
+
+
+def serve(monkeypatch, answers) -> Server:
+    server = Server(answers)
+    monkeypatch.setattr(D.http, "get", server.get)
+    return server
+
+
+def ledger(source: str) -> Ledger:
+    return Ledger(config.schematics_state(source))
+
+
+def test_a_listed_file_is_stored_under_the_name_the_ocr_tree_expects(site, monkeypatch):
+    url = "https://ac.example/downloads/fender/Bandmaster-sch.pdf"
+    write_list("audiocircuit", [{"url": url, "title": "Bandmaster", "kind": "schematic"}])
+    serve(monkeypatch, {url: Response(200, url, "application/pdf", PDF)})
+
+    D.run("audiocircuit", log=lambda *a: None)
+
+    stored = config.downloads("audiocircuit") / "pdf" / D.safe_name(url, "pdf")
+    assert stored.read_bytes() == PDF
+    row = ledger("audiocircuit").get(url)
+    assert (row["role"], row["type"], row["http"], row["bytes"]) == ("schematic", "pdf", "200", str(len(PDF)))
+    assert row["sha256"] and row["download_at"] and not row["skip_reason"]
+    assert row["url"] == ""                      # the key is the URL; the column stays empty, as everywhere
+
+
+def test_the_second_run_asks_for_nothing(site, monkeypatch):
+    url = "https://ac.example/a.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "schematic"}])
+    serve(monkeypatch, {url: Response(200, url, "application/pdf", PDF)})
+    D.run("audiocircuit", log=lambda *a: None)
+
+    again = serve(monkeypatch, {url: Response(200, url, "application/pdf", PDF)})
+    counts = D.run("audiocircuit", log=lambda *a: None)
+    assert again.asked == [] and counts["already had"] == 1
+
+
+def test_a_refusal_that_will_not_change_is_recorded_once(site, monkeypatch):
+    url = "https://ac.example/gone.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "schematic"}])
+    serve(monkeypatch, {url: Response(404, url)})
+    D.run("audiocircuit", log=lambda *a: None)
+    assert ledger("audiocircuit").get(url)["skip_reason"] == "http 404"
+
+    again = serve(monkeypatch, {url: Response(404, url)})
+    D.run("audiocircuit", log=lambda *a: None)
+    assert again.asked == []                     # a 404 is asked once, not on every run
+
+
+def test_a_transient_failure_is_left_for_the_next_run(site, monkeypatch):
+    url = "https://ac.example/busy.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "schematic"}])
+    serve(monkeypatch, {url: Response(503, url, why="gave up after 4 attempts (503)")})
+    D.run("audiocircuit", log=lambda *a: None)
+    assert ledger("audiocircuit").get(url) is None              # nothing stamped, nothing skipped
+
+    again = serve(monkeypatch, {url: Response(200, url, "application/pdf", PDF)})
+    D.run("audiocircuit", log=lambda *a: None)
+    assert again.asked == [url] and ledger("audiocircuit").get(url)["type"] == "pdf"
+
+
+def test_robots_is_recorded_as_the_reason(site, monkeypatch):
+    url = "https://ac.example/private/x.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "schematic"}])
+    serve(monkeypatch, {url: Response(0, url, why="disallowed by robots.txt")})
+    D.run("audiocircuit", log=lambda *a: None)
+    assert ledger("audiocircuit").get(url)["skip_reason"] == "robots.txt"
+
+
+def test_a_page_served_where_a_pdf_was_promised_is_not_stored(site, monkeypatch):
+    url = "https://ac.example/soft404.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "schematic"}])
+    serve(monkeypatch, {url: Response(200, url, "text/html", b"<html>not found</html>")})
+    D.run("audiocircuit", log=lambda *a: None)
+    assert ledger("audiocircuit").get(url)["skip_reason"] == "not the declared file type"
+    assert not (config.downloads("audiocircuit") / "html").exists()
+
+
+def test_a_layout_post_brings_its_drawing_from_the_blog_cdn(site, monkeypatch):
+    post = "https://lay.example/2023/09/thorpy-dane.html"
+    write_list("layouts", [{"url": post, "title": "Thorpy FX The Dane", "kind": "layout"}])
+    server = serve(monkeypatch, {
+        post: Response(200, post, "text/html", PAGE),
+        "https://cdn.example/big/fuzz.png": Response(200, "https://cdn.example/big/fuzz.png", "image/png", PNG),
+        "https://cdn.example/small/fuzz.png": Response(200, "https://cdn.example/small/fuzz.png", "image/png", TINY_GIF),
+        "https://cdn.example/img/site-logo.png": Response(200, "https://cdn.example/img/site-logo.png", "image/png", PNG),
+        "https://lay.example/local/schematic.gif": Response(200, "https://lay.example/local/schematic.gif", "image/gif", GIF),
+    })
+    D.run("layouts", log=lambda *a: None)
+
+    led = ledger("layouts")
+    assert led.get(post)["type"] == "html" and led.get(post)["role"] == "layout"
+    assert led.get("https://cdn.example/big/fuzz.png")["type"] == "png"          # the full-size drawing
+    assert led.get("https://lay.example/local/schematic.gif")["type"] == "gif"   # and the page's own image
+    assert "https://elsewhere.example/img/other.png" not in server.asked         # another site's image is not ours
+    assert "https://cdn.example/img/site-logo.png" not in server.asked           # furniture is never fetched
+    assert led.get("https://cdn.example/small/fuzz.png")["skip_reason"] == "small image"
+
+
+def test_a_source_that_is_not_active_is_refused(site, monkeypatch):
+    write_list("later", [{"url": "https://soon.example/a.pdf", "kind": "schematic"}])
+    serve(monkeypatch, {})
+    with pytest.raises(SystemExit, match="set it to active"):
+        D.run("later", log=lambda *a: None)
+
+
+def test_dry_run_touches_nothing(site, monkeypatch):
+    url = "https://ac.example/a.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "schematic"}])
+    server = serve(monkeypatch, {url: Response(200, url, "application/pdf", PDF)})
+    counts = D.run("audiocircuit", dry=True, log=lambda *a: None)
+    assert server.asked == [] and counts["would fetch"] == 1
+    assert not config.schematics_state("audiocircuit").exists()
+
+
+BLOG = b"""<html><body>
+  <a href="https://cdn.example/img/b/x/s1008/Dane.png"><img src="https://cdn.example/img/b/x/s320/Dane.png"></a>
+  <img src="https://cdn.example/img/b/x/w72-h72-p-k-no-nu/AnotherPost.png">
+</body></html>"""
+
+
+def test_a_preview_and_a_neighbour_s_thumbnail_are_not_the_drawing(site, monkeypatch):
+    """Blogger serves the same file at several sizes and shows a strip of other posts' thumbnails.
+    Only the full-size file of this post is worth a request."""
+    post = "https://lay.example/2023/01/dane.html"
+    write_list("layouts", [{"url": post, "kind": "layout"}])
+    big = "https://cdn.example/img/b/x/s1008/Dane.png"
+    server = serve(monkeypatch, {
+        post: Response(200, post, "text/html", BLOG),
+        big: Response(200, big, "image/png", PNG),
+    })
+    D.run("layouts", log=lambda *a: None)
+
+    assert server.asked == [post, big]
+    assert ledger("layouts").get(big)["type"] == "png"
+
+
+def test_detaching_hands_the_work_over_and_does_none_of_it(site, monkeypatch):
+    """The launcher lives in core.jobs; what matters here is what this stage hands it."""
+    handed = {}
+    monkeypatch.setattr(D, "detach", lambda module, args, name: handed.update(module=module, args=args, name=name) or 999)
+    monkeypatch.setattr(D, "run", lambda *a, **k: pytest.fail("the parent must not download anything"))
+
+    assert D.main(["--source", "tagboard", "--source", "dirtbox", "--detach"]) == 0
+    assert handed["name"] == "download_tagboard-dirtbox"
+    assert handed["module"] == D.MODULE
+    assert "--detach" not in handed["args"]                  # or the child would detach again, forever
+
+
+def test_the_size_floor_is_for_images_and_not_for_documents(site, monkeypatch):
+    """A truncated PDF is not a small image: it is a document the source is serving badly."""
+    url = "https://ac.example/truncated.pdf"
+    write_list("audiocircuit", [{"url": url, "kind": "figure"}])
+    tiny_pdf = b"%PDF-1.2\n" + b"x" * 200
+    serve(monkeypatch, {url: Response(200, url, "application/pdf", tiny_pdf)})
+
+    D.run("audiocircuit", log=lambda *a: None)
+    row = ledger("audiocircuit").get(url)
+    assert row["type"] == "pdf" and not row["skip_reason"]      # kept, and the OCR stage will say what it holds
+
+
+def test_a_vector_drawing_is_refused_by_name(site, monkeypatch):
+    url = "https://ac.example/index.php?pf=smile.svg"
+    write_list("audiocircuit", [{"url": url, "kind": "figure"}])
+    serve(monkeypatch, {url: Response(200, url, "image/svg+xml", b"<svg viewBox='0 0 32 32'></svg>")})
+
+    D.run("audiocircuit", log=lambda *a: None)
+    assert "svg" in ledger("audiocircuit").get(url)["skip_reason"]
+
+
+def test_a_run_says_what_the_list_holds_that_it_did_not_fetch(site, monkeypatch):
+    """A list is read once, at the start, and audiocircuit's grew to three times its size meanwhile."""
+    write_list("audiocircuit", [{"url": f"https://ac.example/{n}.pdf"} for n in range(3)])
+    serve(monkeypatch, {f"https://ac.example/{n}.pdf": Response(200, f"https://ac.example/{n}.pdf",
+                                                                "application/pdf", PDF) for n in range(3)})
+    said = []
+    out = D.run("audiocircuit", limit=1, log=said.append)
+
+    assert out["left"] == 2
+    assert "2 of the list still to fetch" in said[-1]
+
+
+def test_a_file_over_the_cap_is_refused_once_and_not_fetched_again(site, monkeypatch):
+    """A file does not shrink. Finding out costs the cap in bytes, so it is asked for once: six
+    radiomanual scans were 720 MB a pass, downloaded to the limit and thrown away every run."""
+    url = "https://ac.example/huge.pdf"
+    write_list("audiocircuit", [{"url": url}])
+    over = Response(200, url, "application/pdf", b"", why="larger than max_bytes")
+    server = serve(monkeypatch, {url: over})
+
+    D.run("audiocircuit", log=lambda *a: None)
+    assert ledger("audiocircuit").get(url)["skip_reason"] == "larger than 120 MB"
+
+    D.run("audiocircuit", log=lambda *a: None)
+    assert server.asked == [url]            # asked for once, ever
+
+
+def test_a_source_that_needs_a_gentler_pace_carries_its_own(site, monkeypatch):
+    """Renesas answered a bot challenge at one request every three seconds. The pace belongs with the
+    host, not with whoever types the command."""
+    url = "https://ac.example/a.pdf"
+    write_list("audiocircuit", [{"url": url}])
+    serve(monkeypatch, {url: Response(200, url, "application/pdf", PDF)})
+    (site / "schematics" / "sources.yaml").write_text(
+        REGISTRY.replace("list: {role: schematic}", "list: {role: schematic, delay: 15}"), encoding="utf-8")
+
+    real, seen = D.Downloader, {}
+
+    def spy(*a, **k):
+        seen.update(k)
+        return real(*a, **k)
+
+    monkeypatch.setattr(D, "Downloader", spy)
+    D.run("audiocircuit", log=lambda *a: None)
+    assert seen["delay"] == 15                               # the registry's, unasked
+
+    D.run("audiocircuit", delay=1, log=lambda *a: None)
+    assert seen["delay"] == 1                                # and the command still wins when it asks
+
+
+def test_a_listed_file_marked_skip_is_recorded_and_never_asked_for(site, monkeypatch):
+    """A list may name a file to record and never fetch — a program archive that goes with an article."""
+    zip_url, pdf_url = "https://ac.example/TR2601P1S1.zip", "https://ac.example/p037.pdf"
+    write_list("audiocircuit", [{"url": zip_url, "kind": "archive", "skip": "archive, not opened"},
+                                {"url": pdf_url, "kind": "sample"}])
+    server = serve(monkeypatch, {pdf_url: Response(200, pdf_url, "application/pdf", PDF)})
+
+    counts = D.run("audiocircuit", log=lambda *a: None)
+
+    assert server.asked == [pdf_url]                          # the archive cost no request
+    row = ledger("audiocircuit").get(zip_url)
+    assert (row["role"], row["skip_reason"]) == ("archive", "archive, not opened")
+    assert counts["listed, not fetched"] == 1 and counts["pdf"] == 1
+
+
+def test_a_drawing_kept_as_a_bmp_is_stored_and_a_text_that_starts_bm_is_not(site, monkeypatch):
+    """hifisonix drew the e-Amp in BMPs. "BM" alone is two letters of any text: the header length decides."""
+    bmp_url, text_url = "https://ac.example/e-Amp-Circuit-Diagram.bmp", "https://ac.example/BMW.bin"
+    write_list("audiocircuit", [{"url": bmp_url, "kind": "figure"}, {"url": text_url, "kind": "figure"}])
+    bmp = b"BM" + (9054).to_bytes(4, "little") + b"\0" * 8 + (40).to_bytes(4, "little") + b"x" * 9000
+    serve(monkeypatch, {bmp_url: Response(200, bmp_url, "image/bmp", bmp),
+                        text_url: Response(200, text_url, "application/octet-stream", b"BMW 2002 wiring" + b"x" * 4000)})
+
+    D.run("audiocircuit", log=lambda *a: None)
+    led = ledger("audiocircuit")
+    assert led.get(bmp_url)["type"] == "bmp" and not led.get(bmp_url)["skip_reason"]
+    assert led.get(text_url)["skip_reason"] == "unknown file type"

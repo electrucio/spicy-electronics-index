@@ -1,0 +1,69 @@
+part: TDA2003
+kind: ic-audio
+priority: 3
+models:
+- source: bordodynov
+  name: TDA2003
+  def: subckt
+  hash: b5edd1284a8c79e9b2ff1f238fe4a73573434f52
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/TDA2003.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 182acfb1091db9e29b5e9a6ec43a1a10bda0c8dd8d916aa71c2a83502cf9a10e
+    lines:
+      TDA2003: [10, 76]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/miscellaneous/TDA2003.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 104f2598cedf6a006042dd7fec8276fb86aa03f6c61e4bd154e1a639df980e13
+  copies:
+  - source: ltwiki
+    name: TDA2003
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TDA2003.lib
+      sha256: 182acfb1091db9e29b5e9a6ec43a1a10bda0c8dd8d916aa71c2a83502cf9a10e
+- source: kicad-spice-library
+  name: TDA2003
+  def: subckt
+  hash: fe3106a44a6efe148e48d8854dda1e22837f16ca
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  deps:
+  - MOST_NEG
+  - MOST_POS
+  - SwingLimiter
+  - OpAmpConfigRails
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/TDA2003.lib
+    sha256: 275faa1abef302687063cf3e2989f4219b1d40a8d0917f0f7a15138720ad35d0
+    lines:
+      MOST_NEG: [65, 67]
+      MOST_POS: [61, 63]
+      OpAmpConfigRails: [40, 59]
+      SwingLimiter: [69, 74]
+      TDA2003: [10, 38]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.st.com/resource/en/datasheet/tda2003.pdf
+  maker: STMicroelectronics
+  doc: TDA2003, October 1998 (10 pages)
+  date: 1998-10

@@ -1,0 +1,150 @@
+part: MMBT4403
+kind: bjt
+priority: 3
+group: small_signal_pnp
+models:
+- source: onsemi
+  name: MMBT4403
+  def: model
+  hash: 2f863c3fe732ed1e1c37a7a88b6bbbd319b5cc4f
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt4403.lib
+    sha256: 4002f2e08cfee487f47a23f47222eb737ecf990bfefe639d04ac0c31ee57756f
+    lines:
+      MMBT4403: [5, 59]
+    fetched: '2026-09-14'
+    note: 'model(s): MMBT4403 (PNP .model)'
+  copies:
+  - source: microcap12
+    name: MMBT4403
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: Qmmbt4403lt1
+  def: model
+  hash: 277c566a0c43ad30da763f3acb52b29a7cc32905
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Qmmbt4403lt1: [140786, 140796]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: mmbt4403lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: microcap12
+    name: Qmmbt4403wt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MMBT4403
+  def: model
+  hash: 17f6ed2e15fee3e25add210034fc7438b2b0688a
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBT4403: [924, 928]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MMBT4403T
+  def: model
+  hash: aee925e8135ea94ab3974cf7d6b91551f24ae98d
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBT4403T: [931, 935]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MMBT4403
+  def: model
+  hash: 44479d7d0682461d124f237a9d104ae6b0c24bae
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      MMBT4403: [365, 369]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT4403
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: qspice
+  name: MMBT4403T
+  def: model
+  hash: 243f5c42d35b2a622612fc2020f6ef977a8e78da
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      MMBT4403T: [371, 375]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT4403T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: duncanamps
+  name: QMMBT4403
+  def: model
+  hash: 513e5d4b25c17ed26df6cf104b20832449985893
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMMBT4403: [499, 501]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBT4403
+  def: model
+  hash: e18df6ced86f6c861ae9576d0a1f5db2afaa2e22
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT4403: [3449, 3449]
+    fetched: '2026-09-21'

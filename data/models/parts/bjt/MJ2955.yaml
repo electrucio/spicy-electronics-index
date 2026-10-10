@@ -1,0 +1,80 @@
+part: MJ2955
+kind: bjt
+priority: 1
+group: power_output
+models:
+- source: onsemi
+  name: Qmj2955
+  def: model
+  hash: c2b38a95b5a0dfbfa5ad8bc94da785000c8c3c1b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mj2955.lib
+    sha256: 4b3a9c91bc30ac04d6df4221a3e83697a3f6775ec5bbb71b23886ee00f36477e
+    lines:
+      Qmj2955: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: groupsio-ltspice
+    name: MJ2955
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: microcap12
+    name: Qmj2955
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MJ2955
+  def: model
+  hash: c3f807ead545bad1f619c49116e4f7dbcc9f8e80
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJ2955: [3273, 3277]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MJ2955A
+  def: model
+  hash: f80ba7d4a98f65a3e1834e6f64b47b5e4c4a9c7e
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJ2955A: [3279, 3287]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MJ2955
+  def: subckt
+  hash: 252cb1c093705892be9021eb9bdc03c681c6c05f
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      MJ2955: [132, 142]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/2n3055-d.pdf
+  maker: onsemi
+  doc: 2N3055/D Rev. 7 (October 2024)

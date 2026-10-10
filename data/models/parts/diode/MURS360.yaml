@@ -1,0 +1,75 @@
+part: MURS360
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: Dmurs360t3
+  def: model
+  hash: c8ca6724c0c27fb4243603d3e7545228edf7adec
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/murs360t3.lib
+    sha256: afc0c8a7623f90d48107f70fc9ae09895d5463a12df133e4c5ea3acd0e2a4885
+    lines:
+      Dmurs360t3: [14, 18]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Dmurs360t3
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: MURS360BT3G
+  def: model
+  hash: 8ccc5b91bdad590958bdd58373217ab78094feba
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/murs360bt3g%20(spice%20model).lib
+    sha256: 901c4a11a73c9db47a65db3c80db56fd3387027ad8842f23d2d9b8f1b5eac0a4
+    lines:
+      MURS360BT3G: [7, 11]
+    fetched: '2026-09-19'
+- source: vishay
+  name: murs360
+  def: model
+  hash: b62144fda307186ced29e14b1a6d4cde744925e1
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89905/murs360.txt
+    sha256: 8240fc8f5699fb22569b9e7e2fc2951c87ef3fda9b3066ed4754b8fd2b4b2a94
+    lines:
+      murs360: [7, 10]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: murs360
+  def: model
+  hash: 44f8680e3ebae0a866b5f3ba2a87dbe9e6c92060
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishaydiode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+    lines:
+      murs360: [8294, 8297]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: murs360t3_ON
+  def: model
+  hash: 16dcf1b5eaed0a8bb2bd808949ae38140adca8c0
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/onsemi.lib
+    sha256: ab36300f668bd5cba477d9d9d5c9f2cd9b6cf3535b5988bf1643121ac05899d4
+    lines:
+      murs360t3_ON: [3314, 3318]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

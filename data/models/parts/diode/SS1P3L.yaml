@@ -1,0 +1,58 @@
+part: SS1P3L
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: ss1p3l
+  def: subckt
+  hash: 951f1a3f43b5badc71f4d8dce747aca8b3777342
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89505/p_ss1p3l.txt
+    sha256: d75ac45179ffc803d8aec77f41a5cdc59db1d6022da69facba79c05b6b0d174b
+    lines:
+      ss1p3l: [7, 16]
+    fetched: '2026-09-19'
+    note: 'Schottky, PSpice Models (*.txt): ss1p3l, legd, grd'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: ss1p3l
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/SS1P3L.txt
+      sha256: 7cafc924a31e64334b6e48716a1c01cc258d41825c9c0ef572d456d9127a62e1
+  - source: ltwiki
+    name: ss1p3l
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/SS1P3L.txt
+      sha256: 7cafc924a31e64334b6e48716a1c01cc258d41825c9c0ef572d456d9127a62e1
+  - source: microcap12
+    name: ss1p3l
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaydiode.lib
+      sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+- source: vishay
+  name: ss1p3l
+  def: subckt
+  hash: 8f4b130a439d859f468122d391070413e848e714
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89504/ss1p3l.txt
+    sha256: 1c766631cdf5c1fb4da7bf05b9c709da25fff4d162a386ea40193d010a4037f3
+    lines:
+      ss1p3l: [7, 16]
+    fetched: '2026-09-19'
+    note: 'Schottky, SPICE 3 Models (*.txt): ss1p3l, legd, grd'
+  note: pins from default order (unverified)

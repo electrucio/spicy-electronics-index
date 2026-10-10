@@ -1,0 +1,40 @@
+part: MC7805
+kind: regulator
+priority: 4
+models:
+- source: ltwiki
+  name: MC7805C
+  def: subckt
+  hash: 562afd1532289be1fe5684d83395a04d9abd2c1d
+  type: SUBCKT
+  deps:
+  - x_LM78XX
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      MC7805C: [6655, 6658]
+      x_LM78XX: [4741, 4845]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MC7805C
+  def: subckt
+  hash: ea87234536fdb978afa3da11fb1ace9511af352e
+  type: SUBCKT
+  pins:
+  - INPUT
+  - OUTPUT
+  - GROUND
+  deps:
+  - x_LM78XX
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+    sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+    lines:
+      MC7805C: [1761, 1764]
+      x_LM78XX: [1632, 1736]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from names

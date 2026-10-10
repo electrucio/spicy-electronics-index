@@ -1,0 +1,47 @@
+part: PESD15VL1BA
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: nexperia
+  name: PESD15VL1BA
+  def: subckt
+  hash: 17374eb6b3ca79d57c09469c4652997ca405017e
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD15VL1BA.txt
+    sha256: 25eab167cd9bfb44706f145adc4d59f671dca8fa7ff2eb9424898925f7d8299d
+    lines:
+      PESD15VL1BA: [32, 66]
+    fetched: '2026-09-19'
+    note: 'PESD15VL1BA: PESD15VL1BA, DIODE1, DIODE2'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: PESD15VL1BA
+  def: subckt
+  hash: 46e978b4660fad16331b50d84c9c5881e65c1945
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      PESD15VL1BA: [2508, 2523]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: PESD15VL1BA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD15VL1BA.PRM
+      sha256: f5398b4623c1ec418012a8bd0abe9d8e775fd10416977055e357d0dd8b3cadb1

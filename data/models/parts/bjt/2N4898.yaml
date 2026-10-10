@@ -1,0 +1,32 @@
+part: 2N4898
+kind: bjt
+priority: 2
+group: driver_vas
+models:
+- source: central-semi
+  name: 2N4900
+  def: model
+  hash: 66b97b57c43c07da2a17cf2f44538e13c4aae99a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N4900.LIB
+    sha256: bee8c822ff1f1341255b08b68553590ebea1192cff6393b31a7796af8f855e7d
+    lines:
+      2N4900: [24, 49]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N4900, not of 2N4898; equivalence declared in catalog/wanted.yaml (see its
+    note)'
+  copies:
+  - source: microcap12
+    name: 2N4900
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+datasheet:
+  url: https://archive.org/download/bitsavers_motoroladaPowerDeviceData_75404386/1978_Motorola_Power_Device_Data.pdf
+  maker: motorola
+  doc: Motorola Power Device Data (1978), 2N4898 thru 2N4900 pages 4-92..4-95 = book PDF pages 137-140;
+    local PDF = those 4 pages (book sha256 e30f789aca603bb78fd2eadddb4b54ff77a180b5f44cfbbaacfe062a9ef68232)
+  date: 1978

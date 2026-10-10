@@ -1,0 +1,51 @@
+part: TS922
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: TS922_ST
+  def: subckt
+  hash: 1c8495dae62174af73735079df81e3cd2a82e253
+  type: SUBCKT
+  pins:
+  - INN
+  - OUT
+  - INP
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/stmicro.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 8b10b5822cbfd368b6a77b5f8ab8c41c191aef0d5459ab81e192ea85054beec6
+    lines:
+      TS922_ST: [2305, 2374]
+    fetched: '2026-09-21'
+  note: pins from numbered connections table
+  copies:
+  - source: kicad-spice-library
+    name: TS922_ST
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/stmicro.lib
+      sha256: 1bc5bba150b91fb1bdf69c3ffa1deb78a4f08951827cad399705cdc2a9ab5e9a
+- source: kicad-spice-library
+  name: TS922
+  def: subckt
+  hash: cf4b2102a7a0163e8688e203040e30f774520a6d
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS3.LIB
+    sha256: 43d6442cf4f954c731c32333e1290a613b316856cea1e0649699d1dcd22e0cf9
+    lines:
+      TS922: [2806, 2880]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

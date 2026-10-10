@@ -1,0 +1,49 @@
+part: IRF9132
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: IRF9132
+  def: model
+  hash: fb15e5ec07f1c39c03e35a3c9d4be90a2bdbbfcb
+  type: PMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRF9132: [747, 751]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRF9132
+  def: model
+  hash: c8778e6ac34338bffdfbe5fa17471da824e83cd2
+  type: PMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF9132: [1651, 1654]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF9132
+  def: subckt
+  hash: e35ff3ca1c266c04a8d3c4cb8f9fdf3ce37b3f41
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS2.LIB
+    sha256: 29782c795f27c0f4133dea75e4a80c7985135f8ddc6d7392134bfac58a00ee10
+    lines:
+      IRF9132: [3392, 3415]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

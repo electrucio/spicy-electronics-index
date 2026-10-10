@@ -1,0 +1,49 @@
+part: 7918CKC
+kind: regulator
+priority: 2
+models:
+- source: groups-io
+  name: LM7918
+  def: subckt
+  hash: 0cbc16a7ef380f205aa370fb6e3f523ecccb18a4
+  type: SUBCKT
+  deps:
+  - LM7909-24
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Linear%20Regulators/LM79xxTest.zip
+    member: LM79xx.txt
+    archive_sha256: 05d418b9357d4598efe46408faeaf1221712b08624021d1bcb4d34cb8ee4254f
+    sha256: e82dde2bbece4b3881dfdbe1e9c34ef93a64e6190a0f5f2502ea17ac1c1d7b46
+    lines:
+      LM7909-24: [132, 192]
+      LM7918: [58, 61]
+    fetched: '2026-10-10'
+  note: found under the alias LM7918
+- source: bordodynov
+  name: LM7918
+  def: subckt
+  hash: 1df5996d298c9a642a2134d9ade908d546314cfd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/regulators.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
+    lines:
+      LM7918: [1018, 1099]
+    fetched: '2026-09-21'
+  note: found under the alias LM7918
+  copies:
+  - source: kicad-spice-library
+    name: LM7918
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/regulators.lib
+      sha256: 0b15463dadbf7c99cb3692aa563c298dd2a488e40122b87c0094158001d08f4c
+  - source: ltwiki
+    name: LM7918
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2

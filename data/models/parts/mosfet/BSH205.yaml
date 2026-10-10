@@ -1,0 +1,102 @@
+part: BSH205
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: microcap12
+  name: BSH205_PH
+  def: subckt
+  hash: 2228f106465b326cfbde5072543efa9c6ada5959
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_mos.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: d27a8c869acadbdfd055eba6519c0c67fbcfdf5fd4550c2f8b4fb6ae44b6739a
+    lines:
+      BSH205_PH: [221, 242]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: BSH205
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PMOS_Philips.lib
+      sha256: ddd5efafd062e94ad879688bea4de9115bf23caaa761c0ba40ab2e63e3458a45
+  - source: kicad-spice-library
+    name: BSH205
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/PMOS_Philips.lib
+      sha256: ddd5efafd062e94ad879688bea4de9115bf23caaa761c0ba40ab2e63e3458a45
+  - source: ltwiki
+    name: BSH205
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PMOS_Philips.lib
+      sha256: ddd5efafd062e94ad879688bea4de9115bf23caaa761c0ba40ab2e63e3458a45
+  - source: ltwiki
+    name: BSH205
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/PMOSFET/BSH205.PRM
+      sha256: 2d7143ee03041e75b33f5ae5421e727a5e9c0bc35704db116a1b6df01aeeb0a6
+  - source: kicad-spice-library
+    name: BSH205_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_mos.lib
+      sha256: 795bf5362d9c9ce1e5b504e78b48671614a7585f75d3533c2585557571d04168
+  - source: ltwiki
+    name: BSH205/PLP
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/phil_fet.lib
+      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+  - source: ltwiki
+    name: BSH205/PLP
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/FET/phil_fet.lib
+      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+- source: ltwiki
+  name: BSH205/PLP
+  def: subckt
+  hash: 2228f106465b326cfbde5072543efa9c6ada5959
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/phil_fet.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+    lines:
+      BSH205/PLP: [1692, 1713]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: BSH205_PH
+  def: subckt
+  hash: 2228f106465b326cfbde5072543efa9c6ada5959
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_mos.lib
+    sha256: 795bf5362d9c9ce1e5b504e78b48671614a7585f75d3533c2585557571d04168
+    lines:
+      BSH205_PH: [221, 242]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

@@ -1,0 +1,138 @@
+part: AD8541
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8541
+  def: subckt
+  hash: 538e4440296a5424148b0b570162cda23d893360
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8541.cir?modelType=spice-models
+    sha256: 9a4420e5824a32120398effe6ebe0c6cd43209f163d18f731687f8691c4fdb92
+    lines:
+      AD8541: [31, 121]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: AD8541/AD
+  def: subckt
+  hash: eb5adde8bd1464642e5b0c8a13c0ff42c7a0a330
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD8541/AD: [32807, 32890]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8541
+  def: subckt
+  hash: 9d1aca06ab1ba5585a76557a0c46ce9315346701
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - OP160
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+    lines:
+      AD8541: [35300, 35414]
+      OP160: [35435, 35544]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD8541
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: kicad-spice-library
+    name: AD8541
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD8541
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+- source: microcap12
+  name: AD8541_AD
+  def: subckt
+  hash: d42b94ab05df4c74e720b769c2102a79ef900648
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8541_AD: [1365, 1448]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8541_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: bordodynov
+  name: AD8541
+  def: subckt
+  hash: 67b55622f678c8ea3f2ac3ce6afbb9f2aa3e22e2
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      AD8541: [3570, 3684]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/AD8541.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 114c99e25946a2b928667fe49f4dd3a3382f0adb515ea6d74a0f7853d02fa02d
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8541
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: AD8541
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

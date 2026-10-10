@@ -1,0 +1,146 @@
+part: BCM857
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: microcap12
+  name: BCM857BV
+  def: subckt
+  hash: 83194a9d868c4aad9b11eedd71c22f53b84ed607
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BCM857BV: [288, 334]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BCM857BS
+  def: subckt
+  hash: 4a9e940380d378c666b9c2d173512d28212eb140
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_complex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 54753ca5ae9f13c277d26074a3a93f34627ecb135ebd2a3db7f69d41f71f5ff1
+    lines:
+      BCM857BS: [101, 147]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: BCM857DS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_complex.lib
+      sha256: 54753ca5ae9f13c277d26074a3a93f34627ecb135ebd2a3db7f69d41f71f5ff1
+- source: bordodynov
+  name: BCM857BS
+  def: subckt
+  hash: 2508379ef3c2a09515ce51e5fdf2fd52e897f86e
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  deps:
+  - Q2
+  - Rb
+  - Q1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BCM857BS: [1320, 1328]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/BCM857BS.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: aad8de76435703d7304de3f6c37be0929163147d8dcafb6f1feb1da3fc7a40eb
+  copies:
+  - source: kicad-spice-library
+    name: BCM857BS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: BCM857BS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+  - source: ltwiki
+    name: BCM857BV
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov
+  name: BCM857BV
+  def: subckt
+  hash: 2508379ef3c2a09515ce51e5fdf2fd52e897f86e
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  deps:
+  - Q2
+  - Rb
+  - Q1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BCM857BV: [1330, 1338]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/BCM857BV.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 614e04f10f37d8a8b4990c3d420103b7183f71540911c8578459e7714b97544a
+  note: 'same code also in: ltwiki'
+- source: ltwiki
+  name: bcm857bs
+  def: model
+  hash: c854f626de8b89d228123dd4cd471423d85211ea
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/Amplifier_classA_and_AB/models.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: b7a1e9b31a8dde47f8de8b4e81ee13a4d4d5d57f59a29ef1c175e0595ba418ae
+    lines:
+      bcm857bs: [1, 1]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: bcm857bs
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/AmpliferZoutCurrentAC/models.lib
+      sha256: 68455c852f18e43fef0ad6e4f13d356c2b0c258617469256c2e8102798ad8941

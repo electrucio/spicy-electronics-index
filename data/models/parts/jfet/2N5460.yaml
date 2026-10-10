@@ -1,0 +1,384 @@
+part: 2N5460
+kind: jfet
+priority: 3
+group: p_channel
+models:
+- source: onsemi
+  name: J2N5460
+  def: model
+  hash: d9d22c92a4c7339a02c790b7ed983e773595d860
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n5460.lib
+    sha256: 3ba90e12d1a9c1d302a0a2e3e8da2f7a9fa0da681154dd4364f2c0566aa16dcb
+    lines:
+      J2N5460: [5, 23]
+    fetched: '2026-09-14'
+    note: 'model(s): J2N5460 (PJF .model)'
+  copies:
+  - source: microcap12
+    name: J2N5460
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: interfet
+  name: 2N5460-SCX
+  def: model
+  hash: f96d9be5b3632557b64774f924cab116d4ef45ce
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      2N5460-SCX: [89, 89]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: interfet
+  name: J2N5460-GEN
+  def: model
+  hash: 9a60877dc6f5b8fa8bb1b1e850fa0408fb6a7589
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      J2N5460-GEN: [334, 334]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: interfet
+  name: 2N5460-H
+  def: model
+  hash: c255af41d3ccdefd026e767333117a164034b300
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      2N5460-H: [874, 874]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: ltspice-native
+  name: 2N5460
+  def: model
+  type: PJF
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.jft
+    sha256: 93ae8433a9412e96e81071b65d521b7f31dcb2c2f3fce714456b73586230bea0
+    lines:
+      2N5460: [24, 24]
+  note: 'same code also in: bordodynov, kicad-spice-library, ltwiki'
+- source: microcap12
+  name: 2N5460
+  def: model
+  hash: ec292f6e87e99a04346d0939cedd7450d59ff1eb
+  type: PJF
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/jfet.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: da01b606f4ee2c390ba6c0cac218a9ffa5bf9c45d404fcc5deda34e1ec837a62
+    lines:
+      2N5460: [1225, 1227]
+    fetched: '2026-09-21'
+- source: qspice
+  name: 2N5460
+  def: model
+  hash: 3986108d712cea390737166f16e1469c30384ad5
+  type: PJF
+  deps:
+  - PJF
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PJF.txt
+    sha256: dcb2d634189d5574f6c625d595e203081701e93dcf10b6f3e94377e928d058c9
+    lines:
+      2N5460: [7, 7]
+      PJF: [1, 1]
+  copies:
+  - source: bordodynov-qspice
+    name: 2N5460
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PJF.txt
+      sha256: dcb2d634189d5574f6c625d595e203081701e93dcf10b6f3e94377e928d058c9
+- source: bordodynov
+  name: 2N5460
+  def: model
+  hash: a759683c5b40482a38fdc1420959192e5bb5a09f
+  type: PJF
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.jft
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+    lines:
+      2N5460: [23, 23]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: bordodynov
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.jft
+      sha256: aac0066c935f88cda18e998d41911b55d03185b27704c566d10f86e2c27768c8
+  - source: bordodynov
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.jft.bak
+      sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+  - source: groupsio-ltspice
+    name: 2N5460
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: kicad-spice-library
+    name: 2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: 2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.jft
+      sha256: e6c99804c0d9b13e415a97471042d1f64b8ee82affe1f587630336d44a9ec40d
+  - source: kicad-spice-library
+    name: 2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.jft
+      sha256: aac0066c935f88cda18e998d41911b55d03185b27704c566d10f86e2c27768c8
+  - source: kicad-spice-library
+    name: 2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.jft
+      sha256: 058bfc86ef91c177d14b18e37b651dcbbf5eef2ad537d866986040009312ad23
+  - source: kicad-spice-library
+    name: 2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.jft
+      sha256: aac0066c935f88cda18e998d41911b55d03185b27704c566d10f86e2c27768c8
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.jft
+      sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.jft.bak
+      sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: 2N5460
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.jft
+      sha256: e6c99804c0d9b13e415a97471042d1f64b8ee82affe1f587630336d44a9ec40d
+  - source: bordodynov
+    name: 2N5460X
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: groupsio-ltspice
+    name: 2N5460X
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: kicad-spice-library
+    name: 2N5460X
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: ltwiki
+    name: 2N5460X
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5460X
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+- source: duncanamps
+  name: J2N5460
+  def: model
+  hash: 9d05a879caa8f6eba76c50287acf54041a4d8519
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/jfet/pjfet.mod
+    sha256: ca416e9744c8562cd655bbaf9357844eca8e2ccdf652399d7946b580a74b8e9c
+    lines:
+      J2N5460: [11, 12]
+    fetched: '2026-09-14'
+    note: 2 .model (JPJFET~, J2N5460)
+- source: groupsio-ltspice
+  name: J2N5460
+  def: model
+  hash: 5e8a7f1af3d871d3798ef01272d9789ce5f3b859
+  type: PJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      J2N5460: [320, 320]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: J2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: J2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: J2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: J2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2N5460
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2N5460
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: J2N5460
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+- source: groupsio-ltspice
+  name: 2n5460Y
+  def: model
+  hash: bbb47171c833531017bc45b06dd339aeaa5cd88d
+  type: PJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      2n5460Y: [620, 620]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2n5460Y
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: 2n5460Y
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: ltwiki
+    name: 2n5460Y
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2n5460Y
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+- source: ltwiki
+  name: J2N5460
+  def: model
+  hash: 54dbf94617253737f2edfb331971b18330ab1e4e
+  type: PJF
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jfet.lib
+    sha256: aef97ee6dd81ee2b11feabe7d88ff256a613f7a10f89b82d1b7f2ca49b772ab7
+    lines:
+      J2N5460: [941, 944]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: J2N5460
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+      sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+datasheet:
+  url: https://www.interfet.com/jfet-datasheets/jfet-2n5460-2n5461-2n5462-interfet.pdf
+  maker: InterFET
+  doc: IF35080.R00, December 2018

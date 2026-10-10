@@ -1,0 +1,220 @@
+part: MAT02
+kind: bjt
+priority: 3
+group: matched_pairs
+models:
+- source: spice-model-cd
+  name: MAT-02/AD
+  def: subckt
+  hash: 9381876978c66cf60c20b8fcd884d5d62858e528
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      MAT-02/AD: [46863, 46878]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MAT02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: kicad-spice-library
+    name: MAT02
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: kicad-spice-library
+    name: MAT-02
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD3A.LIB
+      sha256: 776a14fee0e546dc3124e35405aa2f0c8d54f14f82647e90846412980c464a7c
+  - source: ltwiki
+    name: MAT02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: ltwiki
+    name: MAT02
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: kicad-spice-library
+    name: MAT-02/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: kicad-spice-library
+    name: MAT02_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+  - source: ltwiki
+    name: MAT-02/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+  - source: microcap12
+    name: MAT02_AD
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/analog.lib
+      sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+- source: bordodynov
+  name: MAT-02
+  def: model
+  hash: e3406ec1e045c9c07320befb9cd0681c6c092844
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+    lines:
+      MAT-02: [91, 91]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: bordodynov
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: groupsio-ltspice
+    name: MAT-02
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: MAT-02
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MAT-02
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: kicad-spice-library
+    name: MAT-02
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+  - source: ltwiki
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: ltwiki
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: MAT-02
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov
+  name: MAT02
+  def: subckt
+  hash: 14afd76222cb5f29bdab8d894419f1ec354dbd7f
+  type: SUBCKT
+  deps:
+  - Q1
+  - Q2
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      MAT02: [651, 666]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/mat02_.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: ffdb00e50ae3848f6816a9f9ee063b9b7f4a32e133ae9357a3d04484ad7cbdb2
+  copies:
+  - source: kicad-spice-library
+    name: MAT02
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: MAT02
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov-qspice
+  name: MAT-02
+  def: model
+  hash: a577f0334c81854d3bb4bfa5f2c0fa62b68d1eb8
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      MAT-02: [846, 846]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: MAT02
+  def: subckt
+  hash: 2dad72013bef75d05461bac841e3b4772c2355c6
+  type: SUBCKT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/Mixer/Sborka.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+    lines:
+      MAT02: [160, 175]
+      Rb: [95, 100]
+    fetched: '2026-09-21'

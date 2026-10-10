@@ -1,0 +1,55 @@
+part: SMBJ36A
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: vishay
+  name: smbj36a
+  def: subckt
+  hash: 1d8a0fe402cff013a24730e24e9aff7d10c8b319
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89578/p_smbj36.txt
+    sha256: 49c3bba9d88c61cc2cf25f64717ae8146dcfb10f30df3b4c22ef0189f9abdd92
+    lines:
+      smbj36a: [9, 30]
+    fetched: '2026-09-19'
+    note: 'TransZorb®TVS, PSpice Models (*.txt): smbj36a, DFMOD, RLMOD, DBDMOD, RBVCMOD'
+  note: pins from comment words
+  copies:
+  - source: microcap12
+    name: smbj36a
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaydiode.lib
+      sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+- source: vishay
+  name: smbj36a
+  def: subckt
+  hash: f6987f46b88ef194c88f5b4ba5e5c19c1d6888b6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89579/smbj36a.txt
+    sha256: 1fe25705b7f2dd76f2934ca7f1d1175550bac155e63acae6663b4444c426ee7b
+    lines:
+      smbj36a: [9, 30]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: SMBJ36A
+  def: model
+  hash: b4696bc6721752ecd21daaedaa43b35ca3b8414d
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      SMBJ36A: [221488, 221501]
+    fetched: '2026-09-21'

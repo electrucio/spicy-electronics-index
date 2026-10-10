@@ -1,0 +1,23 @@
+part: MBRD20100
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: spice-model-cd
+  name: Dmbrd20100ct
+  def: model
+  hash: 776c3302d36a795c9881ac2f4f7b7180956b9b0c
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Rectifiers/Schottky/mbrd20100ct.lib
+    sha256: 5aaf93a640f1905e2c6c084201e06aa26033ec96060717c848d1387584896212
+    lines:
+      Dmbrd20100ct: [14, 18]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: mbrd20100ct_d
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0

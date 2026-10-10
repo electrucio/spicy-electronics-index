@@ -1,0 +1,54 @@
+part: LM556
+kind: control
+priority: 4
+models:
+- source: ltwiki
+  name: LM556
+  def: subckt
+  hash: c64038bc5504aa6cbff371756d24a44d8f430086
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  deps:
+  - LM555
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/timers.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+    lines:
+      LM555: [330, 377]
+      LM556: [419, 422]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: LM556
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+  - source: kicad-spice-library
+    name: LM556
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85
+  - source: ltwiki
+    name: LM556
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/timers.lib
+      sha256: 5caceb6b0c16c6b684284c8598439454661f6908a926796c1459becf67fc8f85

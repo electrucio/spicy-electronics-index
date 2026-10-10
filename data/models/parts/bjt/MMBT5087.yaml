@@ -1,0 +1,50 @@
+part: MMBT5087
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: MMBT5087
+  def: model
+  hash: 5d6f58e41d2a377996f7c0727e4e9ecc2d729035
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt5087.lib
+    sha256: 6a87ecfe41fc5f4ba48581a01e5203c8867dc917c0580d22d92dbe0a198be01b
+    lines:
+      MMBT5087: [6, 17]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: MMBT5087
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: duncanamps
+  name: QMMBT5087
+  def: model
+  hash: fb1bed531d5e3af4524360212a259a413ddfbc15
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMMBT5087: [505, 507]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBT5087
+  def: model
+  hash: a4e17994a01746f52f9813d483e88e5ec1543e4d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT5087: [3450, 3450]
+    fetched: '2026-09-21'

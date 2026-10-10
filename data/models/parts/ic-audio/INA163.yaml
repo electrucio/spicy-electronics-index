@@ -1,0 +1,59 @@
+part: INA163
+kind: ic-audio
+priority: 2
+models:
+- source: microcap12
+  name: INA163
+  def: subckt
+  hash: ad56977cdcc25c8d2b1347ed902789d7b30145bc
+  type: SUBCKT
+  pins:
+  - '1'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '14'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      INA163: [44240, 44536]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/ina163.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: c9e0fb4f3897c91d1cde1cd285815460ebc3b63d6a7dd13b5bece48351cf004b
+  copies:
+  - source: bordodynov
+    name: INA163
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ina.lib
+      sha256: 526200d0189cd3bc5865e5e4c37dc2f7f9f264dcf636497cca8177d9b00a8763
+  - source: kicad-spice-library
+    name: INA163
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ina.lib
+      sha256: 526200d0189cd3bc5865e5e4c37dc2f7f9f264dcf636497cca8177d9b00a8763
+  - source: ltwiki
+    name: INA163
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ina.lib
+      sha256: 526200d0189cd3bc5865e5e4c37dc2f7f9f264dcf636497cca8177d9b00a8763
+  - source: ltwiki
+    name: INA163
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/ina.lib
+      sha256: 526200d0189cd3bc5865e5e4c37dc2f7f9f264dcf636497cca8177d9b00a8763

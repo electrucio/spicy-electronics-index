@@ -1,0 +1,209 @@
+part: MMBT5401
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: onsemi
+  name: Qmmbt5401lt1
+  def: model
+  hash: f36672a8225e9469fac35a67a74306fcc57b5fa6
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt5401lt1.lib
+    sha256: 50770a74b8f840a6e7d9ae47bc09364e5c9db2e72f3487a3784ff9800e2271fd
+    lines:
+      Qmmbt5401lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbt5401lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbt5401lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: microcap12
+    name: Qmmbt5401wt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbt5401wt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/mmbt5401wt1.lib
+      sha256: dae5a70373cd4aac068a73bd57d5fece7e856dc0b53e19a4a40be8018f2007e6
+- source: diodes-inc
+  name: MMBT5401
+  def: model
+  hash: bda8907c85774c1f9b723e51c0fe55b7131325b0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2587/MMBT5401.spice.txt
+    sha256: 6c56762cb7a91a530c9d9cf92160b1a6e774c34d79c3016249bba2e2e6b080d5
+    lines:
+      MMBT5401: [24, 27]
+    fetched: '2026-09-19'
+  copies:
+  - source: diodes-inc
+    name: MMBT5401
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8423/collection.spice.txt
+      sha256: 29a331433039eecc5f40d2202d1675ada0c61df76aa492b6773e7c4107fbac71
+  - source: microcap12
+    name: MMBT5401
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc_BJT.lib
+      sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+- source: central-semi
+  name: 2N5401
+  def: model
+  hash: ecfdee7ab631dfdd79572eb48ea1620cbc5f5add
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N5401.LIB
+    sha256: 3893d04c1a64c252d542f45908269b30d9773e113a404c5e58d74f2e68eb03e4
+    lines:
+      2N5401: [24, 48]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N5401 (PNP .model)'
+  note: 'STAND-IN: model of 2N5401, not of MMBT5401; equivalence declared in catalog/wanted.yaml (see
+    its note)'
+- source: qspice
+  name: MMBT5401
+  def: model
+  hash: 8dba3565f980c3dd8b5b6c695a222c2bc31a106b
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      MMBT5401: [1117, 1121]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT5401
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: duncanamps
+  name: Q2N5401
+  def: model
+  hash: 7bef5c2959ce79ab74a43db9209f24d7d3cb5a5d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      Q2N5401: [95, 97]
+    fetched: '2026-09-14'
+    note: 10 subckts, 124 .model
+  note: 'STAND-IN: model of Q2N5401, not of MMBT5401; equivalence declared in catalog/wanted.yaml (see
+    its note)'
+- source: duncanamps
+  name: QMMBT5401
+  def: model
+  hash: 40c8ce4fc198aa4b858ac1113398e9d5a70f0a52
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMMBT5401: [511, 514]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MMBT5401
+  def: model
+  hash: 71f43128c3b4eb8511bbf4259c723bec10e29fb9
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT5401: [3453, 3453]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 2N5401
+  def: model
+  hash: 114ad7beacd296ad38a5f1c4e0957491465556b2
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/Standard/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+    lines:
+      2N5401: [20, 20]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N5401, not of MMBT5401; equivalence declared in catalog/wanted.yaml (see
+    its note); same code also in: kicad-spice-library, ltwiki'
+- source: ltwiki
+  name: 2N5401
+  def: model
+  hash: 114ad7beacd296ad38a5f1c4e0957491465556b2
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+    lines:
+      2N5401: [81, 82]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N5401, not of MMBT5401; equivalence declared in catalog/wanted.yaml (see
+    its note); same code also in: kicad-spice-library'
+- source: bordodynov
+  name: 2N5401
+  def: model
+  hash: b23113097c131035653c1f9786443c11766b0a9c
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2N5401: [281, 281]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N5401, not of MMBT5401; equivalence declared in catalog/wanted.yaml (see
+    its note); same code also in: ltwiki'
+- source: kicad-spice-library
+  name: Q2N5401
+  def: model
+  hash: 6b7d6ea233aaa32af281d1ec0bb2ffb6c5545ff2
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_PNP/TOSHIBA.LIB
+    sha256: 4a5d1e7670eff99dfd5290383e42316cebae59769ce130e15a7f5d9a9a4cbd90
+    lines:
+      Q2N5401: [479, 495]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: 'STAND-IN: model of Q2N5401, not of MMBT5401; equivalence declared in catalog/wanted.yaml (see
+    its note)'

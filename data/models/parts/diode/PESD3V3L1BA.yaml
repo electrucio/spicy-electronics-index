@@ -1,0 +1,84 @@
+part: PESD3V3L1BA
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: nexperia
+  name: PESD3V3L1BA
+  def: subckt
+  hash: 05f4ee1da3cbd74a8e85621f0a74fd916a04b813
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD3V3L1BA.txt
+    sha256: 5576d01923eb8245c888174d6a411d2a35b08d82acb39465ba5c65c9ea409066
+    lines:
+      PESD3V3L1BA: [32, 66]
+    fetched: '2026-09-19'
+    note: 'PESD3V3L1BA: PESD3V3L1BA, DIODE1, DIODE2'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: PESD3V3L1BA
+  def: subckt
+  hash: 4f138ba62f25a6c808e948351e38974c2856c562
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      PESD3V3L1BA: [2821, 2836]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: PESD3V3L1BA
+  def: subckt
+  hash: 419172196d849ab0fd730aa81d8886273a883010
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD3V3L1BA.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 0ab3f56ae2990e787d71050669c2a28b56c82916775f7301604c3057739217bc
+    lines:
+      PESD3V3L1BA: [2, 17]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+- source: bordodynov
+  name: PESD3V3L1BA
+  def: subckt
+  hash: 949e6967e490df2ce07fc1402303e283890a4057
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/PESDxxx.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ff3b4d96c3410ac7dab23c71f52fb60399171b2f9f91d47d80801d9864f1935e
+    lines:
+      PESD3V3L1BA: [76, 114]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: PESD3V3L1BA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/PESDxxx.txt
+      sha256: ff3b4d96c3410ac7dab23c71f52fb60399171b2f9f91d47d80801d9864f1935e
+  - source: ltwiki
+    name: PESD3V3L1BA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PESDxxx.txt
+      sha256: ff3b4d96c3410ac7dab23c71f52fb60399171b2f9f91d47d80801d9864f1935e

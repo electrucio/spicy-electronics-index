@@ -1,0 +1,372 @@
+part: 2N5486
+kind: jfet
+priority: 3
+group: n_channel
+models:
+- source: onsemi
+  name: J2n5486
+  def: model
+  hash: 0ec293b5586b4456f214e856ce96f3242844cff8
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n5486.lib
+    sha256: 093f589cd93d2d8426340e5b2a7fb320c25924b6d93443ec168759703b2aad2c
+    lines:
+      J2n5486: [13, 17]
+    fetched: '2026-09-14'
+    note: 'model(s): J2n5486 (NJF .model)'
+  copies:
+  - source: microcap12
+    name: J2n5486
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: interfet
+  name: 2N5486-SCX
+  def: model
+  hash: 94d49f35c8cd9a7b8fd8bd84e3f9232218d75f2b
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      2N5486-SCX: [94, 94]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: interfet
+  name: J2N5486-GEN
+  def: model
+  hash: 84634eed5c6db81ee2003ac7e975133f167d5746
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      J2N5486-GEN: [339, 339]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: interfet
+  name: 2N5486-L
+  def: model
+  hash: 13af487c5ce53c796f48b9a777cba2feffea0831
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      2N5486-L: [766, 766]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: spice-model-cd
+  name: 2N5486
+  def: model
+  hash: afafb93028ca274cc65603a374ff74e791a7a482
+  type: NJF
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/2N5486.lib
+    sha256: 8613ce86fa58668db8805a33c39aeff435e30e9f5524c91f3bc872fd924f49d1
+    lines:
+      2N5486: [4, 14]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 2N5486/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_fet.lib
+      sha256: e37b90dac4163b3951640614f87eaf6ee6e8336448ca408aab462f05415fd5a7
+  - source: ltwiki
+    name: 2N5486/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_fet.lib
+      sha256: 98b9f890eb0732e8fa1b127fb16ec31cedebda98a072b65832a301e58cb5c1cf
+  - source: ltwiki
+    name: 2N5486/PLP
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/phil_fet.lib
+      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+  - source: ltwiki
+    name: 2N5486/PLP
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/FET/phil_fet.lib
+      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+- source: ltspice-native
+  name: 2N5486
+  def: model
+  type: NJF
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.jft
+    sha256: 93ae8433a9412e96e81071b65d521b7f31dcb2c2f3fce714456b73586230bea0
+    lines:
+      2N5486: [29, 29]
+  note: 'same code also in: kicad-spice-library, ltwiki'
+- source: microcap12
+  name: 2N5486
+  def: model
+  hash: a7c1ae4d8c64983945978989e0e797debfaf6f04
+  type: NJF
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/jfet.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: da01b606f4ee2c390ba6c0cac218a9ffa5bf9c45d404fcc5deda34e1ec837a62
+    lines:
+      2N5486: [369, 370]
+    fetched: '2026-09-21'
+- source: qspice
+  name: 2N5486
+  def: model
+  hash: be808ec7bdb3b36889f6e548ab3bd200d798a0e1
+  type: NJF
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NJF.txt
+    sha256: 1eecb317d294dfd7730c4f9070b7f3da9fc4938412714089b87d1948f46fc741
+    lines:
+      2N5486: [73, 73]
+  copies:
+  - source: bordodynov-qspice
+    name: 2N5486
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NJF.txt
+      sha256: 1eecb317d294dfd7730c4f9070b7f3da9fc4938412714089b87d1948f46fc741
+- source: bordodynov
+  name: 2N5486
+  def: model
+  hash: 84c0b6c6300bf0f59049fc031bb31a9e0ac9181a
+  type: NJF
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.jft
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+    lines:
+      2N5486: [14, 14]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: bordodynov
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.jft
+      sha256: aac0066c935f88cda18e998d41911b55d03185b27704c566d10f86e2c27768c8
+  - source: bordodynov
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.jft.bak
+      sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+  - source: groupsio-ltspice
+    name: 2N5486
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: kicad-spice-library
+    name: 2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: 2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.jft
+      sha256: e6c99804c0d9b13e415a97471042d1f64b8ee82affe1f587630336d44a9ec40d
+  - source: kicad-spice-library
+    name: 2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.jft
+      sha256: aac0066c935f88cda18e998d41911b55d03185b27704c566d10f86e2c27768c8
+  - source: kicad-spice-library
+    name: 2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.jft
+      sha256: 058bfc86ef91c177d14b18e37b651dcbbf5eef2ad537d866986040009312ad23
+  - source: kicad-spice-library
+    name: 2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.jft
+      sha256: aac0066c935f88cda18e998d41911b55d03185b27704c566d10f86e2c27768c8
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.jft
+      sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.jft.bak
+      sha256: 94d8d6cf1b002a789d4b0e740ddc28bf3442f2b9ffe4669164e50c0f6fe37991
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: 2N5486
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.jft
+      sha256: e6c99804c0d9b13e415a97471042d1f64b8ee82affe1f587630336d44a9ec40d
+  - source: bordodynov
+    name: 2N5486X
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: groupsio-ltspice
+    name: 2N5486X
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: kicad-spice-library
+    name: 2N5486X
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: ltwiki
+    name: 2N5486X
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5486X
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+- source: duncanamps
+  name: J2N5486
+  def: model
+  hash: b173a3d73905f1da061555e6de5c080dcb698750
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/jfet/njfet.mod
+    sha256: 038dc1062e5ec82b6d49076d7bccf0f06e485e43a89f185c2b7ca121258295ac
+    lines:
+      J2N5486: [31, 32]
+    fetched: '2026-09-14'
+    note: 10 .model
+- source: groupsio-ltspice
+  name: J2N5486
+  def: model
+  hash: 7501dcd890295380c023c5a663625ae9156109df
+  type: NJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      J2N5486: [325, 325]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: J2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: J2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: J2N5486
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: J2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2N5486
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2N5486
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: J2N5486
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+- source: ltwiki
+  name: J2N5486
+  def: model
+  hash: 703e0cac6f24b60b04968d20299923cd24002335
+  type: NJF
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jfet.lib
+    sha256: aef97ee6dd81ee2b11feabe7d88ff256a613f7a10f89b82d1b7f2ca49b772ab7
+    lines:
+      J2N5486: [976, 979]
+    fetched: '2026-09-21'
+datasheet:
+  url: https://www.interfet.com/jfet-datasheets/jfet-2n5484-2n5485-2n5486-interfet.pdf
+  maker: InterFET
+  doc: IF35032.R00, December 2018

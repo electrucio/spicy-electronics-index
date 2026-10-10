@@ -1,0 +1,38 @@
+part: BZX55C18
+kind: zener
+priority: 2
+models:
+- source: vishay
+  name: BZX18
+  def: subckt
+  hash: 40e2c760edab998d389334f3e625cd28dba74b2c
+  type: SUBCKT
+  pins:
+  - A
+  - C
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/85281/bzx55c18.txt
+    sha256: f4f5ec44308083cd7c89db82ee300cb1ec09f9fe4bff71d817281e0067461d23
+    lines:
+      BZX18: [16, 37]
+    fetched: '2026-09-14'
+    note: 'model(s): BZX18 (.subckt a c), DFOR (D .model), DREV (D .model), DBRE (D .model)'
+  note: found under the alias BZX18; pins from names
+  copies:
+  - source: microcap12
+    name: BZX55C18
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaydiode.lib
+      sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+  - source: groups-io
+    name: BZX18
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/BZX55-Zener-Vishay.zip
+      member: BZX55-Series-Vishay.sub
+      sha256: f7acd0890678bc9a2e2f7e3a84f2d7f24613cc3158ccd5af2e398a30f2da441b
+datasheet:
+  url: https://www.vishay.com/docs/85604/bzx55.pdf
+  maker: Vishay
+  doc: BZX55-Series, Document Number 85604, Rev. 2.0, 07-Nov-2024

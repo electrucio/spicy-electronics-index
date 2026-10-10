@@ -1,0 +1,44 @@
+part: ZLLS410
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: diodes-inc
+  name: ZLLS410
+  def: model
+  hash: 7903a25c76841fc7ab135421e511ebf4ed238ca5
+  type: D
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/235/ZLLS410.spice.txt
+    sha256: ff3e1bf7d5bc9d1f992ef5f265180d9533a8e43b58c4e463366040abc3d84357
+    lines:
+      ZLLS410: [23, 24]
+    fetched: '2026-09-19'
+    note: 'model(s): ZLLS410'
+  copies:
+  - source: diodes-inc
+    name: ZLLS410
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8309/collection.spice.txt
+      sha256: 37ef6786527ef08385ae88aea28c117181cd001c823c404e3da838b82c469ad0
+  - source: microcap12
+    name: ZLLS410
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/zetex.lib
+      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+- source: groups-io
+  name: ZLLS410
+  def: model
+  hash: 04deca2087b8e7af449e4ec44bd4c74d019bce4a
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      ZLLS410: [1858, 1858]
+    fetched: '2026-10-10'

@@ -1,0 +1,179 @@
+part: PZT3906
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: PZT3906
+  def: model
+  hash: 5ba1d4649855597525ace56fef1a0ccd29bf7d13
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/pzt3906.lib
+    sha256: f89a4bcc3971a5982be6a2be8ffb100f10ff0872c7bb62d876e3fdeb7d5fd699
+    lines:
+      PZT3906: [5, 16]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: PZT3906
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: PZT3906
+  def: model
+  hash: c62c90d3c99d4187eb70508948bb1a1bb04e0691
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      PZT3906: [2273, 2283]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: PZT3906
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: PZT3906s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: PZT3906/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: PZT3906/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: microcap12
+  name: PZT3906
+  def: model
+  hash: dcde650d47a50e66815c91f87ec427273f26e2b1
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      PZT3906: [1121, 1124]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PZT3906
+  def: model
+  hash: 92a2461f9de58b74d38fd1418654f65339a7b144
+  type: PNP
+  deps:
+  - 2N3906
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      2N3906: [245, 245]
+      PZT3906: [246, 246]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: PZT3906
+  def: model
+  hash: 62bfc9b989103928b05f08c994a85b42fff9cb75
+  type: PNP
+  deps:
+  - 2N3906
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/Standard.zip
+    member: Standard/standard.bjt
+    archive_sha256: 97e47470aefa994e7cdf520fc8a8a1d24f9598060b213146903870757a7a4687
+    sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+    lines:
+      2N3906: [232, 232]
+      PZT3906: [233, 233]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: PZT3906
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: PZT3906
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: PZT3906
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: bordodynov
+  name: PZT3906
+  def: model
+  hash: 75e8acab2ad093ad3e07fc5e6c6dac345d1531da
+  type: PNP
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      PZT3906: [262, 262]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PZT3906
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: PZT3906
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: bordodynov-qspice
+  name: PZT3906
+  def: model
+  hash: 6459085bf61b980edf648edbed0896568ee29ac7
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      PZT3906: [107, 107]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: PZT3906
+  def: model
+  hash: ad6b1c0e31ebeb48c73cd2bf7bc12e8227dcdb5e
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+    sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+    lines:
+      PZT3906: [253, 253]
+    fetched: '2026-09-21'

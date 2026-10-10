@@ -1,0 +1,165 @@
+part: LT1084
+kind: regulator
+priority: 3
+models:
+- source: spice-model-cd
+  name: LT1084
+  def: subckt
+  hash: f9b2ce695ea45d2121177efde88c47d6902959e8
+  type: SUBCKT
+  pins:
+  - ADJ
+  - OUT
+  - IN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
+    sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
+    lines:
+      LT1084: [3149, 3205]
+    fetched: '2026-09-21'
+  note: 'pins from simulation: of the 6 node orders only ADJ OUT IN regulates to about 1.25 V at Vin-Vout
+    5 V / 20 mA, Vin-Vout 15 V / 20 mA, Vin-Vout 5 V / 100 mA (orders tried: IN OUT ADJ: -3.55 V, -3.55
+    V, -22.8 V; IN ADJ OUT: -2.77 V, -2.84 V, -16.2 V; OUT IN ADJ: -3.68 V, -3.73 V, -23.3 V; OUT ADJ
+    IN: -3.59 V, -3.59 V, -23 V; ADJ IN OUT: 0.391 V, 2.08 V, -6.02 V; ADJ OUT IN: 1.25 V, 1.25 V, 1.25
+    V)'
+  copies:
+  - source: kicad-spice-library
+    name: LT1084
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Ltc_Old_Big.lib
+      sha256: 772dc45b523640300266c1a903e594080f7a1b7bad38860df54bd753339707a9
+  - source: kicad-spice-library
+    name: LT1084
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+  - source: kicad-spice-library
+    name: LT1084
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+  - source: ltwiki
+    name: LT1084
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Ltc_Old_Big.lib
+      sha256: 772dc45b523640300266c1a903e594080f7a1b7bad38860df54bd753339707a9
+  - source: kicad-spice-library
+    name: LT1084_LT
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/linear.lib
+      sha256: 025903d9677acbc507e2eaa578ba581d9e52f17c10dbf286da658f1af22dd5ba
+  - source: kicad-spice-library
+    name: LT1084/LT
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/lin_tech.lib
+      sha256: ecf83f07a8bd4c59f1b672a6af78483039b75f982c54349f9eca7641007da6d9
+  - source: microcap12
+    name: LT1084_LT
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/linear.lib
+      sha256: 5d5712376842d66fb67ffd85965e2bb0c4127fd76527fe92e1252ddd530526f4
+- source: ltspice-native
+  name: LT1084
+  def: subckt
+  type: SUBCKT
+  pins:
+  - ADJ
+  - OUT
+  - IN
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: sub/LT1083.lib
+    sha256: 9e241b50c26e29cf3d807398af61bd0dc9291c8f03892cd58bc2f7cd245493cc
+    lines:
+      LT1084: [157, 179]
+  note: 'pins from simulation: of the 6 node orders only ADJ OUT IN regulates to about 1.25 V at Vin-Vout
+    5 V / 20 mA, Vin-Vout 15 V / 20 mA, Vin-Vout 5 V / 100 mA (orders tried: IN OUT ADJ: -0.88 V, -0.868
+    V, -0.92 V; IN ADJ OUT: -0.792 V, -0.792 V, -0.966 V; OUT IN ADJ: -3.46 V, -3.46 V, -22.2 V; OUT ADJ
+    IN: -3.48 V, -3.48 V, -22.2 V; ADJ IN OUT: 2.24 V, 4.69 V, 2.21 V; ADJ OUT IN: 1.24 V, 1.24 V, 1.24
+    V)'
+- source: ltwiki
+  name: LT1084C
+  def: subckt
+  hash: 9ed4d1b7d7a9537e5ce7fd8b80e2ee329a7ce494
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      LT1084C: [10180, 10223]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: LT1084
+  def: subckt
+  hash: 0d6777fdc099c3d73b451a5001f5f9263e1596b1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/VoltReg/LT1084.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 7ac9dbf871b5bed264c9f5ec4ee4f200e92cb66be036fe90910ecf2ec2afb577
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: LT1084
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/VoltReg/LT1084.qsym
+      sha256: 7ac9dbf871b5bed264c9f5ec4ee4f200e92cb66be036fe90910ecf2ec2afb577
+- source: kicad-spice-library
+  name: LT1084_LT
+  def: subckt
+  hash: f9b2ce695ea45d2121177efde88c47d6902959e8
+  type: SUBCKT
+  pins:
+  - ADJ
+  - OUT
+  - IN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/linear.lib
+    sha256: 025903d9677acbc507e2eaa578ba581d9e52f17c10dbf286da658f1af22dd5ba
+    lines:
+      LT1084_LT: [3149, 3205]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: 'pins from simulation: of the 6 node orders only ADJ OUT IN regulates to about 1.25 V at Vin-Vout
+    5 V / 20 mA, Vin-Vout 15 V / 20 mA, Vin-Vout 5 V / 100 mA (orders tried: IN OUT ADJ: -3.55 V, -3.55
+    V, -22.8 V; IN ADJ OUT: -2.77 V, -2.84 V, -16.2 V; OUT IN ADJ: -3.68 V, -3.73 V, -23.3 V; OUT ADJ
+    IN: -3.59 V, -3.59 V, -23 V; ADJ IN OUT: 0.391 V, 2.08 V, -6.02 V; ADJ OUT IN: 1.25 V, 1.25 V, 1.25
+    V)'
+- source: kicad-spice-library
+  name: LT1084/LT
+  def: subckt
+  hash: f9b2ce695ea45d2121177efde88c47d6902959e8
+  type: SUBCKT
+  pins:
+  - ADJ
+  - OUT
+  - IN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/lin_tech.lib
+    sha256: ecf83f07a8bd4c59f1b672a6af78483039b75f982c54349f9eca7641007da6d9
+    lines:
+      LT1084/LT: [4324, 4380]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: 'pins from simulation: of the 6 node orders only ADJ OUT IN regulates to about 1.25 V at Vin-Vout
+    5 V / 20 mA, Vin-Vout 15 V / 20 mA, Vin-Vout 5 V / 100 mA (orders tried: IN OUT ADJ: -3.55 V, -3.55
+    V, -22.8 V; IN ADJ OUT: -2.77 V, -2.84 V, -16.2 V; OUT IN ADJ: -3.68 V, -3.73 V, -23.3 V; OUT ADJ
+    IN: -3.59 V, -3.59 V, -23 V; ADJ IN OUT: 0.391 V, 2.08 V, -6.02 V; ADJ OUT IN: 1.25 V, 1.25 V, 1.25
+    V)'
+datasheet:
+  url: https://www.analog.com/media/en/technical-documentation/data-sheets/108345fh.pdf
+  maker: Linear Technology (Analog Devices)
+  doc: LT1083/LT1084/LT1085 datasheet 108345fh (rev. H)

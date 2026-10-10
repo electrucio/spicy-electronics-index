@@ -1,0 +1,123 @@
+part: NDS332P
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: onsemi
+  name: NDS332P
+  def: subckt
+  hash: 16f26edf6c998e7e54e05fa2f99579b99ce66a42
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/nds332p.mod
+    sha256: 9bbb66eb8bbe36e288471a11b91e09634582d19d795f422d20be556394949631
+    lines:
+      NDS332P: [5, 53]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: spice-model-cd
+    name: NDS332P
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/ND/NDS332P.lib
+      sha256: 8173c868209fcb71130e2c64486af9558aed8cc3e10f4a8e1cb559426f3c14c2
+  - source: kicad-spice-library
+    name: NDS332P_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: NDS332P_FC
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: NDS332P
+  def: subckt
+  hash: adc38cd533c3959817ae514a3e67cf6d383bf2b3
+  type: SUBCKT
+  deps:
+  - pmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      NDS332P: [178006, 178030]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: nds332p
+  def: subckt
+  hash: d9ba67e9ea6a0d66edd1648c1bdfe497e54c0e4f
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      nds332p: [16311, 16335]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/nds332p.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 3ecdb65cc73f7c66a289acf4da45c78893e1388c5439de5d4194ffb54077acf0
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: nds332p
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: nds332p
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov
+  name: NDS332P/FAI
+  def: subckt
+  hash: 4a1d7df61ea8398bd7a55333cf7e232cb01544ff
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/fairchild_PMOS.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d88f18d0155c7045c4329c6973396514f3166d17e7874cf26ed6e425dd030223
+    lines:
+      NDS332P/FAI: [146, 170]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: NDS332P/FAI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/fairchild_PMOS.lib
+      sha256: d88f18d0155c7045c4329c6973396514f3166d17e7874cf26ed6e425dd030223
+  - source: ltwiki
+    name: NDS332P/FAI
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/fairchild_PMOS.lib
+      sha256: d88f18d0155c7045c4329c6973396514f3166d17e7874cf26ed6e425dd030223

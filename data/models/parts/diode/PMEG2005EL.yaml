@@ -1,0 +1,125 @@
+part: PMEG2005EL
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: microcap12
+  name: PMEG2005EL
+  def: subckt
+  hash: bb1ad182ace42a757a03d313ad5a8bb37bf337c3
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      PMEG2005EL: [2998, 3020]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: PMEG2005EL
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EL.PRM
+      sha256: ebdaf2063c2047c7d24b31aa334d4b40f3f384ee3d9708f3702c6ab0895261f0
+- source: microcap12
+  name: PMEG2005ELD
+  def: subckt
+  hash: 2b35898d4feca097bb60ec7d30636f2e3fe76e93
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      PMEG2005ELD: [25122, 25152]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: PMEG2005EB
+  def: model
+  hash: 1dacb9f0a089c3955d2d85375d4fc33807bf419c
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/Standard.zip
+    member: Standard/standard.dio
+    archive_sha256: 97e47470aefa994e7cdf520fc8a8a1d24f9598060b213146903870757a7a4687
+    sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+    lines:
+      PMEG2005EB: [158, 158]
+    fetched: '2026-09-14'
+  note: 'found under the alias PMEG2005E; same code also in: kicad-spice-library'
+- source: ltwiki
+  name: PMEG2005EB
+  def: model
+  hash: e9d92d002d11fe55a410aadfe62ca522ad3e55e3
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/standard3.dio
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
+    lines:
+      PMEG2005EB: [68, 68]
+    fetched: '2026-09-14'
+  note: 'found under the alias PMEG2005E; same code also in: kicad-spice-library'
+- source: ltwiki
+  name: PMEG2005EB
+  def: subckt
+  hash: 58a9ac6999aa004d850cc03f8047182626a13cfd
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EB.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f2e7e6fadd10ab2350e55ca8add9515d3051d1dbdb6149dd1f5e0704dd70eaa1
+    lines:
+      PMEG2005EB: [2, 24]
+    fetched: '2026-09-14'
+  note: found under the alias PMEG2005E; pins from default order (unverified)
+- source: ltwiki
+  name: PMEG2005EH
+  def: subckt
+  hash: 6d663d1113a16f358a89e22ac78d3622e8f5fceb
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EH.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 59c8a959a526bb3592a655261294b7c84b0639f2a001170c1c75c3e4ce138c9e
+    lines:
+      PMEG2005EH: [2, 24]
+    fetched: '2026-09-14'
+  note: found under the alias PMEG2005E; pins from default order (unverified)
+- source: bordodynov
+  name: PMEG2005EB
+  def: model
+  hash: 7ec4442db9bae36170f46664f1705f6fd22a085a
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      PMEG2005EB: [208, 208]
+    fetched: '2026-09-14'
+  note: 'found under the alias PMEG2005E; same code also in: kicad-spice-library, ltwiki'

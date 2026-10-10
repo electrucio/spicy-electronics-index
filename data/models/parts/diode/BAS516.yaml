@@ -1,0 +1,124 @@
+part: BAS516
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: nexperia
+  name: BAS516
+  def: subckt
+  hash: 4b71e82ffbe45f9c241f779977cad48b82f1d8ef
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS516.txt
+    sha256: 746576d765ccf1b7f0dcef749c25965bececd36e81afb44f09d4a6b28f7cb686
+    lines:
+      BAS516: [33, 55]
+    fetched: '2026-09-19'
+    note: 'BAS516: BAS516, DIODE1, DIODE2'
+  note: pins from comment words
+- source: toshiba
+  name: BAS516
+  def: subckt
+  hash: 852bbc06e1d18e0a1ecc3b8f1c82d28c2a868cd9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://toshiba.semicon-storage.com/info/docgetzip.jsp?did=100&displang=en
+    member: Toshiba-lib-PSpice_20260827/Switching Diodes/BAS516_PSpice_20250213/BAS516_PSpice_rev1.lib
+    archive_sha256: f167eaf431c0d3c8d292ae0cb4abd1ed4d53ef4f97eb000f7468d1696bd6c51c
+    sha256: f1c2586a6eb534b76f87a5bb34f4a2e30f37ba305c4ee0bb27f25447b74e9d1b
+    lines:
+      BAS516: [29, 53]
+    fetched: '2026-09-20'
+- source: microcap12
+  name: BAS516
+  def: model
+  hash: a542218d8ff3c6590d938d69459513f27f3af7ab
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      BAS516: [597, 609]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BAS516
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS516.PRM
+      sha256: 613c48d8f47f8afb83dc8a410814ca9b0549c9aff14ac60acc396e58605ab003
+- source: groups-io
+  name: BAS516
+  def: model
+  hash: 73e31dee05305e72127cca9745c5cf0edb244999
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAS516: [8745, 8745]
+    fetched: '2026-10-10'
+  copies:
+  - source: bordodynov
+    name: BAS516
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: BAS516
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: groupsio-ltspice
+    name: BAS516
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.dio
+      sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+  - source: kicad-spice-library
+    name: BAS516
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: BAS516
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: ltwiki
+    name: BAS516
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS516
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS516
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+  - source: ltwiki
+    name: BAS516
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21

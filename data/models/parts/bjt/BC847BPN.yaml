@@ -1,0 +1,117 @@
+part: BC847BPN
+kind: bjt
+priority: 3
+group: matched_pairs
+models:
+- source: microcap12
+  name: BC847BPN_NPN
+  def: model
+  hash: 674f71efa7bcf7376f077e0f0518b1ae6c9131f6
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BC847BPN_NPN: [39063, 39101]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC847BPN_PNP
+  def: model
+  hash: 76375fcf5d608c363adcb590c16b844cd91de514
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BC847BPN_PNP: [39103, 39141]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BC847BPN
+  def: subckt
+  hash: d38a14d912aae8f3851c918f7ee22f4a69dad246
+  type: SUBCKT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Sborka.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 55d381efe69d73abbf8e0958d7127c7e8ddf40acbdeb0090e1e38866735cf8c7
+    lines:
+      BC847BPN: [727, 744]
+      Rb: [44, 49]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/SBORKA/BJT/BC847BPN.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: ff3751fc8aa1c4c1e96eed55b1aa7f0433b5a5bb0ca864d37654cea5f8328b42
+  copies:
+  - source: ltwiki
+    name: BC847BPN
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+- source: bordodynov
+  name: BC847BPN
+  def: subckt
+  hash: d1401bbda0cfea597122cd2c3bcd6cd257a06231
+  type: SUBCKT
+  deps:
+  - Q1
+  - Q2
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BC847BPN: [1414, 1431]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/BC847BPN.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: c29d9a4ceecdcf3580e1aad50c29d3c67063088c2293bf95600b3302d4ad956f
+  copies:
+  - source: kicad-spice-library
+    name: BC847BPN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: BC847BPN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: ltwiki
+  name: BC847BPN
+  def: subckt
+  hash: 832388d9d8f13c7cced45c16d41b4fc9227ca501
+  type: SUBCKT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/SW_subckt/Sbor.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+    lines:
+      BC847BPN: [712, 729]
+      Rb: [1, 6]
+    fetched: '2026-09-21'

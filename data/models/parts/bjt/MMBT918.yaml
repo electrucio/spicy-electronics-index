@@ -1,0 +1,43 @@
+part: MMBT918
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmmbt918lt1g
+  def: model
+  hash: 349ad88efb292b68319d68d1828557de35cf2a6e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt918lt1g.lib.lib
+    sha256: b83c6766ad4e0790df5fac38d03cebb7b4b67852370cd80f36bb2314acdb8a0f
+    lines:
+      Qmmbt918lt1g: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbt918lt1g
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: mmbt918lt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt918lt1g.sp3.sp3
+      sha256: eb2c07425a909942fe1d747dee5f097932a3c3b8837223d169171eb85b371196
+- source: groupsio-ltspice
+  name: MMBT918
+  def: model
+  hash: dacffa1cb392abcd20232c65e304d664295a42c5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT918: [3462, 3462]
+    fetched: '2026-09-21'

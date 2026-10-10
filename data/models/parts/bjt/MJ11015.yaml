@@ -1,0 +1,34 @@
+part: MJ11015
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: mj11015
+  def: subckt
+  hash: fe37794e735aea6a87f1f454ad90701df7afd19e
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mj11015.lib
+    sha256: 25996d54b72175185e8b9ec816980ddf7833b807bec788108f8f637e10b1f281
+    lines:
+      mj11015: [12, 50]
+    fetched: '2026-09-14'
+    note: 'model(s): mj11015 (.subckt 1 2 3), dmodel (D .model), qmodel (PNP .model), q1model (PNP .model)'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: mj11015
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mj11012-d.pdf
+  maker: onsemi
+  doc: MJ11012/D Rev. 5 (September 2008) (covers MJ11012, MJ11016 NPN; MJ11015 PNP)

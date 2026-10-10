@@ -1,0 +1,50 @@
+part: DTA115T
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: DTA115TE
+  def: subckt
+  hash: 5df69bb03fbfd7d91817ef4dd2964a74cdf00f8c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/dta115te.lib
+    sha256: e634fc95d12a4b90343e1b50f5afc8a0c2941e9f77ac20506b6354c339631ca6
+    lines:
+      DTA115TE: [1, 30]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: DTA115TE
+  def: subckt
+  hash: 6c4ed9f08fe5950d71d43acc54d6206c06e28150
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Rohm_Transistor.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    lines:
+      DTA115TE: [26852, 26883]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: DTA115TKA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTA115TM
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: microcap12
+    name: DTA115TUA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e

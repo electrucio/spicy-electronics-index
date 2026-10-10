@@ -1,0 +1,515 @@
+/* The visual language of the previous site, carried over: its type scale and its parts browser. The
+   palette is this site's own, dark only; the list became a sortable table with a bar to resize it.
+
+   Three type families, from Google Fonts: a condensed display face for headings and part numbers, a
+   humanist sans for text, and a mono for anything that is a value, a checksum or a file name. */
+
+:root {
+  /* Dark only, on a ground that runs from black into a very dark red. The surfaces are that ground lifted
+     a little, with the same warmth, so a panel reads as part of the page rather than a grey card on it. */
+  --ground: #0c0909; --surface: #171112; --sunken: #120d0e; --ink: #e8dedc; --muted: #a8999a;
+  --faint: #7d6d6e; --rule: #2e2224; --accent: #e0864f; --accent-ink: #f0a771;
+  /* The lines that say where one part of the page ends: sections, the list's pane, the bar beside it. */
+  --edge: #5c4749;
+  /* The sticky header's height, measured by main.tsx as it changes; what stays in view starts under it. */
+  --header-h: 77px;
+  --below-header: calc(var(--header-h) + 15px);
+  --accent-soft: #3a211a; --link: #8fbde0;
+  --pass: #6fcf97; --pass-bg: #18301f; --off: #e2b451; --off-bg: #362b12; --fail: #f07b83;
+  --fail-bg: #3d1a1e; --na: #9c8f90; --na-bg: #241b1c; --add-bg: #173022; --del-bg: #3a1c1f;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { color: var(--ink); font: 16px/1.5 var(--body); min-height: 100vh; background-color: var(--ground);
+  background-image: linear-gradient(165deg, #060505 0%, #0d0909 40%, #170b0c 75%, #1f0c0e 100%);
+  background-attachment: fixed; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px; }
+code, pre, .mono { font-family: var(--mono); font-size: 0.86em; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: 0.01em; text-wrap: balance; margin: 0; }
+h2 { font-size: 1.7rem; line-height: 1.15; }
+h3 { font-size: 1.25rem; line-height: 1.2; }
+.wrap { padding-inline: 20px; }
+header.top { position: sticky; top: 0; z-index: 5; background: rgb(8 6 6 / 0.88); backdrop-filter: blur(6px); border-bottom: 1px solid var(--edge); }
+header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-block: 10px; }
+.brand { font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.02em; color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.3em; }
+.brand .logo { height: 1.15em; width: auto; flex: none; }
+.brand .name { color: var(--ink); min-width: 0; }
+.brand span { color: var(--accent); }
+.hright { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.stamp { color: var(--faint); font: 0.78rem var(--mono); }
+/* The licence (licence.tsx): a button in the stamp's own type beside it, and its text in the method dialog. */
+.hline { display: flex; flex-wrap: wrap; column-gap: 12px; align-items: baseline; }
+.licence-btn { all: unset; cursor: pointer; color: var(--faint); font: 0.78rem var(--mono);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.licence-btn:hover { color: var(--link); }
+.licence-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+pre.licence { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; font: 0.8rem/1.5 var(--mono); color: var(--muted); }
+pre.licence .mark { display: block; padding-left: 4ch; text-indent: -2ch; }
+pre.licence .yes { color: var(--pass); font-weight: 700; } pre.licence .no { color: var(--fail); font-weight: 700; }
+main { padding-block: 24px 64px; }
+.prose { max-width: 70ch; }
+.prose p, .prose li { color: var(--ink); }
+.lede { font-size: 1.12rem; color: var(--muted); max-width: 68ch; }
+.eyebrow { font: 600 0.74rem var(--body); text-transform: uppercase; letter-spacing: 0.09em; color: var(--faint); }
+.stack { display: flex; flex-direction: column; gap: 28px; }
+.stack-s { display: flex; flex-direction: column; gap: 10px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 20px; }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; font-variant-numeric: tabular-nums; }
+th { text-align: left; font: 600 0.72rem var(--body); text-transform: uppercase; letter-spacing: 0.07em; color: var(--faint); padding: 6px 10px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+td { padding: 6px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.num, th.num { text-align: right; }
+tr.clickable { cursor: pointer; }
+tr.clickable:hover td { background: var(--sunken); }
+tr.sel td { background: var(--accent-soft); }
+tr.copy td { padding-top: 3px; padding-bottom: 3px; font-size: 0.86rem; color: var(--muted); }
+tr.copy td:first-child { padding-left: 22px; }
+.pill { display: inline-block; font: 600 0.72rem var(--body); letter-spacing: 0.04em; padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.pass { color: var(--pass); background: var(--pass-bg); }
+.pill.off { color: var(--off); background: var(--off-bg); }
+.pill.fail { color: var(--fail); background: var(--fail-bg); }
+.pill.na { color: var(--na); background: var(--na-bg); }
+.pill.acc { color: var(--accent-ink); background: var(--accent-soft); }
+.chip { display: inline-block; font: 0.78rem var(--mono); padding: 1px 7px; border: 1px solid var(--rule); border-radius: 4px; color: var(--muted); background: var(--surface); }
+.bar { display: inline-flex; width: 84px; height: 8px; border-radius: 2px; overflow: hidden; background: var(--na-bg); vertical-align: middle; }
+.bar i { display: block; height: 100%; }
+.bar .p { background: var(--pass); } .bar .o { background: var(--off); } .bar .f { background: var(--fail); }
+dl.kv { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0; font-size: 0.93rem; }
+dl.kv dt { color: var(--faint); font-weight: 600; }
+dl.kv dd { margin: 0; overflow-wrap: anywhere; }
+/* parts browser */
+.browser { display: grid; grid-template-columns: var(--side, 480px) 22px minmax(0, 1fr); gap: 0; align-items: start; }
+.browser > .evidence { padding-left: 6px; }
+.side { position: sticky; top: var(--below-header); display: flex; flex-direction: column; gap: 10px; max-height: calc(100vh - var(--below-header) - 20px); }
+.side input, .side select { width: 100%; font: inherit; font-size: 0.95rem; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); color: var(--ink); }
+.plist { overflow: auto; border: 1px solid var(--edge); border-radius: 4px; flex: 1; min-height: 200px; }
+.plist table { font-size: 0.86rem; }
+.plist thead th { position: sticky; top: 0; z-index: 1; background: var(--sunken); padding: 0; }
+.plist th button { all: unset; box-sizing: border-box; display: flex; gap: 4px; align-items: center; width: 100%; padding: 7px 6px 5px; cursor: pointer; }
+.plist th.num button { justify-content: flex-end; }
+.plist th button:hover { color: var(--ink); }
+.plist th button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.plist th[aria-sort] button { color: var(--accent-ink); }
+.plist th .arrow { font-size: 0.62rem; min-width: 0.7em; }
+.plist td { padding: 3px 6px; border-bottom-color: rgb(255 255 255 / 0.04); }
+.plist td.num { font: 0.78rem var(--mono); color: var(--muted); }
+/* The kind of part: small, one line, cut short with its full name on hover. */
+.plist th.type { padding: 7px 6px 5px; }
+.plist td.type { max-width: 8.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.72rem; color: var(--faint); vertical-align: middle; }
+.plist a.pn { font: 600 1.02rem var(--display); letter-spacing: 0.02em; color: var(--ink); text-decoration: none; }
+/* The bar between the list and the part. The line is drawn thin; the grip is the whole 22px column. */
+.splitter { align-self: stretch; position: sticky; top: var(--below-header); height: calc(100vh - var(--below-header) - 20px); cursor: col-resize; touch-action: none; display: flex; justify-content: center; }
+.splitter::before { content: ""; width: 1px; height: 100%; background: var(--edge); transition: background 0.15s, width 0.15s; }
+.splitter:hover::before, .splitter:focus-visible::before { width: 3px; background: var(--accent); }
+.splitter:focus-visible { outline: none; }
+.count { font: 0.78rem var(--mono); color: var(--faint); }
+/* The part's name stays in view under the header while its page scrolls beneath it. */
+.ptitle { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; position: sticky; top: var(--header-h); z-index: 4;
+  padding-block: 10px; background: rgb(8 6 6 / 0.88); backdrop-filter: blur(6px); border-bottom: 1px solid var(--edge); }
+/* A section a link points at (anchor.tsx) lands under the part's name, not behind it. */
+[data-anchor] { scroll-margin-top: calc(var(--header-h) + 90px); }
+.ptitle h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; letter-spacing: 0.01em; }
+/* The box under the part's name: its kind, what each piece of the name says, its variants. */
+.pinfo { max-width: 760px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  display: grid; gap: 8px; }
+.pinfo p { margin: 0; }
+.pinfo .pkind { font: 600 1.1rem var(--display); letter-spacing: 0.01em; }
+.pinfo .reading { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; margin: 0; font-size: 0.92rem; }
+.pinfo .reading dt { font: 600 0.92rem var(--mono); color: var(--accent-ink); }
+.pinfo .reading dd { margin: 0; }
+.pinfo .reading dd.muted { grid-column: 2; }
+.pinfo .reading .field { font: 600 0.7rem var(--body); text-transform: uppercase; letter-spacing: 0.07em; color: var(--faint); }
+/* A part's sections: each heading folds its section, with + closed and − open in place of the marker. */
+details.psec { border-top: 1px solid var(--edge); padding-top: 14px; }
+details.psec > summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+details.psec > summary::-webkit-details-marker { display: none; }
+details.psec > summary h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.05; }
+details.psec > summary :is(h2, h3)::before { content: "+"; display: inline-block; width: 0.85em; color: var(--faint); font-weight: 400; }
+details.psec[open] > summary :is(h2, h3)::before { content: "−"; }
+details.psec > summary:hover :is(h2, h3), details.psec > summary:focus-visible :is(h2, h3) { color: var(--accent-ink); }
+details.psec[open] > summary { margin-bottom: 12px; }
+/* A part inside a section folds the same way under a smaller heading. */
+details.psub { padding-top: 12px; }
+details.psub > summary h3 { font-size: clamp(1.35rem, 2.6vw, 1.7rem); line-height: 1.1; }
+/* A section's address (anchor.tsx): a faint # beside its heading, shown when the heading is pointed at or
+   focused, and always on a screen with nothing to point with. In a fold it comes after the name, before
+   the counts. */
+a.anchor { flex: none; font: 400 0.9rem var(--mono); color: var(--faint); text-decoration: none; opacity: 0; transition: opacity 0.15s; }
+:is(summary, h3):hover > a.anchor, a.anchor:focus-visible, a.anchor.done { opacity: 1; }
+a.anchor:hover { color: var(--accent-ink); }
+a.anchor .copied { font-family: var(--body); color: var(--accent-ink); }
+h3 > a.anchor { margin-left: 0.4em; }
+details.psec > summary > a.anchor { font-size: 1.15rem; }
+@media (hover: none) { a.anchor { opacity: 0.6; } }
+details.uses.lv1 > summary > strong ~ * { order: 2; }
+details.uses.lv1 > summary > a.anchor { order: 1; }
+.why { border-left: 3px solid var(--accent); padding: 6px 0 6px 14px; color: var(--ink); }
+.muted { color: var(--muted); }
+.small { font-size: 0.86rem; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 0.88rem; color: var(--muted); }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+.back { display: none; }
+.bench { border-top: 1px solid var(--rule); padding-top: 14px; }
+.bench h3 { margin-bottom: 4px; }
+.evidence { scroll-margin-top: calc(var(--below-header) + 20px); min-width: 0; }
+.browser:has(.evidence.wide) { grid-template-columns: minmax(0, 1fr); }
+.browser:has(.evidence.wide) > .side, .browser:has(.evidence.wide) > .splitter { display: none; }
+@media (max-width: 700px) {
+  .evidence-view { overflow-x: auto; }
+}
+@media (max-width: 860px) {
+  .browser { grid-template-columns: minmax(0, 1fr); }
+  .splitter { display: none; }
+  .browser > .evidence { padding-left: 0; }
+  .side { position: static; max-height: none; }
+  .browser.has-part .side { display: none; }
+  .browser.has-part .back { display: inline-block; }
+  .plist { max-height: 60vh; }
+  .hright { margin-left: 0; align-items: flex-start; }
+}
+details.uses { padding: 8px 0; }
+details.uses summary { cursor: pointer; }
+
+/* Three levels: the kind of source, the source, the document. They fold the same way, so they have to
+   read differently or the nesting is invisible — which it was, all three sharing one style. */
+details.uses.lv1 { border-top: 1px solid var(--rule); padding-block: 12px; }
+details.uses.lv1 > summary strong {
+  font: 600 1.18rem/1.2 var(--display); letter-spacing: 0.02em; color: var(--ink);
+}
+details.uses.lv1[open] > summary strong { color: var(--accent-ink); }
+
+details.uses.lv2 { padding: 2px 0 2px 16px; border-left: 2px solid var(--rule); margin-left: 4px; }
+details.uses.lv2 > summary strong {
+  font: 600 0.78rem var(--body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint);
+}
+details.uses.lv2[open] { border-left-color: var(--accent-soft); }
+
+details.uses.lv3 { padding: 2px 0 2px 16px; }
+details.uses.lv3 > summary strong { font: 400 0.95rem var(--body); color: var(--ink); }
+details.uses summary { cursor: pointer; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.uselist { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; font-size: 0.93rem; }
+.uselist.cols { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.uselist li { overflow-wrap: anywhere; }
+.uselist .line { color: var(--ink); opacity: 0.85; }
+.prog { display: inline-block; width: 90px; height: 8px; border-radius: 2px; background: var(--na-bg); overflow: hidden; vertical-align: middle; }
+.prog i { display: block; height: 100%; background: var(--accent-ink); }
+.split { display: flex; width: 100%; min-width: 120px; height: 10px; border-radius: 2px; overflow: hidden; background: var(--na-bg); gap: 1px; }
+.split i { display: block; height: 100%; }
+.split .a { background: var(--pass); } .split .c { background: var(--off); } .split .s { background: var(--accent-ink); } .split .n { background: transparent; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.toolbar input, .toolbar select { font: inherit; font-size: 0.95rem; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); color: var(--ink); }
+.toolbar input { flex: 1 1 220px; }
+@media (prefers-reduced-motion: reduce) { .live { animation: none; } }
+/* Something on its way (loading.tsx): what it is, and a ring that turns while it comes. */
+.loading { display: flex; align-items: center; gap: 0.55em; }
+span.loading { display: inline-flex; }
+.spinner { flex: none; width: 0.95em; height: 0.95em; border: 2px solid var(--rule); border-top-color: var(--accent-ink);
+  border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.4s; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Added for this site: the previous one had no list long enough to page through, and no group that
+   folded three deep. Everything above is its stylesheet as it was. */
+button.more { font: 600 0.82rem var(--body); padding: 5px 11px; margin: 8px 4px; border-radius: 999px;
+  border: 1px solid var(--rule); background: var(--surface); color: var(--muted); cursor: pointer; }
+button.more:hover { border-color: var(--accent); color: var(--accent-ink); }
+/* Every fold says whether it is open, + closed and − open, in place of the browser's triangle (which a
+   flex summary loses anyway). A section's heading carries its own, larger. */
+summary { list-style: none; cursor: pointer; }
+summary::-webkit-details-marker { display: none; }
+details:not(.psec) > summary::before { content: "+"; display: inline-block; flex: none; width: 1ch; margin-right: 0.35em;
+  font: 400 1em var(--mono); color: var(--faint); }
+details:not(.psec)[open] > summary::before { content: "−"; }
+details:not(.psec) > summary:hover::before { color: var(--accent-ink); }
+details.uses > summary { gap: 6px 10px; }
+details.uses.lv1 > summary::before { font-size: 1.18rem; } details.uses.lv3 > summary::before { font-size: 0.95rem; }
+details.uses[open] > summary { margin-bottom: 6px; }
+details.uses .uses { border-top: 1px solid var(--rule); }
+details.uses .uses .uses { border-top: 0; }
+details.uses summary strong { font-weight: 600; }
+/* A repository with nothing to open is a row like the ones that open, its marker's room left empty. */
+.repolist > .plain { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-left: 4px;
+  padding: 2px 0 2px 16px; border-left: 2px solid var(--rule); border-top: 1px solid var(--rule); }
+/* One list, two kinds of row: the ones that open say so with their + (above), the others keep its room. */
+.repolist > .plain::before { content: ""; display: inline-block; flex: none; width: 1ch; margin-right: 0.35em; font: 400 1em var(--mono); }
+.repolist > .plain strong { font: 600 0.86rem var(--mono); color: var(--ink); }
+.repolist a.out { font-size: 0.8rem; text-decoration: none; color: var(--faint); }
+.repolist a.out:hover { color: var(--link); }
+details.uses.lv2.repo > summary strong { font: 600 0.86rem var(--mono); text-transform: none; letter-spacing: 0; color: var(--ink); }
+
+/* What a part's name says, and the catalogue pages */
+.refs a, a.refs { font: 0.74rem var(--mono); }
+.prose-wide { max-width: 90ch; }
+ul.tree { list-style: none; margin: 0; padding-left: 0; display: grid; gap: 4px; }
+ul.tree ul.tree { padding-left: 20px; border-left: 2px solid var(--rule); margin: 4px 0 6px 4px; }
+ul.sheetlist { list-style: none; margin: 2px 0 6px; padding-left: 16px; display: grid; gap: 2px; font-size: 0.92rem; }
+
+/* A part's models against its data sheet (models.tsx): compact, the first column held while the models
+   scroll sideways, a value coloured only by the sheet's own limits. */
+table.chk { font-size: 0.8rem; width: auto; }
+table.chk th, table.chk td { padding: 3px 7px; }
+table.chk th.mcol { text-transform: none; letter-spacing: 0; font: 0.72rem var(--mono); color: var(--ink); text-align: right; max-width: 9rem; overflow: hidden; text-overflow: ellipsis; }
+table.chk .stick { position: sticky; left: 0; z-index: 1; background: var(--ground); min-width: 16rem; max-width: 24rem; }
+table.chk tr.clickable { cursor: pointer; }
+table.chk td.cc { white-space: nowrap; font-family: var(--mono); font-size: 0.76rem; }
+.c-in { color: var(--pass); background: var(--pass-bg); }
+.c-out { color: var(--fail); background: var(--fail-bg); }
+.c-typ, .c-grade { color: var(--ink); }
+.c-card, .c-author { color: var(--off); }
+.c-none { color: var(--faint); }
+.c-err { color: var(--fail); }
+.legend span { padding: 0 4px; border-radius: 3px; }
+table.chk tr.crop td { background: var(--sunken); }
+table.chk tr.crop .cropbox { position: sticky; left: 0; width: fit-content; max-width: min(760px, calc(100vw - 48px)); }
+table.chk tr.crop img { display: block; max-width: 100%; background: #fff; margin-bottom: 4px; }
+table.chk tr.fact td { border-bottom-color: transparent; color: var(--muted); font-size: 0.74rem; }
+.faint { color: var(--faint); }
+/* Which values were read from the sheet and which were simulated: a band over each group, the sheet's
+   columns faintly lit, and a rule between the two. The band's words stay in view while the models scroll. */
+table.chk th.grp { font: 600 1.02rem var(--display); letter-spacing: 0.02em; text-transform: none; padding: 7px 10px; }
+table.chk th.grp.sheet { color: var(--ink); background: #221a1b; }
+table.chk th.grp.sim { color: var(--accent-ink); background: var(--accent-soft); }
+table.chk th.grp.facts { color: var(--muted); background: var(--sunken); font-size: 0.92rem; }
+table.chk .grp-label { position: sticky; left: 10px; white-space: nowrap; }
+table.chk .grp-sub { font: 400 0.8rem var(--body); color: var(--muted); }
+table.chk .sv { background: rgb(255 255 255 / 0.035); }
+table.chk .first-m { border-left: 2px solid var(--accent); }
+.how { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 10px 14px; }
+.how h4 { margin: 0; font-family: var(--display); font-size: 1.05rem; }
+pre.netlist { background: var(--sunken); padding: 8px 10px; overflow-x: auto; font-size: 0.74rem; margin: 4px 0; }
+@media (max-width: 700px) { table.chk .stick { min-width: 9rem; max-width: 11rem; } }
+
+/* The sheet's figures beside the same graphs simulated (figures.tsx). */
+.figgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(700px, 1fr)); gap: 14px; }
+.figcard { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; }
+.figcard h4 { margin: 0 0 6px; font: 600 0.95rem var(--display); }
+.figcard h4 .eng { font-weight: 400; white-space: nowrap; }
+td.disc { width: 1.6em; padding-right: 0; }
+td.bench { max-width: 9rem; } td.bench.sims-td { max-width: none; }
+.benchcell { line-height: 1.35; }
+.benchcell .chip { margin: 1px 2px 0 0; }
+.benchcell .bar { width: 48px; height: 6px; margin-right: 4px; }
+.benchcell > span { white-space: nowrap; } .benchcell .ok { color: var(--pass); }
+.sims .differs { color: var(--off); text-decoration: underline wavy; text-underline-offset: 3px; }
+.sims .neq { color: var(--off); }
+/* The simulators' names on one small line, which sets the column's width: the cell holds it, never spills. */
+.benchcell > .sims { font-size: 0.72rem; }
+.sims-td .chip { font-size: 0.68rem; white-space: normal; padding: 0 5px; }
+.sims .failed { color: var(--faint); text-decoration: line-through; } .sims .untried { color: var(--faint); opacity: 0.6; }
+button.disc { width: 1.4em; height: 1.4em; padding: 0; line-height: 1; font: inherit; font-weight: 600; color: var(--muted, #666); background: var(--surface); border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; }
+button.disc[aria-expanded="true"] { color: var(--ink, inherit); }
+.figpair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+.figpair img { display: block; width: 100%; background: #fff; border-radius: 2px; }
+svg.fig { width: 100%; height: auto; background: #fff; border-radius: 2px; }
+svg.fig .frame { fill: none; stroke: #222; stroke-width: 1; }
+svg.fig .grid { stroke: #ddd; stroke-width: 0.6; }
+svg.fig .grid.major { stroke: #bbb; }
+svg.fig .tick { font: 8px var(--body); fill: #333; }
+svg.fig .axis { font: 9px var(--body); fill: #222; }
+svg.fig .mine { fill: none; stroke-width: 1.8; }
+svg.fig .mine.hot { stroke-width: 3.2; }
+svg.fig .mine.dim { opacity: 0.3; }
+svg.fig .dots { fill: none; stroke-width: 3.2; stroke-linecap: round; }
+svg.fig .dots.hot { stroke-width: 5; }
+svg.fig .dots.dim { opacity: 0.3; }
+svg.fig .tag { font: 600 10px var(--body); fill: #111; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+svg.fig .other { fill: none; stroke: #999; stroke-width: 0.8; opacity: 0.55; }
+ul.figkey { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 12px; }
+ul.figkey .swatch { display: inline-block; width: 14px; height: 3px; margin-right: 5px; vertical-align: middle; }
+@media (max-width: 760px) { .figgrid { grid-template-columns: 1fr; } .figpair { grid-template-columns: 1fr; } }
+.offscale { color: var(--off); }
+
+/* Report a problem (report.tsx): a small button in the header, under the build's date, while a part is
+   open, and a dialog over the page. */
+.report-btn { display: inline-flex; gap: 5px; align-items: center;
+  font: 600 0.74rem var(--body); padding: 2px 9px; border-radius: 999px; border: 1px solid var(--edge);
+  background: var(--surface); color: var(--muted); cursor: pointer; }
+.report-btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+button.linkish { all: unset; cursor: pointer; color: var(--faint);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+button.linkish:hover { color: var(--link); }
+button.linkish:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+dialog.report { padding: 0; width: min(560px, calc(100vw - 32px)); border: 1px solid var(--rule); border-radius: 8px;
+  background: var(--surface); color: var(--ink); box-shadow: 0 16px 48px rgb(0 0 0 / 0.6); }
+dialog.report::backdrop { background: rgb(6 4 4 / 0.7); backdrop-filter: blur(2px); }
+dialog.report .panel-in { padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 12px; }
+dialog.report h3 .pn { color: var(--accent-ink); }
+dialog.report p { margin: 0; }
+dialog.report form { display: flex; flex-direction: column; gap: 10px; }
+dialog.report textarea { font: inherit; font-size: 0.95rem; padding: 8px 10px; min-height: 8em; resize: vertical;
+  border: 1px solid var(--rule); border-radius: 4px; background: var(--sunken); color: var(--ink); }
+dialog.report textarea:focus { outline: none; border-color: var(--accent); }
+dialog.report textarea::placeholder { color: var(--faint); }
+dialog.report .row { display: flex; gap: 16px; align-items: center; }
+dialog.report .row > span { flex: 1; }
+/* The maintainer's passphrase (unlock.tsx) in the same dialog, and the model text it opens. */
+dialog.report input.phrase { font: 0.95rem var(--mono); padding: 8px 10px; border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--sunken); color: var(--ink); }
+dialog.report input.phrase:focus { outline: none; border-color: var(--accent); }
+/* Wrapped where a card is wider than the table: as preformatted text it would widen every column. */
+pre.sealed { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 24em; overflow-y: auto; }
+dialog.report .linkish { font-size: 0.9rem; }
+button.send { font: 600 0.95rem var(--display); letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 18px;
+  border: 0; border-radius: 4px; background: var(--accent); color: var(--ground); cursor: pointer; }
+button.send:hover { background: var(--accent-ink); }
+button.send:disabled { opacity: 0.4; cursor: default; }
+dialog.report .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Every model at the same conditions (character.tsx): a pane with its own scroll, the header row and the
+   first column held, so one quantity is compared across models without walking the page. */
+.charwrap { max-height: 72vh; overflow: auto; border: 1px solid var(--rule); border-radius: 6px; }
+.charwrap.curvenums { max-height: 22rem; }
+.charpane p.codes { margin: 0; line-height: 1.5; }
+table.char { border-collapse: separate; border-spacing: 0; }
+table.char thead th { position: sticky; top: 0; z-index: 2; background: var(--ground); box-shadow: inset 0 -1px var(--rule); }
+table.char thead th.corner { z-index: 3; }
+table.char .stick { min-width: 13rem; max-width: 20rem; }
+table.char th.mcol { max-width: 14rem; }
+table.char tr.mhead th.stick { font: 600 0.9rem var(--display); text-transform: none; letter-spacing: 0; padding-top: 10px; background: var(--sunken); }
+table.char tr.mhead td { background: var(--sunken); }
+table.char td.qty code { font-size: 0.74rem; }
+table.char td.num { text-align: right; font-family: var(--mono); font-size: 0.76rem; white-space: nowrap; }
+.k-absent { color: var(--off); } .k-na { color: var(--muted); } .k-failed { color: var(--fail); } .k-suspect { color: var(--fail); }
+.chip.agree { padding: 0 5px; margin-left: 4px; }
+.chip.a-1 { color: var(--pass); } .chip.a-5 { color: var(--ink); } .chip.a-gt5 { color: var(--fail); }
+table.char .swatch, ul.figkey .swatch, .picklist .swatch { display: inline-block; width: 14px; height: 0; margin-right: 5px; vertical-align: middle; }
+table.char tr.decks td { background: var(--sunken); }
+/* The curves and the models in two lists beside one chart, as a waveform viewer has them. The panel sits
+   beside the parts list, so its own width decides the layout, not the window's. */
+.charpane { container-type: inline-size; }
+.charpane { display: flex; flex-direction: column; gap: 12px; }
+/* the models: a low box across the panel, their rows in as many columns as fit */
+.picklist.models { max-height: 6.9rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); column-gap: 6px; align-content: start; }
+/* under it, the curves beside the chart: the list as tall as the chart's column, scrolling inside */
+.lower { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 12px; align-items: stretch; }
+.lower > .pick { display: flex; flex-direction: column; }
+.lower .picklist.curves { flex: 1 1 0; height: 0; min-height: 14rem; max-height: none; }
+.pick { border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); min-width: 0; }
+.pickhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+.pickhead b { font: 600 0.9rem var(--display); }
+.pickhead input[type=search] { flex: 1 1 8rem; min-width: 0; font: 0.8rem var(--body); padding: 2px 6px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sunken); color: var(--ink); }
+.pickhead input[type=search]:focus { outline: none; border-color: var(--accent); }
+.picklist { list-style: none; margin: 0; padding: 0 0 4px; overflow: auto; position: relative; font-size: 0.82rem; }
+.picklist .pickgroup { position: sticky; top: 0; z-index: 1; padding: 5px 8px 2px; background: var(--surface); font: 600 0.72rem var(--body); text-transform: uppercase; letter-spacing: 0.05em; color: var(--faint); }
+.picklist .none { padding: 6px 8px; }
+.picklist .crow { display: flex; align-items: baseline; gap: 6px; padding: 2px 8px 2px 14px; cursor: pointer; }
+.picklist .crow:hover, .picklist .mrow:hover { background: var(--sunken); }
+.picklist .crow.on { background: var(--accent-soft); color: var(--accent-ink); }
+.picklist .crow:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
+.picklist .crow .lb { flex: 1; min-width: 0; }
+.picklist .faint { opacity: 0.5; }
+.picklist .pcode { margin-left: auto; font: 0.72rem var(--mono); color: var(--muted); white-space: nowrap; }
+.picklist .mrow { padding: 2px 8px; }
+.picklist .mrow.on { background: var(--accent-soft); }
+.picklist .mline { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.picklist .mline input { margin: 0 2px 0 0; flex: none; }
+.picklist .mline .swatch { flex: none; }
+.picklist button.mname { all: unset; flex: 1; min-width: 0; cursor: pointer; font: 0.78rem var(--mono); overflow-wrap: anywhere; line-height: 1.3; padding: 1px 0; }
+.picklist .mname { flex: 1; min-width: 0; font: 0.78rem var(--mono); overflow-wrap: anywhere; line-height: 1.3; padding: 1px 0; }
+.picklist .mname .tg { color: var(--faint); }
+.picklist .mname .src { display: block; font: 0.72rem var(--body); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.picklist .mline .nobox { flex: none; width: calc(13px + 2px + 14px + 5px + 4px); }
+.picklist .mline { align-items: flex-start; } .picklist .mline input, .picklist .mline .swatch { margin-top: 0.45em; }
+.picklist .mline .pcode, .picklist .mline button.more { margin-top: 0.15em; }
+.picklist .mrow.on button.mname b { color: var(--accent-ink); }
+.picklist button.mname:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.picklist button.more { all: unset; flex: none; cursor: pointer; font: 0.72rem var(--mono); color: var(--faint); white-space: nowrap; }
+.picklist button.more:hover, .picklist button.more[aria-expanded="true"] { color: var(--ink); }
+.picklist button.more:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.picklist ul.same { list-style: none; margin: 1px 0 3px 2.6rem; padding: 0; font: 0.74rem var(--mono); color: var(--muted); }
+.picklist ul.same li.hit { color: var(--accent-ink); }
+.vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); border: 0; }
+@container (max-width: 640px) {
+  .lower { grid-template-columns: minmax(0, 1fr); }
+  .lower .picklist.curves { flex: none; height: auto; min-height: 0; max-height: 12rem; }
+}
+@container (max-width: 460px) { .curvenums table.char .stick { min-width: 8rem; max-width: 12rem; } .curvenums table.char tr.mhead th.stick { white-space: normal; } }
+.curvenums table.char { width: 100%; }
+.picklist .dl { flex: none; margin-left: 6px; font: 0.72rem var(--body); color: var(--link); white-space: nowrap; }
+.picklist a.dl:hover, .picklist a.dl:focus-visible { color: var(--accent-ink); }
+.picklist .dl.off { color: var(--faint); cursor: help; }
+.picklist .mline .dl { margin-top: 0.15em; }
+.picklist ul.same li { display: flex; align-items: baseline; gap: 6px; }
+.picklist ul.same li > span { flex: 1; min-width: 0; }
+
+/* the one chart, its key under it */
+.figcard.one h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 0; }
+.figcard.one h4 .qty { color: var(--accent-ink); }
+.figcard.one h4 label.sel { font-weight: normal; font-size: 0.8rem; color: var(--muted); }
+.figcard.one h4 label.sel select { font-size: 0.8rem; }
+.figcard.one p.mname { margin: 0 0 6px; }
+.figcard.one ul.figkey { max-height: 9rem; overflow: auto; }
+.figcard.one ul.figkey li { display: flex; align-items: baseline; gap: 5px; white-space: nowrap; line-height: 1.5; cursor: pointer; padding: 0 4px; }
+.figcard.one ul.figkey li.faint { opacity: 0.5; }
+.figcard.one ul.figkey li.hot { background: #fff3b0; color: #111; border-radius: 3px; }
+.figcard.one ul.figkey .lb { min-width: 0; overflow: hidden; text-overflow: ellipsis; font: 0.78rem var(--mono); }
+.figcard.one ul.figkey .rv { margin-left: 6px; font-variant-numeric: tabular-nums; }
+.figcard.one ul.figkey .step { font-size: 0.85em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 14rem; }
+svg.fig .note { font-size: 9px; fill: #555; }
+svg.fig .ctitle { font: 600 10.5px var(--body); fill: #111; }
+svg.fig .csub { font: 8.5px var(--body); fill: #444; }
+.zoomctl button:disabled { opacity: 0.45; cursor: default; }
+.zoomctl svg.lens { width: 0.9em; height: 0.9em; vertical-align: -0.1em; margin-right: 1px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+pre.spice { margin: 4px 0 0; padding: 6px 8px; font-size: 0.78rem; line-height: 1.35; white-space: pre; overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); border-radius: 4px; }
+pre.spice .cmt { color: var(--muted, #777); }
+table.deck { border-collapse: collapse; margin: 4px 0 0; }
+table.deck td { padding: 2px 10px 2px 0; vertical-align: top; border: 0; }
+table.deck td:first-child { white-space: nowrap; }
+table.deck code { font-size: 0.82rem; }
+.method details > summary { cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+.method details > p, .method details > div { margin-top: 4px; }
+svg.fig .cursor { stroke: #999; stroke-width: 0.8; stroke-dasharray: 3 3; }
+svg.fig .tagbox { pointer-events: none; }
+svg.fig .spot { fill: #fff; stroke-width: 2; pointer-events: none; }
+svg.fig .tagbox rect { fill: #fff; fill-opacity: 0.92; stroke: #bbb; stroke-width: 0.6; }
+svg.fig .tagbox .tag { stroke: none; }
+svg.fig .tagbox .tl { font-weight: 400; font-size: 9px; }
+svg.fig .axtag { font: 600 8px var(--body); fill: #444; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; pointer-events: none; }
+/* The method page (methods.tsx). */
+.methods h4 { margin: 0; font: 600 1.05rem var(--display); }
+.methods .mid { font-size: 0.72rem; color: var(--muted); margin-left: 6px; }
+.method { border-top: 1px solid var(--rule); padding-top: 12px; }
+.method .drawing { display: block; width: auto; height: auto; max-width: 100%; background: #fff; border-radius: 4px; margin: 6px 0; }
+.method table.outputs td, .method table.outputs th { padding: 2px 8px; vertical-align: top; }
+.method .param { margin-right: 6px; }
+.uses-table td { vertical-align: top; } .uses-table .chip { margin: 0 4px 2px 0; }
+ul.toc { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+
+/* The "how is this measured" dialog, and the buttons that open it. */
+button.linkish { background: none; border: 0; padding: 0; color: var(--accent-ink); font: inherit; cursor: pointer; text-decoration: underline; }
+dialog.about { width: min(900px, 94vw); max-height: 88vh; padding: 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--ground); color: var(--ink); }
+dialog.about::backdrop { background: rgb(0 0 0 / 0.55); }
+dialog.about .about-body { max-height: 88vh; overflow: auto; padding: 14px 18px 18px; }
+dialog.about .method { border-top: 0; padding-top: 0; }
+ul.figkey label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+ul.figkey li.faint label { opacity: 0.5; }
+.mkey { white-space: nowrap; font: 0.78rem var(--mono); }
+.mkey .swatch { display: inline-block; width: 14px; height: 0; margin-right: 5px; vertical-align: middle; }
+svg.fig.zoomed { cursor: grab; }
+svg.fig .mark { stroke: #b36; stroke-width: 0.8; stroke-dasharray: 2 2; }
+.zoomctl { display: inline-flex; gap: 3px; }
+.zoomctl button { font: 0.72rem var(--mono); padding: 0 6px; min-width: 1.6rem; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.chartbar { gap: 8px; align-items: center; min-height: 1.7rem; margin-top: 2px; }
+.chartbar .readout { min-width: 7rem; }
+
+.methods label.pol { margin-left: 8px; }
+svg.fig .limit line { stroke-width: 1; stroke-dasharray: 6 3; opacity: 0.8; }
+svg.fig .limit text { font: 600 8px var(--body); paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+svg.fig .tagbox .tw { fill: #b3261e; font-weight: 600; }
+
+/* An LTspice symbol's drawing (made from its .asy by `sei web symbol-drawings`), in the page's ink: the
+   pins are the accent's small squares, and what a schematic would write in the symbol's windows (its name,
+   its model) is fainter than the symbol's own text. */
+.asy-view { padding: 6px 0; }
+.asy-view svg.asy { display: block; color: var(--ink); height: 140px; width: auto; max-width: 100%; }
+.asy-view svg.asy .asy-window { fill: var(--faint); }
+.asy-view svg.asy .asy-pins rect { fill: none; stroke: var(--accent); stroke-width: 1; vector-effect: non-scaling-stroke; }

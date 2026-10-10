@@ -1,0 +1,99 @@
+part: CA3080
+kind: ota
+priority: 1
+models:
+- source: ltwiki
+  name: ca3080a
+  def: subckt
+  hash: 4d209f6078e8bfbb505fdeb7b77d077732589c17
+  type: SUBCKT
+  pins:
+  - IN+
+  - IN-
+  - VCC
+  - VEE
+  - OUT
+  - BIAS
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Ota.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+    lines:
+      ca3080a: [173, 193]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/OpAmp.Add/ca3080a.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 37955cd8bfe3075fe49b775ce81145e2cd2e8d00f79e5e128672acb401eb9443
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: ca3080a
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: kicad-spice-library
+    name: ca3080a
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: ltwiki
+    name: ca3080a
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+- source: ltwiki
+  name: ca3080
+  def: subckt
+  hash: 4fdc5380b6992c354a817025509fb88be7be13fb
+  type: SUBCKT
+  pins:
+  - IN-
+  - IN+
+  - VEE
+  - BIAS
+  - OUT
+  - VCC
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Ota.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+    lines:
+      ca3080: [215, 236]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Robertugo/OpAmp/ota3080/Jerarq/ca3080.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 70498ceb60b7f5806bd5c6f3848f79c7fd23e88b33d69df2ba3bbd7d1a449d20
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: ca3080
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: kicad-spice-library
+    name: ca3080
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+  - source: ltwiki
+    name: ca3080
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Ota.Lib
+      sha256: 0145d7cd9827eb8a14113da0b4eb56b0f1e39b9041dee087068d3a7bef873777
+datasheet:
+  url: https://media.digikey.com/pdf/Data%20Sheets/Intersil%20PDFs/CA3080(A).pdf
+  maker: Intersil (now Renesas)
+  doc: FN475.6, Data Sheet, OBSOLETE PRODUCT
+  date: 2004-08

@@ -1,0 +1,37 @@
+part: 2N2925
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: spice-model-cd
+  name: 2N2925
+  def: model
+  hash: fa4f458b60c5fa18fc29909d660c49b67720fa64
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/2N/2N2925.t
+    sha256: 10f90be18b3c16a1ecf6036a4e69c3579c183bae41dd8568395b43357a01e500
+    lines:
+      2N2925: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N2925
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: groupsio-ltspice
+  name: 2N2925
+  def: model
+  hash: 8a976c81f7bc1458245351151f7f5e6668761125
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N2925: [81, 81]
+    fetched: '2026-09-21'

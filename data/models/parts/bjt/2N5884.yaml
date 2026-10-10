@@ -1,0 +1,55 @@
+part: 2N5884
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n5884
+  def: model
+  hash: 95c907cdd608b59e18405b79bd4c61babbe58aa9
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n5884.lib
+    sha256: 160113df648ceaee7214a0c7a8f8e2d8afe8d78e18bc5e6d0643e8f172513df1
+    lines:
+      Q2n5884: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Q2n5884
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: 2N5884
+  def: model
+  hash: 4e50db2ca5efebdd1d64da0bf98b793b228b7466
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N5884: [2572, 2579]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: 2N5884
+  def: model
+  hash: 4c6e46901cd1a7a22ff7f9edcdc0b21c8b864694
+  type: PNP
+  deps:
+  - 2N5883
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N5883: [518, 518]
+      2N5884: [519, 519]
+    fetched: '2026-09-21'

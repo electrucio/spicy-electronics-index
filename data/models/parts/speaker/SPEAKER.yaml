@@ -1,0 +1,64 @@
+part: SPEAKER
+kind: speaker
+group: non-native
+models:
+- source: duncanamps
+  name: SPEAKER
+  def: subckt
+  hash: d7cacc6375852d4de7deab41e14c2eb92c529382
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/loudspeakers/speaker.inc
+    sha256: b30676a4ed293651446cbc3d50917141a37863d782267168514b4c1a732451de
+    lines:
+      SPEAKER: [6, 23]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Speaker/speaker.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: f7113180694c5097bf38bf73ca60a1533838f68c6de6f0fdfc942d5842099bee
+  copies:
+  - source: bordodynov
+    name: SPEAKER
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/speaker.lib
+      sha256: 31c96be11af350cdfcb7e352b5e6c9b3e24c4eada5b9b632385aa7ac4b475a69
+  - source: bordodynov-qspice
+    name: SPEAKER
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/speaker.txt
+      sha256: 92a3ba2ea947730f9537c01ca53e43bab270da6a5b68badf763cb37b842ec4c2
+  - source: kicad-spice-library
+    name: SPEAKER
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/speaker.lib
+      sha256: 31c96be11af350cdfcb7e352b5e6c9b3e24c4eada5b9b632385aa7ac4b475a69
+  - source: ltwiki
+    name: SPEAKER
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/speaker.lib
+      sha256: 31c96be11af350cdfcb7e352b5e6c9b3e24c4eada5b9b632385aa7ac4b475a69
+- source: suusi-tubes
+  name: SPEAKER
+  def: subckt
+  hash: ab5a82b6726b730ac54e692aa955938b9c7cf6ba
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: Speaker.cir
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: 816433497a38b951671ba960cc79410913cba91b3f9148187fd21e4d45ffdaf8
+    lines:
+      SPEAKER: [7, 21]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+      member: speaker.asy
+      archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+      sha256: c85f0b7e8e4d598709b84fd2338d87d8c88df0f06f85fef322285abbbf31d1fd

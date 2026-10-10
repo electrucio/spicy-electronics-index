@@ -1,0 +1,134 @@
+part: SI2323
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: vishay
+  name: Si2323DDS
+  def: subckt
+  hash: 0d030e440354ab606a31cfa8363ff55ad73a27e6
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
+    member: Si2323DDS_PS_RC.txt
+    archive_sha256: e373f7b4f671e352f7fefd9daa9bedf4d4e9650e71d1b2573235ad7f71e1b4fc
+    sha256: 278454923bd56fae7a888db5b9f434fe9f0798ade79fa2c22293e3ace1432373
+    lines:
+      Si2323DDS: [106, 132]
+    fetched: '2026-09-19'
+  note: pins from names
+  copies:
+  - source: vishay
+    name: Si2323DDS
+    get:
+      url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
+      member: Si2323DDS_PS_RC.LIB
+      sha256: 278454923bd56fae7a888db5b9f434fe9f0798ade79fa2c22293e3ace1432373
+  - source: vishay
+    name: Si2323DDS
+    get:
+      url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
+      member: Si2323DDS_PS.LIB
+      sha256: 0ff4d8666b98956145df34eb44cf7064467855cbbf0083f314090e5f01081778
+  - source: vishay
+    name: Si2323DDS
+    get:
+      url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
+      member: Si2323DDS_PS.TXT
+      sha256: 0ff4d8666b98956145df34eb44cf7064467855cbbf0083f314090e5f01081778
+- source: vishay
+  name: Si2323DS
+  def: subckt
+  hash: 41e5769108b07d95313676101a135314310b2c7a
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/75749/Si2323DS.txt
+    sha256: 5782fc02b456fce3c5da375e7f7d1cad8c5871782186f9bd56fbed99bc5bc346
+    lines:
+      Si2323DS: [4, 28]
+    fetched: '2026-09-19'
+    note: 'MOSFETs, PSpice Models (*.txt): Si2323DS, PMOS, NMOS, DBD, RTEMP'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: Si2323DS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaymosfet.lib
+      sha256: 23bc5e3e06c64162cbb4b96205c8a4b30b08d7cfd780d41fd3043fede09671f7
+- source: vishay
+  name: Si2323DDS
+  def: subckt
+  hash: 8c2f4d2618593276e24ab4cbd83c8d27985c6c41
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
+    member: Si2323DDS_HS.TXT
+    archive_sha256: e373f7b4f671e352f7fefd9daa9bedf4d4e9650e71d1b2573235ad7f71e1b4fc
+    sha256: 38ec199ac58a655579ba5581435cd76ec422b77704e094fbb8afda36afcfa5cf
+    lines:
+      Si2323DDS: [7, 33]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: vishay
+  name: Si2323CDS
+  def: subckt
+  hash: c4744920c03c6733dc13cbce8e71b2af729097c9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
+    member: si2323cds_ps_rc Rev B.txt
+    archive_sha256: 03e355d7f34df3ed5e2a044602c79cbd06ce7614c4cd3cbeeb7fe9ad5773066d
+    sha256: 8600abd7d2719a22337c2352a9de9f88f7daecf13fbf0166069791f4592c8dd8
+    lines:
+      Si2323CDS: [12, 38]
+    fetched: '2026-09-19'
+  copies:
+  - source: vishay
+    name: Si2323CDS
+    get:
+      url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
+      member: si2323cds_ps Rev B.lib
+      sha256: 3219f6f035b6d3d7ac2194cccbb816ccd31d603ef7095e1af77957d93c714cc3
+  - source: vishay
+    name: Si2323CDS
+    get:
+      url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
+      member: si2323cds_ps_rc Rev B.lib
+      sha256: 8600abd7d2719a22337c2352a9de9f88f7daecf13fbf0166069791f4592c8dd8
+  - source: vishay
+    name: Si2323CDS
+    get:
+      url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
+      member: si2323cds_ps Rev B.txt
+      sha256: 3219f6f035b6d3d7ac2194cccbb816ccd31d603ef7095e1af77957d93c714cc3
+- source: vishay
+  name: Si2323CDS
+  def: subckt
+  hash: 9d0680a52a8759f89b80840333751ebd2c3bd615
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
+    member: Si2323CDS_HS Rev B.txt
+    archive_sha256: 03e355d7f34df3ed5e2a044602c79cbd06ce7614c4cd3cbeeb7fe9ad5773066d
+    sha256: 9ce15bd4f4e4ea5209f2931b684bab809969da53c54e2a2c663825834279cf65
+    lines:
+      Si2323CDS: [11, 37]
+    fetched: '2026-09-19'

@@ -1,0 +1,151 @@
+part: SI2301
+kind: mosfet
+priority: 3
+group: small_signal
+models:
+- source: vishay
+  name: Si2301BDS
+  def: subckt
+  hash: fb44c8ea36144f22088ce95d7aed54dd6efa6761
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/76385/Si2301BD.txt
+    sha256: cf021198ae4ff32c4e7409068b3565e6cb4516503361e9c402276a178a485592
+    lines:
+      Si2301BDS: [4, 28]
+    fetched: '2026-09-19'
+    note: 'MOSFETs, PSpice Models (*.txt): Si2301BDS, PMOS, NMOS, DBD, RTEMP'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: Si2301BDS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/vishaymosfet.lib
+      sha256: 23bc5e3e06c64162cbb4b96205c8a4b30b08d7cfd780d41fd3043fede09671f7
+- source: vishay
+  name: Si2301CDS
+  def: subckt
+  hash: 99a41b427409b917d006ced470518fa2e8039a96
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/en/product/68741/tab/designtools-ppg/
+    member: si2301cds_ps_rc Rev B.lib
+    archive_sha256: c3a03b5c391ff60c9db717999b2428435c324463c27a9113035131c6a33a54f8
+    sha256: c4ab6e2c3b186ff699c8916055c31c1fc84a8ea9f7cddf133422d3aac690bbee
+    lines:
+      Si2301CDS: [12, 39]
+    fetched: '2026-09-21'
+  copies:
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/en/product/68741/tab/designtools-ppg/
+      member: si2301cds_ps Rev B.txt
+      sha256: 846678aed6ecad940b305dd9d55ae0dcc3b4f76c10515676ca847490bba92422
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/en/product/68741/tab/designtools-ppg/
+      member: si2301cds_ps_rc Rev B.txt
+      sha256: c4ab6e2c3b186ff699c8916055c31c1fc84a8ea9f7cddf133422d3aac690bbee
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/en/product/68741/tab/designtools-ppg/
+      member: si2301cds_ps Rev B.lib
+      sha256: 846678aed6ecad940b305dd9d55ae0dcc3b4f76c10515676ca847490bba92422
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/docs/68503/si2301cds_ps_revb.zip
+      member: si2301cds_ps_rc Rev B.lib
+      sha256: c4ab6e2c3b186ff699c8916055c31c1fc84a8ea9f7cddf133422d3aac690bbee
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/docs/68503/si2301cds_ps_revb.zip
+      member: si2301cds_ps Rev B.txt
+      sha256: 846678aed6ecad940b305dd9d55ae0dcc3b4f76c10515676ca847490bba92422
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/docs/68503/si2301cds_ps_revb.zip
+      member: si2301cds_ps_rc Rev B.txt
+      sha256: c4ab6e2c3b186ff699c8916055c31c1fc84a8ea9f7cddf133422d3aac690bbee
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/docs/68503/si2301cds_ps_revb.zip
+      member: si2301cds_ps Rev B.lib
+      sha256: 846678aed6ecad940b305dd9d55ae0dcc3b4f76c10515676ca847490bba92422
+- source: vishay
+  name: Si2301CDS
+  def: subckt
+  hash: 1473cdd8778ef6a9ecc34235a8a2900487a06ea9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/en/product/68741/tab/designtools-ppg/
+    member: Si2301CDS_HS_PS Rev B.TXT
+    archive_sha256: c3a03b5c391ff60c9db717999b2428435c324463c27a9113035131c6a33a54f8
+    sha256: 41f467bc3aec81348f4fd421901a9f3540468e2138c7f2b3e75d56841ed42e1a
+    lines:
+      Si2301CDS: [11, 39]
+    fetched: '2026-09-21'
+  copies:
+  - source: vishay
+    name: Si2301CDS
+    get:
+      url: https://www.vishay.com/docs/68503/si2301cds_ps_revb.zip
+      member: Si2301CDS_HS_PS Rev B.TXT
+      sha256: 41f467bc3aec81348f4fd421901a9f3540468e2138c7f2b3e75d56841ed42e1a
+- source: microcap12
+  name: si2301p_SI
+  def: subckt
+  hash: 8392342838d5def849e378fa66f9e1f0b02333c1
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishay.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 525bcef2341b5f067abbf14c7fa605f190361346e3c33a98d0d48361d5c29543
+    lines:
+      si2301p_SI: [12, 36]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: si2301p_SI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/vishay.lib
+      sha256: ac28d4292eda0d5bc84b0d744df3927070a13ab71e97f3d47a5958dcd0b4a8d5
+- source: kicad-spice-library
+  name: SI2301p
+  def: subckt
+  hash: 016bce572e411cdd1d5652de9da4b0a236378ec1
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SILICONX.LIB
+    sha256: 1939c14a18c06438238d8755b55a2bad3bfda92563363e4bd0d13750f60f07f4
+    lines:
+      SI2301p: [1960, 1979]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

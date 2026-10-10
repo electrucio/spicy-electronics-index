@@ -1,0 +1,48 @@
+part: B0530WS
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: microcap12
+  name: B0530WS
+  def: model
+  hash: f4031b53468bec76f4822c5b38a3363f5811cafa
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      B0530WS: [9560, 9561]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: B0530WS
+  def: model
+  hash: 033b50fdf0266360317a6b5e2e0b5b8fcdef7b66
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      B0530WS: [1197, 1197]
+    fetched: '2026-10-10'
+- source: kicad-spice-library
+  name: MBR0530
+  def: model
+  hash: 6fb563104034cb21912ac1e1e8bc385599f14b5b
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIODE.LIB
+    sha256: c68f4b4a28eb0e866fb8e516b6a6a37a779ac80fed8a2ef16a3afcfb80c522e5
+    lines:
+      MBR0530: [2364, 2365]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: 'STAND-IN: model of MBR0530, not of B0530WS; equivalence declared in catalog/wanted.yaml (see
+    its note)'

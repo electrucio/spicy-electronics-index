@@ -1,0 +1,28 @@
+part: B57164K0103
+kind: thermistor
+group: non-native
+models:
+- source: bordodynov
+  name: K164_10000
+  def: subckt
+  hash: 9d688cc35be7ece332b2b45e708ffe8882e8a06c
+  type: SUBCKT
+  deps:
+  - NTC
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ntc.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: cf4d7d215176b3026015c9944507c6289406d2ca49dc9587dcaf3cadb0612cf8
+    lines:
+      K164_10000: [1393, 1403]
+      NTC: [17, 29]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: K164_10000
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ntc.lib
+      sha256: cf4d7d215176b3026015c9944507c6289406d2ca49dc9587dcaf3cadb0612cf8

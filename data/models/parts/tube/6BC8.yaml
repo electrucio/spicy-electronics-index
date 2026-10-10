@@ -1,0 +1,42 @@
+part: 6BC8
+kind: tube
+priority: 2
+group: audio_docs
+models:
+- source: suusi-tubes
+  name: 6BC8
+  def: subckt
+  hash: e83534e262b84a887c0d320dcdbb566c29ddbf2b
+  type: SUBCKT
+  pins:
+  - P
+  - G
+  - C
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6BC8: [654, 658]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: groups-io
+  name: 6BC8
+  def: subckt
+  hash: c74e729d4a079c5730070509df6502400da4e03f
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      6BC8: [623, 627]
+      TRIODE: [2343, 2354]
+    fetched: '2026-10-09'

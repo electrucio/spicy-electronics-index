@@ -1,0 +1,337 @@
+part: IRF7404
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: microcap12
+  name: irf7404_IR
+  def: subckt
+  hash: 9a8e92bbd440cc1a02a64c1dacbadad17e525844
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf7404_IR: [3812, 3871]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: IRF7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+  - source: kicad-spice-library
+    name: irf7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irf7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irf7404_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: spice-model-cd
+  name: IRF7404
+  def: subckt
+  hash: 860389f032e06f269d5c086950396526d582f73a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRF7404: [386, 393]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: IRF7404
+  def: model
+  hash: 10fd59b2b5eea77d6b7472d9a5b83e2a78e7b516
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+    lines:
+      IRF7404: [685, 685]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: bordodynov
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: bordodynov-qspice
+    name: IRF7404
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: kicad-spice-library
+    name: IRF7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: kicad-spice-library
+    name: IRF7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.mos
+      sha256: 4ad1e16da6dfb08f9b1d55a27c28ca4a034db3f309073ce070136378fb658ad0
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: groups-io
+  name: IRF7404
+  def: model
+  hash: c30d915603bea2c8566b39890a2e691901d50485
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.mos.zip
+    member: standard.mos
+    archive_sha256: a20e6e422ae85770aab697f646969e1027bebd814386b6d94cfe77568a493c47
+    sha256: dfcc174aa8c342bafb250a3555fdc982390822135778d7fb6a511898502c5e2a
+    lines:
+      IRF7404: [555, 555]
+    fetched: '2026-10-10'
+  copies:
+  - source: groupsio-ltspice
+    name: IRF7404
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.mos
+      sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+  - source: kicad-spice-library
+    name: IRF7404
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/MOS.lib
+      sha256: 5a12451d9b52820cc74b1f3c11955dcfbc99cc0ede851dd12587ebbbc9e9531e
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Reg_Vref/lm/LdoReg/bss139.mod
+      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Reg&Vref/lm/LdoReg/bss139.mod
+      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/LdoReg/bss139.mod
+      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+  - source: ltwiki
+    name: IRF7404
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/LdoReg/bss139.mod
+      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+- source: groupsio-ltspice
+  name: IRF7404_
+  def: model
+  hash: f2f6e26be74d7ee2363accb0ee199adfaea8a037
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      IRF7404_: [1096, 1096]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRF7404_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: IRF7404_
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF7404_
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF7404_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF7404_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF7404_
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF7404_
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: irf7404
+  def: subckt
+  hash: 0457169d5a85e33b6a2654df7caea14e8d1d99f7
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf7404.spi
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ca469fe9d5651b40200d7b9dea65937693604b349e675bd630e3e27a6016c28f
+    lines:
+      irf7404: [1, 56]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf7404.spi
+      sha256: ca469fe9d5651b40200d7b9dea65937693604b349e675bd630e3e27a6016c28f
+  - source: bordodynov
+    name: irf7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf7404.spi
+      sha256: ca469fe9d5651b40200d7b9dea65937693604b349e675bd630e3e27a6016c28f
+  - source: ltwiki
+    name: irf7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf7404.spi
+      sha256: ca469fe9d5651b40200d7b9dea65937693604b349e675bd630e3e27a6016c28f
+  - source: ltwiki
+    name: irf7404
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf7404.spi
+      sha256: ca469fe9d5651b40200d7b9dea65937693604b349e675bd630e3e27a6016c28f
+- source: ltwiki
+  name: IRF7404
+  def: model
+  hash: c30d915603bea2c8566b39890a2e691901d50485
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/LtSpicePlus/Reg_Vref/lm/LdoReg/bss139.mod
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+    lines:
+      IRF7404: [31, 31]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: irf7404
+  def: subckt
+  hash: 8c52122cdeeff85f4624138dcd7a06202bed1a73
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf7404.spi
+    sha256: f2f1ee039313c8ffd59bbbe897ed84c5056531c385b5638686c296c6832c1221
+    lines:
+      irf7404: [1, 60]
+    fetched: '2026-09-14'

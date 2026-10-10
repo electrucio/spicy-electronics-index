@@ -1,0 +1,24 @@
+part: FJA4210
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: FJA4210
+  def: model
+  hash: 98c3772ed31cb3b756c6b2929dc30b1b8eb8d74a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/fja4210.lib
+    sha256: 8cf50653a19040bf776d123a95ff011bcbb9a070e72d47b705251e3fbdc3e0f5
+    lines:
+      FJA4210: [19, 79]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: FJA4210
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86

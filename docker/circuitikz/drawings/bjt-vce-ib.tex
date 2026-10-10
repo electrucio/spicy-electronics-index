@@ -1,0 +1,49 @@
+% Saturation region (bjt-vce-ib): the set-up a person would wire, semantically the deck's.
+%   IV0 0 cv0 0.001     the collector drive, fixed per copy                -> current source I_C (set)
+%   DCV0 cv0 cl0, VCV0  a clamp diode from the collector node to 30 V      -> diode + source 30 V
+%   BV0 0 bv0 I=…       the base drive, a log sweep                        -> current source I_B (set)
+%   QV0 cv0 bv0 0       the transistor, emitter grounded                   -> npn
+%   V(cv0) read: VCE                                                       -> voltmeter V_CE (measured)
+%   One copy per collector current, 1 mA to 10 A; the drawing shows one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Saturation region}
+\def\gnd{1.0}
+% the transistor
+\node[npn] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, l_=$I_B$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{bv}
+% the collector drive: a fixed current pushed into the collector from a grounded rail
+\coordinate (ctop) at ($(Q.C)+(0,2.0)$);
+\draw[set] (ctop) to[I, l={$I_C$}] (Q.C);
+\coordinate (rail) at ($(ctop)+(5.2,0)$);
+\draw (ctop) -- (rail) -- (rail |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(Q.C)+(-0.45,0.8)$}{cv}
+% the clamp to 30 V, and the voltmeter on the collector
+\coordinate (cj) at ($(Q.C)+(0,0.3)$);
+\coordinate (vm) at ($(cj)+(1.4,0)$);
+\coordinate (dj) at ($(cj)+(2.2,0)$);
+\coordinate (cl) at ($(dj)+(1.6,0)$);
+\draw (cj) -- (dj) to[D, l=clamp] (cl);
+\draw[set] (cl) to[V, l=$30$ V] (cl |- 0,\gnd) node[ground, black]{};
+\voltmeter{vm |- 0,\gnd}{vm}{$V_{CE}$}
+\draw (vm |- 0,\gnd) node[ground]{};
+\nodename{anchor=south west}{$(cl)+(0.05,0.05)$}{cl}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_C = 1$, 10, 100 mA, 1, 2, 5 and 10 A, one copy each\\[2pt]
+  $I_B = 10^{k}\,\mathrm{A}$, $k = -9,\,-8.95,\,\dots,\,0$ \quad (20 points per decade, 1 nA to 1 A)\\[2pt]
+  read $V_{CE}$ against $I_B$ where the clamp is off;\quad $I_{B,edge}$: the $I_B$ at which $V_{CE}$ falls to 1 V%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

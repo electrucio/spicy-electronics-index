@@ -1,0 +1,75 @@
+part: MPSA13
+kind: bjt
+priority: 2
+group: small_signal_npn
+models:
+- source: duncanamps
+  name: XMPSA13
+  def: subckt
+  hash: 05a26be434fdd7b28c4ccda6a4c616816275f985
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npndarl1.sub
+    sha256: 370f7408ca9e7009c6e0874e70cb77e6764a9464cb603b6757c641bdc46262e1
+    lines:
+      XMPSA13: [9, 15]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: MPSA13
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/npndarl1.sub
+      sha256: 97eb3a2e17b3116552d87018994f7c5ca365b1b8b976e434e6982c003632fbef
+  - source: kicad-spice-library
+    name: MPSA13
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/npndarl1.sub
+      sha256: 97eb3a2e17b3116552d87018994f7c5ca365b1b8b976e434e6982c003632fbef
+  - source: ltwiki
+    name: MPSA13
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/npndarl1.sub
+      sha256: 97eb3a2e17b3116552d87018994f7c5ca365b1b8b976e434e6982c003632fbef
+- source: kicad-spice-library
+  name: MPSA13
+  def: subckt
+  hash: 9875778438722ad4d627e844f40159d2683885fb
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      MPSA13: [733, 741]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: MPSA13
+  def: model
+  hash: b95815f9e1158df110c478079d793d46e3199c73
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_NPN/TOSHIBA.LIB
+    sha256: 48d4fd1df68108bb9d61af444d53f63e19fc48d39cebc6bc9ff3a11eb947f336
+    lines:
+      MPSA13: [1926, 1942]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mpsa13-d.pdf
+  maker: onsemi
+  doc: MPSA13/D Rev. 4 (April 2007)

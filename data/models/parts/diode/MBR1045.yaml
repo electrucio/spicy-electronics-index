@@ -1,0 +1,152 @@
+part: MBR1045
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: MBR1045
+  def: model
+  hash: cbf13f3d5c6d0dd340bf1ac47b03996c1467af2d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    member: NCV887x_WEB MODEL rev2/diode.lib
+    archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
+    sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+    lines:
+      MBR1045: [21927, 21928]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MBR1045
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/diode.lib
+      sha256: 3312e896de50ad3b983aacc61fb142ca5ef79f0824d6bc9427974e94d4c93c7a
+  - source: microcap12
+    name: MBR1045
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: MBR1045
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      member: NCV887x_WEB MODEL rev2/diode.lib
+      sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: onsemi
+  name: Dmbr1045
+  def: model
+  hash: e6b97a6fc2db3df6ce62eb83ac9014aa7b5a2568
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mbr1045.lib
+    sha256: b1f0340e6603fad242a9db01e2009b0cf40d2f4b4a369a688d1bbef467ced9b8
+    lines:
+      Dmbr1045: [12, 16]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Dmbr1045
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: mbr1045mfs
+  def: model
+  hash: b966fe4db8f4b3abc6dc47e291666a25c8b4b4da
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.sp3%20.txt
+    sha256: 6c0ec05e986fe1659dcd7d4395f06515d3a842864b0370e5450595f7514405e4
+    lines:
+      mbr1045mfs: [14, 18]
+    fetched: '2026-09-19'
+  copies:
+  - source: onsemi
+    name: Dmbr1045mfs
+    get:
+      url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.sp2%20.txt
+      sha256: 2ac375e172df1bc1d61c148e6a73953db9154a7f492f9b50e9548d7d1dd729a6
+- source: vishay
+  name: MBR1045
+  def: subckt
+  hash: ef5297a834d8e021f082b86feb9a8a34e9716154
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/95293/mbr1045.txt
+    sha256: b604b8dceeb94f45385ec115f25ad105b9a33b738b12ffbb10572e1abeb722b8
+    lines:
+      MBR1045: [28, 41]
+    fetched: '2026-09-19'
+    note: 'Schottky, PSpice Models (*.txt): MBR1045, DMOD, TRES, MBR1045'
+  note: pins from default order (unverified)
+- source: vishay
+  name: mbr1045
+  def: model
+  hash: d10ce3a8049475d92790cfdb05cae1ed6b54f869
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87265/_p_mbr1045.txt
+    sha256: 26bd744e76dd45cce253a8c88131897c40674bcd62ec12c23882e56e1da29f89
+    lines:
+      mbr1045: [4, 5]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: MBR1045CT
+  def: model
+  hash: 35276dd9cc87881a811623eecfab5def46ac18f3
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      MBR1045CT: [9910, 9911]
+    fetched: '2026-09-21'
+  copies:
+  - source: groups-io
+    name: MBR1045CT
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: microcap12
+  name: MBR1045
+  def: model
+  hash: 0b461a641364b0c748fc234a81791520df7b02f7
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
+    lines:
+      MBR1045: [501, 502]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: MBR1045
+  def: model
+  hash: 1bc731261fc3f486307f6f2a62283230d077f99a
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      MBR1045: [1451, 1451]
+    fetched: '2026-10-10'

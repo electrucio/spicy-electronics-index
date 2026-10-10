@@ -1,0 +1,133 @@
+part: J270
+kind: jfet
+priority: 3
+group: p_channel
+models:
+- source: interfet
+  name: J270
+  def: model
+  hash: 6cda65e006714536f22dd93e37eb25d3984e90bb
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      J270: [890, 890]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: interfet
+  name: J270-GEN
+  def: model
+  hash: aa4b355722c0da961a598dd8e8297a3eab4524b2
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      J270-GEN: [204, 204]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: microcap12
+  name: J270
+  def: model
+  hash: ef860f13a5b16a96bd2e1f0b7ea940cb8dbc52ab
+  type: PJF
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/jfet.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: da01b606f4ee2c390ba6c0cac218a9ffa5bf9c45d404fcc5deda34e1ec837a62
+    lines:
+      J270: [1253, 1255]
+    fetched: '2026-09-21'
+- source: qspice
+  name: J270
+  def: model
+  hash: 77cc0d8e5663699010a6ccf448b1541c31b54a4d
+  type: PJF
+  deps:
+  - PJF
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PJF.txt
+    sha256: dcb2d634189d5574f6c625d595e203081701e93dcf10b6f3e94377e928d058c9
+    lines:
+      J270: [22, 22]
+      PJF: [1, 1]
+  copies:
+  - source: bordodynov-qspice
+    name: J270
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PJF.txt
+      sha256: dcb2d634189d5574f6c625d595e203081701e93dcf10b6f3e94377e928d058c9
+- source: groupsio-ltspice
+  name: J270
+  def: model
+  hash: b469c31545855ec807bf91a8d5fa09df4b9806c9
+  type: PJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      J270: [413, 413]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: J270
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: J270
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: J270
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: J270
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jfet.lib
+      sha256: aef97ee6dd81ee2b11feabe7d88ff256a613f7a10f89b82d1b7f2ca49b772ab7
+  - source: ltwiki
+    name: J270
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J270
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J270
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: J270
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+datasheet:
+  url: https://www.interfet.com/jfet-datasheets/jfet-j270-j271-interfet.pdf
+  maker: InterFET
+  doc: IF35090.R00, June 2019

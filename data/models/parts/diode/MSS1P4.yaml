@@ -1,0 +1,48 @@
+part: MSS1P4
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: mss1p4
+  def: subckt
+  hash: 73bf704f2b620795bfa1dc19049f14747a885011
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89878/mss1p4.txt
+    sha256: 76072915f5ef1d15116fe18590af55a4a0fa3106aa7a3a9f2250aeed0a27efc6
+    lines:
+      mss1p4: [7, 16]
+    fetched: '2026-09-19'
+    note: 'Schottky, SPICE 3 Models (*.txt): mss1p4, legd, grd'
+  note: pins from default order (unverified)
+- source: vishay
+  name: mss1p4
+  def: subckt
+  hash: 5cf1c7a73f6d912216be7bc5262b6eeeef8f0977
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/98994/p_mss1p4.txt
+    sha256: 1ecd69c527e9ae679aff255e1841ce685a88c02855650cf310e9dad4534f75f3
+    lines:
+      mss1p4: [7, 16]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: mss1p4
+  def: subckt
+  hash: ab070ad8bb0213c7b879ee47aeb543d94bb5dd2b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishaydiode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+    lines:
+      mss1p4: [8236, 8245]
+    fetched: '2026-09-21'

@@ -1,0 +1,337 @@
+part: BC817
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: onsemi
+  name: BC817
+  def: model
+  hash: 392ed138f5382c89c7ce07c3f62c9f1ed539a55f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bc817.lib
+    sha256: fd4befb5f3a9825d85206aaf6ee7954920717295b73f8ad49592f420ecc0142a
+    lines:
+      BC817: [7, 17]
+    fetched: '2026-09-14'
+    note: 'model(s): BC817 (NPN .model)'
+  copies:
+  - source: microcap12
+    name: BC817
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: BC817
+  def: model
+  hash: 663004930e64802e251b04ccb713aae25602c3d3
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC817: [507, 517]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC817
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BC817
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: spice-model-cd
+    name: BC817/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: spice-model-cd
+  name: QBC817
+  def: model
+  hash: 89630a17f3cf3ab0c51865deea32d08fe4705b62
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC817.lib
+    sha256: ba671273f6fa4c9ba8d681a779c61d6c95ad8ffeac699407bbe9b6bd4da0e9f8
+    lines:
+      QBC817: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: QBC817
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC817.PRM
+      sha256: ba671273f6fa4c9ba8d681a779c61d6c95ad8ffeac699407bbe9b6bd4da0e9f8
+  - source: kicad-spice-library
+    name: BC817W
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QBC817W
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC817W.PRM
+      sha256: 1cb39d6b11ecbb3b14efbb235814b143236c2b15aaa42c371f633c7f3476a811
+  - source: microcap12
+    name: BC817W
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+  - source: spice-model-cd
+    name: QBC817W
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC817W.lib
+      sha256: 1cb39d6b11ecbb3b14efbb235814b143236c2b15aaa42c371f633c7f3476a811
+  - source: kicad-spice-library
+    name: QBC817/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC817/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+  - source: kicad-spice-library
+    name: QBC817W/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC817W/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+- source: spice-model-cd
+  name: BC817C
+  def: subckt
+  hash: 151a9689fd48819c53ff6838cb057081def6d9db
+  type: SUBCKT
+  deps:
+  - BC817
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      BC817: [507, 517]
+      BC817C: [496, 506]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC817/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: BC817C
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+- source: spice-model-cd
+  name: Qbc817
+  def: model
+  hash: 777c357cbbd35a77008feb0a63b01be48d4c03bc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Small_Signal/BJT/bc817.lib
+    sha256: 7ab9973b84a5c76bd7972e0857c095c2a179745b4336654001e5676c6f6d7153
+    lines:
+      Qbc817: [16, 26]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: BC817C/SIE
+  def: subckt
+  hash: 9cd38f6a84484753f7c03a1d0c7be427252cd37c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+    sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+    lines:
+      BC817C/SIE: [491, 501]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC817C_IN
+  def: subckt
+  hash: 4f2fd8783e032f43f202265988444597e6686268
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/infineon.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: cdae8e9767d8fccbc81f94acb925cc440425a03e902d86cd8c5591d87131e175
+    lines:
+      BC817C_IN: [2560, 2581]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC817C_IN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
+      sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+- source: microcap12
+  name: BC817DPN
+  def: subckt
+  hash: 3b3ee403c45b1c9bd103313c6812aae9ea628568
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BC817DPN: [4, 88]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC817DS
+  def: subckt
+  hash: 67c82f00dc4e7ae686d687723da9c2c7277571b6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BC817DS: [91, 135]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC817
+  def: model
+  hash: d2dbdc55e18e9a29fc8cb9095326482263649b7e
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      BC817: [227, 230]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: BC817
+  def: model
+  hash: 2679b2c00e1d1f05005326372b918f4125dae896
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      BC817: [223, 223]
+    fetched: '2026-09-29'
+  copies:
+  - source: bordodynov
+    name: BC817
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: groupsio-ltspice
+    name: BC817
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.bjt
+      sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+  - source: kicad-spice-library
+    name: BC817
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: BC817
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC817
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BC817
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groupsio-ltspice
+  name: BC817
+  def: model
+  hash: a8970a300dd74202ccf30b51b68a2388ef9cf5a9
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC817: [4982, 4982]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC817
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+- source: bordodynov-qspice
+  name: BC817
+  def: model
+  hash: f7b245518286b0c0c8eaab80b342684834f9010a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      BC817: [729, 729]
+    fetched: '2026-09-29'
+- source: ltwiki
+  name: BC817
+  def: model
+  hash: 2679b2c00e1d1f05005326372b918f4125dae896
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/Mixer/standard.bjt
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+    lines:
+      BC817: [1172, 1172]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: BC817s
+  def: model
+  hash: 2d432b4a6bd9b1e062338ba1d129b9e907262e62
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+    sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+    lines:
+      BC817s: [500, 510]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

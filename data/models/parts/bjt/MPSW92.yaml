@@ -1,0 +1,69 @@
+part: MPSW92
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: MPSW92
+  def: model
+  hash: 4a4a5d1a2f16581d6da00be83916f5e35072444e
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSW92: [3282, 3285]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QMPSW92
+  def: model
+  hash: aeeab407de7ac642baad6cd6b6fe867862610b9a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMPSW92: [612, 614]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MPSW92
+  def: model
+  hash: 3e4296a10e01bf259a9fe41d416f998030ed57b4
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSW92: [3680, 3680]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSW92
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: ltwiki
+    name: MPSW92
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+- source: kicad-spice-library
+  name: MPSW92
+  def: model
+  hash: 04f542255470a44c3f1e64570533771e6b35bf5a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+    sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+    lines:
+      MPSW92: [319, 321]
+    fetched: '2026-09-14'

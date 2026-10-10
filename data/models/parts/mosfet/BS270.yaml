@@ -1,0 +1,53 @@
+part: BS270
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: onsemi
+  name: BS270
+  def: subckt
+  hash: 4637d16f5cf2fab1c998dc97f229ce8818f57a6b
+  type: SUBCKT
+  pins:
+  - '20'
+  - '10'
+  - '30'
+  - '50'
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/bs270.mod
+    sha256: 2d9a0ac255b67e884bd0d16565bca12c1e1a913cf067f46e60790249149cf1a0
+    lines:
+      BS270: [3, 48]
+    fetched: '2026-09-19'
+    note: 'BS270.mod: BS270, DMOS, DDS, DBODY, INTER, DGD …'
+  copies:
+  - source: bordodynov
+    name: BS270
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Fairchild/MOSFET/BS270.mod
+      sha256: 2d9a0ac255b67e884bd0d16565bca12c1e1a913cf067f46e60790249149cf1a0
+  - source: ltwiki
+    name: BS270
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Fairchild/MOSFET/BS270.mod
+      sha256: 2d9a0ac255b67e884bd0d16565bca12c1e1a913cf067f46e60790249149cf1a0
+- source: microcap12
+  name: BS270
+  def: subckt
+  hash: 9ee1a65ac8665d1b2508c30ff1160bce99239cda
+  type: SUBCKT
+  deps:
+  - nmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      BS270: [13155, 13200]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'

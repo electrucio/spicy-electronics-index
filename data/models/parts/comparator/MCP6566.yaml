@@ -1,0 +1,77 @@
+part: MCP6566
+kind: comparator
+priority: 3
+models:
+- source: microchip
+  name: MCP6566
+  def: subckt
+  hash: 89bd68ac2449cb97dd7e1df145bc6a1391a69278
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/BoardDesignFiles/MCP6566_MM_B.zip
+    member: MCP6566.txt
+    archive_sha256: 95253c30b802c17cc3a83956753b8352cf5721c21774b93da8b024addf769491
+    sha256: f54fa01b51b5fdc75a0f2d02a8f637d825d0337c8556e5dc131e1c207a37a91f
+    lines:
+      MCP6566: [1, 205]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MCP6566
+  def: subckt
+  hash: e5007a97ae37ab90532d66b7f8c144068f480f22
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 9e6a5b46e8405605b3f004924fa5b2852f67b9470fe1c5bec2c8e144400f2abe
+    lines:
+      MCP6566: [6020, 6224]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: MCP6566_bap
+  def: subckt
+  hash: fb79ae8d3bda1ed53268d8c104c378573c0444e3
+  type: SUBCKT
+  pins:
+  - IN+
+  - IN-
+  - VCC
+  - VSS
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/MCP6566+Compare+Hyst/MCP6566_sum.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 2f96596b105e138ac52b77efcad43a5ed5f6ba7ca270809583ac67e1aa2a7493
+    lines:
+      MCP6566_bap: [1, 30]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ltwiki
+  name: MCP6566_JT2
+  def: subckt
+  hash: d8fd68c57a28a3156421d8711a1b5e64c95071e2
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - Hysteresis
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/MCP6566+Compare+Hyst/MCP6566_sum.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 2f96596b105e138ac52b77efcad43a5ed5f6ba7ca270809583ac67e1aa2a7493
+    lines:
+      Hysteresis: [50, 56]
+      MCP6566_JT2: [32, 48]
+    fetched: '2026-09-14'
+  note: pins from names

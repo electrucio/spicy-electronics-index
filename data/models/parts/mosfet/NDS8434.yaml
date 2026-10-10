@@ -1,0 +1,89 @@
+part: NDS8434
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: onsemi
+  name: NDS8434
+  def: subckt
+  hash: 00947a39eb6e7bba91509f652a9f2dc1c5c45169
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/nds8434.mod
+    sha256: ba79527f1926a061b8f076b8bbec11d70adc9efc708bf1b588c91931b80061cf
+    lines:
+      NDS8434: [3, 48]
+    fetched: '2026-09-19'
+- source: spice-model-cd
+  name: NDS8434
+  def: subckt
+  hash: 15f70afbb421400fd7279d11a60bed80f81d504f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/ND/NDS8434.lib
+    sha256: 4cbbc7d940c82d084664533d188c9b407c09179e0c2965b7e9d0242fabf7c3c2
+    lines:
+      NDS8434: [3, 27]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: NDS8434A
+  def: subckt
+  hash: 4c5cee90cb7d2ae68cd91f969a2557444ab2e2e5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/ND/NDS8434A.lib
+    sha256: 6c58bf9511c60668a928d0a0269b085490cde0943fa07ec0047905e611e4d870
+    lines:
+      NDS8434A: [3, 27]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: NDS8434
+  def: subckt
+  hash: 40984d5d17920c3168f0852e9f070f1edc2d6177
+  type: SUBCKT
+  deps:
+  - pmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      NDS8434: [178426, 178471]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: NDS8434/FAI
+  def: subckt
+  hash: 8ebe530c4f9e5aea420a6f6761c887ba6eed9a60
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/fairchild_PMOS.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d88f18d0155c7045c4329c6973396514f3166d17e7874cf26ed6e425dd030223
+    lines:
+      NDS8434/FAI: [342, 366]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: NDS8434/FAI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/fairchild_PMOS.lib
+      sha256: d88f18d0155c7045c4329c6973396514f3166d17e7874cf26ed6e425dd030223
+  - source: ltwiki
+    name: NDS8434/FAI
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/fairchild_PMOS.lib
+      sha256: d88f18d0155c7045c4329c6973396514f3166d17e7874cf26ed6e425dd030223

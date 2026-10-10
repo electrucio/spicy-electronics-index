@@ -1,0 +1,231 @@
+part: PZT2222A
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: onsemi
+  name: pzt2222at1
+  def: model
+  hash: 20ba70da10afd0f7563cc41385009bfc83030b8b
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/pspice%20model%20sp3.sp3
+    sha256: 69a102f38739bd20a561d79ba1066bb0dfa115e6329bf1fef960ab2926a0d3ee
+    lines:
+      pzt2222at1: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: Qpzt2222at1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qpzt2222at1
+    get:
+      url: https://www.onsemi.com/download/models/lib/pspice%20model%20lib.lib
+      sha256: 31f8a608bc474b60498f6b985b80949dfb88d65eb1495e74c40fb4f956b3fd09
+- source: nexperia
+  name: PZT2222A
+  def: subckt
+  hash: ffd8fc53905f6447de20e41c01d3de5dae062acb
+  type: SUBCKT
+  pins:
+  - B
+  - C
+  - E
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PZT2222A.txt
+    sha256: c22046441a26fb759e7eed1bc76e50d6ee47c7969a146833c4d27f3ace88245e
+    lines:
+      PZT2222A: [29, 88]
+    fetched: '2026-09-19'
+    note: 'PZT2222A: PZT2222A, MAIN, DIODE'
+  note: pins from comment words
+- source: spice-model-cd
+  name: PZT2222A
+  def: model
+  hash: ccfb97b220aedb1e20950b31fa44c357ccb3226f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/AF-Transistors/S_afbjt.lib
+    sha256: 172cb499cdefac9555fbb25786181826448d2c25d8abfb5d7d853b139e99231a
+    lines:
+      PZT2222A: [1553, 1563]
+    fetched: '2026-09-21'
+  copies:
+  - source: spice-model-cd
+    name: PZT2222A
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
+      sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
+  - source: kicad-spice-library
+    name: PZT2222As
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+  - source: kicad-spice-library
+    name: PZT2222A/SIE
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+      sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+  - source: spice-model-cd
+    name: PZT2222A/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
+      sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+- source: microcap12
+  name: PZT2222A
+  def: model
+  hash: 6b9f54c792e9798afdde2c95fa1aca8ef4133fcf
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      PZT2222A: [1096, 1099]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: PZT2222A
+  def: model
+  hash: 732990243f5be7bd727c708392a6a8dfe5a97978
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      PZT2222A: [190, 190]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: PZT2222A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: PZT2222A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: PZT2222A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: PZT2222A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: PZT2222A
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: PZT2222A
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: PZT2222A
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: PZT2222A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: PZT2222A
+  def: model
+  hash: eb7d214942469dea8b04ca4e8fc9f55c177d88f2
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PZT2222A: [4410, 4410]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: PZT2222A
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: bordodynov-qspice
+  name: PZT2222A
+  def: model
+  hash: 2fcd46e6d75ba22f8e29b28205fc02697a09fb11
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      PZT2222A: [115, 115]
+    fetched: '2026-09-29'
+- source: kicad-spice-library
+  name: PZT2222A/SIE
+  def: model
+  hash: ccfb97b220aedb1e20950b31fa44c357ccb3226f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+    sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+    lines:
+      PZT2222A/SIE: [5378, 5388]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: PZT2222s
+  def: model
+  hash: ccfb97b220aedb1e20950b31fa44c357ccb3226f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+    sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
+    lines:
+      PZT2222s: [266, 276]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias PZT2222
+- source: kicad-spice-library
+  name: PZT2222/SIE
+  def: model
+  hash: ccfb97b220aedb1e20950b31fa44c357ccb3226f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+    sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+    lines:
+      PZT2222/SIE: [5365, 5375]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias PZT2222

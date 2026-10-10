@@ -1,0 +1,48 @@
+% Noise (bjt-noise): the set-up a person would wire, semantically the deck's.
+%   VIN in 0 DC <vbe> AC 1   the noise input, with the VBE for the step as its DC value -> source v_in (set)
+%   RG in b                  the source resistance                                     -> resistor R_G
+%   IB 0 b DC <ib>           the base bias for the step                                -> current source I_B (set)
+%   VC cc 0 5, VSENSE c cc   the collector supply and the 0 V sensing source           -> source V_C (set) + ammeter I_C + i_c (measured: the noise part)
+%   Q1 c b 0                 the transistor, emitter grounded                          -> npn
+%   H1, RLOAD, .noise        the sensed current is the noise output, referred to v_in  -> the ammeter's reading
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Noise}
+\def\gnd{1.0}
+% the transistor
+\node[npn] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$I_C + i_c$}
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{c}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(ctop)+(2.6,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, l=$V_C$] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south west}{$(ctop)+(0.15,0.05)$}{cc}
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, l_=$I_B$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{b}
+% the source resistance and the noise input at the far left
+\draw (bsrc) to[R, l_=$R_G$] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_=$v_{in}$] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_B$: the DC bias for $I_C = 10$, 30, 100, 300 \textmu A, 1, 3 and 10 mA, one deck each\\[2pt]
+  $V_C = 5$ V;\quad $f = 1$ Hz to 1 MHz, 20 points per decade\\[2pt]
+  $R_G = 0$ gives $e_n$;\quad $R_G = 100$ k\ohm{} gives $e_n^2 + i_n^2 R_G^2 + 4kTR_G$, from which $i_n$\\[2pt]
+  $R_G = 1$ k\ohm{} at 1 mA gives NF;\quad read $i_c$, the noise part of the collector current, referred to $v_{in}$\\[2pt]
+  NF and $V_T$ against $R_S$ from $e_n$ and $i_n$: spot at 1 kHz, and over 10 Hz to 15.7 kHz%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

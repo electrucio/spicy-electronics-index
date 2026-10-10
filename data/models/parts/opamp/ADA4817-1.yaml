@@ -1,0 +1,114 @@
+part: ADA4817-1
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: ADA4817-1
+  def: subckt
+  hash: 0d9d43b4abac6a11a34ad82f9acc9cdb7885ee49
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      ADA4817-1: [86034, 86129]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: ADA4817-1
+  def: subckt
+  hash: ec2673b61c40fabd2ea07ea45ecb81161bdc25f6
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '99'
+  - '50'
+  - '45'
+  - '46'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/AD4817.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 995028247c1b05f1bb46f86d6cf39ca414a22f6f424377be5879a1a0e894142f
+    lines:
+      ADA4817-1: [162, 265]
+    fetched: '2026-09-14'
+  copies:
+  - source: kicad-spice-library
+    name: ADA4817-1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/AD4817.lib
+      sha256: 995028247c1b05f1bb46f86d6cf39ca414a22f6f424377be5879a1a0e894142f
+  - source: ltwiki
+    name: ADA4817-1
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/AD4817.lib
+      sha256: 995028247c1b05f1bb46f86d6cf39ca414a22f6f424377be5879a1a0e894142f
+- source: bordodynov
+  name: ADA4817-1
+  def: subckt
+  hash: 38e3b6cc42e3511d941d68e6f050e03cda540876
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      ADA4817-1: [9276, 9352]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/ADA4817-1.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: d1f6a5733a318a7824268a940717575440da5cd819f9647a8de28afa7db42e08
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: ADA4817-1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: ADA4817-1
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov
+  name: ADA4817
+  def: subckt
+  hash: e29cbea70c5b143f588daff5c457a0041743205a
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/AD4817.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 995028247c1b05f1bb46f86d6cf39ca414a22f6f424377be5879a1a0e894142f
+    lines:
+      ADA4817: [29, 124]
+    fetched: '2026-09-14'
+  note: 'found under the alias ADA4817; same code also in: kicad-spice-library, ltwiki; pins from comment
+    words'

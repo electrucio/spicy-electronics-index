@@ -1,0 +1,222 @@
+part: IRF9510
+kind: mosfet
+priority: 2
+group: power_vertical
+models:
+- source: infineon
+  name: irf9510
+  def: subckt
+  hash: d349b24d70bf25bb54be670f96cd14fc32a4af22
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://web.archive.org/web/20010503071648id_/http://www.irf.com:80/product-info/models/SPICE/irf9510.spi
+    sha256: c0e92cb2fe4c62d310f957078e3918ece98876e7dbb9f541960fc96794e1bb7e
+    lines:
+      irf9510: [1, 60]
+    fetched: '2026-09-14'
+    note: International Rectifier legacy HEXFET SPICE model; original URL http://www.irf.com:80/product-info/models/SPICE/irf9510.spi
+      (Wayback capture 20010503071648)
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf9510
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9510.spi
+      sha256: c0e92cb2fe4c62d310f957078e3918ece98876e7dbb9f541960fc96794e1bb7e
+  - source: bordodynov
+    name: irf9510
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9510.spi
+      sha256: c0e92cb2fe4c62d310f957078e3918ece98876e7dbb9f541960fc96794e1bb7e
+  - source: kicad-spice-library
+    name: irf9510
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf9510.spi
+      sha256: 82218f52b7009862a889aeba09920ad1f49ca194c0bd64c54d409b89e7d776c9
+  - source: ltwiki
+    name: irf9510
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9510.spi
+      sha256: c0e92cb2fe4c62d310f957078e3918ece98876e7dbb9f541960fc96794e1bb7e
+  - source: ltwiki
+    name: irf9510
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9510.spi
+      sha256: c0e92cb2fe4c62d310f957078e3918ece98876e7dbb9f541960fc96794e1bb7e
+  - source: ltwiki
+    name: irf9510
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf9510.spi
+      sha256: c0e92cb2fe4c62d310f957078e3918ece98876e7dbb9f541960fc96794e1bb7e
+  - source: kicad-spice-library
+    name: irf9510_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+  - source: microcap12
+    name: irf9510_IR
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/irf.lib
+      sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+- source: spice-model-cd
+  name: IRF9510
+  def: subckt
+  hash: ac3848944c4f22f914a9c7bb26ff086af39f1b75
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRF9510: [530, 537]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: XIRF9510
+  def: subckt
+  hash: bbce11098fb6fb19e910142f9465c1dfa27cec5f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/mosfets/pemos3t.mod
+    sha256: 2b35f40940cb9b50a73c177b0e275c6d01b16cbd84930ffc8662152c8b43bf3a
+    lines:
+      XIRF9510: [15, 36]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: IRF9510
+  def: model
+  hash: c5bb5fac7bfda79a69f6252e962456d878cb6bb3
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.mos
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 74bafab0de0c713d3b056d39cadbdaf9dfeeef235ab607dc88cb683c6ed30dae
+    lines:
+      IRF9510: [1114, 1114]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: IRF9510
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: bordodynov-qspice
+    name: IRF9510
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRF9510
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRF9510
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
+  - source: ltwiki
+    name: IRF9510
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF9510
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRF9510
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+- source: ltwiki
+  name: IRF9510
+  def: model
+  hash: 4ffa543879b26cdbc77fa426092cef82ff7b7dda
+  type: PMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF9510: [1749, 1752]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: IRF9510
+  def: model
+  hash: 1141ebdea2e0e52f5cc44f7df3d334cc345329d2
+  type: VDMOS
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/MOS/IRF9510.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 0382648808f2cf8173832a437c9ff3c9fdcd1675036f8187b4f3db64d0eb5e93
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: IRF9510
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/MOS/IRF9510.qsym
+      sha256: 0382648808f2cf8173832a437c9ff3c9fdcd1675036f8187b4f3db64d0eb5e93
+- source: kicad-spice-library
+  name: IRF9510
+  def: subckt
+  hash: d032bc9199ac871222e2f53e86d235dd720fbc67
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRF9510: [604, 626]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: irf9510_IR
+  def: subckt
+  hash: d349b24d70bf25bb54be670f96cd14fc32a4af22
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+    sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+    lines:
+      irf9510_IR: [19915, 19974]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.vishay.com/docs/91072/91072.pdf
+  maker: Vishay Siliconix
+  doc: IRF9510, Document Number 91072, S21-0852-Rev. C
+  date: '2021-08-16'

@@ -1,0 +1,54 @@
+part: Led_Ldr
+kind: opto
+group: non-native
+models:
+- source: ltwiki
+  name: Led_Ldr
+  def: subckt
+  hash: 88f277afb341e378af0c2cffc36aedd0ccdc6e95
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Led_Ldr.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 3282f51dcda8ec47106974df1d114030dbeec07fad904d0abb4b2734f4d88bff
+    lines:
+      Led_Ldr: [3, 16]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/OptoElec/Led_Ldr.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 16319fd21f924cbd35047c80d40836969437ad18141d8045d19e1412b122aacc
+- source: bordodynov
+  name: Led_Ldr
+  def: subckt
+  hash: 7474e376b0bc541e0ea7266980d79d940319381f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Led_Ldr.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: dac7fb7c7353483c93343abc0558911694fe11e3f8f116a17303334fcdc84c14
+    lines:
+      Led_Ldr: [3, 17]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/Led_Ldr.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: beb88ddcbaade57e4bda3e52e0fed24e026e7f0f8c9154df33f9c78ac2ffcfb6
+  copies:
+  - source: kicad-spice-library
+    name: Led_Ldr
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Led_Ldr.lib
+      sha256: dac7fb7c7353483c93343abc0558911694fe11e3f8f116a17303334fcdc84c14
+  - source: ltwiki
+    name: Led_Ldr
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Led_Ldr.lib
+      sha256: dac7fb7c7353483c93343abc0558911694fe11e3f8f116a17303334fcdc84c14

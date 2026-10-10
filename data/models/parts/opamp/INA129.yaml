@@ -1,0 +1,121 @@
+part: INA129
+kind: opamp
+priority: 3
+models:
+- source: ti
+  name: INA129
+  def: subckt
+  hash: 2de6aeb92f78b175bdbea7e07efb43ece2b0384b
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '8'
+  - '9'
+  - '10'
+  deps:
+  - A2_129E
+  - A3_129E
+  - A1_129E
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOM212
+    member: INA129_TINA_AIO/INA129.LIB
+    archive_sha256: bbb6c3bfd4befa3e78f06ab798f530a7a980e2c5f0d006723ce435416b8cbb83
+    sha256: aa900305e964a956d25c69fd7f3170daa626f5e1e0022cffa6c0bdb011b92b6e
+    lines:
+      A1_129E: [114, 156]
+      A2_129E: [166, 209]
+      A3_129E: [219, 262]
+      INA129: [50, 104]
+    fetched: '2026-09-19'
+  copies:
+  - source: kicad-spice-library
+    name: INA129E/BB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
+      sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
+  - source: ltwiki
+    name: INA129E/BB
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/burr_brn.lib
+      sha256: a93ba448be413ce1f2d1fda23be04ca096bcbc6b600a8eadbdd05f864e04b524
+  - source: microcap12
+    name: INA129E
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ti.lib
+      sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+- source: microcap12
+  name: INA129
+  def: subckt
+  hash: 8c02ab70052f240e39757f1548af97a4548ca785
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '8'
+  - '9'
+  - '10'
+  deps:
+  - A2_129
+  - A1_129
+  - A3_129
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      A1_129: [22354, 22422]
+      A2_129: [22446, 22514]
+      A3_129: [22538, 22608]
+      INA129: [22208, 22330]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: INA129/BB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
+      sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
+  - source: ltwiki
+    name: INA129/BB
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/burr_brn.lib
+      sha256: a93ba448be413ce1f2d1fda23be04ca096bcbc6b600a8eadbdd05f864e04b524
+- source: kicad-spice-library
+  name: INA129E/BB
+  def: subckt
+  hash: 2de6aeb92f78b175bdbea7e07efb43ece2b0384b
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '8'
+  - '9'
+  - '10'
+  deps:
+  - A2_129E
+  - A3_129E
+  - A1_129E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
+    sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
+    lines:
+      A1_129E: [6415, 6462]
+      A2_129E: [6474, 6521]
+      A3_129E: [6533, 6581]
+      INA129E/BB: [6322, 6403]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

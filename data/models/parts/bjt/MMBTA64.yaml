@@ -1,0 +1,52 @@
+part: MMBTA64
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: mmbta64lt1g
+  def: subckt
+  hash: a71cc1aa567eb43a21bfd8b4e1f8e102abe8ac66
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta64lt1g.lib.lib
+    sha256: 3c782be7d3fca0f280ad5c5575999b0d49b64f5411220ff33b775f4d6868b17d
+    lines:
+      mmbta64lt1g: [1, 50]
+    fetched: '2026-09-19'
+- source: onsemi
+  name: mmbta64lt1g
+  def: subckt
+  hash: 64cb6eb432f9d03c3272abc5b2ae19325fc8d79d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/mmbta64lt1g.sp3.sp3
+    sha256: 13622fe09c99b9e8820e76f5a94c25e2ea0658b181c8c77017771fdc0b3d5671
+    lines:
+      mmbta64lt1g: [1, 50]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: mmbta64lt1g
+  def: subckt
+  hash: e9dc68ccfc950f7097aecd2fdf601910bbb90701
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      mmbta64lt1g: [141288, 141326]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'

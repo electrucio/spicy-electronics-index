@@ -1,0 +1,110 @@
+part: OPA350
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: OPA350
+  def: subckt
+  hash: f01b08106027c74921449b8e556c28e620ebcc4a
+  type: SUBCKT
+  pins:
+  - +
+  - '-'
+  - V+
+  - V-
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA350: [27619, 27772]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: OPA350
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
+  - source: kicad-spice-library
+    name: OPA350
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
+  - source: ltwiki
+    name: OPA350
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
+- source: bordodynov
+  name: OPA350
+  def: subckt
+  hash: 3e748d04e73d86108ea46a53a3f708e5ee1b9d65
+  type: SUBCKT
+  pins:
+  - +
+  - '-'
+  - V+
+  - V-
+  - OUT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      OPA350: [6892, 6968]
+      Rb: [564, 570]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/OPA350.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 4440dd51be2463d2bf4687d1f67a7ac7f5be801b76b2de4e911a8e1408fb243f
+  note: pins from names
+  copies:
+  - source: kicad-spice-library
+    name: OPA350
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: OPA350
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: ltwiki
+  name: OPA350
+  def: subckt
+  hash: f8b6363bae1973fb49a059454a5c2ff7ca1b3118
+  type: SUBCKT
+  pins:
+  - +
+  - '-'
+  - V+
+  - V-
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/HCNR200/Sborka.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 2eeb09296e9daaf815d0d073b696048479a10f5eb32584f09ff4d73f7093701d
+    lines:
+      OPA350: [15, 91]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/HCNR200/OPA350.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      sha256: 4c0087df37c6fb413c552d4414de39112c2d6c61d6aa7f220c764477c8bdcaa0
+  note: pins from names

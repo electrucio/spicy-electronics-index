@@ -1,0 +1,36 @@
+part: 2N6667
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6667
+  def: subckt
+  hash: 42f0bc7a3efb630bb5cc593cc732a38c98adfa63
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6667.lib
+    sha256: e5062baf273ebc88e24e6aab57862685474263d5a9049599a0960ea9f68ad75f
+    lines:
+      2n6667: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: 2n6667
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: Q2N6667
+  def: subckt
+  hash: 5a86ed5af824942bea0559c3ef304c799c8d154f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      Q2N6667: [2316, 2354]
+    fetched: '2026-09-21'

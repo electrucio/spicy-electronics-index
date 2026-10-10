@@ -1,0 +1,44 @@
+part: MJE182
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: onsemi
+  name: Qmje182
+  def: model
+  hash: 16aa1c41d41de553e4e7b255cf163ba0e36b6d56
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mje182.lib
+    sha256: 435d1731c643e8f3dd5c8ccdc5a11cf3b6baca19498e8a8aa15419802151c08b
+    lines:
+      Qmje182: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: groupsio-ltspice
+    name: MJE182
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: microcap12
+    name: Qmje182
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MJE182
+  def: model
+  hash: 191ac51f42c072fb60eb202b32f9ee647ac80f71
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJE182: [2058, 2065]
+    fetched: '2026-09-21'

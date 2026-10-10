@@ -1,0 +1,40 @@
+part: MC7915
+kind: regulator
+priority: 3
+models:
+- source: ltwiki
+  name: MC7915C
+  def: subckt
+  hash: 16aa195bc1422d22d061544d8b1aa209c486d824
+  type: SUBCKT
+  deps:
+  - x_LM79XX
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      MC7915C: [10504, 10509]
+      x_LM79XX: [10284, 10362]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MC7915C
+  def: subckt
+  hash: 91322d7e14b145c9c722cfbba468e71e88ea57a3
+  type: SUBCKT
+  pins:
+  - INPUT
+  - OUTPUT
+  - GROUND
+  deps:
+  - x_LM79XX
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+    sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+    lines:
+      MC7915C: [2102, 2107]
+      x_LM79XX: [1885, 1963]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from names

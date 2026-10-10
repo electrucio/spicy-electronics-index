@@ -1,0 +1,43 @@
+part: MPSW93
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: groupsio-ltspice
+  name: MPSW93
+  def: model
+  hash: 3e4296a10e01bf259a9fe41d416f998030ed57b4
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSW93: [3681, 3681]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSW93
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: ltwiki
+    name: MPSW93
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+- source: kicad-spice-library
+  name: MPSW93
+  def: model
+  hash: 17fa8fbd3a22e98096178d42548342ae6391c38e
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+    sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+    lines:
+      MPSW93: [325, 327]
+    fetched: '2026-09-14'

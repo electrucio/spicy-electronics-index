@@ -1,0 +1,31 @@
+part: BC556C
+kind: bjt
+priority: 2
+group: small_signal_pnp
+models:
+- source: microcap12
+  name: BC556
+  def: model
+  hash: 470d4439f5a15f311c0ad21d4aee25ea3ed0ff6f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC556: [1849, 1852]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: BC556
+  def: model
+  hash: 02210c5352832bfcd33e16348cd7f1cb275cc7fd
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTP.LIB
+    sha256: 3dd15df7a58d8985561b2180fc63d333ddd59c8693c4d56de506df410c3a7607
+    lines:
+      BC556: [399, 401]
+    fetched: '2026-09-14'

@@ -1,0 +1,36 @@
+part: 2N6036
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6036
+  def: subckt
+  hash: a955a5c2b42e1b5820126c7395b3f417f50d93dd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6036.lib
+    sha256: 7e1f673877f9b348d5d67c8305192c848ae1d190ea723abc2535ca1645acc29f
+    lines:
+      2n6036: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: 2n6036
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: Q2N6036
+  def: subckt
+  hash: 3acef0667095740b5009568c1f9aa1a6c3093586
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      Q2N6036: [1819, 1857]
+    fetched: '2026-09-21'

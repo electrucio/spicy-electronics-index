@@ -1,0 +1,92 @@
+part: FDV303N
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: onsemi
+  name: FDV303N
+  def: subckt
+  hash: 0b11c930c20cb4bbd66b1d5251ce27992801020f
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/fdv303n.mod
+    sha256: 3bcc57a7e305680290c40998434898484e9f673c4870f10bf6eed57def76aca0
+    lines:
+      FDV303N: [5, 53]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: spice-model-cd
+    name: FDV303N
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/FD/FDV303N.lib
+      sha256: a0431049e04ee23036ca52e713643bc5a21180b6ebe8f61a449ce454f6f6f308
+  - source: kicad-spice-library
+    name: FDV303N_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: FDV303N_FC
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: FDV303N
+  def: subckt
+  hash: 1184b126730ca74dfbb4add9c29ab3b88ce7cdf7
+  type: SUBCKT
+  deps:
+  - nmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FDV303N: [115103, 115127]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: fdv303n
+  def: subckt
+  hash: 698a2d57b7c91a5e6e97389a900fb3e45bfd2c52
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      fdv303n: [15750, 15777]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/FDV303N.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 2a64bdf1ceffc882cd09db3580a3e1092517c32fac58c398004969345ae8a2a2
+  note: pins from names
+  copies:
+  - source: kicad-spice-library
+    name: fdv303n
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: fdv303n
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

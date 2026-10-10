@@ -1,0 +1,52 @@
+part: D45H8
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qd45h8
+  def: model
+  hash: a460bfadd5bcd94637ada8a668a80869f5cdb432
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/d45h8.lib
+    sha256: d8d739442daf47280d2f64a8a7beb340051c659cad69e55deec3f21b626a94bc
+    lines:
+      Qd45h8: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qd45h8
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: D45H8
+  def: model
+  hash: 20fa731d1a75d71c0480f9e516a1e69a55fe00d9
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      D45H8: [3233, 3239]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: D45H8
+  def: model
+  hash: b63066a41b06c23a1a144e21ff59ba3909d582ab
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      D45H8: [2959, 2959]
+    fetched: '2026-09-21'

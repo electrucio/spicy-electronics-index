@@ -1,0 +1,63 @@
+part: FDN358P
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: onsemi
+  name: FDN358P
+  def: subckt
+  hash: 750f087ee4bad652a202a5f87aa4a60f25e31819
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/fdn358p.lib
+    sha256: a37f7494ead1fd261236fe1b28fe512950bebc525ce4425fe102ab6a66e89784
+    lines:
+      FDN358P: [1, 48]
+    fetched: '2026-09-19'
+- source: spice-model-cd
+  name: FDN358P
+  def: subckt
+  hash: 18be6734fe7063472985bb88380d58554e45c4f1
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/FD/FDN358P.lib
+    sha256: 91019869ef5b671491401ad1204ed79f4c02844a001eaac7f6a3db931c69adb4
+    lines:
+      FDN358P: [3, 26]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: FDN358P_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: FDN358P_FC
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: FDN358P
+  def: subckt
+  hash: a93e1947e84ed03db863bf955166b62f70ec1092
+  type: SUBCKT
+  deps:
+  - pmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FDN358P: [101364, 101411]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'

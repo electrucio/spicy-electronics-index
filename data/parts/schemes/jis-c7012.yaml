@@ -1,0 +1,68 @@
+# The Japanese standard JIS C7012, as Renesas (Hitachi) explained it in 2004 (S16) and as the JIS
+# article tabulates it (S88).
+label: JIS C7012
+summary: Japanese type numbers — 1S, 2SA to 2SK, 3SK — registered with JEITA.
+order: 40
+applies_to: [bjt, bjt-ge, jfet, mosfet, sit, diode, diode-ge, zener, led]
+forms:
+  - example: 2SC1815GR
+    pattern: '^(?P<junctions>[123]S)(?P<type>[A-HJKMQRSTVZ]?)(?P<serial>[1-9]\d{1,3})(?P<revision>[A-D]?)(?P<rank>GR|BL|[OYR])?$'
+# A maker's suffix after the number is often one the standard does not know — 2SC1815G, 2SA933S,
+# 2SD1858X — and it does not change the letter after S. Which way round the transistor is can be read off
+# the front of the name alone, with the letter's polarity below.
+polarity_from: '^[123]S(?P<type>[A-HJKMQRSTVZ])[1-9]\d'
+fields:
+  # The S is read with the digit before it: the sources print it as part of the prefix (2S, 3SK) and do
+  # not say what it stands for.
+  junctions:
+    label: junctions
+    values:
+      1S: one junction — a diode
+      2S: two junctions — a transistor, or a single-gate field-effect transistor
+      3S: three junctions, or a field-effect transistor with two gates
+  type:
+    label: kind of device
+    values:
+      '': a diode
+      A: a PNP bipolar transistor for high frequency
+      B: a PNP bipolar transistor for low (audio) frequency
+      C: an NPN bipolar transistor for high frequency
+      D: an NPN bipolar transistor for low (audio) frequency
+      E: a diode
+      F: a thyristor
+      G: a Gunn diode
+      H: a unijunction transistor
+      J: a P-channel field-effect transistor (JFET or MOSFET)
+      K: an N-channel field-effect transistor (JFET or MOSFET)
+      M: a TRIAC
+      Q: a light-emitting diode
+      R: a rectifier
+      S: a signal diode
+      T: an avalanche diode
+      V: a variable-capacitance diode
+      Z: a zener diode
+    families: {'': diode, A: bjt, B: bjt, C: bjt, D: bjt, E: diode, F: thyristor, G: gunn, H: ujt, J: fet,
+               K: fet, M: thyristor, Q: led, R: rectifier, S: signal-diode, T: diode, V: varactor, Z: zener}
+    polarity: {A: PNP, B: PNP, C: NPN, D: NPN, J: P-channel, K: N-channel}
+    # What the letter says the type was designed for, as the part's page puts it after the kind of device.
+    use: {A: for high frequency, B: for audio frequency, C: for high frequency, D: for audio frequency}
+  serial:
+    label: registration number
+    meaning: 'the number JEITA''s registration centre gave the type, in order of registration'
+  revision:
+    label: revision
+    meaning: 'a revision of the original type; the revised part can replace the original but not the other way round. Some makers use the same letters for a grade, and the maker''s sheet decides.'
+    optional: true
+  rank:
+    label: rank
+    values:
+      O: a rank (usually a gain group), named after a colour — orange
+      Y: a rank (usually a gain group) set by the maker
+      GR: a rank (usually a gain group) set by the maker
+      BL: a rank (usually a gain group), named after a colour — blue
+      R: a rank (usually a gain group), named after a colour — red
+    optional: true
+caveats:
+  - The first letter after S says what the type was registered as, not who made it.
+  - Packages often drop the 2S, so a transistor marked C1815 is a 2SC1815 — and D965 could be a 2SD965 or a BD965.
+refs: [S16, S88, S87]

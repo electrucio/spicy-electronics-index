@@ -1,0 +1,258 @@
+part: 2N5457
+kind: jfet
+priority: 1
+group: n_channel
+models:
+- source: interfet
+  name: 2N5457
+  def: model
+  hash: ab6d7916663c855ccedb40d6ef8a610fe05fd30d
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      2N5457: [789, 789]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: interfet
+  name: J2N5457-GEN
+  def: model
+  hash: bd44976c8858b4282d4464c741b1b41f1ec54793
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.interfet.com/jfet-datasheets/standard.jft
+    sha256: fd842bd931665b16e2f1eeb142e0651cde3375845f928eeaf47f079b65cc42aa
+    lines:
+      J2N5457-GEN: [331, 331]
+    fetched: '2026-09-14'
+    note: 'model(s): 2N2608-NSC (PJF .model), 2N3370-NSC (NJF .model), 2N3458-NSC (NJF .model), 2N3459-NSC
+      (NJF .model), 2N3684-NSC (NJF .model), 2N3685-NSC (NJF .model) ...'
+- source: microcap12
+  name: Jmmbf5457lt1
+  def: model
+  hash: 9640025940d0648760a06e12c224b9eb5d60d88e
+  type: NJF
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Jmmbf5457lt1: [139962, 139965]
+    fetched: '2026-09-21'
+  note: found under the alias MMBF5457
+  copies:
+  - source: microcap12
+    name: mmbf5457lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_fet.lib
+      sha256: 9b68f867d49f3f5c7f8313d34e42073e408ccb5020d4cdec8e0168d84275f49d
+- source: microcap12
+  name: 2N5457
+  def: model
+  hash: 7bd136bc10bd7f5983b518c6634951ad833bbce6
+  type: NJF
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/jfet.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: da01b606f4ee2c390ba6c0cac218a9ffa5bf9c45d404fcc5deda34e1ec837a62
+    lines:
+      2N5457: [351, 353]
+    fetched: '2026-09-21'
+- source: qspice
+  name: 2N5457
+  def: model
+  hash: 31fb925dca26095ccc2b002fe199f20676b61c5a
+  type: NJF
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NJF.txt
+    sha256: 1eecb317d294dfd7730c4f9070b7f3da9fc4938412714089b87d1948f46fc741
+    lines:
+      2N5457: [90, 90]
+  copies:
+  - source: bordodynov-qspice
+    name: 2N5457
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NJF.txt
+      sha256: 1eecb317d294dfd7730c4f9070b7f3da9fc4938412714089b87d1948f46fc741
+- source: duncanamps
+  name: J2N5457
+  def: model
+  hash: 1c069a957749e1c8277f0f4cbb5fc72913a398dd
+  type: NJF
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/jfet/njfet.mod
+    sha256: 038dc1062e5ec82b6d49076d7bccf0f06e485e43a89f185c2b7ca121258295ac
+    lines:
+      J2N5457: [16, 17]
+    fetched: '2026-09-14'
+    note: 10 .model
+- source: spiceypedals
+  name: J2N5457
+  def: model
+  hash: ed48c8e3cd0fb5e896c470816e946df9c0c4f283
+  type: NJF
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PedalNetlists/ProcoRatV6.cir
+    sha256: 2b27f94ef4851c751f9601fea64f4f1ff4622fb8751301a40e3be336042cf1bb
+    lines:
+      J2N5457: [87, 87]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: J2N5457
+  def: model
+  hash: 799d41f01038d936b684b5a796a44baaae3af035
+  type: NJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      J2N5457: [317, 317]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: J2N5457
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: bordodynov
+    name: 2N5457
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: J2N5457
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: 2N5457
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: J2N5457
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cadlab.lib
+      sha256: 41bfabd0cbebf1ec6b9f7a8ddb4b8f420ecb70788d795f8068d0a207de2f5ffb
+  - source: kicad-spice-library
+    name: J2N5457
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/FET/JFET2.lib
+      sha256: 32fd0651eba7dea99ca263c60007ec76d9f93d82bef9624fd89cc36d7d62d960
+  - source: ltwiki
+    name: J2N5457
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jfet.lib
+      sha256: aef97ee6dd81ee2b11feabe7d88ff256a613f7a10f89b82d1b7f2ca49b772ab7
+  - source: ltwiki
+    name: J2N5457
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5457
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2N5457
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2N5457
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2N5457
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+  - source: ltwiki
+    name: J2N5457
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.jft
+      sha256: e129c65d0238559c9fe2d25e47143d11aa57115e1ff5d8747d9a45db57f83e37
+- source: groupsio-ltspice
+  name: 2n5457X
+  def: model
+  hash: 6e23d8986ff08d0a2fb2b565e0a4ce8b4579070e
+  type: NJF
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.jft
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    lines:
+      2n5457X: [614, 614]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2n5457X
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: kicad-spice-library
+    name: 2n5457X
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: ltwiki
+    name: 2n5457X
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2n5457X
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+- source: bordodynov
+  name: 2N5457
+  def: model
+  hash: 799d41f01038d936b684b5a796a44baaae3af035
+  type: NJF
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.jft
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+    lines:
+      2N5457: [617, 617]
+    fetched: '2026-09-14'
+  note: 'same code also in: kicad-spice-library, ltwiki'
+datasheet:
+  url: https://web.archive.org/web/2024id_/https://www.onsemi.com/pdf/datasheet/2n5457-d.pdf
+  maker: onsemi
+  doc: 2N5457/D Rev. 6, February 2010

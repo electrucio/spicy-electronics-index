@@ -1,0 +1,66 @@
+part: NSL-32SR3
+kind: opto
+priority: 3
+models:
+- source: viva-analog
+  name: NSL32-SR3
+  def: subckt
+  hash: d1c910bd1d30cbf05fe18ea661ff50859b6dbf05
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: https://viva-analog.com/nsl32-sr3-updated-modeling-jcm-c-2020/
+    sha256: 500328c5b1b492b4e6e2f9aa5a81ab4e631986595ea398ddcad40ea6bd530c3b
+    lines:
+      NSL32-SR3: [6, 15]
+    fetched: '2026-09-14'
+    note: TRANSCRIPTION of updated-model-txt.png (made here)
+- source: bordodynov
+  name: nsl-32sr3
+  def: subckt
+  hash: 5eb0701b969036c1e9a23bbfd22ed26d898b6f9f
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - '1'
+  - '2'
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/NSL-32SR3.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 84edacb753f896ebfedab540cc5d44420567fdb1ed725d624b8ce509c16de0ba
+    lines:
+      nsl-32sr3: [1, 13]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/NSL-32SR3.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 00e2f07f4292513c419b2c5858cffec884dd1ae988a6f0329ef6b33f3c614f28
+  copies:
+  - source: kicad-spice-library
+    name: nsl-32sr3
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NSL-32SR3.sub
+      sha256: 84edacb753f896ebfedab540cc5d44420567fdb1ed725d624b8ce509c16de0ba
+  - source: ltwiki
+    name: nsl-32sr3
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NSL-32SR3.sub
+      sha256: 84edacb753f896ebfedab540cc5d44420567fdb1ed725d624b8ce509c16de0ba
+  - source: ltwiki
+    name: nsl-32sr3
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/NSL-32SR3/NSL-32SR3.sub
+      sha256: 84edacb753f896ebfedab540cc5d44420567fdb1ed725d624b8ce509c16de0ba

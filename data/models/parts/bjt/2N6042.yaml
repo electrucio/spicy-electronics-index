@@ -1,0 +1,36 @@
+part: 2N6042
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6042
+  def: subckt
+  hash: 6643c89de94d8e3660e97e674b051c17d11662d7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6042.lib
+    sha256: d100f2681ca006bebebe6849e6f1e28bfb82f9591402f9743828105c87a29b73
+    lines:
+      2n6042: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: 2n6042
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: duncanamps
+  name: X2N6042
+  def: subckt
+  hash: 47dd5ead24082edc6dd434a8b65c4367a5c0bde0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnpdarl3.sub
+    sha256: 4ac5398f647d100e9e9b0869d5cce6b6686704b058f181726f84c47824464638
+    lines:
+      X2N6042: [26, 36]
+    fetched: '2026-09-14'

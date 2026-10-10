@@ -1,0 +1,56 @@
+part: 2N5190
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: 2N5190
+  def: model
+  hash: cd8ea7a237ad459fbdeba608fcfeb14af659d0ee
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N5190: [229, 236]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: Q2N5190
+  def: model
+  hash: 0f84fce179e4952012fb979cfdfdfe68948c03f4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      Q2N5190: [6677, 6677]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N5190
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: groupsio-ltspice
+  name: 2N5190
+  def: model
+  hash: 6d29c18df2503f3eef4db5465a1c4d16e0f1a655
+  type: NPN
+  deps:
+  - NSC_4E
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N5190: [438, 438]
+      NSC_4E: [6241, 6241]
+    fetched: '2026-09-21'

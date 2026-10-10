@@ -1,0 +1,190 @@
+part: AD8055
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8055an
+  def: subckt
+  hash: 1d788887c357202a2bef70caf20a4bc81824eb2a
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8055.cir?modelType=spice-models
+    sha256: 5cd54ade7b3e56b9d54cf7bb8e58ebb2822526506ed454057352d3e595a29c20
+    lines:
+      AD8055an: [37, 141]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD8055an
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: kicad-spice-library
+    name: AD8055an
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD8055an
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD8055an
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
+      sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+- source: spice-model-cd
+  name: AD8055an/AD
+  def: subckt
+  hash: 243a690f82799582de5f4ea95969e3d50402668b
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD8055an/AD: [22522, 22626]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8055an/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: AD8055an/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+- source: microcap12
+  name: AD8055an_AD
+  def: subckt
+  hash: 83bdaeed98e37461dbafb0599dc78e1c6006dcc0
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  deps:
+  - qn1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8055an_AD: [1154, 1258]
+      qn1: [77075, 77075]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8055an_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: bordodynov
+  name: AD8055_SN
+  def: subckt
+  hash: 2772df4f2cb7e5d77b1016b58e2b24aa0ca9f35d
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/OpAmp_Nazar_Shtybel.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+    lines:
+      AD8055_SN: [2371, 2482]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov-qspice
+    name: AD8055_SN
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/Opamp/AD8055_SN.qsym
+      sha256: 71f144d44bb6c6771d28cc99c22322ec386067072df4a5fcb796896933f1ada1
+  - source: bordodynov-qspice
+    name: AD8055_SN
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/Opamp/AD8055_SN.qsym
+      sha256: 71f144d44bb6c6771d28cc99c22322ec386067072df4a5fcb796896933f1ada1
+  - source: ltwiki
+    name: AD8055_SN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_Nazar_Shtybel.lib
+      sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+- source: bordodynov
+  name: AD8055an
+  def: subckt
+  hash: aa6065e1694faf11549e1f8c705af5664e4230e1
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  deps:
+  - Q2
+  - Q1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      AD8055an: [12202, 12306]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/AD8055an.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: ceda7d8bd9a46d60d87fc0cde8999201017070a83c2f0c9dd34b340daddb1b27
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8055an
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: AD8055an
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

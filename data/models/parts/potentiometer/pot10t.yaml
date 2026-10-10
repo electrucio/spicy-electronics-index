@@ -1,0 +1,41 @@
+part: pot10t
+kind: potentiometer
+group: non-native
+models:
+- source: ltwiki
+  name: pot10t
+  def: subckt
+  hash: 041b4abc28ffdd4d3015d53475af2fe221643323
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Pote.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: d4780f3354e48dbfb6b4441599e3226a191267ab5e5d184221b5f0ce4efaa48c
+    lines:
+      pot10t: [16, 20]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/Pot&Sw/Potentiometer10T.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 9c932699a8fdab6ef51cff0f79ad9d2914a05e84040b3f332b45f6afd7c52833
+  copies:
+  - source: bordodynov
+    name: pot10t
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
+  - source: kicad-spice-library
+    name: pot10t
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Pote.lib
+      sha256: d4780f3354e48dbfb6b4441599e3226a191267ab5e5d184221b5f0ce4efaa48c
+  - source: ltwiki
+    name: pot10t
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07

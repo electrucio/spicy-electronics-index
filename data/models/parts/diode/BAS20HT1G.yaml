@@ -1,0 +1,30 @@
+part: BAS20HT1G
+kind: diode
+priority: 4
+group: silicon_signal
+models:
+- source: onsemi
+  name: bas20ht1g
+  def: model
+  hash: 31e246f8d62c059820be0349d2d36ce4b6b81d8e
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bas20ht1g.sp3.sp3
+    sha256: 0fb743b543aedf2a93cdd7bd125b3031541731cc72c3f76a2fa3cc4fe47f6b32
+    lines:
+      bas20ht1g: [14, 18]
+    fetched: '2026-09-19'
+    note: 'BAS20HT1G.SP3: bas20ht1g'
+  copies:
+  - source: microcap12
+    name: Dbas20ht1g
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dbas20ht1g
+    get:
+      url: https://www.onsemi.com/download/models/lib/bas20ht1g.lib.lib
+      sha256: d7550e389f45291dc4121ca88cca924b0526eeb265c872421229662f61b0496d

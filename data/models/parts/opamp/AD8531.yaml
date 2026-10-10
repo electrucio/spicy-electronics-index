@@ -1,0 +1,124 @@
+part: AD8531
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8531
+  def: subckt
+  hash: 0cd4acab39a12a0db7da63ab1a6e1135f679e360
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8531.cir?modelType=spice-models
+    sha256: bba39729bc6e64230d7ab6ef70928b7fc54b541eb92f4193812b1921d8e2557e
+    lines:
+      AD8531: [27, 85]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: AD8531/AD
+  def: subckt
+  hash: 6b10fffc5d5c08ff32c69ba0a057a64fef22e21d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD8531/AD: [32577, 32635]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8531
+  def: subckt
+  hash: bec58c271e923beec394fd6863298f55dd071eed
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - AD9617
+  - AD8534
+  - AD8532
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+    lines:
+      AD8531: [10642, 10708]
+      AD8532: [10726, 10793]
+      AD8534: [10811, 10878]
+      AD9617: [10893, 10957]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD8531
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: kicad-spice-library
+    name: AD8531
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: ltwiki
+    name: AD8531
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+- source: microcap12
+  name: AD8531_AD
+  def: subckt
+  hash: 57c42aa336b242d597fb7a45cea9a61873c05d9d
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8531_AD: [51258, 51316]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: kicad-spice-library
+    name: AD8531_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: kicad-spice-library
+  name: AD8531
+  def: subckt
+  hash: 397d6b48e259fb65f62bc427226619e92eb66a89
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD9.LIB
+    sha256: 50fda526d1a506d6d5b9c4186286bb08968f04ac8e5a7ee8e7751c9a32703347
+    lines:
+      AD8531: [410, 468]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words

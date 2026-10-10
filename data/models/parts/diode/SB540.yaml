@@ -1,0 +1,80 @@
+part: SB540
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: SB540
+  def: subckt
+  hash: aa5118c5b3714f722f087842da48ecb6fa1bba01
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88115/sb540.txt
+    sha256: 01eb08edbbe94a322aba02bc950d4f271ffe78c4e7942b5e3212284d0b1f3dad
+    lines:
+      SB540: [9, 35]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: SB540_GN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+  - source: microcap12
+    name: SB540_GN
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/gensemi.lib
+      sha256: a91e073b84759dcbe41d4ae51687287a413fc12865804565e488f747b57b3d6c
+  - source: kicad-spice-library
+    name: SB540
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+  - source: spice-model-cd
+    name: SB540
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Rectifiers/Schottky/sb540.lib
+      sha256: 01eb08edbbe94a322aba02bc950d4f271ffe78c4e7942b5e3212284d0b1f3dad
+- source: kicad-spice-library
+  name: SB540
+  def: subckt
+  hash: d0b5d1d342787cf87cbf6bf259edbc16744ceb21
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - dio
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+    sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+    lines:
+      SB540: [992, 1018]
+      dio: [2849, 2874]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: SB540
+  def: subckt
+  hash: aa5118c5b3714f722f087842da48ecb6fa1bba01
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+    sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+    lines:
+      SB540: [620, 646]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

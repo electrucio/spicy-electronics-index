@@ -1,0 +1,43 @@
+% Curve tracer (bjt-tracer): the set-up a person would wire, semantically the deck's.
+%   IK 0 bk <k x step>   a current source from ground into the base       -> current source I_B (set)
+%   VK sw ck 0           a 0 V source from the swept node to the collector -> ammeter I_C (measured)
+%   QK ck bk 0 DUT       the transistor, emitter grounded                  -> npn
+%   VSW sw 0, .dc 0..10  the swept supply, + at sw, - to ground            -> source V_CE (set)
+%   IU.. 0 bu.. <k x step>  the same for each universal step, 1 µA to 100 mA
+%   The 85 copies of the deck are drawn as one transistor with k = 1 to 5.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Curve tracer, PNP}
+\def\gnd{1.0}
+% the transistor
+\node[pnp, yscale=-1] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$I_C$}
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{ck}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(ctop)+(2.6,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, invert, l=$V_{CE}$] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(ctop)+(1.3,0.05)$}{sw}
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, invert, l_=$I_B$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{bk}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_B = k \cdot I_{step}$, $k = 1, \dots, 5$;\quad $I_{step} = 1$, 2, 5, 10, 20 \textmu A $\dots$ 100 mA, one family each\\[2pt]
+  or auto: $I_{step} = I_B(I_C = 10\ \mathrm{mA},\, V_{CE} = 5\ \mathrm{V}) \,/\, 5$, the model's own\\[2pt]
+  $V_{CE}$ swept 0 to 10 V in 20 mV steps;\quad read $I_C(V_{CE})$ for each $k$\\[2pt]
+  PNP: every source reversed; values written as magnitudes%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

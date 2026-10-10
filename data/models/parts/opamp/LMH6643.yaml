@@ -1,0 +1,115 @@
+part: LMH6643
+kind: opamp
+priority: 3
+models:
+- source: ti
+  name: LMH6643
+  def: subckt
+  hash: 91b2d4ca0a5d6e03b4004a8ec7b95a5f453a95c6
+  type: SUBCKT
+  pins:
+  - INN
+  - INP
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM136
+    member: LMH6643.MOD
+    archive_sha256: ef48c2b80f85df7407ed30f7343f0a91836d1abb9ba8e039f23ab04244217756
+    sha256: 287e2215907b1f6a8fe161ebd6357bc34c7bfecd54c9a4b1aa49713f85db7197
+    lines:
+      LMH6643: [15, 126]
+    fetched: '2026-09-19'
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+- source: microcap12
+  name: LMH6643
+  def: subckt
+  hash: 35619fc1c49602095822cebf49dd46d4a2c9c30e
+  type: SUBCKT
+  pins:
+  - INN
+  - INP
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nation.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+    lines:
+      LMH6643: [415, 521]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/lmh6643.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 1f9595129fcde0bdeef849f926633451f451aec49d54283d9774ea9428c8fdf5
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+  copies:
+  - source: bordodynov
+    name: LMH6643
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nationalhighspeed.lib
+      sha256: c6298db6b8e8d12c131dcf39a79d4c069d84ce3655ed0a01e7da05b5df958f21
+  - source: ltwiki
+    name: LMH6643
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nationalhighspeed.lib
+      sha256: c6298db6b8e8d12c131dcf39a79d4c069d84ce3655ed0a01e7da05b5df958f21
+  - source: ltwiki
+    name: LMH6643
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/adsl/nationalhighspeed.lib
+      sha256: c6298db6b8e8d12c131dcf39a79d4c069d84ce3655ed0a01e7da05b5df958f21
+  - source: ltwiki
+    name: LMH6643
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/adsl/nationalhighspeed.lib
+      sha256: c6298db6b8e8d12c131dcf39a79d4c069d84ce3655ed0a01e7da05b5df958f21
+- source: ltwiki
+  name: LMH6643
+  def: subckt
+  hash: c6644556c1699cf9a35010607218262303b29519
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+    lines:
+      LMH6643: [3745, 3851]
+    fetched: '2026-09-21'
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+  copies:
+  - source: bordodynov
+    name: LMH6643
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: kicad-spice-library
+    name: LMH6643
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: LMH6643
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47

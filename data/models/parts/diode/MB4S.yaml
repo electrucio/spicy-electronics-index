@@ -1,0 +1,51 @@
+part: MB4S
+kind: diode
+priority: 4
+group: bridge
+models:
+- source: onsemi
+  name: MB4S
+  def: model
+  hash: 28652ab3dab042fbebdf9304a4dc1dce1537fb1a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mb4s.lib
+    sha256: bec7212ab9ce20a7fcce34bce6b5410d6f7e844291e80d80c61be4c66a202379
+    lines:
+      MB4S: [6, 9]
+    fetched: '2026-09-19'
+    note: 'MB4S: MB4S'
+  copies:
+  - source: microcap12
+    name: MB4S
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: bordodynov
+  name: MB4S
+  def: subckt
+  hash: a85b2310970566bd16b9832c8ca06085171faa99
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/diode_fullbridge.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 2e0399bfb1c1da49c79e1aa6fffe5fac3c723bb9e1a559d02d15e385ccf8376f
+    lines:
+      MB4S: [1465, 1484]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: MB4S
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/diode_fullbridge.lib
+      sha256: 2e0399bfb1c1da49c79e1aa6fffe5fac3c723bb9e1a559d02d15e385ccf8376f

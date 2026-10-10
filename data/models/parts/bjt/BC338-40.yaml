@@ -1,0 +1,56 @@
+part: BC338-40
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: spice-model-cd
+  name: QBC338-40
+  def: model
+  hash: f740cd43c102336e4e72f131ca4303874dcb8dda
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC338-40.lib
+    sha256: 327f0191a4acfffe97628ed4a69a3e5080e411e39bc3d552bfcf07eec4ef2bf8
+    lines:
+      QBC338-40: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: QBC338-40/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC338-40/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+- source: microcap12
+  name: BC338_40
+  def: model
+  hash: 9e83d2132231301ec476375e3f8b8b3f32f389ab
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC338_40: [1411, 1414]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BC338-40
+  def: model
+  hash: 43988b3bff5e871945a01fa39f48f73f4fd4d9bb
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC338-40: [1838, 1838]
+    fetched: '2026-09-21'

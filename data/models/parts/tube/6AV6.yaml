@@ -1,0 +1,101 @@
+part: 6AV6
+kind: tube
+priority: 2
+group: audio_docs
+models:
+- source: groups-io
+  name: T6AV6
+  def: subckt
+  hash: 95d3d57bd0290c01971e658bf05916ab785435f5
+  type: SUBCKT
+  pins:
+  - '1'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/vacuum.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: f413206ecdaa9fec4395d59e22f22f60cf44c4512e1b74987e6340785e9629e2
+    lines:
+      T6AV6: [358, 371]
+    fetched: '2026-10-09'
+  copies:
+  - source: kicad-spice-library
+    name: T6AV6
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/VACUUM.LIB
+      sha256: 0472033f0b2f47bbafdd587955b3163fe983f3989575bcbeaf1794eaf2d5af9f
+- source: groups-io
+  name: 6AV6-TRI
+  def: subckt
+  hash: 02492f330213c8ed1b464063bde27f1b66cf56b4
+  type: SUBCKT
+  deps:
+  - DX
+  - TRIODE
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/tube_spice_models.cir.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 4f916889423b2f19f147a732b76fa85641948d30e6b83aeeb4d179337d2e77d2
+    lines:
+      6AV6-TRI: [101, 103]
+      DX: [308, 308]
+      TRIODE: [168, 178]
+    fetched: '2026-10-09'
+- source: ltwiki
+  name: 6AV6A
+  def: subckt
+  hash: ce8c209e77b2163ca1196eeb37e7bb080eed4fe8
+  type: SUBCKT
+  deps:
+  - 12AX7A
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    lines:
+      12AX7A: [1586, 1593]
+      6AV6A: [1600, 1602]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 6AV6A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6AV6A
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6AV6A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6AV6A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6AV6A
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6AV6A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734

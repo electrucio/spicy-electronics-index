@@ -1,0 +1,36 @@
+part: FJA4313
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: FJA4313
+  def: subckt
+  hash: 0e61e6a5c963275b2907dcc26a55df7fbb0560ec
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/fja4313.lib
+    sha256: ee74ba076d7a0893fd229bf38f4a90634f13bb3f3a5f61a173379e80bd13e1e4
+    lines:
+      FJA4313: [6, 19]
+    fetched: '2026-09-14'
+- source: microcap12
+  name: FJA4313
+  def: subckt
+  hash: e2391f3578a9a79fa8a1755953715f1b3c3f373e
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FJA4313: [118757, 118770]
+      Q1: [78385, 78412]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'

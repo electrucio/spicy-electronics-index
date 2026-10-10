@@ -1,0 +1,95 @@
+part: FR107
+kind: diode
+priority: 3
+group: rectifier
+models:
+- source: microcap12
+  name: FR107
+  def: model
+  hash: 8e9cda449213f35f02cefdc5836693a11c3fc601
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/microsem_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4de9c79b8f465e5a0873f78fe3a8c13a59e9f0cec851134a2e3e7b434b761d74
+    lines:
+      FR107: [753, 754]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: FR107GP
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: lbr_txt/microsem_lbr.lib
+      sha256: 4de9c79b8f465e5a0873f78fe3a8c13a59e9f0cec851134a2e3e7b434b761d74
+- source: qspice
+  name: FR107
+  def: model
+  hash: 54e312dc970497c07287f686a100ec1301e05ff9
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Diode.txt
+    sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+    lines:
+      FR107: [25, 25]
+  copies:
+  - source: bordodynov-qspice
+    name: FR107
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+- source: bordodynov
+  name: FR107
+  def: model
+  hash: 581cc87e656560fac5eaa3fbe725e91a5d0eecb3
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      FR107: [1754, 1754]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: FR107
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: FR107
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: FR107
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: kicad-spice-library
+  name: FR107
+  def: model
+  hash: 68a414490acb54ff55439e825bee94370724d7cb
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+    sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+    lines:
+      FR107: [1723, 1723]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://services.taiwansemi.com/storage/resources/datasheet/FR101G%20SERIES_H2104.pdf
+  maker: Taiwan Semiconductor
+  doc: FR101G - FR107G, Version H2104

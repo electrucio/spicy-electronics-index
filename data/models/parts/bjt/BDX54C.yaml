@@ -1,0 +1,46 @@
+part: BDX54C
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: bdx54c
+  def: subckt
+  hash: 1310ea12017fdc0da99bc1f4cf43b54c23b68273
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bdx54c.lib
+    sha256: 35855411633bdbe299a0b5f5b4611e3bea38fd80c9a680eef6f35555be876f61
+    lines:
+      bdx54c: [12, 50]
+    fetched: '2026-09-14'
+    note: 'model(s): bdx54c (.subckt 1 2 3), dmodel (D .model), qmodel (PNP .model), q1model (PNP .model)'
+  note: pins from default order (unverified)
+  copies:
+  - source: microcap12
+    name: bdx54c
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: BDX54C
+  def: subckt
+  hash: 40dd837653fed73c47cd67045aca2fcb7bc1e207
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      BDX54C: [368, 406]
+    fetched: '2026-09-21'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/bdx53b-d.pdf
+  maker: onsemi
+  doc: BDX53B/D Rev. 16 (November 2024) (covers BDX53B/C, BDX54B/C)

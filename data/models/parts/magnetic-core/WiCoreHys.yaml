@@ -1,0 +1,21 @@
+part: WiCoreHys
+kind: magnetic-core
+group: non-native
+models:
+- source: ltwiki
+  name: WiCoreHys
+  def: subckt
+  hash: 40d8e812a196d8cc343b81f4c1b3e1313e03ebf0
+  type: SUBCKT
+  deps:
+  - Winding
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/CFL_as/CFL_as.zip
+    member: Xfrmr.lib
+    archive_sha256: 1ee64925c00080519963bba711ba63df18c865ed49edda97984ab067bb4b9476
+    sha256: f9001d2fb619d7d68f49617d35c4e9ec0da6dced31623bbeebfc6bea198a65c5
+    lines:
+      WiCoreHys: [100, 110]
+      Winding: [48, 52]
+    fetched: '2026-09-14'

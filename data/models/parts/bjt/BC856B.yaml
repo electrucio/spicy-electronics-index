@@ -1,0 +1,606 @@
+part: BC856B
+kind: bjt
+priority: 4
+group: small_signal_pnp
+models:
+- source: onsemi
+  name: bc856bwt1
+  def: model
+  hash: 31d60ec8722b7c85f41c0488cf697f3f48db0636
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bc856bwt1.sp3
+    sha256: dc22a9d6829da1b1ac0afd3f133bf2d4c77cb029c36ea1a8a9bd585f317e2d00
+    lines:
+      bc856bwt1: [14, 24]
+    fetched: '2026-09-19'
+    note: 'BC856BWT1.SP3: bc856bwt1'
+- source: onsemi
+  name: bc856blt1g
+  def: model
+  hash: c20fc43e7a98f3e2f6a2dd05217a17f533465a8a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bc856bl.sp3
+    sha256: abe386f3e256355a3b92f683d9839f97a4719a3c70648f17f904d1426a2bce63
+    lines:
+      bc856blt1g: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: Qbc856blt1g
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: BC856B
+  def: subckt
+  hash: 3475315a11a745dfe4fd51a02e3bf80739397e51
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC856B.txt
+    sha256: 580ae98768fa1b6fc66d0e3e1daaaf5745d63f8cff4614fcef840055789b7b33
+    lines:
+      BC856B: [31, 89]
+    fetched: '2026-09-14'
+    note: 'model(s): BC856B (.subckt 1 2 3), MAIN (PNP .model), DIODE (D .model)'
+  note: pins from comment words
+- source: nexperia
+  name: BC856A
+  def: subckt
+  hash: 30f43321fc7c612da5fc9e9319727a549024e192
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC856A.txt
+    sha256: dbc284a42b25163d4b27c4a75db95a7059b075e29e7ee6a83f0134bcb4b8dc1a
+    lines:
+      BC856A: [29, 89]
+    fetched: '2026-09-14'
+    note: 'model(s): BC856A (.subckt 1 2 3), MAIN (PNP .model), DIODE (D .model)'
+  note: found under the alias BC856; pins from comment words
+- source: diodes-inc
+  name: BC856B
+  def: model
+  hash: 33a1cf92d1865bd4adf6a91e4f7945356d4566b1
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2702/BC856B.spice.txt
+    sha256: f9fa1a711f832a60218091f95f68ed39d079236d210f6357e7bbfb5a89322594
+    lines:
+      BC856B: [23, 25]
+    fetched: '2026-09-14'
+    note: 'model(s): BC856B (PNP .model)'
+  copies:
+  - source: diodes-inc
+    name: BC856B
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8426/collection.spice.txt
+      sha256: ca5759f37375eed975f03f72dafec9c3338930de6cfafaecda91fdca1fd33379
+- source: spice-model-cd
+  name: QBC856B
+  def: model
+  hash: 76375fcf5d608c363adcb590c16b844cd91de514
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC856B.lib
+    sha256: d04fe665c466d55677f55b6ad3a0e3dbf615f29c229e99c9779217803c28af7f
+    lines:
+      QBC856B: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: QBC856B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC856B.PRM
+      sha256: d04fe665c466d55677f55b6ad3a0e3dbf615f29c229e99c9779217803c28af7f
+  - source: kicad-spice-library
+    name: BC856BW
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QBC856BW
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC856BW.PRM
+      sha256: 00b17fdc5a317408479abe49f1c8b3b3ef45959b0abbceb5fb9fedda69e11eb1
+  - source: microcap12
+    name: BC856BW
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+  - source: spice-model-cd
+    name: QBC856BW
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC856BW.lib
+      sha256: 00b17fdc5a317408479abe49f1c8b3b3ef45959b0abbceb5fb9fedda69e11eb1
+  - source: kicad-spice-library
+    name: BC856BT
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QBC856BT
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC856BT.PRM
+      sha256: d9d5fd96326d801bb447d66fa616eb331b1251d36bdb675cb35e908f9491ccf7
+  - source: microcap12
+    name: BC856BT
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+  - source: spice-model-cd
+    name: QBC856BT
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC856BT.lib
+      sha256: d9d5fd96326d801bb447d66fa616eb331b1251d36bdb675cb35e908f9491ccf7
+  - source: kicad-spice-library
+    name: QBC856B/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC856B/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+  - source: kicad-spice-library
+    name: QBC856BW/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC856BW/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+- source: microcap12
+  name: BC856BS
+  def: subckt
+  hash: 1222fa2eed080c2c355b68f6e7a892dd45f499e6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BC856BS: [39772, 39836]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC856B
+  def: model
+  hash: 1fbff831442d98bc832f579928f6846983e1d576
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/europe_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 42216566abb79c5af5cc97e223623ed0f689b725fcb876c2b4e00d8298ba8e02
+    lines:
+      BC856B: [354, 358]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BC856BL
+  def: model
+  hash: 92e8824561964c6e3e4de842aa878120fe4efd8f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      BC856BL: [2185, 2188]
+    fetched: '2026-09-21'
+- source: qspice
+  name: BC856B
+  def: model
+  hash: 976e25db5ce6f6c11f157d9a30f2e11bcd29f25f
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      BC856B: [570, 574]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: BC856B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: qspice
+  name: BC856BW
+  def: model
+  hash: 0b3866fdbc684200bc158f33a99304b5f4fe0de4
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      BC856BW: [576, 580]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: BC856BW
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: bordodynov
+  name: BC856B
+  def: model
+  hash: 7e8dda4023b24b1e6b38c6ac448f7290a279feb9
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+    lines:
+      BC856B: [53, 53]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: bordodynov
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: bordodynov-qspice
+    name: BC856B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/KT-Cordell models.txt
+      sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+  - source: kicad-spice-library
+    name: BC856B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: BC856B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: kicad-spice-library
+    name: BC856B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+- source: groups-io
+  name: BC856B
+  def: model
+  hash: e7692b3b0ea54b4fec551a99cbb576b0472fe1c9
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/my_own_npn_pnp_bjt.lib
+    sha256: d97ef82afacbe1a4ce42b30dc83690ef9a3fc4b91215652785b4d0d8e05f7e08
+    lines:
+      BC856B: [134, 139]
+    fetched: '2026-10-09'
+- source: groupsio-ltspice
+  name: BC856B
+  def: model
+  hash: 3fc4d91e70683b8cb3fcb3531a7ca038493297ff
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      BC856B: [1972, 1972]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: BC856B
+  def: model
+  hash: e3d34684936d9b9d2a5e9e1199532ee1921ae3f9
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      BC856B: [596, 596]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BC856B
+  def: model
+  hash: 3dc8e82f8757b233e1598b39ce4b8d8afb1eaf8a
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/Standard.zip
+    member: Standard/standard.bjt
+    archive_sha256: 97e47470aefa994e7cdf520fc8a8a1d24f9598060b213146903870757a7a4687
+    sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+    lines:
+      BC856B: [576, 576]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC856B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+  - source: kicad-spice-library
+    name: BC856B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+- source: ltwiki
+  name: BC856B_DIO
+  def: model
+  hash: 7768bc39c7bc74187961ae21476403583e5a031f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+    lines:
+      BC856B_DIO: [52, 52]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BC856B_DIO
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+      sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+  - source: ltwiki
+    name: BC856BW_DIO
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+      sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+  - source: ltwiki
+    name: BC856BW_DIO
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+      sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+- source: ltwiki
+  name: BC856B
+  def: subckt
+  hash: 754d5b4dd12d4c4885cb983fbdc4a4fbeadc430b
+  type: SUBCKT
+  deps:
+  - VBREB0_MYPHI
+  - '2'
+  - VBREB0_PHI
+  - '1'
+  - VBREB0_HEL
+  - '3'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+    lines:
+      '1': [72, 72]
+      '2': [73, 73]
+      '3': [74, 74]
+      BC856B: [28, 30]
+      VBREB0_HEL: [80, 80]
+      VBREB0_MYPHI: [78, 78]
+      VBREB0_PHI: [76, 76]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BC856B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+      sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+- source: ltwiki
+  name: BC856_BEBR_P
+  def: subckt
+  hash: a6571b6fad22a87fe9d440f04951aa35267fab2b
+  type: SUBCKT
+  deps:
+  - VBREB0_MYPHI
+  - '2'
+  - VBREB0_PHI
+  - '1'
+  - VBREB0_HEL
+  - '3'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+    lines:
+      '1': [72, 72]
+      '2': [73, 73]
+      '3': [74, 74]
+      BC856_BEBR_P: [17, 19]
+      VBREB0_HEL: [80, 80]
+      VBREB0_MYPHI: [78, 78]
+      VBREB0_PHI: [76, 76]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BC856_BEBR_P
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+      sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+- source: ltwiki
+  name: BC856B_PHI
+  def: model
+  hash: 9aeffc1fa780ee6c93454f860dc2658d77dda22e
+  type: PNP
+  deps:
+  - VBREB0_HEL
+  - '3'
+  - BC856_PHI
+  - '10'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+    lines:
+      '10': [37, 37]
+      '3': [74, 74]
+      BC856B_PHI: [43, 43]
+      BC856_PHI: [40, 40]
+      VBREB0_HEL: [80, 80]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BC856B_PHI
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC856x.lib
+      sha256: 47cd442ecaa41fb4d81474bdc9f0c7195c282e03e7c76786cf492795aba26111
+- source: ltwiki
+  name: BC856B
+  def: model
+  hash: b56698af1c7887691886ffdbe2e653fb6339fe4b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ebipolar.lib
+    sha256: 76bb4b024f91527c84cb28203cc0af1797ab5ba1a0382d82a59198a26a2ba783
+    lines:
+      BC856B: [510, 513]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BC856A
+  def: model
+  hash: a0d73009dbe29673c61af2de6e9fc9c1f24ae077
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      BC856A: [624, 624]
+    fetched: '2026-09-14'
+  note: 'found under the alias BC856; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov-qspice
+  name: BC856B
+  def: model
+  hash: b81f620de59eae39df899cd4f98b9d542d382acf
+  type: PNP
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/pnpmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+    lines:
+      BC856B: [247, 247]
+    fetched: '2026-09-29'

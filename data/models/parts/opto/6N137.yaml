@@ -1,0 +1,125 @@
+part: 6N137
+kind: opto
+priority: 3
+models:
+- source: vishay
+  name: 6N137
+  def: subckt
+  hash: 51de184a6aa2512bf0bc5e9655c8f94f8e4118de
+  type: SUBCKT
+  pins:
+  - DA
+  - DK
+  - GND
+  - VO
+  - VE
+  - VCC
+  deps:
+  - D_PLD_GATE
+  - IO_PLD
+  - AND2
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/84421/pspice6n137.zip
+    member: 6N137_VO2630.lib
+    archive_sha256: 3de1d283ec50fb535a34ab7da0f89ae6f340d6eaae0785b328ae6d2588d054a0
+    sha256: 77046d433ed8f62e18a243aaa895feef7ac110932d72cd5c3ed59ac4fc8655b9
+    lines:
+      6N137: [25, 39]
+      AND2: [122, 124]
+      D_PLD_GATE: [127, 127]
+      IO_PLD: [135, 135]
+    fetched: '2026-09-19'
+  copies:
+  - source: vishay
+    name: 6N137
+    get:
+      url: https://www.vishay.com/docs/84421/pspice6n137.zip
+      member: 6N137_VO2630.txt
+      sha256: 77046d433ed8f62e18a243aaa895feef7ac110932d72cd5c3ed59ac4fc8655b9
+- source: groups-io
+  name: 6n137
+  def: subckt
+  hash: 5c5bd3afae24d787593b41793a3523d22f02bf69
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - S
+  - C
+  - V
+  - E
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Opto/6N137/Subcircuit%20version/6n137.sub
+    sha256: b154ce9c09eb0225c007225322ab211f389190f4d7b4e1631f9c5a792823f28a
+    lines:
+      6n137: [4, 29]
+    fetched: '2026-10-09'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/6n137.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: e8991c1682c5d31fae6ed81dc5d84ffa932e0d02d2d6f744e6b416a76b7dea43
+  copies:
+  - source: bordodynov
+    name: 6n137
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+  - source: kicad-spice-library
+    name: 6n137
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: 6n137
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: ltwiki
+  name: 6N137
+  def: subckt
+  hash: ab3a6313b00e264abaf14eb4cf9b864de9e8ab90
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - S
+  - C
+  - V
+  - E
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OptoAcop.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: e1cc58e7df7070c4b67ca9ba29d04f8ede1394d26c33951fbd6e7923ecc6a694
+    lines:
+      6N137: [253, 278]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/OptoElec/6n137.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: a06a36eac5d3751a59b2c9f916d6d11ed179b059a36e4322854d376fcc3238a9
+  copies:
+  - source: bordodynov
+    name: 6N137
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OptoAcop.lib
+      sha256: afc41e67a056aadd6af70da491aedd69fb6e66a9f20ffe644c8b39d92e8ad025
+  - source: kicad-spice-library
+    name: 6N137
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OptoAcop.lib
+      sha256: afc41e67a056aadd6af70da491aedd69fb6e66a9f20ffe644c8b39d92e8ad025
+  - source: ltwiki
+    name: 6N137
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OptoAcop.lib
+      sha256: afc41e67a056aadd6af70da491aedd69fb6e66a9f20ffe644c8b39d92e8ad025

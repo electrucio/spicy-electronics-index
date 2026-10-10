@@ -1,0 +1,37 @@
+part: TLV9001
+kind: opamp
+priority: 3
+models:
+- source: bordodynov
+  name: TLV9001
+  def: subckt
+  hash: 78b757f32c99d2bc881c150ee35e4bcbb355385c
+  type: SUBCKT
+  pins:
+  - IN+
+  - IN-
+  - VCC
+  - VEE
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/TLV9001.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 45060d533ea1bdeb55c82561ac5dec24149b440fd465e8a870c2bf0d7a178b53
+    lines:
+      TLV9001: [33, 420]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/TLV9001.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 36b31f68737e1a1df0edbe218acccd6d0812c65a00e84472d984e93a843cff2b
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: TLV9001
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TLV9001.sub
+      sha256: 45060d533ea1bdeb55c82561ac5dec24149b440fd465e8a870c2bf0d7a178b53

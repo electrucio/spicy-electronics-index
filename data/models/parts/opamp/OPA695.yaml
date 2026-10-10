@@ -1,0 +1,377 @@
+part: OPA695
+kind: opamp
+priority: 3
+models:
+- source: ti
+  name: OPA695
+  def: subckt
+  hash: d08e5d15476fe2177a4683dcb965ec7f76e961f1
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VCC
+  - VEE
+  - OUT
+  deps:
+  - OPA695_model_F1
+  - OPA695_model
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOJ015
+    member: OPA695_ADS_AIO/netlists/OPA695.lib
+    archive_sha256: 255c57e678a6ad9271e4d5b2c151d3444a72e69868d235de0c0fa7be5164bda8
+    sha256: 4d0f992920121d8595a0c23b10c812009c571152e7404e759e3004bba270f37d
+    lines:
+      OPA695: [35, 38]
+      OPA695_model: [40, 160]
+      OPA695_model_F1: [169, 172]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: ti
+  name: OPA695
+  def: subckt
+  hash: d923a421b42496d4a1ec9813070a5ab977953446
+  type: SUBCKT
+  pins:
+  - IN+
+  - IN-
+  - OUT
+  - VCC
+  - VEE
+  deps:
+  - CLAWP_OPA695
+  - VOS_DRIFT_OPA695
+  - AOL_1_OPA695
+  - CLAMP_AMP_LO_OPA695
+  - IQ_SRC_OPA695
+  - VOS_VS_VCM_OPA695
+  - VNSE_OPA695
+  - AOL_2_OPA695
+  - VCM_CLAMP_OPA695
+  - FEMTB_OPA695
+  - CLAW_SRC_OPA695
+  - 08_OP_AMP_COMPLETE_H3_OPA695
+  - CLAWN_OPA695
+  - FEMT_OPA695
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOC036
+    member: opa695_a.lib
+    archive_sha256: fd3bd41dd35e18d181145d6d8f3d0b6652613f7b9cf8c446adcb40a73ce826c2
+    sha256: a6f0098d03d96d460659e456ad1f5b007a56fb82a3fb40bb9eeb26c700c8345b
+    lines:
+      08_OP_AMP_COMPLETE_H3_OPA695: [133, 136]
+      AOL_1_OPA695: [138, 143]
+      AOL_2_OPA695: [145, 150]
+      CLAMP_AMP_LO_OPA695: [152, 156]
+      CLAWN_OPA695: [158, 165]
+      CLAWP_OPA695: [167, 174]
+      CLAW_SRC_OPA695: [176, 181]
+      FEMTB_OPA695: [206, 227]
+      FEMT_OPA695: [183, 204]
+      IQ_SRC_OPA695: [229, 232]
+      OPA695: [32, 131]
+      VCM_CLAMP_OPA695: [234, 237]
+      VNSE_OPA695: [239, 260]
+      VOS_DRIFT_OPA695: [262, 267]
+      VOS_VS_VCM_OPA695: [269, 279]
+    fetched: '2026-09-19'
+  note: pins from names
+- source: microcap12
+  name: OPA695
+  def: subckt
+  hash: 4ab675a2cfcebfda4c17194afe36d1359f577483
+  type: SUBCKT
+  deps:
+  - OPA695_F1
+  - OPA695_F2
+  - OPA695_F3
+  - OPA695_F4
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA695: [53084, 53184]
+      OPA695_F1: [53186, 53189]
+      OPA695_F2: [53191, 53194]
+      OPA695_F3: [53196, 53199]
+      OPA695_F4: [53201, 53204]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: OPA695_F1
+  def: subckt
+  hash: 7a72abf4c8e7bec3d865e59f992cee640708aa55
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA695_F1: [53186, 53189]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: OPA695_F2
+  def: subckt
+  hash: b439acd6eecd0754428ee1cbb97824a88ac54c23
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA695_F2: [53191, 53194]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: OPA695_F3
+  def: subckt
+  hash: f216112846a72ceeb0d6a0be0a62684c9af255e0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA695_F3: [53196, 53199]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: OPA695_F4
+  def: subckt
+  hash: 5efc0527cd86552dc9fe5bf83c17c3b9cc788b1e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA695_F4: [53201, 53204]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: OPA695
+  def: subckt
+  hash: b6c457826a9978795b17867f194dd6c40a76c035
+  type: SUBCKT
+  pins:
+  - +
+  - '-'
+  - V+
+  - V-
+  - Out
+  - DisA
+  deps:
+  - Da
+  - DN3
+  - DN1
+  - OPA695_F1
+  - PNP8
+  - NPN8
+  - OPA695_F4
+  - OPA695_F2
+  - OPA695_F3
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+    lines:
+      DN1: [143, 143]
+      DN3: [144, 144]
+      Da: [142, 142]
+      NPN8: [146, 156]
+      OPA695: [48, 118]
+      OPA695_F1: [120, 123]
+      OPA695_F2: [125, 128]
+      OPA695_F3: [130, 133]
+      OPA695_F4: [135, 138]
+      PNP8: [158, 168]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: OPA695
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+- source: ltwiki
+  name: OPA695_F1
+  def: subckt
+  hash: 2250781a944d5dddadb8847643755443a43ba4b0
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '*comment'
+  - out
+  - for
+  - Spice3
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+    lines:
+      OPA695_F1: [120, 123]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: OPA695_F1
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F1
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F1
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+- source: ltwiki
+  name: OPA695_F2
+  def: subckt
+  hash: 0c0194ad9254d5df2030ca7f2128fe2db76247ff
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '*comment'
+  - out
+  - for
+  - Spice3
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+    lines:
+      OPA695_F2: [125, 128]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: OPA695_F2
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F2
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F2
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+- source: ltwiki
+  name: OPA695_F3
+  def: subckt
+  hash: b72be8fda7a5b1786019e1d24262ad13bee6e610
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '*comment'
+  - out
+  - for
+  - Spice3
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+    lines:
+      OPA695_F3: [130, 133]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: OPA695_F3
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F3
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F3
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+- source: ltwiki
+  name: OPA695_F4
+  def: subckt
+  hash: 236c903302306891ce6044cb2d4dbcb3d517fa54
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+    lines:
+      OPA695_F4: [135, 138]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: OPA695_F4
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ti_Bb_Unitrode/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F4
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9
+  - source: ltwiki
+    name: OPA695_F4
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/OpaXxx/opa695/opa695.txt
+      sha256: fb2449f3f76f82eb549a6fdda435e32ff4208b7341f5ff482197c31799a07fd9

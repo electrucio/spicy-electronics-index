@@ -1,0 +1,44 @@
+% Gummel plot (bjt-gummel): the set-up a person would wire, semantically the deck's.
+%   BG 0 bg I=10^V(x)   the drive, a log sweep into the base node               -> current source I_source (set)
+%   VG cg bg 0          a 0 V source from collector to base: VCB = 0, reads IC  -> ammeter I_C (measured)
+%   QG cg bg 0 DUT      the transistor, emitter grounded                        -> npn
+%   V(bg) read: VBE                                                             -> voltmeter V_BE (measured)
+%   The dial V(x) is the deck's way of sweeping; the drawing names the current it sets.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Gummel plot}
+\def\gnd{1.0}
+% the transistor
+\node[npn] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$I_C$}
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{cg}
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, l_=$I_{source}$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{bg}
+% the voltmeter from the base wire to ground
+\coordinate (bvm) at ($(b)+(-3.2,0)$);
+\draw (b) -- (bvm);
+\voltmeter{bvm |- 0,\gnd}{bvm}{$V_{BE}$}
+\draw (bvm |- 0,\gnd) node[ground]{};
+% the loop from the ammeter back to the base node: VCB = 0
+\coordinate (bj) at ($(b)+(-0.9,0)$);
+\draw (ctop) -| (bj);
+% the definitions
+\definitions{0,-0.1}{%
+  $I_{source} = 10^{k}\,\mathrm{A}$, $k = -9,\,-8.95,\,\dots,\,0$ \quad (20 points per decade, 1 nA to 1 A)\\[2pt]
+  $V_{CB} = 0$: the ammeter drops nothing, so $V_{CE} = V_{BE}$\\[2pt]
+  read $I_C$ and $V_{BE}$;\quad $I_B = I_{source} - I_C$;\quad $h_{FE} = I_C / I_B$%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

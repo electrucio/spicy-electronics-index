@@ -1,0 +1,269 @@
+part: '6146'
+kind: tube
+priority: 3
+group: pentode_beam
+models:
+- source: microcap12
+  name: '6146'
+  def: subckt
+  hash: f3820c7546343bad939b4c3037a2a8344840152b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/tube.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5b2ef34cfabef1e3c493bee1f1c2141b5f0c275e98a8054aae2dc4f0565c15d4
+    lines:
+      '6146': [971, 1002]
+    fetched: '2026-09-21'
+  copies:
+  - source: groups-io
+    name: '6146'
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/tube.lib
+      sha256: 5b2ef34cfabef1e3c493bee1f1c2141b5f0c275e98a8054aae2dc4f0565c15d4
+- source: ayumi
+  name: 6146B
+  def: subckt
+  hash: b6a0e32caaa41df8e39a6a01dbaa60bef418e372
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6146B.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: b521730077c2bc58282695a003c841ed69ce46c50fb101d5c654894208af9cd0
+    lines:
+      6146B: [10, 30]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: ayumi
+  name: 6146BT
+  def: subckt
+  hash: c63513b84a3c7705d69b8487b4c556e42199a54b
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6146BT.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: a4504db766778005621d1f62ffc8246b8bb7629761ab3da1d15330e762b057d3
+    lines:
+      6146BT: [9, 22]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: duncanamps
+  name: '6146'
+  def: subckt
+  hash: 8fe4986c0541b7020e0d707ad51ec1dbcdceae1b
+  type: SUBCKT
+  pins:
+  - A
+  - S
+  - G
+  - K
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/valves/6146.inc
+    sha256: c18d6db93e9043ab5e1896e9eb9ec460de3741cd07da5804337e5cb1ce88bbc9
+    lines:
+      '6146': [30, 61]
+    fetched: '2026-09-14'
+    note: subckt 6146 (A S G K)
+  note: pins from names
+  copies:
+  - source: bordodynov
+    name: '6146'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: '6146'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: groups-io
+    name: '6146'
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Transmitter/6146.inc
+      sha256: 7b77b084228a6404468e15d7be87a559c310b71be4c13d76fb391783c41faea6
+  - source: kicad-spice-library
+    name: '6146'
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: '6146'
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/tube.lib
+      sha256: 262788d442a90ac3bd8a66b49be0759e832c1efcd1fd8c1142c326796abcfbe1
+  - source: ltwiki
+    name: '6146'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: '6146'
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: '6146'
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: '6146'
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+- source: duncanamps
+  name: '6146'
+  def: subckt
+  hash: c7fee3343c951690da9778cc552ae369e6a4d7e7
+  type: SUBCKT
+  pins:
+  - A
+  - S
+  - G
+  - K
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: https://www.duncanamps.com/spice/valves/6146s.inc
+    sha256: 39f621ea79fa10f73b9a7ac7533d883befd485ff8dfec50ec1fc177ad534010c
+    lines:
+      '6146': [30, 62]
+    fetched: '2026-09-14'
+    note: subckt 6146 (A S G K)
+  note: pins from names
+- source: suusi-tubes
+  name: 6146B
+  def: subckt
+  hash: 6ae7437811d8eb0d5fcdd8e097d1f26dee273784
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE3
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6146B: [1452, 1456]
+      PENTODE3: [3117, 3136]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: bordodynov
+  name: 6146B
+  def: subckt
+  hash: 262eaaad5fbbb1a314db4b770ab4e1f8b7cef5d4
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      6146B: [310, 330]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: 6146B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: 6146B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: bordodynov
+  name: 6146BT
+  def: subckt
+  hash: a85850c7b316be9afd997d649ea34158e7b87d54
+  type: SUBCKT
+  pins:
+  - A
+  - G
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      6146BT: [845, 858]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: 6146BT
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: ltwiki
+    name: 6146BT
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: groups-io
+  name: X6146
+  def: subckt
+  hash: 4532fe74b1e65931c882842579455f4a06fc1bf8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      X6146: [12, 44]
+    fetched: '2026-10-09'
+datasheet:
+  url: https://frank.pocnet.net/sheets/049/6/6146.pdf
+  maker: RCA
+  doc: RCA 6146 VHF Beam Power Amplifier, Tentative Data 1-8 (1952-05-01) + Data 1-9 (1-62); curve 'Typical
+    plate characteristics' 92CM-7707R1
+  date: 1962-01

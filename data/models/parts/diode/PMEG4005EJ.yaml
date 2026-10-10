@@ -1,0 +1,72 @@
+part: PMEG4005EJ
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: nexperia
+  name: PMEG4005EJ
+  def: subckt
+  hash: 54fceac0c1e4b5c66bc81c4728ca94484bfeafe6
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG4005EJ.txt
+    sha256: 3ce85b3b6ea72e9e0da05e821b3d9fd8153ab2a3c93a9054c28ccc874cb8e822
+    lines:
+      PMEG4005EJ: [33, 49]
+    fetched: '2026-09-19'
+    note: 'PMEG4005EJ: PMEG4005EJ, PMEG4005EJ'
+  note: pins from comment words
+  copies:
+  - source: ltwiki
+    name: PMEG4005EJ
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG4005EJ.PRM
+      sha256: c4604a3ebd25fef17fed538916f0b3dd1a91e08cc1c9110563f2d78e5d5d44fe
+  - source: microcap12
+    name: PMEG4005EJ
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+- source: ltwiki
+  name: PMEG4005ET
+  def: subckt
+  hash: 0a1b966b63ec677ae9447cc5928437748079ea3b
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG4005ET.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 1b5686d6a6eca476ee65c774e6d60fc6ac1515d97e522d98abb871f9b0cde848
+    lines:
+      PMEG4005ET: [2, 24]
+    fetched: '2026-09-14'
+  note: found under the alias PMEG4005E
+- source: ltwiki
+  name: PMEG4005EH
+  def: subckt
+  hash: 54fceac0c1e4b5c66bc81c4728ca94484bfeafe6
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG4005EH.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: e340681f560ea54be3fe4c9ea44e01c001a2d3c6a302b7d694d68699968fd70a
+    lines:
+      PMEG4005EH: [2, 24]
+    fetched: '2026-09-14'
+  note: found under the alias PMEG4005E; pins from default order (unverified)

@@ -1,0 +1,52 @@
+part: TL783
+kind: regulator
+priority: 3
+models:
+- source: ltwiki
+  name: TL783C
+  def: subckt
+  hash: 4080c8bebbf37cd1fe0e4378e6c923d99fefdee9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+    sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+    lines:
+      TL783C: [10233, 10277]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: TL783C
+  def: subckt
+  hash: a96cf34bdefde4716e75721679d3b97a15a54a29
+  type: SUBCKT
+  pins:
+  - IN
+  - ADJ
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/TL783.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4cc5f6e020847e2570dbb7093844968ce87457fad83e133cc25a1444f474a07d
+    lines:
+      TL783C: [6, 38]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/VolReg/TL783C.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: aedbc6f6525a14bb7a05d48b1cb76a10b7756002ce8853c777c5b1dfdf9a9e5d
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: TL783C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TL783.sub
+      sha256: 4cc5f6e020847e2570dbb7093844968ce87457fad83e133cc25a1444f474a07d
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/tl783.pdf
+  maker: Texas Instruments
+  doc: SLVS036N, rev. N (Sep 1981, revised January 2015)
+  date: 2015-01

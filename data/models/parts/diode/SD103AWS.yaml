@@ -1,0 +1,67 @@
+part: SD103AWS
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: vishay
+  name: SD103A
+  def: subckt
+  hash: 87324e5b1125729eed7e9387590a4962ca4a6f44
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/85835/sd103a.txt
+    sha256: 23e6f578b292455392d466858614353cb0cdfa25f93d095a931399b774771599
+    lines:
+      SD103A: [8, 34]
+    fetched: '2026-09-19'
+    note: 'Small-Signal Schottky Diodes, PSpice Models (*.txt): SD103A, SD, PND, AD'
+  note: found under the alias SD103A; pins from default order (unverified)
+- source: microcap12
+  name: SD103AWS
+  def: model
+  hash: 7551a4f19b8bed370815e73d5817b51f909cd80f
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      SD103AWS: [252, 253]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: SD103A
+  def: subckt
+  hash: 5a617b3115ab788910747b6c559c99ef1d6303fa
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+    sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+    lines:
+      SD103A: [1133, 1157]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias SD103A; pins from default order (unverified)
+- source: groups-io
+  name: SD103AWS
+  def: model
+  hash: 0fd2310116f39a295899a432e753005b29f5ba3c
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      SD103AWS: [344, 344]
+    fetched: '2026-10-10'

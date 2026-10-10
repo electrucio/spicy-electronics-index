@@ -1,0 +1,32 @@
+part: OPA2380
+kind: opamp
+priority: 3
+models:
+- source: ti
+  name: OPA2380
+  def: subckt
+  hash: e701dee16560a3066eda9c5c4f0e591c39dba2e7
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOM500
+    member: OPA2380_TINA_AIO/OPA2380.LIB
+    archive_sha256: 887886dd6722b344ea0e27d9865a014168543d6fd2bcea1b0c08b65936d18f36
+    sha256: d861213d7069dcbe4a9d43179ce9123ad2ad6c0d2fcc1c9e05b81eefd376c9e2
+    lines:
+      OPA2380: [83, 355]
+    fetched: '2026-09-19'
+  note: pins from default order (unverified)
+  copies:
+  - source: ti
+    name: OPA2380
+    get:
+      url: https://www.ti.com/lit/zip/SBOM499
+      member: OPA2380_PSPICE_AIO/OPA2380.LIB
+      sha256: 76a4505b138948c18c475cf08003986b4e828b3eb6b9729aa1ed02d32bd0b732

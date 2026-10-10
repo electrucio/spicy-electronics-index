@@ -1,0 +1,34 @@
+part: MPSA14
+kind: bjt
+priority: 2
+group: small_signal_npn
+models:
+- source: ltwiki
+  name: MPSA14
+  def: subckt
+  hash: 7b9b48586371937c48b0e80873b6dc166374ec89
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      MPSA14: [1617, 1647]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MPSA14
+  def: model
+  hash: b95815f9e1158df110c478079d793d46e3199c73
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_NPN/TOSHIBA.LIB
+    sha256: 48d4fd1df68108bb9d61af444d53f63e19fc48d39cebc6bc9ff3a11eb947f336
+    lines:
+      MPSA14: [2007, 2023]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mpsa13-d.pdf
+  maker: onsemi
+  doc: MPSA13/D Rev. 4 (April 2007)

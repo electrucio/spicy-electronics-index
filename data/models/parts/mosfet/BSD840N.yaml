@@ -1,0 +1,93 @@
+part: BSD840N
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: infineon
+  name: BSD840N
+  def: subckt
+  hash: 9112f8895a8738a96911e969ea2fbcf2fb21815c
+  type: SUBCKT
+  pins:
+  - DRAIN
+  - GATE
+  - SOURCE
+  - TJ
+  - TCASE
+  deps:
+  - S3_20_u_var
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-20v-n-channel-simulationmodels-en.zip
+    member: OptiMOS2_20V_LTSpice.lib
+    archive_sha256: a8306bb8838304c29e3a07a92e82cc293d449635a7441e362e39c01b69c8fcf4
+    sha256: edc9437d59ad9fd31b1c2c28fff4b1e36cc8e1b7a8330c026c8aca6f2e2e5993
+    lines:
+      BSD840N: [1145, 1182]
+      S3_20_u_var: [162, 242]
+    fetched: '2026-09-19'
+  note: pins from names
+  copies:
+  - source: infineon
+    name: BSD840N
+    get:
+      url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-20v-n-channel-simulationmodels-en.zip
+      member: OptiMOS2_20V.lib
+      sha256: 682f49b2add33b3deaf36d96f1d5dbea0c448f1bf1be5137866392e473912e72
+- source: infineon
+  name: BSD840N_L1
+  def: subckt
+  hash: acff3cde77fec4ea4347925a5b851d3e2bbfada5
+  type: SUBCKT
+  pins:
+  - drain1
+  - gate1
+  - source1
+  - drain2
+  - gate2
+  - source2
+  deps:
+  - S3_20_u_var
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-20v-n-channel-simulationmodels-en.zip
+    member: OptiMOS2_20V_LTSpice.lib
+    archive_sha256: a8306bb8838304c29e3a07a92e82cc293d449635a7441e362e39c01b69c8fcf4
+    sha256: edc9437d59ad9fd31b1c2c28fff4b1e36cc8e1b7a8330c026c8aca6f2e2e5993
+    lines:
+      BSD840N_L1: [1734, 1762]
+      S3_20_u_var: [162, 242]
+    fetched: '2026-09-19'
+  copies:
+  - source: infineon
+    name: BSD840N_L1
+    get:
+      url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-20v-n-channel-simulationmodels-en.zip
+      member: OptiMOS2_20V.lib
+      sha256: 682f49b2add33b3deaf36d96f1d5dbea0c448f1bf1be5137866392e473912e72
+- source: infineon
+  name: BSD840N_L0
+  def: subckt
+  hash: f0b452c489160de31d6c8623ae327df7c50551c0
+  type: SUBCKT
+  pins:
+  - DRAIN
+  - GATE
+  - SOURCE
+  verbatim: true
+  get:
+    url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-20v-n-channel-simulationmodels-en.zip
+    member: OptiMOS2_20V_LTSpice.lib
+    archive_sha256: a8306bb8838304c29e3a07a92e82cc293d449635a7441e362e39c01b69c8fcf4
+    sha256: edc9437d59ad9fd31b1c2c28fff4b1e36cc8e1b7a8330c026c8aca6f2e2e5993
+    lines:
+      BSD840N_L0: [2481, 2511]
+    fetched: '2026-09-19'
+  note: pins from names
+  copies:
+  - source: infineon
+    name: BSD840N_L0
+    get:
+      url: https://www.infineon.com/assets/row/public/documents/24/50/infineon-simulationmodel-optimos-powermosfet-pspice-20v-n-channel-simulationmodels-en.zip
+      member: OptiMOS2_20V.lib
+      sha256: 682f49b2add33b3deaf36d96f1d5dbea0c448f1bf1be5137866392e473912e72

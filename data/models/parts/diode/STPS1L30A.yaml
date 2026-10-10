@@ -1,0 +1,53 @@
+part: STPS1L30A
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: stmicro
+  name: STPS1L30A
+  def: model
+  hash: b710651e7e5be85c0d40001ed57e1b721d1fb2e2
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+    member: ST_POWER_SCHOTTKY_V10.LIB
+    archive_sha256: 36169e895d25ae28c8b2cf6461de0a0da374c1f60d105dbfb8faee880ea76ca6
+    sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
+    lines:
+      STPS1L30A: [502, 504]
+    fetched: '2026-09-21'
+  copies:
+  - source: stmicro
+    name: STPS1L30AFN
+    get:
+      url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+      member: ST_POWER_SCHOTTKY_V10.LIB
+      sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
+- source: ltwiki
+  name: STPS1L30A
+  def: model
+  hash: d99668c953598a966aa8f1f28557f1d5492e2b5c
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+    lines:
+      STPS1L30A: [6427, 6429]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: STPS1L30A
+  def: model
+  hash: 040f3549e1c05f37de11976b0065c7fee740d099
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
+    sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
+    lines:
+      STPS1L30A: [1454, 1456]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

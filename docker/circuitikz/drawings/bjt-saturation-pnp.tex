@@ -1,0 +1,55 @@
+% Saturation (bjt-saturation): the set-up a person would wire, semantically the deck's.
+%   BSB 0 bs I=…      the base drive, a log sweep                    -> current source I_B into the base (set)
+%   BSC 0 cs I=10*…   ten times that, driven into the collector      -> current source I_C into the collector (set)
+%   DCL cs cl, VCL    a clamp diode from the collector node to 30 V  -> diode + source 30 V
+%   QS cs bs 0        the transistor, emitter grounded               -> npn
+%   V(cs), V(bs) read: VCE(sat), VBE(sat)                            -> two voltmeters (measured)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Saturation, PNP}
+\def\gnd{1.0}
+% the transistor
+\node[pnp, yscale=-1] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, invert, l_=$I_B$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{bs}
+% the voltmeter from the base wire to ground
+\coordinate (bvm) at ($(b)+(-3.2,0)$);
+\draw (b) -- (bvm);
+\voltmeter{bvm |- 0,\gnd}{bvm}{$V_{BE}$}
+\draw (bvm |- 0,\gnd) node[ground]{};
+% the collector drive: ten times the base current, pushed into the collector from a grounded rail
+\coordinate (ctop) at ($(Q.C)+(0,2.0)$);
+\draw[set] (ctop) to[I, invert, l={$I_C = n\,I_B$}] (Q.C);
+\coordinate (rail) at ($(ctop)+(5.2,0)$);
+\draw (ctop) -- (rail) -- (rail |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(Q.C)+(-0.45,0.8)$}{cs}
+% the clamp: a diode from the collector node to 30 V, and the voltmeter on that node
+\coordinate (cj) at ($(Q.C)+(0,0.3)$);
+\coordinate (vm) at ($(cj)+(1.4,0)$);
+\coordinate (dj) at ($(cj)+(2.2,0)$);
+\coordinate (cl) at ($(dj)+(1.6,0)$);
+\draw (cj) -- (dj) to[D, invert, l=clamp] (cl);
+\draw[set] (cl) to[V, invert, l=$30$ V] (cl |- 0,\gnd) node[ground, black]{};
+\voltmeter{vm |- 0,\gnd}{vm}{$V_{CE}$}
+\draw (vm |- 0,\gnd) node[ground]{};
+\nodename{anchor=south west}{$(cl)+(0.05,0.05)$}{cl}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_B = 10^{k}\,\mathrm{A}$, $k = -9,\,-8.95,\,\dots,\,0$ \quad (20 points per decade, 1 nA to 1 A)\\[2pt]
+  $I_C = n\,I_B$ forced, $n = 10$, 20 and 50, one copy each;\quad the clamp takes what the transistor cannot pass\\[2pt]
+  a step where the clamp conducts, or $V_{CE} \geq V_{BE}$, is not saturated;\quad read $V_{CE}(sat)$, $V_{BE}(sat)$ at each $I_C$\\[2pt]
+  $r_{CE,sat} = dV_{CE}(sat) / dI_C$ between 100 mA and 1 A, at $n = 10$\\[2pt]
+  PNP: every source reversed; values written as magnitudes%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

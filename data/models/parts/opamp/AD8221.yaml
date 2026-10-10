@@ -1,0 +1,97 @@
+part: AD8221
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8221
+  def: subckt
+  hash: ab15a7e2713aa9290de40270e96dae36ecb84b7e
+  type: SUBCKT
+  pins:
+  - IN-
+  - RG-
+  - RG+
+  - IN+
+  - -Vs
+  - REF
+  - VOUT
+  - +Vs
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8221.cir?modelType=spice-models
+    sha256: db047afe43150001a2d8ac8da2d44fa2e2c9a2d505b80846347fdde0a69d8680
+    lines:
+      AD8221: [45, 214]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmps/AD8221.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 4961e8ebd8ca125162d402370d689bc6119861bbf2ced5799a1517fc4c152ee6
+  copies:
+  - source: bordodynov
+    name: AD8221
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ADI1.lib
+      sha256: 56007b832dfb995c0072377bc98125b86a2ee7e9dd4d109d29d4c295aa6a265d
+  - source: ltwiki
+    name: AD8221
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ADI1.lib
+      sha256: 56007b832dfb995c0072377bc98125b86a2ee7e9dd4d109d29d4c295aa6a265d
+- source: microcap12
+  name: AD8221
+  def: subckt
+  hash: 2ac81bba826802e72fb15714797d04f381ef4909
+  type: SUBCKT
+  deps:
+  - dx
+  - qn1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8221: [80452, 80571]
+      dx: [77076, 77076]
+      qn1: [77075, 77075]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8221
+  def: subckt
+  hash: 264849ee5f46bcc46272cd8b6ab0a737c4c404d1
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '99'
+  - '50'
+  - '46'
+  - '20'
+  - '7'
+  - '8'
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/AD8221_test/ad8221.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f258d25e6a9a1ccf4559f968ddbbdb62ac6aaf144a5d4d73a6a9830472842ff7
+    lines:
+      AD8221: [20, 139]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/AD8221_test/ad8221.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: a234350dbd40e4c56226be3790ee4893f67d1580bbc1547459be9267fc7b49cc
+  copies:
+  - source: ltwiki
+    name: AD8221
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/AD8221_test/ad8221.cir
+      sha256: f258d25e6a9a1ccf4559f968ddbbdb62ac6aaf144a5d4d73a6a9830472842ff7

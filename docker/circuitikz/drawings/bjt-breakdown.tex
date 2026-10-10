@@ -1,0 +1,41 @@
+% Breakdown and leakage (bjt-breakdown): the set-up a person would wire, semantically the deck's.
+%   RBA ba 0 1e6     the base tied to the emitter through 1 MΩ                     -> resistor R_BA
+%   VA sw ca 0       a 0 V source from the swept node to the collector: reads I   -> ammeter I (measured)
+%   VSW sw 0 0, .dc  the collector supply, swept                                   -> source V_CE (set)
+%   QA ca ba 0       the transistor, emitter grounded                              -> npn
+%   The collector-emitter deck is drawn; collector-base and emitter-base are two more.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Breakdown and leakage}
+\def\gnd{1.0}
+% the transistor
+\node[npn] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$I$}
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{ca}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(ctop)+(2.6,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, l=$V_{CE}$] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(ctop)+(1.3,0.05)$}{sw}
+% the base tied to the emitter through a resistor
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw (bsrc) to[R, l_=$R_{BA}$] (bsrc |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{ba}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{CE}$ swept 0 to 300 V in 1 V steps;\quad $R_{BA} = 1$ M\ohm\\[2pt]
+  read $I$;\quad $V_{(BR)CEO}$ = the $V_{CE}$ at which $I$ passes 1 mA, else absent;\quad $I_{CEO} = I$ at 10 V\\[2pt]
+  collector-base (emitter open) and emitter-base (collector open): two more decks%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,145 @@
+part: IRF130
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: irf130_IR
+  def: subckt
+  hash: fc20c77e9899b7c9f95bcf83b96acfc6b5d1c94d
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf130_IR: [1, 60]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: irf130_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+  - source: microcap12
+    name: irf130_IR
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: DATA/UC1845_BOOST.CIR
+      sha256: 8c36885e3412332013fcdb9ca11a62418b776836f1262267604164887c19f813
+- source: ltwiki
+  name: IRF130/HA
+  def: subckt
+  hash: 61ec409a17752b0a665466f3a303d3de83c6f404
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/harris.lib
+    sha256: 5e556916203cdb4cc4a4e500efe41f531e4c2b12aa26d4d3181891c94ce0c506
+    lines:
+      IRF130/HA: [3976, 4005]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: irf130
+  def: subckt
+  hash: d73245a3c2b24d746f098e1ba5d582c4f989a26f
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf130.spi
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b565c866edbfa632b65cef313353197852c5bdd3420557e8c983f09f91254c04
+    lines:
+      irf130: [1, 60]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf130.spi
+      sha256: b565c866edbfa632b65cef313353197852c5bdd3420557e8c983f09f91254c04
+  - source: bordodynov
+    name: irf130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf130.spi
+      sha256: b565c866edbfa632b65cef313353197852c5bdd3420557e8c983f09f91254c04
+  - source: kicad-spice-library
+    name: irf130
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf130.spi
+      sha256: 223b43d40b8aec9f97aa014902fedcb605ca1454b2925a4eb4449ab7c3d86f02
+  - source: ltwiki
+    name: irf130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf130.spi
+      sha256: b565c866edbfa632b65cef313353197852c5bdd3420557e8c983f09f91254c04
+  - source: ltwiki
+    name: irf130
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf130.spi
+      sha256: b565c866edbfa632b65cef313353197852c5bdd3420557e8c983f09f91254c04
+- source: ltwiki
+  name: IRF130
+  def: model
+  hash: 27ebbf9117282a424ef4d786daa31c1e3400bacf
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF130: [650, 653]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF130
+  def: subckt
+  hash: 2ce898bd297baf3e07184e532e8653bf7ccfdca7
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/HARRMOS.LIB
+    sha256: 1c3439279c551225bf2543f867d58e4d8ff8efde5645235dedb3818971f4a7e8
+    lines:
+      IRF130: [559, 582]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRF130M
+  def: subckt
+  hash: 81888ce8eb3532d9a6015b80470096fea3264e3f
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRF130M: [1152, 1197]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

@@ -1,0 +1,177 @@
+part: MCP601
+kind: opamp
+priority: 3
+models:
+- source: microchip
+  name: MCP601
+  def: subckt
+  hash: 25e2b214b52db62b36b67f91c1bbf5e25b30beb3
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/BoardDesignFiles/MCP601_MM_E.zip
+    member: MCP601.txt
+    archive_sha256: 0fc5aefd0f78a2028be88a9f7bacef171fc002ba62b33b6015f065602c31cbd2
+    sha256: 3af12cf9e965dd941cae6e24fb63f553dc28434aa0a7a6d74f11ac03e54f0d3b
+    lines:
+      MCP601: [1, 175]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/Filtros/FilterLab Example/microchip_conv_solution/microchip.lib
+      sha256: fcf9f73a4588bfa6d11727c2fd34ca2bda1b4e469de4a4c954781f95bc101801
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Microchip/microchip.lib
+      sha256: fcf9f73a4588bfa6d11727c2fd34ca2bda1b4e469de4a4c954781f95bc101801
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/microchip_conv_solution/microchip.lib
+      sha256: fcf9f73a4588bfa6d11727c2fd34ca2bda1b4e469de4a4c954781f95bc101801
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/Filtros/FilterLab Example/microchip_conv_solution/microchip.lib
+      sha256: fcf9f73a4588bfa6d11727c2fd34ca2bda1b4e469de4a4c954781f95bc101801
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Microchip/microchip.lib
+      sha256: fcf9f73a4588bfa6d11727c2fd34ca2bda1b4e469de4a4c954781f95bc101801
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/microchip_conv_solution/microchip.lib
+      sha256: fcf9f73a4588bfa6d11727c2fd34ca2bda1b4e469de4a4c954781f95bc101801
+- source: microcap12
+  name: MCP601
+  def: subckt
+  hash: 42befc5fbb552d943449275673995db7246aa2db
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 9e6a5b46e8405605b3f004924fa5b2852f67b9470fe1c5bec2c8e144400f2abe
+    lines:
+      MCP601: [167, 341]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: MCP601
+  def: subckt
+  hash: 0538c3bbb57ecb8695ec1a625f7b0b2d8f8f0175
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Microchip/Spice/MCP601_MM_D.txt
+    sha256: 221447d07aaf688ffbfeae246399e05f49c7067a39bd5fe3d0f092fca93a89b5
+    lines:
+      MCP601: [1, 129]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: MCP601_AB0
+  def: subckt
+  hash: 826b8f8afbc0291baeb36c731c7e2bd4fc26d4f0
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/MCP601_AB.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bfe216754ca0e95922573e21865b5289888a85aeb3014720ea0a79b1b3cdfefa
+    lines:
+      MCP601_AB0: [1, 30]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: MCP601_AB0
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/MCP601_AB.txt
+      sha256: bfe216754ca0e95922573e21865b5289888a85aeb3014720ea0a79b1b3cdfefa
+- source: bordodynov
+  name: mcp601_AB
+  def: subckt
+  hash: b4af54b01c3a1432bbdebc1b6bbd886dfd93ba70
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/MCP601_AB.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bfe216754ca0e95922573e21865b5289888a85aeb3014720ea0a79b1b3cdfefa
+    lines:
+      mcp601_AB: [32, 41]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/MCP601_AB.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: a4efa631037b1906a9ffafa5ed84bf38ede269e6b3fbff6df15d6b53bd92dd3a
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: mcp601_AB
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/MCP601_AB.txt
+      sha256: bfe216754ca0e95922573e21865b5289888a85aeb3014720ea0a79b1b3cdfefa
+- source: bordodynov
+  name: MCP601
+  def: subckt
+  hash: c4476a915bcb2028379ff2bd94e9bd95fbe81c5a
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/mcp601.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4b3cca0ed090787a6a0548569c0c2eb70c35b89813075050d0d17a8c9ff2ba14
+    lines:
+      MCP601: [1, 175]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: MCP601
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/mcp601.txt
+      sha256: 4b3cca0ed090787a6a0548569c0c2eb70c35b89813075050d0d17a8c9ff2ba14

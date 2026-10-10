@@ -1,0 +1,91 @@
+part: S1A
+kind: diode
+priority: 4
+group: rectifier
+models:
+- source: onsemi
+  name: S1A
+  def: model
+  hash: c6ddbc8511fec01d2623e84843285ed520b79e9b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/s1a.lib
+    sha256: 898f2476575dc356b9874dd1f9911f6b903e49a2834d9aa1db83fba884a88caf
+    lines:
+      S1A: [6, 10]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: S1A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: S1A-J
+  def: model
+  hash: df1398050cb428c79c004b4ad7e558097d00c8e3
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Rectifiers/Standard/s1aj.lib
+    sha256: 7f22e953f62ecac9cb73884f278df464910aa8e858ab3778ca4f0c8c9dfdd496
+    lines:
+      S1A-J: [2, 12]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: S1AB
+  def: model
+  hash: 86b78a1d8d0efe129f041105632a5a1d33761ffd
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      S1AB: [10550, 10551]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: S1A
+  def: model
+  hash: 2533bc57785b5ced33addb7ac7fa0a96958cc289
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/gensemi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a91e073b84759dcbe41d4ae51687287a413fc12865804565e488f747b57b3d6c
+    lines:
+      S1A: [1253, 1263]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: S1A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+- source: groups-io
+  name: S1A
+  def: model
+  hash: f96262674064e733c51bfc118686516d1b3acc8f
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      S1A: [1862, 1862]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: S1AB
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7

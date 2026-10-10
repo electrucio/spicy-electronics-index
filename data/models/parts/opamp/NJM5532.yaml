@@ -1,0 +1,100 @@
+part: NJM5532
+kind: opamp
+priority: 3
+models:
+- source: nisshinbo
+  name: NJM5532x
+  def: subckt
+  hash: df6fd5e9506781e03bd8244a83735dff5cd2e805
+  type: SUBCKT
+  deps:
+  - njm5532_s
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm5532_p.zip
+    member: SPM_NJM5532x_v0301/NJM5532x_v0301_Z.lib
+    archive_sha256: e9c21c87e1944db4faa14f2736abca6477f8dfc47bcd31d8648a6d86ddefa35e
+    sha256: 50b3b4ff434402031f8bb000cd305b1edacdda61f0c2436f06789bc821078731
+    lines:
+      NJM5532x: [10, 13]
+      njm5532_s: [22, 85]
+    fetched: '2026-09-20'
+- source: nisshinbo
+  name: njm5532_s
+  def: subckt
+  hash: 689c93fc8f12d769b44e5998ac52f9da5fbba6a7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm5532_p.zip
+    member: SPM_NJM5532x_v0301/NJM5532x_v0301_Z.lib
+    archive_sha256: e9c21c87e1944db4faa14f2736abca6477f8dfc47bcd31d8648a6d86ddefa35e
+    sha256: 50b3b4ff434402031f8bb000cd305b1edacdda61f0c2436f06789bc821078731
+    lines:
+      njm5532_s: [22, 85]
+    fetched: '2026-09-20'
+- source: nisshinbo
+  name: NJM5532Cx
+  def: subckt
+  hash: db46085b99d63185c21300bc2940a12aeef10a7b
+  type: SUBCKT
+  deps:
+  - njm5532C_s
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm5532c_p.zip
+    member: SPM_NJM5532Cx_v0301/NJM5532Cx_v0301_Z.lib
+    archive_sha256: a801f372bac79a0e8646b0eeb9797185fc9a1845f83344b4d1d5a986e1805807
+    sha256: 59e5fd62e2b0748b8bb4ddb32a38f6ef63837cb4b73ae531d15042927e51830c
+    lines:
+      NJM5532Cx: [10, 13]
+      njm5532C_s: [22, 85]
+    fetched: '2026-09-20'
+- source: nisshinbo
+  name: njm5532C_s
+  def: subckt
+  hash: bdfe46ce03c4aca1899f0254e95e8edd148cd0ae
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm5532c_p.zip
+    member: SPM_NJM5532Cx_v0301/NJM5532Cx_v0301_Z.lib
+    archive_sha256: a801f372bac79a0e8646b0eeb9797185fc9a1845f83344b4d1d5a986e1805807
+    sha256: 59e5fd62e2b0748b8bb4ddb32a38f6ef63837cb4b73ae531d15042927e51830c
+    lines:
+      njm5532C_s: [22, 85]
+    fetched: '2026-09-20'
+- source: bordodynov
+  name: NJM5532_SN
+  def: subckt
+  hash: e15e6677908b40652b8eb591dfe2bac08a7eeb6a
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/OpAmp_Nazar_Shtybel.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+    lines:
+      NJM5532_SN: [1374, 1495]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: NJM5532_SN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_Nazar_Shtybel.lib
+      sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d
+  - source: ltwiki
+    name: NJM5532_SN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_Nazar_Shtybel.lib
+      sha256: 4781654faf3d2ec54bf5acd80471ac9d119fb98d495698f460aa8839ee45e05d

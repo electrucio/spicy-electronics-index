@@ -1,0 +1,47 @@
+part: LM338
+kind: regulator
+priority: 3
+models:
+- source: bordodynov
+  name: LM338
+  def: subckt
+  hash: bc412fd225e7b89d7924463a76c057b2e8ff24e9
+  type: SUBCKT
+  pins:
+  - IN
+  - ADJ
+  - OUT
+  verbatim: false
+  changes:
+  - ascii
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/LM338.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: acd955748f1dea2f1a26704cc171915f2492547dcf2dbcde187bccd9103b9d1e
+    lines:
+      LM338: [10, 81]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/VolReg/LM338.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: e41f5dd6bd418728ce7340c149b371f51a99f76c2e046723f79e5a8d1903ce77
+  note: pins from names
+  copies:
+  - source: kicad-spice-library
+    name: LM338
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/LM338.txt
+      sha256: acd955748f1dea2f1a26704cc171915f2492547dcf2dbcde187bccd9103b9d1e
+  - source: ltwiki
+    name: LM338
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/LM338.txt
+      sha256: acd955748f1dea2f1a26704cc171915f2492547dcf2dbcde187bccd9103b9d1e
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/lm338.pdf
+  maker: Texas Instruments (National Semiconductor)
+  doc: SNVS771D, rev. D (May 1998, revised May 2025); table 5.5 LM338
+  date: 2025-05

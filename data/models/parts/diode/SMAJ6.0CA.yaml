@@ -1,0 +1,119 @@
+part: SMAJ6.0CA
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: vishay
+  name: smaj60ca
+  def: subckt
+  hash: 5847e829454aea53bc94502fcecf9e459e4cbcf6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87394/_p_smaj60ca.txt
+    sha256: fbbb15cfef073ff4501f1cdf5d7c9f06198e17764b11b389fa5414413a0c7e60
+    lines:
+      smaj60ca: [5, 33]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: SMAJ6.0CA
+  def: subckt
+  hash: 544cb16de2013b7e3a725aa5b4e73fdd9de181db
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Littelfuse_TVS.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: dcd9d3f9fbfb1e09ed0e64872d8efa2d598ed0fa98684cbaa9fa705eb9da652a
+    lines:
+      SMAJ6.0CA: [2520, 2526]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: SMAJ60CA
+  def: subckt
+  hash: 37eb0839804e7dd227f65e9bad7eddc654f80ecc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Littelfuse_TVS.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: dcd9d3f9fbfb1e09ed0e64872d8efa2d598ed0fa98684cbaa9fa705eb9da652a
+    lines:
+      SMAJ60CA: [2780, 2788]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: SMAJ6_0CA
+  def: subckt
+  hash: 92acf6efa759841df45b167f70381d03170e708b
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - TRANSILB
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/transil_ST.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+    lines:
+      SMAJ6_0CA: [2288, 2293]
+      TRANSILB: [91, 129]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: SMAJ6_0CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: bordodynov
+    name: SMAJ6_0CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: groups-io
+    name: SMAJ6_0CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: kicad-spice-library
+    name: SMAJ6_0CA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: kicad-spice-library
+    name: SMAJ6_0CA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/transil_ST.lib
+      sha256: 185c29e40bd794726709b41e5a0689c10546add785539576e806e0c0c63484eb
+  - source: ltwiki
+    name: SMAJ6_0CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ6_0CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ6_0CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ6_0CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

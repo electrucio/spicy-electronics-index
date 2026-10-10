@@ -1,0 +1,43 @@
+part: MPS3702
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: MPS3702
+  def: model
+  hash: 9cde918ca611f639911d165437e92934f0a991b3
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS3702.t
+    sha256: 3e0f96600bd58a4dcacf023d599d1d3736f9f6fd84e1a23451984f86857ad701
+    lines:
+      MPS3702: [1, 4]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: MPS3702
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MPS3702
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+- source: microcap12
+  name: MPS3702
+  def: model
+  hash: 307c241a6677f7cb193800164a0bc1f45ad7478f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPS3702: [2992, 2995]
+    fetched: '2026-09-21'

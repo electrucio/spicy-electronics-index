@@ -1,0 +1,61 @@
+part: AD8236
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8236
+  def: subckt
+  hash: 2077a68fe6563b7bbbaa021f2938eec67780796a
+  type: SUBCKT
+  deps:
+  - AMPA
+  - AMPB
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/ad8236.cir?modelType=spice-models
+    sha256: 9c7017046275d9dc07f7b8c4fca6250335b69282b8ceee7bc93fb3f7e828dce5
+    lines:
+      AD8236: [37, 59]
+      AMPA: [62, 278]
+      AMPB: [280, 496]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: AD8236
+  def: subckt
+  hash: 9b24ecf51a9db7b2c261c3d171e5e50372491c08
+  type: SUBCKT
+  pins:
+  - Vin-
+  - RG-
+  - RG+
+  - Vin+
+  - VNEG
+  - REF
+  - VOUT
+  - VPOS
+  deps:
+  - AMPB
+  - AMPA
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/ADI1.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 56007b832dfb995c0072377bc98125b86a2ee7e9dd4d109d29d4c295aa6a265d
+    lines:
+      AD8236: [3048, 3505]
+      AMPA: [2841, 2923]
+      AMPB: [2934, 3016]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmps/AD8236.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 5d965a9c34a4d9f169f983eccd7f58ee3d63105265f71a1c4e6da6b6f993244a
+  copies:
+  - source: ltwiki
+    name: AD8236
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ADI1.lib
+      sha256: 56007b832dfb995c0072377bc98125b86a2ee7e9dd4d109d29d4c295aa6a265d

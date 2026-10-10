@@ -1,0 +1,79 @@
+part: LM2576
+kind: smps
+priority: 3
+models:
+- source: ti
+  name: LM2576_S1
+  def: subckt
+  hash: 74bb3b52fa1b4826868cecc4c6010ad965b4e3fb
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNVMB27
+    member: LM2576_TRANS.LIB
+    archive_sha256: a846515892f9711766fff5172018cfa2a05d2b6e94070c2ad5416de6b48ed794
+    sha256: f67692a92a0cd77669d6a6387c0c8bd06293ea1e1667ded24a4335142c8e267e
+    lines:
+      LM2576_S1: [132, 136]
+    fetched: '2026-09-14'
+- source: bordodynov-qspice
+  name: LM2576HV
+  def: subckt
+  hash: d72113f4cce592c3ca4a37944b59949d227b4084
+  type: SUBCKT
+  deps:
+  - AND2_BASIC_GEN
+  - COMPHYS_BASIC_GEN
+  - COMP_BASIC_GEN
+  - LM2576HV_S1
+  - NAND2_BASIC_GEN
+  - NOR3_BASIC_GEN
+  - OR2_BASIC_GEN
+  - Oscillator_OSC_S1
+  - d_d1
+  - BUF_BASIC_GEN
+  - srlatchrhp_basic_gen
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/SWReg/LM2576HV.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 12408b1810bd7104c901d62f81b579c7a7cbc4c1b7505c95f90c0f36d72d8404
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: LM2576HV
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/SWReg/LM2576HV.qsym
+      sha256: 12408b1810bd7104c901d62f81b579c7a7cbc4c1b7505c95f90c0f36d72d8404
+- source: ltwiki
+  name: LM2576HV_S1
+  def: subckt
+  hash: 74bb3b52fa1b4826868cecc4c6010ad965b4e3fb
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/LM2576HV_TRANS.LIB
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 617093c4e60a059447f9d1b9ab98f4936312577f545b3cd8c1579eccf9aa7080
+    lines:
+      LM2576HV_S1: [132, 136]
+    fetched: '2026-09-14'
+datasheet:
+  url: https://www.ti.com/lit/ds/symlink/lm2576.pdf
+  maker: Texas Instruments (National Semiconductor)
+  doc: SNVS107G, rev. G (June 1999, revised March 2023); tables 6.9 (ADJ) and 6.10 (all versions)
+  date: 2023-03

@@ -1,0 +1,79 @@
+part: OC44
+kind: bjt-ge
+priority: 2
+models:
+- source: germaniumbjts
+  name: OC44
+  def: model
+  hash: b360a7930f501d382dc3587eff62d41f44f12c78
+  type: PNP
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/grwhitehead/germaniumbjts/7838a40f939eaee39b37afef1dac031ef45c276a/germaniumbjts.lib
+    sha256: d246c840f9610bfce04d744505ce414dcae0f52d9fdffe9f1ef2ff07c441e873
+    lines:
+      OC44: [5, 5]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit 7838a40
+- source: diystompboxes
+  name: OC44
+  def: model
+  hash: 4eceeb24cd4b6b72b53aeb25979ccc59c03bd132
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diystompboxes.com/smfforum/index.php?topic=78932.0
+    sha256: adfe930a1b749513833791af4df2b5ab8ec72624fc9ba936383bb5550ee23f3e
+    lines:
+      OC44: [119, 129]
+    fetched: '2026-09-20'
+  copies:
+  - source: bordodynov-qspice
+    name: OC44
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/AC125 Spice model.txt
+      sha256: 3fd7ab0bebbffdc4111d9ef6de01cb54e20e5730303d7de36ef6fde33cef16e9
+- source: bordodynov
+  name: OC44
+  def: model
+  hash: b4926d3c14f716245a8e65ad7744c77513d1f3c9
+  type: PNP
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      OC44: [1454, 1454]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: OC44
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pnpmy.txt
+      sha256: b62e8b7433504cb43360ea2f1d2b7665caf5e965d849252e9a45745cd13c6824
+  - source: kicad-spice-library
+    name: OC44
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: OC44
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: OC44
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+datasheet:
+  url: https://frank.pocnet.net/other/Mullard/Mullard_Volume4PartIII_transistors_1968-11.pdf
+  maker: mullard
+  doc: Mullard Volume 4 Part III (1968), OC44 pages D1-D3 (volume PDF pages 115-126)
+  date: 1960-12

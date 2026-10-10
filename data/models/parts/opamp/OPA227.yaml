@@ -1,0 +1,65 @@
+part: OPA227
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: OPA227
+  def: subckt
+  hash: 74f9bf933e07374fe61e8808ce317c536958d31d
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ti.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    lines:
+      OPA227: [25344, 25455]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/OPA227.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 4e8135fcdf52aa2529ee7583dc153983a79d8181e1a8cc56ad46abe38bf112dc
+  note: pins from DIP-8 pin numbers (single op-amp pin-out)
+  copies:
+  - source: bordodynov
+    name: OPA227
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPA227.MOD
+      sha256: 586926e3b50fae120f44b8e88fb8fe2b371f76eecd2f1baef02af0e60772087f
+  - source: bordodynov
+    name: OPA227
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
+  - source: kicad-spice-library
+    name: OPA227
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPA227.MOD
+      sha256: 586926e3b50fae120f44b8e88fb8fe2b371f76eecd2f1baef02af0e60772087f
+  - source: kicad-spice-library
+    name: OPA227
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
+  - source: ltwiki
+    name: OPA227
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPA227.MOD
+      sha256: 586926e3b50fae120f44b8e88fb8fe2b371f76eecd2f1baef02af0e60772087f
+  - source: ltwiki
+    name: OPA227
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832

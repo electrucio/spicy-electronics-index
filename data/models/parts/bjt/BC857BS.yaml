@@ -1,0 +1,141 @@
+part: BC857BS
+kind: bjt
+priority: 3
+group: matched_pairs
+models:
+- source: microcap12
+  name: BC857BS
+  def: model
+  hash: 44e0912125556e408df2bd8ca01e8f841fec6f85
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      BC857BS: [2591, 2629]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC857BS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: qspice
+  name: BC857BS
+  def: model
+  hash: e7477c13e1d3b3df69e4f7129eb9fe617b88bd4f
+  type: PNP
+  deps:
+  - PNP
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: PNP.txt
+    sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+    lines:
+      BC857BS: [25, 29]
+      PNP: [2, 2]
+  copies:
+  - source: bordodynov-qspice
+    name: BC857BS
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNP.txt
+      sha256: 8f0cc4316d5b11b4d3baa0b84bbacd1b34ed8b7bbbe7eb263ac09ff09e70652c
+- source: ltwiki
+  name: BC857BS
+  def: subckt
+  hash: 38e5264bb02c601b8f71dc9ad64f1a2a74a0a322
+  type: SUBCKT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Sborka.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 55d381efe69d73abbf8e0958d7127c7e8ddf40acbdeb0090e1e38866735cf8c7
+    lines:
+      BC857BS: [648, 652]
+      Rb: [44, 49]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/SBORKA/BJT/BC857BS.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: ea3fb92f6b4bff7642664dad95f249676c6f502e8923b24b4585c49f79a050dc
+  copies:
+  - source: ltwiki
+    name: BC857BS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+  - source: ltwiki
+    name: BC857BS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/SW_subckt/Sbor.lib
+      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+- source: ltwiki
+  name: BC857BS_DIO
+  def: model
+  hash: dbd97dcbf5ae377046aa79f2e584fdbaa0280322
+  type: PNP
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
+    lines:
+      BC857BS_DIO: [75, 75]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: BC857BS_DIO
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
+      sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
+- source: bordodynov
+  name: BC857BS
+  def: subckt
+  hash: 0bda45cc41c9c7c9f146e4c6584a9d1fd08968fe
+  type: SUBCKT
+  deps:
+  - Q1
+  - Q2
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BC857BS: [1314, 1318]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/BC857BS.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: c861fd16809d3948b26bd59c88183e6d3ecfb6b3df964c7af8324b6547a98ed4
+  copies:
+  - source: kicad-spice-library
+    name: BC857BS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: BC857BS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

@@ -1,0 +1,64 @@
+part: TIP101
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: tip101
+  def: subckt
+  hash: c90c75ee3e14fa7a28008adae4a53d5ff34e0773
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip101.lib
+    sha256: 7776b5d3fa6f39fdd8e1565713c5623fb5eceb25f86a062125c6343a6b898536
+    lines:
+      tip101: [12, 50]
+    fetched: '2026-09-19'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Darlington/npndarlingtonor2.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 1014ead0a1f6bc9f779168787fcb2c35d25b2f271ce6bfe7cb449df708195a4b
+  copies:
+  - source: bordodynov
+    name: TIP101
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: TIP101
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP101
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP101
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/NPNdarlington.lib
+      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: microcap12
+    name: tip101
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: kicad-spice-library
+  name: TIP101
+  def: subckt
+  hash: ad28123673b7240a6de6cd6be8128e8e8709474c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      TIP101: [826, 838]
+    fetched: '2026-09-14'

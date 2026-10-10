@@ -1,0 +1,51 @@
+% Capacitances (bjt-capacitance): the set-up a person would wire, semantically the deck's.
+%   VO0 ao0 0 DC <VR> AC 1, VBO0 bo0 0 0, REO0 eo0 0 1e9, QO0   Cob: collector driven, base grounded, emitter open -> left
+%   VI0 ai0 0 DC <VR> AC 1, VBI0 bi0 0 0, RCI0 ci0 0 1e9, QI0   Cib: emitter driven, base grounded, collector open -> right, emitter up
+%   .ac, C = Im(I) / (2 pi f) at 1 MHz                                                                        -> the AC ammeters (measured)
+%   One copy per reverse voltage in the deck; the drawing shows one of each.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Capacitances, PNP}
+\def\gnd{1.0}
+% Cob, left: the collector driven, the base grounded, the emitter open
+\node[pnp, yscale=-1] (Q) at (2.6,3) {};
+\node[anchor=west, font=\small] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+\draw (Q.B) -- ++(-0.8,0) coordinate (bo) -- (bo |- 0,\gnd) node[ground]{};
+\draw (Q.E) -- ++(0,-0.4) coordinate (eo);
+\node[anchor=west, font=\scriptsize] at ($(eo)+(0.08,0)$) {open};
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$i$}
+\coordinate (vtop) at ($(ctop)+(1.9,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, invert, l=$V_R + v$] (vtop |- 0,\gnd) node[ground, black]{};
+\node[font=\small] at ($(ctop)+(-0.8,0.35)$) {$C_{ob}$};
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{ao}
+\nodename{anchor=south}{$(bo)+(0.4,0.03)$}{bo}
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.1)$}{eo}
+% Cib, right, flipped so the emitter is up: the emitter driven, the base grounded, the collector open
+\node[pnp] (R) at (8.4,3) {};
+\node[anchor=west, font=\small] at ($(R.E)+(0.15,-0.55)$) {DUT};
+\draw (R.B) -- ++(-0.8,0) coordinate (bi) -- (bi |- 0,\gnd) node[ground]{};
+\draw (R.C) -- ++(0,-0.4) coordinate (ci);
+\node[anchor=west, font=\scriptsize] at ($(ci)+(0.08,0)$) {open};
+\coordinate (rtop) at ($(R.E)+(0,1.7)$);
+\ammeter{R.E}{rtop}{$i$}
+\coordinate (wtop) at ($(rtop)+(1.9,0)$);
+\draw (rtop) -- (wtop);
+\draw[set] (wtop) to[V, invert, l=$V_R + v$] (wtop |- 0,\gnd) node[ground, black]{};
+\node[font=\small] at ($(rtop)+(-0.8,0.35)$) {$C_{ib}$};
+\nodename{anchor=west}{$(R.E)+(0.1,0.25)$}{ai}
+\nodename{anchor=south}{$(bi)+(0.4,0.03)$}{bi}
+\nodename{anchor=west}{$(R.C)+(0.1,-0.1)$}{ci}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_R = 0.1$, 0.5, 1, 2, 5, 10, 20 and 30 V, one copy each;\quad $v = 1$ V of AC\\[2pt]
+  $C_{ob}$ also at 50, 100, 200 and 300 V, for high-voltage parts\\[2pt]
+  open = 1 G\ohm{} to ground;\quad $C = \mathrm{Im}(i) \,/\, (2\pi f)$ at $f = 1$ MHz\\[2pt]
+  $C_{ob}$: collector to base, emitter open;\quad $C_{ib}$: emitter to base, collector open\\[2pt]
+  PNP: every source reversed; values written as magnitudes%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

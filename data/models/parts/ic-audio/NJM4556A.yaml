@@ -1,0 +1,81 @@
+part: NJM4556A
+kind: ic-audio
+priority: 3
+models:
+- source: nisshinbo
+  name: NJM4556A
+  def: subckt
+  hash: 7203e59695e4378017783bc6158f145f324baea5
+  type: SUBCKT
+  pins:
+  - OUT1
+  - -IN1
+  - +IN1
+  - V-
+  - +IN2
+  - -IN2
+  - OUT2
+  - V+
+  deps:
+  - njm4556a_s
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm4556a_v2_p.zip
+    member: NJM4556A_v2_NewJRC/njm4556A_v2.lib
+    archive_sha256: 30e7b10bf4b8d40adfa8e4d55bf232e611131f540b91c3f8c89b36515cc19db1
+    sha256: 471044ec09b7bef68cb13fccfcaa4ab25f12ca1abefb5047ac95d5b262981864
+    lines:
+      NJM4556A: [13, 16]
+      njm4556a_s: [25, 88]
+    fetched: '2026-09-20'
+  copies:
+  - source: bordodynov
+    name: NJM4556A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/njm4556.lib
+      sha256: 471044ec09b7bef68cb13fccfcaa4ab25f12ca1abefb5047ac95d5b262981864
+  - source: ltwiki
+    name: NJM4556A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/njm4556.lib
+      sha256: 471044ec09b7bef68cb13fccfcaa4ab25f12ca1abefb5047ac95d5b262981864
+- source: nisshinbo
+  name: njm4556a_s
+  def: subckt
+  hash: cdb061a391da3ad565abf59d7badfe4ab1d0db64
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm4556a_v2_p.zip
+    member: NJM4556A_v2_NewJRC/njm4556A_v2.lib
+    archive_sha256: 30e7b10bf4b8d40adfa8e4d55bf232e611131f540b91c3f8c89b36515cc19db1
+    sha256: 471044ec09b7bef68cb13fccfcaa4ab25f12ca1abefb5047ac95d5b262981864
+    lines:
+      njm4556a_s: [25, 88]
+    fetched: '2026-09-20'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/njm4556.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 23034bf4b0513f0710d739e156c19d3e37cdd9627f444cf7d807716fc8948ce1
+  copies:
+  - source: bordodynov
+    name: njm4556a_s
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/njm4556.lib
+      sha256: 471044ec09b7bef68cb13fccfcaa4ab25f12ca1abefb5047ac95d5b262981864
+  - source: ltwiki
+    name: njm4556a_s
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/njm4556.lib
+      sha256: 471044ec09b7bef68cb13fccfcaa4ab25f12ca1abefb5047ac95d5b262981864

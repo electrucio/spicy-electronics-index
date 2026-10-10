@@ -1,0 +1,138 @@
+part: FJP5200
+kind: bjt
+priority: 3
+group: power_output
+models:
+- source: onsemi
+  name: FJP5200
+  def: subckt
+  hash: 7c36e7cd14adc36ad9e881be6f4f97f40e69c56c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/fjp5200.lib
+    sha256: fb1ad33ced347ca1197a3616921b218930481b02fc5cfbacec48405ed974bdc6
+    lines:
+      FJP5200: [5, 18]
+    fetched: '2026-09-14'
+- source: microcap12
+  name: FJP5200
+  def: subckt
+  hash: c6b00aa13fa97d1c76addb1cb0a6ecf1e8e02620
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FJP5200: [119387, 119400]
+      Q1: [78385, 78412]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'
+- source: bordodynov-qspice
+  name: FJP5200
+  def: model
+  hash: 41d39ccc37e9ff72b4f8f92fac52284045ec895e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/KT-Cordell models.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+    lines:
+      FJP5200: [108, 108]
+    fetched: '2026-09-29'
+- source: groupsio-ltspice
+  name: FJP5200
+  def: model
+  hash: ba2fb50a9cf79c1651442f0c5be745321d8ca09f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      FJP5200: [1038, 1038]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: FJP5200
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: FJP5200
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+- source: ltwiki
+  name: FJP5200
+  def: model
+  hash: 384010772470cd9c3c0f6e9c3b3af79c22cc7818
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/Standard.zip
+    member: Standard/standard.bjt
+    archive_sha256: 97e47470aefa994e7cdf520fc8a8a1d24f9598060b213146903870757a7a4687
+    sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+    lines:
+      FJP5200: [1003, 1003]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: FJP5200
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: FJP5200
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: bordodynov
+  name: FJP5200
+  def: model
+  hash: 88310a0752dbb2236f3636a9c74f407ecb00276c
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      FJP5200: [1068, 1068]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: FJP5200
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: ltwiki
+    name: FJP5200
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: FJP5200
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3

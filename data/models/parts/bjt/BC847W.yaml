@@ -1,0 +1,141 @@
+part: BC847W
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: nexperia
+  name: BC847B
+  def: subckt
+  hash: ae7950dea199189403b8c3965ef733555b975386
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847B.txt
+    sha256: 2bdfe65fcf1960f9576d08f361a7f7da9461695852ff907c82280a87dad39578
+    lines:
+      BC847B: [34, 92]
+    fetched: '2026-09-14'
+    note: 'model(s): BC847B (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
+  note: found under the alias BC847; pins from default order (unverified)
+- source: nexperia
+  name: BC847C
+  def: subckt
+  hash: 1b02fda230c7a2353eb2f9a983a1cb6f8ae30a28
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847C.txt
+    sha256: 58719a22a6bc597d020c5071847de94afc64466b5ce00e5b893a544294a4feaa
+    lines:
+      BC847C: [34, 93]
+    fetched: '2026-09-14'
+    note: 'model(s): BC847C (.subckt 1 2 3), Transistor (NPN .model), Diode (D .model)'
+  note: found under the alias BC847; pins from default order (unverified)
+- source: spice-model-cd
+  name: QBC847W
+  def: model
+  hash: 674f71efa7bcf7376f077e0f0518b1ae6c9131f6
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BC847W.lib
+    sha256: a1fbc909bc7cce58cff409c06822d9a823e34a87f4ce4480cbb5501f7c9fa343
+    lines:
+      QBC847W: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC847W
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QBC847W
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/BC847W.PRM
+      sha256: a1fbc909bc7cce58cff409c06822d9a823e34a87f4ce4480cbb5501f7c9fa343
+  - source: microcap12
+    name: BC847W
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+  - source: kicad-spice-library
+    name: QBC847W/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_bjt.lib
+      sha256: b04fec0197e8e7b6c8e1dfad671d6b27c716f7e541ea3a50bbcdafa5c7a20e20
+  - source: ltwiki
+    name: QBC847W/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_bjt.lib
+      sha256: b623268d86bce75fdf51394d854e686cdc6a6cd2ace376954bc24bf15056d79f
+- source: bordodynov
+  name: BC847A
+  def: model
+  hash: 160a6aebc3892590c41d790acf0bbd251b222627
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/Standard/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+    lines:
+      BC847A: [34, 34]
+    fetched: '2026-09-14'
+  note: 'found under the alias BC847; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: BC847B
+  def: model
+  hash: 0b7c4551094ab3fab79458dec0e97b49ee5b3829
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/Standard/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+    lines:
+      BC847B: [35, 35]
+    fetched: '2026-09-14'
+  note: 'found under the alias BC847; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: BC847C
+  def: model
+  hash: 1f0afd77f683fbfdffb7ddd92755cc1b51882921
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/Standard/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+    lines:
+      BC847C: [36, 36]
+    fetched: '2026-09-14'
+  note: 'found under the alias BC847; same code also in: kicad-spice-library, ltwiki'
+- source: bordodynov
+  name: BC847
+  def: model
+  hash: 7e292cdd885bcf9849de73111f58063e91dfb7e4
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      BC847: [1228, 1228]
+    fetched: '2026-09-14'
+  note: 'found under the alias BC847; same code also in: kicad-spice-library, ltwiki'

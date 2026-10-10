@@ -1,0 +1,103 @@
+part: IRLML6401
+kind: mosfet
+priority: 3
+group: power_vertical
+models:
+- source: microcap12
+  name: irlml6401
+  def: subckt
+  hash: ef22cd61ec4019e2a4b9e5a76b703997085201d8
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irlml6401: [51505, 51560]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irlml6401
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irlml6401.spi
+      sha256: 31da47c077fb5d60553f7be5d008afeae3f9667c59c5da478e8d42359b4757ab
+  - source: bordodynov
+    name: irlml6401
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irlml6401.spi
+      sha256: 31da47c077fb5d60553f7be5d008afeae3f9667c59c5da478e8d42359b4757ab
+  - source: kicad-spice-library
+    name: irlml6401
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irlml6401.spi
+      sha256: 925a80e2834094645d3bc2c34daf322b9656c2b9b5431ab37afd4b5ac3d2a747
+  - source: ltwiki
+    name: irlml6401
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irlml6401.spi
+      sha256: 31da47c077fb5d60553f7be5d008afeae3f9667c59c5da478e8d42359b4757ab
+  - source: ltwiki
+    name: irlml6401
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irlml6401.spi
+      sha256: 31da47c077fb5d60553f7be5d008afeae3f9667c59c5da478e8d42359b4757ab
+  - source: ltwiki
+    name: irlml6401
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irlml6401.spi
+      sha256: 31da47c077fb5d60553f7be5d008afeae3f9667c59c5da478e8d42359b4757ab
+- source: bordodynov
+  name: IRLML6401_AB
+  def: model
+  hash: 1757ff85067dc3fa2a18118f6da18c33c3487ca5
+  type: VDMOS
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.mos
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+    lines:
+      IRLML6401_AB: [1515, 1515]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: IRLML6401_AB
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/pmosmy.txt
+      sha256: d946ea6f14e33b1d0726cee97544057fdc87871409431261b26a52e310be2f2e
+  - source: kicad-spice-library
+    name: IRLML6401_AB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.mos
+      sha256: 076067315c9d28cde3f0f26dac7a9e8beb537e7412992cd5ecc53bfb7ef6a4cb
+  - source: ltwiki
+    name: IRLML6401_AB
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRLML6401_AB
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+  - source: ltwiki
+    name: IRLML6401_AB
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3

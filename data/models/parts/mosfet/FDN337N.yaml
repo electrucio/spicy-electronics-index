@@ -1,0 +1,69 @@
+part: FDN337N
+kind: mosfet
+priority: 4
+group: small_signal
+models:
+- source: onsemi
+  name: FDN337N
+  def: subckt
+  hash: cc9056a763a5f1556600d73c680e0106f22deb20
+  type: SUBCKT
+  pins:
+  - '20'
+  - '10'
+  - '30'
+  - '50'
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/fdn337n.lib
+    sha256: 5a08b0d4c14a8a32d598850e9a2d90ed4dab5e3950406835dfbf9bb34d4f9889
+    lines:
+      FDN337N: [3, 48]
+    fetched: '2026-09-19'
+    note: 'FDN337N: FDN337N, DMOS, DDS, DBODY, INTER, DGD …'
+- source: spice-model-cd
+  name: FDN337N
+  def: subckt
+  hash: 91db1f42b0045a033f77f97b15c8f82f4f979981
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/FD/FDN337N.lib
+    sha256: 04cd2ba2919e6edabe91aab7556eee01865b71127b6ed8b286c1b2695276668d
+    lines:
+      FDN337N: [3, 27]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: FDN337N_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: FDN337N_FC
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+- source: microcap12
+  name: FDN337N
+  def: subckt
+  hash: cdd7264764be371365eef7a5cfbd81687f6d59d7
+  type: SUBCKT
+  deps:
+  - nmos
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      FDN337N: [100990, 101035]
+      nmos: [161508, 161508]
+    fetched: '2026-09-21'

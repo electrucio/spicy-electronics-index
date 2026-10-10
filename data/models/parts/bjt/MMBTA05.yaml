@@ -1,0 +1,64 @@
+part: MMBTA05
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qmmbta05lt1g
+  def: model
+  hash: 08c58084fcc5dea034704eec3c91bd3652267880
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta05lt1g.lib
+    sha256: 6fbda825ecf02de597ddaa535687854505451a8014b68f464b029595670ed80b
+    lines:
+      Qmmbta05lt1g: [14, 24]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: MMBTA05
+  def: model
+  hash: d9ab01012c904848f926852f3b79be405733a468
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBTA05: [1686, 1690]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MMBTA05
+  def: model
+  hash: dbffeff2e32fb5628a6e99ed4ab9226252ecab1a
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBTA05: [772, 776]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBTA05
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: groupsio-ltspice
+  name: MMBTA05
+  def: model
+  hash: 6eff6a77156fe4ad041cbef997c44e131409b26e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBTA05: [3463, 3463]
+    fetched: '2026-09-21'

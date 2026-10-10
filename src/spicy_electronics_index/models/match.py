@@ -1,0 +1,366 @@
+"""Find, for every wanted part, each definition in the model catalogue that could be its model.
+
+    sei models match
+
+Reads every definition the indexer found (`config.spice_definitions()`) and writes, per part, the
+candidates the curation then chooses from (`config.spice_matches()`). Nothing here judges a model: it
+only decides which definitions are *for* a part, and says how each one was matched so the curation and
+the site can weigh a near miss differently from an exact name.
+
+Matching is by normalised name (upper case, alphanumerics only), after dropping the SPICE prefix
+vendors glue on (Q2N3904, D1N4148, J2N5457, X..., M...; before a letter only the definition's own
+device letter, so Motorola's Qmj15001 is MJ15001 and MPSA18 stays MPSA18):
+
+  exact   same name                               2N3904 ~ Q2N3904
+  suffix  name = part + short tag (≤4, not digit)  2N3904C (Cordell), 12AX7_JJ, MMBT3904LT1
+          and no digit in it unless a reel code or set off by _ or . (LM78L05_F1)
+  grade   part = name + one grade letter           BC549 for BC549C, 2N2222 for 2N2222A
+  alias   any of the above against an alias        ECC83 for 12AX7
+
+Records whose device type contradicts the kind (a D model for a BJT) are dropped, and so is a model
+that lives inside another definition's subcircuit.
+
+The non-native models (`config.model_non_native()`: loudspeakers, transformers, pots, relays…) are not
+looked for by part number. Each row names its models by name and code hash, and its candidates are the
+definitions of exactly those names; `sei models found` keeps the ones whose code is the row's, which
+brings in identical copies elsewhere and leaves out everybody else's `Core` or `SPEAKER`.
+
+Ported from the old pipeline's `tools/coverage.py`; `tests/models/test_match.py` holds its behaviour.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import re
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+import yaml
+
+from spicy_electronics_index.core.config import (
+    model_non_native,
+    model_wanted,
+    require,
+    spice_curated,
+    spice_definitions,
+    spice_matches,
+    wanted_parts,
+)
+
+TYPE_OK = {
+    "bjt": {"NPN", "PNP", "SUBCKT"},
+    "bjt-ge": {"NPN", "PNP", "SUBCKT"},
+    "jfet": {"NJF", "PJF", "SUBCKT"},
+    "sit": {"NJF", "PJF", "SUBCKT"},        # a static induction transistor is simulated with a JFET card or a subcircuit
+    "mosfet": {"VDMOS", "NMOS", "PMOS", "SUBCKT"},
+    "diode": {"D", "SUBCKT"}, "diode-ge": {"D", "SUBCKT"},
+    "zener": {"D", "SUBCKT"}, "led": {"D", "SUBCKT"},
+}
+for _ok in TYPE_OK.values():
+    _ok.add("ENCRYPTED")        # a wholly encrypted vendor file, indexed by its file name: type unknown
+PREFIXES = ("Q", "D", "J", "M", "X", "U", "T", "V")
+# What each definition keeps from the catalogue: enough to find it again and to judge it.
+KEEP = ("source", "file", "name", "kind", "type", "pins", "encrypted", "mfg", "parent")
+
+
+def norm(s: str) -> str:
+    return re.sub(r"[^A-Z0-9]", "", s.upper())
+
+
+# The SPICE element letter a vendor puts before a part's name, by the device the definition is. Before
+# a digit any of PREFIXES is a prefix, as `2N3904` cannot start a name otherwise; before a letter only
+# the letter of the definition's own device counts, because MPSA18 (a transistor) and DAN217 (a diode
+# array) are part numbers that begin with M or D. A part that does start with its own device's letter,
+# like the MOSFET MTP3055, gains a second key and keeps its own, which costs nothing unless a wanted
+# part is called TP3055. Motorola's `Qmj15001` is the MJ15001.
+ELEMENT_OF_TYPE = {"NPN": "Q", "PNP": "Q", "D": "D", "NJF": "J", "PJF": "J",
+                   "NMOS": "M", "PMOS": "M", "VDMOS": "M", "SUBCKT": "X"}
+
+
+def keys_of(name: str, type: str | None = None) -> set[str]:
+    """The names a definition answers to: itself, and itself without the SPICE prefix a vendor glued
+    on — before a digit whatever the letter, before a letter only its own device's letter."""
+    n = norm(name)
+    ks = {n}
+    if len(n) > 2 and n[0] in PREFIXES and n[1].isdigit():
+        ks.add(n[1:])
+    elif len(n) > 3 and n[1].isalpha() and n[0] == ELEMENT_OF_TYPE.get((type or "").upper()):
+        ks.add(n[1:])
+    return ks
+
+
+# A tag after a part's name with a digit in it names another part: a zener's voltage (BZX84C3V3), a
+# rating (RB160MM-60, BZX84J-B10). Two kinds are the same part: a tape-and-reel ordering code — onsemi's
+# LT1, T1G, WT1G, HT1G, the same die on a different reel — and a tag set off by `_` or `.`, which names
+# the model rather than the part (TI's LM78L05_F1 and TLV70433_S2, Bordodynov's 6BW6.BRi3).
+REEL = re.compile(r"[A-Z]{0,2}T[13]G?")
+# A model tag after the separator: a few letters and at most two digits (F1, S15, L0, TI, BRI3). A
+# voltage written after one, `bzx84_c5v6`, is still the part's voltage and not a tag.
+MODEL_TAG = re.compile(r"[_.]([A-Z]{1,3}\d{0,2})(?:[_.\-]|$)")
+
+
+def tag_after(name: str, part_n: str) -> str:
+    """What follows the part's own characters in a definition's raw name, separators kept."""
+    s = name.upper()
+    for start in (0, 1):                   # the name itself, or after a SPICE element letter
+        i, j = start, 0
+        while i < len(s) and j < len(part_n):
+            if s[i] == part_n[j]:
+                j += 1
+            elif s[i].isalnum():
+                break
+            i += 1
+        if j == len(part_n):
+            return s[i:]
+    return ""
+
+
+def same_part(name: str, part_n: str, tail: str) -> bool:
+    """Whether a suffix match with this tag is still the part, by the rule above."""
+    if not any(ch.isdigit() for ch in tail) or REEL.fullmatch(tail):
+        return True
+    return bool(MODEL_TAG.match(tag_after(name, part_n)))
+
+
+def match(part_n: str, key: str) -> str | None:
+    if key == part_n:
+        return "exact"
+    if len(part_n) < 3:
+        return None
+    if key.startswith(part_n):
+        tail = key[len(part_n):]
+        if 0 < len(tail) <= 4 and not tail[0].isdigit():
+            return "suffix"
+    if part_n.startswith(key) and len(part_n) - len(key) == 1 \
+            and part_n[-1] in "ABCGLRS" and len(key) >= 4:
+        return "grade"
+    return None
+
+
+# --- what is wanted ----------------------------------------------------------------------------------
+def flatten(wanted: dict):
+    """Yield (kind, group, entry) for every part in a wanted mapping. A `complement:` named only as a
+    field (MJL3281A's MJL1302A) becomes a part of its own, with the priority of the part that names it."""
+    listed = set()
+    for body in wanted.values():
+        items = body if isinstance(body, list) else [e for v in body.values() for e in v]
+        listed |= {str(e["part"]).upper() for e in items}
+    for kind, body in wanted.items():
+        groups = [("", body)] if isinstance(body, list) else list(body.items())
+        for group, items in groups:
+            for e in items:
+                yield kind, group, e
+                comp = e.get("complement")
+                if comp and str(comp).upper() not in listed:
+                    listed.add(str(comp).upper())
+                    yield kind, group, {"part": comp, "priority": e.get("priority"),
+                                        "note": f"complement of {e['part']}"}
+
+
+def merge(wanted: dict, extra: dict) -> dict:
+    """`extra` added under `wanted`, skipping parts `wanted` already lists: the first list to name a
+    part keeps its entry, so a hand-written line is never replaced by a generated one."""
+    listed = {str(e["part"]).upper() for body in wanted.values()
+              for e in (body if isinstance(body, list) else [x for v in body.values() for x in v])}
+    for kind, body in extra.items():
+        groups = {"": body} if isinstance(body, list) else body
+        for group, items in groups.items():
+            items = [e for e in items if str(e["part"]).upper() not in listed]
+            listed |= {str(e["part"]).upper() for e in items}
+            base = wanted.setdefault(kind, [] if isinstance(body, list) else {})
+            if isinstance(base, list):
+                base.extend(items)
+            else:
+                base.setdefault(group or "listed", []).extend(items)
+    return wanted
+
+
+def from_csv(path: Path) -> dict:
+    """`data/parts/wanted.csv` as a wanted mapping: one list per kind, aliases separated by spaces."""
+    out: dict = {}
+    with path.open(encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f):
+            if not r.get("part") or not r.get("kind"):
+                continue
+            e = {"part": r["part"], "priority": int(r["priority"]) if r.get("priority") else None}
+            aliases = (r.get("aliases") or "").split()
+            if aliases:
+                e["aliases"] = aliases
+            out.setdefault(r["kind"], []).append(e)
+    return out
+
+
+def from_curated(root: Path) -> dict:
+    """Every part the curation has already reached, so it is looked for again when the catalogue
+    grows. Its kind and group come from its own record."""
+    out: dict = {}
+    for p in sorted(root.glob("*/*/part.json")):
+        d = json.loads(p.read_text(encoding="utf-8"))
+        if d.get("part") and d.get("kind"):
+            out.setdefault(d["kind"], {}).setdefault(d.get("group") or "curated", []).append(
+                {"part": d["part"], "priority": d.get("priority")})
+    return out
+
+
+def load_wanted() -> dict:
+    """The hand-written list first, then the generated one, then whatever was curated before."""
+    wanted = yaml.safe_load(model_wanted().read_text(encoding="utf-8")) or {}
+    if wanted_parts().exists():
+        merge(wanted, from_csv(wanted_parts()))
+    if spice_curated().exists():
+        merge(wanted, from_curated(spice_curated()))
+    return wanted
+
+
+# --- the matching ------------------------------------------------------------------------------------
+def names_wanted(wanted: dict) -> set[str]:
+    """The first three characters of every name a part may be found under: a definition whose keys
+    share none of them cannot match anything, so it need not be held in memory."""
+    out = set()
+    for _, _, e in flatten(wanted):
+        for nm in [e["part"], *(e.get("aliases") or []), *(e.get("stand_in") or [])]:
+            n = norm(str(nm))
+            if n:
+                out.add(n[:3])
+    return out
+
+
+def load_definitions(path: Path, heads: set[str] | None = None) -> list[dict]:
+    recs = []
+    with path.open(encoding="utf-8") as f:
+        for line in f:
+            r = json.loads(line)
+            if heads is not None and not any(k[:3] in heads for k in keys_of(r["name"], r.get("type"))):
+                continue
+            recs.append({k: r.get(k) for k in KEEP})
+    return recs
+
+
+def find(wanted: dict, recs: list[dict]) -> dict:
+    """{part: {kind, group, priority, candidates: [...]}} for every wanted part."""
+    by_key = defaultdict(list)
+    prefixes = defaultdict(list)          # first 3 chars -> keys, for suffix/grade
+    for i, r in enumerate(recs):
+        for k in keys_of(r["name"], r["type"]):
+            by_key[k].append(i)
+    for k in by_key:
+        prefixes[k[:3]].append(k)
+
+    found = {}
+    for kind, group, e in flatten(wanted):
+        part = str(e["part"])
+        names = [part] + [str(a) for a in e.get("aliases", []) or []]
+        # stand_in: models of *other* parts declared equivalent in the wanted list (with the reason in
+        # the note); used only when the part has no model under its own names, exact names only, and
+        # labelled so the curation and the site show they are stand-ins
+        stand = [str(a) for a in e.get("stand_in", []) or []]
+        cands, seen = [], set()
+        for nm in names + [None] + stand:
+            if nm is None:
+                if cands:
+                    break
+                continue
+            pn = norm(nm)
+            if not pn:
+                continue
+            for k in prefixes.get(pn[:3], []):
+                how = match(pn, k)
+                if not how or (nm in stand and how != "exact"):
+                    continue
+                for i in by_key[k]:
+                    r = recs[i]
+                    if i in seen:
+                        continue
+                    if how == "suffix" and not same_part(r["name"], pn, k[len(pn):]):
+                        continue
+                    ok = TYPE_OK.get(kind)
+                    if ok and r["type"] not in ok:
+                        continue
+                    if kind not in TYPE_OK and r["kind"] != "subckt":
+                        continue            # ICs, valves, blocks: only subckts
+                    if r.get("parent"):          # model internal to a subckt
+                        continue
+                    seen.add(i)
+                    cands.append({"source": r["source"], "file": r["file"],
+                                  "name": r["name"], "kind": r["kind"],
+                                  "type": r["type"], "pins": r["pins"],
+                                  "match": how if nm == part else
+                                  f"{'stand-in' if nm in stand else 'alias'}:{nm}/{how}",
+                                  "encrypted": r["encrypted"], "mfg": r.get("mfg")})
+        found[part] = {"kind": kind, "group": group,
+                       "priority": e.get("priority"), "candidates": cands}
+    return found
+
+
+# --- the non-native models ---------------------------------------------------------------------------
+def load_non_native() -> dict:
+    """`{kind: [{part, priority, models: [{name, hash}]}]}`, or nothing while the list does not exist."""
+    p = model_non_native()
+    return (yaml.safe_load(p.read_text(encoding="utf-8")) or {}) if p.exists() else {}
+
+
+def names_non_native(non_native: dict) -> set[str]:
+    """The first three characters of every model name the non-native rows give, as `names_wanted`."""
+    return {norm(str(m["name"]))[:3] for items in non_native.values() for e in items for m in e["models"]}
+
+
+def find_named(non_native: dict, recs: list[dict]) -> dict:
+    """{part: entry} for each non-native row: every definition of one of its models' names, exactly, and
+    the code hashes the row is made of (`pins`), which `found` keeps and nothing else."""
+    by_name = defaultdict(list)
+    for i, r in enumerate(recs):
+        by_name[norm(r["name"])].append(i)
+    out = {}
+    for kind, items in non_native.items():
+        for e in items:
+            cands, seen = [], set()
+            for m in e["models"]:
+                for i in by_name.get(norm(str(m["name"])), []):
+                    r = recs[i]
+                    if i in seen or r.get("parent"):
+                        continue
+                    seen.add(i)
+                    cands.append({"source": r["source"], "file": r["file"], "name": r["name"],
+                                  "kind": r["kind"], "type": r["type"], "pins": r["pins"], "match": "named",
+                                  "encrypted": r["encrypted"], "mfg": r.get("mfg")})
+            out[str(e["part"])] = {"kind": kind, "group": "non-native", "priority": e.get("priority"),
+                                   "candidates": cands, "pins": sorted({str(m["hash"]) for m in e["models"]})}
+    return out
+
+
+def join(found: dict, named: dict) -> dict:
+    """The non-native rows added to the wanted parts. A row the wanted list also has keeps everything its
+    name matched and gains the named definitions, without the hash filter: it is a part like any other."""
+    upper = {p.upper(): p for p in found}
+    for part, e in named.items():
+        at = upper.get(part.upper())
+        if at is None:
+            found[part] = e
+            continue
+        have = {(c["file"], c["name"]) for c in found[at]["candidates"]}
+        found[at]["candidates"] += [c for c in e["candidates"] if (c["file"], c["name"]) not in have]
+    return found
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
+    ap.parse_args(argv)
+    wanted = load_wanted()
+    non_native = load_non_native()
+    recs = load_definitions(require(spice_definitions(), "matching parts to models"),
+                            names_wanted(wanted) | names_non_native(non_native))
+    found = join(find(wanted, recs), find_named(non_native, recs))
+    out = spice_matches()
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(found, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    with_any = sum(1 for v in found.values() if v["candidates"])
+    by_source = Counter(c["source"] for v in found.values() for c in v["candidates"])
+    print(f"{with_any:,} of {len(found):,} wanted parts have at least one candidate "
+          f"({sum(by_source.values()):,} definitions from {len(by_source)} sources) -> {out.name}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

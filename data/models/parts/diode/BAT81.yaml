@@ -1,0 +1,44 @@
+part: BAT81
+kind: diode
+priority: 3
+group: audio_docs
+models:
+- source: spice-model-cd
+  name: BAT81
+  def: model
+  hash: 00cb0163c339ea5d978116a7ed227c5ab087d311
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/DIODE.LB
+    sha256: b648c925003b172006c0871521a37a1448d9cd5343fd97cd1426d0ec65a8c324
+    lines:
+      BAT81: [362, 364]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAT81
+  def: model
+  hash: cb56bd979b0d029d3538c34084b1dc8a287ae76d
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/ediode_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e50d524139f4241c5345aa22e759f4b47df02a98f9343c9c753c201ba13d8c9
+    lines:
+      BAT81: [169, 170]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: BAT81
+  def: model
+  hash: 4656d53e300b065d849149125615883a05eba8c5
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIODE.LIB
+    sha256: c68f4b4a28eb0e866fb8e516b6a6a37a779ac80fed8a2ef16a3afcfb80c522e5
+    lines:
+      BAT81: [812, 813]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895

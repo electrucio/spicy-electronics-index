@@ -1,0 +1,110 @@
+part: ES2D
+kind: diode
+priority: 4
+group: rectifier
+models:
+- source: onsemi
+  name: ES2D
+  def: model
+  hash: 73c52a6636f44899cbccd48b5e9c729da7db08ed
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/es2d.mod
+    sha256: 3d54ffd067cadff0b9d6acf159a0c42034b2636a458b58a1143e983b9d0f9347
+    lines:
+      ES2D: [3, 16]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: ES2D
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: vishay
+  name: es2d
+  def: model
+  hash: accb695cd3bfac02a4a8991bc8bfd3799678ac0d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/89834/es2d.txt
+    sha256: 210be022c7dd2c2b22c932dc748485558a79aec381731a0d2a038e04c796263c
+    lines:
+      es2d: [7, 10]
+    fetched: '2026-09-19'
+    note: 'Ultrafast Recovery, PSpice Models (*.txt): es2d'
+- source: microcap12
+  name: ES2D
+  def: model
+  hash: 04207ee7ffb1e34c81d15e13d9c77356509fd5a6
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      ES2D: [10743, 10744]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: ES2DA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc.lib
+      sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+- source: qspice
+  name: ES2D
+  def: model
+  hash: 6cf83d11f17d2c405eb8e6a52c2d1e9e3c6c0f27
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Diode.txt
+    sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+    lines:
+      ES2D: [57, 57]
+  copies:
+  - source: bordodynov-qspice
+    name: ES2D
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+  - source: bordodynov-qspice
+    name: ES2DA
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+  - source: qspice
+    name: ES2DA
+    get:
+      installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+      file: Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+- source: groups-io
+  name: ES2D
+  def: model
+  hash: 79d60bb2b0138d0b00751e1861f76cabc89bdcdc
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      ES2D: [2220, 2220]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: ES2DA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7

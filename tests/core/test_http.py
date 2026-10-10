@@ -1,0 +1,138 @@
+"""The polite client against a local server: robots, pacing, retries, size cap, file names. Both transports."""
+import shutil
+import threading
+import time
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+import pytest
+
+from spicy_electronics_index.core import http
+
+PDF = b"%PDF-1.4 fake schematic"
+
+
+class Handler(BaseHTTPRequestHandler):
+    flaky_hits = 0
+
+    def log_message(self, *a):
+        pass
+
+    def do_GET(self):
+        body, status, headers = b"not found", 404, {}
+        if self.path == "/robots.txt":
+            body, status = (b"User-agent: anthropic-ai\nUser-agent: Claude-User\nDisallow: /noai/\n\n"
+                            b"User-agent: *\nDisallow: /private/\n"), 200
+        elif self.path in ("/doc.pdf", "/private/doc.pdf", "/noai/doc.pdf"):
+            body, status = PDF, 200
+        elif self.path == "/named":
+            body, status, headers = PDF, 200, {"Content-Disposition": 'attachment; filename="TL072_model.zip"'}
+        elif self.path == "/big":
+            body, status = b"x" * 5000, 200
+        elif self.path == "/flaky":
+            type(self).flaky_hits += 1
+            body, status = (b"busy", 503) if type(self).flaky_hits < 3 else (PDF, 200)
+        elif self.path == "/slowdown":
+            type(self).flaky_hits += 1
+            if type(self).flaky_hits < 2:
+                body, status, headers = b"too many", 429, {"Retry-After": "0.25"}
+            else:
+                body, status = PDF, 200
+        elif self.path == "/page":
+            body, status = b"<!DOCTYPE html><html><body>BC109</body></html>", 200
+        self.send_response(status)
+        self.send_header("Content-Length", str(len(body)))
+        for k, v in headers.items():
+            self.send_header(k, v)
+        self.end_headers()
+        self.wfile.write(body)
+
+
+@pytest.fixture()
+def base():
+    Handler.flaky_hits = 0
+    srv = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    yield f"http://127.0.0.1:{srv.server_port}"
+    srv.shutdown()
+
+
+TRANSPORTS = ["requests", pytest.param("curl", marks=pytest.mark.skipif(not shutil.which("curl"), reason="no curl"))]
+
+
+@pytest.mark.parametrize("transport", TRANSPORTS)
+def test_download_type_and_hash(base, transport):
+    r = http.get(f"{base}/doc.pdf", transport=transport, delay=0)
+    assert r.ok and r.kind == "pdf" and r.body == PDF and len(r.sha256) == 64
+    assert http.get(f"{base}/page", transport=transport, delay=0).kind == "html"
+    missing = http.get(f"{base}/nothing", transport=transport, delay=0)
+    assert missing.status == 404 and not missing.ok and missing.attempts == 1          # a 404 is not retried
+
+
+@pytest.mark.parametrize("transport", TRANSPORTS)
+def test_file_name_offered_by_the_server(base, transport):
+    assert http.get(f"{base}/named", transport=transport, delay=0).disposition == "TL072_model.zip"
+
+
+def test_robots_txt_is_honoured(base):
+    r = http.get(f"{base}/private/doc.pdf", delay=0)
+    assert r.status == 0 and r.why == "disallowed by robots.txt" and r.attempts == 0
+    assert http.get(f"{base}/private/doc.pdf", delay=0, robots=False).ok
+
+
+@pytest.mark.parametrize("transport", TRANSPORTS)
+def test_size_cap(base, transport):
+    r = http.get(f"{base}/big", transport=transport, delay=0, max_bytes=1000)
+    assert not r.ok and r.why == "larger than max_bytes" and r.body == b""
+
+
+def test_retries_with_back_off_then_succeeds(base):
+    r = http.get(f"{base}/flaky", delay=0)
+    assert r.ok and r.attempts == 3
+
+
+def test_a_server_asking_us_to_wait_is_obeyed(base):
+    """429 says in words what a 5xx only implies, and a Retry-After names the wait. Renesas sent twelve
+    of these in the first 425 documents, and the back-off we chose instead cost three minutes each."""
+    t = time.time()
+    r = http.get(f"{base}/slowdown", delay=0)
+    waited = time.time() - t
+
+    assert r.ok and r.attempts == 2
+    assert waited >= 0.25            # its number, not ours: the default back-off here would be 0.1 s
+
+
+def test_a_wait_we_did_not_ask_for_is_capped():
+    assert http._retry_after("99999") == http.MAX_WAIT
+    assert http._retry_after("Wed, 21 Oct 2026 07:28:00 GMT") == 0     # a date, which we do not read
+
+
+def test_gives_up(base):
+    Handler.flaky_hits = -100
+    r = http.get(f"{base}/flaky", delay=0, retries=2)
+    assert not r.ok and r.status == 503 and "gave up" in r.why
+
+
+def test_one_request_per_host_every_delay(base):
+    http.get(f"{base}/doc.pdf", delay=0.4)
+    t = time.time()
+    http.get(f"{base}/doc.pdf", delay=0.4)
+    assert time.time() - t >= 0.35
+
+
+def test_contact_goes_in_the_user_agent_from_the_environment(monkeypatch):
+    monkeypatch.delenv("SEI_CONTACT", raising=False)
+    assert "@" not in http.user_agent()
+    monkeypatch.setenv("SEI_CONTACT", "https://example.org/about")
+    assert http.user_agent().endswith("(spicy-electronics-index; https://example.org/about)") and http.user_agent(None) is None
+
+
+def test_a_rule_written_for_an_ai_agent_is_a_rule_about_this(base):
+    """robots.txt is how a site says who may read it. A rule for Claude-User is about an AI agent
+    fetching at a person's request, which is what this is — and reading only the `*` group reads the
+    wrong half. wiki.analog.com allows `*` everything but /_export/ and disallows every Claude name
+    outright; `allowed()` said True until this existed."""
+    http._robots.clear()
+    assert http.allowed(f"{base}/doc.pdf")
+    assert not http.allowed(f"{base}/noai/doc.pdf")          # named for us, not for `*`
+    assert not http.allowed(f"{base}/private/doc.pdf")       # and `*` is still read
+    assert not http.get(f"{base}/noai/doc.pdf", delay=0).ok

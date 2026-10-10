@@ -1,0 +1,43 @@
+part: PESD3V3S2UT
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: nexperia
+  name: PESD3V3S2UT
+  def: model
+  hash: 30b2e59f17833f5beec1088a767af6e44f831add
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD3V3S2UT.txt
+    sha256: 236f99b88a519f52e4d311906b640015aca861fed061fab924551bc7d4829632
+    lines:
+      PESD3V3S2UT: [31, 40]
+    fetched: '2026-09-19'
+    note: 'PESD3V3S2UT: PESD3V3S2UT'
+- source: microcap12
+  name: PESD3V3S2UT
+  def: subckt
+  hash: ad60b88d1929a85825d3f789c615baa3aae06ff1
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      PESD3V3S2UT: [3002, 3017]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PESD3V3S2UT
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD3V3S2UT.PRM
+      sha256: 3f344ba1d2492843758876011827c74b7332882e42c2d32ed9670fc17b8bda3c

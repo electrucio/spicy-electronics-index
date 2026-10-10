@@ -1,0 +1,24 @@
+part: 2N4031
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: spice-model-cd
+  name: Q2N4031
+  def: model
+  hash: ae2c32557478ba99dbb82b9f77e1bfa5530a3e49
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BIPOLAR.LB
+    sha256: bc06e66b73b3f9efd1d6681dcf3667599ed3205c8775c71f528f6c3cb22af447
+    lines:
+      Q2N4031: [284, 287]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: Q2N4031
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/bipolar.txt
+      sha256: 39488a5d05bc9e8639ef14d46055456cb298d497e88eaa170113e153ab076333

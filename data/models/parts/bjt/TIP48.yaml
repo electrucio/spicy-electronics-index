@@ -1,0 +1,61 @@
+part: TIP48
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Qtip48
+  def: model
+  hash: b807921eed614396a546f6ae089d4fd9d5308544
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip48.lib
+    sha256: e054afecf17cf2eb5e96e7164fb3f14108b8f0f1d75d3c9942f17ea37d71b945
+    lines:
+      Qtip48: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qtip48
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: tip48
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: groupsio-ltspice
+  name: TIP48
+  def: model
+  hash: 09c2d22e49de6fccaaa8da3f8c9ca35d4ebcff27
+  type: NPN
+  deps:
+  - 2SC2073
+  - TIP47
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2SC2073: [1128, 1128]
+      TIP47: [4575, 4575]
+      TIP48: [4576, 4576]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: TIP48
+  def: subckt
+  hash: 8ecf7ee1f5723d6226e9ca91f8b2726438101e28
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      TIP48: [2882, 2891]
+    fetched: '2026-09-14'

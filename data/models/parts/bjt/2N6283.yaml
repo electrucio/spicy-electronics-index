@@ -1,0 +1,40 @@
+part: 2N6283
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6283
+  def: subckt
+  hash: 8584dc26c2428db26459789ba8426e2623ba3624
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6283.lib
+    sha256: 943c913ded591c76358041a4cd2c68d282fb34c95b5e0bc31585d2e7daf86e61
+    lines:
+      2n6283: [12, 50]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: 2n6283
+  def: subckt
+  hash: fe3df17094311b4fe60e05834c4ef65d1597a345
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      2n6283: [5016, 5054]
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+    fetched: '2026-09-21'

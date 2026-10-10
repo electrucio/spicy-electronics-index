@@ -1,0 +1,46 @@
+part: 2N6286
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6286
+  def: subckt
+  hash: 4f99e18c0eca2931e9cc33edbc22ac9a0d452b16
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/2n6286.sp3
+    sha256: a4ba5d0e07faa11dc81787dc1680f234eca3aaeb4d28a6d94d380acbbb2f7b84
+    lines:
+      2n6286: [12, 50]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: 2n6286
+  def: subckt
+  hash: fbe688d9ac4c3b2761b9c3118ed89430ab9631b9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/on_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+    lines:
+      2n6286: [4841, 4879]
+    fetched: '2026-09-21'
+- source: diyaudio
+  name: 2n6286
+  def: subckt
+  hash: 2a448388654a7838d94900f7c4b4ece1800157a1
+  type: SUBCKT
+  deps:
+  - TF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+    lines:
+      2n6286: [924, 960]
+      TF: [1854, 1897]
+    fetched: '2026-10-09'

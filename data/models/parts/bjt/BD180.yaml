@@ -1,0 +1,48 @@
+part: BD180
+kind: bjt
+priority: 2
+group: driver_vas
+models:
+- source: onsemi
+  name: Qbd180
+  def: model
+  hash: 6571ebfd3a3db246856010a8616510dfd71a2c2b
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bd180.lib
+    sha256: f8ca149bd0eff619f8f68d060e0ebb7dd7b471740e0259b14a5bdc9b6eb24802
+    lines:
+      Qbd180: [12, 22]
+    fetched: '2026-09-14'
+  note: found under the alias QBD180
+  copies:
+  - source: diyaudio
+    name: bd180
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+  - source: microcap12
+    name: Qbd180
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: BD180
+  def: model
+  hash: 89c59398438e60c2a4eba8a20b5e5ff26c882f76
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      BD180: [2943, 2948]
+    fetched: '2026-09-21'
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/bd180-d.pdf
+  maker: onsemi
+  doc: BD180/D Rev. 14 (February 2024) - BD180G

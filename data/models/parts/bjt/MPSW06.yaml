@@ -1,0 +1,56 @@
+part: MPSW06
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: onsemi
+  name: Qmpsw06
+  def: model
+  hash: e22baa616ee78826d27e1c24df537b2edf4884c4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mpsw06.rev0.lib
+    sha256: b1a40a431c473302c4828edb2e3d101244c0d1c9ec8112e3fa26476179db32c3
+    lines:
+      Qmpsw06: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: groupsio-ltspice
+    name: MPSW06
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: microcap12
+    name: Qmpsw06
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MPSW06
+  def: model
+  hash: 07f171e3427b304d7dce892c262db41c32f2c8a1
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSW06: [3238, 3241]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: QMPSW06
+  def: model
+  hash: 5099b0f5111f80835372ad81b92e07bd74ae5f8c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      QMPSW06: [695, 697]
+    fetched: '2026-09-14'

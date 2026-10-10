@@ -1,0 +1,134 @@
+part: SMAJ24CA
+kind: diode
+priority: 4
+group: tvs
+models:
+- source: vishay
+  name: smaj24ca
+  def: subckt
+  hash: 051c854defb6e0959c71abb7aa46fe8a8e5d36c6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87385/_p_smaj24ca.txt
+    sha256: fd9dec44254f7c1995dfc065b5f1e98f8ca644bcb47bee8829fcbc91531d430b
+    lines:
+      smaj24ca: [5, 33]
+    fetched: '2026-09-19'
+- source: vishay
+  name: smaj24ca
+  def: subckt
+  hash: aa0e4426e60feaf75619ef63813bb7634d39e3db
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88147/smaj24ca.txt
+    sha256: cc4b84860cb06f0afa281d946f1b0744d5b1908462f42f2f9ef4d9aa0d57795e
+    lines:
+      smaj24ca: [12, 40]
+    fetched: '2026-09-19'
+- source: microcap12
+  name: SMAJ24CA
+  def: subckt
+  hash: aa21cdfd0a8632665bfb731da144f8f56dd3f089
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Littelfuse_TVS.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: dcd9d3f9fbfb1e09ed0e64872d8efa2d598ed0fa98684cbaa9fa705eb9da652a
+    lines:
+      SMAJ24CA: [2664, 2670]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: SMAJ24CA
+  def: subckt
+  hash: 8d1eeca809785343ecf5e56df3b3dbba9c934c24
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - TRANSILB
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/transil_ST.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+    lines:
+      SMAJ24CA: [2448, 2453]
+      TRANSILB: [91, 129]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: SMAJ24CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: bordodynov
+    name: SMAJ24CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: groups-io
+    name: SMAJ24CA
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: kicad-spice-library
+    name: SMAJ24CA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: kicad-spice-library
+    name: SMAJ24CA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/transil_ST.lib
+      sha256: 185c29e40bd794726709b41e5a0689c10546add785539576e806e0c0c63484eb
+  - source: ltwiki
+    name: SMAJ24CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ24CA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ24CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ24CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+- source: kicad-spice-library
+  name: smaj24ca
+  def: subckt
+  hash: a7bc4dea7b51e7d3cf9fd00b4f6550fbd718ca36
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/GenSemiTVS2.lib
+    sha256: 28203b6422f594562d5f987512982d76db1fcfc0f1356e3b01077dc18895c1a4
+    lines:
+      smaj24ca: [1292, 1320]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

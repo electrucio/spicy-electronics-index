@@ -1,0 +1,138 @@
+part: ZTX689B
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: diodes-inc
+  name: ZTX689B
+  def: model
+  hash: d329cace22acd6c2d003c7de55c3826db7a172a7
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2409/ZTX689B.spice.txt
+    sha256: 4a90701d92adbc963b48761a4ce7e053878d333447736350acd4d6b8df1dbba7
+    lines:
+      ZTX689B: [19, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: ltwiki
+    name: ZTX689B
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ZETEX/LIB/zmodels.lib
+      sha256: 8d3fb488666b5f813a666d5c589ac6c7779a2c44a4b38799b2a41ca0006368e7
+- source: spice-model-cd
+  name: ZTX689B
+  def: model
+  hash: 5bdaed3e7dba309a4b5d3ba589d7f730a00a57a1
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/ztx689b.lib
+    sha256: 594d901e214b99fe39f8115fe940667132f04f101522601f2040e4f325dc464c
+    lines:
+      ZTX689B: [3, 6]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: ZTX689B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: bordodynov-qspice
+    name: ZTX689B
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/npnmy.txt
+      sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+  - source: duncanamps
+    name: QZTX689B
+    get:
+      url: https://www.duncanamps.com/spice/bjt/npn.mod
+      sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+  - source: kicad-spice-library
+    name: ZTX689B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+  - source: kicad-spice-library
+    name: ZTX689B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+  - source: kicad-spice-library
+    name: ZTX689B
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+  - source: ltwiki
+    name: ZTX689B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: ZTX689B
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: spice-model-cd
+    name: ZTX689B
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+  - source: ltwiki
+    name: ZTX689B/ZTX
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/Zetex.lib
+      sha256: 801edb075d3bd3995ad94e8dbf3c9a290a89481b1e897b74b75fcb6a6fab8ec0
+- source: microcap12
+  name: ZTX689B_ZX
+  def: subckt
+  hash: e8ec6d01befa235dde771bd3c1b505518fdd0d25
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      ZTX689B_ZX: [4253, 4261]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: ZTX689B
+  def: model
+  hash: e00bb018efa8ca1508c2c1577fe3c3286dac4b8b
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      ZTX689B: [5467, 5467]
+    fetched: '2026-09-21'
+  copies:
+  - source: groupsio-ltspice
+    name: ZTX689B
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+- source: kicad-spice-library
+  name: ZTX689B_ZX
+  def: subckt
+  hash: 7f440417dbc6ecdfd27bdd2a6ea6ca8c963a1d24
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+    sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
+    lines:
+      ZTX689B_ZX: [5200, 5208]
+    fetched: '2026-09-14'

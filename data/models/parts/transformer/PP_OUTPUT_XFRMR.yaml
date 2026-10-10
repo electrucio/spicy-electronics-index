@@ -1,0 +1,64 @@
+part: PP_OUTPUT_XFRMR
+kind: transformer
+group: non-native
+models:
+- source: robrobinette
+  name: PP_OUTPUT_XFRMR
+  def: subckt
+  hash: a38fd4882e084be1f426070a1d7a80e7be2c4505
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+    member: transPPc.INC
+    archive_sha256: 12bc0c4bed1df2e80e812730b710d27f5b4ed3d81d76e9d992e42b9e498580d2
+    sha256: 3e158b302cbc06c12eee0e8a41739b9d0170ab4e4ca20b0ee9c44047d8adb31d
+    lines:
+      PP_OUTPUT_XFRMR: [1, 11]
+    fetched: '2026-09-14'
+- source: robrobinette
+  name: PP_OUTPUT_XFRMR
+  def: subckt
+  hash: 5ad1c40f7580a34d75fa7b319d8e4b54546eae95
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+    member: transPPc.INC
+    archive_sha256: eda5b2ebae0d88f997ddc7c80acbba4d363d9a2b359df8751ea12114faad3a12
+    sha256: a8fbb5dd6f1ae4f53308117ec91540a8a0dcfc4b2d515442ec8bc92bb99fffa1
+    lines:
+      PP_OUTPUT_XFRMR: [1, 14]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: PP_OUTPUT_XFRMR
+  def: subckt
+  hash: e68c705fa2e6d092241b6f9dc0ff0d6f9782d3e0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/pp_xfrmr.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 76c8620d94d37e06fbd41a61db0932e705853910283d68ffa47b01f8b2ceaece
+    lines:
+      PP_OUTPUT_XFRMR: [1, 32]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: PP_OUTPUT_XFRMR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/pp_xfrmr.sub
+      sha256: 76c8620d94d37e06fbd41a61db0932e705853910283d68ffa47b01f8b2ceaece
+  - source: kicad-spice-library
+    name: PP_OUTPUT_XFRMR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/pp_xfrmr.sub
+      sha256: 76c8620d94d37e06fbd41a61db0932e705853910283d68ffa47b01f8b2ceaece
+  - source: ltwiki
+    name: PP_OUTPUT_XFRMR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/pp_xfrmr.sub
+      sha256: 76c8620d94d37e06fbd41a61db0932e705853910283d68ffa47b01f8b2ceaece

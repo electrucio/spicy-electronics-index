@@ -1,0 +1,103 @@
+# Publish the site to GitHub Pages: https://electrucio.github.io/spicy-electronics-index/
+#
+# The build reads only what is committed under data/ (a test sabotages the private root to prove it), so
+# the runner builds the same site as `make web` on the maintainer's machine. The 263 MB of part pages
+# travel as a deployment artifact and never enter git: every deploy replaces the previous one whole.
+# Started by hand (`make web-deploy`, or the Run workflow button), not on every push: the data commits
+# are many and the site is rebuilt at milestones. The Pages site itself was created once, by an
+# administrator, with `gh api -X POST repos/electrucio/spicy-electronics-index/pages -f build_type=workflow`: the
+# workflow's token may deploy to it but may not create it (done 2026-09-26).
+#
+# The characterisation records (one JSON per model, two thousand of them, rewritten by every catalogue
+# version) are not in git either: they are the release asset that data/verification/models/release.json
+# names, downloaded, checked against its sha256 and unpacked before the build reads them. A manifest
+# whose asset cannot be had stops the build, rather than publishing a site without its measurements.
+#
+# The data-sheet crops (CLAUDE.md rule 1: a table row or a graph, beside our reading of it) are made from
+# the PDFs on the maintainer's machine, which the runner never has. They travel as one release asset,
+# `crops.tar` on the release `datasheet-crops`, and are unpacked into the built site; without the asset
+# the site is built all the same, with page links instead of crops. Deleting the asset withdraws them.
+#
+# The model text the site shows its maintainer travels the same way, `sealed.tar` on the release
+# `sealed-models`: one file per part, encrypted under a passphrase only the maintainer holds
+# (`sei models seal`, CLAUDE.md rule 1). Without it the site is the same for everyone; deleting it
+# withdraws the text.
+#
+# The drawings of the LTspice symbols the recipes link, `symbol-drawings.tar` on the release
+# `symbol-drawings`, are pictures made from the publishers' .asy files on the maintainer's machine (CLAUDE.md
+# rule 1); without them a model shows its symbol's link and no drawing. Deleting the asset withdraws them.
+name: pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: uv sync
+      - run: cd web && npm ci --no-fund --no-audit
+      - name: characterisation records, from their release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: uv run --quiet sei bench character-fetch
+      - run: make web
+      - name: data-sheet crops, if published
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release download datasheet-crops --repo "$GITHUB_REPOSITORY" --pattern crops.tar --dir "$RUNNER_TEMP"; then
+            mkdir -p web/dist/data && tar -xf "$RUNNER_TEMP/crops.tar" -C web/dist/data
+          else
+            echo "no crops asset: the site shows page links instead"
+          fi
+      - name: sealed model text, if published
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release download sealed-models --repo "$GITHUB_REPOSITORY" --pattern sealed.tar --dir "$RUNNER_TEMP"; then
+            mkdir -p web/dist/data && tar -xf "$RUNNER_TEMP/sealed.tar" -C web/dist/data
+          else
+            echo "no sealed asset: the site is the same, without the maintainer's model text"
+          fi
+      - name: symbol drawings, if published
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release download symbol-drawings --repo "$GITHUB_REPOSITORY" --pattern symbol-drawings.tar --dir "$RUNNER_TEMP"; then
+            mkdir -p web/dist/data && tar -xf "$RUNNER_TEMP/symbol-drawings.tar" -C web/dist/data
+          else
+            echo "no symbol drawings asset: models show their symbol's link and no drawing"
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

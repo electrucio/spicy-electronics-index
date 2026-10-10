@@ -1,0 +1,70 @@
+part: AD825
+kind: opamp
+priority: 3
+models:
+- source: spice-model-cd
+  name: AD825/AD
+  def: subckt
+  hash: 78913ba8068abab1294549d75f8e8394ac873420
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      AD825/AD: [27224, 27291]
+    fetched: '2026-09-21'
+  note: pins from comment words
+  copies:
+  - source: ltwiki
+    name: AD825
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad825.cir
+      sha256: 6bb33b1410e29b77ac551f42a422cdca8e045cdceaceea3ed7b6001ce475ff85
+- source: microcap12
+  name: AD825_AD
+  def: subckt
+  hash: abc50a6b412895b922bfe538235266c5e57db7a2
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD825_AD: [71641, 71708]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: AD825_AD
+  def: subckt
+  hash: 5fbbf14aa23dcc235c199170aae2b0b5ff88b724
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+    sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+    lines:
+      AD825_AD: [71743, 71808]
+      dx: [72212, 72212]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words

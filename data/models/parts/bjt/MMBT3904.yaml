@@ -1,0 +1,327 @@
+part: MMBT3904
+kind: bjt
+priority: 3
+group: small_signal_npn
+models:
+- source: onsemi
+  name: Qmmbt3904lt1
+  def: model
+  hash: fbbc0752024c0325e21ebbf689c5b9812e6d01bc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mbt3904dw1.lib.lib
+    sha256: 51802705454bd0fa4d5d822af8cb5f3b27ad228fb1ee19744d0ac43887dafaa0
+    lines:
+      Qmmbt3904lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: kicad-spice-library
+    name: mmbt3904lt1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_small.lib
+      sha256: 03de7eeee5291d83d8017fe3dafdab3fd5afa7d3bb2da1da44bf953eb4973e5a
+  - source: microcap12
+    name: mmbt3904lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_small.lib
+      sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
+  - source: microcap12
+    name: Qmmbt3904lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: spice-model-cd
+    name: mmbt3904lt1
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbt3904lt1.lib
+      sha256: 8db560bdbbea55a82772fe5b5a9102dc8909b0d054afa8b81b8ac12e573a43c0
+- source: onsemi
+  name: Qmmbt3904lt1g
+  def: model
+  hash: 3bdf1b6481eeb91cafc5534a469b253c0392320c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt3904lt1.lib
+    sha256: 54d73dc1f1a992206f89873105f3ac4fc2e9a631353fbc138867f3087fc4c1e8
+    lines:
+      Qmmbt3904lt1g: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbt3904lt1g
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: MMBT3904SL
+  def: model
+  hash: 91057d8c544bacc771a8ace76fc2316b94d023ec
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt3904sl.lib
+    sha256: a03bdeb53a27ec760b700b92bc56c0e6ff19cbd33c21703e7649023184f874a6
+    lines:
+      MMBT3904SL: [6, 17]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: MMBT3904SL
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: Qmmbt3904tt1
+  def: model
+  hash: fc8da1966b85debefc2b943b7914ab9517836cbd
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt3904tt1.lib
+    sha256: b99b4b2e5751bebb8af4afa591192940eb7c245c0999b9f97201c0b5e9d74c9c
+    lines:
+      Qmmbt3904tt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qmmbt3904tt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: MMBT3904
+  def: subckt
+  hash: bd0d73c0130caa7e6c0b59e06b3275110775877d
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/MMBT3904.txt
+    sha256: 833fabe73a4f9012574008bcf40cec269bd9bbfdd78211a655e38cce9ed1e310
+    lines:
+      MMBT3904: [28, 87]
+    fetched: '2026-09-19'
+    note: 'MMBT3904: MMBT3904, MAIN, DIODE'
+  note: pins from comment words
+- source: diodes-inc
+  name: MMBT3904LP
+  def: model
+  hash: f629ff314576af59e8f66a0545d219aaf7de23c7
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2995/MMBT3904LP.spice.txt
+    sha256: 313849db9188c9bef6eb4091669128fb73bf445a42408cbb3be0b39e9dc45404
+    lines:
+      MMBT3904LP: [24, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: diodes-inc
+    name: MMBT3904LP
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8429/collection.spice.txt
+      sha256: 25759a6cbafe23350b32480fe33bf874370db0e87a747168f643ea8b1031ac30
+  - source: diodes-inc
+    name: MMBT3904FA
+    get:
+      url: https://www.diodes.com/spice/download/2999/MMBT3904FA.spice.txt
+      sha256: f4e35878138a08b2067fbdd1a21b95697733e126b5c5d5e9558cf5505cfea3a0
+  - source: diodes-inc
+    name: MMBT3904FA
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8429/collection.spice.txt
+      sha256: 25759a6cbafe23350b32480fe33bf874370db0e87a747168f643ea8b1031ac30
+- source: microcap12
+  name: MMBT3904
+  def: model
+  hash: 9987d48e303dc7b9094b05c397ea6b5490f57c0f
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      MMBT3904: [7017, 7055]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: MMBT3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QMMBT3904
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/MMBT3904.PRM
+      sha256: 07e7c2bef993e33cfcde89559d33d9c93bbb14f11a157d3f97b798ce1aa98966
+- source: microcap12
+  name: MMBT3904T
+  def: model
+  hash: e9b1da476aeb550e82f96cb3093a5c3c39b1c546
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBT3904T: [896, 900]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MMBT3904LP
+  def: model
+  hash: 3119314c379986538fd1f75cae62e58fad56a8c8
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBT3904LP: [596, 599]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT3904LP
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+  - source: bordodynov-qspice
+    name: MMBT3904FA
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+  - source: qspice
+    name: MMBT3904FA
+    get:
+      installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+      file: NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: qspice
+  name: MMBT3904
+  def: model
+  hash: b309d6c2d1b5aa8af1e87d57787d73fd87a561e4
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBT3904: [468, 472]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT3904
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: qspice
+  name: MMBT3904T
+  def: model
+  hash: d4610b247e591272ae7dec2469df37e93032651a
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBT3904T: [480, 484]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT3904T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: groupsio-ltspice
+  name: MMBT3904
+  def: model
+  hash: a909c237dea735c8b7a6813bd40367feb5975277
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+    member: standard.bjt
+    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
+    sha256: 84136a15d4231a7bcba0fc0b871f152550583f31e82c2cd063b03527ac872d40
+    lines:
+      MMBT3904: [980, 980]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MMBT3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: kicad-spice-library
+    name: MMBT3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: kicad-spice-library
+    name: MMBT3904
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+  - source: ltwiki
+    name: MMBT3904
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MMBT3904
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MMBT3904
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: MMBT3904
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.bjt
+      sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
+  - source: ltwiki
+    name: MMBT3904
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+- source: groupsio-ltspice
+  name: MMBT3904
+  def: model
+  hash: 860040f05be1fa657695ba8dbd860576b09a48b4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT3904: [3445, 3445]
+    fetched: '2026-09-21'

@@ -1,0 +1,48 @@
+part: ZXTN08400BFF
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: diodes-inc
+  name: ZXTN08400BFF
+  def: model
+  hash: 01e836eb9147991523a10850ec61e05c8311e3ab
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/2555/ZXTN08400BFF.spice.txt
+    sha256: d6cb0002c69f450777677242aa1d4559b1ef990d6c34405bd2d77d9726cfc44e
+    lines:
+      ZXTN08400BFF: [19, 23]
+    fetched: '2026-09-19'
+  copies:
+  - source: diodes-inc
+    name: ZXTN08400BFF
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8423/collection.spice.txt
+      sha256: 29a331433039eecc5f40d2202d1675ada0c61df76aa492b6773e7c4107fbac71
+  - source: microcap12
+    name: ZXTN08400BFF
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/zetex.lib
+      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+- source: qspice
+  name: ZXTN08400BFF
+  def: model
+  hash: a6d3ddf28b39266a62a2fc835c5e3a22340a58a1
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      ZXTN08400BFF: [1353, 1357]
+  copies:
+  - source: bordodynov-qspice
+    name: ZXTN08400BFF
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b

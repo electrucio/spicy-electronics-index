@@ -1,0 +1,96 @@
+part: MBRS130LT3
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: mbrs130lt3
+  def: model
+  hash: 7c25d1200e75c33001340b104a10227419d6d890
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mbrs130.lib
+    sha256: 42bc82462cc5d4ebd6ad7b7e9913140b7d8369dadcbdaf9c215f47378fcec251
+    lines:
+      mbrs130lt3: [38, 52]
+    fetched: '2026-09-14'
+    note: 'model(s): mbrs130lt3 (D .model)'
+  copies:
+  - source: kicad-spice-library
+    name: mbrs130lt3
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_rect.lib
+      sha256: 4280e2f5339d54da1e9eda2a615c5b783b50e01b2cacde8c6bbc21649adfa347
+  - source: microcap12
+    name: mbrs130lt3
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_rect.lib
+      sha256: 307f442b92fbc7c5f238c9f560a6fe2c9882ed67e4ac1baf8487fd962fc59558
+  - source: microcap12
+    name: mbrs130lt3
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: spice-model-cd
+    name: mbrs130lt3
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/Rectifier/Schottky/MBRS130.LIB
+      sha256: b0338f0c3dffa5c164c5611a2797d19985a6ccddd36aa3a975c23589f04716e9
+- source: onsemi
+  name: Dmbrs130lt3
+  def: model
+  hash: 1570d18cd3104132f9b4c72309523544c2c8b971
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mbrs130lt3.lib
+    sha256: c55ae8393326c99cbc74966d0321485b42bc83aa467c50b3fd8a41d49f7c3193
+    lines:
+      Dmbrs130lt3: [14, 18]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Dmbrs130lt3
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mbrs130lt3
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_diode.lib
+      sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+- source: ltwiki
+  name: MBRS130L
+  def: model
+  hash: 41142422543d677ceca49aec9acdaa1c0846ab41
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/standard3.dio
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
+    lines:
+      MBRS130L: [45, 45]
+    fetched: '2026-09-14'
+  note: 'found under the alias MBRS130L; same code also in: kicad-spice-library'
+- source: bordodynov
+  name: MBRS130L
+  def: model
+  hash: 0a1ffa056bae5930a634f23f00a2c33518af3437
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      MBRS130L: [183, 183]
+    fetched: '2026-09-14'
+  note: 'found under the alias MBRS130L; same code also in: kicad-spice-library, ltwiki'

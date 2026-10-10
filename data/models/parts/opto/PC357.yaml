@@ -1,0 +1,99 @@
+part: PC357
+kind: opto
+priority: 4
+models:
+- source: groups-io
+  name: pc357nt
+  def: subckt
+  hash: 1f9d664044d7a6c00a4ff2fd6d9ac904cecbbfdd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Opto/PC357NT/Subcircuit%20version/pc357nt.lib
+    sha256: 146aa8bd99437607eed2f6a9b3f65809cac141fd29714607dba73c016b28568e
+    lines:
+      pc357nt: [3, 19]
+    fetched: '2026-10-09'
+- source: ltwiki
+  name: Pc357nt
+  def: subckt
+  hash: eb30467e1e1f7a8775110f864a88d3652ad141b6
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - E
+  - C
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/OptoAcop.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: e1cc58e7df7070c4b67ca9ba29d04f8ede1394d26c33951fbd6e7923ecc6a694
+    lines:
+      Pc357nt: [134, 150]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/OptoElec/Pc357nt.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 15c7efd7e5b65267bba83c0b8cc2f11067ad099829184d0c26a67258d62e92e1
+  copies:
+  - source: bordodynov
+    name: Pc357nt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OptoAcop.lib
+      sha256: afc41e67a056aadd6af70da491aedd69fb6e66a9f20ffe644c8b39d92e8ad025
+  - source: kicad-spice-library
+    name: Pc357nt
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OptoAcop.lib
+      sha256: afc41e67a056aadd6af70da491aedd69fb6e66a9f20ffe644c8b39d92e8ad025
+  - source: ltwiki
+    name: Pc357nt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OptoAcop.lib
+      sha256: afc41e67a056aadd6af70da491aedd69fb6e66a9f20ffe644c8b39d92e8ad025
+- source: bordodynov
+  name: pc357nt
+  def: subckt
+  hash: 3ec011a9bf58d18ce187278add0526e610f356d2
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - E
+  - C
+  deps:
+  - Rb
+  - Q1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      Q1: [16399, 16440]
+      Rb: [564, 570]
+      pc357nt: [2602, 2618]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/pc357nt.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 7aee03ea75c46ff2d4d3b5a1941f6a036efc2121e737625714c134a247f3899e
+  copies:
+  - source: kicad-spice-library
+    name: pc357nt
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: pc357nt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

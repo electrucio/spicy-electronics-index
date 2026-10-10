@@ -1,0 +1,209 @@
+part: MMBT4401
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: onsemi
+  name: Qmmbt4401lt1
+  def: model
+  hash: 7fa794eb2afe09dca43453a8bddaa402ec4ef3be
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt4401lt1.lib
+    sha256: 975c1390f9593ed524f4c4b7aef4e0fd24ef8787c14edd62d96777fa9be5375b
+    lines:
+      Qmmbt4401lt1: [14, 24]
+    fetched: '2026-09-19'
+  copies:
+  - source: ltwiki
+    name: Qmmbt4401lt1
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
+  - source: ltwiki
+    name: Qmmbt4401lt1
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
+  - source: microcap12
+    name: Qmmbt4401lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbt4401lt1
+    get:
+      url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
+      member: nud4001p.lib
+      sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
+  - source: onsemi
+    name: mmbt4401lt1
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncp1351%20pspice%20model.zip
+      member: ncp1351_ORCAD/application.lib
+      sha256: 5617ad21da819be996732ece6f515658a40de55ea6685e48fcd3ec27b14a1159
+- source: microcap12
+  name: MMBT4401
+  def: model
+  hash: b08b395360b7003b39c9d5bf316884e5e4f022fc
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBT4401: [903, 907]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MMBT4401T
+  def: model
+  hash: d63f436816c810161bf59321dd3bf357d369024b
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_BJT.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+    lines:
+      MMBT4401T: [917, 921]
+    fetched: '2026-09-21'
+- source: qspice
+  name: MMBT4401
+  def: model
+  hash: 0ba523730e021b89091464269d28c694b03094d3
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBT4401: [486, 490]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT4401
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: qspice
+  name: MMBT4401T
+  def: model
+  hash: c0c4c82537102c19efc2dda0791f38d9198bc1eb
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      MMBT4401T: [492, 496]
+  copies:
+  - source: bordodynov-qspice
+    name: MMBT4401T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: duncanamps
+  name: Q2N4401
+  def: model
+  hash: 43f3448d65d1a7a3835a2f261d57dafe92620940
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      Q2N4401: [91, 93]
+    fetched: '2026-09-14'
+    note: 39 subckts, 158 .model
+  note: 'STAND-IN: model of Q2N4401, not of MMBT4401; equivalence declared in catalog/wanted.yaml (see
+    its note)'
+- source: groupsio-ltspice
+  name: MMBT4401
+  def: model
+  hash: 0b769de95e08317fe8d557484b9ed25a0e0ec84f
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MMBT4401: [3448, 3448]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 2N4401
+  def: model
+  hash: 3eac831a26dcf848f72c60eeb1df8b283b392925
+  type: NPN
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/Standard/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+    lines:
+      2N4401: [17, 17]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N4401, not of MMBT4401; equivalence declared in catalog/wanted.yaml (see
+    its note); same code also in: kicad-spice-library, ltwiki'
+- source: ltwiki
+  name: 2N4401
+  def: model
+  hash: 3eac831a26dcf848f72c60eeb1df8b283b392925
+  type: NPN
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+    lines:
+      2N4401: [72, 73]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N4401, not of MMBT4401; equivalence declared in catalog/wanted.yaml (see
+    its note); same code also in: kicad-spice-library'
+- source: bordodynov
+  name: 2N4401
+  def: model
+  hash: 457e73c5752c416cf2e7d43ca41309f1a15e0d0b
+  type: NPN
+  deps:
+  - '2'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.bjt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+    lines:
+      '2': [519, 519]
+      2N4401: [277, 277]
+    fetched: '2026-09-14'
+  note: 'STAND-IN: model of 2N4401, not of MMBT4401; equivalence declared in catalog/wanted.yaml (see
+    its note); same code also in: ltwiki'
+- source: kicad-spice-library
+  name: Q2N4401
+  def: model
+  hash: e3dcff00e717c8cb94bddca45e38a525594b4583
+  type: NPN
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/BJT_NPN/TOSHIBA.LIB
+    sha256: 48d4fd1df68108bb9d61af444d53f63e19fc48d39cebc6bc9ff3a11eb947f336
+    lines:
+      Q2N4401: [2579, 2596]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: 'STAND-IN: model of Q2N4401, not of MMBT4401; equivalence declared in catalog/wanted.yaml (see
+    its note)'

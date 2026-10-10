@@ -1,0 +1,96 @@
+part: TIP140
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: tip140
+  def: subckt
+  hash: 79119c045a29ee59d22628e06bee9e846e5ba463
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip140.lib
+    sha256: 4223c78a44f93fe0a7cee50334d7147ab7774686c3938ea3f5c028102f03b28a
+    lines:
+      tip140: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: bordodynov
+    name: TIP140
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: kicad-spice-library
+    name: TIP140
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP140
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+  - source: ltwiki
+    name: TIP140
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/NPNdarlington.lib
+      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+- source: microcap12
+  name: tip140
+  def: subckt
+  hash: 5ac75195a5dde00102f000a2a341f607cf13c5d3
+  type: SUBCKT
+  deps:
+  - nmos
+  - Q1
+  - pmos
+  - Q2
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/On_Semi.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    lines:
+      Q1: [78385, 78412]
+      Q2: [78417, 78442]
+      nmos: [161508, 161508]
+      pmos: [161510, 161510]
+      tip140: [224607, 224645]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: TIP140_FC
+  def: subckt
+  hash: 5bfb7986b1dc45f55f93caadc23758eccef69408
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/fairch.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+    lines:
+      TIP140_FC: [8462, 8492]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: TIP140_FC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+- source: kicad-spice-library
+  name: TIP140
+  def: subckt
+  hash: 0ec66d4c3860b6aab6105c3b0b7d96692ddb52df
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTDAR.LIB
+    sha256: 9ce6fa0baa6aaf6fdd5cce713f1d1ad2dabcd6946b97027854fc10dccb38dfb1
+    lines:
+      TIP140: [1115, 1127]
+    fetched: '2026-09-14'

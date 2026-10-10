@@ -1,0 +1,57 @@
+part: EF12
+kind: tube
+priority: 2
+group: audio_docs
+models:
+- source: suusi-tubes
+  name: EF12
+  def: subckt
+  hash: b96d807a36cf15aec3519d71fa5f3554a3514762
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - C
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EF12: [1647, 1651]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+  note: pins from inline comment
+- source: groups-io
+  name: EF12
+  def: subckt
+  hash: bbc451231bb0c44428a90fd396760d19942716a5
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      EF12: [1560, 1564]
+      PENTODE1: [2373, 2386]
+    fetched: '2026-10-09'
+- source: bordodynov-qspice
+  name: EF12
+  def: subckt
+  hash: bfd548e531b62c5856ce1bc243df240226fd1a9a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Tube_Rus.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+    lines:
+      EF12: [2691, 2708]
+    fetched: '2026-09-29'

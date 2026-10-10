@@ -1,0 +1,43 @@
+part: OC71
+kind: bjt-ge
+priority: 1
+models:
+- source: groups-io
+  name: OC71_P
+  def: model
+  hash: 42843dc1f08689716b82eb75d734c7b22dedc72c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/message/163431
+    sha256: f903e832742bc7452d46da844f6a5396ddb8e6fe7676c993541c243d03642159
+    lines:
+      OC71_P: [12, 34]
+    fetched: '2026-09-20'
+- source: groups-io
+  name: OC71_P_sub
+  def: subckt
+  hash: 8497258a4d8c4ec34bf9d1c7d3e315859538850d
+  type: SUBCKT
+  deps:
+  - OC71_P
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/message/163431
+    sha256: f903e832742bc7452d46da844f6a5396ddb8e6fe7676c993541c243d03642159
+    lines:
+      OC71_P: [12, 34]
+      OC71_P_sub: [37, 39]
+    fetched: '2026-09-20'
+- source: groups-io
+  name: OC71
+  def: model
+  hash: 2c9d7d79b7237fd5fad5099bbd9f42f7f60fa165
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/message/163431
+    sha256: f903e832742bc7452d46da844f6a5396ddb8e6fe7676c993541c243d03642159
+    lines:
+      OC71: [50, 50]
+    fetched: '2026-09-20'

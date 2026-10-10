@@ -1,0 +1,52 @@
+part: 6L6A
+kind: tube
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: 6L6_ayumi
+  def: subckt
+  hash: 58eb8205d65efcd0088efc0696ee50e05c367ac9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Ayumi_Pentode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: b20f109b443614b28d014113e25ed3c4af19a9494e2e946b401e5c5a18514b12
+    lines:
+      6L6_ayumi: [1510, 1533]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: 6L6_AN
+  def: subckt
+  hash: f7f44e4ddb7185ca7849d5bd55b615d0427ca1e3
+  type: SUBCKT
+  pins:
+  - A
+  - G2
+  - G1
+  - K
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      6L6_AN: [1450, 1470]
+    fetched: '2026-09-21'
+  note: pins from names
+  copies:
+  - source: bordodynov-qspice
+    name: 6L6_AN
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: 6L6_AN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3

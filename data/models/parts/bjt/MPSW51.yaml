@@ -1,0 +1,93 @@
+part: MPSW51
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: mpsw51
+  def: model
+  hash: 89ec1ddbdaef9c468519321aeceb4663971d825c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/mpsw51_rev0.sp3.sp3
+    sha256: 35ee0ce562adbc1b8f05aafad172c3399125dba201cb3aae17a0626cd522c58f
+    lines:
+      mpsw51: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: Qmpsw51
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmpsw51
+    get:
+      url: https://www.onsemi.com/download/models/lib/mpsw51.rev0.lib
+      sha256: 7b665ef75078d1c89baad1112a6f1b8dc276599dbdbcc0e201efc142ab5c230e
+- source: microcap12
+  name: MPSW51A
+  def: model
+  hash: da994805ecf74db3adc406dbd7d07425b0c81714
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      MPSW51A: [3263, 3267]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: MPSW51
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: lbr_txt/msbjt_lbr.lib
+      sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+- source: duncanamps
+  name: QMPSW51A
+  def: model
+  hash: 092f932742d5f11ccfb390ebc00fb280da275048
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/pnp.mod
+    sha256: 9554024b39ab1fa861067c6af517fbe13435370dd0e78c4ed0d461fe355488a1
+    lines:
+      QMPSW51A: [598, 601]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: MPSW51A
+  def: model
+  hash: 6819e161e1a40f1f68581089a7f82b0df642c9ca
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MPSW51A: [3676, 3676]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: MPSW51A
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: groupsio-ltspice
+    name: MPSW51
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: ltwiki
+    name: MPSW51
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b

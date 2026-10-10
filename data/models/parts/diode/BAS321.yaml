@@ -1,0 +1,62 @@
+part: BAS321
+kind: diode
+priority: 4
+group: silicon_signal
+models:
+- source: nexperia
+  name: BAS321
+  def: subckt
+  hash: 3e2250dec0247109c0378b2c51aa9fd5d218c46f
+  type: SUBCKT
+  pins:
+  - K
+  - A
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS321.txt
+    sha256: 2620d65ed2ac3df473dfbbe5e429539478ce0700829d1e8a325c77ad843a6224
+    lines:
+      BAS321: [33, 57]
+    fetched: '2026-09-19'
+    note: 'BAS321: BAS321, DIODE1, DIODE2'
+  note: pins from comment words
+- source: microcap12
+  name: BAS321
+  def: model
+  hash: 54c8972b9f683bca15657c5849b04429ce9554ed
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_diode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    lines:
+      BAS321: [53, 64]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAS321
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_diode.lib
+      sha256: 7680dbb1c2759df426558d45db01f9c601fc0821e7bef837b2d652fe6abfcbce
+  - source: ltwiki
+    name: BAS321
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS321.PRM
+      sha256: 1ae208e15e167426594c474beef6610e393c19090425bf57e70cbc742d328d02
+- source: groups-io
+  name: BAS321
+  def: model
+  hash: b83dd7600606159f0b9ee2c658636bfdddf4831f
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAS321: [4701, 4701]
+    fetched: '2026-10-10'

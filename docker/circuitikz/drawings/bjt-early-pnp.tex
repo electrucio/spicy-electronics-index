@@ -1,0 +1,90 @@
+% Output characteristics, h-parameters (bjt-early): the set-up a person would wire, semantically the deck's.
+%   IE0 0 be0 <ib>        a fixed base current per copy                                 -> current source I_B (set)
+%   VE0 sw ce0 0          a 0 V source from the swept node to the collector: reads IC   -> ammeter I_C (measured)
+%   VSW sw 0 0, .dc       the collector supply, swept                                   -> source V_CE (set)
+%   QE0 ce0 be0 0         the transistor, emitter grounded                              -> npn
+%   The four copies of that deck are drawn as one transistor. The h-parameter deck (1 kHz) is the second row:
+%   IBA 0 ba DC <ib> AC 1  copy A: the base bias for 1 mA with 1 A of AC on top        -> current source I_B + i_b (set)
+%   VCA ca 0 5             copy A's collector supply; its AC current is i_c            -> source V_CE (set) + ammeter I_C + i_c (measured)
+%   V(ba) read: v_be       hie = v_be / i_b, hfe = i_c / i_b                           -> voltmeter v_be (measured)
+%   IBB 0 bb DC <ib>       copy B: the base bias for 1 mA, DC only                     -> current source I_B (set)
+%   VCB cb 0 DC 5 AC 1     copy B's collector supply with 1 V of AC: the output driven -> source V_CE + v_ce (set) + ammeter I_C + i_c (measured)
+%   V(bb) read: v_be       hre = v_be / v_ce, hoe = i_c / v_ce                         -> voltmeter v_be (measured)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Output characteristics, h-parameters, PNP}
+\def\gnd{1.0}
+% the transistor
+\node[pnp, yscale=-1] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.C)+(0.15,-0.55)$) {DUT};
+% emitter to ground
+\draw (Q.E) -- (Q.E |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.E)+(0.1,-0.3)$}{0}
+% the ammeter in the collector, up to the rail
+\coordinate (ctop) at ($(Q.C)+(0,1.7)$);
+\ammeter{Q.C}{ctop}{$I_C$}
+\nodename{anchor=west}{$(Q.C)+(0.1,0.25)$}{ce}
+% the supply at the right, + up, - to ground
+\coordinate (vtop) at ($(ctop)+(2.6,0)$);
+\draw (ctop) -- (vtop);
+\draw[set] (vtop) to[V, invert, l=$V_{CE}$] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(ctop)+(1.3,0.05)$}{sw}
+% the base: a current source from ground
+\coordinate (b) at (Q.B);
+\coordinate (bsrc) at ($(b)+(-1.4,0)$);
+\draw (b) -- (bsrc);
+\draw[set] (bsrc |- 0,\gnd) node[ground, black]{} to[I, invert, l_=$I_B$] (bsrc);
+\nodename{anchor=south}{$(b)+(-0.5,0.02)$}{be}
+% the second row: the two copies of the h-parameter deck, read at 1 kHz
+\node[anchor=west, font=\small] at (0,-0.7) {$h$-parameters at 1 kHz: copy A, the input driven; copy B, the output driven};
+\def\gndb{-5.4}
+% copy A
+\node[pnp, yscale=-1] (QA) at (4.4,-3.4) {};
+\node[anchor=west, font=\small] at ($(QA.C)+(0.15,-0.55)$) {A};
+\draw (QA.E) -- (QA.E |- 0,\gndb) node[ground]{};
+\coordinate (actop) at ($(QA.C)+(0,1.7)$);
+\ammeter{QA.C}{actop}{$I_C + i_c$}
+\coordinate (avtop) at ($(actop)+(2.4,0)$);
+\draw (actop) -- (avtop);
+\draw[set] (avtop) to[V, invert, l={$V_{CE}$}] (avtop |- 0,\gndb) node[ground, black]{};
+\coordinate (ab) at (QA.B);
+\coordinate (absrc) at ($(ab)+(-1.3,0)$);
+\coordinate (abvm) at ($(ab)+(-2.4,0)$);
+\draw (ab) -- (abvm);
+\draw[set] (absrc |- 0,\gndb) node[ground, black]{} to[I, invert, l_={$I_B + i_b$}] (absrc);
+\voltmeter{abvm |- 0,\gndb}{abvm}{$v_{be}$}
+\draw (abvm |- 0,\gndb) node[ground]{};
+\nodename{anchor=west}{$(QA.C)+(0.1,0.25)$}{ca}
+\nodename{anchor=south}{$(ab)+(-0.45,0.02)$}{ba}
+\nodename{anchor=west}{$(QA.E)+(0.1,-0.3)$}{0}
+% copy B
+\node[pnp, yscale=-1] (QB) at (12.4,-3.4) {};
+\node[anchor=west, font=\small] at ($(QB.C)+(0.15,-0.55)$) {B};
+\draw (QB.E) -- (QB.E |- 0,\gndb) node[ground]{};
+\coordinate (bctop) at ($(QB.C)+(0,1.7)$);
+\ammeter{QB.C}{bctop}{$I_C + i_c$}
+\coordinate (bvtop) at ($(bctop)+(2.4,0)$);
+\draw (bctop) -- (bvtop);
+\draw[set] (bvtop) to[V, invert, l={$V_{CE} + v_{ce}$}] (bvtop |- 0,\gndb) node[ground, black]{};
+\coordinate (bb) at (QB.B);
+\coordinate (bbsrc) at ($(bb)+(-1.3,0)$);
+\coordinate (bbvm) at ($(bb)+(-2.4,0)$);
+\draw (bb) -- (bbvm);
+\draw[set] (bbsrc |- 0,\gndb) node[ground, black]{} to[I, invert, l_={$I_B$}] (bbsrc);
+\voltmeter{bbvm |- 0,\gndb}{bbvm}{$v_{be}$}
+\draw (bbvm |- 0,\gndb) node[ground]{};
+\nodename{anchor=west}{$(QB.C)+(0.1,0.25)$}{cb}
+\nodename{anchor=south}{$(bb)+(-0.45,0.02)$}{bb}
+\nodename{anchor=west}{$(QB.E)+(0.1,-0.3)$}{0}
+% the definitions
+\definitions{0,-6.3}{%
+  $I_B$ fixed per copy: the $I_B$ that gave $I_C = 100$ \textmu A, 1 mA, 10 mA and 100 mA at $V_{CE} = 5$ V\\[2pt]
+  $V_{CE}$ swept 0 to 30 V in 50 mV steps;\quad read $I_C(V_{CE})$;\quad $V_A = I_C \,/\, (dI_C/dV_{CE}) - V_{CE}$, the slope taken between 5 and 10 V\\[2pt]
+  $h$-parameters at $f = 1$ kHz, $I_C = 1$ mA, $V_{CE} = 5$ V.\quad A: $i_b = 1$ A of AC;\quad $h_{ie} = v_{be} \,/\, i_b$, $h_{fe} = i_c \,/\, i_b$\\[2pt]
+  B: $v_{ce} = 1$ V of AC;\quad $h_{re} = v_{be} \,/\, v_{ce}$, $h_{oe} = i_c \,/\, v_{ce}$;\quad the AC drives are the simulator's unit signals, not real amplitudes\\[2pt]
+  PNP: every source reversed; values written as magnitudes%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

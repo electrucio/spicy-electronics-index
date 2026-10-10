@@ -1,0 +1,34 @@
+part: RFP30N06LE
+kind: mosfet
+priority: 4
+group: power_vertical
+models:
+- source: ltwiki
+  name: RFP30N06LE/HA
+  def: subckt
+  hash: c2fd63c370bb7458486655e1de8dd47d76842b38
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/harris.lib
+    sha256: 5e556916203cdb4cc4a4e500efe41f531e4c2b12aa26d4d3181891c94ce0c506
+    lines:
+      RFP30N06LE/HA: [8121, 8179]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: RFP30N06LE_HA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/harprmos.lib
+      sha256: 61469f6ff311b0c8efb6e62b037293843806ecb1b23c5de71472983628858dae
+  - source: microcap12
+    name: RFP30N06LE_HA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/harprmos.lib
+      sha256: 76bb17fefdd4e5e8677429a5725e9b7625add987691bd2be2b795339d9ff8427

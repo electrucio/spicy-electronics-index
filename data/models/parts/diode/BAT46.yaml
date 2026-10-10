@@ -1,0 +1,281 @@
+part: BAT46
+kind: diode
+priority: 2
+group: schottky
+models:
+- source: vishay
+  name: BAT46
+  def: subckt
+  hash: fa7a0a9d575b97cf231d6a4e682c4a9ac00ab87c
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/85251/bat46.txt
+    sha256: d3036ee5c8f8541ae1dbb056498295224e50bd5e588b889b0d7ed10cd1656913
+    lines:
+      BAT46: [11, 54]
+    fetched: '2026-09-14'
+    note: 'model(s): BAT46 (.subckt 1 2), SD (D .model), AD (D .model)'
+  note: pins from default order (unverified)
+- source: microcap12
+  name: BAT46WJ
+  def: subckt
+  hash: dd0e35fde800ad79bc607a2b5575bec25b69e4aa
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BAT46WJ: [14414, 14437]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: BAT46WH
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: microcap12
+  name: BAT46W
+  def: model
+  hash: d8d88efe4f8bda9bb20aab1754251632a1aa07d9
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAT46W: [147, 148]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAT46
+  def: subckt
+  hash: 00400e696256087c4b1e12a6267a025bc0d4790c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishaydiode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+    lines:
+      BAT46: [7335, 7378]
+    fetched: '2026-09-21'
+- source: ltspice-native
+  name: BAT46WJ
+  def: model
+  type: D
+  verbatim: true
+  get:
+    installed_with: LTspice 17.2.4 installed library (Analog Devices)
+    file: cmp/standard.dio
+    sha256: 696d34dfe538966c80cfe1da259c1043f408777be79f59e4f1c47d82f3af320a
+    lines:
+      BAT46WJ: [80, 80]
+  note: 'same code also in: bordodynov, kicad-spice-library, ltwiki'
+- source: spice-model-cd
+  name: BAT46
+  def: model
+  hash: 72620b33bed57537360b8ce9387b805aa8e001f7
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/DIODE.LB
+    sha256: b648c925003b172006c0871521a37a1448d9cd5343fd97cd1426d0ec65a8c324
+    lines:
+      BAT46: [403, 405]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BAT46WJ
+  def: model
+  hash: 9402d8e3b81bf6a04e38c595701348fb81525444
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Original/standard.dio.bak
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+    lines:
+      BAT46WJ: [80, 80]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: bordodynov
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+  - source: bordodynov-qspice
+    name: BAT46WJ
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: groupsio-ltspice
+    name: BAT46WJ
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.dio
+      sha256: f9cddb038dea806c10b7452ffa2b2f90a32266b7acd5913afe5191acd48edd29
+  - source: kicad-spice-library
+    name: BAT46WJ
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: BAT46WJ
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: BAT46WJ
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
+      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.dio.bak
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: groups-io
+  name: BAT46WJ
+  def: model
+  hash: bea5cb9f569851417e56a64428e0e5e553ea177a
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAT46WJ: [8467, 8467]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: BAT46WJ
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+  - source: ltwiki
+    name: BAT46WJ
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+- source: groups-io
+  name: BAT46W
+  def: model
+  hash: f42596d3cb4158a07ad027495a906cc5df11be79
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAT46W: [264, 264]
+    fetched: '2026-10-10'
+- source: ltwiki
+  name: BAT46
+  def: model
+  hash: 4e133e7af078936ccb737c2312e00f51ead9330e
+  type: D
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+    lines:
+      BAT46: [1321, 1323]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: BAT46FILM
+  def: subckt
+  hash: a4859c7a03aa74fef28333567a90e8b04bc0abc4
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+    lines:
+      BAT46FILM: [1364, 1370]
+    fetched: '2026-09-14'
+  note: pins from names
+- source: kicad-spice-library
+  name: BAT46
+  def: model
+  hash: 163e8899cc035c4bf2e3ea118dfbf13fd49ff7bd
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
+    sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
+    lines:
+      BAT46: [154, 156]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.vishay.com/docs/85662/bat46.pdf
+  maker: Vishay Semiconductors
+  doc: Document Number 85662, Rev. 2.2
+  date: '2024-11-07'

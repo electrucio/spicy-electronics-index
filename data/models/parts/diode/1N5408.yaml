@@ -1,0 +1,174 @@
+part: 1N5408
+kind: diode
+priority: 2
+group: rectifier
+models:
+- source: onsemi
+  name: D1n5408rl
+  def: model
+  hash: 7a2a2540b22abda5e64554fee06ec8cdf1563df8
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/1n5408rl.lib
+    sha256: 802cc9457db5a7e7b1c66626eb9e790a4ae01220ca813a801ea168905aa5b24d
+    lines:
+      D1n5408rl: [12, 16]
+    fetched: '2026-09-14'
+    note: 'model(s): D1n5408rl (D .model)'
+  copies:
+  - source: microcap12
+    name: D1n5408rl
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: 1n5408rl
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_rect.lib
+      sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+- source: vishay
+  name: d1n5408
+  def: model
+  hash: fcc3574afbafc7f2be25f58b8b73cceedb06eb16
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/88001/1n5408.txt
+    sha256: 11f59d3d3878e8a162ab6e18a646fa023b3154bdfe870da56aa7ed1e68f68109
+    lines:
+      d1n5408: [11, 14]
+    fetched: '2026-09-14'
+    note: 'model(s): d1n5408 (D .model)'
+  copies:
+  - source: kicad-spice-library
+    name: d1n5408
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+- source: microcap12
+  name: 1N5408
+  def: model
+  hash: 07350d9f09cdbd5c8453e1e73b6c626990587d1b
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/microsem_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4de9c79b8f465e5a0873f78fe3a8c13a59e9f0cec851134a2e3e7b434b761d74
+    lines:
+      1N5408: [197, 198]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: 1N5408GP
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: lbr_txt/microsem_lbr.lib
+      sha256: 4de9c79b8f465e5a0873f78fe3a8c13a59e9f0cec851134a2e3e7b434b761d74
+- source: kicad-spice-library
+  name: 1N5408
+  def: subckt
+  hash: b264077ec2091d183504c9b687e17b15993d0fe4
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  deps:
+  - d1n5408
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+    sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+    lines:
+      1N5408: [2786, 2788]
+      d1n5408: [2918, 2921]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: spice-model-cd
+  name: D1n5408
+  def: model
+  hash: 660c1774eca356e21442ddddcab36de128b8a780
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/DIODE.LB
+    sha256: b648c925003b172006c0871521a37a1448d9cd5343fd97cd1426d0ec65a8c324
+    lines:
+      D1n5408: [201, 202]
+    fetched: '2026-09-21'
+- source: qspice
+  name: 1N5408
+  def: model
+  hash: 7c07984cdeb18ac5d53f24e66ea8c50a842ff55b
+  type: D
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: Diode.txt
+    sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+    lines:
+      1N5408: [22, 22]
+  copies:
+  - source: bordodynov-qspice
+    name: 1N5408
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode.txt
+      sha256: c3c9d8e591bc91f8e43b33c520c48b1ec3726737c561205b08a901f6b1315367
+- source: suusi-tubes
+  name: 1N5408
+  def: model
+  hash: b2e9d77c10b2d9787b8c0dfe7ae52ddaba328bfc
+  type: D
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: MotorolaRectifiers.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: 88449ae88e2f751e584a6c2a079ded8a074d765cee37ce146ad1fd34182c5b35
+    lines:
+      1N5408: [25, 25]
+    fetched: '2026-09-14'
+- source: groups-io
+  name: 1N5408
+  def: model
+  hash: d3d87066ea78f7943ceff3fb43a124ebe2eca15d
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      1N5408: [3320, 3320]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: 1N5408
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: kicad-spice-library
+  name: D1N5408
+  def: model
+  hash: 6c64a0dcd1550d30c9b4d51270e1b6b556c42c0a
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/DIODE/INTERNAT.LIB
+    sha256: 88b223c4822ca05eea2a85a0c7614ba68845bf7d93fba971f22409c4b8322943
+    lines:
+      D1N5408: [241, 256]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.vishay.com/docs/88516/1n5400.pdf
+  maker: Vishay
+  doc: Document Number 88516, Revision 19-Dec-2025 (1N5400 thru 1N5408)

@@ -1,0 +1,64 @@
+part: AD8615
+kind: opamp
+priority: 3
+models:
+- source: adi
+  name: AD8615
+  def: subckt
+  hash: f8b96b6880e891d4365bf022962a2d4e681e86c2
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.analog.com/media/en/simulation-models/spice-models/AD8615.cir?modelType=spice-models
+    sha256: c556e5572a6c4cfd2793e014a9415fb9081de23bd8c49747a5bf806182901960
+    lines:
+      AD8615: [28, 116]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/AD/AD8615.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 40941c91eba78d1559c40736ed2c44f37301acf584345549978888d811065731
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: AD8615
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/AD/AD8615.TXT
+      sha256: f0d3507a176ab17efca811f6a12f420e7b859c1a88618b875ef0a6048e270bb0
+  - source: groups-io
+    name: AD8615
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: AD/AD8615.TXT
+      sha256: f0d3507a176ab17efca811f6a12f420e7b859c1a88618b875ef0a6048e270bb0
+  - source: ltwiki
+    name: AD8615
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/AD/AD8615.TXT
+      sha256: f0d3507a176ab17efca811f6a12f420e7b859c1a88618b875ef0a6048e270bb0
+- source: microcap12
+  name: AD8615
+  def: subckt
+  hash: 5ccb9299f8e0defd5e9f9fbd63e54f0591828da0
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8615: [85142, 85230]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'

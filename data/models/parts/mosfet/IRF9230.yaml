@@ -1,0 +1,109 @@
+part: IRF9230
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: irf9230_IR
+  def: subckt
+  hash: 349bc65fa101d7936c988c2ab7eafefe110159bd
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irf9230_IR: [1141, 1200]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: kicad-spice-library
+    name: irf9230_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+- source: ltwiki
+  name: irf9230
+  def: subckt
+  hash: 74a89f90dacc4d77a096b546c9fe825a32ccf388
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf9230.spi
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: f5ae24d592e40aea6ace78b74c01b09efeed08f4979ee4f05cba67857c40c955
+    lines:
+      irf9230: [1, 60]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irf9230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9230.spi
+      sha256: f5ae24d592e40aea6ace78b74c01b09efeed08f4979ee4f05cba67857c40c955
+  - source: bordodynov
+    name: irf9230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9230.spi
+      sha256: f5ae24d592e40aea6ace78b74c01b09efeed08f4979ee4f05cba67857c40c955
+  - source: kicad-spice-library
+    name: irf9230
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irf9230.spi
+      sha256: 34db906dfc77349768262434d58c9a31ee8dfc6d5d0311d1b94e5bd633ea4b00
+  - source: ltwiki
+    name: irf9230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9230.spi
+      sha256: f5ae24d592e40aea6ace78b74c01b09efeed08f4979ee4f05cba67857c40c955
+  - source: ltwiki
+    name: irf9230
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9230.spi
+      sha256: f5ae24d592e40aea6ace78b74c01b09efeed08f4979ee4f05cba67857c40c955
+- source: ltwiki
+  name: IRF9230
+  def: model
+  hash: 1983ccf6bf9a2b503f41ae6d0b346bd31d5f4d5e
+  type: PMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRF9230: [1693, 1696]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRF9230
+  def: subckt
+  hash: 360651aeb8899be2a29917c53ecb03bbdc858561
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRF9230: [4452, 4497]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

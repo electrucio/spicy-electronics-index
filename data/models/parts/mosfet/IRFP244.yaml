@@ -1,0 +1,199 @@
+part: IRFP244
+kind: mosfet
+priority: 3
+group: audio_docs
+models:
+- source: microcap12
+  name: irfp244_IR
+  def: subckt
+  hash: 2e21df07c65558d44a8b01be4d98dc7cc5418ccf
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/irf.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 82f4bef18dd48a7c5ca3da5377969368e74e0dca0d739892a6235d6f44975c99
+    lines:
+      irfp244_IR: [6340, 6399]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: bordodynov
+    name: irfp244
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp244.spi
+      sha256: 7937edd337e13f688c425935dc4ce39fbc45c5a977b509ee90e882db2c00b33f
+  - source: bordodynov
+    name: irfp244
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp244.spi
+      sha256: 7937edd337e13f688c425935dc4ce39fbc45c5a977b509ee90e882db2c00b33f
+  - source: kicad-spice-library
+    name: irfp244
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/ir_lib/irfp244.spi
+      sha256: 3f212853c97fc65c12bd14fcec1bb9e947477409be14f1350a957d9a07a8d589
+  - source: kicad-spice-library
+    name: irfp244
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: ltwiki
+    name: irfp244
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp244.spi
+      sha256: 7937edd337e13f688c425935dc4ce39fbc45c5a977b509ee90e882db2c00b33f
+  - source: ltwiki
+    name: irfp244
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp244.spi
+      sha256: 7937edd337e13f688c425935dc4ce39fbc45c5a977b509ee90e882db2c00b33f
+  - source: ltwiki
+    name: irfp244
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp244.spi
+      sha256: 7937edd337e13f688c425935dc4ce39fbc45c5a977b509ee90e882db2c00b33f
+  - source: kicad-spice-library
+    name: irfp244_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+  - source: kicad-spice-library
+    name: IRFP244M
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+- source: microcap12
+  name: IRFP244
+  def: model
+  hash: 156327484359fc5a27c76d3ebeb355f2686834b7
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/irpmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 105bbe2b177521de15323aae290e05947c3bb26d62a8ee42fe5da0e351b46ddf
+    lines:
+      IRFP244: [1531, 1535]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: IRFP244
+  def: subckt
+  hash: f1107a264b1b6b66daa32611fb311aac29cb0e2c
+  type: SUBCKT
+  pins:
+  - G
+  - D
+  - S
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/IRFP244_EKV_rev1/IRFP244_ekv.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: c676b68ecae02f5d4c76bd5358ec3ee6929b0dd83adf07b793ee4447ee78987b
+    lines:
+      IRFP244: [8, 52]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/IRFP244_EKV_rev1/irfp244.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: aea7115f78cb11a7982a98aacc93981de0e9427d4ac77c309f68e716fdd9396f
+  note: pins from names
+  copies:
+  - source: ltwiki
+    name: IRFP244
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Mos&Fet/IRFP244_EKV_rev1/IRFP244_ekv.sub
+      sha256: c676b68ecae02f5d4c76bd5358ec3ee6929b0dd83adf07b793ee4447ee78987b
+- source: ltwiki
+  name: IRFP244
+  def: model
+  hash: 93ea7e64848d837d50b19dab35a7cc88bc1f48e3
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrmos.lib
+    sha256: cd1b43c7f364ba7d1ebb8af3764d05b8ddaab1d79950e0eedd42a0826cd2c46b
+    lines:
+      IRFP244: [3723, 3726]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: IRFP244
+  def: subckt
+  hash: 90fd7e6ba5b000de8d74573cb5e9f875b60c34d3
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWMOS3.LIB
+    sha256: 15daa43bae301f0f87935f96d7a7634586ef2319657a3f622e47f56ae492d6d7
+    lines:
+      IRFP244: [3358, 3380]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRFP244
+  def: model
+  hash: 37683417778d742313bd582d72bbaa2c5730a5eb
+  type: NMOS
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL1.LIB
+    sha256: 8a0af54a34c8e405d5f54f85a9836846c3926f39a0926309907c5f1c3820df13
+    lines:
+      IRFP244: [502, 532]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+- source: kicad-spice-library
+  name: irfp244_IR
+  def: subckt
+  hash: 2e21df07c65558d44a8b01be4d98dc7cc5418ccf
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+    sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
+    lines:
+      irfp244_IR: [6340, 6399]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+- source: kicad-spice-library
+  name: IRFP244M
+  def: subckt
+  hash: 2e21df07c65558d44a8b01be4d98dc7cc5418ccf
+  type: SUBCKT
+  pins:
+  - D
+  - G
+  - S
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+    sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+    lines:
+      IRFP244M: [6755, 6800]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)

@@ -1,0 +1,433 @@
+part: BAS40
+kind: diode
+priority: 4
+group: schottky
+models:
+- source: onsemi
+  name: BAS40SL
+  def: model
+  hash: ab2afab5de7193d9e642f46c5f5b003ca0ddd639
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bas40sl.lib
+    sha256: 7d78733bfad6ab0124a4ff6c377773910550dee52c5b29557e6cbf3d8884cd2f
+    lines:
+      BAS40SL: [6, 19]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: BAS40SL
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: vishay
+  name: BAS40
+  def: subckt
+  hash: a7818fda89b10fd514479f716ff2f47e5cded604
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/86438/bas40.txt
+    sha256: c25f9e2b7d92df672edfc596e7344ab7892c6d04edd09aaeb46a8a9a0b00a077
+    lines:
+      BAS40: [11, 52]
+    fetched: '2026-09-19'
+- source: spice-model-cd
+  name: BAS40
+  def: model
+  hash: 4a95bd4df9d0f6e48a00bfd831e16748609a3cd6
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/DIODE/S_DIODE.LIB
+    sha256: 5b0c047f0241963047cfdccac9eb3038eecfe7d78d04fc568cd0ac9135423c2a
+    lines:
+      BAS40: [449, 450]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAS40s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
+      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
+  - source: ltwiki
+    name: BAS40/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/siemens.lib
+      sha256: 243664dd487b615b87bd321416060f6822da14486fcece9fd2e3ded453189d81
+  - source: spice-model-cd
+    name: BAS40/SIE
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
+      sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
+- source: microcap12
+  name: BAS40H
+  def: subckt
+  hash: 37322ffd824c1a847eeed37cf206ce03d8eaae1a
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      BAS40H: [1913, 1935]
+    fetched: '2026-09-21'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BAS40H
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40H.PRM
+      sha256: 583dffe37502d303233db67284ac0b89cb98114ce669b240a1ecd6480098f587
+- source: microcap12
+  name: BAS40T
+  def: model
+  hash: f2e5e0856873b0b7bd371c31b9d1fdbe15e547f8
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAS40T: [54, 55]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: BAS40BRW
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc.lib
+      sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+  - source: microcap12
+    name: BAS40TW
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/DiodesInc.lib
+      sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+- source: microcap12
+  name: BAS40W_PH
+  def: subckt
+  hash: bc106c61a672a6b0a4a17dca857917f1c59924b6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      BAS40W_PH: [666, 688]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAS40W_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_shot.lib
+      sha256: 89422b6d829e90bd8424b8aee8462c0b273938950d3c699f08d950b475f5908d
+- source: microcap12
+  name: BAS40LP
+  def: model
+  hash: 977b9acba1a4b654fa7fdbc66d89342ea213966a
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
+    lines:
+      BAS40LP: [46, 47]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAS40L
+  def: subckt
+  hash: 904d8ccdd484e887c1562488308042385ca52282
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_shot.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    lines:
+      BAS40L: [1938, 1960]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAS40XY
+  def: subckt
+  hash: a075a3d71751818b59b10de7cdf0f698bf9a4048
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/nxp.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    lines:
+      BAS40XY: [5969, 5998]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BAS40
+  def: model
+  hash: 380483a28494775ae4ef2a6939b70a7868a0c907
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/ediode_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e50d524139f4241c5345aa22e759f4b47df02a98f9343c9c753c201ba13d8c9
+    lines:
+      BAS40: [85, 86]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: BAS40
+  def: model
+  hash: a01a913faeea7166f038e574dd15a2044ef514ef
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAS40: [222, 222]
+    fetched: '2026-10-10'
+  copies:
+  - source: groups-io
+    name: BAS40T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: BAS40BRW
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: BAS40TW
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: BAS40W
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+- source: groups-io
+  name: BAS40LP
+  def: model
+  hash: cf1ee560654443e11560c806a2ea66854d71ceef
+  type: D
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+    lines:
+      BAS40LP: [523, 523]
+    fetched: '2026-10-10'
+- source: bordodynov
+  name: BAS40HM
+  def: model
+  hash: 7c43df88e563a15d1b8bc8608fa2763ed88f6d6a
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/cmp/Standard/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+    lines:
+      BAS40HM: [544, 544]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: BAS40HM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: bordodynov-qspice
+    name: BAS40HM
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: kicad-spice-library
+    name: BAS40HM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+  - source: kicad-spice-library
+    name: BAS40HM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAS40HM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS40HM
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: BAS40HM
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: ltwiki
+  name: BAS40
+  def: subckt
+  hash: ba8ff800aea9b4889492ab3ab471ec9565d489aa
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 3051e5480b95b1775e944c5604f99c3fc558414283afe9e5f7d6eeb9855a8ace
+    lines:
+      BAS40: [2, 24]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BAS40W
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40W.PRM
+      sha256: bce9c0779b1927b898b007dab5c7769b13da3fecc6fba61795c50f1304a0bfcf
+- source: ltwiki
+  name: BAS40W
+  def: subckt
+  hash: ba8ff800aea9b4889492ab3ab471ec9565d489aa
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40W.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: bce9c0779b1927b898b007dab5c7769b13da3fecc6fba61795c50f1304a0bfcf
+    lines:
+      BAS40W: [2, 24]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+- source: ltwiki
+  name: BAS40L
+  def: subckt
+  hash: 421b770f46d557e456121777337725cf699eebef
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40L.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: ff4503d26dd2381abfaabd38a8d42a6639f57af4f9c947b3d2c50d30c781e5e5
+    lines:
+      BAS40L: [2, 24]
+    fetched: '2026-09-14'
+  note: pins from default order (unverified)
+- source: ltwiki
+  name: BAS40
+  def: model
+  hash: 873df9bac91682edd0c33e56134458ff41b032ee
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ediode.lib
+    sha256: 3a1ee34ce1dccb655cfdf9e5ee520ad37c7f7e97ce94973793706080d52808b9
+    lines:
+      BAS40: [156, 157]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: BAS40HY
+  def: model
+  hash: 6f23a6f2d48e9d7a463862a6113a49a759f54af2
+  type: D
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: cmp/standard.dio
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+    lines:
+      BAS40HY: [2115, 2115]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov-qspice
+    name: BAS40HY
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/dio.txt
+      sha256: d527fc87b258835509bb494c1963fb62b33f48441a5207db91261e3975932b4b
+  - source: ltwiki
+    name: BAS40HY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS40HY
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+- source: kicad-spice-library
+  name: BAS40
+  def: model
+  hash: 0695d224779ac989ac1f50b6ae2ffbdb310968c8
+  type: D
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/DIODE.LIB
+    sha256: c68f4b4a28eb0e866fb8e516b6a6a37a779ac80fed8a2ef16a3afcfb80c522e5
+    lines:
+      BAS40: [1757, 1758]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: BAS40/SIE
+  def: subckt
+  hash: 2bfcc56b129d89c98f5f7b2efba95842a1dde79b
+  type: SUBCKT
+  deps:
+  - BAS40_1
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
+    sha256: c1318342f700741e0d97896cf4f77fe203b8923e12b1106c6c14f848c74bdd5b
+    lines:
+      BAS40/SIE: [2104, 2110]
+      BAS40_1: [2111, 2112]
+    fetched: '2026-09-14'

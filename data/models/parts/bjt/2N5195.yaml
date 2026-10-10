@@ -1,0 +1,94 @@
+part: 2N5195
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n5195
+  def: model
+  hash: c68b60fb371b6bc431543c9f8bc9c1c137adb75d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n5195.lib
+    sha256: bd36c3ad8a9ec7be42c4ea60a62e0cd1af10ff2d3ba087971ce73924fc715d5f
+    lines:
+      Q2n5195: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Q2n5195
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: spice-model-cd
+  name: Q2N5195
+  def: model
+  hash: 0b9a14128a9e3117ea8a55bedbe243b920a74fab
+  type: PNP
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BJTPWR.LB
+    sha256: d6d6b87bad9bc60f921d7865ee3cfe7791d745515ad2c54cd335cf3cd2941826
+    lines:
+      Q2N5195: [51, 54]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: Q2N5195
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/bjtpwr.txt
+      sha256: f669b76a9269ad7cdf214a7ce81a85e86ffcaca55ff93502dad839b018b33fd2
+- source: microcap12
+  name: 2N5195
+  def: model
+  hash: b52b442e3762b1c4d7b9d91c6253a696d5bc9a41
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N5195: [2493, 2500]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: Q2N5195
+  def: model
+  hash: 2391bff133194a5a94394351e8fa8861460cb737
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      Q2N5195: [6692, 6692]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N5195
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: groupsio-ltspice
+  name: 2N5195
+  def: model
+  hash: ae266e2be76ca153b875444ca222cdd93e3f74d6
+  type: PNP
+  deps:
+  - NSC_5E
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N5195: [443, 443]
+      NSC_5E: [6256, 6256]
+    fetched: '2026-09-21'

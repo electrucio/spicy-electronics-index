@@ -1,0 +1,67 @@
+part: PMBT2222A
+kind: bjt
+priority: 4
+group: small_signal_npn
+models:
+- source: nexperia
+  name: PMBT2222A
+  def: subckt
+  hash: 868c7bbd560e5f09f5a9e8ede9c0cb9d509e7509
+  type: SUBCKT
+  pins:
+  - B
+  - E
+  - C
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMBT2222A.txt
+    sha256: 8bd8672fdf15ee10b0feabe777ccb4d774dfee81c7b8f2698987f37e2cfb455b
+    lines:
+      PMBT2222A: [32, 90]
+    fetched: '2026-09-14'
+    note: 'model(s): PMBT2222A (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
+  note: pins from comment words
+- source: spice-model-cd
+  name: QPMBT2222A
+  def: model
+  hash: 6095447c0610cc010306576112deb4d07ed36b33
+  type: NPN
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/MBT2222A.lib
+    sha256: a31806a722ed91919f84d19911951f140598a01ac9fb19eaa38cf4e8a6cb74fb
+    lines:
+      QPMBT2222A: [2, 40]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: PMBT2222A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+  - source: ltwiki
+    name: QPMBT2222A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/BJT/PMBT2222A.PRM
+      sha256: a31806a722ed91919f84d19911951f140598a01ac9fb19eaa38cf4e8a6cb74fb
+  - source: microcap12
+    name: PMBT2222A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_bjt.lib
+      sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+- source: groupsio-ltspice
+  name: PMBT2222A
+  def: model
+  hash: 0cdc2f52d97859565bdd33633b11fd3007991a31
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      PMBT2222A: [4244, 4244]
+    fetched: '2026-09-21'

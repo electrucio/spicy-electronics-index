@@ -1,0 +1,51 @@
+part: PN4250A
+kind: bjt
+priority: 3
+group: small_signal_pnp
+models:
+- source: onsemi
+  name: PN4250A
+  def: model
+  hash: 905fc32a29ec9afb74d9beaeac6cde443457eb31
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/pn4250a.mod
+    sha256: cbbbbf6c5ecc7cea64fb97673a63f14ae036d0eb8f5e7625b1badcd7508403d8
+    lines:
+      PN4250A: [1, 7]
+    fetched: '2026-09-19'
+  copies:
+  - source: groupsio-ltspice
+    name: PN4250A
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: kicad-spice-library
+    name: PN4250A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: ltwiki
+    name: PN4250A
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
+  - source: microcap12
+    name: PN4250A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: PN4250A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+  - source: spice-model-cd
+    name: PN4250A
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/PN/PN4250A.t
+      sha256: 4ae5375e3c92f108ea6083c6ca30357ea75a716253653821355b9de698e2c07c

@@ -1,0 +1,100 @@
+part: TDA2030
+kind: ic-audio
+priority: 2
+models:
+- source: bordodynov
+  name: TDA2030
+  def: subckt
+  hash: cf0b347bb00b18fa4aaf2c09babce7e17f72f073
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/TDA2030.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 428a504c62df0ff43638ed0cec2f845e0f81edec23456c95c8b7bf12aa35d80b
+    lines:
+      TDA2030: [1, 24]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/TDA2030.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: ded6af15bed84fdbefec332fc0017f3b4402f6ee7e109fa65a9935ec054d772c
+  copies:
+  - source: ltwiki
+    name: TDA2030
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TDA2030.sub
+      sha256: 428a504c62df0ff43638ed0cec2f845e0f81edec23456c95c8b7bf12aa35d80b
+- source: bordodynov-qspice
+  name: TDA2030
+  def: subckt
+  hash: 723153305ff2bfd8549bab8f881502e754d58a7e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/TDA2030.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: c44662205ee72e2dcd1cded36a4045421115becdee1dbcb68ff3c510dcf4232f
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: TDA2030
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/TDA2030.qsym
+      sha256: c44662205ee72e2dcd1cded36a4045421115becdee1dbcb68ff3c510dcf4232f
+- source: bordodynov-qspice
+  name: TDA2030
+  def: subckt
+  hash: 3ba86b1f7a64a1036daa4c1dfbfd7add63e87c76
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/Library/OPAMP_R/TDA2030.qsym
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 53fee92b235bfb5ac4b40040fbe6ec53110c3e6e67abb3d5ee3357ab47e57a4f
+    fetched: '2026-09-29'
+    note: the model is inside the QSPICE symbol, in its «library file» field
+  copies:
+  - source: bordodynov-qspice
+    name: TDA2030
+    get:
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/OPAMP_R/TDA2030.qsym
+      sha256: 53fee92b235bfb5ac4b40040fbe6ec53110c3e6e67abb3d5ee3357ab47e57a4f
+- source: kicad-spice-library
+  name: TDA2030
+  def: subckt
+  hash: 2b0b216c0e103ce355334aca18e7dda78d2d822a
+  type: SUBCKT
+  pins:
+  - '3'
+  - '2'
+  - '6'
+  - '7'
+  - '4'
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/TDA2030.mod
+    sha256: c9633f7fcb015b4ceb68f7a5d32b363ffaa4be7c2361cb36d1b6d1e5bb4141ed
+    lines:
+      TDA2030: [1, 34]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+datasheet:
+  url: https://www.st.com/resource/en/datasheet/tda2030.pdf
+  maker: STMicroelectronics
+  doc: Doc ID 1458 Rev 3; OBSOLETE
+  date: 2011-06

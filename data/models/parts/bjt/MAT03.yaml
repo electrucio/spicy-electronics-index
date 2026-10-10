@@ -1,0 +1,155 @@
+part: MAT03
+kind: bjt
+priority: 3
+group: matched_pairs
+models:
+- source: spice-model-cd
+  name: MAT-03/AD
+  def: subckt
+  hash: bf6096ccbd6ba2c3dbe07f9e34beddff0f629113
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      MAT-03/AD: [46897, 46911]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: MAT03
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: kicad-spice-library
+    name: MAT03
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: kicad-spice-library
+    name: MAT-03
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD3A.LIB
+      sha256: 776a14fee0e546dc3124e35405aa2f0c8d54f14f82647e90846412980c464a7c
+  - source: ltwiki
+    name: MAT03
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: ltwiki
+    name: MAT03
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/mat0x.lib
+      sha256: 4bc82e3c7a212994a1d16e2b8865ee77af162add800e6ee4978dd5e27173b93d
+  - source: kicad-spice-library
+    name: MAT-03/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: kicad-spice-library
+    name: MAT03_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+  - source: ltwiki
+    name: MAT-03/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+  - source: microcap12
+    name: MAT03_AD
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/analog.lib
+      sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+- source: diyaudio
+  name: MAT03
+  def: subckt
+  hash: 65e5d497ca812f36ea3d477835c6c62dd374db71
+  type: SUBCKT
+  deps:
+  - TF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+    lines:
+      MAT03: [308, 322]
+      TF: [1854, 1897]
+    fetched: '2026-10-09'
+- source: ltwiki
+  name: mat03
+  def: subckt
+  hash: 63eade4260cc2b3799c813699d4cf6cc16d10f03
+  type: SUBCKT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Sborka.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 55d381efe69d73abbf8e0958d7127c7e8ddf40acbdeb0090e1e38866735cf8c7
+    lines:
+      Rb: [44, 49]
+      mat03: [110, 122]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/SBORKA/BJT/mat03.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: e0842fd8b4fb6613f6acf74057b35269992a330e6f5a4a2862ca650474e9184d
+  copies:
+  - source: ltwiki
+    name: mat03
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+  - source: ltwiki
+    name: mat03
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/SW_subckt/Sbor.lib
+      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+- source: bordodynov
+  name: mat03
+  def: subckt
+  hash: b40282b9de54c4b0ef68087d9894349952ebbbcf
+  type: SUBCKT
+  deps:
+  - Q1
+  - Q2
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+      mat03: [677, 689]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/mat03_.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: e0842fd8b4fb6613f6acf74057b35269992a330e6f5a4a2862ca650474e9184d
+  copies:
+  - source: kicad-spice-library
+    name: mat03
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: mat03
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

@@ -1,0 +1,47 @@
+part: AD8066
+kind: opamp
+priority: 3
+models:
+- source: microcap12
+  name: AD8066
+  def: subckt
+  hash: c5966c99164ac3ad19af92e7a87e7ec7a742bea0
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      AD8066: [74689, 74802]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: AD8066
+  def: subckt
+  hash: 504a6418817ffc43f081fd590ad42dd5f2c68bfc
+  type: SUBCKT
+  pins:
+  - OUT
+  - INP
+  - INN
+  - VP
+  - VN
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/ad8066.cir
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: d3ec221b99e254b498d04ba1c3a20d85667878f3d70e39dae1262e7e12c284ef
+    lines:
+      AD8066: [26, 139]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/AudioOpamp/AD/AD8066.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 3f896351f810df648905a0da768a0089627c72fd5ce75af067aedec59a0a0ef3
+  note: pins from comment words

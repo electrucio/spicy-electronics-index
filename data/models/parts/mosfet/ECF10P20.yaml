@@ -1,0 +1,40 @@
+part: ECF10P20
+kind: mosfet
+priority: 3
+group: power_lateral
+models:
+- source: microcap12
+  name: ECF10P20
+  def: model
+  hash: 8fbefec055f84319b463437d5cf8025500f2237b
+  type: PMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/profmos_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 58b94e8ea84dba579a8f6c334d2d78630cd77955e852f5bd1afeca3ce57c3b3c
+    lines:
+      ECF10P20: [26, 30]
+    fetched: '2026-09-21'
+- source: bordodynov
+  name: ECF10P20
+  def: subckt
+  hash: ef08db56666fe38084bb6d81545eb92f4c953ab1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/exicon_mosfet.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: a4592d488914f08380aae349ae1f97b8d307f0e09f94cf7e218af8aad2d2929a
+    lines:
+      ECF10P20: [152, 225]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: ECF10P20
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/exicon_mosfet.lib
+      sha256: a4592d488914f08380aae349ae1f97b8d307f0e09f94cf7e218af8aad2d2929a

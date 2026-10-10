@@ -1,0 +1,101 @@
+part: NJM4580
+kind: opamp
+priority: 3
+models:
+- source: nisshinbo
+  name: NJM4580
+  def: subckt
+  hash: 7cbee284e8db7ace43420d2d3384c573aa7f0833
+  type: SUBCKT
+  deps:
+  - njm4580_s
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm4580_v2_p.zip
+    member: NJM4580_v2_NewJRC/njm4580_v2.lib
+    archive_sha256: b8980a7ca355a1a67d76949b505ea3a34ce1fd80c30ca71753841048d7be83be
+    sha256: b3bef6dde7c3edc9c727e554e5bb57cf16e3ceb4c91f77b3a0ee76c20f798c87
+    lines:
+      NJM4580: [13, 16]
+      njm4580_s: [25, 88]
+    fetched: '2026-09-20'
+- source: nisshinbo
+  name: njm4580_s
+  def: subckt
+  hash: f73108392b9ba15631542209cb96b10635efdfc4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nisshinbo-microdevices.co.jp/mynisd/dl/macro/pspice/njm4580_v2_p.zip
+    member: NJM4580_v2_NewJRC/njm4580_v2.lib
+    archive_sha256: b8980a7ca355a1a67d76949b505ea3a34ce1fd80c30ca71753841048d7be83be
+    sha256: b3bef6dde7c3edc9c727e554e5bb57cf16e3ceb4c91f77b3a0ee76c20f798c87
+    lines:
+      njm4580_s: [25, 88]
+    fetched: '2026-09-20'
+- source: bordodynov
+  name: NJM4580_SUB
+  def: subckt
+  hash: a9b15542973190ab1027db6c2cee61ef5d2de9fd
+  type: SUBCKT
+  pins:
+  - OUT1
+  - -IN1
+  - +IN1
+  - VEE
+  - +IN2
+  - -IN2
+  - OUT2
+  - VCC
+  deps:
+  - NJM4580
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/NJM4580.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 52a5a7666749668dd7b38d092cecf9a7f12ada580309245ddd7899fba26ac120
+    lines:
+      NJM4580: [8, 43]
+      NJM4580_SUB: [4, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: ltwiki
+    name: NJM4580_SUB
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NJM4580.lib
+      sha256: 52a5a7666749668dd7b38d092cecf9a7f12ada580309245ddd7899fba26ac120
+- source: bordodynov
+  name: NJM4580
+  def: subckt
+  hash: 765a4306e75fb25bfa97c32063f1c602f1c1fd5f
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/NJM4580.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 52a5a7666749668dd7b38d092cecf9a7f12ada580309245ddd7899fba26ac120
+    lines:
+      NJM4580: [8, 43]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OpAmp/NJM4580.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: c7b453aaceee9dc2b45c4e64544488e67c6cd27ebbb7ea74bf5f5c761a3c2992
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: NJM4580
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NJM4580.lib
+      sha256: 52a5a7666749668dd7b38d092cecf9a7f12ada580309245ddd7899fba26ac120

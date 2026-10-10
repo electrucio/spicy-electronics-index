@@ -1,0 +1,51 @@
+part: 2N3947
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: 2N3947
+  def: model
+  hash: 58fa40140b5211ab8ab5cc010c6538275542fa4c
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      2N3947: [713, 716]
+    fetched: '2026-09-21'
+- source: duncanamps
+  name: Q2N3947
+  def: model
+  hash: 7125f88dd4fe948ba2118582245cb860a199643c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.duncanamps.com/spice/bjt/npn.mod
+    sha256: 57dfef87174fc8f0310bc9527e0bf7ef3fa92d13d295ea8a504d3ba67f13ec87
+    lines:
+      Q2N3947: [85, 87]
+    fetched: '2026-09-14'
+- source: groupsio-ltspice
+  name: 2N3947
+  def: model
+  hash: b246501eb7e57d75772147a6b01a47d01023fd6e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N3947: [276, 276]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: Q2N3947
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b

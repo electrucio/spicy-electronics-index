@@ -1,0 +1,117 @@
+part: BC847BS
+kind: bjt
+priority: 3
+group: matched_pairs
+models:
+- source: microcap12
+  name: BC847BS
+  def: model
+  hash: 674f71efa7bcf7376f077e0f0518b1ae6c9131f6
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/ph_bjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: f5ba7440eb7625ff848cdb45ad55ee36f8ac094aafccb2351359ed12c0382bbb
+    lines:
+      BC847BS: [1911, 1949]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BC847BS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_bjt.lib
+      sha256: 0ba411b70d0c3cd6a3bca6e65a4f891a06c54024014c249905f41fd5f080d435
+- source: qspice
+  name: BC847BS
+  def: model
+  hash: 7f32fa6fdf41765d733f1970ea8d2a67aaf4a318
+  type: NPN
+  verbatim: true
+  get:
+    installed_with: QSPICE (Qorvo), build Sep 13 2026 09:34:10
+    file: NPN.txt
+    sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+    lines:
+      BC847BS: [529, 533]
+  copies:
+  - source: bordodynov-qspice
+    name: BC847BS
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/NPN.txt
+      sha256: 02e7f34086291154c4ad5a23bd7be80641cec3ccd61609bfc623a1231183224b
+- source: ltwiki
+  name: BC847BS
+  def: subckt
+  hash: c57ad087134b4865fa656a626ff1d133c9b988af
+  type: SUBCKT
+  deps:
+  - Rb
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Sborka.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 55d381efe69d73abbf8e0958d7127c7e8ddf40acbdeb0090e1e38866735cf8c7
+    lines:
+      BC847BS: [640, 646]
+      Rb: [44, 49]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/SBORKA/BJT/BC847BS.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+      sha256: 11beb01137e6ba3ec33ce8f871de1e2d090f0be079761e632c5d0c10ccd1bc01
+  copies:
+  - source: ltwiki
+    name: BC847BS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+  - source: ltwiki
+    name: BC847BS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/SW_subckt/Sbor.lib
+      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+- source: bordodynov
+  name: BC847BS
+  def: subckt
+  hash: 76cdae80762ec2a0e9ee36fa59b3ad887f601c50
+  type: SUBCKT
+  deps:
+  - Q1
+  - Q2
+  - Rb
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      BC847BS: [1271, 1277]
+      Q1: [16399, 16440]
+      Q2: [16442, 16483]
+      Rb: [564, 570]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/BJT/BC847BS.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: b69f53433ea604f49b0d1da41031ecc1a9a130bf8fc92a5eb5fbcd6643578dc2
+  copies:
+  - source: kicad-spice-library
+    name: BC847BS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: BC847BS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

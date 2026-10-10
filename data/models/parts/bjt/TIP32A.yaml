@@ -1,0 +1,62 @@
+part: TIP32A
+kind: bjt
+priority: 2
+group: listed
+models:
+- source: onsemi
+  name: Qtip32a
+  def: model
+  hash: 612d098e6d3bdb158cf7d82a84f88e63289c24fb
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/tip32a.lib
+    sha256: 61474549d41410ab9e0947b1050470c9b9afe9e9eaf5158b5813631baffa7051
+    lines:
+      Qtip32a: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Qtip32a
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: tip32a
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: groupsio-ltspice
+  name: TIP32A
+  def: model
+  hash: 307c021366bd4d526cbb11d5218e6f38bd933c30
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      TIP32A: [8721, 8721]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: TIP32A
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
+      sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
+- source: kicad-spice-library
+  name: TIP32A
+  def: subckt
+  hash: 13514cff2b7757b6e84cb2245500a1483fccbeda
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      TIP32A: [668, 677]
+    fetched: '2026-09-14'

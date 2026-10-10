@@ -1,0 +1,68 @@
+part: SN74LS00
+kind: logic
+priority: 4
+models:
+- source: ti
+  name: SN74LS00
+  def: subckt
+  hash: ad34244bb79480b6a33c94c70aeb462f0a84315d
+  type: SUBCKT
+  deps:
+  - LOGIC_FUNCTION_2_LVC_2i_NAND_PP_CMOS_SN74LS00
+  - LOGIC_ICC_LVC_2i_NAND_PP_CMOS_SN74LS00
+  - LOGIC_INPUT_LVC_2i_NAND_PP_CMOS_SN74LS00
+  - LOGIC_PP_OUTPUT_LVC_2i_NAND_PP_CMOS_SN74LS00
+  - TPD_LVC_2i_NAND_PP_CMOS_SN74LS00
+  - LOGIC_GATE_2PIN_OD_LVC_2i_NAND_PP_CMOS_SN74LS00
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SDLM060
+    member: SN74LS00.cir
+    archive_sha256: f5d1dba5bd1bd9995b5b715d3fc13171f224bbc8c06a1389675a512179635dd9
+    sha256: d123d035ef5a66f2ed72b789a566a9a604cde41571e25d13bace44488aeadb36
+    lines:
+      LOGIC_FUNCTION_2_LVC_2i_NAND_PP_CMOS_SN74LS00: [144, 159]
+      LOGIC_GATE_2PIN_OD_LVC_2i_NAND_PP_CMOS_SN74LS00: [43, 79]
+      LOGIC_ICC_LVC_2i_NAND_PP_CMOS_SN74LS00: [183, 191]
+      LOGIC_INPUT_LVC_2i_NAND_PP_CMOS_SN74LS00: [80, 143]
+      LOGIC_PP_OUTPUT_LVC_2i_NAND_PP_CMOS_SN74LS00: [173, 182]
+      SN74LS00: [37, 39]
+      TPD_LVC_2i_NAND_PP_CMOS_SN74LS00: [160, 172]
+    fetched: '2026-09-19'
+- source: kicad-spice-library
+  name: 74LS00
+  def: subckt
+  hash: cdadbc4e8e7dbac8e3db82fc00f51a068622b6b8
+  type: SUBCKT
+  pins:
+  - 1A
+  - 1B
+  - 1Y
+  - 'optional:'
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
+    sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
+    lines:
+      74LS00: [240, 250]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias 74LS00
+- source: kicad-spice-library
+  name: 74LS00
+  def: subckt
+  hash: 5abc3572ef3104fb840359a808d8e784f7bcbc39
+  type: SUBCKT
+  pins:
+  - in1
+  - in2
+  - out
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Digital%20Logic/74LS.LIB
+    sha256: 0a2ff4e3c383374b23688a26c5653c8324b1ec14e703ce604cfa201863e589ca
+    lines:
+      74LS00: [21, 29]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: found under the alias 74LS00

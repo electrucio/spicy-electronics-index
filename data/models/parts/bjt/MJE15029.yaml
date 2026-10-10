@@ -1,0 +1,74 @@
+part: MJE15029
+kind: bjt
+priority: 3
+group: driver_vas
+models:
+- source: onsemi
+  name: Qmje15029
+  def: model
+  hash: 6e9840dbe8cd3c030194f40fa865c3952739405c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mje15029.lib
+    sha256: 6abb59939acb016cee5f26ba93d6bd61dabd079162848351ab8f0e13c58bfec3
+    lines:
+      Qmje15029: [12, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: microcap12
+    name: Qmje15029
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: MJE15029
+  def: model
+  hash: 71ce24ebb1dfeb4f4048f9a2f273fd1b52adcf8f
+  type: PNP
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      MJE15029: [3619, 3626]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: MJE15029
+  def: model
+  hash: b71dcf7d0187b4962fdd1857cb7296197cb6b202
+  type: PNP
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      MJE15029: [3286, 3286]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: MJE15029
+  def: subckt
+  hash: 36ae0a1ee13db3e4b1d151980584732cb29a48b9
+  type: SUBCKT
+  pins:
+  - C
+  - B
+  - E
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      MJE15029: [470, 479]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from default order (unverified)
+datasheet:
+  url: https://www.onsemi.com/pdf/datasheet/mje15028-d.pdf
+  maker: onsemi
+  doc: MJE15028/D Rev. 8 (December 2024) - MJE15028, MJE15030 (NPN), MJE15029, MJE15031 (PNP)

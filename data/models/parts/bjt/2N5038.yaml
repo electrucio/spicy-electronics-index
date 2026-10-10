@@ -1,0 +1,52 @@
+part: 2N5038
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: Q2n5038
+  def: model
+  hash: d786c9fe4db2d9ce665c9b037c9a764a34f4407e
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n5038.lib
+    sha256: 050093320d124a773664965caba1d7c588782beb4999be4af0a92208144b841e
+    lines:
+      Q2n5038: [12, 22]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: Q2n5038
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: microcap12
+  name: 2N5038
+  def: model
+  hash: e251f8a07e70bbfb99f23cb5635da7e2141faaf6
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/mpbjt.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
+    lines:
+      2N5038: [217, 221]
+    fetched: '2026-09-21'
+- source: groupsio-ltspice
+  name: 2N5038
+  def: model
+  hash: a7612bebadbf71b29a3a143ed2464a3e4cb97063
+  type: NPN
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+    member: standard.bjt
+    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
+    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+    lines:
+      2N5038: [394, 394]
+    fetched: '2026-09-21'

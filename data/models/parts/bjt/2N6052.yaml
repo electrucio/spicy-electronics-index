@@ -1,0 +1,66 @@
+part: 2N6052
+kind: bjt
+priority: 3
+group: listed
+models:
+- source: onsemi
+  name: 2n6052
+  def: subckt
+  hash: f11f41484c0bca1eb2904ce5b28aac865d347622
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/2n6052.lib
+    sha256: b697e3c10d80940da295f827be7fd0d606f611c903257150d5267df0f42448d8
+    lines:
+      2n6052: [12, 50]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: 2n6052
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: ltwiki
+  name: Q2N6052
+  def: subckt
+  hash: d58f58db6043297c7ea21948817aa8ad4463d93b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/darlngtn.lib
+    sha256: 0de1690195b5e2d9dcb42c94c568925f18290582a58ea2de9f625028125725c6
+    lines:
+      Q2N6052: [1998, 2036]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 2N6052
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+  - source: bordodynov-qspice
+    name: 2N6052
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+  - source: bordodynov-qspice
+    name: 2N6052
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+  - source: kicad-spice-library
+    name: 2N6052
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+  - source: ltwiki
+    name: 2N6052
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586

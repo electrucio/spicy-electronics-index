@@ -1,0 +1,73 @@
+part: VO615A
+kind: opto
+priority: 4
+models:
+- source: microcap12
+  name: VO615A
+  def: subckt
+  hash: 2fe84168e72ae4d39b4d7fae0476e497c7a72663
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/VishayOpto.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 9b987f03000d4f793b271b55b9c75cd913596936cf1e0edc51a590c26243482e
+    lines:
+      VO615A: [10, 27]
+    fetched: '2026-09-21'
+- source: groups-io
+  name: VO615A
+  def: subckt
+  hash: fa9bc50b25189a9a4edd4773d71de8db61c2f8ef
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Opto/VO615A_test.zip
+    member: vo615a.lib
+    archive_sha256: e00d296b3212464afd2326878167729d554b2b7098cf44f2001a39042f274077
+    sha256: 284d98528c8556e88a7017bfa6abcca597cc0d752f0704a61c83367b20acb563
+    lines:
+      VO615A: [10, 27]
+    fetched: '2026-10-09'
+- source: bordodynov
+  name: VO615A
+  def: subckt
+  hash: ff75bc081d7d11c8d55f7bcc62d7cafa20caebf8
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  - C
+  - E
+  deps:
+  - Q1
+  verbatim: false
+  changes:
+  - caret_power
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      Q1: [16399, 16440]
+      VO615A: [2529, 2546]
+    fetched: '2026-09-14'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/OPTO/VO615A.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 7442ebf34ac279b7e766e901bb3628b39575cd4634851f5e9c1e1a0b1123cdbd
+  copies:
+  - source: kicad-spice-library
+    name: VO615A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: VO615A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

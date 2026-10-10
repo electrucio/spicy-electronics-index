@@ -1,0 +1,39 @@
+part: BZX55C5V1
+kind: zener
+priority: 2
+models:
+- source: microcap12
+  name: BZX55C5V1
+  def: subckt
+  hash: c55cc257eb8687ea7f2027810e4e4a46c2ba3fc6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/vishaydiode.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+    lines:
+      BZX55C5V1: [524, 540]
+    fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: bzx55c5v1
+  def: subckt
+  hash: 01200e9b5e2f67d53824192636818ad5cf78dc91
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+    sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+    lines:
+      bzx55c5v1: [1880, 1901]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit a868895
+  note: pins from comment words
+datasheet:
+  url: https://www.vishay.com/docs/85604/bzx55.pdf
+  maker: Vishay
+  doc: BZX55-Series, Document Number 85604, Rev. 2.0, 07-Nov-2024
