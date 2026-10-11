@@ -267,3 +267,114 @@ def test_two_files_of_one_name_keep_their_own_rows(trees, tmp_path):
     by_key = {r["key"]: r for r in rows(trees / "state/forum.csv")}
     assert by_key["https://forum.example/file?id=1"]["bytes"] == "11"
     assert by_key["https://forum.example/file?id=2"]["bytes"] == "12"
+
+
+def test_a_file_the_source_already_holds_is_not_taken_twice(delivery, trees):
+    """Taken again, the manifest's entry would move to the new copy and the old file would be left with
+    no record of itself. By URL, or by checksum under another name."""
+    I.ingest(delivery)
+    again = delivery.parent / "again"
+    (again / "tubes").mkdir(parents=True)
+    (again / "tubes" / "6SF5_koren.lib").write_text(".model X NPN(IS=1e-14)\n")          # same URL, same bytes
+    (again / "tubes" / "renamed.lib").write_text(".SUBCKT A 1 2\n.ENDS\n")              # same bytes, new name
+    (again / "tubes" / "new.lib").write_text(".model Y PNP(IS=2e-14)\n")
+    (again / "descargas.csv").write_text(
+        "source_id,pieza,fichero,url_descarga,url_pagina,fecha,estado,notas\n"
+        "tubes,6SF5,6SF5_koren.lib,https://v.example/6SF5_koren.lib,,2026-10-10,encontrado,\n"
+        "tubes,6Y6GA,renamed.lib,https://v.example/other.lib,,2026-10-10,encontrado,\n"
+        "tubes,6AQ5,new.lib,https://v.example/new.lib,,2026-10-10,encontrado,\n", encoding="utf-8")
+    I._held.clear()
+    counts = I.ingest(again)
+    assert counts["have:tubes"] == 2 and counts["into:tubes"] == 1
+    assert not (trees / "models/sources/tubes/raw/renamed.lib").exists()
+    from spicy_electronics_index.models.fetch import Manifest
+    assert Manifest("tubes").by_url("https://v.example/6SF5_koren.lib")["path"] == "raw/6SF5_koren.lib"
+    assert Manifest("tubes").by_url("https://v.example/other.lib") is None
+    assert Manifest("tubes").by_url("https://v.example/new.lib")["path"] == "raw/new.lib"
+    by_key = {r["key"]: r for r in rows(trees / "state/tubes.csv")}
+    assert by_key["part:6AQ5"]["status"] == "downloaded"           # the look-up is answered all the same
+
+
+def test_a_part_once_not_published_is_published_when_its_file_arrives(trees, tmp_path):
+    """A vendor's ledger says `part:X` was not published; a later round brings the file. The row cannot
+    say both: the skip reason goes when the file comes."""
+    led = I.ledger("vendor")
+    led.skip("part:BAT760", "not_published", part="BAT760", status="not_published")
+    led.save()
+    root = tmp_path / "round"
+    (root / "vendor").mkdir(parents=True)
+    (root / "vendor" / "BAT760.txt").write_text(".model BAT760 D(IS=1e-9)\n")
+    (root / "descargas.csv").write_text(
+        "source_id,pieza,fichero,url_descarga,url_pagina,fecha,estado,notas\n"
+        "vendor,BAT760,BAT760.txt,https://vendor.example/spice/BAT760.txt,,2026-10-10,encontrado,\n", encoding="utf-8")
+    I._held.clear()
+    I.ingest(root)
+    by_key = {r["key"]: r for r in rows(trees / "state/vendor.csv")}
+    assert by_key["part:BAT760"]["status"] == "downloaded" and by_key["part:BAT760"]["skip_reason"] == ""
+    assert by_key["https://vendor.example/spice/BAT760.txt"]["skip_reason"] == ""
+
+
+def test_a_file_offered_on_a_page_says_so(trees, tmp_path):
+    """No link of its own, only the page it is listed on: the manifest marks it, so the recipe can tell
+    its reader the link leads to the page and not to the file."""
+    root = tmp_path / "paged"
+    (root / "vendor").mkdir(parents=True)
+    (root / "vendor" / "a.txt").write_text(".model A D(IS=1e-9)\n")
+    (root / "vendor" / "b.txt").write_text(".model B D(IS=2e-9)\n")
+    (root / "vendor" / "c.txt").write_text(".model C D(IS=3e-9)\n")
+    (root / "descargas.csv").write_text(
+        "source_id,pieza,fichero,url_descarga,url_pagina,fecha,estado,notas\n"
+        "vendor,A,a.txt,,https://vendor.example/tools,2026-10-10,encontrado,\n"
+        "vendor,B,b.txt,,https://vendor.example/tools,2026-10-10,encontrado,\n"
+        "vendor,C,c.txt,https://vendor.example/c.txt,https://vendor.example/tools,2026-10-10,encontrado,\n",
+        encoding="utf-8")
+    I._held.clear()
+    I.ingest(root)
+    from spicy_electronics_index.models.fetch import Manifest
+    m = Manifest("vendor")
+    assert m.by_path("raw/a.txt")["page_only"] is True and m.by_path("raw/b.txt")["page_only"] is True
+    assert "page_only" not in m.by_path("raw/c.txt")
+    by_key = {r["key"]: r for r in rows(trees / "state/vendor.csv")}
+    assert by_key["manual:raw/a.txt"]["url"] == "https://vendor.example/tools"      # the page, shared, is no key
+    # the manifest keeps the shared page as the page, not as the file's URL, so the catalogue keys the
+    # file the way the ledger does (`manual:raw/a.txt`) and verify/reconcile find the row
+    assert m.by_path("raw/a.txt")["url"] == "" and m.by_path("raw/a.txt")["page"] == "https://vendor.example/tools"
+    from spicy_electronics_index.models.index import entry_paths
+    assert ("manual:raw/a.txt", "raw/a.txt") in entry_paths("vendor")
+
+
+def test_a_row_naming_a_path_finds_only_that_file(tmp_path):
+    root = tmp_path / "paths"
+    for d in ("p1", "p2"):
+        (root / "forum" / d).mkdir(parents=True)
+        (root / "forum" / d / "x.lib").write_text(f".model X_{d} NPN(IS=1e-14)\n")
+    (root / "descargas.csv").write_text(
+        "source_id,pieza,fichero,url_descarga,url_pagina,fecha,estado,notas\n"
+        "forum,X,p2/x.lib,https://forum.example/file?id=2,,2026-10-10,encontrado,\n", encoding="utf-8")
+    claimed, _ = I.claim(I.payload(root, root / "descargas.csv"), list(csv.DictReader(open(root / "descargas.csv"))))
+    assert [p.name for p in claimed] == ["x.lib"] and next(iter(claimed)).parent.name == "p2"
+
+
+def test_an_archive_is_opened_only_for_the_members_asked_for(trees, tmp_path):
+    """A vendor's library of every part it makes is kept whole, with its own checksum, and opened only
+    for the parts the index looks for."""
+    import zipfile
+    root = tmp_path / "lib"
+    (root / "vendor").mkdir(parents=True)
+    with zipfile.ZipFile(root / "vendor" / "all.zip", "w") as z:
+        z.writestr("all/sub/GRM.lib", ".SUBCKT GRM188 1 2\n.ENDS\n")
+        z.writestr("all/sub/GCM.lib", ".SUBCKT GCM188 1 2\n.ENDS\n")
+        z.writestr("all/sym/GRM188.asy", "Version 4\nSymType CELL\n")
+        z.writestr("all/sym/GCM188.asy", "Version 4\nSymType CELL\n")
+    (root / "descargas.csv").write_text(
+        "source_id,pieza,fichero,url_descarga,url_pagina,fecha,estado,notas,miembros\n"
+        "vendor,GRM188,all.zip,https://vendor.example/all.zip,,2026-10-10,encontrado,,*/sub/GRM.lib;*/sym/GRM188.asy\n",
+        encoding="utf-8")
+    I._held.clear()
+    counts = I.ingest(root)
+    out = trees / "models/sources/vendor/extracted/all"
+    assert counts["unpacked"] == 2
+    assert (out / "all/sub/GRM.lib").is_file() and (out / "all/sym/GRM188.asy").is_file()
+    assert not (out / "all/sub/GCM.lib").exists()
+    from spicy_electronics_index.models.fetch import Manifest
+    assert Manifest("vendor").by_url("https://vendor.example/all.zip")["path"] == "raw/all.zip"

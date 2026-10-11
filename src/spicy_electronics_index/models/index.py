@@ -48,7 +48,8 @@ NOT_MODELS = {".pdf", ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".svg", ".zip", "
               ".rar", ".exe", ".msi", ".dll", ".asy", ".html", ".htm", ".css", ".js", ".json", ".md",
               ".py", ".plt", ".raw", ".log", ".doc", ".docx", ".xls", ".xlsx", ".csv", ".ico", ".ttf",
               ".wav", ".mp3", ".xml", ".kicad_mod", ".kicad_sch", ".kicad_pcb", ".kicad_sym", ".olb",
-              ".opj"}
+              ".opj", ".ibs", ".stl", ".tsm", ".tsc", ".dsn", ".dwg", ".ppt", ".pptx", ".xlsm", ".s2p", ".s4p",
+              ".ini", ".lnk", ".mht", ".wxsch", ".step", ".stp"}
 
 RX_MODEL = re.compile(r"^\.model\s+(\S+)\s+(?:ako:\s*\S+\s+)?([A-Za-z_]+)\s*(.*)$", re.I)
 RX_SUBCKT = re.compile(r"^\.subckt\s+(\S+)\s*(.*)$", re.I)

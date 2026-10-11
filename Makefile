@@ -11,7 +11,7 @@ WEB_HOST ?= 0.0.0.0
 WEB_PORT ?= 8026
 
 .DEFAULT_GOAL := help
-.PHONY: vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
+.PHONY: models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
 
 help:  ## show this list
 	@echo "Spicy Electronics Index — make <target>"
@@ -59,6 +59,9 @@ models-index:  ## (maintainer) find every definition in the model sources, and s
 
 models-ingest:  ## (maintainer) take in a delivery gathered by hand, a zip or a folder; FROM=path [DRY=1]
 	$(RUN) sei models ingest $(FROM) $(if $(DRY),--dry,)
+
+models-deliver:  ## (maintainer) deliveries for ingest from a collection gathered in a browser; COLLECTION=folder [INTO=dir] [SOURCE='a b'] [CITED=1] [DRY=1]
+	$(RUN) sei models deliver $(COLLECTION) $(if $(INTO),--into $(INTO),) $(foreach s,$(SOURCE),--source $(s)) $(if $(CITED),--cited,) $(if $(DRY),--dry,)
 
 models-missing:  ## (maintainer) what the catalogue recorded that the sources no longer hold
 	$(RUN) sei models index --missing

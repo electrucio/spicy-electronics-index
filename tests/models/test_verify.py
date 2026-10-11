@@ -108,3 +108,19 @@ def test_what_could_never_have_been_a_model_is_counted_apart(tree):
 
     counts = V.look("acme")["counts"]
     assert counts["material"] == 1 and counts["lost"] == 1
+
+
+def test_a_file_keyed_by_its_path_is_not_unrecorded(tree):
+    """A file with no address of its own (listed on a page with others) is `manual:<path>` in the ledger
+    and carries the page, not a URL, in the manifest: the two agree, and verify must see that they do."""
+    rel = "raw/paged.lib"
+    (config.spice_source("acme") / rel).write_bytes(MODEL)
+    manifest = F.Manifest("acme")
+    manifest.add("", rel, MODEL, by_url=False, page_only=True, page="https://acme.example/tools")
+    manifest.save()
+    led = Ledger(config.model_state("acme"), stages=MODEL_STAGES, fields=MODEL_FIELDS, versioned=MODEL_VERSIONED)
+    led.stamp(f"manual:{rel}", "fetch", url="https://acme.example/tools", status="downloaded", bytes=len(MODEL),
+              sha256=hashlib.sha256(MODEL).hexdigest())
+    led.save()
+    counts = V.look("acme")["counts"]
+    assert counts["held"] == 1 and counts["unrecorded"] == 0

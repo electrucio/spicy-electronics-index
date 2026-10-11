@@ -702,6 +702,12 @@ def material_readme() -> Path:
     return material_root() / "README.md"
 
 
+def deliveries() -> Path:
+    """Deliveries made from a collection gathered by hand (`sei models deliver`), one folder per run,
+    each in the shape `sei models ingest` takes. In transit: once ingested, the files are in the model tree."""
+    return material_root() / "deliveries"
+
+
 # --- the map ----------------------------------------------------------------------------------------
 # name, visibility, sample arguments. `sei paths` prints this, and tests/core/test_config.py asserts
 # that each kind keeps to its side: public is committed and never git-ignored, built is in the checkout
@@ -822,6 +828,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("old_history", "private", ()),
     ("guard_extra_patterns", "private", ()),
     ("material_readme", "private", ()),
+    ("deliveries", "private", ()),
 )
 
 

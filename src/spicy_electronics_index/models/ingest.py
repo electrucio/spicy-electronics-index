@@ -30,7 +30,7 @@ import yaml
 
 from spicy_electronics_index.core.config import model_sources, model_state, spice_source
 from spicy_electronics_index.core.ledger import MODEL_FIELDS, MODEL_STAGES, MODEL_VERSIONED, Ledger
-from spicy_electronics_index.models.fetch import Manifest, unpack, unpack_base
+from spicy_electronics_index.models.fetch import Manifest, already_have, unpack, unpack_base
 
 # What a hand-written log says, and what it means for the ledger. `searched` is final: somebody looked
 # and there is nothing there for us, which is worth exactly as much as a file.
@@ -67,6 +67,13 @@ def real_url(value: str) -> str:
     return "" if PRIVATE_QUERY.search(url) else url
 
 
+def wanted_members(row: dict | None) -> list[str] | None:
+    """The members to open an archive for, when the log's `miembros` column names them: shell patterns
+    over the member path, separated by `;`. Empty or absent means every member, as before."""
+    cell = ((row or {}).get("miembros") or "").strip()
+    return [m.strip() for m in cell.split(";") if m.strip()] or None if cell else None
+
+
 def piece_name(piece: str) -> str:
     """The part a row is about, as a name rather than a sentence about it."""
     first = re.sub(r"\s*\(.*", "", piece).strip().split(",")[0].strip()   # drop the commentary
@@ -99,10 +106,8 @@ def claim(files: list[Path], rows: list[dict]) -> tuple[dict[Path, dict], set[in
     even though only the first is recorded as that file's provenance.
     """
     by_name: dict[str, list[Path]] = {}
-    by_path: dict[str, Path] = {}
     for p in files:
         by_name.setdefault(p.name, []).append(p)
-        by_path[p.as_posix()] = p
     out: dict[Path, dict] = {}
     satisfied: set[int] = set()
     for r in rows:
@@ -112,9 +117,12 @@ def claim(files: list[Path], rows: list[dict]) -> tuple[dict[Path, dict], set[in
         written = [seg.strip() for seg in re.split(r"[;\n]", cell) if seg.strip()]
         written += re.findall(r"[\w./+-]+\.\w{1,6}", cell)
         for w in dict.fromkeys(written):
-            # a path names one file (two posts may each carry an "SA571.zip"); a bare name, any of them
-            exact = [p for k, p in by_path.items() if "/" in w and k.endswith("/" + w.strip("/"))]
-            for p in exact or by_name.get(Path(w).name, []):
+            # a path names one file (two posts may each carry an "SA571.zip"); a bare name, any of them.
+            # A path ends in its own base name, so only the files of that name need looking at: a
+            # delivery of forty thousand files against as many rows is otherwise read whole, per row.
+            named = by_name.get(Path(w).name, [])
+            exact = [p for p in named if "/" in w and p.as_posix().endswith("/" + w.strip("/"))]
+            for p in exact or named:
                 out.setdefault(p, r)
                 satisfied.add(id(r))
     return out, satisfied
@@ -148,6 +156,22 @@ def ledger(source: str) -> Ledger:
     return Ledger(model_state(source), stages=MODEL_STAGES, fields=MODEL_FIELDS, versioned=MODEL_VERSIONED)
 
 
+_held: dict[str, dict[str, str]] = {}
+
+
+def held_checksums(source: str) -> dict[str, str]:
+    """sha256 -> path of every file the source's manifests already list, read once per run.
+
+    A source may keep more than one manifest (Vishay's catalogues each have their own), so all of
+    them are asked; `index.manifests` knows where they are.
+    """
+    if source not in _held:
+        from spicy_electronics_index.models.index import manifests, under
+        _held[source] = {f["sha256"]: under(folder, f.get("path") or "")
+                         for folder, man in manifests(source) for f in man.get("files", []) if f.get("sha256")}
+    return _held[source]
+
+
 def ingest(root: Path, dry: bool = False) -> dict:
     log = find_log(root)
     rows = list(csv.DictReader(open(log, encoding="utf-8"))) if log else []
@@ -160,6 +184,11 @@ def ingest(root: Path, dry: bool = False) -> dict:
 
     def row_url(r: dict | None) -> str:
         return real_url((r or {}).get("url_descarga", "")) or real_url((r or {}).get("url_pagina", ""))
+
+    def page_only(r: dict | None) -> bool:
+        """The row gives the page the file is offered on, not the file: a reader sent there will not
+        land on the file, and the recipe has to say so."""
+        return bool(r) and not real_url(r.get("url_descarga", "")) and bool(real_url(r.get("url_pagina", "")))
 
     # A log often gives several files the page they were listed on rather than an address of their own
     # (a forum folder, a product table). Such an address names none of them: keyed by it, each file would
@@ -175,11 +204,17 @@ def ingest(root: Path, dry: bool = False) -> dict:
         url = row_url(row)
         key = f"manual:{rel}" if (not url or url in shared) else url
         counts["files"] += 1
+        data = p.read_bytes()
+        # A file the source already holds is not taken twice: by its URL (`already_have`, which also
+        # checks the bytes are still there) or by its checksum under any name. Taking it again would
+        # move the manifest's entry to the new copy and leave the old file with no record of itself.
+        if (url and already_have(source, url)) or held_checksums(source).get(hashlib.sha256(data).hexdigest()):
+            counts[f"have:{source}"] += 1
+            continue
         if dry:
             counts[f"into:{source}"] += 1
             continue
 
-        data = p.read_bytes()
         target = spice_source(source) / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(p, target)
@@ -189,16 +224,22 @@ def ingest(root: Path, dry: bool = False) -> dict:
         # downloads for exactly this reason; a hand-gathered delivery has to be treated the same.
         if data[:2] == b"PK":
             try:
-                counts["unpacked"] += unpack(target, spice_source(source) / unpack_base(target, source))
+                counts["unpacked"] += unpack(target, spice_source(source) / unpack_base(target, source),
+                                             only=wanted_members(row))
             except (zipfile.BadZipFile, OSError):
                 counts["unpack_failed"] += 1
 
         m = manifests.setdefault(source, Manifest(source))
-        m.add(url, rel, data, (row or {}).get("notas", "")[:200],    # the manifest is private: prose is fine here
-              by_url=url not in shared)
+        # A URL several files share is the page they were listed on, not any one of them: the ledger keys
+        # such a file by its path, and the manifest keeps the page as `page` so the two agree on the key.
+        m.add("" if url in shared else url, rel, data, (row or {}).get("notas", "")[:200],   # private: prose is fine
+              by_url=url not in shared, page_only=page_only(row), page=url if url in shared else None,
+              fetched=(row or {}).get("fecha", "")[:10] if re.match(r"\d{4}-\d{2}-\d{2}", (row or {}).get("fecha", "")) else None)
         led = ledgers.setdefault(source, ledger(source))
+        # `skip_reason` is cleared: a part looked up before and recorded as not published may be
+        # answered by this very file, and a row saying both "downloaded" and "not published" says nothing.
         led.stamp(key, "fetch", url="" if url == key else url, status="downloaded", bytes=len(data),
-                  sha256=hashlib.sha256(data).hexdigest())
+                  sha256=hashlib.sha256(data).hexdigest(), skip_reason="")
         counts[f"into:{source}"] += 1
 
     # What was looked for and not found is worth keeping: it is what stops the search being repeated.
@@ -217,7 +258,8 @@ def ingest(root: Path, dry: bool = False) -> dict:
                 if partial:
                     led.skip(f"part:{answered}", "searched", url=row_url(r), part=answered, status="searched")
                 else:
-                    led.stamp(f"part:{answered}", "fetch", part=answered, status="downloaded", url=row_url(r))
+                    led.stamp(f"part:{answered}", "fetch", part=answered, status="downloaded", url=row_url(r),
+                              skip_reason="")
                     found_here.add((r["source_id"], answered))
             counts["outcome:answered_partly" if partial else "outcome:answered"] += 1
             continue

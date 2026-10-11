@@ -40,6 +40,13 @@ def main(argv: list[str] | None = None) -> int:
     mig = mod.add_parser("ingest", help="take in a delivery gathered by hand: its files and what was not found")
     mig.add_argument("path", help="a zip or a directory")
     mig.add_argument("--dry", action="store_true", help="say what would happen and change nothing")
+    mdl = mod.add_parser("deliver", help="turn a collection gathered in a browser into deliveries for `ingest`")
+    mdl.add_argument("collection", help="the folder the browser round left: tars, zips, MANIFEST.tsv")
+    mdl.add_argument("--into", help="where to write the deliveries (default: the private deliveries folder, dated)")
+    mdl.add_argument("--source", action="append", help="only these sources (repeatable)")
+    mdl.add_argument("--dry", action="store_true", help="count what would be delivered and write nothing")
+    mdl.add_argument("--list", action="store_true", help="name the sources this knows and stop")
+    mdl.add_argument("--cited", action="store_true", help="only the files and archive members the recipes cite")
     mv = mod.add_parser("verify", help="whether this tree still holds every model file it was given")
     mv.add_argument("--source", action="append", help="only these sources (repeatable)")
     mv.add_argument("--repair", action="store_true", help="fetch back what is lost or no longer matches")
@@ -317,6 +324,15 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "models" and args.mod_cmd == "ingest":
         from spicy_electronics_index.models import ingest as model_ingest
         return model_ingest.main([args.path] + (["--dry"] if args.dry else []))
+
+    if args.cmd == "models" and args.mod_cmd == "deliver":
+        from spicy_electronics_index.models import deliver as model_deliver
+        argv2 = [args.collection] + (["--into", args.into] if args.into else [])
+        argv2 += [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        argv2 += ["--dry"] if args.dry else []
+        argv2 += ["--list"] if args.list else []
+        argv2 += ["--cited"] if args.cited else []
+        return model_deliver.main(argv2)
 
     if args.cmd == "models" and args.mod_cmd == "match":
         from spicy_electronics_index.models import match as model_match

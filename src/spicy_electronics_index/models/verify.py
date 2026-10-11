@@ -93,7 +93,8 @@ def look(source: str) -> dict:
         else:
             counts["held"] += 1
 
-    known = {e["url"] for e in entries}
+    # a file with no address of its own is keyed by its path in both records (`manual:<path>`)
+    known = {e["url"] for e in entries} | {f"manual:{e['path']}" for e in entries if e.get("path")}
     for row in led.rows.values():
         if row["key"].startswith("part:") or row["status"] != "downloaded" or row["key"] in known:
             continue

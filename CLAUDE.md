@@ -80,5 +80,6 @@ commit. Python ≥ 3.11, run through `uv`.
 - **New wanted parts**: `data/models/wanted.yaml` (by hand) or `data/parts/wanted.csv` (generated lists),
   then `make models-match models-found models-promote`.
 - **A hand-gathered delivery** (a browser round): `make models-ingest FROM=<zip> DRY=1`, then without `DRY`.
+- **A collection gathered in a browser** (a folder of vendor archives with a `MANIFEST.tsv`): `make models-deliver COLLECTION=<folder> DRY=1` turns it into one delivery per source, with each file's address worked out from the vendor's own URL pattern (`models/deliver.py: SPECS`); then `models-ingest` per source. `CITED=1` delivers only the files and archive members the published recipes cite, which is how the private tree is kept to what the index can point a reader at.
 
 Effort is estimated as "Claude sessions + waiting time", never person-days.

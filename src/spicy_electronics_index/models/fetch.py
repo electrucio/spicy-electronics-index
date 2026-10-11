@@ -14,6 +14,7 @@ a URL to the local file it became, with its checksum — it is the only place th
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import hashlib
 import json
 import os
@@ -101,11 +102,19 @@ class Manifest:
     def by_path(self, rel: str) -> dict | None:
         return next((f for f in self.files if (f.get("path") or "") == rel), None)
 
-    def add(self, url: str, rel: str, data: bytes, note: str = "", by_url: bool = True) -> dict:
+    def add(self, url: str, rel: str, data: bytes, note: str = "", by_url: bool = True,
+            page_only: bool = False, page: str | None = None, fetched: str | None = None) -> dict:
         """Record a file. An entry already holding this URL is updated, unless the URL is only the page
-        several files were listed on (`by_url=False`): then each file is its own entry, found by path."""
+        several files were listed on (`by_url=False`): then each file is its own entry, found by path.
+        `page_only` says the URL is that page and not the file, which the recipe then tells its reader;
+        `page` is that page when the file has no URL at all, so the ledger keys the file by its path
+        (`manual:`) and the catalogue still knows where a reader is sent."""
         entry = {"url": url, "path": rel, "sha256": hashlib.sha256(data).hexdigest(),
-                 "bytes": len(data), "note": note, "fetched": date.today().isoformat()}
+                 "bytes": len(data), "note": note, "fetched": fetched or date.today().isoformat()}
+        if page_only:
+            entry["page_only"] = True
+        if page:
+            entry["page"] = page
         old = (self.by_url(url) if by_url else None) or self.by_path(rel)
         if old:
             old.update(entry)
@@ -175,12 +184,19 @@ def unpack_base(archive: Path, source: str, expected: set[str] | None = None) ->
     return stem_base
 
 
-def unpack(archive: Path, into: Path) -> int:
-    """Unpack an archive, never writing outside `into`. Returns the number of files written."""
+def unpack(archive: Path, into: Path, only: list[str] | None = None) -> int:
+    """Unpack an archive, never writing outside `into`. Returns the number of files written.
+
+    `only` names the members wanted, as shell patterns over the member's path: a vendor's library of
+    every part it makes is kept whole, with its own checksum, and opened only for the parts the index
+    looks for. The rest stays in the archive, where a later round can open it.
+    """
     n = 0
     into.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(archive) as z:
         for member in members(archive):
+            if only is not None and not any(fnmatch.fnmatchcase(member, pat) for pat in only):
+                continue
             target = into / member
             target.parent.mkdir(parents=True, exist_ok=True)
             if target.exists() and not os.access(target, os.W_OK):
