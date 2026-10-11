@@ -174,6 +174,15 @@ def main(argv: list[str] | None = None) -> int:
     sr.add_argument("--dry", action="store_true", help="say what would go and delete nothing")
     sr.add_argument("--all-kinds", action="store_true",
                     help="release the CAD sources too, which are kept by default")
+    sdi = sch.add_parser("dump-index", help="write what the index database holds that nothing else does, as CSV")
+    sdi.add_argument("folder", help="where to write the tables")
+    sdi.add_argument("--db", help="the database to read (default: the project's index.sqlite)")
+    sri = sch.add_parser("restore-index", help="build the index database again from a dump and the OCR on disk")
+    sri.add_argument("folder", help="the folder written by `dump-index`")
+    sri.add_argument("--into", help="where to write the database (default: where the project keeps it)")
+    sri.add_argument("--workers", type=int, default=12, help="how many processes read the OCR at once")
+    sri.add_argument("--limit", type=int, default=0, help="read the OCR of at most this many documents (a trial)")
+    sri.add_argument("--no-text", action="store_true", help="load the tables only; no page text, no search index")
     sr = sch.add_parser("reindex", help="read the corpus again with the current extractor, from the OCR on disk")
     sr.add_argument("--source", action="append", help="only these sources (repeatable)")
     sr.add_argument("--limit", type=int, default=0, help="at most this many documents")
@@ -502,6 +511,18 @@ def main(argv: list[str] | None = None) -> int:
         argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
         argv2 += ["--dry"] if args.dry else []
         return sch_prune.main(argv2)
+
+    if args.cmd == "schematics" and args.sch_cmd == "dump-index":
+        from spicy_electronics_index.schematics import restore_index
+        return restore_index.main_dump([args.folder] + (["--db", args.db] if args.db else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "restore-index":
+        from spicy_electronics_index.schematics import restore_index
+        argv2 = [args.folder, "--workers", str(args.workers)]
+        argv2 += ["--into", args.into] if args.into else []
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--no-text"] if args.no_text else []
+        return restore_index.main(argv2)
 
     if args.cmd == "schematics" and args.sch_cmd == "reindex":
         from spicy_electronics_index.schematics import reindex as sch_reindex

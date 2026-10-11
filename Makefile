@@ -11,7 +11,7 @@ WEB_HOST ?= 0.0.0.0
 WEB_PORT ?= 8026
 
 .DEFAULT_GOAL := help
-.PHONY: models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
+.PHONY: schematics-dump-index schematics-restore-index models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
 
 help:  ## show this list
 	@echo "Spicy Electronics Index — make <target>"
@@ -316,6 +316,12 @@ schematics-deliver:  ## (maintainer) take in an archive gathered by hand as a so
 
 schematics-ingest:  ## (maintainer) put what has been read into the index database; [SOURCE='a b'] [LIMIT=n] [DRY=1]
 	$(RUN) sei schematics ingest $(foreach s,$(SOURCE),--source $(s)) $(if $(LIMIT),--limit $(LIMIT)) $(if $(DRY),--dry)
+
+schematics-dump-index:  ## (maintainer) write the index tables the OCR cannot give back, as CSV; TO=<folder>
+	$(RUN) sei schematics dump-index $(TO)
+
+schematics-restore-index:  ## (maintainer) build index.sqlite again from a dump and the OCR; FROM=<folder> [INTO=path] [WORKERS=n] [LIMIT=n] [NOTEXT=1]
+	$(RUN) sei schematics restore-index $(FROM) $(if $(INTO),--into $(INTO)) $(if $(WORKERS),--workers $(WORKERS)) $(if $(LIMIT),--limit $(LIMIT)) $(if $(NOTEXT),--no-text)
 
 schematics-reindex:  ## (maintainer) read the corpus again with the current extractor; [SOURCE='a b'] [WORKERS=n]
 	uv run sei schematics reindex $(foreach s,$(SOURCE),--source $(s)) $(if $(WORKERS),--workers $(WORKERS)) $(if $(LIMIT),--limit $(LIMIT)) $(if $(DRY),--dry)
