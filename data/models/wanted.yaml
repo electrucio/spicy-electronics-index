@@ -885,3 +885,23 @@ smps:
   - {part: UC3845, priority: 3}
   - {part: SG3525, priority: 3}
   - {part: LM3524, priority: 2}
+
+# Passives are not what this index is for: between 20 Hz and 20 kHz a film capacitor or a resistor is
+# close to the ideal element, and what matters (an electrolytic's ESR, a core's saturation) is modelled
+# by hand. A few exemplary parts are listed all the same, so the site can say which makers publish
+# models of this kind, in what form (a library per series, one encrypted file per part) and for which
+# simulators, with one real part per family to show it. Chosen as what a hobbyist actually buys: the
+# 0603 100 nF X7R and 0805 10 µF X5R decoupling capacitors, a polymer electrolytic, a supply-rail
+# ferrite bead, a 100 µH shielded power inductor. Aliases are the names the makers' files publish them
+# under; of a maker's library only what these recipes cite is held. Makers whose every model is encrypted
+# (TDK, Taiyo Yuden) are not listed: nothing of theirs can be read, so there would be no recipe.
+capacitor:
+  - {part: GRM188R71H104KA93, priority: 3, note: "Murata 0603 100 nF X7R 50 V, the decoupling capacitor of every build; a static library per series and a dynamic (DC bias, temperature) model per part"}
+  - {part: GRM21BR61E106KA73, priority: 3, note: "Murata 0805 10 µF X5R 25 V"}
+  - {part: CL10B104KB8NFN, priority: 3, aliases: [CL10B104KB8NFN_Precise_DC0V_25degC], note: "Samsung Electro-Mechanics 0603 100 nF X7R 50 V; one encrypted model per part, for LTspice and PSpice"}
+  - {part: CL21A106KACLRN, priority: 3, aliases: [CL21A106KACLRN_Precise_DC0V_25degC], note: "Samsung Electro-Mechanics 0805 10 µF X5R 25 V; encrypted"}
+  - {part: GYB1E101MCQ1GS, priority: 3, note: "Nichicon 100 µF 25 V conductive-polymer aluminium, the one Nichicon family with models; the wet audio series have none"}
+inductor:
+  - {part: 742792040, priority: 3, aliases: [0805_742792040_600ohm], note: "Würth WE-CBF 0805 600 Ω ferrite bead, the supply-rail bead"}
+  - {part: 7447713101, priority: 3, aliases: [1030_7447713101_100u], note: "Würth WE-PD 100 µH shielded power inductor"}
+  - {part: MSS1260-104, priority: 3, aliases: [MSS1260-104_freq, MSS1260-104_imp], note: "Coilcraft MSS1260 100 µH shielded power inductor; published twice, fitted by frequency and by impedance"}

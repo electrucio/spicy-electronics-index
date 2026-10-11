@@ -35,6 +35,16 @@ CASES = [
     ("microcap12", "sources/microcap12/extracted/mc12cd/lbr_txt/msbjt_lbr.lib", "microcap12", O.SIMULATOR),
     ("robrobinette", "sources/robrobinette/extracted/Bassman/Koren_Tubes.INC", "koren", O.MODELLER),
     ("some-new-source", "sources/some-new-source/raw/x.lib", "some-new-source", O.COLLECTION),
+    # the browser round of 2026-10-10
+    ("mcc", "sources/mcc/extracted/1N4148W/1N4148W.lib", "mcc", O.VENDOR),
+    ("taiwan-semi", "sources/taiwan-semi/raw/SPICE/1N4148WS.TXT", "taiwan-semi", O.VENDOR),
+    ("panjit", "sources/panjit/extracted/PANJIT_SPICE_Models/01. MOSFET/2N7002K.txt", "panjit", O.VENDOR),
+    ("samsung-electro-mechanics", "sources/samsung-electro-mechanics/extracted/Samsung_LTSPICE_Static_Library/sub/MLCC/General/x.mod",
+     "samsung-electro-mechanics", O.VENDOR),
+    ("fotoelektronika", "sources/fotoelektronika/extracted/1R5T/1R5T.lib", "fotoelektronika", O.MODELLER),
+    ("tdsl-cigna", "sources/tdsl-cigna/extracted/tdsl_tubes_spice/12AX7.inc", "tdsl-cigna", O.MODELLER),
+    ("stmicro", "sources/stmicro/raw/tl072.txt", "stmicro", O.VENDOR),
+    ("stmicro", "sources/stmicro/raw/power-transistors/spice_model/bd139_spice.txt", "stmicro", O.VENDOR),
 ]
 
 
@@ -53,6 +63,21 @@ def test_a_mirror_of_an_archive_ranks_after_the_archives_own_home():
     assert O.origin("ltwiki", "sources/ltwiki/extracted/Standard/Standard/standard.bjt")["mirror"]
     assert not O.origin("ltwiki", "sources/ltwiki/extracted/LargeCollection/LargeCollection/LTspiceIV/lib/cmp/standard.bjt")["mirror"]
     assert F.rank("groupsio-ltspice", "sources/groupsio-ltspice/extracted/Standard/standard.bjt") < F.rank("ltwiki", "sources/ltwiki/extracted/Standard/Standard/standard.bjt")
+
+
+def test_a_vendor_file_mirrored_by_ltwiki_ranks_after_the_vendors_own():
+    from spicy_electronics_index.models import found as F
+    assert O.origin("stmicro", "sources/stmicro/raw/tl072.txt")["mirror"]
+    assert not O.origin("stmicro", "sources/stmicro/raw/amplifiers-and-comparators/spice_model/tl07x_family.zip")["mirror"]
+    assert not O.origin("stmicro", "sources/stmicro/extracted/tl07x_family/tl072.lib")["mirror"]
+    assert (F.rank("stmicro", "sources/stmicro/extracted/tl07x_family/tl072.lib")
+            < F.rank("stmicro", "sources/stmicro/raw/tl072.txt"))
+
+
+def test_every_registered_vendor_of_the_round_has_a_rank_and_a_class():
+    from spicy_electronics_index.models import found as F
+    for s in ("mcc", "taiwan-semi", "panjit", "fotoelektronika", "tdsl-cigna", "samsung-electro-mechanics"):
+        assert s in F.RANK and s in O.SOURCE_CLASS
 
 
 def test_the_classes_run_from_the_maker_to_the_aggregate():

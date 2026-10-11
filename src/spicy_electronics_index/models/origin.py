@@ -48,12 +48,14 @@ SOURCE_CLASS = {
                      "central-semi", "linear-systems", "interfet", "stmicro", "exicon", "microchip", "renesas",
                      "nisshinbo", "sanken", "onsemi-ic", "adi", "nichia", "thatcorp", "littelfuse", "aos",
                      "broadcom", "coilcraft", "kemet", "mps", "murata", "nichicon", "panasonic", "richtek",
-                     "tdk", "torex", "wurth", "advanced-photonix"), VENDOR),
+                     "tdk", "torex", "wurth", "advanced-photonix",
+                     # the browser round of 2026-10-10
+                     "mcc", "taiwan-semi", "panjit", "samsung-electro-mechanics"), VENDOR),
     **dict.fromkeys(("ltspice-native", "qspice", "microcap12"), SIMULATOR),
     **dict.fromkeys(("cordell", "reefman", "ayumi", "duncanamps", "koren", "suusi-tubes", "germaniumbjts",
                      "hagtech", "andyc", "viva-analog", "cohen-helie", "dempwolf", "tedyapo-led-modeling",
                      "z101-led-spice-model", "germanium-apm", "immler", "kurtblum", "electrucio", "tamivox",
-                     "robrobinette", "electrucio-updates"), MODELLER),
+                     "robrobinette", "electrucio-updates", "fotoelektronika", "tdsl-cigna"), MODELLER),
     **dict.fromkeys(("diyaudio", "diyaudio-germanio", "diyaudio-tubos-valvulas", "diyaudio-chips",
                      "diyaudio-autores", "diystompboxes", "groups-io", "spiceypedals", "gist-chanmix51",
                      "freestompboxes", "electrosmash", "preamp-org", "audio-effects-ltspice",
@@ -164,6 +166,9 @@ MIRRORS = [
     (L, r"^(raw/bordodynov/|lib/lib/|cmp/cmp/|example/examples/)"),   # Bordodynov's archives, as ltwiki hosts them
     (L, r"^Standard/"),                                              # the LTspice group's Standard.zip
     (K, r"/Bordodynovs Electronics Lib/"),
+    # ST's 1993 standard-linear set as ltwiki hosts it: fourteen flat text files fetched before st.com
+    # answered; what came from st.com itself sits in zips and in the product-page folders
+    (frozenset({"stmicro"}), r"^raw/[a-z0-9]+\.txt$"),
 ]
 MIRRORED = [(srcs, re.compile(rx, re.I)) for srcs, rx in MIRRORS]
 

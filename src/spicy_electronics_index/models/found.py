@@ -47,13 +47,14 @@ from spicy_electronics_index.models.index import embedded, model_text
 # missing from the list ranks after all of them.
 SOURCE_RANK = [
     "onsemi", "nexperia", "nxp", "ti", "infineon", "vishay", "rohm", "toshiba",
-    "diodes-inc", "central-semi", "linear-systems", "interfet", "stmicro", "exicon",
+    "diodes-inc", "taiwan-semi", "panjit", "central-semi", "mcc", "linear-systems", "interfet", "stmicro", "exicon",
     "microchip", "renesas", "nisshinbo", "sanken", "onsemi-ic", "adi", "nichia",
+    "murata", "samsung-electro-mechanics", "tdk", "wurth", "coilcraft", "nichicon", "panasonic",
     "ltspice-native",
     # vendor libraries as another party distributed them: OrCAD's 1990s set on the Spice Model CD, and
     # the libraries Micro-Cap and QSPICE install
     "spice-model-cd", "microcap12", "qspice",
-    "cordell", "reefman", "ayumi", "duncanamps", "koren", "suusi-tubes",
+    "cordell", "reefman", "ayumi", "duncanamps", "tdsl-cigna", "fotoelektronika", "koren", "suusi-tubes",
     "germaniumbjts", "hagtech", "andyc", "viva-analog", "cohen-helie", "dempwolf",
     "tedyapo-led-modeling", "z101-led-spice-model", "electrucio-updates",
     "germanium-apm", "groupsio-ltspice", "ltwiki", "bordodynov", "bordodynov-qspice", "kicad-spice-library",
@@ -336,6 +337,8 @@ def provenance(root: Path, file: str, source: str, sha256: str) -> dict:
                 prov["archive"] = {"path": best.get("path"), "url": best.get("url"),
                                    "sha256": best.get("sha256")}
                 prov["url"] = best.get("url") or best.get("page")
+                if best.get("page_only"):       # the archive was offered on that page, not linked by itself
+                    prov["url_is_source_page"] = True
                 if best.get("fetched"):
                     prov["fetched"] = best["fetched"]
             return prov
