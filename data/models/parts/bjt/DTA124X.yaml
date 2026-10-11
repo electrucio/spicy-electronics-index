@@ -3,36 +3,84 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
+- source: rohm
   name: DTA124XE
   def: subckt
   hash: 556e957f821c59d5e7f3be2a965bd4c0e0ab4c75
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta124xe_spice.zip
+    member: dta124xe.lib
+    archive_sha256: 376b944a0e21fdb314287bd662318f1fefc8c2d87bb184adeb5105f67ec21e7d
+    sha256: 594f14b1f583892a9979c9770aada172ec4c2452b858228f8426d102c4730660
     lines:
-      DTA124XE: [27945, 27979]
-    fetched: '2026-09-21'
+      DTA124XE: [5, 39]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTA124XE
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA124XE
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta124xe_ltspice.zip
+      member: dta124xe_ltspice/dta124xe_ltspice.lib
+      sha256: 594f14b1f583892a9979c9770aada172ec4c2452b858228f8426d102c4730660
   - source: microcap12
     name: DTA124XKA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA124XKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta124xka_ltspice.zip
+      member: dta124xka_ltspice/dta124xka_ltspice.lib
+      sha256: ebcff2131da248081c90b75383b1b49db58f78671e943ec41e1f4bfc3513e88e
+  - source: rohm
+    name: DTA124XKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta124xka_spice.zip
+      member: dta124xka.lib
+      sha256: ebcff2131da248081c90b75383b1b49db58f78671e943ec41e1f4bfc3513e88e
   - source: microcap12
     name: DTA124XM
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA124XM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta124xm_spice.zip
+      member: dta124xm.lib
+      sha256: 24c57e1767a82337618a9a174a75a4e358521eb530dc5279fc282f766f7d8350
+  - source: rohm
+    name: DTA124XM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta124xm_ltspice.zip
+      member: dta124xm_ltspice/dta124xm_ltspice.lib
+      sha256: 24c57e1767a82337618a9a174a75a4e358521eb530dc5279fc282f766f7d8350
+  - source: rohm
+    name: DTA124XM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTA124XMHZG_SPICE.zip
+      member: DTA124XMHZG_SPICE/dta124xmhzg_SPICE.lib
+      sha256: 24c57e1767a82337618a9a174a75a4e358521eb530dc5279fc282f766f7d8350
   - source: microcap12
     name: DTA124XUA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA124XEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTA124XEB_SPICE.zip
+      member: DTA124XEB_SPICE/DTA124XEB.lib
+      sha256: e61fcd903d4e498a8a29215b9bd409ab046280488c880cb4217bf3c1d847bce3

@@ -3,17 +3,40 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: onsemi
   name: 2n6668
   def: subckt
   hash: 42f0bc7a3efb630bb5cc593cc732a38c98adfa63
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/on_bjt.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+    url: https://www.onsemi.com/download/models/lib/2n6668.lib
+    sha256: 7b4caf585cdd22b74c8ab67d3d06beb1fcef85b4b2442b77e0c90c73b1efc30d
     lines:
-      2n6668: [5161, 5199]
-    fetched: '2026-09-21'
+      2n6668: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2n6668
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: X2n6668
+  def: subckt
+  hash: 9841c8c3e731deaa693a8658770a1c4eea6ba74b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/2n6668.sp2
+    sha256: 8c7e1bc85125211c4f06c900d14e19fd6e4b45ee8d1e2ea9baf9229326692fa8
+    lines:
+      X2n6668: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: 2n6668
+    get:
+      url: https://www.onsemi.com/download/models/sp3/2n6668.sp3
+      sha256: 00c370b95d540c25bccc5b24098e7168d0bf647eb67c679f5bdaa2327000f917

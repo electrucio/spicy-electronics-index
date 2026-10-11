@@ -38,14 +38,14 @@ models:
   - source: bordodynov-qspice
     name: LM741
     get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Library/Opamp/LM741.qsym
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/Opamp/LM741.qsym
       sha256: 4d5895cd13a12259efbd5fe7b01d295584d4e315dd677d65b0c4cf98493d8ab9
   - source: bordodynov-qspice
     name: LM741
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/Opamp/LM741.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/Opamp/LM741.qsym
       sha256: 4d5895cd13a12259efbd5fe7b01d295584d4e315dd677d65b0c4cf98493d8ab9
   - source: kicad-spice-library
     name: LM741
@@ -55,9 +55,15 @@ models:
   - source: ltwiki
     name: LM741
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/LM741.lib
-      sha256: b962f54f7bf406ddad42e00df533e886a04847d18173b38eec521070b62f662c
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+  - source: ltwiki
+    name: LM741
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
   - source: ltwiki
     name: LM741
     get:
@@ -73,21 +79,9 @@ models:
   - source: ltwiki
     name: LM741
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
-  - source: ltwiki
-    name: LM741
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
-  - source: bordodynov
-    name: LM741/NS
-    get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+      member: lib/sub/LM741.lib
+      sha256: b962f54f7bf406ddad42e00df533e886a04847d18173b38eec521070b62f662c
   - source: bordodynov
     name: LM741/NS
     get:
@@ -98,18 +92,24 @@ models:
     name: LM741/NS
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: bordodynov
+    name: LM741/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/LM741.MOD
       sha256: cf20f011142c5278034cf43d623d87c28682738f3e9bc1da26c4563f0d8ed24b
   - source: kicad-spice-library
     name: LM741/NS
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: kicad-spice-library
     name: LM741/NS
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
   - source: kicad-spice-library
     name: LM741/NS
     get:
@@ -128,14 +128,21 @@ models:
   - source: ltwiki
     name: LM741/NS
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: LM741/NS
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
       sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: LM741/NS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/LM2902_AB/GeneratorLM741.cir
+      sha256: 0531c1b2422370d71b3e0458441bbe53a8ebd35a3b1e69b93b81cc1b15b708c8
   - source: ltwiki
     name: LM741/NS
     get:
@@ -146,26 +153,19 @@ models:
     name: LM741/NS
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: LM741/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/LM741.MOD
       sha256: cf20f011142c5278034cf43d623d87c28682738f3e9bc1da26c4563f0d8ed24b
   - source: ltwiki
     name: LM741/NS
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/LM2902_AB/GeneratorLM741.cir
-      sha256: 0531c1b2422370d71b3e0458441bbe53a8ebd35a3b1e69b93b81cc1b15b708c8
-  - source: ltwiki
-    name: LM741/NS
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
-  - source: ltwiki
-    name: LM741/NS
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
   - source: microcap12
     name: LM741_NS
     get:
@@ -218,9 +218,15 @@ models:
   - source: ltwiki
     name: UA741
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/texas.lib
-      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+  - source: ltwiki
+    name: UA741
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
   - source: ltwiki
     name: UA741
     get:
@@ -236,15 +242,9 @@ models:
   - source: ltwiki
     name: UA741
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
-  - source: ltwiki
-    name: UA741
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/texas.lib
+      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
   - source: kicad-spice-library
     name: UA741_TI
     get:
@@ -370,18 +370,18 @@ models:
       uA741: [8, 43]
     fetched: '2026-10-09'
     symbol:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/OpAmp/uA741.asy
-      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-      sha256: 62fcc93cabc3f9497057695570c8f2df3c498b554116d6c22a903b802ebb0a5b
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: ST/OpAmp/uA741.asy
+      archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+      sha256: 24100d1592703c036c4883b61dd5b95c6a2820bdbdc058e459b489a77c4a996e
   note: found under the alias uA741; pins from comment words
   copies:
   - source: bordodynov
     name: uA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+      member: lib/sym/ValVol/ST/OpAmp/OpAmp.lib
+      sha256: 031081f30e7ec5cc20b5749d74edb01f155e0dc04179b4edb69d698b0d95fbaf
   - source: bordodynov
     name: uA741
     get:
@@ -392,29 +392,30 @@ models:
     name: uA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/OpAmp/OpAmp.lib
-      sha256: 031081f30e7ec5cc20b5749d74edb01f155e0dc04179b4edb69d698b0d95fbaf
-  - source: kicad-spice-library
-    name: uA741
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      member: lib/sub/Opamp5.Lib
       sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
   - source: kicad-spice-library
     name: uA741
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/uA741.lib
       sha256: 031081f30e7ec5cc20b5749d74edb01f155e0dc04179b4edb69d698b0d95fbaf
+  - source: kicad-spice-library
+    name: uA741
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
   - source: ltwiki
     name: uA741
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
-      sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
   - source: ltwiki
     name: uA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+      member: lib/sym/ValVol/ST/OpAmp/OpAmp.lib
+      sha256: 031081f30e7ec5cc20b5749d74edb01f155e0dc04179b4edb69d698b0d95fbaf
   - source: ltwiki
     name: uA741
     get:
@@ -425,14 +426,13 @@ models:
     name: uA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/OpAmp/OpAmp.lib
-      sha256: 031081f30e7ec5cc20b5749d74edb01f155e0dc04179b4edb69d698b0d95fbaf
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
   - source: ltwiki
     name: uA741
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+      sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
 - source: ltwiki
   name: UA741
   def: subckt
@@ -459,13 +459,13 @@ models:
     name: UA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: UA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: UA741
@@ -476,13 +476,13 @@ models:
     name: UA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: UA741
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: ltwiki
   name: LM741
@@ -522,14 +522,14 @@ models:
   - source: bordodynov-qspice
     name: lm741_r
     get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Library/OPAMP_R/LM741_R.qsym
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/OPAMP_R/LM741_R.qsym
       sha256: 5198007d1d4f7645df6e8f0643877675390910ea76a4868f116a09286882075a
   - source: bordodynov-qspice
     name: lm741_r
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/OPAMP_R/LM741_R.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/OPAMP_R/LM741_R.qsym
       sha256: 5198007d1d4f7645df6e8f0643877675390910ea76a4868f116a09286882075a
   - source: ltwiki
     name: lm741_r
@@ -537,19 +537,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/lm741_r.txt
       sha256: 875c13d3b4bcf300bfbabbda7d3f8b3fe16aab90093bed33a2e949513153bd97
-- source: kicad-spice-library
-  name: UA741
-  def: subckt
-  hash: 5b0b55d36058e6fbff49374ae5bb49f79cbf9e58
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NONLIN.LIB
-    sha256: 69207a978c970ac7da3929409b0188fad477d4289939755abbde979c13214be7
-    lines:
-      UA741: [1485, 1526]
-    fetched: '2026-09-14'
-  note: found under the alias uA741
 - source: kicad-spice-library
   name: uA741
   def: subckt
@@ -564,16 +551,29 @@ models:
     fetched: '2026-09-14'
   note: found under the alias uA741
 - source: kicad-spice-library
-  name: UA741S
+  name: UA741
   def: subckt
-  hash: b55074bd6302355d7bf66dd40ae91d97fac6aa5a
+  hash: 5b0b55d36058e6fbff49374ae5bb49f79cbf9e58
   type: SUBCKT
   verbatim: true
   get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS2.LIB
-    sha256: de2cf3e62490babc0d41be58bf08dd647938f83af9f43fdc287064f7024c1cfa
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NONLIN.LIB
+    sha256: 69207a978c970ac7da3929409b0188fad477d4289939755abbde979c13214be7
     lines:
-      UA741S: [1192, 1238]
+      UA741: [1485, 1526]
+    fetched: '2026-09-14'
+  note: found under the alias uA741
+- source: kicad-spice-library
+  name: UA741T
+  def: subckt
+  hash: 23a07e795839261ee4ded6292cbf3ccff15ffee2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TIA.LIB
+    sha256: 9ab15d59dfe2a0a2393f98d60244934f66a2fdae82a8815b49b7517010d7b4ac
+    lines:
+      UA741T: [1298, 1332]
     fetched: '2026-09-14'
   note: found under the alias uA741
 - source: kicad-spice-library
@@ -590,16 +590,16 @@ models:
     fetched: '2026-09-14'
   note: found under the alias uA741
 - source: kicad-spice-library
-  name: UA741T
+  name: UA741S
   def: subckt
-  hash: 23a07e795839261ee4ded6292cbf3ccff15ffee2
+  hash: b55074bd6302355d7bf66dd40ae91d97fac6aa5a
   type: SUBCKT
   verbatim: true
   get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TIA.LIB
-    sha256: 9ab15d59dfe2a0a2393f98d60244934f66a2fdae82a8815b49b7517010d7b4ac
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS2.LIB
+    sha256: de2cf3e62490babc0d41be58bf08dd647938f83af9f43fdc287064f7024c1cfa
     lines:
-      UA741T: [1298, 1332]
+      UA741S: [1192, 1238]
     fetched: '2026-09-14'
   note: found under the alias uA741
 datasheet:

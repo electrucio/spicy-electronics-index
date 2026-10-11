@@ -3,24 +3,48 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: rohm
   name: DTC623TK
   def: subckt
   hash: ffcf8032d48348b6ff718b58f55451a3f87117b2
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc623tk_ltspice.zip
+    member: dtc623tk_ltspice/dtc623tk_ltspice.lib
+    archive_sha256: 08d5536b1c24b16efc513dd2c47a8fb92fc646292bc1ad9f93e7724df0dbd2c3
+    sha256: 0ed2fa95ef4635440807fc0b93afba019bf7a69f85d64c3fa1f0face59fcf9e0
     lines:
-      DTC623TK: [36329, 36360]
-    fetched: '2026-09-21'
+      DTC623TK: [5, 36]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTC623TK
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC623TK
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc623tk_spice.zip
+      member: dtc623tk.lib
+      sha256: 0ed2fa95ef4635440807fc0b93afba019bf7a69f85d64c3fa1f0face59fcf9e0
   - source: microcap12
     name: DTC623TU
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC623TU
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc623tu_ltspice.zip
+      member: dtc623tu_ltspice/dtc623tu_ltspice.lib
+      sha256: 5ec5bcdbbe18cf33905c1e69eaa4d3dcb10ece92c9433081fc47193c63fc934d
+  - source: rohm
+    name: DTC623TU
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc623tu_spice.zip
+      member: dtc623tu.lib
+      sha256: 5ec5bcdbbe18cf33905c1e69eaa4d3dcb10ece92c9433081fc47193c63fc934d

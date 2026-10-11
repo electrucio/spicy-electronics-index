@@ -22,6 +22,24 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xbdx33c
+  def: subckt
+  hash: 5bee6e43cda5cd467f5f35096cf0905adf44a544
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/bdx33c.sp2
+    sha256: 8c45b46cbf0d70b5018785c376fa00056fb2d4083814ee4d67382fcb453215b6
+    lines:
+      Xbdx33c: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: bdx33c
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bdx33c.sp3
+      sha256: eddb26048ac83f71a363d4f111820b26b68cea40bf6000396fea7ba163f02f4e
 - source: ltwiki
   name: BDX33C
   def: subckt

@@ -22,3 +22,21 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xmje800
+  def: subckt
+  hash: c6c828474ece37c0dcbc59acc45fc3cc787186ee
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/mje800.sp2
+    sha256: 603a0710d05af91f311ad736cb1c21e47d31e1331d29c63c131253e610b809e9
+    lines:
+      Xmje800: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: mje800
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mje800.sp3
+      sha256: 410240a3b3aa7638291a7192a837bd655a3dd513f45c062130f3933fba8182fc

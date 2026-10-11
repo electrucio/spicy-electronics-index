@@ -42,6 +42,63 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbt2222alt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt2222alt1.sp2
+      sha256: 8993da0b3310c369787093047c205039b6b369cc02d1d0c4214ec72d31df3d47
+  - source: onsemi
+    name: mmbt2222alt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt2222alt1.sp3
+      sha256: 86b4ccadb5709db6de5831a9b9db56865eb06f44bce00d70d2a69a06ab965e67
+- source: nexperia
+  name: MMBT2222A
+  def: subckt
+  hash: 868c7bbd560e5f09f5a9e8ede9c0cb9d509e7509
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/MMBT2222A.txt
+    sha256: 367a960c99f72c47a14f8dd36d54443f94537526ad6e4409b7a9c37e44ccfa07
+    lines:
+      MMBT2222A: [32, 90]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: MMBT2222AH
+  def: model
+  hash: b8e2d1220bf6598f060bf257af8573eebb7fb1c5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d509394bfdafe7f8833459953b9e2658637f26fb9e4adb46771325a4180a00f8
+    lines:
+      MMBT2222AH: [7, 33]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: MMBT2222A
+  def: subckt
+  hash: 38ad7d16d60c75f27f7f9c54bbd03a07889b3336
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT2222A.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 41ced4e0299b3993115dbc83aa1676750c85adc8bd96f7539a6b61ac7acee665
+    lines:
+      MMBT2222A: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBT2222A-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBT2222A-AU.txt
+      sha256: 6fcb5e57744e7bb1faeeb226bf99b1bb0edff44d7e7e4760acf5dd6cfe8b8433
 - source: microcap12
   name: MMBT2222A
   def: model

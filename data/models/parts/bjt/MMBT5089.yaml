@@ -22,6 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbt5089l
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt5089l.sp2
+      sha256: f7ed73c1ac1e316fc5e6c041663cb0d784bd77368fa718ec9cbbce4d05e46705
+  - source: onsemi
+    name: mmbt5089l
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt5089l.sp3
+      sha256: 6738c0e5f4d6ac28579cfa53d7d5f29c35f0ec227e915dcc3713d1bf22e2a1a2
 - source: duncanamps
   name: QMMBT5089
   def: model
@@ -59,13 +69,19 @@ models:
   - source: kicad-spice-library
     name: mmbt5089
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: mmbt5089
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: mmbt5089
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
   - source: ltwiki
     name: mmbt5089
     get:
@@ -78,12 +94,6 @@ models:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
-  - source: ltwiki
-    name: mmbt5089
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
 - source: bordodynov
   name: mmbt5089
   def: model
@@ -105,14 +115,14 @@ models:
   - source: ltwiki
     name: mmbt5089
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: mmbt5089
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: mmbt5089

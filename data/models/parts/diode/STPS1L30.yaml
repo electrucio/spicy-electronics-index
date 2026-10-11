@@ -4,6 +4,60 @@ priority: 4
 group: schottky
 models:
 - source: stmicro
+  name: STPS1L30
+  def: model
+  hash: d99668c953598a966aa8f1f28557f1d5492e2b5c
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/viper122_pspice_model.zip
+    member: TB_encrypted/libs/sense_and_power_diode_models_available.lib
+    archive_sha256: d39e2d9f80413a7b0e4fb5e55fdff897696898bf7cca80418bc50d59add347d2
+    sha256: 8de4b1cacba602c97a5d0326964b678a596a85fb848e4b883b98f71e909452b9
+    lines:
+      STPS1L30: [138, 140]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: STPS1L30A
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: ltwiki
+    name: STPS1L30U
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+- source: stmicro
+  name: STPS1L30M
+  def: model
+  hash: 509767d5122206c70abb7fc8966ef1940a266518
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/viper122_pspice_model.zip
+    member: TB_encrypted/libs/sense_and_power_diode_models_available.lib
+    archive_sha256: d39e2d9f80413a7b0e4fb5e55fdff897696898bf7cca80418bc50d59add347d2
+    sha256: 8de4b1cacba602c97a5d0326964b678a596a85fb848e4b883b98f71e909452b9
+    lines:
+      STPS1L30M: [148, 150]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: STPS1L30M
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: ltwiki
+    name: STPS1L30MF
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+- source: stmicro
   name: STPS1L30A
   def: model
   hash: b710651e7e5be85c0d40001ed57e1b721d1fb2e2
@@ -52,20 +106,6 @@ models:
       member: ST_POWER_SCHOTTKY_V10.LIB
       sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
 - source: ltwiki
-  name: STPS1L30A
-  def: model
-  hash: d99668c953598a966aa8f1f28557f1d5492e2b5c
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
-    lines:
-      STPS1L30A: [6427, 6429]
-    fetched: '2026-09-14'
-- source: ltwiki
   name: STPS1L30U
   def: model
   hash: d99668c953598a966aa8f1f28557f1d5492e2b5c
@@ -78,20 +118,6 @@ models:
     sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
     lines:
       STPS1L30U: [6437, 6439]
-    fetched: '2026-09-14'
-- source: ltwiki
-  name: STPS1L30M
-  def: model
-  hash: 509767d5122206c70abb7fc8966ef1940a266518
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
-    lines:
-      STPS1L30M: [6447, 6449]
     fetched: '2026-09-14'
 - source: ltwiki
   name: STPS1L30MF

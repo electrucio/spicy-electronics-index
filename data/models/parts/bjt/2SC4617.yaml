@@ -34,6 +34,18 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: 2sc4617
+  def: subckt
+  hash: 120b1361d647662618075681f6ac4af84fbc8d03
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/2sc4617.sp3
+    sha256: cfd96e9cac6f7ecf33eaaa7c47b471ac0081b62d29ce2633c60c09ec20eff884
+    lines:
+      2sc4617: [1, 58]
+    fetched: '2026-10-10'
 - source: rohm
   name: Q2SC4617
   def: model
@@ -41,20 +53,38 @@ models:
   type: NPN
   verbatim: true
   get:
-    url: https://www.rohm.com/products/transistors/bipolar-transistors/standard-bipolar-transistors/2sc4617-product
-    member: 2sc4617_ltspice/2sc4617_ltspice.lib
-    archive_sha256: 4286585ddef0f61b915f799836c9614974bca8491de5d18e6c04685ee7305969
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sc4617_spice.zip
+    member: 2sc4617.lib
+    archive_sha256: d242919906811a8a27fb02f5a976897daa06420b87c0b5cb444a89684f50197b
     sha256: 07180158eb5da0da3c6c6688554c63aa12d111e2a4bfa635206f2991508a4efa
     lines:
       Q2SC4617: [3, 28]
-    fetched: '2026-09-20'
+    fetched: '2026-10-10'
   copies:
+  - source: rohm
+    name: Q2SC4617
+    get:
+      url: https://www.rohm.com/products/transistors/bipolar-transistors/standard-bipolar-transistors/2sc4617-product
+      member: 2sc4617_ltspice/2sc4617_ltspice.lib
+      sha256: 07180158eb5da0da3c6c6688554c63aa12d111e2a4bfa635206f2991508a4efa
   - source: microcap12
     name: 2SC4617EB
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SC4617EB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sc4617eb_ltspice.zip
+      member: 2sc4617eb_ltspice/2sc4617eb_ltspice.lib
+      sha256: 13a480731294eee504cc38d7f15c636358e358c3e5fa7ade098e8804f8b02b2a
+  - source: rohm
+    name: Q2SC4617EB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sc4617eb_spice.zip
+      member: 2sc4617eb.lib
+      sha256: 13a480731294eee504cc38d7f15c636358e358c3e5fa7ade098e8804f8b02b2a
 - source: bordodynov
   name: 2SC4617
   def: model
@@ -80,14 +110,14 @@ models:
     name: 2SC4617
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
   - source: bordodynov
     name: 2SC4617
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.bjt.bak
-      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: kicad-spice-library
     name: 2SC4617
     get:
@@ -96,25 +126,25 @@ models:
   - source: kicad-spice-library
     name: 2SC4617
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
-      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
   - source: kicad-spice-library
     name: 2SC4617
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
-      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: ltwiki
+    name: 2SC4617
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: 2SC4617
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: 2SC4617
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: ltwiki
     name: 2SC4617
     get:
@@ -130,9 +160,9 @@ models:
   - source: ltwiki
     name: 2SC4617
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
 - source: groupsio-ltspice
   name: 2SC4617
   def: model
@@ -181,6 +211,12 @@ models:
   - source: ltwiki
     name: 2SC4617EB
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SC4617EB
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -190,12 +226,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SC4617EB
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SC4617
   def: model

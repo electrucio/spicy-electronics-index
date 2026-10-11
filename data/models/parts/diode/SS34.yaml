@@ -63,6 +63,63 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/vishaydiode.lib
       sha256: 2e5a5b32069cd4d1a0382ca39515c84572862176aedccfab1f7f124818db2018
+- source: taiwan-semi
+  name: SS34
+  def: model
+  hash: 6b0dd657e4558764cbf56564c7ba45e262d8c518
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 542aa35a9bdab1f51c01d1bc86a8d866c6c7a68a87488dd7c5dd25b8971f6b0b
+    lines:
+      SS34: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS34H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: f50c82845bb007aee2444dae7cfb3f7104618f37dd6dc86ebf4155b72edca900
+- source: taiwan-semi
+  name: SS34LW
+  def: model
+  hash: 86843e0b4e4173ca75685dce09ba6d5abea542e6
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 051da4d71fd89f4e3d6c61e8b106d3d233f449456447e35eb4d17b312446b766
+    lines:
+      SS34LW: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS34LWH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 333ef746755c1a36beba7a638f08fb2cd7fcc6ecf5424c6522b89c0d679f91a4
+- source: taiwan-semi
+  name: SS34FSH
+  def: model
+  hash: 60029701a1ad1f3b0677307ca2167c18af5d08ba
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d37a3548f0e07f3e3607d41915b168b66ff686da4422de2bc8a18712f519e76d
+    lines:
+      SS34FSH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS34ALH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 7ac6359e294d73eae090d92238f0077675510280a01c8ccea1be195f41a92a77
 - source: groups-io
   name: SS34
   def: model
@@ -99,19 +156,13 @@ models:
   - source: kicad-spice-library
     name: SS34
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: SS34
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: SS34
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: SS34
     get:
@@ -121,15 +172,21 @@ models:
   - source: ltwiki
     name: SS34
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: SS34
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.dio
       sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: SS34
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: ltwiki
   name: SS34
   def: model

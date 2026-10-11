@@ -52,6 +52,94 @@ models:
     fetched: '2026-09-19'
     note: 'BSS123LT1G (PSpice Model): BSS123LT1G, Bsim3, MD, RdrainMOD, MD1, MD2 …'
   note: pins from default order (unverified)
+- source: nexperia
+  name: BSS123
+  def: subckt
+  hash: e8d91587c9b8d37ed7a88b895fb6bce2f9787a42
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BSS123
+    sha256: 4846449d3cd1646986980e5acfa5ad343c3af16a847f29fd8a68dbaca69aaa92
+    lines:
+      BSS123: [1, 13]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: bordodynov
+    name: BSS123
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NMOS_Philips.lib
+      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
+  - source: kicad-spice-library
+    name: BSS123
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NMOS_Philips.lib
+      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
+  - source: ltwiki
+    name: BSS123
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/NMOSFET/BSS123.PRM
+      sha256: 4846449d3cd1646986980e5acfa5ad343c3af16a847f29fd8a68dbaca69aaa92
+  - source: ltwiki
+    name: BSS123
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NMOS_Philips.lib
+      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
+  - source: spice-model-cd
+    name: BSS123
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BSS123.t
+      sha256: 98a0dbc13499f315956ec8fa2e8ac3c3f54a169504b822f4e01be328328eac38
+  - source: kicad-spice-library
+    name: BSS123/PLP
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_fet.lib
+      sha256: e37b90dac4163b3951640614f87eaf6ee6e8336448ca408aab462f05415fd5a7
+  - source: ltwiki
+    name: BSS123/PLP
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/phil_fet.lib
+      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+  - source: ltwiki
+    name: BSS123/PLP
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/FET/phil_fet.lib
+      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+  - source: ltwiki
+    name: BSS123/PLP
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_fet.lib
+      sha256: 98b9f890eb0732e8fa1b127fb16ec31cedebda98a072b65832a301e58cb5c1cf
+  - source: kicad-spice-library
+    name: BSS123_PH
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_fet.lib
+      sha256: 36f1889d3f9333d570d781d32641ae906508f4365fe9158d7341714639b922f0
+  - source: microcap12
+    name: BSS123_PH
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_fet.lib
+      sha256: f44cdc6cb051bc1a9039d79b0f2cddfe5d56e5164b8c75a66f1e67d680342d12
+- source: nexperia
+  name: BSS123
+  def: subckt
+  hash: 13f01aa3e68207da5c6d5b1ce5d996dc80d2c13f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BSS123
+    sha256: 9f6cdb8e880e4783436483f494c195c755a2a4cd4f7d65cb967382bd1e05c9fa
+    lines:
+      BSS123: [24, 92]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: infineon
   name: BSS123
   def: subckt
@@ -184,20 +272,43 @@ models:
       url: https://www.diodes.com/productcollection/spicemodels/8360/collection.spice.txt
       sha256: a66b7da5de6fd80f639ed8025a28f6308c097f94c03f8a8e84324558c2a2e648
 - source: diodes-inc
-  name: BSS123WQ
+  name: BSS123Q/ZTX
   def: subckt
-  hash: 46ad87347744232b45223a0d8166963ce7319d9b
+  hash: e2e338d2871174baacd373b8a0a5f2c2656abd9f
   type: SUBCKT
   verbatim: true
   get:
-    url: https://www.diodes.com/spice/download/3603/BSS123WQ.spice.txt
-    sha256: 7c3289db2d7c16d5b6e5ecc6a94f5e247247132cd497e53348e5b91db999135e
+    url: https://www.diodes.com/spice/download/4641/BSS123Q+.spice.txt
+    sha256: a0f5ffbb2eac2ed283c8586efca30695dd5e377bc10f8ab4c162e044bd291c5d
     lines:
-      BSS123WQ: [18, 40]
-    fetched: '2026-09-19'
+      BSS123Q/ZTX: [19, 31]
+    fetched: '2026-10-10'
   copies:
   - source: diodes-inc
-    name: BSS123WQ
+    name: BSS123Q/ZTX
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8375/collection.spice.txt
+      sha256: 5b45aa3bc2280be6971e3863ce34ff70b2b18015fb62d526160d78441a4a227d
+  - source: diodes-inc
+    name: BSS123Q/ZTX
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8360/collection.spice.txt
+      sha256: a66b7da5de6fd80f639ed8025a28f6308c097f94c03f8a8e84324558c2a2e648
+- source: diodes-inc
+  name: BSS123K
+  def: subckt
+  hash: 71c34992e8740cf1c9e55ac6e6988214bbd255a3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/4570/BSS123K.spice.txt
+    sha256: b02dec4448270df80ffedb91e32626032e1c0cd61d50c52ca2174b8ef29c4ff4
+    lines:
+      BSS123K: [18, 44]
+    fetched: '2026-10-10'
+  copies:
+  - source: diodes-inc
+    name: BSS123K
     get:
       url: https://www.diodes.com/productcollection/spicemodels/8375/collection.spice.txt
       sha256: 5b45aa3bc2280be6971e3863ce34ff70b2b18015fb62d526160d78441a4a227d
@@ -220,48 +331,27 @@ models:
       url: https://www.diodes.com/productcollection/spicemodels/8375/collection.spice.txt
       sha256: 5b45aa3bc2280be6971e3863ce34ff70b2b18015fb62d526160d78441a4a227d
 - source: diodes-inc
-  name: BSS123Q/ZTX
+  name: BSS123WQ
   def: subckt
-  hash: e2e338d2871174baacd373b8a0a5f2c2656abd9f
+  hash: 46ad87347744232b45223a0d8166963ce7319d9b
   type: SUBCKT
   verbatim: true
   get:
-    url: https://www.diodes.com/productcollection/spicemodels/8375/collection.spice.txt
-    sha256: 5b45aa3bc2280be6971e3863ce34ff70b2b18015fb62d526160d78441a4a227d
+    url: https://www.diodes.com/spice/download/3603/BSS123WQ.spice.txt
+    sha256: 7c3289db2d7c16d5b6e5ecc6a94f5e247247132cd497e53348e5b91db999135e
     lines:
-      BSS123Q/ZTX: [129, 141]
-    fetched: '2026-09-21'
+      BSS123WQ: [18, 40]
+    fetched: '2026-09-19'
   copies:
   - source: diodes-inc
-    name: BSS123Q/ZTX
+    name: BSS123WQ
     get:
-      url: https://www.diodes.com/productcollection/spicemodels/8360/collection.spice.txt
-      sha256: a66b7da5de6fd80f639ed8025a28f6308c097f94c03f8a8e84324558c2a2e648
+      url: https://www.diodes.com/productcollection/spicemodels/8375/collection.spice.txt
+      sha256: 5b45aa3bc2280be6971e3863ce34ff70b2b18015fb62d526160d78441a4a227d
 - source: diodes-inc
-  name: BSS123WQ
+  name: BSS123K
   def: subckt
-  hash: 6815d8382ffbd0d4fe4450028165241710a4a052
-  type: SUBCKT
-  deps:
-  - DCGD
-  - DLIM
-  - DSUB
-  - NMOS
-  verbatim: true
-  get:
-    url: https://www.diodes.com/productcollection/spicemodels/8522/collection.spice.txt
-    sha256: d5fb01a0d34edf74987add96b4f8859357c1501648119dd5bebc0f6d32fec8bf
-    lines:
-      BSS123WQ: [147, 169]
-      DCGD: [1511, 1511]
-      DLIM: [1514, 1514]
-      DSUB: [1512, 1513]
-      NMOS: [1509, 1510]
-    fetched: '2026-09-21'
-- source: diodes-inc
-  name: BSS123WQ
-  def: subckt
-  hash: 8f29af3d7dac12d3feae2cae0d274fe7505b0bbc
+  hash: 74ff39e390e6653fb1f33dfbaaaf55865cd5f21e
   type: SUBCKT
   deps:
   - DCGD
@@ -272,7 +362,7 @@ models:
     url: https://www.diodes.com/productcollection/spicemodels/8360/collection.spice.txt
     sha256: a66b7da5de6fd80f639ed8025a28f6308c097f94c03f8a8e84324558c2a2e648
     lines:
-      BSS123WQ: [593, 615]
+      BSS123K: [535, 561]
       DCGD: [1642, 1642]
       DLIM: [1645, 1645]
       DSUB: [1643, 1644]
@@ -297,37 +387,6 @@ models:
       DSUB: [1643, 1644]
     fetched: '2026-09-21'
 - source: diodes-inc
-  name: BSS123K
-  def: subckt
-  hash: 71c34992e8740cf1c9e55ac6e6988214bbd255a3
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://www.diodes.com/productcollection/spicemodels/8375/collection.spice.txt
-    sha256: 5b45aa3bc2280be6971e3863ce34ff70b2b18015fb62d526160d78441a4a227d
-    lines:
-      BSS123K: [97, 123]
-    fetched: '2026-09-21'
-- source: diodes-inc
-  name: BSS123K
-  def: subckt
-  hash: 74ff39e390e6653fb1f33dfbaaaf55865cd5f21e
-  type: SUBCKT
-  deps:
-  - DCGD
-  - DLIM
-  - DSUB
-  verbatim: true
-  get:
-    url: https://www.diodes.com/productcollection/spicemodels/8360/collection.spice.txt
-    sha256: a66b7da5de6fd80f639ed8025a28f6308c097f94c03f8a8e84324558c2a2e648
-    lines:
-      BSS123K: [535, 561]
-      DCGD: [1642, 1642]
-      DLIM: [1645, 1645]
-      DSUB: [1643, 1644]
-    fetched: '2026-09-21'
-- source: diodes-inc
   name: BSS123Q/ZTX
   def: subckt
   hash: 3ce6c7bc6d0e395b0f51d1b2242e20322cba9d9a
@@ -342,75 +401,101 @@ models:
       BSS123Q/ZTX: [128, 140]
       NMOS: [1509, 1510]
     fetched: '2026-09-21'
-- source: spice-model-cd
-  name: BSS123
+- source: diodes-inc
+  name: BSS123WQ
   def: subckt
-  hash: e8d91587c9b8d37ed7a88b895fb6bce2f9787a42
+  hash: 8f29af3d7dac12d3feae2cae0d274fe7505b0bbc
+  type: SUBCKT
+  deps:
+  - DCGD
+  - DLIM
+  - DSUB
+  verbatim: true
+  get:
+    url: https://www.diodes.com/productcollection/spicemodels/8360/collection.spice.txt
+    sha256: a66b7da5de6fd80f639ed8025a28f6308c097f94c03f8a8e84324558c2a2e648
+    lines:
+      BSS123WQ: [593, 615]
+      DCGD: [1642, 1642]
+      DLIM: [1645, 1645]
+      DSUB: [1643, 1644]
+    fetched: '2026-09-21'
+- source: diodes-inc
+  name: BSS123WQ
+  def: subckt
+  hash: 6815d8382ffbd0d4fe4450028165241710a4a052
+  type: SUBCKT
+  deps:
+  - DCGD
+  - DLIM
+  - DSUB
+  - NMOS
+  verbatim: true
+  get:
+    url: https://www.diodes.com/productcollection/spicemodels/8522/collection.spice.txt
+    sha256: d5fb01a0d34edf74987add96b4f8859357c1501648119dd5bebc0f6d32fec8bf
+    lines:
+      BSS123WQ: [147, 169]
+      DCGD: [1511, 1511]
+      DLIM: [1514, 1514]
+      DSUB: [1512, 1513]
+      NMOS: [1509, 1510]
+    fetched: '2026-09-21'
+- source: taiwan-semi
+  name: BSS123W
+  def: subckt
+  hash: a2a1f8e9af3159e22fd82614bf468b8816124c4b
   type: SUBCKT
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Philips/Philips_Spice/BSS123.t
-    sha256: 98a0dbc13499f315956ec8fa2e8ac3c3f54a169504b822f4e01be328328eac38
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 25d1e754560450ce92e1b64ad8c611e85b53b2442820488849bf7dafceeb8865
     lines:
-      BSS123: [1, 12]
-    fetched: '2026-09-21'
-  copies:
-  - source: bordodynov
-    name: BSS123
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NMOS_Philips.lib
-      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
-  - source: kicad-spice-library
-    name: BSS123
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NMOS_Philips.lib
-      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NMOS_Philips.lib
-      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/NMOSFET/BSS123.PRM
-      sha256: 4846449d3cd1646986980e5acfa5ad343c3af16a847f29fd8a68dbaca69aaa92
-  - source: kicad-spice-library
-    name: BSS123_PH
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_fet.lib
-      sha256: 36f1889d3f9333d570d781d32641ae906508f4365fe9158d7341714639b922f0
-  - source: microcap12
-    name: BSS123_PH
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/ph_fet.lib
-      sha256: f44cdc6cb051bc1a9039d79b0f2cddfe5d56e5164b8c75a66f1e67d680342d12
-  - source: kicad-spice-library
-    name: BSS123/PLP
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/phil_fet.lib
-      sha256: e37b90dac4163b3951640614f87eaf6ee6e8336448ca408aab462f05415fd5a7
-  - source: ltwiki
-    name: BSS123/PLP
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/phil_fet.lib
-      sha256: 98b9f890eb0732e8fa1b127fb16ec31cedebda98a072b65832a301e58cb5c1cf
-  - source: ltwiki
-    name: BSS123/PLP
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/phil_fet.lib
-      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
-  - source: ltwiki
-    name: BSS123/PLP
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/FET/phil_fet.lib
-      sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+      BSS123W: [8, 39]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: mcc
+  name: BSS123
+  def: subckt
+  hash: 8e959799c7e0a1c0aed85f46958167d8a40cd5b8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/BSS123W.zip
+    member: BSS123.txt
+    archive_sha256: 0842040bc8d23e2a7ecfb78f338d34ec3b834fe3506b6150cbb6e3378cec28f0
+    sha256: 527f44d1854ad89b08ac6039faeb5c6fa649a7bb8094ffa6c079da38a499ab76
+    lines:
+      BSS123: [7, 30]
+    fetched: '2026-10-10'
+- source: mcc
+  name: BSS123K
+  def: subckt
+  hash: 91ead81b782f5674c0ae73f9d052a496b3dfaaab
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/BSS123KHE3.zip
+    member: BSS123K.txt
+    archive_sha256: 909ac44666be48a9f5477759d15270a3cf7fc48567dcca070b6fd518374d96f0
+    sha256: 6f1bd06094a4bf8e30e8ff369237de0fdcfe7d6176cb35fb7d81584dd07bc42f
+    lines:
+      BSS123K: [8, 29]
+    fetched: '2026-10-10'
+- source: mcc
+  name: BSS123W
+  def: subckt
+  hash: 698a29bbdd95a09c898066d884a469326b3489ee
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/BSS123W.zip
+    member: BSS123W.txt
+    archive_sha256: 0842040bc8d23e2a7ecfb78f338d34ec3b834fe3506b6150cbb6e3378cec28f0
+    sha256: ba05ec0912e25a2125c1c5c1d9179d4f6f8b2eac1c642e149106dd883c86a638
+    lines:
+      BSS123W: [8, 29]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: BSS123
   def: subckt
@@ -439,6 +524,20 @@ models:
     lines:
       BSS123: [13248, 13293]
       nmos: [161508, 161508]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: BSS123W
+  def: model
+  hash: d8ed17a54f5f6acff4ce19b00f9a2d61f13dee54
+  type: NMOS
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/DiodesInc_FET.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 956632bc5a1ed7ee02659e697171e34e8db51019468b28123788f7f5a8669cb0
+    lines:
+      BSS123W: [2631, 2634]
     fetched: '2026-09-21'
 - source: microcap12
   name: BSS123A
@@ -472,20 +571,6 @@ models:
       D2: [212863, 212863]
       bss123lt1g: [13299, 13347]
       nmos: [161508, 161508]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: BSS123W
-  def: model
-  hash: d8ed17a54f5f6acff4ce19b00f9a2d61f13dee54
-  type: NMOS
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/DiodesInc_FET.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 956632bc5a1ed7ee02659e697171e34e8db51019468b28123788f7f5a8669cb0
-    lines:
-      BSS123W: [2631, 2634]
     fetched: '2026-09-21'
 - source: microcap12
   name: bss123lt1
@@ -526,14 +611,14 @@ models:
     name: BSS123
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.mos
-      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+      member: lib/cmp/Original/standard.mos.bak
+      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
   - source: bordodynov
     name: BSS123
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.mos.bak
-      sha256: d30805b23aaf457e097873e816e38a1015e93c9d4b0de9c748365e5a2feb1cf7
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
   - source: bordodynov-qspice
     name: BSS123
     get:
@@ -548,35 +633,25 @@ models:
   - source: kicad-spice-library
     name: BSS123
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.mos
-      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.mos
+      sha256: 4ad1e16da6dfb08f9b1d55a27c28ca4a034db3f309073ce070136378fb658ad0
   - source: kicad-spice-library
     name: BSS123
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.mos
-      sha256: 4ad1e16da6dfb08f9b1d55a27c28ca4a034db3f309073ce070136378fb658ad0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
   - source: ltwiki
     name: BSS123
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: BSS123
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.mos
       sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.mos
-      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
   - source: ltwiki
     name: BSS123
     get:
@@ -592,9 +667,19 @@ models:
   - source: ltwiki
     name: BSS123
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.mos
+      sha256: af27c0c28fa3a8c1dfc25df8c1e115f55f29cc93602d6cad5c2758fbccf8ff11
+  - source: ltwiki
+    name: BSS123
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: BSS123
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: groups-io
   name: BSS123
   def: model
@@ -624,6 +709,24 @@ models:
   - source: ltwiki
     name: BSS123
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/LdoReg/bss139.mod
+      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+  - source: ltwiki
+    name: BSS123
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/LdoReg/bss139.mod
+      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
+  - source: ltwiki
+    name: BSS123
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
+  - source: ltwiki
+    name: BSS123
+    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/LtSpicePlus/Reg_Vref/lm/LdoReg/bss139.mod
       sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
@@ -639,24 +742,6 @@ models:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.mos
       sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
-      sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/LdoReg/bss139.mod
-      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
-  - source: ltwiki
-    name: BSS123
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/LdoReg/bss139.mod
-      sha256: d98105aa9235cae554ad7dbee1e8fda1606da5c422a9dc12f1bcff7721950ef7
 - source: bordodynov
   name: BSS123/FAI
   def: subckt

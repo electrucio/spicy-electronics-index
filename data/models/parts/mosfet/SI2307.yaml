@@ -25,18 +25,6 @@ models:
   - source: ltwiki
     name: Si2307BDS
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Mos&Fet/si2307bd.sub
-      sha256: 7dfb7ce1533341ef7332ff7a2b78a592d97e6cf4f676c214e916df129ce71894
-  - source: ltwiki
-    name: Si2307BDS
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Mos&Fet/Mos_Misc/si2307bd.sub
-      sha256: 7dfb7ce1533341ef7332ff7a2b78a592d97e6cf4f676c214e916df129ce71894
-  - source: ltwiki
-    name: Si2307BDS
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/si2307bd.sub
       sha256: 7dfb7ce1533341ef7332ff7a2b78a592d97e6cf4f676c214e916df129ce71894
@@ -45,6 +33,18 @@ models:
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/Mos_Misc/si2307bd.sub
+      sha256: 7dfb7ce1533341ef7332ff7a2b78a592d97e6cf4f676c214e916df129ce71894
+  - source: ltwiki
+    name: Si2307BDS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Mos&Fet/si2307bd.sub
+      sha256: 7dfb7ce1533341ef7332ff7a2b78a592d97e6cf4f676c214e916df129ce71894
+  - source: ltwiki
+    name: Si2307BDS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Mos&Fet/Mos_Misc/si2307bd.sub
       sha256: 7dfb7ce1533341ef7332ff7a2b78a592d97e6cf4f676c214e916df129ce71894
   - source: microcap12
     name: Si2307BDS
@@ -71,6 +71,12 @@ models:
     name: Si2307CDS
     get:
       url: https://www.vishay.com/docs/68511/si2307cds_pa_revb.zip
+      member: si2307cds_ps_rc Rev B.lib
+      sha256: c27bb23d6e14d59453789f5218833092a2f40be80a1dc0bacaed2698f1951222
+  - source: vishay
+    name: Si2307CDS
+    get:
+      url: https://www.vishay.com/docs/68511/si2307cds_pa_revb.zip
       member: si2307cds_ps Rev B.lib
       sha256: 8b89639686a0ff44720ec8cf35c943c80c987a510ec136f66ac5e2b734def086
   - source: vishay
@@ -78,12 +84,6 @@ models:
     get:
       url: https://www.vishay.com/docs/68511/si2307cds_pa_revb.zip
       member: si2307cds_ps_rc Rev B.txt
-      sha256: c27bb23d6e14d59453789f5218833092a2f40be80a1dc0bacaed2698f1951222
-  - source: vishay
-    name: Si2307CDS
-    get:
-      url: https://www.vishay.com/docs/68511/si2307cds_pa_revb.zip
-      member: si2307cds_ps_rc Rev B.lib
       sha256: c27bb23d6e14d59453789f5218833092a2f40be80a1dc0bacaed2698f1951222
 - source: vishay
   name: Si2307CDS
@@ -99,6 +99,20 @@ models:
     lines:
       Si2307CDS: [11, 39]
     fetched: '2026-09-19'
+- source: mcc
+  name: SI2307
+  def: subckt
+  hash: 12f8e18bba000290dab8596b11752ae3f8e54795
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2307.zip
+    member: SI2307.txt
+    archive_sha256: 4a2559486d645fb48d3e113f364aeecd71165a3c6cde38fd8e1a29aca986cbce
+    sha256: 3613c7a2160d24579931a74f802208b6acc9d772e501c761822faf7608f8c7cb
+    lines:
+      SI2307: [8, 28]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SI2307DS
   def: subckt

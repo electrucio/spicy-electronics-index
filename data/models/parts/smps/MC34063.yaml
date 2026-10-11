@@ -5,6 +5,23 @@ models:
 - source: onsemi
   name: MC34063
   def: subckt
+  hash: e1c3e9bed87574a8b54d43e2f99f5c097904d5b6
+  type: SUBCKT
+  deps:
+  - D2
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/ncp101x_isspice.zip
+    member: onic.lib
+    archive_sha256: ce0a7c791a59c07b4f51dbc47e26695a7409dd3222c1008ef7cba577db156e57
+    sha256: 3bba6f67478987c9d9d436d24fa9b82e91d92888f20a34d59fd5c0dae0de189c
+    lines:
+      D2: [6780, 6780]
+      MC34063: [5875, 5920]
+    fetched: '2026-09-19'
+- source: onsemi
+  name: MC34063
+  def: subckt
   hash: be5ad0ade5372b064369768ee47722d7b2fa5c28
   type: SUBCKT
   verbatim: true
@@ -32,23 +49,6 @@ models:
     lines:
       MC34063: [26, 71]
       SWhyste: [74, 84]
-    fetched: '2026-09-19'
-- source: onsemi
-  name: MC34063
-  def: subckt
-  hash: e1c3e9bed87574a8b54d43e2f99f5c097904d5b6
-  type: SUBCKT
-  deps:
-  - D2
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/zip/ncp101x_isspice.zip
-    member: onic.lib
-    archive_sha256: ce0a7c791a59c07b4f51dbc47e26695a7409dd3222c1008ef7cba577db156e57
-    sha256: 3bba6f67478987c9d9d436d24fa9b82e91d92888f20a34d59fd5c0dae0de189c
-    lines:
-      D2: [6780, 6780]
-      MC34063: [5875, 5920]
     fetched: '2026-09-19'
 - source: onsemi
   name: MC34063A

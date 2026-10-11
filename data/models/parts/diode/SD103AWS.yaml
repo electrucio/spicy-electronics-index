@@ -20,6 +20,28 @@ models:
     fetched: '2026-09-19'
     note: 'Small-Signal Schottky Diodes, PSpice Models (*.txt): SD103A, SD, PND, AD'
   note: found under the alias SD103A; pins from default order (unverified)
+- source: panjit
+  name: SD103AWS
+  def: subckt
+  hash: 42e001ff7757657d9c89579754f8347f94873a69
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/SD103AWS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: f2bf6d26cea1fa09494832eadaa0dfcd9b4b63e3c73f4e1cf7f4c880d7a79c69
+    lines:
+      SD103AWS: [11, 42]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: SD103AWS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/SD103AWS-AU.txt
+      sha256: 04cfc930e31e4d3ff2dd48f7fbcdc462b720c3ea8710bb1a7ad008ebca2a5f72
 - source: microcap12
   name: SD103AWS
   def: model

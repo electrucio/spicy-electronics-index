@@ -17,11 +17,6 @@ models:
     fetched: '2026-09-19'
     note: 'BC846BLT1G_REV0.SP3.TXT: bc846blt1g'
   copies:
-  - source: onsemi
-    name: Qbc846blt1g
-    get:
-      url: https://www.onsemi.com/download/models/txt/bc846blt1g_rev0.sp2.txt
-      sha256: 700d7cde2ab2ac648cfaf86a5597d2a53245c841ed4f2e9ca01951d4f5048dc0
   - source: microcap12
     name: Qbc846blt1g
     get:
@@ -34,6 +29,11 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qbc846blt1g
+    get:
+      url: https://www.onsemi.com/download/models/txt/bc846blt1g_rev0.sp2.txt
+      sha256: 700d7cde2ab2ac648cfaf86a5597d2a53245c841ed4f2e9ca01951d4f5048dc0
   - source: onsemi
     name: Qbc846blt1g
     get:
@@ -57,6 +57,227 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BC846B (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
   note: pins from default order (unverified)
+  copies:
+  - source: nexperia
+    name: BC846BW
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BW.txt
+      sha256: 9d51ae99c8dff4268ddfc3cb6962480d9e4a9cd393d73b0a7f5b8678fce0094b
+- source: nexperia
+  name: BC846BW_Q
+  def: subckt
+  hash: 4ae535518e18f4de52ce54484dbc290a3b68a3bf
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC846BW-Q.txt
+    sha256: 82fd88efd6bf757ea3d5465f63766fa1743ff153d16b3c66e33a551b4d747348
+    lines:
+      BC846BW_Q: [33, 91]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC846BQB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BQB.txt
+      sha256: d6a880c8c0c4c9694275a20e344fb75ff02c4aba3c5983293b6da1dfa5b87159
+  - source: nexperia
+    name: BC846B_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846B-Q.txt
+      sha256: 5da1435be301b246536c4166ad5662e924c91481814b2442ed727c330f6e8ecd
+  - source: nexperia
+    name: BC846BQB_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BQB-Q.txt
+      sha256: b84d5bf5cab3cced79d8df0783cb3e73c983a878a08f09b72de332a2297ceb49
+  - source: nexperia
+    name: BC846BQC_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BQC-Q.txt
+      sha256: d7a1be65ac92df31b937b60ebc0aa8a054c863e330f3901ca8aa80e04b1f5a47
+- source: nexperia
+  name: BC846BS
+  def: subckt
+  hash: c898aa1e28e5d398a5b0dd76d5b01c43e0e9b126
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC846BS.txt
+    sha256: 6e36165e940ac817ba48632aca9ff5bd5f46b14c0efb54676f73763225e45b26
+    lines:
+      BC846BS: [36, 94]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC846BS_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BS-Q.txt
+      sha256: b14e6b753bca04ede74b93d3ea3125d13dd4d3988e23a053a7f5cf933eef1dfe
+- source: nexperia
+  name: BC846BSH
+  def: subckt
+  hash: 5344ded674c1fccd76eadd4bc777f2fc830322e4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC846BSH.txt
+    sha256: 898248096eef82cb7fa9871411a57785d3f18eb2a150ebd428f8af841d56734c
+    lines:
+      BC846BSH: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC846BSH_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BSH-Q.txt
+      sha256: 786c5eab19bc0bcdcb93c45b82f7534f29faf22f01ce306319aabd4fb9fabffa
+- source: nexperia
+  name: BC846BMB
+  def: subckt
+  hash: 672261c1512c5e9dc586fd45a29ecfd4a70bb2a8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC846BMB.txt
+    sha256: 72a76f4bf04e276894d68e642b7ea376f68ce4748f39f635f668cdc66a840713
+    lines:
+      BC846BMB: [37, 95]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC846BM
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC846BM.txt
+      sha256: 19ad8e91cd305a8a431e8753dbc3b801689503c61478331095c17482917c01fd
+- source: nexperia
+  name: BC846BQC
+  def: subckt
+  hash: 3015e514a4ab3781f36db410dd80787886931c12
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC846BQC.txt
+    sha256: 3515967902f67ff4f8f1ce308e6dde458e697f59e7f0310f67808fbab9655793
+    lines:
+      BC846BQC: [34, 93]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BC846BSH
+  def: model
+  hash: 5a0ea447c9fd03cba7209c929dd4637dd7d0442a
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 40d96f9d71087abc15f6cf03b8e66267d7097e6ed94361a1edcb87f580716772
+    lines:
+      BC846BSH: [9, 35]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BC846BWH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 35cb9b95bd14e5f4c4e4f80c6a3a11d595b63683789dcf85b08a64a470855fa3
+  - source: taiwan-semi
+    name: BC846BH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 927f4e152c54431618de7ae068423c6a8fa5f5913de4f7a82833b561eac32320
+- source: panjit
+  name: BC846B
+  def: subckt
+  hash: 77e75638c0aa9332d8ff1b689cb89302aa79fb90
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC846B.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d45f18943425eed2bcd98bb122de90b0b8399e1cb104e82070c9f67faeb964a4
+    lines:
+      BC846B: [11, 38]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC846BW
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC846BW.txt
+      sha256: 5256a257221a0bd66bf0cb796202a9c3dd1a372460e23086aa3df9f239a47083
+  - source: panjit
+    name: BC846BS
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC846BS.txt
+      sha256: 22c5214d50edc6aa08054bb1fc689bd78988581810025f0508045e63ef776935
+  - source: panjit
+    name: BC846B-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC846B-AU.txt
+      sha256: 73d57160c6f125642bb4d2c0501d56d263bc7994bf2a525b92a37b437668a4bf
+  - source: panjit
+    name: BC846BW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC846BW-AU.txt
+      sha256: 842beace980b9aa252b5b40fa410a18cf9d3e7952dc9c57d10e2ae1d76dd2851
+  - source: panjit
+    name: BC846BS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC846BS-AU.txt
+      sha256: 50535d135910b8e0a8eeb3f8140c1d9fcaaf52de3ae65b915d459ecb5250237d
+- source: panjit
+  name: BC846BPN-AU
+  def: subckt
+  hash: 1ea9dabc8091691bf321c78abbecf9b93f161b73
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC846BPN-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: fef51fa750b87c82695ff1fee87f9a9d220d34d469a7d5cc14b658b7b825446d
+    lines:
+      BC846BPN-AU: [11, 40]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC846BPN
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC846BPN.txt
+      sha256: c07133598916537cfd21e77ca6457871a0484c8c0fa8e3bac385f20afb28e2d1
+- source: central-semi
+  name: BC846BT
+  def: model
+  hash: f888632d1544cd5017723ed5ec78726d97255222
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/BC846BT.LIB
+    sha256: 12f02404efb90616e4027c1fbe88574179ec1f577f373ea423d2e676c5f6ef02
+    lines:
+      BC846BT: [25, 50]
+    fetched: '2026-10-10'
+- source: central-semi
+  name: BC846BR
+  def: model
+  hash: 5c24c8ca56729c2ed122b5ade89caea1fe3d8d1c
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/BC846BR.LIB
+    sha256: 2f5e5fb32eee09fd7337094892dabc35682b96b8af7b8e2d3a2d240457e72e77
+    lines:
+      BC846BR: [25, 50]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: BC846B
   def: model
@@ -73,8 +294,8 @@ models:
   - source: kicad-spice-library
     name: BC846B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
   - source: kicad-spice-library
     name: BC846B
     get:
@@ -83,8 +304,8 @@ models:
   - source: kicad-spice-library
     name: BC846B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
-      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: ltwiki
     name: BC846B/ZTX
     get:
@@ -296,14 +517,14 @@ models:
     name: BC846B
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
   - source: bordodynov
     name: BC846B
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.bjt.bak
-      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: bordodynov-qspice
     name: BC846B
     get:
@@ -324,25 +545,25 @@ models:
   - source: kicad-spice-library
     name: BC846B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
-      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
   - source: kicad-spice-library
     name: BC846B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
-      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: ltwiki
+    name: BC846B
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BC846B
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: BC846B
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: ltwiki
     name: BC846B
     get:
@@ -358,9 +579,9 @@ models:
   - source: ltwiki
     name: BC846B
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
 - source: duncanamps
   name: QBC846B
   def: model
@@ -424,25 +645,13 @@ models:
   - source: kicad-spice-library
     name: BC846B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
-      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: BC846B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
-  - source: ltwiki
-    name: BC846B
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
-      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
-  - source: ltwiki
-    name: BC846B
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/standard.bjt
-      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
   - source: ltwiki
     name: BC846B
     get:
@@ -455,6 +664,18 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
       sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+  - source: ltwiki
+    name: BC846B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: BC846B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
 - source: ltwiki
   name: BC846B
   def: model

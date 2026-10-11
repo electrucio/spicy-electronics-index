@@ -4,13 +4,48 @@ priority: 4
 group: silicon_signal
 models:
 - source: onsemi
+  name: 1N4149
+  def: model
+  hash: 9c01d61186cdac9e1ba81b4d37f646f1f6c952d9
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/mod/1n4149.mod
+    sha256: 2ad8e3b8959c60036c309046b0f6ff04e18f07a3882a12190b71b27285367503
+    lines:
+      1N4149: [1, 1]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: 1N4149
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
+      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
+  - source: microcap12
+    name: 1N4149
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: 1N4149
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/fairch.lib
+      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+  - source: spice-model-cd
+    name: 1N4149
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/1N/1N4149.t
+      sha256: 9dec5f641b4cb2c68bbcb932e844008756b23df5b5f7234846db98b29d12b96f
+- source: onsemi
   name: D1N4149
   def: model
   hash: 2533f5b10bcceff9d8a4c37aa63e63247f7c22a9
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -37,39 +72,9 @@ models:
   - source: onsemi
     name: D1N4149
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
-- source: spice-model-cd
-  name: 1N4149
-  def: model
-  hash: 9c01d61186cdac9e1ba81b4d37f646f1f6c952d9
-  type: D
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/1N/1N4149.t
-    sha256: 9dec5f641b4cb2c68bbcb932e844008756b23df5b5f7234846db98b29d12b96f
-    lines:
-      1N4149: [1, 1]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: 1N4149
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/fairch.lib
-      sha256: 7a65c19aecd31354d0fec1166479cad2d1453948039b85b0d6d15d51ed4b963d
-  - source: microcap12
-    name: 1N4149
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/On_Semi.lib
-      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-  - source: microcap12
-    name: 1N4149
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/fairch.lib
-      sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
 - source: groups-io
   name: 1N4149
   def: model

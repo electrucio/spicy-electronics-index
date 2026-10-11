@@ -14,6 +14,81 @@ models:
     lines:
       BZX84C13LT1G: [529, 547]
     fetched: '2026-09-19'
+- source: nexperia
+  name: BZX84-C13
+  def: model
+  hash: ab467f7e2d575ee12821ff70497ee07271f08d47
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZX84-C13.txt
+    sha256: 7e0a484fb4536e4bfd6ca3820aa73dc957bfe6e2b120126666baf2e7c378d5ee
+    lines:
+      BZX84-C13: [28, 39]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: BZX84C13V
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C13.PRM
+      sha256: e0d09b01478fcf215472ce0abf9f071505a4f3117e4e3e5a32513ddd209b678c
+- source: taiwan-semi
+  name: BZX84C13
+  def: model
+  hash: 02c76ea6e095122a7ca8a895e12d9b7d0514a0f5
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7f51851573a88c0763b600218bf4f5685b31032adddbbf9327255d1d90c3d64a
+    lines:
+      BZX84C13: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BZX84C13H
+  def: model
+  hash: 8260aca277e7a575c2e27635113c285b712d1014
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 238ada63036ac9238586cc271ad35e1326645ad0bb5817cfd3e810264ad3f071
+    lines:
+      BZX84C13H: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZX84C13
+  def: subckt
+  hash: 5eb231b0da90f8a4605e95bc7e5b9fcdc33ee87a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C13.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 947069cdaa9550c1ed3cf238c77705defba4f6076cdfd68a5554bb9a27d883f7
+    lines:
+      BZX84C13: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZX84C13-AU
+  def: subckt
+  hash: b2c0b9940a7fd6df1988d71af232b9bd43be4bed
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C13-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 9b1fce950a37eb8dc4d33a5654ccf1533f2d0b82046c339fed0b5191390c90fc
+    lines:
+      BZX84C13-AU: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: spice-model-cd
   name: BZX84C13
   def: model
@@ -303,6 +378,12 @@ models:
   - source: ltwiki
     name: BZX84C13VL
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BZX84C13VL
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -312,26 +393,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BZX84C13VL
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BZX84C13V
-  def: model
-  hash: ab467f7e2d575ee12821ff70497ee07271f08d47
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C13.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: e0d09b01478fcf215472ce0abf9f071505a4f3117e4e3e5a32513ddd209b678c
-    lines:
-      BZX84C13V: [6, 17]
-    fetched: '2026-09-21'
 - source: bordodynov
   name: BZX84C13
   def: model
@@ -361,14 +422,14 @@ models:
   - source: ltwiki
     name: BZX84C13
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C13
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BZX84C13VLY
@@ -394,12 +455,12 @@ models:
   - source: ltwiki
     name: BZX84C13VLY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C13VLY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

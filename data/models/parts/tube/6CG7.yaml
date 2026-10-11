@@ -186,8 +186,8 @@ models:
     name: 6CG7
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_.cir
-      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: 6CG7
     get:
@@ -204,8 +204,8 @@ models:
     name: 6CG7
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_inc.txt
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
   - source: kicad-spice-library
     name: 6CG7
     get:
@@ -220,13 +220,13 @@ models:
   - source: robrobinette
     name: 6CG7
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
   - source: robrobinette
     name: 6CG7
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
 - source: bordodynov
@@ -256,14 +256,14 @@ models:
   - source: groups-io
     name: 6CG7
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
-      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
-  - source: groups-io
-    name: 6CG7
-    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
       member: TUBE/Rydel_tubes.lib
       sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
+  - source: groups-io
+    name: 6CG7
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
+      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
   - source: ltwiki
     name: 6CG7
     get:
@@ -290,14 +290,8 @@ models:
   - source: ltwiki
     name: 6CG7RY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 6CG7RY
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: 6CG7RY
@@ -308,9 +302,15 @@ models:
   - source: ltwiki
     name: 6CG7RY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6CG7RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
   name: 6CG7
   def: subckt
@@ -459,8 +459,10 @@ models:
   - TRIO1
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
-    sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/lampes.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
     lines:
       Igrid: [614, 619]
       TRIO1: [557, 560]
@@ -470,24 +472,8 @@ models:
   - source: groups-io
     name: V6CG7
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/lampes.lib
-      sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
-- source: groups-io
-  name: 6CG7
-  def: subckt
-  hash: fd5e7c5df9bdf9775b2426e81d481b5437949b92
-  type: SUBCKT
-  deps:
-  - TRIODE
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
-    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
-    lines:
-      6CG7: [630, 634]
-      TRIODE: [2343, 2354]
-    fetched: '2026-10-09'
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
+      sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
 - source: groups-io
   name: 6CG7
   def: subckt
@@ -515,6 +501,21 @@ models:
     sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
     lines:
       X6CG7: [1242, 1248]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: 6CG7
+  def: subckt
+  hash: fd5e7c5df9bdf9775b2426e81d481b5437949b92
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      6CG7: [630, 634]
+      TRIODE: [2343, 2354]
     fetched: '2026-10-09'
 - source: groups-io
   name: 6FQ7

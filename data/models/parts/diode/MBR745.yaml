@@ -22,6 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dmbr745
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mbr745.sp2
+      sha256: 6231e0d67ed31277b300859161984e9b82ef842f184f41017a091da264341036
+  - source: onsemi
+    name: mbr745
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mbr745.sp3
+      sha256: b073f6f2003d5ee63ca3499170997b0681f91790361fefd08590798e4aaf7deb
   - source: diyaudio
     name: mbr745c
     get:
@@ -127,14 +137,14 @@ models:
     name: MBR745
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: MBR745
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: MBR745
     get:
@@ -162,18 +172,13 @@ models:
   - source: kicad-spice-library
     name: MBR745
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: kicad-spice-library
+    name: MBR745
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
       sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
-  - source: kicad-spice-library
-    name: MBR745
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
-  - source: kicad-spice-library
-    name: MBR745
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: kicad-spice-library
     name: MBR745
     get:
@@ -182,20 +187,43 @@ models:
   - source: kicad-spice-library
     name: MBR745
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: MBR745
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: MBR745
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: MBR745
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: MBR745
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: MBR745
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: MBR745
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: MBR745
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: MBR745
     get:
@@ -211,27 +239,9 @@ models:
   - source: ltwiki
     name: MBR745
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: MBR745
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: MBR745
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
-  - source: ltwiki
-    name: MBR745
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: groups-io
   name: MBR745
   def: model

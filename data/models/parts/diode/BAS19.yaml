@@ -3,6 +3,25 @@ kind: diode
 priority: 4
 group: silicon_signal
 models:
+- source: taiwan-semi
+  name: BAS19
+  def: model
+  hash: 0c3798c211cf3d860fe769df4a8fed5a20477e28
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 91004f1cfce2ad94b0319e17537824178f846b79c06f63ca8c557f443b04449d
+    lines:
+      BAS19: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAS19W
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: eef415473a2c9c846b5f62caafa632d5fb7216644ad2cc0550d6f14e9e6266ec
 - source: spice-model-cd
   name: BAS19
   def: model
@@ -19,13 +38,13 @@ models:
   - source: kicad-spice-library
     name: BAS19
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
   - source: kicad-spice-library
     name: BAS19
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
-      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: spice-model-cd
     name: BAS19-Z
     get:

@@ -33,26 +33,14 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncp4326%20demo%20board%20simulation%20(pspice).zip
-    member: NCP4326 model rev0-PSpiceFiles/Libraries/freerun.lib
-    archive_sha256: 6818c6e2e3e5b61b9d860e1a231f1932825f77ff8b0d66903bea3e65b70781a8
-    sha256: e659adcc4b0aef1ca66196bace5ef8a8aa5487b275635b9f3cf2f018d5f91fbc
+    url: https://www.onsemi.com/download/models/zip/ncp1207ps.zip
+    member: freerun.lib
+    archive_sha256: ee37be089d30b0f4e339e7486d72e91d8bf477a53eaf90e05861fb58a28ce72e
+    sha256: 117ea8fed8310e3d77f1c575b66cd4fdbd827d0799a3a5d50ea844dcdd565680
     lines:
-      1N5388A: [262, 263]
+      1N5388A: [235, 236]
     fetched: '2026-09-19'
   copies:
-  - source: ltwiki
-    name: 1n5388a
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Smps/HalfVm/Power456.lib
-      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
-  - source: ltwiki
-    name: 1n5388a
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
-      sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
   - source: ltwiki
     name: 1n5388a
     get:
@@ -65,6 +53,24 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
       sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
+  - source: ltwiki
+    name: 1n5388a
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Smps/HalfVm/Power456.lib
+      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
+  - source: ltwiki
+    name: 1n5388a
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
+      sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
+  - source: microcap12
+    name: 1N5388A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
   - source: microcap12
     name: 1N5388A
     get:
@@ -77,24 +83,12 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: DATA/S_FLYBACK_VM.cir
       sha256: c43a2f0c8df833a96a91a64f1a96ac8e1676cef82746528f6a2cf0cbc611b46b
-  - source: microcap12
-    name: 1N5388A
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/On_Semi.lib
-      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
   - source: onsemi
     name: 1N5388A
     get:
-      url: https://www.onsemi.com/download/models/zip/ncp1207acps.zip
-      member: freerun.lib
-      sha256: 46b05fe3b7140295e6e10368391f20175f7b5c3830cb3a9d215560df5d006d0b
-  - source: onsemi
-    name: 1N5388A
-    get:
-      url: https://www.onsemi.com/download/models/zip/ncp1207ps.zip
-      member: freerun.lib
-      sha256: 117ea8fed8310e3d77f1c575b66cd4fdbd827d0799a3a5d50ea844dcdd565680
+      url: https://www.onsemi.com/download/models/zip/ncp4326%20demo%20board%20simulation%20(pspice).zip
+      member: NCP4326 model rev0-PSpiceFiles/Libraries/freerun.lib
+      sha256: e659adcc4b0aef1ca66196bace5ef8a8aa5487b275635b9f3cf2f018d5f91fbc
   - source: onsemi
     name: 1N5388A
     get:
@@ -107,6 +101,30 @@ models:
       url: https://www.onsemi.com/download/models/zip/ncp1205ps.zip
       member: freerun.lib
       sha256: 117ea8fed8310e3d77f1c575b66cd4fdbd827d0799a3a5d50ea844dcdd565680
+  - source: onsemi
+    name: 1N5388A
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncp1207acps.zip
+      member: freerun.lib
+      sha256: 46b05fe3b7140295e6e10368391f20175f7b5c3830cb3a9d215560df5d006d0b
+- source: onsemi
+  name: d1n5388b
+  def: subckt
+  hash: 50e3c4aa40fc79f300945d3f7cd5296d48d823d6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/1n5388b.sp2
+    sha256: 01235454402e994494a3bce45923cefdf5bb5eb27d2605767f21aa6c56cd74d5
+    lines:
+      d1n5388b: [1, 41]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: d1n5388b
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n5388b.sp3
+      sha256: 4a1f778eb4198501ce7c7fd908df05b792f4c36fe082b43d8ded0eea7df19dfa
 - source: microcap12
   name: d1n5388b
   def: subckt
@@ -161,12 +179,12 @@ models:
   - source: ltwiki
     name: 1N5388A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N5388A
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

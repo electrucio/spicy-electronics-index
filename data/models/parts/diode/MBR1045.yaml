@@ -10,7 +10,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -32,7 +32,7 @@ models:
   - source: onsemi
     name: MBR1045
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: onsemi
@@ -54,24 +54,39 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dmbr1045
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mbr1045.sp2
+      sha256: 36733ab8f477d390e98b0c50dcbf7ae4f3cbed69f2d3c41c8858ed45986b9035
+  - source: onsemi
+    name: mbr1045
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mbr1045.sp3
+      sha256: da58a73ec39a3adc8d25b2020421352fbab2782a4641f5295a950d42882f13b7
 - source: onsemi
-  name: mbr1045mfs
+  name: Dmbr1045mfs
   def: model
   hash: b966fe4db8f4b3abc6dc47e291666a25c8b4b4da
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.sp3%20.txt
-    sha256: 6c0ec05e986fe1659dcd7d4395f06515d3a842864b0370e5450595f7514405e4
+    url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.sp2%20.txt
+    sha256: 2ac375e172df1bc1d61c148e6a73953db9154a7f492f9b50e9548d7d1dd729a6
     lines:
-      mbr1045mfs: [14, 18]
+      Dmbr1045mfs: [14, 18]
     fetched: '2026-09-19'
   copies:
   - source: onsemi
+    name: mbr1045mfs
+    get:
+      url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.sp3%20.txt
+      sha256: 6c0ec05e986fe1659dcd7d4395f06515d3a842864b0370e5450595f7514405e4
+  - source: onsemi
     name: Dmbr1045mfs
     get:
-      url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.sp2%20.txt
-      sha256: 2ac375e172df1bc1d61c148e6a73953db9154a7f492f9b50e9548d7d1dd729a6
+      url: https://www.onsemi.com/download/models/txt/mbr1045mfs_rev0.lib%20.txt
+      sha256: eccc9ac60eab7ca49222c4cf09aa3f32c04ea14e02f2afc40132d4694b0efa66
 - source: vishay
   name: MBR1045
   def: subckt

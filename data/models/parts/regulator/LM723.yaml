@@ -22,17 +22,17 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Lm723.sub
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 758a4009de4de8198f1a1a84b3151e00d74c18c980d595aad27504b931c13bc9
+    sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
     lines:
-      LM723: [18, 77]
+      LM723: [80, 139]
     fetched: '2026-09-21'
     symbol:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/Vreg/lm723.asy
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/lm723.asy
       archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-      sha256: 388fc4517356fe67140f574881155708b8333a9448ed78e038d87d9b000d570e
+      sha256: ed7c0c4237ccf9e30301f9e4b991e07eae5f922edf7cbcdb02142909ed0ca7d1
   note: pins from LM723 DIP-14 pin numbers
   copies:
   - source: bordodynov
@@ -44,14 +44,14 @@ models:
   - source: bordodynov-qspice
     name: LM723
     get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Library/VoltReg/LM723.qsym
+      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+      member: Library/VoltReg/LM723.qsym
       sha256: 897382c51348a64cabf7f207bbb1131f56c78365738707d4c4d5951fd9eb08b3
   - source: bordodynov-qspice
     name: LM723
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/VoltReg/LM723.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/VoltReg/LM723.qsym
       sha256: 897382c51348a64cabf7f207bbb1131f56c78365738707d4c4d5951fd9eb08b3
   - source: kicad-spice-library
     name: LM723
@@ -66,8 +66,14 @@ models:
   - source: ltwiki
     name: LM723
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Lm723.sub
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+  - source: ltwiki
+    name: LM723
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Lm723.sub
       sha256: 758a4009de4de8198f1a1a84b3151e00d74c18c980d595aad27504b931c13bc9
   - source: ltwiki
     name: LM723
@@ -84,15 +90,9 @@ models:
   - source: ltwiki
     name: LM723
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
-  - source: ltwiki
-    name: LM723
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Lm723.sub
+      sha256: 758a4009de4de8198f1a1a84b3151e00d74c18c980d595aad27504b931c13bc9
 - source: ltwiki
   name: LM723
   def: subckt

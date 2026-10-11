@@ -4,17 +4,17 @@ priority: 3
 group: driver_vas
 models:
 - source: onsemi
-  name: Qmje3055t
+  name: mje3055t
   def: model
   hash: 4acc0d9aadcb822c661856fc7fe3af8ff5ae1cdf
   type: NPN
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/mje3055t.lib
-    sha256: 4ee8ccf0cc09a0fc46e5046056f34f793dd6f655a5b3ddbf45573f1ca1fff837
+    url: https://www.onsemi.com/download/models/sp3/mje3055t.sp3
+    sha256: e899a30d02cd37466abd46afbfc042019aaa7a75bb486281d6f233340dcaaef2
     lines:
-      Qmje3055t: [12, 22]
-    fetched: '2026-09-14'
+      mje3055t: [12, 22]
+    fetched: '2026-09-21'
   copies:
   - source: microcap12
     name: Qmje3055t
@@ -29,10 +29,15 @@ models:
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
   - source: onsemi
-    name: mje3055t
+    name: Qmje3055t
     get:
-      url: https://www.onsemi.com/download/models/sp3/mje3055t.sp3
-      sha256: e899a30d02cd37466abd46afbfc042019aaa7a75bb486281d6f233340dcaaef2
+      url: https://www.onsemi.com/download/models/lib/mje3055t.lib
+      sha256: 4ee8ccf0cc09a0fc46e5046056f34f793dd6f655a5b3ddbf45573f1ca1fff837
+  - source: onsemi
+    name: Qmje3055t
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mje3055t.sp2
+      sha256: 82c8cfeb34e3887feb0a51ad15a346a49157a32cbeb6f8f66cddc015959ce2ad
 - source: groups-io
   name: MJE3055T
   def: model

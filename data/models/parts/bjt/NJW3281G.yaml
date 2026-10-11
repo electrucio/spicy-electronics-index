@@ -4,17 +4,17 @@ priority: 2
 group: power_output
 models:
 - source: onsemi
-  name: njw3281g
+  name: Qnjw3281g
   def: model
   hash: 5dee74e053a6b0db71633fdff9ce9214b29b6c61
   type: NPN
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/sp3/njw3281g.sp3
-    sha256: 29371567c71a8c1e7fde4118545e35f613b8778fc7956697d7562b1b75001779
+    url: https://www.onsemi.com/download/models/lib/njw3281g.lib
+    sha256: 4774f08ec60cd008fa6bc0e0b09970618c6fe9ed33c065f4b7ef88239db66082
     lines:
-      njw3281g: [14, 24]
-    fetched: '2026-09-21'
+      Qnjw3281g: [14, 24]
+    fetched: '2026-09-14'
   copies:
   - source: microcap12
     name: Qnjw3281g
@@ -29,10 +29,15 @@ models:
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
   - source: onsemi
+    name: njw3281g
+    get:
+      url: https://www.onsemi.com/download/models/sp3/njw3281g.sp3
+      sha256: 29371567c71a8c1e7fde4118545e35f613b8778fc7956697d7562b1b75001779
+  - source: onsemi
     name: Qnjw3281g
     get:
-      url: https://www.onsemi.com/download/models/lib/njw3281g.lib
-      sha256: 4774f08ec60cd008fa6bc0e0b09970618c6fe9ed33c065f4b7ef88239db66082
+      url: https://www.onsemi.com/download/models/sp2/njw3281g.sp2
+      sha256: ed213c7b2f3f9eaea039875c110ec6f33a49e94a56ce63747fc42594998a4317
 - source: groupsio-ltspice
   name: NJW3281G
   def: model
@@ -68,14 +73,14 @@ models:
   - source: ltwiki
     name: NJW3281G
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: NJW3281G
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 datasheet:
   url: https://www.onsemi.com/pdf/datasheet/njw3281-d.pdf

@@ -24,13 +24,13 @@ models:
   - source: kicad-spice-library
     name: 74HC14
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/Digdemo.lib
-      sha256: b7ab1358a8efaedd185ca5711baa8575cfd38323b80e46595be9fc4a9f312dd3
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
+      sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
   - source: kicad-spice-library
     name: 74HC14
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/dig000.lib
-      sha256: 4dcd1b5764cd8e069c91e0a9c93d16e0ea6a638f01dbf39fdba8805ef3d0c0ac
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/Digdemo.lib
+      sha256: b7ab1358a8efaedd185ca5711baa8575cfd38323b80e46595be9fc4a9f312dd3
 - source: microcap12
   name: 74HC14A
   def: subckt
@@ -92,15 +92,9 @@ models:
   - source: ltwiki
     name: 74HC14
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/74hc.lib
-      sha256: 35a7690ecbef99d2dbccc92da047f44c91c0510ef7d6ef8b2fcafc322a044cb2
-  - source: ltwiki
-    name: 74HC14
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Translator/74hc.lib
-      sha256: 36ec7f1d254688067ffb3161541e3f8570b7f773a636511765040818ddedc296
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/74HC/74hc.lib
+      sha256: 3be0aad2ad06f36982331a01d237a7b58d7da1c320b3bf800a3cf207276dd0d0
   - source: ltwiki
     name: 74HC14
     get:
@@ -110,9 +104,15 @@ models:
   - source: ltwiki
     name: 74HC14
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/74HC/74hc.lib
-      sha256: 3be0aad2ad06f36982331a01d237a7b58d7da1c320b3bf800a3cf207276dd0d0
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Translator/74hc.lib
+      sha256: 36ec7f1d254688067ffb3161541e3f8570b7f773a636511765040818ddedc296
+  - source: ltwiki
+    name: 74HC14
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/74hc.lib
+      sha256: 35a7690ecbef99d2dbccc92da047f44c91c0510ef7d6ef8b2fcafc322a044cb2
 - source: ltwiki
   name: 74HC14
   def: subckt
@@ -223,9 +223,9 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: https://disk.yandex.ru/d/71M79VuY5sOWew
-    member: QSPICE/Library/74HC14.qsym
-    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+    member: Library/74HC14.qsym
+    archive_sha256: a866b6e66bc471c91faa9ccac9f35bf0d7200ef739b9280c86196bf4c92a4e3c
     sha256: 9f57d33ad3203dfc7576bd25bbf939e04b6177f2965e1050d44446b58724e62e
     fetched: '2026-09-29'
     note: the model is inside the QSPICE symbol, in its «library file» field
@@ -233,8 +233,8 @@ models:
   - source: bordodynov-qspice
     name: 74HC14
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/74HC14.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/74HC14.qsym
       sha256: 9f57d33ad3203dfc7576bd25bbf939e04b6177f2965e1050d44446b58724e62e
 - source: kicad-spice-library
   name: 74HC14

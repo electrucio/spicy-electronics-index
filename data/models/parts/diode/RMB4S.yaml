@@ -37,6 +37,25 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/gensemi.lib
       sha256: a91e073b84759dcbe41d4ae51687287a413fc12865804565e488f747b57b3d6c
+- source: taiwan-semi
+  name: RMB4S
+  def: subckt
+  hash: 5b9d98d580ea767f7f44197e36cbd7350e8b4093
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 12f77d39fd98373769ecf987803df3ef19cc18b5182d2791917c1a0aa80c9347
+    lines:
+      RMB4S: [10, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: RMB4SH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 5a5e9464f3ce08f336ae03d5b5681463e9486521f19c6f1ff913604e93feeedb
 - source: bordodynov
   name: RMB4S
   def: subckt

@@ -56,6 +56,51 @@ models:
       VOS_SRC_0: [236, 247]
     fetched: '2026-09-19'
   note: pins from names
+- source: ti
+  name: lmv358
+  def: subckt
+  hash: 373fa94d99658235b18f325d1d41d6063292d3cd
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM076
+    member: LMV358.MOD
+    archive_sha256: 0890fbeda1e29fba8d262588b03b1f33389bb51d357afd2da2c4e4226b8e949f
+    sha256: 90fc7c237a59fdb3f139c1612bc3ceebed375c8577ca15fc426a31c69288bc55
+    lines:
+      lmv358: [29, 170]
+    fetched: '2026-10-10'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: lmv358
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: kicad-spice-library
+    name: lmv358
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: lmv358
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
+  - source: ltwiki
+    name: lmv358
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
 - source: ltwiki
   name: lmv358
   def: subckt
@@ -125,14 +170,14 @@ models:
   - source: ltwiki
     name: lmv358/NS
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
       sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: lmv358/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
       sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
 - source: microcap12
   name: lmv358_NS
@@ -161,42 +206,3 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
       sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
-- source: ltwiki
-  name: lmv358
-  def: subckt
-  hash: 373fa94d99658235b18f325d1d41d6063292d3cd
-  type: SUBCKT
-  pins:
-  - INP
-  - INN
-  - VP
-  - VN
-  - OUT
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Opamp5.Lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
-    lines:
-      lmv358: [4735, 4876]
-    fetched: '2026-09-21'
-  note: pins from comment words
-  copies:
-  - source: bordodynov
-    name: lmv358
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
-  - source: kicad-spice-library
-    name: lmv358
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
-  - source: ltwiki
-    name: lmv358
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47

@@ -3,6 +3,44 @@ kind: bjt
 priority: 4
 group: small_signal_npn
 models:
+- source: nexperia
+  name: PDTA123YM
+  def: subckt
+  hash: 537a9ac0b7f02785490b743a4c01bde65240d016
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PDTA123YM.txt
+    sha256: deb3235bb916cd55eabf78eb48ac2147aff4eeeb46fbe4647ec02f9b746659ea
+    lines:
+      PDTA123YM: [36, 94]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PDTA123YT
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PDTA123YT.txt
+      sha256: f1e37b425ae93d7c671b73c017d99614c73ac54123804a09a54645e61f0514bf
+  - source: nexperia
+    name: PDTA123YU
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PDTA123YU.txt
+      sha256: 94b51cfab362c83ecbcffa8c5c49a7546eec56bfcdf1a9b512ad4ff2ccba2006
+  - source: nexperia
+    name: PDTA123YQB_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PDTA123YQB-Q.txt
+      sha256: d358c20cc725404f48717b5e303bb863d89dd8b0e75ab994ced49e85e529b4aa
+  - source: nexperia
+    name: PDTA123YQB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PDTA123YQB.txt
+      sha256: ad21c029b1931793223547e4a4f767a1ab76f4865e7b12a59337db1fb8ae70b3
+  - source: nexperia
+    name: PDTA123YMB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PDTA123YMB.txt
+      sha256: 23546f693548f595082d9f76a2c29d9621eb6b73ebe485beb44cec84bbb032b1
 - source: microcap12
   name: PDTA123YS
   def: subckt

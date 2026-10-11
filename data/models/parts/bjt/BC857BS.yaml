@@ -3,6 +3,64 @@ kind: bjt
 priority: 3
 group: matched_pairs
 models:
+- source: nexperia
+  name: BC857BS
+  def: subckt
+  hash: e266b375f05e0c89b73bf39292b3c089988a75e0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC857BS.txt
+    sha256: bd60ecf6361d739f2fad45442377f87cf1eae4eb9edb353c5411bc578b1c7ce3
+    lines:
+      BC857BS: [36, 94]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC857BS_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857BS-Q.txt
+      sha256: 464dac0e7354b4fccd89cec9fbff327010a9e53027a03eadd227330ac043d1e0
+- source: nexperia
+  name: BC857BSH_Q
+  def: subckt
+  hash: 0ebca0637eee70fb92cff25c2ef0e81ef0b5306d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC857BSH-Q.txt
+    sha256: 3ac89705324a71ff98b86a3f08a98202995dbc3c3e4ebf3c3c4cb4bcaa462a83
+    lines:
+      BC857BSH_Q: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC857BSH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857BSH.txt
+      sha256: 0a47c2963e64d33edabec54aa6b453ff8055e958bffecb5843a5ea8411741bc4
+- source: panjit
+  name: BC857BS
+  def: subckt
+  hash: a45e3d3fdc972832048b1eaf52cedb3c5b96b7b7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC857BS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 9ee5d155c7a3d9b9c59ede758a5dbd12d562b3c96da5a795ce1915e1f7a60ead
+    lines:
+      BC857BS: [11, 37]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC857BS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC857BS-AU.txt
+      sha256: ffb902a3246da11671dc89076a9e27ca57c6e1385099c106dd1b458f78054335
 - source: microcap12
   name: BC857BS
   def: model
@@ -72,14 +130,14 @@ models:
     name: BC857BS
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/Sborka.lib
-      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+      member: examples/Bordodynov/SW_subckt/Sbor.lib
+      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
   - source: ltwiki
     name: BC857BS
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/SW_subckt/Sbor.lib
-      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
 - source: ltwiki
   name: BC857BS_DIO
   def: model

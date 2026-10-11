@@ -26,6 +26,63 @@ models:
     lines:
       mmsz5232bt1: [1, 40]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: MMSZ5232B
+  def: model
+  hash: 12166712d1477b78d28ca571c5f225aa6d5a1226
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 521ae09c8bacdd16eeb8ebce6beb13562e05054ea029164935442d399fb5be03
+    lines:
+      MMSZ5232B: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: MMSZ5232B
+  def: subckt
+  hash: d5868a8da25762ad19718d9e7d10c9981c376a92
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/MMSZ5232B.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 7489bb379b179f2abeb164b80d39e55a110d1fcd81093463d4124693096b88b4
+    lines:
+      MMSZ5232B: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMSZ5232B-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/MMSZ5232B-AU.txt
+      sha256: f972a33f6818e0e32d60d49cdd58d8c4edb0b428b16a617b2f6de722010d6976
+- source: panjit
+  name: MMSZ5232BS
+  def: subckt
+  hash: fc99fdd40b79a6863771ab383ba0e00e42ab1942
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/MMSZ5232BS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d68740ae9b7cdc1c383efc0f90d3cc33dabcd2407491f9e61617a6e5ca5fbcfe
+    lines:
+      MMSZ5232BS: [11, 28]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMSZ5232BS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/MMSZ5232BS-AU.txt
+      sha256: b0d7ae47aed8729029dd83a689d0ccb6c4b0325955ca17ab6b116b7c3c2de5e0
 - source: microcap12
   name: MMSZ5232B
   def: subckt

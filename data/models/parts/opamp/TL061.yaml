@@ -28,35 +28,29 @@ models:
     name: TL061
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/texas.lib
+      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
+  - source: bordodynov
+    name: TL061
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/texas.lib
+      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
+  - source: bordodynov
+    name: TL061
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Operational_Amplifiers.LIB
-      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
-  - source: bordodynov
-    name: TL061
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/texas.lib
-      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
-  - source: bordodynov
-    name: TL061
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/texas.lib
-      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
-  - source: kicad-spice-library
-    name: TL061
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Operational_Amplifiers.LIB
       sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
   - source: kicad-spice-library
     name: TL061
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Texas%20Instruments/tl061.mod
       sha256: e2b964c3c6a1271ea79c3bb5177e8616ab67f652643cbdb04eda3610edabfebf
-  - source: ltwiki
+  - source: kicad-spice-library
     name: TL061
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Operational_Amplifiers.LIB
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Operational_Amplifiers.LIB
       sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
   - source: ltwiki
     name: TL061
@@ -70,6 +64,12 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/texas.lib
       sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
+  - source: ltwiki
+    name: TL061
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Operational_Amplifiers.LIB
+      sha256: a23e6b6cd7f13ddcbd76cc0a88987255186bf1dca04a8349a968e4dad0daf832
   - source: spice-model-cd
     name: TL061
     get:
@@ -189,14 +189,14 @@ models:
   - source: ltwiki
     name: TL061/ON
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/on_amp.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: TL061/ON
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: kicad-spice-library
     name: TL061/MC
@@ -216,8 +216,9 @@ models:
   - source: ltwiki
     name: TL061/MC
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
-      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: TL061/MC
     get:
@@ -227,9 +228,8 @@ models:
   - source: ltwiki
     name: TL061/MC
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
-      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
+      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
   - source: microcap12
     name: TL061_MC
     get:
@@ -283,13 +283,13 @@ models:
     name: TL061
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: TL061
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: TL061
@@ -300,25 +300,25 @@ models:
     name: TL061
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: TL061
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: kicad-spice-library
-  name: TL061S
+  name: TL061T
   def: subckt
-  hash: 06a98aa5b72046e2cfd54ef4a34ac38167ead370
+  hash: 252a3644c4fbee0e630a9070f3c3ef148013f70a
   type: SUBCKT
   verbatim: true
   get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS2.LIB
-    sha256: de2cf3e62490babc0d41be58bf08dd647938f83af9f43fdc287064f7024c1cfa
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TIA.LIB
+    sha256: 9ab15d59dfe2a0a2393f98d60244934f66a2fdae82a8815b49b7517010d7b4ac
     lines:
-      TL061S: [555, 601]
+      TL061T: [369, 401]
     fetched: '2026-09-14'
 - source: kicad-spice-library
   name: TL061M
@@ -333,16 +333,16 @@ models:
       TL061M: [2262, 2297]
     fetched: '2026-09-14'
 - source: kicad-spice-library
-  name: TL061T
+  name: TL061S
   def: subckt
-  hash: 252a3644c4fbee0e630a9070f3c3ef148013f70a
+  hash: 06a98aa5b72046e2cfd54ef4a34ac38167ead370
   type: SUBCKT
   verbatim: true
   get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TIA.LIB
-    sha256: 9ab15d59dfe2a0a2393f98d60244934f66a2fdae82a8815b49b7517010d7b4ac
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SGS2.LIB
+    sha256: de2cf3e62490babc0d41be58bf08dd647938f83af9f43fdc287064f7024c1cfa
     lines:
-      TL061T: [369, 401]
+      TL061S: [555, 601]
     fetched: '2026-09-14'
 datasheet:
   url: https://www.ti.com/lit/ds/symlink/tl062.pdf

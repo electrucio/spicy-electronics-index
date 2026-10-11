@@ -2,6 +2,18 @@ part: BZV55B15
 kind: zener
 priority: 4
 models:
+- source: nexperia
+  name: BZV55-B15
+  def: subckt
+  hash: 54767fae3b70f1d02129f342f001bfd50008b30f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZV55-B15.txt
+    sha256: 104b26519238b1f3e9d2961350eb83f949021f5deb396ac97daaf364ba3f39f2
+    lines:
+      BZV55-B15: [33, 57]
+    fetched: '2026-10-10'
 - source: bordodynov
   name: BZV55-B15
   def: model
@@ -26,12 +38,12 @@ models:
   - source: ltwiki
     name: BZV55-B15
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZV55-B15
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

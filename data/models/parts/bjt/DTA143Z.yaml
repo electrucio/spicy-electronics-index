@@ -22,39 +22,93 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: microcap12
+- source: rohm
   name: DTA143ZE
   def: subckt
   hash: bd233d593205c4c79274cf8f27cf2adf2679a05a
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta143ze_spice.zip
+    member: dta143ze.lib
+    archive_sha256: 2ec5ca09a95166d6eea183cf2b48bd57d041b7897f5cfa63b1cded0877b3884e
+    sha256: 6e698ee854928cf056e3d0740c904ced15a18c8b937f5dd06d7721f50109b374
     lines:
-      DTA143ZE: [28881, 28915]
-    fetched: '2026-09-21'
+      DTA143ZE: [5, 39]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTA143ZE
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA143ZE
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta143ze_ltspice.zip
+      member: dta143ze_ltspice/dta143ze_ltspice.lib
+      sha256: 6e698ee854928cf056e3d0740c904ced15a18c8b937f5dd06d7721f50109b374
   - source: microcap12
     name: DTA143ZEB
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA143ZEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta143zeb_ltspice.zip
+      member: dta143zeb_ltspice/dta143zeb_ltspice.lib
+      sha256: 5df2b3bf954cdbfba465d01d9688ecfd6d299d237f09f2e5d4b3877b5267d0fb
+  - source: rohm
+    name: DTA143ZEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta143zeb_spice.zip
+      member: dta143zeb.lib
+      sha256: 5df2b3bf954cdbfba465d01d9688ecfd6d299d237f09f2e5d4b3877b5267d0fb
   - source: microcap12
     name: DTA143ZKA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA143ZKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta143zka_spice.zip
+      member: dta143zka.lib
+      sha256: 0d805d46b1909652e45940b448d9daaae2b0c7ea63f79b34b23cc416757af6ff
+  - source: rohm
+    name: DTA143ZKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta143zka_ltspice.zip
+      member: dta143zka_ltspice/dta143zka_ltspice.lib
+      sha256: 0d805d46b1909652e45940b448d9daaae2b0c7ea63f79b34b23cc416757af6ff
   - source: microcap12
     name: DTA143ZM
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA143ZM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTA143ZMHZG_SPICE.zip
+      member: DTA143ZMHZG_SPICE/dta143zmhzg_SPICE.lib
+      sha256: abd1d64fe72ed28c0a8807e1b236e811df9bb6f6f7d888f6f718c87e734cb762
+  - source: rohm
+    name: DTA143ZM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta143zm_ltspice.zip
+      member: dta143zm_ltspice/dta143zm_ltspice.lib
+      sha256: abd1d64fe72ed28c0a8807e1b236e811df9bb6f6f7d888f6f718c87e734cb762
+  - source: rohm
+    name: DTA143ZM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta143zm_spice.zip
+      member: dta143zm.lib
+      sha256: abd1d64fe72ed28c0a8807e1b236e811df9bb6f6f7d888f6f718c87e734cb762
   - source: microcap12
     name: DTA143ZUA
     get:
@@ -67,3 +121,15 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA143ZUB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta143zub_spice.zip
+      member: dta143zub.lib
+      sha256: 8315764b7ebb4c788b7de14c052fed8f6a9ccea051bb71350260935233df2655
+  - source: rohm
+    name: DTA143ZUB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta143zub_ltspice.zip
+      member: dta143zub_ltspice/dta143zub_ltspice.lib
+      sha256: 8315764b7ebb4c788b7de14c052fed8f6a9ccea051bb71350260935233df2655

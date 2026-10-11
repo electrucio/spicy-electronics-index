@@ -22,18 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: vishay
-  name: SS16
-  def: model
-  hash: eb15f10edef3213a8f4c4957ebe826487fd6e717
-  type: D
-  verbatim: true
-  get:
-    url: https://www.vishay.com/docs/98988/p_ss16.txt
-    sha256: 149ac22732dde069acb3c36d49e739df4ca47cf8fbf9914737f6cef6005762c3
-    lines:
-      SS16: [7, 13]
-    fetched: '2026-09-19'
+  - source: onsemi
+    name: Dss16
+    get:
+      url: https://www.onsemi.com/download/models/sp2/ss16.sp2
+      sha256: f79ccb251752a34cb8ec1a57f41a384672d852a64ae5cddab2550b67f675aaa0
+  - source: onsemi
+    name: ss16
+    get:
+      url: https://www.onsemi.com/download/models/sp3/ss16.sp3
+      sha256: df3de69504c3957106ffd25a961d6bd7fefca8fd8c6be45fed94b6cd0e7fc3e6
 - source: vishay
   name: ss16
   def: subckt
@@ -46,6 +44,155 @@ models:
     lines:
       ss16: [7, 16]
     fetched: '2026-09-19'
+- source: vishay
+  name: SS16
+  def: model
+  hash: eb15f10edef3213a8f4c4957ebe826487fd6e717
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/98988/p_ss16.txt
+    sha256: 149ac22732dde069acb3c36d49e739df4ca47cf8fbf9914737f6cef6005762c3
+    lines:
+      SS16: [7, 13]
+    fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SS16
+  def: model
+  hash: f3e5030a64c8b3c5d2a971753e3eb23790db16f6
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: c3af3b2eb62bc51cce92902f2f85616835cea04af77ad12920ed804fc3587da5
+    lines:
+      SS16: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS16H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 5c182a4bf28d9ca8dfaec5c2fd9bab4c0196d2ef9c909888a17c399418ce7abb
+- source: taiwan-semi
+  name: SS16LSH
+  def: model
+  hash: a5773a72b1e87cdeea746e8a25e3d9b9b29b9e6b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: fd4e72d960923372ec0b71a080048605c55e867e4c264d3e916ab21ba1de0bd3
+    lines:
+      SS16LSH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS16LS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: f59c02cea2084566594a57175275d8e6024ce56e33043b94a19325c7967b4cb3
+- source: taiwan-semi
+  name: SS16LW
+  def: model
+  hash: b59d7d2c7e3073d65dbbb3bb56b750c4e030aad4
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 36415c474c0223b97d1c5d13304e037d911894ae482f5d2e2ee15870813b6018
+    lines:
+      SS16LW: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS16LWH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: dc29cd2bd1ac48da81be9694483e28e873680900ecd2dc80580964a068b89ab7
+- source: taiwan-semi
+  name: SS16M
+  def: model
+  hash: 80c6cd97d68ea9e34e9aad70b323840c7ac8d637
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: fd8d189d26bad3af2fe9bd5535e60dc7b784530ad600c8ee7f6e98fd1ba6306a
+    lines:
+      SS16M: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS16MH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 5a4e82f4023000a5710ad6c2b1666b52852f680d7927084b05b0e5d7cfc73396
+- source: taiwan-semi
+  name: SS16FSH
+  def: model
+  hash: e24b7eb8c653da344a08a3b25877f18e577d0b20
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d02fb02523db6d20f661b7b50de2cad72d26656a1535182f021aef0245650a9f
+    lines:
+      SS16FSH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS16ALH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 497035f35b3d280594e041a0f7990c6fde1fc7f1cfd30fca5873fd95199897b8
+- source: panjit
+  name: SS16
+  def: subckt
+  hash: fbe773e7817258589f18e45e0d82ceb875808073
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-2. Power Schottky/SS16.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: c0c6aaca2ddc86a3181c38080f4ad6dee950cdc3b0a381e9704a9dbc7891ea56
+    lines:
+      SS16: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: SS16W
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-2. Power Schottky/SS16W.txt
+      sha256: c290d3e6898a7fef408489086346ae7ab9c2115555fff7ed654b763698d2fe9a
+  - source: panjit
+    name: SS16-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-2. Power Schottky/SS16-AU.txt
+      sha256: 2da8cd1f0a01d784303f5994f78164e92f9d03fe7cf4e0c3b7464b5c2d573530
+- source: mcc
+  name: SS16E
+  def: subckt
+  hash: 62788b417d3857e65240f767626336ba2fa0c918
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SS16E.zip
+    member: SS16E.sp
+    archive_sha256: d21a29b82434d3c996a389268006ef3b45953d5cf48fd2367bb2d29cf87034fe
+    sha256: 531b96e0579bb60f18b198b7263255ff19c717942670d4b5d2e6365efeb931d7
+    lines:
+      SS16E: [4, 16]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SS16
   def: model
@@ -64,13 +211,13 @@ models:
   - source: kicad-spice-library
     name: SS16
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
-      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
   - source: kicad-spice-library
     name: SS16
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
-      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
 - source: groups-io
   name: SS16
   def: model
@@ -107,19 +254,13 @@ models:
   - source: kicad-spice-library
     name: SS16
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: SS16
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: SS16
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: SS16
     get:
@@ -129,12 +270,18 @@ models:
   - source: ltwiki
     name: SS16
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: SS16
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.dio
       sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: SS16
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

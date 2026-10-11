@@ -3,21 +3,30 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N3725
   def: model
   hash: d15f685765aa6c444f77ba5bbdba8a31867f32ab
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N3725.LIB
+    sha256: 45ad0e441c80c451caa8e6e4050538d6e1745fb41e0285fdfde707bf628f9c54
     lines:
-      2N3725: [2088, 2113]
-    fetched: '2026-09-21'
+      2N3725: [24, 49]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: 2N3725
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+  - source: central-semi
+    name: 2N3725A
+    get:
+      url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N3725A.LIB
+      sha256: 7e6c63548331e7a2af7e3dfa550815c849b96e006dbb9728a30d7cccf82ef0d6
   - source: microcap12
     name: 2N3725A
     get:

@@ -30,7 +30,7 @@ models:
   type: PNP
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/mmbt2907alt1.lib
+    url: https://www.onsemi.com/download/models/lib/pzt2907at1.lib
     sha256: f7949e153b4614b1aba21eb8458b9cfad5bff271408bb4724cb33a51db9e7d73
     lines:
       Qmmbt2907alt1: [14, 24]
@@ -51,13 +51,23 @@ models:
   - source: onsemi
     name: Qmmbt2907alt1
     get:
+      url: https://www.onsemi.com/download/models/lib/mmbt2907alt1.lib
+      sha256: f7949e153b4614b1aba21eb8458b9cfad5bff271408bb4724cb33a51db9e7d73
+  - source: onsemi
+    name: Qmmbt2907alt1
+    get:
       url: https://www.onsemi.com/download/models/lib/mps2907a.lib
       sha256: f7949e153b4614b1aba21eb8458b9cfad5bff271408bb4724cb33a51db9e7d73
   - source: onsemi
     name: Qmmbt2907alt1
     get:
-      url: https://www.onsemi.com/download/models/lib/pzt2907at1.lib
-      sha256: f7949e153b4614b1aba21eb8458b9cfad5bff271408bb4724cb33a51db9e7d73
+      url: https://www.onsemi.com/download/models/sp2/pzt2907at1.sp2
+      sha256: 47796f02f83110c8d6645de13185171d4d139631181479a1ea0ef8eb17e9ed5b
+  - source: onsemi
+    name: mmbt2907alt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/pzt2907at1.sp3
+      sha256: 35f4f860da1a47167dab0174c1b7d80dd21718804e93dab5b5401b5afcb3e5d6
 - source: onsemi
   name: mmbt2907awt1g
   def: model
@@ -82,6 +92,24 @@ models:
     get:
       url: https://www.onsemi.com/download/models/lib/mmbt2907awt1g.lib.lib
       sha256: 645b37045ca78afe258668e141ea9d37bcc73f4e979927ed96ab8ca28f8f7910
+  - source: onsemi
+    name: Qmmbt2907awt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt2907awt1g.sp2.sp2
+      sha256: a6dfd9b308393612caac63004c12421f44715baa4087d5b57770ec046b2f11a2
+- source: taiwan-semi
+  name: MMBT2907AH
+  def: model
+  hash: df1dc138b3df767257047c70e333d245246fa6c6
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 0e5b48b21fc55ccda2133b15b4d1bf60184588e78eed00a88ad002c9161349ed
+    lines:
+      MMBT2907AH: [7, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: MMBT2907A
   def: model

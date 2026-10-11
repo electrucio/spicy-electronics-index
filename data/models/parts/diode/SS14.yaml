@@ -22,6 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dss14t3
+    get:
+      url: https://www.onsemi.com/download/models/sp2/ss14t3.sp2
+      sha256: 526b73f56093a9eca8097270b76f8688ad82d260f80439fde144db72fda2c84e
+  - source: onsemi
+    name: ss14t3
+    get:
+      url: https://www.onsemi.com/download/models/sp3/ss14t3.sp3
+      sha256: b197919f44aa4a7037f2bf8c3f4677f18509074c64fa38b06b509c9cef8eb5b1
 - source: onsemi
   name: SS14HE
   def: subckt
@@ -51,6 +61,143 @@ models:
     fetched: '2026-09-19'
     note: 'Schottky, PSpice Models (*.txt): ss14, legd, grd'
   note: pins from default order (unverified)
+- source: taiwan-semi
+  name: SS14
+  def: model
+  hash: 6d3a8729a96704a2fe05c52f04dbbd41a6283ddf
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 889bfdd4caa5729a223401cab9f11d49725a9d0c00b9e1c4e936c373b123da37
+    lines:
+      SS14: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS14H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c553be8668fb2545e037470efde22c8b016ce96e6c0933db5ff7fc179a3e453d
+- source: taiwan-semi
+  name: SS14LS
+  def: model
+  hash: 0c843fc1c1125ffbe653ffac11ed5f5380192405
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 13bece77e1a100d1d16297bc508dd5e87d8c8b664f6411b03e316ddfdb1ccc1e
+    lines:
+      SS14LS: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS14LSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 2e4dbb9b6f0cbe17a48e63fdbbabcf0131a82ed6c4df96754645d24a9e4a11e4
+- source: taiwan-semi
+  name: SS14LW
+  def: model
+  hash: 8d4f3c8e2a45a3514a186dc7366eff32ffae4d48
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d29aa545d51a623e2c1b678c492e958663f99e17bb323f778ef345b62cdfd70f
+    lines:
+      SS14LW: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS14LWH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: d147fb9393effe50ff0a77796e88cb1e1fb11fbf21ef8e1e47ac920e5c3f10f3
+- source: taiwan-semi
+  name: SS14MH
+  def: model
+  hash: 750b8347ddea2df977d7caf41bf06e8dd2003749
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: df86b4982bf216c738087489d0ad8a88c596ca982b0bf98cd5529bb385adce1e
+    lines:
+      SS14MH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS14M
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 1941d36c18162841e193528fda5c6eb26e78cf612ed62b944f1eeb6c35320c40
+- source: taiwan-semi
+  name: SS14ALH
+  def: model
+  hash: 8202c9ecb9d08708f566b9014ba46575866f3d6a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d62ca12f11c2e105a34cc65a15bd9a20004741afdfc3603452ba1fbdd1c846da
+    lines:
+      SS14ALH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS14FSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 0ae25704ff4cfa439015ce4a47db3eabc00d575359d6bab4d3121a8ec30799fe
+- source: taiwan-semi
+  name: SS14L
+  def: model
+  hash: 10888101a71a3940163b8b75e17d8707891f8752
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7b1ccd843bc9291b09f7b9316554812076f95ad7c920bbf93810d8d668233765
+    lines:
+      SS14L: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: SS14
+  def: subckt
+  hash: 717ce1dda70ace7a9b57ce0361c0657d57c183ab
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-2. Power Schottky/SS14.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 24c910de90fdd17c1e651684719cc937c9e78c51854c55e0156dc32ddfeac043
+    lines:
+      SS14: [11, 42]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: mcc
+  name: SS14Q-L
+  def: subckt
+  hash: cd9d485b9a1da61695cb362c9f84f6acd53d6484
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SS14Q-L.zip
+    member: SS14Q-L.TXT
+    archive_sha256: 2a8b15fd96f8859cd5643c6b9931cd0462dfe50f8c364486f6bef22726af0454
+    sha256: ccc36d8d8bfbe1fbd8ddd9f2f2c8a938385f360146dd0c41c42f52ab33edb502
+    lines:
+      SS14Q-L: [7, 22]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SS14HE
   def: subckt
@@ -94,13 +241,13 @@ models:
   - source: kicad-spice-library
     name: SS14
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
-      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
   - source: kicad-spice-library
     name: SS14
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
-      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
+      sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
 - source: groups-io
   name: SS14
   def: model
@@ -137,19 +284,13 @@ models:
   - source: kicad-spice-library
     name: SS14
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: SS14
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: SS14
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: SS14
     get:
@@ -159,12 +300,18 @@ models:
   - source: ltwiki
     name: SS14
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: SS14
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.dio
       sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: SS14
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

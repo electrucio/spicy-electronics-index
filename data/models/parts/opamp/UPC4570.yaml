@@ -2,6 +2,27 @@ part: UPC4570
 kind: opamp
 priority: 3
 models:
+- source: renesas
+  name: uPC4570
+  def: subckt
+  hash: 742d882b9fc7d34e2439f280d37766c3dffcd9ad
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.renesas.com/document/moh/upc4570-spice-model?r=25568688
+    member: UPC4570_SPICE.txt
+    archive_sha256: 5ff4bc644502c5fed6a880ddc2fb83d1f7ea4728c242f696ae122e401fd3b064
+    sha256: 1905c545f7327658a4b257d4cb4dba827ab14d7f074b77b2e8a3ef4c2b813627
+    lines:
+      uPC4570: [4, 59]
+    fetched: '2026-10-10'
+  copies:
+  - source: renesas
+    name: uPC4570
+    get:
+      url: https://www.renesas.com/document/moh/spice-upc4570-obsolete?r=1323036
+      member: UPC4570_180628.txt
+      sha256: 1905c545f7327658a4b257d4cb4dba827ab14d7f074b77b2e8a3ef4c2b813627
 - source: ltwiki
   name: upc4570
   def: subckt

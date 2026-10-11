@@ -28,6 +28,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qmmbt5401lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt5401lt1.sp2
+      sha256: 8be468052b028b42185653c55991e0ea4ce9110dc1b318ee18581ebc148548f5
+  - source: onsemi
+    name: mmbt5401lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt5401lt1.sp3
+      sha256: 693c5c57aab0cb1c32836dadfa36ce58da4da532f0424a904dde93d18a09a963
   - source: microcap12
     name: Qmmbt5401wt1
     get:
@@ -39,6 +49,16 @@ models:
     get:
       url: https://www.onsemi.com/download/models/lib/mmbt5401wt1.lib
       sha256: dae5a70373cd4aac068a73bd57d5fece7e856dc0b53e19a4a40be8018f2007e6
+  - source: onsemi
+    name: Qmmbt5401wt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt5401wt1.sp2
+      sha256: a73679fb9553ab9c01559049341830249bc65ea20cef5ca11e640f477868dbd2
+  - source: onsemi
+    name: mmbt5401wt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt5401wt1.sp3
+      sha256: 8838b4a505d3d4ab7473f63d5d751f0a10abc8fed8b8eb6f7477433c759ab24a
 - source: diodes-inc
   name: MMBT5401
   def: model
@@ -63,6 +83,28 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/DiodesInc_BJT.lib
       sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+- source: panjit
+  name: MMBT5401
+  def: subckt
+  hash: 38852bc683aad7c781905a06ff8248ef13ec2515
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT5401.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 6f1a950eb9df93f9a5135009a74ba890ce86a24ba1070fcaba0e617a197030ee
+    lines:
+      MMBT5401: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBT5401-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBT5401-AU.txt
+      sha256: 1a2719f7ba41d818c3a0c5cab15b93c5e3bd9b576358b93423f31c7ee74fad96
 - source: central-semi
   name: 2N5401
   def: model

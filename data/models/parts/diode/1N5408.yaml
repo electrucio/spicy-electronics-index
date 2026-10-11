@@ -29,6 +29,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: D1n5408rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n5408rl.sp2
+      sha256: 513ad3fdbaf2b4896fc7d616b55f426a9010fe6dbb25cecbe8293e1f1354e9c1
+  - source: onsemi
+    name: 1n5408rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n5408rl.sp3
+      sha256: 0d81292d60bdfc0ca5561069f837e7c088a0b34fa803ae8001a81b5afade763b
 - source: vishay
   name: d1n5408
   def: model
@@ -48,6 +58,25 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
       sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+- source: taiwan-semi
+  name: 1N5408G
+  def: model
+  hash: 530e1f965a6be3453d723bf7464c664fb7ed22c2
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7672b92a78aab60650ddc86977a12261720b9014258e806a23b1511b29421e70
+    lines:
+      1N5408G: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: 1N5408GH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: a0d2d2fef7cd60a6efa5f9fce7cd53d2c5dfbf748a76faa4e4dbed1ad52cfa99
 - source: microcap12
   name: 1N5408
   def: model

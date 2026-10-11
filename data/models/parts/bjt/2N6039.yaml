@@ -22,6 +22,24 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: X2n6039
+  def: subckt
+  hash: 0fb23ea2cb6b40bcd8af7b8c4935fe013a043913
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/2n6039.sp2
+    sha256: 7a3d0ad8fdf027f802aa372d533193b56c3c544659334cb1c061e63e2420777f
+    lines:
+      X2n6039: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: 2n6039
+    get:
+      url: https://www.onsemi.com/download/models/sp3/2n6039.sp3
+      sha256: c1484b605ab44746c9337adf3987247ce00bc39560f8730751ec3b48ec3b943c
 - source: ltwiki
   name: Q2N6039
   def: subckt

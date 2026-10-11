@@ -107,6 +107,12 @@ models:
     get:
       url: http://tdsl.duncanamps.com/dcigna/tubes/spice/kt88.inc
       sha256: 2eb5da7b7a59bbd2e539d215a1b9e4c7f9ae933cb7d7ff9dcb226bfb74469712
+  - source: tdsl-cigna
+    name: KT88
+    get:
+      url: http://tdsl.duncanamps.com/dcigna/tubes/spice/spice.zip
+      member: KT88.INC
+      sha256: 2eb5da7b7a59bbd2e539d215a1b9e4c7f9ae933cb7d7ff9dcb226bfb74469712
 - source: koren
   name: KT88
   def: subckt
@@ -131,14 +137,15 @@ models:
   - source: groups-io
     name: KT88
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM.lib
       sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: groups-io
     name: KT88
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Tube_IM.lib
-      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+      member: TUBE/TubeBF.lib
+      sha256: e0e89f389ca1765c0b041e278d91428bab01777b91cd9c649b1ce41d5af7f1a5
   - source: groups-io
     name: KT88
     get:
@@ -148,9 +155,8 @@ models:
   - source: groups-io
     name: KT88
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/TubeBF.lib
-      sha256: e0e89f389ca1765c0b041e278d91428bab01777b91cd9c649b1ce41d5af7f1a5
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: koren
     name: KT88
     get:
@@ -258,13 +264,13 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
+    member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+    sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
     lines:
-      DX: [1206, 1206]
-      KT88: [930, 934]
-      PENTODE1: [1159, 1171]
+      DX: [161, 161]
+      KT88: [101, 105]
+      PENTODE1: [130, 142]
     fetched: '2026-09-21'
   note: pins from inline comment
   copies:
@@ -272,20 +278,20 @@ models:
     name: KT88
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Tubes_Koren.lib
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
   - source: bordodynov
     name: KT88
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/nk_pentode.sub
-      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: KT88
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_.cir
-      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: KT88
     get:
@@ -302,23 +308,23 @@ models:
     name: KT88
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_inc.txt
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
-  - source: kicad-spice-library
-    name: KT88
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
   - source: kicad-spice-library
     name: KT88
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
       sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: kicad-spice-library
+    name: KT88
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: ltwiki
     name: KT88
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Tubes_Koren.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: ltwiki
     name: KT88
@@ -329,19 +335,19 @@ models:
   - source: ltwiki
     name: KT88
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
-      sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: robrobinette
     name: KT88
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
   - source: robrobinette
     name: KT88
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
 - source: ltwiki
@@ -374,8 +380,8 @@ models:
     name: KT88_OLD
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_.cir
-      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: KT88_OLD
     get:
@@ -392,8 +398,8 @@ models:
     name: KT88_OLD
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_inc.txt
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
   - source: kicad-spice-library
     name: KT88_OLD
     get:
@@ -408,13 +414,13 @@ models:
   - source: robrobinette
     name: KT88_OLD
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
   - source: robrobinette
     name: KT88_OLD
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
 - source: bordodynov
@@ -441,23 +447,6 @@ models:
       TRIO1: [796, 798]
     fetched: '2026-09-21'
   copies:
-  - source: groups-io
-    name: KT88TR
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
-      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
-  - source: groups-io
-    name: KT88TR
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Rydel_tubes.lib
-      sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
-  - source: ltwiki
-    name: KT88TR
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Rydel_tubes.lib
-      sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
   - source: bordodynov
     name: KT88TR_RY
     get:
@@ -478,14 +467,8 @@ models:
   - source: ltwiki
     name: KT88TR_RY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: KT88TR_RY
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: KT88TR_RY
@@ -496,9 +479,32 @@ models:
   - source: ltwiki
     name: KT88TR_RY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: KT88TR_RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: groups-io
+    name: KT88TR
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Rydel_tubes.lib
+      sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
+  - source: groups-io
+    name: KT88TR
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
+      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
+  - source: ltwiki
+    name: KT88TR
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Rydel_tubes.lib
+      sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
 - source: bordodynov
   name: KT88
   def: subckt
@@ -522,14 +528,14 @@ models:
   - source: groups-io
     name: KT88
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
-      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
-  - source: groups-io
-    name: KT88
-    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
       member: TUBE/Rydel_tubes.lib
       sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
+  - source: groups-io
+    name: KT88
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
+      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
   - source: ltwiki
     name: KT88
     get:
@@ -675,8 +681,10 @@ models:
   - TETRO1
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
-    sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/lampes.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
     lines:
       Igrid: [614, 619]
       KT88: [54, 62]
@@ -686,9 +694,8 @@ models:
   - source: groups-io
     name: KT88
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/lampes.lib
-      sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
+      sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
 - source: groups-io
   name: KT88TR
   def: subckt
@@ -699,8 +706,10 @@ models:
   - TRIO1
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
-    sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/lampes.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
     lines:
       Igrid: [614, 619]
       KT88TR: [388, 396]
@@ -710,9 +719,8 @@ models:
   - source: groups-io
     name: KT88TR
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/lampes.lib
-      sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
+      sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
 - source: groups-io
   name: KT88
   def: subckt
@@ -742,12 +750,12 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
     lines:
-      KT88: [2866, 2869]
-      Tetro: [3163, 3176]
+      KT88: [2881, 2884]
+      Tetro: [3178, 3191]
     fetched: '2026-09-21'
   note: pins from inline comment
   copies:
@@ -771,9 +779,9 @@ models:
   - source: ltwiki
     name: KT88
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
   - source: ltwiki
     name: KT88
     get:
@@ -783,9 +791,9 @@ models:
   - source: ltwiki
     name: KT88
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: ltwiki
   name: KT88RY
   def: subckt
@@ -798,14 +806,14 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
     lines:
-      6550RY: [2871, 2881]
-      Igrid: [2974, 2978]
-      KT88RY: [2883, 2885]
-      TETRO1: [2939, 2949]
+      6550RY: [2886, 2896]
+      Igrid: [2989, 2993]
+      KT88RY: [2898, 2900]
+      TETRO1: [2954, 2964]
     fetched: '2026-09-21'
   copies:
   - source: bordodynov
@@ -828,9 +836,9 @@ models:
   - source: ltwiki
     name: KT88RY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
   - source: ltwiki
     name: KT88RY
     get:
@@ -840,9 +848,9 @@ models:
   - source: ltwiki
     name: KT88RY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
   name: KT88
   def: subckt

@@ -51,18 +51,12 @@ models:
   - source: kicad-spice-library
     name: DI_BZX84C3V3
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
-      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
+      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
   - source: kicad-spice-library
     name: DI_BZX84C3V3
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
-      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
-  - source: ltwiki
-    name: DI_BZX84C3V3
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/zener.lib
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
       sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
   - source: ltwiki
     name: DI_BZX84C3V3
@@ -70,6 +64,42 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/DIODES.COM/ZENER/LIB/zener.lib
       sha256: 6a9b1f3823ca8671b8cd73d91b5565680e6e287ecafcdc8f90055614b7dd5629
+  - source: ltwiki
+    name: DI_BZX84C3V3
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/zener.lib
+      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+- source: taiwan-semi
+  name: BZX84C3V3
+  def: model
+  hash: d7e378ce566b2d1c114ba30c5fca75187808fd6e
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 022d71904e7be576234c2cf968f089b513d18ccb58944732b19e790339a5ce8d
+    lines:
+      BZX84C3V3: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  note: 'STAND-IN: model of BZX84-C3V3, not of BZX55C3V3; the equivalence is declared in data/models/wanted.yaml'
+- source: panjit
+  name: BZX84C3V3
+  def: subckt
+  hash: ad396b0984930719d59c81f4d8dc21f3e60a1fb1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C3V3.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: b5312d873d7a3ce06a13643d539954c760239cac99d3eee8e7f9425fc41a54da
+    lines:
+      BZX84C3V3: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  note: 'STAND-IN: model of BZX84-C3V3, not of BZX55C3V3; the equivalence is declared in data/models/wanted.yaml'
 - source: spice-model-cd
   name: BZX84C3V3
   def: model
@@ -168,19 +198,13 @@ models:
   - source: kicad-spice-library
     name: BZX84C3V3
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard3.dio
-      sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: BZX84C3V3
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: BZX84C3V3
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard3.dio
+      sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
   - source: ltwiki
     name: BZX84C3V3
     get:
@@ -193,6 +217,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: BZX84C3V3
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: groupsio-ltspice
   name: BZX84C3V3
   def: model
@@ -259,14 +289,14 @@ models:
   - source: ltwiki
     name: BZX84C3V3
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C3V3
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BZX793V3

@@ -2,6 +2,70 @@ part: BZT52C4V7
 kind: zener
 priority: 4
 models:
+- source: nexperia
+  name: BZT52-C4V7-Q
+  def: subckt
+  hash: 8bf2449847be4bdb84047799b26d29e4f5543247
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZT52-C4V7-Q.txt
+    sha256: 806f0abd906600ed5468055af3e0fb1822145ef59185177e65d7598f89b6e883
+    lines:
+      BZT52-C4V7-Q: [37, 67]
+    fetched: '2026-10-10'
+- source: panjit
+  name: BZT52-C4V7S
+  def: subckt
+  hash: f03bf679fe63fa1f57c8616ee678f4c7523cd6b2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZT52-C4V7S.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: ab37d8cfc9ca1b4260d35c67e9529178e8dd54b54d2948a29b2db86ac9fe8cdf
+    lines:
+      BZT52-C4V7S: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BZT52-C4V7S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/BZT52-C4V7S-AU.txt
+      sha256: 9e0df0b3bb0d33eefe9b5b39ecdf1b51e4b05960a6f2ec66f19887cad1dbb421
+- source: panjit
+  name: BZT52-C4V7
+  def: subckt
+  hash: 716d63aebefe38abbba5bfa147fcc161d4342f2a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZT52-C4V7.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: fef0cc4a57698a955e20bfde77a812f12ef998bd572a830d0c72f8fab00f802c
+    lines:
+      BZT52-C4V7: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZT52-C4V7-AU
+  def: subckt
+  hash: d71d0da76e302826674dc2f4c9a4a689b127c7e5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZT52-C4V7-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 1a0f70c1255c884e1781ffa6e3a99318602d508985ff5792353d2fec256df00e
+    lines:
+      BZT52-C4V7-AU: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: BZT52C4V7
   def: subckt

@@ -14,6 +14,60 @@ models:
     lines:
       BZX84C16LT1G: [587, 605]
     fetched: '2026-09-19'
+- source: nexperia
+  name: BZX84-C16
+  def: model
+  hash: a2f99c9b389bd2564c53fb3c7d78a4f9288ddd72
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZX84-C16.txt
+    sha256: 56619c63b659233e75ece9b26d43c75919da4f60fdf497498263a8d8ae956287
+    lines:
+      BZX84-C16: [28, 39]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: BZX84C16V
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C16.PRM
+      sha256: b38c10e457b5388f3571f947e99328fa8e011dc1a6f77a890ddd8b5d9883d1e3
+- source: taiwan-semi
+  name: BZX84C16
+  def: model
+  hash: 04d67ecac284f9240b5d8d22ead2fa448d3f855d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: cedeb05675fd01696a1e1a38b810ac7dc9046d181a2a8e830522c25fe9f6156c
+    lines:
+      BZX84C16: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZX84C16
+  def: subckt
+  hash: a811ef73ebe87b9eeccb1f3d9b232fbb8f1bbf59
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C16.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 91cc9b553daf438e7dd62f636631f077e918ff890de8e8afb30afc2854535253
+    lines:
+      BZX84C16: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BZX84C16-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/BZX84C16-AU.txt
+      sha256: e202e793c5e8c2b65bc5b546b51ba9c25c7b2b42a7141b2190d620e892bcfe0b
 - source: spice-model-cd
   name: BZX84C16
   def: model
@@ -315,6 +369,12 @@ models:
   - source: ltwiki
     name: BZX84C16VL
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BZX84C16VL
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -324,26 +384,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BZX84C16VL
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BZX84C16V
-  def: model
-  hash: a2f99c9b389bd2564c53fb3c7d78a4f9288ddd72
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C16.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: b38c10e457b5388f3571f947e99328fa8e011dc1a6f77a890ddd8b5d9883d1e3
-    lines:
-      BZX84C16V: [6, 17]
-    fetched: '2026-09-21'
 - source: bordodynov
   name: BZX84C16
   def: model
@@ -373,14 +413,14 @@ models:
   - source: ltwiki
     name: BZX84C16
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C16
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BZX84C16VLY
@@ -406,12 +446,12 @@ models:
   - source: ltwiki
     name: BZX84C16VLY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C16VLY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

@@ -3,6 +3,66 @@ kind: bjt
 priority: 4
 group: small_signal_npn
 models:
+- source: nexperia
+  name: BCM847DS
+  def: subckt
+  hash: ad6d3d49ed106b209360c88d9e272094b94e10b1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCM847DS.txt
+    sha256: 5496692ba9e346d206ef002616d92f544c63d096a6b4231c19b73f93736691e8
+    lines:
+      BCM847DS: [31, 72]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BCM847BV
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BCM847BV.txt
+      sha256: 5447ffaaa0ccb025fd16236e38d08761de9932af75b7485bd712f6fc1bd6767b
+- source: nexperia
+  name: BCM847BSH_Q
+  def: subckt
+  hash: 5344ded674c1fccd76eadd4bc777f2fc830322e4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCM847BSH-Q.txt
+    sha256: 958baa1d1834ef07be759c79ffd742eee21f2882bcb5327137d382d30c031491
+    lines:
+      BCM847BSH_Q: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BCM847BSH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BCM847BSH.txt
+      sha256: 738f72de6af6a6d4770a5ef008a546755799667b722765c2fcb5910e90f2a46a
+- source: nexperia
+  name: BCM847BS
+  def: subckt
+  hash: 4076f2cb6d4fbf56e02a5627d72cdbe3e04369ed
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCM847BS.txt
+    sha256: 07408eac5ec551c9c86e6523099a0b0639ac16abd307fcc25abb9888f134719d
+    lines:
+      BCM847BS: [31, 72]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BCM847QAS
+  def: subckt
+  hash: 76b02e16fb14ace99198852f06f651b7847e4a0c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCM847QAS.txt
+    sha256: 37ce24aa26ca1fe7c5fcff42e175c2b469aca8eda060ac192c39128c22ec81e9
+    lines:
+      BCM847QAS: [31, 95]
+    fetched: '2026-10-10'
 - source: microcap12
   name: BCM847BV
   def: subckt
@@ -45,8 +105,10 @@ models:
   type: NPN
   verbatim: true
   get:
-    url: https://modwiggler.com/forum/download/file.php?id=30774
-    sha256: 68bf504d8e24d9d75de21281de11bbbd9bde1c0ee169b32369822f8c8c448f0b
+    url: https://modwiggler.com/forum/download/file.php?id=136096
+    member: SA571.CIR
+    archive_sha256: 6e3c73e50ab387c57c97d753c6dd975d09a7834895fbbb3c0c4aa903dcd67e03
+    sha256: a282b74f6026a7818dd17195a34a8e4cda79295aaef934de0ca3a30081415d08
     lines:
       QBCM847BS: [80, 118]
     fetched: '2026-10-09'
@@ -54,9 +116,8 @@ models:
   - source: modwiggler
     name: QBCM847BS
     get:
-      url: https://modwiggler.com/forum/download/file.php?id=136096
-      member: SA571.CIR
-      sha256: a282b74f6026a7818dd17195a34a8e4cda79295aaef934de0ca3a30081415d08
+      url: https://modwiggler.com/forum/download/file.php?id=30774
+      sha256: 68bf504d8e24d9d75de21281de11bbbd9bde1c0ee169b32369822f8c8c448f0b
 - source: ltwiki
   name: bcm847bs
   def: model

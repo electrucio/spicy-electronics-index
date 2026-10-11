@@ -4,6 +4,51 @@ priority: 3
 group: listed
 models:
 - source: onsemi
+  name: Qmmbth10lt1
+  def: model
+  hash: 45fe3b72509fb0d2429cbe755a4289fe98d771dc
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/mmbth10lt1.sp2
+    sha256: 135fb460b4d7e3eb040c7b2aaa6cea1ff457115205e6ca6443526377a2029157
+    lines:
+      Qmmbth10lt1: [14, 24]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: mmbth10lt1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_small.lib
+      sha256: 03de7eeee5291d83d8017fe3dafdab3fd5afa7d3bb2da1da44bf953eb4973e5a
+  - source: microcap12
+    name: Qmmbth10lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbth10lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_small.lib
+      sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
+  - source: onsemi
+    name: mmbth10lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbth10lt1.sp3
+      sha256: 621a1abc51b20f1ec0d1201cf40196041829532298259fa1ef22030e80eba3bf
+  - source: onsemi
+    name: Qmmbth10lt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/mmbth10lt1.lib
+      sha256: 8f0ade8cafa710795966d93599e6881e9c2c875c0a06ca1943fda201f23927eb
+  - source: spice-model-cd
+    name: mmbth10lt1
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbth10lt1.lib
+      sha256: 2b7282c1346b79b9bf94ce8b9e3737bff633415fa9c28742c0cdd3f6503c62e5
+- source: onsemi
   name: MMBTH10
   def: model
   hash: ca3f829f19b183e3efa295fd18a0f901f5081424
@@ -18,36 +63,6 @@ models:
   copies:
   - source: microcap12
     name: MMBTH10
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/On_Semi.lib
-      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: spice-model-cd
-  name: mmbth10lt1
-  def: model
-  hash: 45fe3b72509fb0d2429cbe755a4289fe98d771dc
-  type: NPN
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbth10lt1.lib
-    sha256: 2b7282c1346b79b9bf94ce8b9e3737bff633415fa9c28742c0cdd3f6503c62e5
-    lines:
-      mmbth10lt1: [14, 24]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: mmbth10lt1
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_small.lib
-      sha256: 03de7eeee5291d83d8017fe3dafdab3fd5afa7d3bb2da1da44bf953eb4973e5a
-  - source: microcap12
-    name: mmbth10lt1
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/m_small.lib
-      sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
-  - source: microcap12
-    name: Qmmbth10lt1
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
@@ -70,13 +85,19 @@ models:
   - source: kicad-spice-library
     name: MMBTH10
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: MMBTH10
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: MMBTH10
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
   - source: ltwiki
     name: MMBTH10
     get:
@@ -89,12 +110,6 @@ models:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
-  - source: ltwiki
-    name: MMBTH10
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
 - source: groupsio-ltspice
   name: MMBTH10
   def: model
@@ -130,14 +145,14 @@ models:
   - source: ltwiki
     name: MMBTH10
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: MMBTH10
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: MMBTH10

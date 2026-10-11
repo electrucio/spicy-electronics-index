@@ -3,20 +3,25 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N4032
   def: model
   hash: 944e3c8047104a30b9c3751167efdb1ef5e7b3a4
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N4032.LIB
+    sha256: e24566514f245f04c01570431c596dec65c9dbb13b9b30332f16f9206a3318cc
     lines:
-      2N4032: [2569, 2573]
-    fetched: '2026-09-21'
+      2N4032: [25, 29]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N4032
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: groupsio-ltspice
   name: 2N4032
   def: model

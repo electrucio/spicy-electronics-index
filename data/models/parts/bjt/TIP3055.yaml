@@ -28,6 +28,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qtip3055
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip3055.sp2
+      sha256: a9d8b7193e504b2d062868985f58cd6b99adc88fb54b0b8cfdc562b9388214e5
+  - source: onsemi
+    name: tip3055
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip3055.sp3
+      sha256: bb3954b65d3c1bfa255995a25fd2d1f0d894eea6038b2b4c56931be22de588ec
 - source: groups-io
   name: TIP3055
   def: model
@@ -58,13 +68,19 @@ models:
   - source: kicad-spice-library
     name: TIP3055
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: TIP3055
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+  - source: ltwiki
+    name: TIP3055
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
   - source: ltwiki
     name: TIP3055
     get:
@@ -77,12 +93,6 @@ models:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
-  - source: ltwiki
-    name: TIP3055
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
 - source: groupsio-ltspice
   name: TIP3055
   def: model

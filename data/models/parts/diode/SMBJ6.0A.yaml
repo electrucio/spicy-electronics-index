@@ -3,6 +3,75 @@ kind: diode
 priority: 4
 group: tvs
 models:
+- source: taiwan-semi
+  name: SMBJ60A
+  def: subckt
+  hash: 9dce0fcfcac52770821756d4406d3323f814063a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 1bec8286ce2fe8b1f6723c4ccf0975589cd55dd97c62843c540c589cc989373f
+    lines:
+      SMBJ60A: [7, 23]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SMBJ60AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 1c7374c39b1046a4a6398d2fb78d69ca252e9100fa50a8c7c3e837aff977ac14
+- source: taiwan-semi
+  name: SMBJ60A
+  def: model
+  hash: 42391363f67a66eb1324bac6e5342d85844a3d6a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 978623cbcd763f607e2226b7fc3cd4f1fe0e3d6d4ee3e44404f4d3b8fff23452
+    lines:
+      SMBJ60A: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SMBJ60AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 15a6ca4b604a83991690ca63a24abab07f9e037906665cc6e2e5e011ca92b232
+- source: stmicro
+  name: SMBJ6_0A
+  def: subckt
+  hash: 52a37dd0f21e356744311a3faad64e5ca5864bc7
+  type: SUBCKT
+  deps:
+  - TRANSIL
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj_pspice.zip
+    member: SMBJ.lib
+    archive_sha256: 5d854e5b2fbbb3804288f0c69953e1652692188175a4fabb6584a7cff041f12b
+    sha256: f0fd64a5751d0bb7b668e9289fc91fc92000be2b1d6f0c455c8d616f7671caaf
+    lines:
+      SMBJ6_0A: [140, 145]
+      TRANSIL: [29, 62]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SMBJ6_0A_STM
+  def: subckt
+  hash: e71fd8d8cd1cedfd821a021d016b86dd7360ae18
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj-series-thermal-edsim-simetrix-pspice.zip
+    member: smbj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 42edb3e4ad623552356e50e9134bc03fd8338c56b478b2360712bc9249fa59e6
+    sha256: 858c9cc68721df47364f5698c06e37345339fba45805a8380594f4ede1359420
+    lines:
+      SMBJ6_0A_STM: [190, 266]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: SMBJ6_0A
   def: subckt
@@ -31,6 +100,12 @@ models:
     name: SMBJ6_0A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: bordodynov
+    name: SMBJ6_0A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST1.lib
       sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: bordodynov
@@ -38,12 +113,6 @@ models:
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: bordodynov
-    name: SMBJ6_0A
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SMBJ6_0A
@@ -64,14 +133,14 @@ models:
   - source: ltwiki
     name: SMBJ6_0A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST1.lib
-      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMBJ6_0A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMBJ6_0A
@@ -82,12 +151,12 @@ models:
   - source: ltwiki
     name: SMBJ6_0A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST1.lib
+      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: ltwiki
     name: SMBJ6_0A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

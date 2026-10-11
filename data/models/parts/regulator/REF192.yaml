@@ -55,29 +55,6 @@ models:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
       sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
 - source: spice-model-cd
-  name: REF192F/AD
-  def: subckt
-  hash: 046da7fa8fd84e981bb387ca7f4b0607abb6e804
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
-    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
-    lines:
-      REF192F/AD: [75077, 75142]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: REF192F/AD
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
-      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
-  - source: ltwiki
-    name: REF192F/AD
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
-      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
-- source: spice-model-cd
   name: REF192G/AD
   def: subckt
   hash: 5e59b9cae2ff14c7eaaa96f629841f42cda288ac
@@ -97,6 +74,29 @@ models:
       sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
   - source: ltwiki
     name: REF192G/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+- source: spice-model-cd
+  name: REF192F/AD
+  def: subckt
+  hash: 046da7fa8fd84e981bb387ca7f4b0607abb6e804
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Analog%20Devices_Spice_Files/OpAmps/Spice/anlg_dev.lib
+    sha256: 6ab38357b65b81a3e4b75284dac1bed7e893f4ee465f998763fd9b4d3ecd4af3
+    lines:
+      REF192F/AD: [75077, 75142]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: REF192F/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: REF192F/AD
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
       sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
@@ -153,29 +153,6 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
       sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
 - source: microcap12
-  name: REF192F_AD
-  def: subckt
-  hash: 96f701dc24f78ad094adf0782527cc6b8c84eadd
-  type: SUBCKT
-  deps:
-  - dx
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/analog.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
-    lines:
-      REF192F_AD: [65048, 65113]
-      dx: [77076, 77076]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: REF192F_AD
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
-      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
-- source: microcap12
   name: REF192G_AD
   def: subckt
   hash: ce55db9b2c5d0d4c7bedb699b2932aa4742a3c98
@@ -195,6 +172,29 @@ models:
   copies:
   - source: kicad-spice-library
     name: REF192G_AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
+      sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0
+- source: microcap12
+  name: REF192F_AD
+  def: subckt
+  hash: 96f701dc24f78ad094adf0782527cc6b8c84eadd
+  type: SUBCKT
+  deps:
+  - dx
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/analog.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 5976ea0121285cf028d550faba36917cd1b7a83e90e97e8c34e7e8530c6795e6
+    lines:
+      REF192F_AD: [65048, 65113]
+      dx: [77076, 77076]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: REF192F_AD
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/analog.lib
       sha256: 891567143abd57db103fb307b2ffe6554b4dbdeac745b3348fcf8e20c2d619f0

@@ -3,20 +3,25 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N3117
   def: model
   hash: b3d33b31894dad689763d2795db98ea267204fbd
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N3117.LIB
+    sha256: d76ff2c2078d70e5e0d24174c61199310085dee6a40560c2b9455ac971cd60cc
     lines:
-      2N3117: [1806, 1831]
-    fetched: '2026-09-21'
+      2N3117: [22, 47]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N3117
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: groupsio-ltspice
   name: 2N3117
   def: model

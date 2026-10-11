@@ -3,20 +3,39 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
-  name: 2SC5658
+- source: rohm
+  name: Q2SC5658
   def: model
   hash: 353e8cd0d971f4073b5a858f3732ada81c0fbdb8
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sc5658_ltspice.zip
+    member: 2sc5658_ltspice/2sc5658_ltspice.lib
+    archive_sha256: 2518932e34cad6ac1fb6485bb5c5423cdf63b8ee40cf695696a164e0caba135e
+    sha256: 05f8bbbd33b0a92bdc511591f57884143fd56ca2cfe0df439740af321f15633e
     lines:
-      2SC5658: [3529, 3554]
-    fetched: '2026-09-21'
+      Q2SC5658: [3, 28]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SC5658
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SC5658
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2SC5658HZG_SPICE.zip
+      member: 2SC5658HZG_SPICE/2SC5658hzg_SPICE.lib
+      sha256: 05f8bbbd33b0a92bdc511591f57884143fd56ca2cfe0df439740af321f15633e
+  - source: rohm
+    name: Q2SC5658
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sc5658_spice.zip
+      member: 2sc5658.lib
+      sha256: 05f8bbbd33b0a92bdc511591f57884143fd56ca2cfe0df439740af321f15633e
 - source: bordodynov
   name: 2SC5658
   def: model
@@ -51,6 +70,12 @@ models:
   - source: ltwiki
     name: 2SC5658
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SC5658
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -60,12 +85,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SC5658
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SC5658
   def: model

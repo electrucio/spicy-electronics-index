@@ -29,6 +29,11 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: 1n4937rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n4937rl.sp3
+      sha256: b04318ef4dd5ed44ff3a3268f597cad008c42661c30985b08ff91f98cfaa9a42
 - source: onsemi
   name: D1N4937
   def: model
@@ -36,7 +41,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -58,15 +63,15 @@ models:
   - source: onsemi
     name: D1N4937
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
-      member: NCV887x_WEB MODEL rev2/diode.lib
-      sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
-  - source: onsemi
-    name: D1N4937
-    get:
       url: https://www.onsemi.com/download/models/zip/ncp1351%20pspice%20model.zip
       member: ncp1351_ORCAD/application.lib
       sha256: 5617ad21da819be996732ece6f515658a40de55ea6685e48fcd3ec27b14a1159
+  - source: onsemi
+    name: D1N4937
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+      member: NCV887x_WEB MODEL rev2/diode.lib
+      sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: microcap12
   name: 1N4937GP
   def: model
@@ -84,20 +89,6 @@ models:
 - source: microcap12
   name: 1N4937
   def: model
-  hash: af92c0b1790030d1b11da49bbfc7653265d101a8
-  type: D
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/Switched Models/Reactor wo Hysteresis.cir
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 0efd396ac8adec991261a03f2b7a714c21721603aa4b1de0282f958fb9373497
-    lines:
-      1N4937: [823, 824]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: 1N4937
-  def: model
   hash: b8e5394067fc2e9f7a7c635acec1b34fab3e0d58
   type: D
   verbatim: true
@@ -108,6 +99,20 @@ models:
     sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
     lines:
       1N4937: [285, 286]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: 1N4937
+  def: model
+  hash: af92c0b1790030d1b11da49bbfc7653265d101a8
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: DATA/Switched Models/Reactor wo Hysteresis.cir
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 0efd396ac8adec991261a03f2b7a714c21721603aa4b1de0282f958fb9373497
+    lines:
+      1N4937: [823, 824]
     fetched: '2026-09-21'
 - source: qspice
   name: 1N4937
@@ -166,12 +171,12 @@ models:
   - source: ltwiki
     name: 1N4937
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N4937
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

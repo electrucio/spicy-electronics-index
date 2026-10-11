@@ -35,15 +35,33 @@ models:
   - source: ltwiki
     name: TIP141
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
-    name: TIP141
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/NPNdarlington.lib
       sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
+    name: TIP141
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+- source: onsemi
+  name: Xtip141
+  def: subckt
+  hash: 7e6c465487ad4f057d5b0b743a8e6d0b84e6166e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip141.sp2
+    sha256: 1054518676824a6ca64847db775d44863c111c03f877177f8dea362304d1195c
+    lines:
+      Xtip141: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip141
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip141.sp3
+      sha256: fb9cd4025fc11e77df0f0166fe31b9719cc6d92ce42cb4e843ec05a40da8294b
 - source: microcap12
   name: tip141
   def: subckt

@@ -32,14 +32,14 @@ models:
     name: TIP125
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.txt
-      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: bordodynov-qspice
     name: TIP125
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
   - source: kicad-spice-library
     name: TIP125
     get:
@@ -48,21 +48,39 @@ models:
   - source: ltwiki
     name: TIP125
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
-  - source: ltwiki
-    name: TIP125
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/PNPdarlington.lib
       sha256: 59a95f21cebb26aebfa460323a2fbdb5ee49fb7a3b9808eb38860e29327fc152
+  - source: ltwiki
+    name: TIP125
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: microcap12
     name: tip125
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xtip125
+  def: subckt
+  hash: 6e49352ac5dee75c869be2c40a180cc037b7173f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip125.sp2
+    sha256: 9f28c4100d8da580d5ed49a3eb6242ebf6cb627b61a1c2cf36f0e42d7d723d9d
+    lines:
+      Xtip125: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip125
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip125.sp3
+      sha256: 991f789a5bd844bb635877e68f5518e38777a256e31ed14942d4f75b41fe714b
 - source: kicad-spice-library
   name: TIP125
   def: subckt

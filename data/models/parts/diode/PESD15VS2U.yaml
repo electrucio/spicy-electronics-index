@@ -3,6 +3,45 @@ kind: diode
 priority: 4
 group: tvs
 models:
+- source: nexperia
+  name: PESD15VS2UAT
+  def: model
+  hash: 4a66699f602ed127a4e203cdf57d4568fdced803
+  type: D
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/PESD15VS2UAT
+    sha256: 92992d834bb2c6c9b9aefa3b48b962524df6fffd4c1511c02575ecb601c2dae9
+    lines:
+      PESD15VS2UAT: [41, 50]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: nexperia
+    name: PESD15VS2UAT
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PESD15VS2UAT.txt
+      sha256: bd5c181ee0fe46021f633d55d6f18b3a6cc2607ffbd46b898acf4d0d3b07294a
+  - source: nexperia
+    name: PESD15VS2UQ
+    get:
+      url: https://www.nexperia.com/product/PESD15VS2UQ
+      sha256: afd7b7d2a845066ff7f44bec5c5cdae2690a1814a64ed838d545238480067aa4
+  - source: nexperia
+    name: PESD15VS2UQ
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PESD15VS2UQ.txt
+      sha256: 2af6df88397ae2fc5413ffbf189e348736b7a15f376a898bbe458b0c971687fd
+  - source: nexperia
+    name: PESD15VS2UT
+    get:
+      url: https://www.nexperia.com/product/PESD15VS2UT
+      sha256: 74ad61fbcf2c6ae8251478c4e5d403ce2557fc60239a953031646ba9481294d1
+  - source: nexperia
+    name: PESD15VS2UT
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PESD15VS2UT.txt
+      sha256: f5fac37cc25d1f341ef8c050a1eb14519c80016cebc34fa9af887bce79a8a5bb
 - source: microcap12
   name: PESD15VS2UAT
   def: subckt

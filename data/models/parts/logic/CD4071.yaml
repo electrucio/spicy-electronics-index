@@ -2,6 +2,40 @@ part: CD4071
 kind: logic
 priority: 3
 models:
+- source: ti
+  name: CD4071B
+  def: subckt
+  hash: 28ff4e834f87c4fe874bce0cb1ccb2c6719b94f5
+  type: SUBCKT
+  deps:
+  - LOGIC_FUNCTION_2_LVC_2i_OR_PP_CMOS_CD4071B
+  - LOGIC_ICC_LVC_2i_OR_PP_CMOS_CD4071B
+  - LOGIC_INPUT_LVC_2i_OR_PP_CMOS_CD4071B
+  - LOGIC_PP_OUTPUT_LVC_2i_OR_PP_CMOS_CD4071B
+  - TPD_LVC_2i_OR_PP_CMOS_CD4071B
+  - LOGIC_GATE_2PIN_OD_LVC_2i_OR_PP_CMOS_CD4071B
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SCHM015
+    member: CD4071B.cir
+    archive_sha256: ce5e68ac8a389fabddc43f96bd6b7047e0bbccf32d6f10e413268bfd9a78aeb8
+    sha256: d87c6418650d584375ed06f7f483b15fb648c76278d6cef427cd5cdd8ef68411
+    lines:
+      CD4071B: [37, 39]
+      LOGIC_FUNCTION_2_LVC_2i_OR_PP_CMOS_CD4071B: [147, 162]
+      LOGIC_GATE_2PIN_OD_LVC_2i_OR_PP_CMOS_CD4071B: [43, 76]
+      LOGIC_ICC_LVC_2i_OR_PP_CMOS_CD4071B: [263, 271]
+      LOGIC_INPUT_LVC_2i_OR_PP_CMOS_CD4071B: [77, 146]
+      LOGIC_PP_OUTPUT_LVC_2i_OR_PP_CMOS_CD4071B: [177, 188]
+      TPD_LVC_2i_OR_PP_CMOS_CD4071B: [163, 176]
+    fetched: '2026-10-10'
+  copies:
+  - source: ti
+    name: CD4071B
+    get:
+      url: https://www.ti.com/lit/zip/SCHM015
+      member: CD4071B.lib
+      sha256: d87c6418650d584375ed06f7f483b15fb648c76278d6cef427cd5cdd8ef68411
 - source: microcap12
   name: CD4071B
   def: subckt
@@ -43,15 +77,9 @@ models:
   - source: ltwiki
     name: CD4071B
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
-      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
-  - source: ltwiki
-    name: CD4071B
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
-      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
   - source: ltwiki
     name: CD4071B
     get:
@@ -62,7 +90,13 @@ models:
     name: CD4071B
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
+      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+  - source: ltwiki
+    name: CD4071B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
       sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
 - source: ltwiki
   name: CD4071B

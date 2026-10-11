@@ -3,6 +3,30 @@ kind: bjt
 priority: 3
 group: listed
 models:
+- source: onsemi
+  name: Q2n3771
+  def: model
+  hash: 24cf8032eb07726a8d8a8da836dfeb76ab907f51
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/2n3771.sp2
+    sha256: 3e8ec00d507f9b1b412394874698c2da1d6a8fff873e9bad8a255a25625c9487
+    lines:
+      Q2n3771: [12, 22]
+    fetched: '2026-10-10'
+  copies:
+  - source: groupsio-ltspice
+    name: 2N3771
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: onsemi
+    name: 2n3771
+    get:
+      url: https://www.onsemi.com/download/models/sp3/2n3771.sp3
+      sha256: 1863d3341b7bd9dbd5d4dac87dd1361d20546a79f525eaab9fe961ac741227e6
 - source: spice-model-cd
   name: Q2N3771
   def: model
@@ -35,18 +59,4 @@ models:
     sha256: 809a83e6faeda5c9408c63742c5b83c822ce0dfb08886e6178b44281a94ac21b
     lines:
       2N3771: [130, 136]
-    fetched: '2026-09-21'
-- source: groupsio-ltspice
-  name: 2N3771
-  def: model
-  hash: 24cf8032eb07726a8d8a8da836dfeb76ab907f51
-  type: NPN
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
-    member: standard.bjt
-    archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
-    sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
-    lines:
-      2N3771: [244, 244]
     fetched: '2026-09-21'

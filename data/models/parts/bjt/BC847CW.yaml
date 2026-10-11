@@ -21,6 +21,59 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BC847C (.subckt 1 2 3), Transistor (NPN .model), Diode (D .model)'
   note: found under the alias BC847C; pins from default order (unverified)
+  copies:
+  - source: nexperia
+    name: BC847CW
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC847CW.txt
+      sha256: 22b4c11652530a965cb0b9c20a2fd989daaa7b5582b7d57e58f2e133ffe074a3
+- source: nexperia
+  name: BC847CW_Q
+  def: subckt
+  hash: 74bff13823f328e6af920b630f62787e0597fb3e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847CW-Q.txt
+    sha256: 30c497d52b6b1ddd1590392ae403dbad0f9f2ebc4d5378a45e0156193ac030c6
+    lines:
+      BC847CW_Q: [33, 91]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BC847CWH
+  def: model
+  hash: 3d40a03745f3b117a0dc01502db5cdfe070cf433
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 4b1f27798ded24c79aa629f6e64d27bae5af5fc14789ad8756911353a1ea93b5
+    lines:
+      BC847CWH: [7, 33]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BC847CW
+  def: subckt
+  hash: 10ae2089f3b162f4efbc33f04b2536ba7ea2d081
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC847CW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: b904cec0c166136b6859a58568d3409b1b171aa2c017156480e3d32b80e0a355
+    lines:
+      BC847CW: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC847CW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC847CW-AU.txt
+      sha256: 228b34701499efb81fd6008c7d981fa81cfa2928a314c64312f14c17505602c8
 - source: spice-model-cd
   name: QBC847CW
   def: model

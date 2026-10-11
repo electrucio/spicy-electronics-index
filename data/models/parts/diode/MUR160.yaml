@@ -10,7 +10,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -32,14 +32,14 @@ models:
   - source: ltwiki
     name: MUR160
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/diode.lib
-      sha256: 3312e896de50ad3b983aacc61fb142ca5ef79f0824d6bc9427974e94d4c93c7a
-  - source: ltwiki
-    name: MUR160
-    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/UCC28C42_TRANS.lib
       sha256: 4f4f067a3fb2767f56d49660426fa5074ea3a72b68d5ba5e469b681a936980f0
+  - source: ltwiki
+    name: MUR160
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/diode.lib
+      sha256: 3312e896de50ad3b983aacc61fb142ca5ef79f0824d6bc9427974e94d4c93c7a
   - source: microcap12
     name: MUR160
     get:
@@ -49,7 +49,7 @@ models:
   - source: onsemi
     name: MUR160
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: onsemi
@@ -59,13 +59,13 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncp1250_orcad_model.zip
-    member: Userdata/PSpice/NCP1250/Kraken test final circuit.CIR
-    archive_sha256: 611312bf76b0e852e2a8857ec2de0edc73caa329392af775311b7e3857cbbd29
-    sha256: 7bdb8699c46488588bdd22c895bd4f15c0902df5cce9c6a9687fffe843524640
+    url: https://www.onsemi.com/download/models/zip/ncp1351%20pspice%20model.zip
+    member: ncp1351_ORCAD/application.lib
+    archive_sha256: 41cb75a7b8ed10158e01fbbddf0f1cc283833d94d5d08a3a2ec1dc84c3a05028
+    sha256: 5617ad21da819be996732ece6f515658a40de55ea6685e48fcd3ec27b14a1159
     lines:
-      MUR160: [72, 73]
-    fetched: '2026-09-21'
+      MUR160: [35, 36]
+    fetched: '2026-09-19'
   copies:
   - source: kicad-spice-library
     name: MUR160
@@ -85,18 +85,6 @@ models:
   - source: ltwiki
     name: mur160
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Smps/HalfVm/Power456.lib
-      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
-  - source: ltwiki
-    name: mur160
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
-      sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
-  - source: ltwiki
-    name: mur160
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/HalfVm/Power456.lib
       sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
@@ -106,6 +94,30 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
       sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
+  - source: ltwiki
+    name: mur160
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Smps/HalfVm/Power456.lib
+      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
+  - source: ltwiki
+    name: mur160
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
+      sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
+  - source: microcap12
+    name: MUR160
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_ic.lib
+      sha256: 6a45216c3c97aa5ae80cb0693c68a80de011f41be3560d02873e41ad6d5ce102
+  - source: microcap12
+    name: MUR160
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_ic.lib
+      sha256: 6a45216c3c97aa5ae80cb0693c68a80de011f41be3560d02873e41ad6d5ce102
   - source: microcap12
     name: MUR160
     get:
@@ -118,18 +130,24 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: DATA/S_FORWARD_CM.cir
       sha256: c3f241b12ba4a644307464c8d4f166fa09f670a134ac1cf25e58a98812eedcef
-  - source: microcap12
+  - source: onsemi
     name: MUR160
     get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/m_ic.lib
-      sha256: 6a45216c3c97aa5ae80cb0693c68a80de011f41be3560d02873e41ad6d5ce102
-  - source: microcap12
+      url: https://www.onsemi.com/download/models/zip/ncp101x_orcad.zip
+      member: application.lib
+      sha256: 6d62c098ddb50ce60fd5348a5b764a9018fd1522a2bf4dee60665517f06519a3
+  - source: onsemi
     name: MUR160
     get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/m_ic.lib
-      sha256: 6a45216c3c97aa5ae80cb0693c68a80de011f41be3560d02873e41ad6d5ce102
+      url: https://www.onsemi.com/download/models/zip/ncp1250_orcad_model.zip
+      member: Userdata/PSpice/NCP1250/Kraken test final circuit.out.1
+      sha256: 98a8a19aec25237a2cf8cece1368bc5e120aea76e213cfb1d0fe149062c32209
+  - source: onsemi
+    name: MUR160
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncp1250_orcad_model.zip
+      member: Userdata/PSpice/NCP1250/Kraken test final circuit.CIR
+      sha256: 7bdb8699c46488588bdd22c895bd4f15c0902df5cce9c6a9687fffe843524640
   - source: onsemi
     name: MUR160
     get:
@@ -145,21 +163,8 @@ models:
   - source: onsemi
     name: MUR160
     get:
-      url: https://www.onsemi.com/download/models/zip/ncp1250_orcad_model.zip
-      member: Userdata/PSpice/NCP1250/Kraken test final circuit.out.1
-      sha256: 98a8a19aec25237a2cf8cece1368bc5e120aea76e213cfb1d0fe149062c32209
-  - source: onsemi
-    name: MUR160
-    get:
-      url: https://www.onsemi.com/download/models/zip/ncp101x_orcad.zip
-      member: application.lib
-      sha256: 6d62c098ddb50ce60fd5348a5b764a9018fd1522a2bf4dee60665517f06519a3
-  - source: onsemi
-    name: MUR160
-    get:
-      url: https://www.onsemi.com/download/models/zip/ncp1351%20pspice%20model.zip
-      member: ncp1351_ORCAD/application.lib
-      sha256: 5617ad21da819be996732ece6f515658a40de55ea6685e48fcd3ec27b14a1159
+      url: https://www.onsemi.com/download/models/cir/mc33364pspiceex.cir
+      sha256: e938fd935e4f9c3791227428163d0b13e394383586cf6ab209ddc752538bfac5
 - source: onsemi
   name: Dmur160rl
   def: model
@@ -185,6 +190,35 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: Dmur160rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mur160rl.sp2
+      sha256: a0e3658b000407d19c49286bb8eb151346e0c7fb56260e47600af39dd4107a64
+  - source: onsemi
+    name: mur160rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mur160rl.sp3
+      sha256: d9d43c850b25b821c52a0f9c256a5000706bd2fa44ad795937342ab01c2e36f2
+- source: taiwan-semi
+  name: MUR160S
+  def: model
+  hash: 7835eb6b0112ff4825283d32e0dce1da2a6a5c57
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 71190f17b13ece19060d29fa8843aec4c1770ea1d3cd595f32785d2a7108642d
+    lines:
+      MUR160S: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: MUR160SH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: f99451b0eeb99b3915fefa1e7dd826d9d3d2c4d8ac1d5c1ff0917718670e82ab
 - source: spice-model-cd
   name: mur160
   def: model
@@ -205,45 +239,31 @@ models:
   verbatim: true
   get:
     url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/S_FLYBACK_CM.cir
+    member: DATA/S_2FOR_CM.cir
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 3eade7b819dd682851d0473565f1a20bb85b1e73ea9835fc62475e7b1c30108a
+    sha256: 6ff61cecb45ac8cfcdbe1539aeae78713480fdcc0a06e5cfa40198f70bcdd0f4
     lines:
-      MUR160: [1152, 1153]
+      MUR160: [1172, 1173]
     fetched: '2026-09-21'
   copies:
   - source: microcap12
     name: MUR160
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/S_2FLY_CM.cir
-      sha256: 88ab490aa1c352b497b00b9bc892c34e9db00e4f66089c4ab1f1da06c9468b49
-  - source: microcap12
-    name: MUR160
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/S_2FOR_CM.cir
-      sha256: 6ff61cecb45ac8cfcdbe1539aeae78713480fdcc0a06e5cfa40198f70bcdd0f4
+      member: DATA/S_FLYBACK_CM.cir
+      sha256: 3eade7b819dd682851d0473565f1a20bb85b1e73ea9835fc62475e7b1c30108a
   - source: microcap12
     name: MUR160
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: DATA/S_FLYBACK_VM.cir
       sha256: c43a2f0c8df833a96a91a64f1a96ac8e1676cef82746528f6a2cf0cbc611b46b
-- source: microcap12
-  name: MUR160
-  def: model
-  hash: 8c64c6629ec0e35b809e793db2c8743de14eb6ae
-  type: D
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/Switched Models/Forward VM Tran.cir
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: b18844291063d7d702b9bab976cd86e2cbcd4edd304e2722d294e58ff0a4b47e
-    lines:
-      MUR160: [1183, 1184]
-    fetched: '2026-09-21'
+  - source: microcap12
+    name: MUR160
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: DATA/S_2FLY_CM.cir
+      sha256: 88ab490aa1c352b497b00b9bc892c34e9db00e4f66089c4ab1f1da06c9468b49
 - source: microcap12
   name: MUR160
   def: model
@@ -257,6 +277,20 @@ models:
     sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
     lines:
       MUR160: [1041, 1042]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: MUR160
+  def: model
+  hash: 8c64c6629ec0e35b809e793db2c8743de14eb6ae
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: DATA/Switched Models/Forward VM Tran.cir
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: b18844291063d7d702b9bab976cd86e2cbcd4edd304e2722d294e58ff0a4b47e
+    lines:
+      MUR160: [1183, 1184]
     fetched: '2026-09-21'
 - source: groups-io
   name: MUR160
@@ -282,25 +316,25 @@ models:
   - source: kicad-spice-library
     name: MUR160
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: MUR160
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: MUR160
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: MUR160
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: MUR160
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: groupsio-ltspice
     name: MUR160-M
     get:
@@ -310,25 +344,25 @@ models:
   - source: kicad-spice-library
     name: MUR160-M
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: MUR160-M
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: MUR160-M
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: MUR160-M
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: MUR160-M
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: ltwiki
   name: MUR160-M
   def: model
@@ -368,14 +402,14 @@ models:
   - source: ltwiki
     name: MUR160
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: MUR160
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: bordodynov-qspice
     name: MUR160-M
@@ -386,14 +420,14 @@ models:
   - source: ltwiki
     name: MUR160-M
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: MUR160-M
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: MUR160-M

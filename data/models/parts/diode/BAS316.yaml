@@ -34,6 +34,47 @@ models:
     lines:
       BAS316: [29, 53]
     fetched: '2026-09-20'
+- source: taiwan-semi
+  name: BAS316
+  def: model
+  hash: 28e478edce3d1435e33bd0f64e77eb7a16fd7612
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 61fede2841f84b6c9a4b8eaa49345fda981941083179dd02a6147865f11c38c4
+    lines:
+      BAS316: [20, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAS316WS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 06bb7b50b5b1fe235db12605dd83084aeb71ad7f3ca2152cee790321068e05cb
+- source: panjit
+  name: BAS316
+  def: subckt
+  hash: 76d7ed737f102c3c58f93b066963db802a58aca7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS316.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 9f33c6d471739db5fb5e66602ba1c73d4ff42b9a9d16c6676238f22208c39c90
+    lines:
+      BAS316: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS316-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS316-AU.txt
+      sha256: 3dbf008caebf8b5f3b5b0a1ad8672d83c921deba5ac928398f0deef1b9dca3a7
 - source: microcap12
   name: BAS316
   def: subckt
@@ -72,25 +113,25 @@ models:
   - source: kicad-spice-library
     name: BAS316
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: BAS316
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: BAS316
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: BAS316
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: BAS316
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: bordodynov
   name: BAS316
   def: model
@@ -115,12 +156,12 @@ models:
   - source: ltwiki
     name: BAS316
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS316
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

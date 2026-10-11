@@ -45,6 +45,24 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xbdw42
+  def: subckt
+  hash: 2049171d27a821adc2570c3a25d0e0f5daca7918
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/bdw42.sp2
+    sha256: 998645ed1ce2b032a6b4d6b9a26d48a3a4a667567578f7daef0653431efede41
+    lines:
+      Xbdw42: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: bdw42
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bdw42.sp3
+      sha256: a3573914fa90f565749914220ea163baf18362cb9ef28cf5cfb4ae39d05da03b
 - source: ltwiki
   name: BDW42
   def: subckt

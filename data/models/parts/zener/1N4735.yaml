@@ -26,7 +26,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -59,10 +59,10 @@ models:
   - source: onsemi
     name: D1N4735
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
-- source: microcap12
+- source: nexperia
   name: 1N4735A
   def: subckt
   hash: 5f3ac28595432bc07e6489529ba5eb2b68645df3
@@ -72,13 +72,11 @@ models:
   - K
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    url: https://assets.nexperia.com/documents/spice-model/1N4735A.txt
+    sha256: ba88a5555387fd7906be509db56c2860157bc7ef556fe2f04ff0b7fdde6d683b
     lines:
-      1N4735A: [367, 387]
-    fetched: '2026-09-21'
+      1N4735A: [33, 47]
+    fetched: '2026-10-10'
   note: pins from default order (unverified)
   copies:
   - source: ltwiki
@@ -87,6 +85,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/1N4735A.PRM
       sha256: 3f6ad88b70ee30a4278a1213afefeb80165e98c3d1150847eef24d5cac4ee6cf
+  - source: microcap12
+    name: 1N4735A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
 - source: ltwiki
   name: 1N4735A
   def: subckt
@@ -228,12 +232,12 @@ models:
   - source: ltwiki
     name: 1N4735
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N4735
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

@@ -40,15 +40,15 @@ models:
   - source: ltwiki
     name: LM7905
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/regulators.lib
-      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
-  - source: ltwiki
-    name: LM7905
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
       sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+  - source: ltwiki
+    name: LM7905
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
   - source: groups-io
     name: LM7905X
     get:
@@ -116,6 +116,11 @@ models:
       LM7905: [9, 12]
       LM7905-08: [70, 129]
     fetched: '2026-10-10'
+    symbol:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Linear%20Regulators/LM79xxTest.zip
+      member: LM79xx.asy
+      archive_sha256: 05d418b9357d4598efe46408faeaf1221712b08624021d1bcb4d34cb8ee4254f
+      sha256: bc02650e3e99ea352f86444fd2eb1db4f40709e3cbb06989980a69f3fc6bde87
 - source: ltwiki
   name: LM7905C
   def: subckt

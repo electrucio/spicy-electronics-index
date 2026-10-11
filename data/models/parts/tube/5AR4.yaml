@@ -43,11 +43,6 @@ models:
     note: subckt 5AR4 (P K)
   note: pins from names
   copies:
-  - source: duncanamps
-    name: 5AR4
-    get:
-      url: http://tdsl.duncanamps.com/dcigna/tubes/spice/5ar4.inc
-      sha256: 9b63cf11b5387032008b5ffa9e6e56d7a8687a0617e97799872a6a27344229b4
   - source: bordodynov
     name: 5AR4
     get:
@@ -60,6 +55,11 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Valves.txt
       sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: duncanamps
+    name: 5AR4
+    get:
+      url: http://tdsl.duncanamps.com/dcigna/tubes/spice/5ar4.inc
+      sha256: 9b63cf11b5387032008b5ffa9e6e56d7a8687a0617e97799872a6a27344229b4
   - source: groups-io
     name: 5AR4
     get:
@@ -74,14 +74,8 @@ models:
   - source: ltwiki
     name: 5AR4
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 5AR4
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: 5AR4
@@ -92,9 +86,21 @@ models:
   - source: ltwiki
     name: 5AR4
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 5AR4
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: tdsl-cigna
+    name: 5AR4
+    get:
+      url: http://tdsl.duncanamps.com/dcigna/tubes/spice/spice.zip
+      member: 5AR4.INC
+      sha256: 9b63cf11b5387032008b5ffa9e6e56d7a8687a0617e97799872a6a27344229b4
 - source: suusi-tubes
   name: 5AR4
   def: subckt
@@ -266,14 +272,8 @@ models:
   - source: ltwiki
     name: 5AR4RY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 5AR4RY
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: 5AR4RY
@@ -284,9 +284,15 @@ models:
   - source: ltwiki
     name: 5AR4RY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 5AR4RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
   - source: groups-io
     name: GZ34
     get:
@@ -367,6 +373,24 @@ models:
 - source: groups-io
   name: GZ34
   def: subckt
+  hash: 9f77e9bbaff296dc91d82f8fc1aa86141b47c534
+  type: SUBCKT
+  deps:
+  - VALVE1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/lampes.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
+    lines:
+      GZ34: [630, 633]
+      VALVE1: [642, 650]
+    fetched: '2026-10-09'
+  note: found under the alias GZ34
+- source: groups-io
+  name: GZ34
+  def: subckt
   hash: 9932b3afb5fd74d1c1e68404768e866b881d6fec
   type: SUBCKT
   deps:
@@ -396,24 +420,6 @@ models:
       VALVE1: [645, 651]
     fetched: '2026-10-09'
   note: found under the alias GZ34
-- source: groups-io
-  name: GZ34
-  def: subckt
-  hash: 9f77e9bbaff296dc91d82f8fc1aa86141b47c534
-  type: SUBCKT
-  deps:
-  - VALVE1
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-    member: TUBE/lampes.lib
-    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
-    sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
-    lines:
-      GZ34: [630, 633]
-      VALVE1: [642, 650]
-    fetched: '2026-10-09'
-  note: found under the alias GZ34
 - source: ltwiki
   name: GZ34RY
   def: subckt
@@ -429,13 +435,13 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
     lines:
       5AR4RY: [16, 19]
       GZ34RY: [20, 22]
-      VALVE1: [2980, 2986]
+      VALVE1: [2995, 3001]
     fetched: '2026-09-21'
     symbol:
       url: http://ltwiki.org/files/LargeCollection.zip
@@ -464,9 +470,9 @@ models:
   - source: ltwiki
     name: GZ34RY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
   - source: ltwiki
     name: GZ34RY
     get:
@@ -476,9 +482,9 @@ models:
   - source: ltwiki
     name: GZ34RY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
   name: 5AR4
   def: subckt

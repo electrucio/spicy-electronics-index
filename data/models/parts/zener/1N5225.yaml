@@ -9,7 +9,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -31,9 +31,21 @@ models:
   - source: onsemi
     name: D1N5225
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: central-semi
+  name: 1N5225B
+  def: subckt
+  hash: b24349663c498576a8d5d5112d24342ceaae9e48
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/CSM1601.LIB
+    sha256: 8d9b2b34d7931d81a34681428d8a75a48e9c9de7b16c45beb317c0f16e312d67
+    lines:
+      1N5225B: [23, 31]
+    fetched: '2026-10-10'
 - source: bordodynov
   name: MMSZ5225B
   def: subckt

@@ -15,6 +15,34 @@ models:
     lines:
       Qmmbta05lt1g: [14, 24]
     fetched: '2026-09-19'
+  copies:
+  - source: onsemi
+    name: Qmmbta05lt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbta05lt1g.sp2
+      sha256: e43d512cd9b3629a9f83b8845648f171d92785925760c5eb8c170d6e9b8c882e
+- source: panjit
+  name: MMBTA05
+  def: subckt
+  hash: bb9c5f2d0bb28c2937af5bd6f84c0886f76cca31
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBTA05.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: f2d09e32cc3f619546701241a9eb1e4554e848ae457d8d34f0a79134252742c7
+    lines:
+      MMBTA05: [11, 37]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBTA05-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBTA05-AU.txt
+      sha256: 1c830a213bec654a1bbd17fd5075380a0940f2753e21622a737f81d4209be69c
 - source: microcap12
   name: MMBTA05
   def: model

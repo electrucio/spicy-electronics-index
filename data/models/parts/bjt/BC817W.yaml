@@ -17,6 +17,24 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BC817 (NPN .model)'
   note: found under the alias BC817
+- source: nexperia
+  name: BC817W
+  def: subckt
+  hash: 2f647515544fce53208b1513894bedf86b6e96c8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC817W.txt
+    sha256: 2420ff18349fd8026aa955d37f5b1079b6575876bb65fbfa540d468eead8b41e
+    lines:
+      BC817W: [34, 93]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC817W_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817W-Q.txt
+      sha256: 616d155dab65879cf4d2886254699b6627968757fee1c37abae23862ac940e06
 - source: spice-model-cd
   name: QBC817W
   def: model

@@ -56,14 +56,14 @@ models:
   - source: ltwiki
     name: bas21lt1
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: bas21lt1
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: microcap12
     name: Dbas21lt1
@@ -71,18 +71,28 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dbas21lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bas21lt1.sp2
+      sha256: 4154b0e97a5b371240cb11bd0f8ea59270181d3cfc65d72db0743de7c0db3d71
+  - source: onsemi
+    name: bas21lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bas21lt1.sp3
+      sha256: f3c1268c7f9d5fa4ec855079dbfa4460603162410f407159c77c07348ef8d2b1
 - source: onsemi
-  name: bas21ht1g
+  name: Dbas21ht1g
   def: model
   hash: ee747439c437fa25396962b50325e6be22688312
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/sp3/bas21ht1g_rev0.sp3.sp3
-    sha256: 670c165a6a45edaf2e585a6fde49df7fae26c66416df598e6dda4d526aed8a4e
+    url: https://www.onsemi.com/download/models/lib/bas21ht1g_rev0.lib.lib
+    sha256: 4c6edd36b387f4c0a6a43da0dcada310a25827c406481024bce7e886f130ed3f
     lines:
-      bas21ht1g: [14, 18]
-    fetched: '2026-09-21'
+      Dbas21ht1g: [14, 18]
+    fetched: '2026-09-19'
   copies:
   - source: microcap12
     name: Dbas21ht1g
@@ -91,10 +101,36 @@ models:
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
   - source: onsemi
+    name: bas21ht1g
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bas21ht1g_rev0.sp3.sp3
+      sha256: 670c165a6a45edaf2e585a6fde49df7fae26c66416df598e6dda4d526aed8a4e
+  - source: onsemi
     name: Dbas21ht1g
     get:
-      url: https://www.onsemi.com/download/models/lib/bas21ht1g_rev0.lib.lib
-      sha256: 4c6edd36b387f4c0a6a43da0dcada310a25827c406481024bce7e886f130ed3f
+      url: https://www.onsemi.com/download/models/sp2/bas21ht1g_rev0.sp2.sp2
+      sha256: dc5af5f1e3fc31704e4e109b9bfa2734592926a3bdd857742bb6c19a216cb3c4
+- source: onsemi
+  name: bas21lt1
+  def: subckt
+  hash: 038f26eddb76d4a693d0c53c6407a1f59324e93e
+  type: SUBCKT
+  deps:
+  - bas21lt1_diode
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bas21slt1.sp3
+    sha256: 61448bd0e53df582de137a3b813af71bb4668b49e6875b3a5952efa08ab113c5
+    lines:
+      bas21lt1: [1, 4]
+      bas21lt1_diode: [18, 22]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: bas21lt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/bas21slt1.lib
+      sha256: ed4a06b2246daf83db15116a816414d6f992bc7b2adbc7df32955c64dc69a718
 - source: nexperia
   name: BAS21
   def: subckt
@@ -112,6 +148,329 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BAS21 (.subckt 1 2), DIODE1 (D .model), DIODE2 (D .model)'
   note: pins from default order (unverified)
+  copies:
+  - source: nexperia
+    name: BAS21QC
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS21QC.txt
+      sha256: 1a35563c785e145cc829cb104b0e28bf77216fb904a6be8f2834868aac223434
+  - source: nexperia
+    name: BAS21QB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS21QB.txt
+      sha256: 6b149dbfcdf4d8c8ea23accf65098e9c90a07d241f9ad7d519f971aa99c4c5e5
+- source: nexperia
+  name: BAS21W
+  def: subckt
+  hash: 6aa05978087258bdedd9c898ed4c48fb1edc628e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS21W
+    sha256: 0baa6211149d5852329e7ebc891b2e40bdcb3902ea4d965753a6b9a959ad5917
+    lines:
+      BAS21W: [38, 59]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: ltwiki
+    name: BAS21
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/Ltc/LTC3805_tlv43_test/bas21.lib
+      sha256: 3f0cc84e9c100433cd8e4d565a16a13765458a2a30cc792872280042eb528299
+  - source: ltwiki
+    name: BAS21
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Smps/Ltc/LTC3805_tlv43_test/bas21.lib
+      sha256: 3f0cc84e9c100433cd8e4d565a16a13765458a2a30cc792872280042eb528299
+  - source: ltwiki
+    name: BAS21H
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS21H.PRM
+      sha256: ec75e21d0c229108707df660f6eebf37240227bc0d13d77b7c1a33ea4e928fda
+  - source: microcap12
+    name: BAS21H
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+  - source: nexperia
+    name: BAS21H
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS21H.txt
+      sha256: 548022bbb0779b24f64a502b884ca38282eda4da4b2f523ca55b0613cce21b5a
+  - source: nexperia
+    name: BAS21AW
+    get:
+      url: https://www.nexperia.com/product/BAS21AW
+      sha256: cec9f8a4624203513766c0f60908de3aa269132ce3b3e0e4cee0563c0a3aba98
+- source: nexperia
+  name: BAS21VD
+  def: subckt
+  hash: 5fcf989e4998e7657970aa2155f3bfcb9568cad4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS21VD.txt
+    sha256: 2190f4d2b56d2f7332408b467858d238199fa0874c352836b703430a8d02f9dd
+    lines:
+      BAS21VD: [36, 51]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS21AVD
+    get:
+      url: https://www.nexperia.com/product/BAS21AVD
+      sha256: 8948a9b9d9abecdb13596ce7cf8b4348dbb2bf39e523d0ee398b5d4948830ebe
+- source: nexperia
+  name: BAS21J
+  def: subckt
+  hash: 2dbf2c2b666089d8d235dcf3556319c970dc1dbc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS21J.txt
+    sha256: e590d817c7ba59fd55937818b1efa0652c2064e2125fb347e036e6edeaa5ffab
+    lines:
+      BAS21J: [33, 48]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: BAS21J
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: nexperia
+  name: BAS21TH
+  def: subckt
+  hash: 6cf849d65b63b964ed5186274222d3c774de473e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS21TH.txt
+    sha256: d56c6a9845dd53e16f7ecce0833f661cfb60490a89cd1d253fd15d4410090371
+    lines:
+      BAS21TH: [38, 66]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS21QA
+    get:
+      url: https://www.nexperia.com/product/BAS21QA
+      sha256: 4787676a3d944238ea736d8cc48db951f46c7d47cf53a610bf2203f0c937f83d
+- source: nexperia
+  name: BAS21LS-Q
+  def: subckt
+  hash: db5053a53c8b1b5f79c678dc1addd8fc47e83c65
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS21LS-Q.txt
+    sha256: 31aecf30e1635832a6227b409a7c51c8483f27c6957496e42179ae489dcf2731
+    lines:
+      BAS21LS-Q: [41, 63]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS21LS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS21LS.txt
+      sha256: b2d8e45c7c1db2473283223b2320599d6e87c380e65dc21629b62c0be6329c3c
+- source: nexperia
+  name: BAS21SW
+  def: subckt
+  hash: ea6985f8eb5bf4826e85d2056c003c97ffd2ee05
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS21SW
+    sha256: 300aa8043bf86abb9aeaf01b176dfc47fae4b525a5f51008e653e2deb2e07209
+    lines:
+      BAS21SW: [38, 59]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: BAS21PG
+  def: subckt
+  hash: efd5bf88468a2f09e62791d07510dbb0006d6db7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS21PG.txt
+    sha256: e7713e2aac69df91b91d6ca5e3e3e983d9c4251457f7c0b09cff387dd5d0d639
+    lines:
+      BAS21PG: [38, 68]
+    fetched: '2026-10-10'
+- source: rohm
+  name: DBAS21VM
+  def: model
+  hash: 077d56f0d494ad98d172e3254b39cfbdd1539aea
+  type: D
+  verbatim: true
+  get:
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/diode/switching/bas21vm_SPICE.zip
+    member: bas21vm_SPICE/bas21vm_SPICE.lib
+    archive_sha256: 63537fd6c1b0af1ce5db2fbd92d2b74a52c6fe40fda8b1b10df5835f6321ae23
+    sha256: 2c22ececf4cafcce51b680803b98ff6b17ef73fc9503d55860fb815bc5eff099
+    lines:
+      DBAS21VM: [7, 21]
+    fetched: '2026-10-10'
+  copies:
+  - source: rohm
+    name: DBAS21VM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/diode/switching/bas21vm_ltspice.zip
+      member: bas21vm_ltspice/bas21vm_ltspice.lib
+      sha256: 2c22ececf4cafcce51b680803b98ff6b17ef73fc9503d55860fb815bc5eff099
+- source: taiwan-semi
+  name: BAS21
+  def: model
+  hash: a3553a0c6eefc70487a4fff2258f2c885f7138c5
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8ce073f7fba5857f8bec54cee57f108b59ab18cab223eb16a2a03efab1204b2b
+    lines:
+      BAS21: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAS21W
+  def: model
+  hash: c29e6df8ef4dd34a967644369b8f3b1c0381b5c3
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d784cb240e9c08f69eb8f137ba050954eeaaa7f01a9c13b61e5addab4a4bd842
+    lines:
+      BAS21W: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAS21S
+  def: subckt
+  hash: 5bc6d9ef943a3450812aa8a13d7035a27bd006f9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7f2b2362f3ad92a33dff946bc100c428d87553784da58631e125670997560af5
+    lines:
+      BAS21S: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAS21C
+  def: subckt
+  hash: 097bebfa28de226ecca75e17f13689f48bbc8359
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: df50578f9ca463bd61c91999b5096511f213a6a3d98852cc96c875254a2d78bf
+    lines:
+      BAS21C: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAS21A
+  def: subckt
+  hash: 26af2b3de97caff94d67d5f907d56ec9a4790926
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 0211bbfe50942fd4f3186a86db0078fb856ac8b5ca1215d5915f7edcc843fb02
+    lines:
+      BAS21A: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAS21
+  def: subckt
+  hash: 5ce35a0dc1dbd79b0a8f6cbdaa928fb482ea7a90
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 491323022cdbee0722572a909cd4a66219828fbeecb21e4e829979414cc9bc26
+    lines:
+      BAS21: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS21W
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21W.txt
+      sha256: a26f119f0c82069e10fdcb0bbea350a5c41bab31e3cc79260ca1acb113a57334
+  - source: panjit
+    name: BAS21S
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21S.txt
+      sha256: 544f03b91494592a6c8774006d2666caed0ebbf806a4e51076b9e8a07193577f
+  - source: panjit
+    name: BAS21C
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21C.txt
+      sha256: 337b10a189d76e0894a059961929ef219b0065deab342d4b3a2603edf5347c7e
+  - source: panjit
+    name: BAS21C-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21C-AU.txt
+      sha256: e40f3824cf2f8da431772dfaca156ef2ffc06fae6d92a0b0bd36efd3430c1d0d
+  - source: panjit
+    name: BAS21W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21W-AU.txt
+      sha256: cede72bbc150b2b4097f733c0fef169aaa44f9762f31fe392eb7b7836495c5fa
+  - source: panjit
+    name: BAS21S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21S-AU.txt
+      sha256: 0d7088207e7f445483d1cc3901bd07c15fd4bc21cbba5b4bdfdd43cca1945c4b
+  - source: panjit
+    name: BAS21-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21-AU.txt
+      sha256: e868fbbad3cdaec58f473248365eb5873d1f00a54a6a4011aa742203e91300df
+- source: panjit
+  name: BAS21A-AU
+  def: subckt
+  hash: 17ec42b2997fc37df58690eff61c952380a14e08
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21A-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 08fec96043ce5f7462056b1b0614af0cc9f93be793cddf0bac0439e2df2c140f
+    lines:
+      BAS21A-AU: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS21A
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS21A.txt
+      sha256: 9921191155f14f6b1ac992edcd36ff2bab2ba256efff29060d81ba2c763dba35
 - source: spice-model-cd
   name: BAS21
   def: model
@@ -125,11 +484,6 @@ models:
       BAS21: [443, 447]
     fetched: '2026-09-21'
   copies:
-  - source: kicad-spice-library
-    name: BAS21s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
-      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
   - source: kicad-spice-library
     name: BAS21/SIE
     get:
@@ -145,6 +499,11 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
       sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
+  - source: kicad-spice-library
+    name: BAS21s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
+      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
 - source: spice-model-cd
   name: BAS21
   def: model
@@ -161,51 +520,18 @@ models:
   - source: kicad-spice-library
     name: BAS21
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
   - source: kicad-spice-library
     name: BAS21
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
-      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: spice-model-cd
     name: BAS21-Z
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
       sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
-- source: microcap12
-  name: BAS21H
-  def: subckt
-  hash: 6aa05978087258bdedd9c898ed4c48fb1edc628e
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
-    lines:
-      BAS21H: [529, 550]
-    fetched: '2026-09-21'
-  copies:
-  - source: ltwiki
-    name: BAS21
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Smps/Ltc/LTC3805_tlv43_test/bas21.lib
-      sha256: 3f0cc84e9c100433cd8e4d565a16a13765458a2a30cc792872280042eb528299
-  - source: ltwiki
-    name: BAS21
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/Ltc/LTC3805_tlv43_test/bas21.lib
-      sha256: 3f0cc84e9c100433cd8e4d565a16a13765458a2a30cc792872280042eb528299
-  - source: ltwiki
-    name: BAS21H
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS21H.PRM
-      sha256: ec75e21d0c229108707df660f6eebf37240227bc0d13d77b7c1a33ea4e928fda
 - source: microcap12
   name: BAS21_ZX
   def: subckt
@@ -302,20 +628,6 @@ models:
     sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
     lines:
       BAS21W: [9305, 9306]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: BAS21J
-  def: subckt
-  hash: 2dbf2c2b666089d8d235dcf3556319c970dc1dbc
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-    lines:
-      BAS21J: [2966, 2987]
     fetched: '2026-09-21'
 - source: ltwiki
   name: BAS21/ZTX
@@ -422,25 +734,25 @@ models:
   - source: kicad-spice-library
     name: BAS21
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: BAS21
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: BAS21
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: BAS21
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: BAS21
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: groups-io
   name: BAS21DW
   def: model
@@ -523,6 +835,12 @@ models:
   - source: ltwiki
     name: BAS21HM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS21HM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -532,12 +850,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAS21HM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BAS21VM
   def: model
@@ -578,6 +890,12 @@ models:
   - source: ltwiki
     name: BAS21VM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS21VM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -587,24 +905,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAS21VM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BAS21
-  def: model
-  hash: 5129310edd502604f4af8f7e8fd19fa717cab6ac
-  type: D
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ediode.lib
-    sha256: 3a1ee34ce1dccb655cfdf9e5ee520ad37c7f7e97ce94973793706080d52808b9
-    lines:
-      BAS21: [131, 132]
-    fetched: '2026-09-21'
 - source: ltwiki
   name: BAS21
   def: subckt
@@ -618,6 +918,18 @@ models:
     sha256: 0d67b229de51a0f00f18c78acf99ef14550e8da92104c830324c5677f5fcf29c
     lines:
       BAS21: [2, 23]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: BAS21
+  def: model
+  hash: 5129310edd502604f4af8f7e8fd19fa717cab6ac
+  type: D
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/ediode.lib
+    sha256: 3a1ee34ce1dccb655cfdf9e5ee520ad37c7f7e97ce94973793706080d52808b9
+    lines:
+      BAS21: [131, 132]
     fetched: '2026-09-21'
 - source: bordodynov
   name: BAS21
@@ -643,14 +955,14 @@ models:
   - source: ltwiki
     name: BAS21
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS21
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BAS21HY
@@ -676,14 +988,14 @@ models:
   - source: ltwiki
     name: BAS21HY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS21HY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BAS21

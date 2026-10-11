@@ -4,6 +4,37 @@ priority: 3
 group: silicon_signal
 models:
 - source: onsemi
+  name: bav99lt1
+  def: subckt
+  hash: 3caf74200cd02904d51566e98da8248ba26c912b
+  type: SUBCKT
+  deps:
+  - Dhalfbav99lt1
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bav99lt1.lib
+    sha256: 930311f4675e7f577de79526c6f5fbbb993c30bd04c41fbcd1be313e17b23a59
+    lines:
+      Dhalfbav99lt1: [19, 23]
+      bav99lt1: [1, 4]
+    fetched: '2026-09-19'
+  copies:
+  - source: onsemi
+    name: bav99lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/nup1301.sp2
+      sha256: 1176df04126ca8ec45c7b73b3b8fc2b9841805250af91f6c068da898663b6383
+  - source: onsemi
+    name: bav99lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bav99lt1.sp2
+      sha256: eb7d4d3cbb10221509d534d4c64ef3be04b60c76130958151e5dc5d80096f357
+  - source: onsemi
+    name: bav99lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bav99lt1.sp3
+      sha256: 46a1f9d9133b2dfb75d46716705c627343e8761c41b0241244fa6a46ab71ad40
+- source: onsemi
   name: BAV99
   def: model
   hash: 3e7de4493415351e6879baf36cc48910ddfe345b
@@ -22,21 +53,6 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: onsemi
-  name: bav99lt1
-  def: subckt
-  hash: 3caf74200cd02904d51566e98da8248ba26c912b
-  type: SUBCKT
-  deps:
-  - Dhalfbav99lt1
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/lib/bav99lt1.lib
-    sha256: 930311f4675e7f577de79526c6f5fbbb993c30bd04c41fbcd1be313e17b23a59
-    lines:
-      Dhalfbav99lt1: [19, 23]
-      bav99lt1: [1, 4]
-    fetched: '2026-09-19'
 - source: onsemi
   name: bav99lt1
   def: subckt
@@ -69,6 +85,88 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BAV99 (.subckt 1 2), DIODE1 (D .model), DIODE2 (D .model)'
   note: pins from default order (unverified)
+  copies:
+  - source: nexperia
+    name: BAV99QC
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAV99QC.txt
+      sha256: c2e6e2b3269d77e7264b4f1d4bda3bbfe663f32bec2c5cf3f1955fb879e3cd92
+- source: nexperia
+  name: BAV99QB
+  def: subckt
+  hash: 02298baa8de6311edf692f7c89dc2e4775311144
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAV99QB.txt
+    sha256: d80ec08de259cff3d3c762ac8997feb912f2a61e3601227a7ae35c57ad32140e
+    lines:
+      BAV99QB: [41, 71]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAV99QB-Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAV99QB-Q.txt
+      sha256: e6574c4a7f7e9b02d297e1bcf9a9138da0cf19dd74cb7a1889d4c69cb8863177
+- source: nexperia
+  name: BAV99W
+  def: subckt
+  hash: 3cee1b8bbf119979ad6c53ceff6c85bbfe18ba5c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAV99W
+    sha256: 4e0c0241cc4ae52dddfaad9a38a8dacc2a62952d3b32e596cdc367f32efb1110
+    lines:
+      BAV99W: [38, 69]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: BAV99S
+  def: subckt
+  hash: 5fa9e0e26cfbae9c2fbc9373ef2deeb379d8771f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAV99S.txt
+    sha256: adaf5ff9b8c60a0770a83c4a63ef9b024c6a814d987f7d3e9944598dde7e0a86
+    lines:
+      BAV99S: [36, 60]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BAV99QA
+  def: subckt
+  hash: 799601b024ebc74f9c7579f1bcca2e80bde8d806
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAV99QA.txt
+    sha256: 57c19168360d853f967ed04176637223ee3e54e71752bd7d197ec52b510d0aad
+    lines:
+      BAV99QA: [38, 85]
+    fetched: '2026-10-10'
+- source: rohm
+  name: DBAV99FM
+  def: model
+  hash: 410db3c5bf0e921227b078e410458919696bd300
+  type: D
+  verbatim: true
+  get:
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/diode/switching/bav99fm_ltspice.zip
+    member: bav99fm_ltspice/bav99fm_ltspice.lib
+    archive_sha256: b50c907876e9c32790caff9b866e401451d6d06f495b8a59de0d6214fcb6ef6a
+    sha256: cabc530de520c0b2ccb586e2d19887997ca5774d8466b0cce9a853642377edbe
+    lines:
+      DBAV99FM: [7, 17]
+    fetched: '2026-10-10'
+  copies:
+  - source: rohm
+    name: DBAV99FM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/diode/switching/bav99fm_SPICE.zip
+      member: bav99fm_SPICE/bav99fm_SPICE.lib
+      sha256: cabc530de520c0b2ccb586e2d19887997ca5774d8466b0cce9a853642377edbe
 - source: toshiba
   name: BAV99
   def: subckt
@@ -83,6 +181,107 @@ models:
     lines:
       BAV99: [29, 53]
     fetched: '2026-09-20'
+- source: taiwan-semi
+  name: BAV99WH
+  def: subckt
+  hash: d42dff195b3579948e2b05c3311a2aaf7d72fad9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 036849080aa94e1a6391705ad1481ebb6e734ea518535ef081623fbc8efe17be
+    lines:
+      BAV99WH: [9, 33]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAV99H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: ae0801f67e9ff732d29a7ed070ae8f55a66d4e605973538f16ad0d0b15763c3d
+- source: taiwan-semi
+  name: BAV99
+  def: subckt
+  hash: 8d06fb0ce4649931ce7302943eb7868762c74e90
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: ae574049fde2ac47c9c11075958f6bd41df5c21ee83bfc56ec81dff18c7df2d4
+    lines:
+      BAV99: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAV99W
+  def: subckt
+  hash: b45b14d93fd75cfe8fe7105843c925f3e9f41f38
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 2ad13d26374d2cb4b6ab20275763f006dc0d4d53393f0ea229aad9ffa4c1d1ef
+    lines:
+      BAV99W: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAV99
+  def: subckt
+  hash: 1a0ad5578e139928ec125bdc9849d4d87cfaf9cc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV99.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: b7ac39fe2b7a33dfad5aa1119f3bfe288ffdd237348699d7ec8c18a30930cc71
+    lines:
+      BAV99: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAV99W
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV99W.txt
+      sha256: df9c57d3a9f8367c1b3b785163958b341dc748d4aa796358397db4cf1b28c454
+  - source: panjit
+    name: BAV99-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV99-AU.txt
+      sha256: 251f8ee2afef76824bbb64643045e7d7de4f396255893b1d2e78b8120e56b1f1
+  - source: panjit
+    name: BAV99W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV99W-AU.txt
+      sha256: 3a814bb34bb900b6fc17c919446a81421b6f64845bee70ad0845144fe7499fd7
+- source: panjit
+  name: BAV99S
+  def: subckt
+  hash: 8b4d0ce26e748cb29423f06e04351503399a98f5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV99S.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 4429cdf88ab0513517a8be5f7e7f3030a099a5e36baa61347b096bed08f54be6
+    lines:
+      BAV99S: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAV99S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV99S-AU.txt
+      sha256: e7198ebb3957a42ce727d3ca7cafd014611c93be6236bd8563e0a734ee68dc5b
 - source: spice-model-cd
   name: BAV99
   def: model
@@ -99,13 +298,13 @@ models:
   - source: kicad-spice-library
     name: BAV99
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
   - source: kicad-spice-library
     name: BAV99
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
-      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: spice-model-cd
     name: BAV99-Z
     get:
@@ -210,26 +409,6 @@ models:
       member: LIBRARY/DiodesInc.lib
       sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
 - source: microcap12
-  name: BAV99_ZX
-  def: subckt
-  hash: 5c959b6f6441457274d05c68478d2f2c7514ec56
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/zetex.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
-    lines:
-      BAV99_ZX: [1922, 1932]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: BAV99_ZX
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
-      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
-- source: microcap12
   name: BAV99C_IN
   def: subckt
   hash: a0770b0b6321635e0d7547ea2ebf2fff85283eef
@@ -249,6 +428,26 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
       sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+- source: microcap12
+  name: BAV99_ZX
+  def: subckt
+  hash: 5c959b6f6441457274d05c68478d2f2c7514ec56
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BAV99_ZX: [1922, 1932]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAV99_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
 - source: microcap12
   name: BAV99T
   def: model
@@ -482,6 +681,12 @@ models:
   - source: ltwiki
     name: BAV99HM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAV99HM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -491,12 +696,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAV99HM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: ltwiki
   name: BAV99
   def: subckt
@@ -568,14 +767,14 @@ models:
   - source: ltwiki
     name: BAV99HY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAV99HY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BAV99

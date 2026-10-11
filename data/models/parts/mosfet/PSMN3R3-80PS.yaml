@@ -3,7 +3,7 @@ kind: mosfet
 priority: 4
 group: power_vertical
 models:
-- source: bordodynov
+- source: nexperia
   name: PSMN3R3-80PS
   def: subckt
   hash: 0af7dc686be57495e3ac6722ad1f26cc7e1a8b67
@@ -14,15 +14,19 @@ models:
   - SOURCE
   verbatim: true
   get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: sub/PSMNxx.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: ada45e06c49830748b805afea7223fc285f5328b106490087e218f50ce51824e
+    url: https://www.nexperia.com/product/PSMN3R3-80PS
+    sha256: 28bc857a313582bb559785e22ac5ac892c64f9ee6c082f178ad8ee9b44d91ce2
     lines:
-      PSMN3R3-80PS: [9726, 9787]
-    fetched: '2026-09-14'
+      PSMN3R3-80PS: [24, 85]
+    fetched: '2026-10-10'
   note: pins from names
   copies:
+  - source: bordodynov
+    name: PSMN3R3-80PS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PSMNxx.lib
+      sha256: ada45e06c49830748b805afea7223fc285f5328b106490087e218f50ce51824e
   - source: kicad-spice-library
     name: PSMN3R3-80PS
     get:

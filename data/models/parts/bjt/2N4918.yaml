@@ -10,23 +10,25 @@ models:
   type: PNP
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/2n4918.lib
-    sha256: 10f99ff9007c877af94e4dc16f8e916a9af5ee9ce73d062c966f9ec68df68c3f
+    url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
+    member: nud4001p.lib
+    archive_sha256: 31a7f1aeea7036a735053b6565f2c2cb65895fbe1a972826cb0f693fb6dfe648
+    sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
     lines:
-      Q2n4918: [12, 22]
+      Q2n4918: [30, 40]
     fetched: '2026-09-19'
   copies:
   - source: ltwiki
     name: Q2n4918
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: ltwiki
     name: Q2n4918
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: microcap12
     name: Q2n4918
@@ -37,9 +39,18 @@ models:
   - source: onsemi
     name: Q2n4918
     get:
-      url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
-      member: nud4001p.lib
-      sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
+      url: https://www.onsemi.com/download/models/lib/2n4918.lib
+      sha256: 10f99ff9007c877af94e4dc16f8e916a9af5ee9ce73d062c966f9ec68df68c3f
+  - source: onsemi
+    name: Q2n4918
+    get:
+      url: https://www.onsemi.com/download/models/sp2/2n4918.sp2
+      sha256: 292bba7b8deb192ae373717c0823ac3aaf170e20e0d30b46952a9a6b493835e7
+  - source: onsemi
+    name: 2n4918
+    get:
+      url: https://www.onsemi.com/download/models/sp3/2n4918.sp3
+      sha256: 28db75ce1c755f5cfbab66f35e0f5feb9d610cdcb36880a63994f2781ed4d296
 - source: microcap12
   name: 2N4918
   def: model

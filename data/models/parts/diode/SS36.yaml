@@ -75,6 +75,57 @@ models:
     lines:
       ss36: [4, 7]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SS36
+  def: model
+  hash: 8a93421fbb89cbb0d7c2cb599d7dfc65d55ce58b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 44f0b8cdfc5345e5eb6d685447f748119a750530eee47053531a6b9a9e8b87d8
+    lines:
+      SS36: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS36H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: e26de65d8c17352abd638c50b8720fff90491c6be1c0d006f878976def46196d
+- source: taiwan-semi
+  name: SS36ALH
+  def: model
+  hash: 5f29922d3cbab6c602d8423ffa718f930801cd65
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 3b3fb4865d51b14b55c03d9d7b05151c0653d1db781254f5082dde020dbd8273
+    lines:
+      SS36ALH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS36FSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 444037ed919b2020245c46dcceb26faa15288b844d7fe6c3482257ff2fb45d80
+- source: taiwan-semi
+  name: SS36LW
+  def: model
+  hash: f9d5f835ea34d50230d0a87501d99f6f6f2ced4c
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 29aefca9392225be6b5303897eceff36d86bf46362fd24855bea15b73468c4da
+    lines:
+      SS36LW: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: groups-io
   name: SS36
   def: model
@@ -111,19 +162,13 @@ models:
   - source: kicad-spice-library
     name: SS36
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: SS36
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: SS36
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: SS36
     get:
@@ -133,15 +178,21 @@ models:
   - source: ltwiki
     name: SS36
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: SS36
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.dio
       sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: SS36
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: ltwiki
   name: SS36
   def: model

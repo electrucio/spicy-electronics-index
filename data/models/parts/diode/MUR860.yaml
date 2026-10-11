@@ -10,7 +10,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -32,7 +32,7 @@ models:
   - source: onsemi
     name: MUR860
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: onsemi
@@ -54,6 +54,42 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dmur860
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mur860.rev0.sp2
+      sha256: 63579115b27a1015a5d3dc6c0881d9ab957079e691b5e6d918af526586ce570d
+  - source: onsemi
+    name: mur860
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mur860.rev0.sp3
+      sha256: 077f6ecf847950766a8ec2d2312f51a19a31831a23837d1f138980f8613cf332
+- source: taiwan-semi
+  name: MUR860
+  def: model
+  hash: e4f9e397d5bf8d5461b766011864d3b81651f877
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7c0e5121879b5164381cc168b74a2060a42d28d823262ed9724a896e3cd06cd7
+    lines:
+      MUR860: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: MUR860H
+  def: model
+  hash: 5eaa4a8d52a3d3e19c4c75be95bfa311138b6688
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 3c405bb5f6bd51a01e7b21577d5b39f64361d8ae6aecd6ecbdd84be98d88c6ec
+    lines:
+      MUR860H: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: spice-model-cd
   name: mur860
   def: model
@@ -114,14 +150,14 @@ models:
   - source: ltwiki
     name: MUR860
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: MUR860
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: MUR860

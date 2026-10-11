@@ -47,6 +47,25 @@ models:
     lines:
       s1b: [7, 10]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: S1B
+  def: model
+  hash: c1abdc063e7c66f1065326a1e534e37b30c2c8ff
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 60f72dc4c1de1c94d6845a6523ee2e69e255a08969e57db8c8c3b97151a0d0fd
+    lines:
+      S1B: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: S1BH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 788aafedb60953ed0f6fe4e458d6d31aa633310ae8afee92d431b1439fcc9d07
 - source: microcap12
   name: S1BB
   def: model

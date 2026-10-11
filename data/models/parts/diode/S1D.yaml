@@ -3,6 +3,18 @@ kind: diode
 priority: 4
 group: rectifier
 models:
+- source: nexperia
+  name: S1DR
+  def: subckt
+  hash: 0f802ee711130c02b1b9d8cda21863ed19fbe241
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/S1DR.txt
+    sha256: d06a9ea0a2226355d0afda5c2ac904de39a9234d49d2f4123a8f752302916420
+    lines:
+      S1DR: [38, 67]
+    fetched: '2026-10-10'
 - source: vishay
   name: s1d
   def: model
@@ -28,6 +40,114 @@ models:
     lines:
       s1d: [7, 10]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: S1D
+  def: model
+  hash: 3818376ec210158832ea5992b3649f9a538b0887
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: ad74f89f80485c80808c983d357efd51c6d83a9999f65b186a726d6896a6ba1a
+    lines:
+      S1D: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: S1DH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 8c457b71e079a7d2e9771b2564de66b2eca8f8a574f9402c2ca2aa0d6af66e11
+- source: taiwan-semi
+  name: S1DLW
+  def: model
+  hash: 083a41aaa7ffa5383f0698e3810678dfa3310e40
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 1c9bea1c69853741f966a8127ee80b55307e9a5f4ff20baf3306495dbff1bafb
+    lines:
+      S1DLW: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: S1DLWH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: f9f1c5f0f81e412925e30d78c73d475390720e89838fa6263c7e8b31c37f35e1
+- source: taiwan-semi
+  name: S1DFSH
+  def: model
+  hash: 2af48c012cd7c7b3f6e31168b945ddf56724b74a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: e8c91ebdbd56ab14df655e7dc091bb99bf72a091e799524972346699e91c3edf
+    lines:
+      S1DFSH: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: S1DFS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c6396b68d3ebd196a9c2eec4590ab645956c377400c3ff70d7006bbe53465180
+- source: taiwan-semi
+  name: S1DALH
+  def: model
+  hash: 9c82ad91146117af31609c68018d707842ba9ccc
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: a37d29c9a404d4fb8159907c74f8796f2c1ea3f245cd0d278bcad2c26e784619
+    lines:
+      S1DALH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: S1DAL
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 5d37150ed72bfa1adf6d998266f97cf9be0a397a107d8070047c6f0e27994a47
+- source: taiwan-semi
+  name: S1DLS
+  def: model
+  hash: 436f2073c31a1327fa34b24f741dffab22ddf02b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 6c53178653eb522a0c0bba5631369f93a4de94453f81f3ad1d646bf62bad8dd0
+    lines:
+      S1DLS: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: S1DLSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: ed2607d736a611b1213125b2e21cb9c15249301ac6168ea3c36cf4450c1f7042
+- source: taiwan-semi
+  name: S1DF-T
+  def: model
+  hash: d23e2e0a4ad45e705073e7a4a0a21cbcdc4e94f5
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: f7dc4365a37942fc449d8705ff03ff9d15a2d6a8f980f66ddb880c579fdb9be1
+    lines:
+      S1DF-T: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: S1DB
   def: model

@@ -27,13 +27,13 @@ models:
     name: irfp264n
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264n.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp264n.spi
       sha256: a50370cacc6f69194ea9a96d31e7ff0b42b48a65bc8d40c5c05e048e835dee2b
   - source: bordodynov
     name: irfp264n
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp264n.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264n.spi
       sha256: a50370cacc6f69194ea9a96d31e7ff0b42b48a65bc8d40c5c05e048e835dee2b
   - source: kicad-spice-library
     name: irfp264n
@@ -43,8 +43,8 @@ models:
   - source: ltwiki
     name: irfp264n
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264n.spi
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp264n.spi
       sha256: a50370cacc6f69194ea9a96d31e7ff0b42b48a65bc8d40c5c05e048e835dee2b
   - source: ltwiki
     name: irfp264n
@@ -55,8 +55,8 @@ models:
   - source: ltwiki
     name: irfp264n
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irfp264n.spi
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264n.spi
       sha256: a50370cacc6f69194ea9a96d31e7ff0b42b48a65bc8d40c5c05e048e835dee2b
 - source: microcap12
   name: irfp264_IR
@@ -89,15 +89,15 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
       sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
   - source: kicad-spice-library
-    name: irfp264_IR
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
-      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
-  - source: kicad-spice-library
     name: IRFP264M
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
       sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+  - source: kicad-spice-library
+    name: irfp264_IR
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
+      sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
 - source: spice-model-cd
   name: IRFP264
   def: subckt
@@ -145,13 +145,9 @@ models:
   - source: ltwiki
     name: IRFP264
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: IRFP264
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: IRFP264
     get:
@@ -161,9 +157,13 @@ models:
   - source: ltwiki
     name: IRFP264
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRFP264
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: ltwiki
   name: irfp264
   def: subckt
@@ -188,13 +188,13 @@ models:
     name: irfp264
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp264.spi
       sha256: 8a8845f563ce3c5da530670ba11a7e396d9da8a8c3508ca85c06c1b50638118b
   - source: bordodynov
     name: irfp264
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp264.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264.spi
       sha256: 8a8845f563ce3c5da530670ba11a7e396d9da8a8c3508ca85c06c1b50638118b
   - source: kicad-spice-library
     name: irfp264
@@ -205,13 +205,13 @@ models:
     name: irfp264
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp264.spi
       sha256: 8a8845f563ce3c5da530670ba11a7e396d9da8a8c3508ca85c06c1b50638118b
   - source: ltwiki
     name: irfp264
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irfp264.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irfp264.spi
       sha256: 8a8845f563ce3c5da530670ba11a7e396d9da8a8c3508ca85c06c1b50638118b
 - source: kicad-spice-library
   name: IRFP264

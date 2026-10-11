@@ -44,15 +44,15 @@ models:
   - source: ltwiki
     name: LM7805
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/regulators.lib
-      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
-  - source: ltwiki
-    name: LM7805
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/regulators.lib
       sha256: ba2105aa53d2db16001d205924af438b7c473ed9a864ce8e7ef13fcd71a7fcf7
+  - source: ltwiki
+    name: LM7805
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/regulators.lib
+      sha256: 1998b5aaba8b44019bf630a561c739ff33a83996cd6600bbaa8b8c3e02cf5bf2
 - source: ltwiki
   name: LM7805C
   def: subckt
@@ -65,19 +65,19 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/Ixdd404/IXDD404lt.lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/ixdd414/IXDD414lt.lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: a752c4e6632ab543e460f417a6175adcb5c03beb4460f6a30fc9d07971f524d3
+    sha256: 9215f7da91a8cf0b58c8a40ada17cb50cb1c12d9d886800459478aa347ca5245
     lines:
-      LM7805C: [234, 237]
+      LM7805C: [156, 159]
     fetched: '2026-09-21'
   note: pins from names
   copies:
   - source: ltwiki
     name: LM7805C
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Miscel/Ixdd404/IXDD404lt.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/Ixdd404/IXDD404lt.lib
       sha256: a752c4e6632ab543e460f417a6175adcb5c03beb4460f6a30fc9d07971f524d3
   - source: ltwiki
     name: LM7805C
@@ -88,9 +88,9 @@ models:
   - source: ltwiki
     name: LM7805C
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/ixdd414/IXDD414lt.lib
-      sha256: 9215f7da91a8cf0b58c8a40ada17cb50cb1c12d9d886800459478aa347ca5245
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/Ixdd404/IXDD404lt.lib
+      sha256: a752c4e6632ab543e460f417a6175adcb5c03beb4460f6a30fc9d07971f524d3
 - source: ltwiki
   name: LM7805C
   def: subckt
@@ -103,19 +103,19 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/IXDI430YI/IXDI430YI_lt.lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/IXDN430YI/IXDN430YI_lt.lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 96e0b71b479e8e77f5cb91a3e4847b33a1c8052e809f14489fed4c85c2cb0d2d
+    sha256: 7cbee7c2923148c93468fc0076bbd116b30f2a263e1f43dad3597e71c21ac265
     lines:
-      LM7805C: [142, 146]
+      LM7805C: [139, 143]
     fetched: '2026-09-21'
   note: pins from names
   copies:
   - source: ltwiki
     name: LM7805C
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Digital/IXDI430YI/IXDI430YI_lt.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/IXDI430YI/IXDI430YI_lt.lib
       sha256: 96e0b71b479e8e77f5cb91a3e4847b33a1c8052e809f14489fed4c85c2cb0d2d
   - source: ltwiki
     name: LM7805C
@@ -126,9 +126,9 @@ models:
   - source: ltwiki
     name: LM7805C
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/IXDN430YI/IXDN430YI_lt.lib
-      sha256: 7cbee7c2923148c93468fc0076bbd116b30f2a263e1f43dad3597e71c21ac265
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/IXDI430YI/IXDI430YI_lt.lib
+      sha256: 96e0b71b479e8e77f5cb91a3e4847b33a1c8052e809f14489fed4c85c2cb0d2d
 - source: ltwiki
   name: LM7805C
   def: subckt
@@ -215,9 +215,9 @@ models:
   - x_LM78XX
   verbatim: true
   get:
-    url: https://disk.yandex.ru/d/71M79VuY5sOWew
-    member: QSPICE/Library/VoltReg/LM7805C.qsym
-    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+    member: Library/VoltReg/LM7805C.qsym
+    archive_sha256: a866b6e66bc471c91faa9ccac9f35bf0d7200ef739b9280c86196bf4c92a4e3c
     sha256: 849cd076ba4eaa05e9285be34a7f6388372f8eb5facea851f1625dcc5e41d0e9
     fetched: '2026-09-29'
   note: pins from names
@@ -225,8 +225,8 @@ models:
   - source: bordodynov-qspice
     name: LM7805C
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/VoltReg/LM7805C.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/VoltReg/LM7805C.qsym
       sha256: 849cd076ba4eaa05e9285be34a7f6388372f8eb5facea851f1625dcc5e41d0e9
   - source: kicad-spice-library
     name: LM7805C

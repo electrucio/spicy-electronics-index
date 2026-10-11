@@ -22,6 +22,24 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xmjf127
+  def: subckt
+  hash: 6b6cab4f2e3cd263343f86836ebaee8a2adb4d1d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/mjf127.sp2
+    sha256: 09b6d59bf493a09b3f7f67e976363e66621c97537409cf94fba71885b10666f5
+    lines:
+      Xmjf127: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: mjf127
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mjf127.sp3
+      sha256: 49cf8d38bb313aeac580b41831cdd20bec6ece4312c5a41bccd5d124eb9a689d
 - source: ltwiki
   name: MJF127
   def: subckt

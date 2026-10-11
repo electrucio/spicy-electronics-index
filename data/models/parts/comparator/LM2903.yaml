@@ -122,6 +122,59 @@ models:
       VCC_Range: [239, 243]
       VINRANGE_393: [245, 249]
     fetched: '2026-09-19'
+- source: ti
+  name: LM2903B
+  def: subckt
+  hash: d5ba8c22c51cab4286cbfcf2d6d38b19af55fb05
+  type: SUBCKT
+  deps:
+  - HPA_COMPHYS
+  - 4ORGATE
+  - VINRANGE_393
+  - INPUTRANGE
+  - SUPPLY_BUFFER1
+  - Input_Buffer
+  - DIGLEVSHIFT
+  - INVERTER
+  - MID_SUPPLY
+  - ORGATE
+  - Output_Stage_SHIZ
+  - Output_Stage_SMID
+  - Output_Stage_SVOL
+  - Output_Stage
+  - Prop_Delay
+  - Supply_Buffer
+  - Difference
+  - VCC_Range
+  - Supply_Enable
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SLCJ016
+    member: lm393.lib
+    archive_sha256: 2b32be0bebb6a3c9bcc93e2a6d9ba1e359c2dcfc34dc43e396798e22bda980d8
+    sha256: bb640f9b040d51a5ebaec7cb9a8a37bfcf2ae53a6c7e4a28405226b67ca43ff3
+    lines:
+      4ORGATE: [327, 330]
+      DIGLEVSHIFT: [154, 161]
+      Difference: [228, 232]
+      HPA_COMPHYS: [145, 152]
+      INPUTRANGE: [103, 113]
+      INVERTER: [196, 199]
+      Input_Buffer: [68, 70]
+      LM2903B: [47, 66]
+      MID_SUPPLY: [201, 204]
+      ORGATE: [206, 210]
+      Output_Stage: [86, 101]
+      Output_Stage_SHIZ: [127, 131]
+      Output_Stage_SMID: [121, 125]
+      Output_Stage_SVOL: [133, 137]
+      Prop_Delay: [115, 119]
+      SUPPLY_BUFFER1: [234, 237]
+      Supply_Buffer: [82, 84]
+      Supply_Enable: [72, 80]
+      VCC_Range: [239, 243]
+      VINRANGE_393: [245, 249]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: LM2903
   def: subckt
@@ -157,15 +210,15 @@ models:
   note: pins from comment words
   copies:
   - source: kicad-spice-library
-    name: LM2903_TI
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
-      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
-  - source: kicad-spice-library
     name: LM2903T
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
       sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
+  - source: kicad-spice-library
+    name: LM2903_TI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
+      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
 - source: kicad-spice-library
   name: LM2903S
   def: subckt

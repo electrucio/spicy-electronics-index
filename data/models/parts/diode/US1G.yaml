@@ -15,6 +15,18 @@ models:
     lines:
       US1GFA: [7, 12]
     fetched: '2026-09-19'
+- source: onsemi
+  name: US1GFA
+  def: model
+  hash: 8495cbd2edfdbd437dfa331021ba951f1e9bfdec
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/us1%20%28spice%20model%29.lib
+    sha256: 865038749b8de3f124b77b65b78559350114c595efa438492594dbe73eb603e0
+    lines:
+      US1GFA: [67, 72]
+    fetched: '2026-10-10'
 - source: vishay
   name: US1G
   def: model
@@ -31,6 +43,11 @@ models:
   - source: kicad-spice-library
     name: US1G
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+  - source: kicad-spice-library
+    name: US1G
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/GenSemiUltraRect.lib
       sha256: 43f8d9ef8b0f17890590821a887eb76a131c531f450f5579fb43d62b8417c709
   - source: kicad-spice-library
@@ -38,11 +55,6 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/gensemi.lib
       sha256: a6cf7dd0be40fa8de86b574b20c2481a4be41a33f77d1893d66664f19e3fe8d9
-  - source: kicad-spice-library
-    name: US1G
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
-      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
   - source: microcap12
     name: US1G
     get:
@@ -95,6 +107,12 @@ models:
   - source: ltwiki
     name: US1G
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/New2/D.lib
+      sha256: 4aa55e403008035c4f0065b93108abf95382d86498e6a25c499fb9e3061e656d
+  - source: ltwiki
+    name: US1G
+    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Basso/BassoBook20100103/D.lib
       sha256: 4aa55e403008035c4f0065b93108abf95382d86498e6a25c499fb9e3061e656d
@@ -103,12 +121,6 @@ models:
     get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Basso/BassoBook20100103/New2/D.lib
-      sha256: 4aa55e403008035c4f0065b93108abf95382d86498e6a25c499fb9e3061e656d
-  - source: ltwiki
-    name: US1G
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/New2/D.lib
       sha256: 4aa55e403008035c4f0065b93108abf95382d86498e6a25c499fb9e3061e656d
 - source: groups-io
   name: US1G

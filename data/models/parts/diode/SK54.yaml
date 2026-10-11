@@ -3,6 +3,79 @@ kind: diode
 priority: 4
 group: bridge
 models:
+- source: taiwan-semi
+  name: SK54B
+  def: model
+  hash: 721b4cbedd56c000bfcf806697aafd9a55bcdc71
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 5a60cfd4bce9618782368f5043358cbf312a5714f70df70f0454f7584043a089
+    lines:
+      SK54B: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SK54BH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c7580c6f5beb17cb8dcaae416d0ad366e695ec478c59b79b31c763e831691f3e
+- source: taiwan-semi
+  name: SK54C
+  def: model
+  hash: 05e8abf6c963b2a04b7bb288ff77c318250cbdd8
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: bb98c4161bbd1708e16bd43bfdbb39ff14d2e2fe151a3c188854dadc1be0161f
+    lines:
+      SK54C: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SK54CH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: f7c729defb47874c096664ad1260fb03624d51542e32dd4ac55308d78ad55d75
+- source: taiwan-semi
+  name: SK54BH
+  def: model
+  hash: a7bd8a94c2842876ec99f00f4cd1e5cb3a2310cb
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 732f1d4370a30a2953e2ad52c4cff36903d57a97c52f2e991b5387ad622638dc
+    lines:
+      SK54BH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: SK54-AU
+  def: subckt
+  hash: 466fd948d98dcdf4ccdda811c87ebb8ef409d962
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-2. Power Schottky/SK54-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 04e9e78450d6409aa78ebeb42f30dd80baf4a93846752dbbbaef363f7c9cfc99
+    lines:
+      SK54-AU: [11, 42]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: SK54
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-2. Power Schottky/SK54.txt
+      sha256: 7876775084b51da716a047b7950ae6806fb91dc77e43c1e3eff86fcbda17f409
 - source: central-semi
   name: 1N5822
   def: model

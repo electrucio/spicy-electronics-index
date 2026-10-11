@@ -22,11 +22,48 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: https://www.diodes.com/productcollection/spicemodels/8501/collection.spice.txt
-    sha256: bf1270ff0b646a8fa3864d4e1ae3bd0af6f89e24f79db07c9c0937e773122497
+    url: https://www.diodes.com/spice/download/4776/SMBJ18CA.spice.txt
+    sha256: 7ceecf2104dba9be838e019bccc31077e9e545fdb0ad02e31bf08d945bc28722
     lines:
-      SMBJ18CA: [557, 565]
-    fetched: '2026-09-21'
+      SMBJ18CA: [24, 32]
+    fetched: '2026-10-10'
+  copies:
+  - source: diodes-inc
+    name: SMBJ18CA
+    get:
+      url: https://www.diodes.com/productcollection/spicemodels/8501/collection.spice.txt
+      sha256: bf1270ff0b646a8fa3864d4e1ae3bd0af6f89e24f79db07c9c0937e773122497
+- source: stmicro
+  name: SMBJ18CA
+  def: subckt
+  hash: 65de458bea33d054f8dd34e704cbde7dcb8a6894
+  type: SUBCKT
+  deps:
+  - TRANSILB
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj_pspice.zip
+    member: SMBJ.lib
+    archive_sha256: 5d854e5b2fbbb3804288f0c69953e1652692188175a4fabb6584a7cff041f12b
+    sha256: f0fd64a5751d0bb7b668e9289fc91fc92000be2b1d6f0c455c8d616f7671caaf
+    lines:
+      SMBJ18CA: [245, 250]
+      TRANSILB: [67, 93]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SMBJ18CA_STM
+  def: subckt
+  hash: 553fab090d4204726762dadfb0be62d8548ff8d7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj-series-thermal-edsim-simetrix-pspice.zip
+    member: smbj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 42edb3e4ad623552356e50e9134bc03fd8338c56b478b2360712bc9249fa59e6
+    sha256: 858c9cc68721df47364f5698c06e37345339fba45805a8380594f4ede1359420
+    lines:
+      SMBJ18CA_STM: [1444, 1511]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: SMBJ18CA
   def: subckt
@@ -53,13 +90,13 @@ models:
     name: SMBJ18CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: bordodynov
     name: SMBJ18CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SMBJ18CA
@@ -80,8 +117,14 @@ models:
   - source: ltwiki
     name: SMBJ18CA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMBJ18CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMBJ18CA
@@ -92,12 +135,6 @@ models:
   - source: ltwiki
     name: SMBJ18CA
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: ltwiki
-    name: SMBJ18CA
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

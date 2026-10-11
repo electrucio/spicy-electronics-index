@@ -3,24 +3,48 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: rohm
   name: DTC643TK
   def: subckt
   hash: a54938dd2f5229436c5f1b79db59294decfb1c9b
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc643tk_ltspice.zip
+    member: dtc643tk_ltspice/dtc643tk_ltspice.lib
+    archive_sha256: 6700099bcbe476f79cd2ea76d75e849362a9a7f548ef01799ff3f63d8fffbc90
+    sha256: 311201992ffc72fe4b56b4f9bbf62b1557e0f938f3728dffaf5f93a113943c32
     lines:
-      DTC643TK: [36403, 36434]
-    fetched: '2026-09-21'
+      DTC643TK: [5, 36]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTC643TK
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC643TK
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc643tk_spice.zip
+      member: dtc643tk.lib
+      sha256: 311201992ffc72fe4b56b4f9bbf62b1557e0f938f3728dffaf5f93a113943c32
   - source: microcap12
     name: DTC643TU
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC643TU
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc643tu_spice.zip
+      member: dtc643tu.lib
+      sha256: 4dea9fe256e0df1baff09bf4655ff29cb95a45af49685464f86d4b8fbac5c7d6
+  - source: rohm
+    name: DTC643TU
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc643tu_ltspice.zip
+      member: dtc643tu_ltspice/dtc643tu_ltspice.lib
+      sha256: 4dea9fe256e0df1baff09bf4655ff29cb95a45af49685464f86d4b8fbac5c7d6

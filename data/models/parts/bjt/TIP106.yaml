@@ -10,7 +10,7 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/tip106.lib
+    url: https://www.onsemi.com/download/models/lib/tip131.lib
     sha256: c83168c89dd8ab331f4f6f262b3bec0b1b09239ccf4ab0c33104cf6eb1e0a21d
     lines:
       tip106: [12, 50]
@@ -26,14 +26,14 @@ models:
     name: TIP106
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.txt
-      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: bordodynov-qspice
     name: TIP106
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
   - source: kicad-spice-library
     name: TIP106
     get:
@@ -42,15 +42,15 @@ models:
   - source: ltwiki
     name: TIP106
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
-  - source: ltwiki
-    name: TIP106
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/PNPdarlington.lib
       sha256: 59a95f21cebb26aebfa460323a2fbdb5ee49fb7a3b9808eb38860e29327fc152
+  - source: ltwiki
+    name: TIP106
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: microcap12
     name: tip106
     get:
@@ -60,8 +60,26 @@ models:
   - source: onsemi
     name: tip106
     get:
-      url: https://www.onsemi.com/download/models/lib/tip131.lib
+      url: https://www.onsemi.com/download/models/lib/tip106.lib
       sha256: c83168c89dd8ab331f4f6f262b3bec0b1b09239ccf4ab0c33104cf6eb1e0a21d
+- source: onsemi
+  name: Xtip106
+  def: subckt
+  hash: 68dc14989cd0bccf5345ce8860f27ced49c5c5dd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip106.sp2
+    sha256: 34e3da817fe509c7a6cf2cb7914fddaf039767ca7251b8c2a12765722db2a128
+    lines:
+      Xtip106: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip106
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip106.sp3
+      sha256: 3c90463c5c85e44a8f85abbbb710e304793b31fe7c6f49bdc998c2b4757959ff
 - source: kicad-spice-library
   name: TIP106
   def: subckt

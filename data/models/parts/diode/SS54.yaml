@@ -3,6 +3,25 @@ kind: diode
 priority: 3
 group: schottky
 models:
+- source: taiwan-semi
+  name: SS54ALH
+  def: model
+  hash: fa23de6c2d21d8f16314f4928e3d059f34b649a9
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 82a17823b4db81d316a46aca70345d0911f3b12c19a952ddd8fa35c1c29038d4
+    lines:
+      SS54ALH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS54FSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 7e228d7c6b451eba2313d29119cb7f6252c6f0b478e063ac042aaa372b390e3e
 - source: central-semi
   name: 1N5822
   def: model

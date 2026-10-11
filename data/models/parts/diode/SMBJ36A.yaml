@@ -39,6 +39,58 @@ models:
     lines:
       smbj36a: [9, 30]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SMBJ36A
+  def: model
+  hash: 9b1891683ac11bf4066e1abf275b54fff4a64b10
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 88628a9edea1ce8227564728ff7ee9888000f107dc565748dd68eb1bac3c6c74
+    lines:
+      SMBJ36A: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SMBJ36AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 68a14594869ecbe7facb0d762adba4540fbc5a2bd314da7eb14d7a388caec768
+- source: taiwan-semi
+  name: SMBJ36A
+  def: subckt
+  hash: 749efd648e935430508dcdd8301dc03bc2ee4a82
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: aca96aff431b7909e8babcfd965e1c493fc9aecc2dcf3ba9a8389ef0c2fc14f6
+    lines:
+      SMBJ36A: [7, 23]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SMBJ36AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 0e2d09db79d8b05501878adbd032cc6864239c85d84706ab6c044be16f8cb54b
+- source: stmicro
+  name: SMBJ36A_STM
+  def: subckt
+  hash: 849b1f05566bf7c10d04a47e3d9393b47cf952da
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj-series-thermal-edsim-simetrix-pspice.zip
+    member: smbj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 42edb3e4ad623552356e50e9134bc03fd8338c56b478b2360712bc9249fa59e6
+    sha256: 858c9cc68721df47364f5698c06e37345339fba45805a8380594f4ede1359420
+    lines:
+      SMBJ36A_STM: [2542, 2618]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SMBJ36A
   def: model

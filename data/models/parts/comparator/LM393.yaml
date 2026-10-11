@@ -2,26 +2,42 @@ part: LM393
 kind: comparator
 priority: 1
 models:
-- source: microcap12
-  name: LM393_TI
+- source: ti
+  name: LM393A
   def: subckt
   hash: da370784c5102ff4a43a270265a6c63b97297e92
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ti.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    url: https://www.ti.com/lit/zip/SLCJ017
+    member: LM393A.5_1
+    archive_sha256: cd9b7af8bcbd48bee731090498db8efb6568accf9eae415e20e2745fe114c7f0
+    sha256: daf740f645c7e6bbbe1f09e739a123d5e0cff1fd297c4daa56122ddd117b081f
     lines:
-      LM393_TI: [1985, 2006]
-    fetched: '2026-09-21'
+      LM393A: [10, 31]
+    fetched: '2026-10-10'
   copies:
+  - source: kicad-spice-library
+    name: LM393T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
+      sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
+  - source: kicad-spice-library
+    name: LM393AT
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
+      sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
   - source: kicad-spice-library
     name: LM393_TI
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
       sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
+  - source: microcap12
+    name: LM393_TI
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ti.lib
+      sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
   - source: kicad-spice-library
     name: LM393A_TI
     get:
@@ -33,16 +49,59 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/ti.lib
       sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
-  - source: kicad-spice-library
-    name: LM393T
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
-      sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
-  - source: kicad-spice-library
-    name: LM393AT
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TICOMP.LIB
-      sha256: d4980b8365b4590602ff9cca722294b2ec0125e2ef169e5a6a66dab2a6411001
+- source: ti
+  name: LM393LV
+  def: subckt
+  hash: 6324b57ab2fd50a60cc0d0e19496f5961881e642
+  type: SUBCKT
+  deps:
+  - HPA_COMPHYS
+  - 4ORGATE
+  - VINRANGE_393
+  - INPUTRANGE
+  - SUPPLY_BUFFER1
+  - Input_Buffer
+  - DIGLEVSHIFT
+  - INVERTER
+  - MID_SUPPLY
+  - ORGATE
+  - Output_Stage_SHIZ
+  - Output_Stage_SMID
+  - Output_Stage_SVOL
+  - Output_Stage
+  - Prop_Delay
+  - Supply_Buffer
+  - Difference
+  - VCC_Range
+  - Supply_Enable
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM697
+    member: lm393lv.lib
+    archive_sha256: 39729327beb582e0c15a780685f87933a9c42de24295915b340e086b75f638a2
+    sha256: 4d346c3daacdf3aa19e1435c88a33bbc3d85d660656fc3c0785e7863390dc2dd
+    lines:
+      4ORGATE: [331, 334]
+      DIGLEVSHIFT: [158, 165]
+      Difference: [232, 236]
+      HPA_COMPHYS: [149, 156]
+      INPUTRANGE: [107, 117]
+      INVERTER: [200, 203]
+      Input_Buffer: [70, 72]
+      LM393LV: [48, 68]
+      MID_SUPPLY: [205, 208]
+      ORGATE: [210, 214]
+      Output_Stage: [90, 105]
+      Output_Stage_SHIZ: [131, 135]
+      Output_Stage_SMID: [125, 129]
+      Output_Stage_SVOL: [137, 141]
+      Prop_Delay: [119, 123]
+      SUPPLY_BUFFER1: [238, 241]
+      Supply_Buffer: [86, 88]
+      Supply_Enable: [74, 84]
+      VCC_Range: [243, 247]
+      VINRANGE_393: [249, 253]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: LM393
   def: subckt
@@ -70,16 +129,16 @@ models:
     fetched: '2026-09-14'
   note: pins from default order (unverified)
   copies:
-  - source: ltwiki
-    name: LM393
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
-      sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
   - source: kicad-spice-library
     name: LM393
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Occomp.lib
       sha256: 43034148edb87c8b5281df8a394fb79962ff67147f9fba6349b2fcbb8346e17f
+  - source: ltwiki
+    name: LM393
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/opamp.lib
+      sha256: cca2ffc86103953c905f8efb48d96743b09d297fa79bbf22478c4979e4d08f66
 - source: ltwiki
   name: LM393
   def: subckt

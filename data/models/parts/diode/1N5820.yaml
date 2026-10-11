@@ -20,14 +20,14 @@ models:
   - source: ltwiki
     name: 1n5820
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Basso/BassoBook20100103/application.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/application.lib
       sha256: 5d29041032ba900f2d5cf36b92bfc8f65ba9f0fef305040427717fbfc1135ea3
   - source: ltwiki
     name: 1n5820
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/Basso/BassoBook20100103/application.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Basso/BassoBook20100103/application.lib
       sha256: 5d29041032ba900f2d5cf36b92bfc8f65ba9f0fef305040427717fbfc1135ea3
   - source: microcap12
     name: D1n5820rl
@@ -41,6 +41,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: D1n5820rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n5820rl.sp2
+      sha256: 3501fbd3c35ec558303337aab31e91cbfeb747697e4a362fb9bfe949ef918b72
+  - source: onsemi
+    name: 1n5820rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n5820rl.sp3
+      sha256: 988f42f2949498cc4bbd11c242cdc060097fec5cecc0114aabf518728c9dd024
 - source: onsemi
   name: D1N5820
   def: model
@@ -48,7 +58,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -70,9 +80,21 @@ models:
   - source: onsemi
     name: D1N5820
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: central-semi
+  name: 1N5820
+  def: model
+  hash: 26b0a52296b15c23a51d7ca7fab99bcf5bb439c6
+  type: D
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/1N5820.LIB
+    sha256: a3f5c29c9c44a695a3aebb0eb6b00382c697efd75c7bf9c911c9fc9731196693
+    lines:
+      1N5820: [25, 37]
+    fetched: '2026-10-10'
 - source: stmicro
   name: 1N5820
   def: model
@@ -80,13 +102,13 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
-    member: ST_POWER_SCHOTTKY_V10.LIB
-    archive_sha256: 36169e895d25ae28c8b2cf6461de0a0da374c1f60d105dbfb8faee880ea76ca6
-    sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
+    url: https://www.st.com/resource/en/spice_model/viper122_pspice_model.zip
+    member: TB_encrypted/libs/sense_and_power_diode_models_available.lib
+    archive_sha256: d39e2d9f80413a7b0e4fb5e55fdff897696898bf7cca80418bc50d59add347d2
+    sha256: 8de4b1cacba602c97a5d0326964b678a596a85fb848e4b883b98f71e909452b9
     lines:
-      1N5820: [188, 189]
-    fetched: '2026-09-21'
+      1N5820: [61, 62]
+    fetched: '2026-10-10'
   copies:
   - source: ltwiki
     name: 1N5820
@@ -94,12 +116,24 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
       sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: stmicro
+    name: 1N5820
+    get:
+      url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+      member: ST_POWER_SCHOTTKY_V10.LIB
+      sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
   - source: ltwiki
     name: 1N5820RL
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
       sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: stmicro
+    name: 1N5820RL
+    get:
+      url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+      member: ST_POWER_SCHOTTKY_V10.LIB
+      sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
 - source: microcap12
   name: 1N5820
   def: model
@@ -108,19 +142,19 @@ models:
   verbatim: true
   get:
     url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/S_BOOST_VM.cir
+    member: DATA/S_BOOST_CM.cir
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: ce13f094de8a1ba7484aa3ae09bc974652e460564bb58863bb85e23133fde37a
+    sha256: b0d29da6a7364a2a85a5df4eab20b7d97a8fc052c28fb39196226ac290aa49f7
     lines:
-      1N5820: [863, 864]
+      1N5820: [919, 920]
     fetched: '2026-09-21'
   copies:
   - source: microcap12
     name: 1N5820
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/S_BOOST_CM.cir
-      sha256: b0d29da6a7364a2a85a5df4eab20b7d97a8fc052c28fb39196226ac290aa49f7
+      member: DATA/S_BOOST_VM.cir
+      sha256: ce13f094de8a1ba7484aa3ae09bc974652e460564bb58863bb85e23133fde37a
 - source: microcap12
   name: 1N5820
   def: model
@@ -172,6 +206,12 @@ models:
   - source: ltwiki
     name: 1n5820
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/HalfVm/Power456.lib
+      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
+  - source: ltwiki
+    name: 1n5820
+    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/LtSpicePlus/Smps/HalfVm/Power456.lib
       sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
@@ -181,12 +221,6 @@ models:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Basso/BassoBook20100103/New2/power456_ltspice.lib
       sha256: 15f9ae5d23db290aa090a57998a19f39afcefea1d73a495de7f93339ef492fc1
-  - source: ltwiki
-    name: 1n5820
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Smps/HalfVm/Power456.lib
-      sha256: 9f06df533ae2edb2c14beb1b88977c99a92ad826c248ffb93ab84c151d37ac36
 - source: ltwiki
   name: 1n5820
   def: model

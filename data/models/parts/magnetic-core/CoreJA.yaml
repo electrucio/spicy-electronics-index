@@ -10,9 +10,9 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Core.lib
+    member: LargeCollection/LTspiceIV/lib/sym/SBORKA/TRANSFORM/Core.lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 6fc9c65478ba5dff85ec5b234bec7123955568eed0d898feb666397cfd29345d
+    sha256: 764804529efeec12423ded2774005d4969bb38ae52cd2bd79c8cb61767ffd2c5
     lines:
       CoreJA: [3, 21]
     fetched: '2026-09-21'
@@ -25,12 +25,6 @@ models:
   - source: bordodynov
     name: CoreJA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Core.lib
-      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
-  - source: bordodynov
-    name: CoreJA
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Mutual_Ind_K_F(V)/Core.lib
       sha256: b90c98dadaa64400fd509c2cce4b79a82c5718e3bb9224795d88a2456abf62df
@@ -40,6 +34,12 @@ models:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Alternative_a_transformer/Core.lib
       sha256: dae16b179a1af6a2ba2f8b91acded73ec0f4c4db94d3e9ed4ec83f67ffd96e9b
+  - source: bordodynov
+    name: CoreJA
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Core.lib
+      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
   - source: kicad-spice-library
     name: CoreJA
     get:
@@ -48,9 +48,9 @@ models:
   - source: ltwiki
     name: CoreJA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Core.lib
-      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Core.lib
+      sha256: 6fc9c65478ba5dff85ec5b234bec7123955568eed0d898feb666397cfd29345d
   - source: ltwiki
     name: CoreJA
     get:
@@ -66,9 +66,9 @@ models:
   - source: ltwiki
     name: CoreJA
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/SBORKA/TRANSFORM/Core.lib
-      sha256: 764804529efeec12423ded2774005d4969bb38ae52cd2bd79c8cb61767ffd2c5
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Core.lib
+      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
 - source: bordodynov
   name: CoreJA
   def: subckt
@@ -76,25 +76,25 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/Transformers.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 0e1c5cc85ad963aa2767dde6268d39f64d53f061effd16303a6eaec24a9a583f
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/Bordodynov/TRANSFORMers/Transformers.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: 0b416989e0ae78934b079c8849de4242a338bf6b47ff53e05bdf3e6a0b7ae7aa
     lines:
       CoreJA: [1, 28]
-    fetched: '2026-09-21'
+    fetched: '2026-09-29'
     symbol:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/TRANSFORMerAB/CoreJA.asy
-      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-      sha256: d99123e492c2a86a1ace9b3f3b2a5549323fedf1fdc7e053882395dc23daa064
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Trans/CoreJA.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      sha256: b9876c05a5bd0d18b863c54c1afed7b4a0cbf3aaa632c5cf759ddb2a0c4ccae6
   copies:
   - source: bordodynov
     name: CoreJA
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/TRANSFORMers/Transformers.lib
-      sha256: 0b416989e0ae78934b079c8849de4242a338bf6b47ff53e05bdf3e6a0b7ae7aa
+      member: examples/Bordodynov/GE13W120V_CFL/Transformers.lib
+      sha256: b48a14d0a973a386697ea7325a10cd8e146c2c82a44e95e32a6ee8154ce5e0ad
   - source: bordodynov
     name: CoreJA
     get:
@@ -104,9 +104,9 @@ models:
   - source: bordodynov
     name: CoreJA
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/GE13W120V_CFL/Transformers.lib
-      sha256: b48a14d0a973a386697ea7325a10cd8e146c2c82a44e95e32a6ee8154ce5e0ad
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Transformers.lib
+      sha256: 0e1c5cc85ad963aa2767dde6268d39f64d53f061effd16303a6eaec24a9a583f
   - source: kicad-spice-library
     name: CoreJA
     get:
@@ -115,15 +115,15 @@ models:
   - source: ltwiki
     name: CoreJA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Transformers.lib
-      sha256: 0e1c5cc85ad963aa2767dde6268d39f64d53f061effd16303a6eaec24a9a583f
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/TRANSFORMers/Transformers.lib
+      sha256: 0b416989e0ae78934b079c8849de4242a338bf6b47ff53e05bdf3e6a0b7ae7aa
   - source: ltwiki
     name: CoreJA
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/TRANSFORMers/Transformers.lib
-      sha256: 0b416989e0ae78934b079c8849de4242a338bf6b47ff53e05bdf3e6a0b7ae7aa
+      member: examples/Bordodynov/GE13W120V_CFL/Transformers.lib
+      sha256: b48a14d0a973a386697ea7325a10cd8e146c2c82a44e95e32a6ee8154ce5e0ad
   - source: ltwiki
     name: CoreJA
     get:
@@ -133,6 +133,6 @@ models:
   - source: ltwiki
     name: CoreJA
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/GE13W120V_CFL/Transformers.lib
-      sha256: b48a14d0a973a386697ea7325a10cd8e146c2c82a44e95e32a6ee8154ce5e0ad
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Transformers.lib
+      sha256: 0e1c5cc85ad963aa2767dde6268d39f64d53f061effd16303a6eaec24a9a583f

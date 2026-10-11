@@ -15,7 +15,7 @@ models:
       D1N4735A: [6, 23]
     fetched: '2026-09-19'
   note: 'STAND-IN: model of 1N4735A, not of BZX85C6V2; the equivalence is declared in data/models/wanted.yaml'
-- source: microcap12
+- source: nexperia
   name: 1N4735A
   def: subckt
   hash: 5f3ac28595432bc07e6489529ba5eb2b68645df3
@@ -25,13 +25,11 @@ models:
   - K
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    url: https://assets.nexperia.com/documents/spice-model/1N4735A.txt
+    sha256: ba88a5555387fd7906be509db56c2860157bc7ef556fe2f04ff0b7fdde6d683b
     lines:
-      1N4735A: [367, 387]
-    fetched: '2026-09-21'
+      1N4735A: [33, 47]
+    fetched: '2026-10-10'
   note: 'STAND-IN: model of 1N4735A, not of BZX85C6V2; equivalence declared in catalog/wanted.yaml (see
     its note); pins from default order (unverified)'
   copies:
@@ -41,6 +39,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/1N4735A.PRM
       sha256: 3f6ad88b70ee30a4278a1213afefeb80165e98c3d1150847eef24d5cac4ee6cf
+  - source: microcap12
+    name: 1N4735A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
 - source: ltwiki
   name: 1N4735A
   def: subckt

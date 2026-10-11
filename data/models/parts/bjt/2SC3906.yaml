@@ -3,20 +3,33 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
-  name: 2SC3906K
+- source: rohm
+  name: Q2SC3906K
   def: model
   hash: 0c0da19a3fe27a82ad44c74992d73f4937d2d869
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sc3906k_ltspice.zip
+    member: 2sc3906k_ltspice/2sc3906k_ltspice.lib
+    archive_sha256: 80d4244b8ee28f43dab8ce34dc920e2fdc5c440317c8d9a0a514fa2e478c4595
+    sha256: d7d19c43111d715afb619dd306e96d22e79ca2084972912f516d5783df09c2d9
     lines:
-      2SC3906K: [2873, 2897]
-    fetched: '2026-09-21'
+      Q2SC3906K: [3, 27]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SC3906K
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SC3906K
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sc3906k_spice.zip
+      member: 2sc3906k.lib
+      sha256: d7d19c43111d715afb619dd306e96d22e79ca2084972912f516d5783df09c2d9
 - source: bordodynov
   name: 2SC3906K
   def: model
@@ -51,6 +64,12 @@ models:
   - source: ltwiki
     name: 2SC3906K
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SC3906K
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -60,12 +79,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SC3906K
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SC3906K
   def: model

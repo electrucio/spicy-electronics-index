@@ -28,6 +28,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qmmbta42lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbta42lt1.sp2
+      sha256: 224b77a8fd236b57bbe6f56827740b9d7ae07cd7d820ab2c72a933116068e4f6
+  - source: onsemi
+    name: mmbta42lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbta42lt1.sp3
+      sha256: 63ca7b366ec38b6dc95d836118d863971db9ddf09448d459fcfb306830172989
 - source: nexperia
   name: MMBTA42
   def: subckt
@@ -46,6 +56,28 @@ models:
     fetched: '2026-09-19'
     note: 'MMBTA42: MMBTA42, MMBTA42, DIODE'
   note: pins from comment words
+- source: panjit
+  name: MMBTA42
+  def: subckt
+  hash: 93f9362f216683b4337895902003d5c6332e06e7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBTA42.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 6543e1fce5d663cf814bcdca05e589ecc7811a7df9027c8983480027bf548465
+    lines:
+      MMBTA42: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBTA42-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBTA42-AU.txt
+      sha256: 1cad81c3447c9ece6f2f0e935deb2b7927d8fcba26f4e8d4a371a09407beaed3
 - source: microcap12
   name: MMBTA42_PH
   def: subckt
@@ -140,14 +172,14 @@ models:
   - source: ltwiki
     name: MMBTA42
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: MMBTA42
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: MMBTA42

@@ -2,6 +2,18 @@ part: BZV55B3V3
 kind: zener
 priority: 4
 models:
+- source: nexperia
+  name: BZV55-B3V3
+  def: subckt
+  hash: 01b68e3a2ff3032fb570210c4375751502a78fa3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZV55-B3V3.txt
+    sha256: cb1d5cf645342e1efcdc0481f7fdadc2054da93fed37a3c7a31962fd979d91cc
+    lines:
+      BZV55-B3V3: [33, 58]
+    fetched: '2026-10-10'
 - source: bordodynov
   name: BZV55-B3V3
   def: model
@@ -26,12 +38,12 @@ models:
   - source: ltwiki
     name: BZV55-B3V3
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZV55-B3V3
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

@@ -58,6 +58,41 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C5V1.PRM
       sha256: 20255e126a927b64493c6b82d0865cec8ed306889c758bfe88983ea9db9ebd4b
+- source: taiwan-semi
+  name: BZX84C5V1
+  def: model
+  hash: 9b4d865299cc5cb5dd6474cea65d8fa1cd5e9a5a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d3174a788331a4ae6eb4ce7d0628371b573e1463204350184344d9308c3154a9
+    lines:
+      BZX84C5V1: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZX84C5V1
+  def: subckt
+  hash: 7cc2d25b01d2ef84df0b15a33fd41f12a9d0c2f7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C5V1.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 32621c8a350d55e2c1a7043aa29ac78fef8ad1e7780d1948bad00bda52fd813c
+    lines:
+      BZX84C5V1: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BZX84C5V1-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/BZX84C5V1-AU.txt
+      sha256: af31c4d4786093f0fb79cb5396c0bbbeab4c983f1843e48250a3a1743792e0e9
 - source: spice-model-cd
   name: BZX84C5V1
   def: model
@@ -353,12 +388,12 @@ models:
   - source: ltwiki
     name: BZX84C5V1
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C5V1
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

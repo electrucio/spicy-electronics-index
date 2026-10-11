@@ -28,6 +28,29 @@ models:
       member: LIBRARY/m_small.lib
       sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
 - source: onsemi
+  name: mmbta14lt1
+  def: subckt
+  hash: 69fcfe280605a0f7600166bddeffd6e7e9e5718a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/mmbta14lt1.sp2
+    sha256: 18ea732fda7f7104f7b02f2ca9d967817421c5ba4d33729be786447fe9a01bc9
+    lines:
+      mmbta14lt1: [1, 48]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: mmbta14lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbta14lt1.sp3
+      sha256: 02cbce2fc198f60b5309e08d2e3e425f4ac667fcd5baef5092c08854bda721d9
+  - source: spice-model-cd
+    name: mmbta14lt1
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbta14lt1.t
+      sha256: a9bd05c59c859a57dd1e4acbf1239527013ed843c2cd538d44705a77b728904c
+- source: onsemi
   name: MMBTA14
   def: subckt
   hash: 0cd0ddaa60f01fdb5c53468a2ac48b238bb279de
@@ -39,18 +62,6 @@ models:
     lines:
       MMBTA14: [9, 40]
     fetched: '2026-09-14'
-- source: spice-model-cd
-  name: mmbta14lt1
-  def: subckt
-  hash: 69fcfe280605a0f7600166bddeffd6e7e9e5718a
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbta14lt1.t
-    sha256: a9bd05c59c859a57dd1e4acbf1239527013ed843c2cd538d44705a77b728904c
-    lines:
-      mmbta14lt1: [1, 48]
-    fetched: '2026-09-21'
 - source: microcap12
   name: MMBTA14
   def: subckt

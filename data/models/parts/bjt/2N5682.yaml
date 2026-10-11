@@ -3,20 +3,25 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N5682
   def: model
   hash: 88acf06cad41f1bc872c447ed965c0545955d3e3
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N5682.LIB
+    sha256: 7f22588d6bb705214886f922d136c2110366c0b9024d4ec5e9630f8d37bea23e
     lines:
-      2N5682: [3589, 3614]
-    fetched: '2026-09-21'
+      2N5682: [24, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N5682
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: groupsio-ltspice
   name: 2N5682
   def: model

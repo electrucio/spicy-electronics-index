@@ -29,6 +29,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: D1n5822rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n5822rl.sp2
+      sha256: da30cf7554925863a4d19f2dffe0827331aebe17f842495bacded58a0244ddd6
+  - source: onsemi
+    name: 1n5822rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n5822rl.sp3
+      sha256: 4aca68284cf6a6fafac6d1cb6fbc2bd4693a6053e1a6de7a2e5f7cebadc29e6f
 - source: onsemi
   name: 1N5822
   def: model
@@ -36,12 +46,12 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncp4326%20demo%20board%20simulation%20(pspice).zip
-    member: NCP4326 model rev0-PSpiceFiles/Libraries/freerun.lib
-    archive_sha256: 6818c6e2e3e5b61b9d860e1a231f1932825f77ff8b0d66903bea3e65b70781a8
-    sha256: e659adcc4b0aef1ca66196bace5ef8a8aa5487b275635b9f3cf2f018d5f91fbc
+    url: https://www.onsemi.com/download/models/zip/ncp1207ps.zip
+    member: freerun.lib
+    archive_sha256: ee37be089d30b0f4e339e7486d72e91d8bf477a53eaf90e05861fb58a28ce72e
+    sha256: 117ea8fed8310e3d77f1c575b66cd4fdbd827d0799a3a5d50ea844dcdd565680
     lines:
-      1N5822: [218, 220]
+      1N5822: [198, 200]
     fetched: '2026-09-19'
   copies:
   - source: microcap12
@@ -53,21 +63,21 @@ models:
   - source: onsemi
     name: 1N5822
     get:
-      url: https://www.onsemi.com/download/models/zip/ncp1207acps.zip
-      member: freerun.lib
-      sha256: 46b05fe3b7140295e6e10368391f20175f7b5c3830cb3a9d215560df5d006d0b
-  - source: onsemi
-    name: 1N5822
-    get:
-      url: https://www.onsemi.com/download/models/zip/ncp1207ps.zip
-      member: freerun.lib
-      sha256: 117ea8fed8310e3d77f1c575b66cd4fdbd827d0799a3a5d50ea844dcdd565680
+      url: https://www.onsemi.com/download/models/zip/ncp4326%20demo%20board%20simulation%20(pspice).zip
+      member: NCP4326 model rev0-PSpiceFiles/Libraries/freerun.lib
+      sha256: e659adcc4b0aef1ca66196bace5ef8a8aa5487b275635b9f3cf2f018d5f91fbc
   - source: onsemi
     name: 1N5822
     get:
       url: https://www.onsemi.com/download/models/zip/ncp1205ps.zip
       member: freerun.lib
       sha256: 117ea8fed8310e3d77f1c575b66cd4fdbd827d0799a3a5d50ea844dcdd565680
+  - source: onsemi
+    name: 1N5822
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncp1207acps.zip
+      member: freerun.lib
+      sha256: 46b05fe3b7140295e6e10368391f20175f7b5c3830cb3a9d215560df5d006d0b
 - source: onsemi
   name: D1N5822
   def: model
@@ -75,7 +85,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -97,7 +107,7 @@ models:
   - source: onsemi
     name: D1N5822
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: vishay
@@ -114,15 +124,15 @@ models:
     fetched: '2026-09-19'
   copies:
   - source: kicad-spice-library
-    name: 1n5822
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
-      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
-  - source: kicad-spice-library
     name: d1n5822
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
       sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+  - source: kicad-spice-library
+    name: 1n5822
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/SemiGenSchottkyRect.lib
+      sha256: d165361125280de311667a3cd347670774ffdf2bbd93f2360d2ebd8c3baebfe0
 - source: central-semi
   name: 1N5822
   def: model
@@ -143,13 +153,13 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
-    member: ST_POWER_SCHOTTKY_V10.LIB
-    archive_sha256: 36169e895d25ae28c8b2cf6461de0a0da374c1f60d105dbfb8faee880ea76ca6
-    sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
+    url: https://www.st.com/resource/en/spice_model/viper122_pspice_model.zip
+    member: TB_encrypted/libs/sense_and_power_diode_models_available.lib
+    archive_sha256: d39e2d9f80413a7b0e4fb5e55fdff897696898bf7cca80418bc50d59add347d2
+    sha256: 8de4b1cacba602c97a5d0326964b678a596a85fb848e4b883b98f71e909452b9
     lines:
-      1N5822: [1270, 1271]
-    fetched: '2026-09-21'
+      1N5822: [285, 286]
+    fetched: '2026-10-10'
   copies:
   - source: ltwiki
     name: 1N5822
@@ -157,12 +167,24 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
       sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: stmicro
+    name: 1N5822
+    get:
+      url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+      member: ST_POWER_SCHOTTKY_V10.LIB
+      sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
   - source: ltwiki
     name: 1N5822RL
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
       sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
+  - source: stmicro
+    name: 1N5822RL
+    get:
+      url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+      member: ST_POWER_SCHOTTKY_V10.LIB
+      sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
 - source: stmicro
   name: 1N5822U
   def: model
@@ -211,8 +233,8 @@ models:
     name: 1N5822
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/Power Conversion/Boost Converter.cir
-      sha256: e08c38085d9c573dc54f613a04cc2aa804b066c36f045b052b18de91952158e5
+      member: DATA/Power Conversion/Buck Converter.cir
+      sha256: a61176a660690a501d3e69f047a792bb91a5a6968941c9c7be109bd6b6a956c3
   - source: microcap12
     name: 1N5822
     get:
@@ -223,8 +245,8 @@ models:
     name: 1N5822
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/Power Conversion/Buck Converter.cir
-      sha256: a61176a660690a501d3e69f047a792bb91a5a6968941c9c7be109bd6b6a956c3
+      member: DATA/Power Conversion/Boost Converter.cir
+      sha256: e08c38085d9c573dc54f613a04cc2aa804b066c36f045b052b18de91952158e5
   - source: microcap12
     name: 1N5822
     get:
@@ -234,16 +256,16 @@ models:
 - source: microcap12
   name: 1N5822
   def: model
-  hash: c60bc8eb68293e6dc9c0342e1f353d673c36c671
+  hash: ff61d8f7e62c90803549a83c71a146b69637f998
   type: D
   verbatim: true
   get:
     url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/S_BUCK_SYN.cir
+    member: LIBRARY/diode.lib
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 46e9b195e9cef3c8edc1587ee6d641feacfb502c43bd5c2b42cfd6189ded56db
+    sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
     lines:
-      1N5822: [998, 999]
+      1N5822: [365, 366]
     fetched: '2026-09-21'
 - source: microcap12
   name: 1N5822
@@ -262,16 +284,16 @@ models:
 - source: microcap12
   name: 1N5822
   def: model
-  hash: ff61d8f7e62c90803549a83c71a146b69637f998
+  hash: c60bc8eb68293e6dc9c0342e1f353d673c36c671
   type: D
   verbatim: true
   get:
     url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/diode.lib
+    member: DATA/S_BUCK_SYN.cir
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
+    sha256: 46e9b195e9cef3c8edc1587ee6d641feacfb502c43bd5c2b42cfd6189ded56db
     lines:
-      1N5822: [365, 366]
+      1N5822: [998, 999]
     fetched: '2026-09-21'
 - source: qspice
   name: 1N5822
@@ -315,15 +337,15 @@ models:
   - source: ltwiki
     name: 1N5822
     get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: 1N5822
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: 1N5822
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: groupsio-ltspice
   name: 1N5822
   def: model
@@ -359,14 +381,14 @@ models:
   - source: ltwiki
     name: 1N5822
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N5822
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: ltwiki
   name: 1N5822RL

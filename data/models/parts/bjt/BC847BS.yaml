@@ -3,6 +3,58 @@ kind: bjt
 priority: 3
 group: matched_pairs
 models:
+- source: nexperia
+  name: BC847BSH_Q
+  def: subckt
+  hash: 5344ded674c1fccd76eadd4bc777f2fc830322e4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847BSH-Q.txt
+    sha256: 6f54144ba7e41dda36bb4c4f0c21e4ac5fa5f1a441df000c4662ee6b52fc47fd
+    lines:
+      BC847BSH_Q: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC847BSH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC847BSH.txt
+      sha256: 74952ff25d836b42ba16ac19124eff0caa13c49b576878bf521c5e09a0f9e429
+- source: nexperia
+  name: BC847BS
+  def: subckt
+  hash: c898aa1e28e5d398a5b0dd76d5b01c43e0e9b126
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847BS.txt
+    sha256: a0175f6680394902526227c0826fd3986e0945b1b56ac98a17ec5e186acceddf
+    lines:
+      BC847BS: [36, 94]
+    fetched: '2026-10-10'
+- source: panjit
+  name: BC847BS
+  def: subckt
+  hash: 77e75638c0aa9332d8ff1b689cb89302aa79fb90
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC847BS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 89d782ef989b83416d4e3ef4eea91b6037e8e3422f1ec758c4a72c11627a9de6
+    lines:
+      BC847BS: [11, 38]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC847BS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC847BS-AU.txt
+      sha256: b41602d168290d8d7c296d19dbcfe79574c7aa753539a8cb436bc97eedc06053
 - source: microcap12
   name: BC847BS
   def: model
@@ -69,14 +121,14 @@ models:
     name: BC847BS
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/Sborka.lib
-      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
+      member: examples/Bordodynov/SW_subckt/Sbor.lib
+      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
   - source: ltwiki
     name: BC847BS
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/SW_subckt/Sbor.lib
-      sha256: 009409ef1149afac2d0863732d66557ee98ac49df63d1d8a93314d7edeb66e20
+      member: examples/Bordodynov/Mixer/Sborka.lib
+      sha256: 1b04fc3cc8895cc99be06e9664199c7d58db0f0f00bd055186cf6f676d767e1b
 - source: bordodynov
   name: BC847BS
   def: subckt

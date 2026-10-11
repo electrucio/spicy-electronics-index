@@ -48,6 +48,64 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: Drb521s30t1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/rb521s30t1.sp2
+      sha256: 0ba0f785c0a57d09828326fcae16781395a47f659f515940a0801fe1ff1a4b0b
+  - source: onsemi
+    name: rb521s30t1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/rb521s30t1.sp3
+      sha256: 20cc59e0e7109c952e2c16c731acb113bba53caf4aa55cb3e0f70c3e1b8398e3
+- source: nexperia
+  name: RB521S30
+  def: subckt
+  hash: c8a1d300a37fddc8209329b1480915a451ee75a6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/RB521S30.txt
+    sha256: 50971605985f3e76d1cb8f204e5bb36514d07ecb78cf2ebcae671d89089e0e07
+    lines:
+      RB521S30: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: RB521S30
+    get:
+      url: https://www.nexperia.com/product/RB521S30
+      sha256: 593550bcb8c7fb61078ab023c5e018cd0f2c24e61b2a750f850659b5ade217ca
+- source: panjit
+  name: RB521S30
+  def: subckt
+  hash: ad8a01dbb3e7347da8d120d9422d78fce729f3f9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/RB521S30.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 2d0c9fcde346b98279ce4ad68e2ec910a91e54b8e788a9ffc810b317e66c8a8f
+    lines:
+      RB521S30: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: RB521S30-AU
+  def: subckt
+  hash: e8585abbb81980ac17f0fca380937c52c75141f1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/RB521S30-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 3d22ca2c7d7208b88133d2156651951bf02c7ebf1417f21e8cbeecfccf5c3f2b
+    lines:
+      RB521S30-AU: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: RB521S-30
   def: model

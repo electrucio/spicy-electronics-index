@@ -33,16 +33,10 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NPNdarlington.lib
       sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
   - source: ltwiki
-    name: TIP121
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
     name: tip121
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Educational/PAsystem/TIP121.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Educational/PAsystem/TIP121.LIB
       sha256: be795e3a385b163f602fd5a618bac8d47def7ef15b3b1e09219c00c547179448
   - source: ltwiki
     name: TIP121
@@ -53,17 +47,23 @@ models:
   - source: ltwiki
     name: tip121
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/Educational/PAsystem/TIP121.LIB
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Educational/PAsystem/TIP121.LIB
       sha256: be795e3a385b163f602fd5a618bac8d47def7ef15b3b1e09219c00c547179448
+  - source: ltwiki
+    name: TIP121
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
   - source: microcap12
     name: tip121
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
-- source: ltwiki
-  name: tip121
+- source: onsemi
+  name: Xtip121
   def: subckt
   hash: c38fb0ddba735767a4689850540943fd9441f627
   type: SUBCKT
@@ -73,13 +73,11 @@ models:
   - E
   verbatim: true
   get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/TIP121&131.SUB
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+    url: https://www.onsemi.com/download/models/sp2/tip121.sp2
+    sha256: 7a409f3b6c0e6d6b4b4d92dfecbe6c4b475b3ac89ac7ced7a79542dab9286f2d
     lines:
-      tip121: [12, 50]
-    fetched: '2026-09-21'
+      Xtip121: [12, 50]
+    fetched: '2026-10-10'
   note: pins from default order (unverified)
   copies:
   - source: bordodynov
@@ -96,9 +94,20 @@ models:
   - source: ltwiki
     name: tip121
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/TIP121&131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: ltwiki
+    name: tip121
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/TIP121&131.SUB
       sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: onsemi
+    name: tip121
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip121.sp3
+      sha256: 8d25de2a66c423c27dde9c40f144ea98f83542a76f00245fb7b1788427ba9823
 - source: bordodynov
   name: TIP121
   def: subckt

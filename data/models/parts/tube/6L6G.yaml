@@ -117,6 +117,12 @@ models:
       url: https://www.duncanamps.com/spice.html
       member: 6L6GC.INC
       sha256: d5e2f164700795e8c910de98a8003734c7959e45880c267cba89ab3add1c2ae4
+  - source: tdsl-cigna
+    name: 6L6GC
+    get:
+      url: http://tdsl.duncanamps.com/dcigna/tubes/spice/spice.zip
+      member: 6L6GC.INC
+      sha256: d5e2f164700795e8c910de98a8003734c7959e45880c267cba89ab3add1c2ae4
 - source: koren
   name: 6L6GC
   def: subckt
@@ -141,14 +147,15 @@ models:
   - source: groups-io
     name: 6L6GC
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM.lib
       sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: groups-io
     name: 6L6GC
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Tube_IM.lib
-      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+      member: TUBE/TubeBF.lib
+      sha256: e0e89f389ca1765c0b041e278d91428bab01777b91cd9c649b1ce41d5af7f1a5
   - source: groups-io
     name: 6L6GC
     get:
@@ -158,9 +165,8 @@ models:
   - source: groups-io
     name: 6L6GC
     get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/TubeBF.lib
-      sha256: e0e89f389ca1765c0b041e278d91428bab01777b91cd9c649b1ce41d5af7f1a5
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: koren
     name: 6L6GC
     get:
@@ -315,13 +321,13 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
+    member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+    sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
     lines:
-      6L6GC: [509, 513]
-      DX: [1206, 1206]
-      PENTODE1: [1159, 1171]
+      6L6GC: [67, 71]
+      DX: [161, 161]
+      PENTODE1: [130, 142]
     fetched: '2026-09-21'
   note: pins from inline comment
   copies:
@@ -329,20 +335,20 @@ models:
     name: 6L6GC
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Tubes_Koren.lib
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
   - source: bordodynov
     name: 6L6GC
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/nk_pentode.sub
-      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: 6L6GC
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_.cir
-      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: 6L6GC
     get:
@@ -359,23 +365,23 @@ models:
     name: 6L6GC
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_inc.txt
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
-  - source: kicad-spice-library
-    name: 6L6GC
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
   - source: kicad-spice-library
     name: 6L6GC
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
       sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: kicad-spice-library
+    name: 6L6GC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: ltwiki
     name: 6L6GC
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Tubes_Koren.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: ltwiki
     name: 6L6GC
@@ -386,19 +392,19 @@ models:
   - source: ltwiki
     name: 6L6GC
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
-      sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: robrobinette
     name: 6L6GC
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
   - source: robrobinette
     name: 6L6GC
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
 - source: ltwiki
@@ -417,13 +423,13 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
+    member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+    sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
     lines:
-      6L6GB: [497, 500]
-      DX: [1206, 1206]
-      PENTODE: [1144, 1156]
+      6L6GB: [61, 64]
+      DX: [161, 161]
+      PENTODE: [115, 127]
     fetched: '2026-09-21'
   note: pins from inline comment
   copies:
@@ -431,20 +437,20 @@ models:
     name: 6L6GB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Tubes_Koren.lib
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
   - source: bordodynov
     name: 6L6GB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/nk_pentode.sub
-      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: 6L6GB
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_.cir
-      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: 6L6GB
     get:
@@ -461,23 +467,23 @@ models:
     name: 6L6GB
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_inc.txt
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
-  - source: kicad-spice-library
-    name: 6L6GB
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
   - source: kicad-spice-library
     name: 6L6GB
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
       sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: kicad-spice-library
+    name: 6L6GB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: ltwiki
     name: 6L6GB
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Tubes_Koren.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: ltwiki
     name: 6L6GB
@@ -488,19 +494,19 @@ models:
   - source: ltwiki
     name: 6L6GB
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
-      sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: robrobinette
     name: 6L6GB
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
   - source: robrobinette
     name: 6L6GB
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
 - source: ltwiki
@@ -533,8 +539,8 @@ models:
     name: 6L6GC_OLD
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_.cir
-      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
   - source: groups-io
     name: 6L6GC_OLD
     get:
@@ -551,8 +557,8 @@ models:
     name: 6L6GC_OLD
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-      member: TUBE/Koren_Tubes_inc.txt
-      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
   - source: kicad-spice-library
     name: 6L6GC_OLD
     get:
@@ -567,13 +573,13 @@ models:
   - source: robrobinette
     name: 6L6GC_OLD
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
   - source: robrobinette
     name: 6L6GC_OLD
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: Koren_Tubes.INC
       sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
 - source: bordodynov
@@ -663,9 +669,9 @@ models:
       6L6GC: [265, 280]
     fetched: '2026-10-09'
     symbol:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/Tubes/6L6GC.asy
-      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/6L6GC.asy
+      archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
       sha256: 972e54c9193af5b341ef88873ae02b56fca3ff054812566df18997a764308cdb
   copies:
   - source: bordodynov
@@ -698,20 +704,6 @@ models:
       PENTODE: [135, 150]
     fetched: '2026-10-09'
 - source: groups-io
-  name: 6L6GC
-  def: subckt
-  hash: 555adc6ee439451311558c4085c64afc15426ebd
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-    member: TUBE/Tubes.lib
-    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
-    sha256: 37de7152bd74aa5222967e8f54aaefbd1089c764c9ea18f8bbb2b98573e46784
-    lines:
-      6L6GC: [338, 350]
-    fetched: '2026-10-09'
-- source: groups-io
   name: X6L6GC
   def: subckt
   hash: 01fa2c67e8824dc9c5b281d698d937de5be20ddf
@@ -725,59 +717,20 @@ models:
     lines:
       X6L6GC: [259, 274]
     fetched: '2026-10-09'
-- source: ltwiki
+- source: groups-io
   name: 6L6GC
   def: subckt
-  hash: be836961751e4589cf1b05e64aff58e02c26c605
+  hash: 555adc6ee439451311558c4085c64afc15426ebd
   type: SUBCKT
-  deps:
-  - Tetro
   verbatim: true
   get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/Tubes.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 37de7152bd74aa5222967e8f54aaefbd1089c764c9ea18f8bbb2b98573e46784
     lines:
-      6L6GC: [2049, 2051]
-      Tetro: [3163, 3176]
-    fetched: '2026-09-21'
-  copies:
-  - source: bordodynov
-    name: 6L6GC
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: bordodynov-qspice
-    name: 6L6GC
-    get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Valves.txt
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: kicad-spice-library
-    name: 6L6GC
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 6L6GC
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 6L6GC
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
-  - source: ltwiki
-    name: 6L6GC
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+      6L6GC: [338, 350]
+    fetched: '2026-10-09'
 - source: ltwiki
   name: 6L6G-T
   def: subckt
@@ -789,13 +742,13 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
     lines:
       6L6G-T: [1121, 1123]
       6P3S_T: [1117, 1120]
-      Triodo: [3149, 3161]
+      Triodo: [3164, 3176]
     fetched: '2026-09-21'
   copies:
   - source: bordodynov
@@ -818,9 +771,9 @@ models:
   - source: ltwiki
     name: 6L6G-T
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
   - source: ltwiki
     name: 6L6G-T
     get:
@@ -830,9 +783,62 @@ models:
   - source: ltwiki
     name: 6L6G-T
     get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+- source: ltwiki
+  name: 6L6GC
+  def: subckt
+  hash: be836961751e4589cf1b05e64aff58e02c26c605
+  type: SUBCKT
+  deps:
+  - Tetro
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+    lines:
+      6L6GC: [2064, 2066]
+      Tetro: [3178, 3191]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: 6L6GC
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: 6L6GC
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: 6L6GC
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: 6L6GC
+    get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: 6L6GC
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6L6GC
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: ltwiki
   name: 6L6G-P
   def: subckt
@@ -844,13 +850,13 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
     lines:
-      6L6G-P: [2059, 2061]
-      6P3S: [2055, 2058]
-      Tetro: [3163, 3176]
+      6L6G-P: [2074, 2076]
+      6P3S: [2070, 2073]
+      Tetro: [3178, 3191]
     fetched: '2026-09-21'
   copies:
   - source: bordodynov
@@ -873,9 +879,9 @@ models:
   - source: ltwiki
     name: 6L6G-P
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
   - source: ltwiki
     name: 6L6G-P
     get:
@@ -885,9 +891,9 @@ models:
   - source: ltwiki
     name: 6L6G-P
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: ltwiki
   name: 6L6G
   def: subckt
@@ -896,11 +902,11 @@ models:
   verbatim: true
   get:
     url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
     archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
     lines:
-      6L6G: [2085, 2097]
+      6L6G: [2100, 2112]
     fetched: '2026-09-21'
   copies:
   - source: bordodynov
@@ -923,9 +929,9 @@ models:
   - source: ltwiki
     name: 6L6G
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
   - source: ltwiki
     name: 6L6G
     get:
@@ -935,9 +941,9 @@ models:
   - source: ltwiki
     name: 6L6G
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
-      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
   name: 6L6GC
   def: subckt
@@ -963,30 +969,6 @@ models:
       member: lib/sub/new_tetrodes.txt
       sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
 - source: bordodynov
-  name: 6L6GC_JJ
-  def: subckt
-  hash: 0b4cebc418d57625f077c4e96d7510b098829d1b
-  type: SUBCKT
-  deps:
-  - Tetrode
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/new_tetrodes.txt
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
-    lines:
-      6L6GC_JJ: [250, 254]
-      Tetrode: [47, 70]
-    fetched: '2026-09-21'
-  copies:
-  - source: ltwiki
-    name: 6L6GC_JJ
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/new_tetrodes.txt
-      sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
-- source: bordodynov
   name: 6L6GB
   def: subckt
   hash: c6db05f751140d8a58a5d60d93061ca50520c7a0
@@ -1006,6 +988,30 @@ models:
   copies:
   - source: ltwiki
     name: 6L6GB
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/new_tetrodes.txt
+      sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
+- source: bordodynov
+  name: 6L6GC_JJ
+  def: subckt
+  hash: 0b4cebc418d57625f077c4e96d7510b098829d1b
+  type: SUBCKT
+  deps:
+  - Tetrode
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/new_tetrodes.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
+    lines:
+      6L6GC_JJ: [250, 254]
+      Tetrode: [47, 70]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 6L6GC_JJ
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/new_tetrodes.txt

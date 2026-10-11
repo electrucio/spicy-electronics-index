@@ -41,11 +41,28 @@ models:
       2n7000: [1, 60]
     fetched: '2026-09-19'
   copies:
+  - source: onsemi
+    name: 2n7000
+    get:
+      url: https://www.onsemi.com/download/models/sp3/2n7000.rev0.sp3
+      sha256: d4602299c0138fcbe7c46838e53019ca180e50af211b721f26c3ee59e1a9ad50
   - source: spiceypedals
     name: 2n7000
     get:
       url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PartModels/2N7000.REV0.LIB
       sha256: 98ebde1b348c2c9812a26586c712ff0db99249fac3586f7bafd6abc86cf5921b
+- source: onsemi
+  name: X2n7000
+  def: subckt
+  hash: bb3955bd189d746cdd85197d826fcf397d52884a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/2n7000.rev0.sp2
+    sha256: 9dd48c2f424d5a2c6ac0c57576809ca113bb040bcc7eaeb973c97c497c56f982
+    lines:
+      X2n7000: [1, 60]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: 2N7000
   def: subckt
@@ -203,14 +220,14 @@ models:
   - source: ltwiki
     name: 2N7000
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Mos&Fet/lnd250/supertex.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/lnd250/supertex.lib
       sha256: bee2ceb743df92ef4c2c95e8784a0e1bfac5674feaab21e8c42723f3c9104084
   - source: ltwiki
     name: 2N7000
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/lnd250/supertex.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Mos&Fet/lnd250/supertex.lib
       sha256: bee2ceb743df92ef4c2c95e8784a0e1bfac5674feaab21e8c42723f3c9104084
 - source: microcap12
   name: 2N7000KL
@@ -306,14 +323,14 @@ models:
   - source: ltwiki
     name: 2N7000
     get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.mos
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
       sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
   - source: ltwiki
     name: 2N7000
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.mos
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.mos
       sha256: 0f6a0a30f327903e5b61c3764e08354839fed85c6ce2d4a8b3d708d6c2ec9533
 - source: ltwiki
   name: 2N7000
@@ -393,8 +410,9 @@ models:
   - source: ltwiki
     name: 2N7000
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: 2N7000
     get:
@@ -404,9 +422,8 @@ models:
   - source: ltwiki
     name: 2N7000
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
 - source: bordodynov
   name: 2N7000_AB
   def: model
@@ -431,8 +448,9 @@ models:
   - source: ltwiki
     name: 2N7000_AB
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: 2N7000_AB
     get:
@@ -442,9 +460,8 @@ models:
   - source: ltwiki
     name: 2N7000_AB
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
 - source: bordodynov
   name: 2N7000/FAI
   def: subckt

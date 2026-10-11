@@ -24,6 +24,20 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Diode.lib
       sha256: acbe4a216d68e774231ddef7cb2c36103f0377987037cba48a22fe6d08266ebd
+- source: rohm
+  name: DRSX301L-30DD
+  def: model
+  hash: ae4f191f085734f6787fe3b1a00b84d3ee3fd594
+  type: D
+  verbatim: true
+  get:
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/diode/schottky_barrier/rsx301l-30dd_SPICE.zip
+    member: rsx301l-30dd_SPICE/rsx301l-30dd_SPICE.lib
+    archive_sha256: a596e5bb60d15d26f1bdeaf4f917667d1b230f3d9e878560f52c3b425217e2a5
+    sha256: c1e4880cdcf92df933bab71f313514d9f5d4355b0862d6c7f8037e09aa836684
+    lines:
+      DRSX301L-30DD: [6, 18]
+    fetched: '2026-10-10'
 - source: bordodynov
   name: RSX301L-30
   def: model
@@ -49,14 +63,14 @@ models:
     name: RSX301L-30
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: RSX301L-30
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: RSX301L-30
     get:
@@ -77,25 +91,25 @@ models:
   - source: kicad-spice-library
     name: RSX301L-30
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
+      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
   - source: kicad-spice-library
     name: RSX301L-30
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
-      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: RSX301L-30
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: RSX301L-30
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: RSX301L-30
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: RSX301L-30
     get:
@@ -111,9 +125,9 @@ models:
   - source: ltwiki
     name: RSX301L-30
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: bordodynov
   name: RSX301LAM30
   def: model

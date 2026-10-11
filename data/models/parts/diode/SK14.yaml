@@ -36,6 +36,25 @@ models:
     note: 'Schottky, PSpice Models (*.txt): ss14, legd, grd'
   note: 'STAND-IN: model of ss14, not of SK14; equivalence declared in catalog/wanted.yaml (see its note);
     pins from default order (unverified)'
+- source: taiwan-semi
+  name: SK14B
+  def: model
+  hash: 2600dba295f490c3223ba7d6193927868a5f0499
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: cf7038ed1ea0ad44a26d3fb3a7bc29660abb595087726352fd5be606e11a665a
+    lines:
+      SK14B: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SK14BH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: d9f71e0029ced5289118d1dc1a3fcb5585f0a9d0c06b2d2c372f463dede080d7
 - source: central-semi
   name: 1N5819
   def: model

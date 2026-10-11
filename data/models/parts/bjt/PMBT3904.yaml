@@ -21,6 +21,49 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): PMBT3904 (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
   note: pins from comment words
+  copies:
+  - source: nexperia
+    name: PMBT3904M
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT3904M.txt
+      sha256: f5573590cbc4366cd029ac0771433a165cdd6738ed78a95ee368843fe0fb11a6
+  - source: nexperia
+    name: PMBT3904VS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT3904VS.txt
+      sha256: 24bb61f64c1a0f1f9ece4b6eee9154861895824038274f4813a85d6d3b3d9153
+  - source: nexperia
+    name: PMBT3904YS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT3904YS.txt
+      sha256: 1c8bdc7d5b32f5dc263f6ff7238c2e6b62c4fd0ec9023428c4378d63aad794f8
+  - source: nexperia
+    name: PMBT3904MB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT3904MB.txt
+      sha256: e322242ea1d7646fec054e3d7f1714671875e059b94c8b174d92c58d881a67af
+  - source: nexperia
+    name: PMBT3904RA
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT3904RA.txt
+      sha256: 95d8ad9b03455bfa79f27c74a683376b1e613deced81324de47815c7de6f00c9
+  - source: nexperia
+    name: PMBT3904QA
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT3904QA.txt
+      sha256: ec9880f24c2942184b3b35d8e9b8589e1960fa8f863c024223179750d359afe7
+- source: nexperia
+  name: PMBT3904_Q
+  def: subckt
+  hash: c46c20a8fd5f3b3cd54476460df979220e0b4250
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMBT3904-Q.txt
+    sha256: 4e7cd6a312aa89a9fee7a76da318b3c856483a70df71ef8cf9ca24b031368134
+    lines:
+      PMBT3904_Q: [33, 91]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: QPMBT3904
   def: model

@@ -78,6 +78,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: Dmbrs130lt3
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mbrs130lt3.sp2
+      sha256: d73a123927295ec3e3ce3f009b28a30fbc4c44b1cc9c6c05a5dde290f4054a20
+  - source: onsemi
+    name: mbrs130lt3
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mbrs130lt3.sp3
+      sha256: df13796d98963ef069014ff5bbe634e3208d7a8730b9c90943d8662e78dcce87
 - source: onsemi
   name: Dmbrs130t3
   def: model
@@ -103,6 +113,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: Dmbrs130t3
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mbrs130t3.sp2
+      sha256: 122b69323a22bb242e3e7f7dd47529e7f178b041d0f354b3cf8db4b0ae9cc4ca
+  - source: onsemi
+    name: mbrs130t3
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mbrs130t3.sp3
+      sha256: 93930572aeee32a3a52801cad39f4ab3670138e1c9a45dfc4dc3b4009b3c7f7f
 - source: central-semi
   name: 1N5818
   def: model
@@ -143,14 +163,14 @@ models:
     name: MBRS130L
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: MBRS130L
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: MBRS130L
     get:
@@ -178,18 +198,13 @@ models:
   - source: kicad-spice-library
     name: MBRS130L
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: kicad-spice-library
+    name: MBRS130L
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
       sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
-  - source: kicad-spice-library
-    name: MBRS130L
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
-  - source: kicad-spice-library
-    name: MBRS130L
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: kicad-spice-library
     name: MBRS130L
     get:
@@ -198,20 +213,43 @@ models:
   - source: kicad-spice-library
     name: MBRS130L
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: MBRS130L
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: MBRS130L
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: MBRS130L
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: MBRS130L
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: MBRS130L
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: MBRS130L
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: MBRS130L
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: MBRS130L
     get:
@@ -227,27 +265,9 @@ models:
   - source: ltwiki
     name: MBRS130L
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: MBRS130L
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: MBRS130L
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
-  - source: ltwiki
-    name: MBRS130L
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: groups-io
   name: MBRS130L
   def: model

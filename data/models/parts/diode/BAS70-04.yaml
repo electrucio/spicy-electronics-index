@@ -29,6 +29,41 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: Dbas70-04lt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bas70-04lt1g.sp2
+      sha256: f87ccfe9481b8fd9c1dc83f7f7cfb0b6a580178bdc44f4414c97717d58a70b50
+  - source: onsemi
+    name: Dbas70-04lt1g
+    get:
+      url: https://www.onsemi.com/download/models/lib/bas70-04lt1g.lib
+      sha256: d972af4b9507aa6bfc22d004024cfc6c6da1d1dc027c7f98655a75458337cef4
+- source: nexperia
+  name: BAS70-04
+  def: subckt
+  hash: fc42c98a0a39a6228d074c366325224767b7b486
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS70-04
+    sha256: 6e1fa6db530d406e199cc453794d8ef2a0774860bbc66cd33cadda340b899e79
+    lines:
+      BAS70-04: [38, 62]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: BAS70-04W
+  def: subckt
+  hash: d842cc509e1dcdfc729de994a08284ed39182f2b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS70-04W.txt
+    sha256: 9b034aae672585a8c977ae00e6b8981beee02f816eb9f726488fcf13ff0905f6
+    lines:
+      BAS70-04W: [38, 66]
+    fetched: '2026-10-10'
 - source: diodes-inc
   name: BAS70LP
   def: model
@@ -43,6 +78,33 @@ models:
     fetched: '2026-09-19'
     note: 'model(s): BAS70LP'
   note: found under the alias BAS70
+- source: taiwan-semi
+  name: BAS70-04
+  def: subckt
+  hash: 1436fc473376cf1011c9241c03479f73d4aabd1f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 0fa3e83af50f607834407c6df34d744fe4311da675a937ef362d76202e12c0e4
+    lines:
+      BAS70-04: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: stmicro
+  name: BAS70-04FILM
+  def: subckt
+  hash: 58d7f92e1f016bb08df3179773bb625e58c4f244
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAS70-04FILM: [781, 787]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: BAS70-04w
   def: subckt

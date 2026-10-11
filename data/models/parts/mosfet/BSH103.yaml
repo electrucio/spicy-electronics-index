@@ -3,8 +3,8 @@ kind: mosfet
 priority: 4
 group: power_vertical
 models:
-- source: microcap12
-  name: BSH103_PH
+- source: nexperia
+  name: BSH103
   def: subckt
   hash: 5ca850c63b9565ae68b68fc79b1f617f08b4e6c6
   type: SUBCKT
@@ -14,13 +14,11 @@ models:
   - S
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_mos.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: d27a8c869acadbdfd055eba6519c0c67fbcfdf5fd4550c2f8b4fb6ae44b6739a
+    url: https://www.nexperia.com/product/BSH103
+    sha256: 093656e47f01cf51183e6f8e478ab081e5af07a0723df08df935f7ec0341eef9
     lines:
-      BSH103_PH: [67, 88]
-    fetched: '2026-09-21'
+      BSH103: [1, 22]
+    fetched: '2026-10-10'
   note: pins from default order (unverified)
   copies:
   - source: bordodynov
@@ -37,20 +35,26 @@ models:
   - source: ltwiki
     name: BSH103
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NMOS_Philips.lib
-      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
-  - source: ltwiki
-    name: BSH103
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/NMOSFET/BSH103.PRM
       sha256: 093656e47f01cf51183e6f8e478ab081e5af07a0723df08df935f7ec0341eef9
+  - source: ltwiki
+    name: BSH103
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NMOS_Philips.lib
+      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
   - source: kicad-spice-library
     name: BSH103_PH
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ph_mos.lib
       sha256: 795bf5362d9c9ce1e5b504e78b48671614a7585f75d3533c2585557571d04168
+  - source: microcap12
+    name: BSH103_PH
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_mos.lib
+      sha256: d27a8c869acadbdfd055eba6519c0c67fbcfdf5fd4550c2f8b4fb6ae44b6739a
   - source: ltwiki
     name: BSH103/PLP
     get:
@@ -63,6 +67,32 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/FET/phil_fet.lib
       sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
+- source: nexperia
+  name: BSH103
+  def: subckt
+  hash: 07c7e1b5c39d0bdf950c6b7b9075075b9ac8da53
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BSH103
+    sha256: 63d9bb247eeae225eebfb33bf3aeff116d997a3ea988bbc3e255ccd6bf4cc913
+    lines:
+      BSH103: [24, 93]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: BSH103BK
+  def: subckt
+  hash: f4b384b3b01587b86f5e9661282cbfd182dfa680
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BSH103BK
+    sha256: a6325cacebe44042b368604e61f7971482e248427b8fdad67231b28b8866e0ca
+    lines:
+      BSH103BK: [24, 97]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: ltwiki
   name: BSH103/PLP
   def: subckt

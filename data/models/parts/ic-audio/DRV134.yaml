@@ -2,6 +2,27 @@ part: DRV134
 kind: ic-audio
 priority: 2
 models:
+- source: ti
+  name: DRV134
+  def: subckt
+  hash: 56319d03346980bdedf25c6e9922a7dcfdebbecd
+  type: SUBCKT
+  deps:
+  - SIMPLED
+  - SIMPLEQ
+  - OP1
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOM004
+    member: DRV134_PSPICE_AIO/DRV134.LIB
+    archive_sha256: cce9dd215d32e89253468748282b662171a7d2d3d15215fbdd7f640bab9dbd10
+    sha256: f2285ecd657a28c1cbd5542cd17441023544196a797e29adf72da5646e161c4b
+    lines:
+      DRV134: [48, 86]
+      OP1: [96, 128]
+      SIMPLED: [131, 131]
+      SIMPLEQ: [132, 132]
+    fetched: '2026-10-10'
 - source: microcap12
   name: DRV134
   def: subckt

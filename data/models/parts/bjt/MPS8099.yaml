@@ -3,6 +3,18 @@ kind: bjt
 priority: 3
 group: listed
 models:
+- source: central-semi
+  name: MPS8099
+  def: model
+  hash: 2f7854a709b507682bb8fa761508e9810a2efa40
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/CSM1527.LIB
+    sha256: aa8b1fc99fcd67fc6e3d384f131fc46c992ac00d700694390443ac1df1f5dd83
+    lines:
+      MPS8099: [22, 47]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: MPS8099
   def: model
@@ -36,14 +48,14 @@ models:
   - source: ltwiki
     name: MPS8099
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
-      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
-  - source: ltwiki
-    name: MPS8099
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Mixer/standard.bjt
       sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MPS8099
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
+      sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
 - source: microcap12
   name: MPS8099
   def: model
@@ -132,12 +144,12 @@ models:
   - source: ltwiki
     name: MPS8099
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: MPS8099
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3

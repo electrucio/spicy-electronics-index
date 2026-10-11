@@ -3,6 +3,18 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: onsemi
+  name: US1MFA
+  def: model
+  hash: d2d7561b54c6735ff95121e98c9baf940e8d00f2
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/us1%20%28spice%20model%29.lib
+    sha256: 865038749b8de3f124b77b65b78559350114c595efa438492594dbe73eb603e0
+    lines:
+      US1MFA: [112, 117]
+    fetched: '2026-10-10'
 - source: nexperia
   name: US1M
   def: subckt
@@ -44,6 +56,25 @@ models:
     lines:
       us1m: [7, 10]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: US1M
+  def: model
+  hash: ba08acdab500642a3d7323afc235b8b2742a5d5e
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: ead3d519260693176871211386ab4184b33fa2bc64c6d2de1c7807c3a7efa490
+    lines:
+      US1M: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: US1MH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 052765446c7df9d4bf43660ed34c7cac8be5eb0425161ad1a806c46078242f1d
 - source: microcap12
   name: US1M
   def: model
@@ -128,12 +159,12 @@ models:
   - source: ltwiki
     name: US1M
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: US1M
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

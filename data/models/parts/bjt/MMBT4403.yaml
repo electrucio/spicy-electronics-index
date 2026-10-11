@@ -23,33 +23,77 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: microcap12
+- source: onsemi
   name: Qmmbt4403lt1
   def: model
   hash: 277c566a0c43ad30da763f3acb52b29a7cc32905
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/On_Semi.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    url: https://www.onsemi.com/download/models/sp2/mmbt4403lt1.sp2
+    sha256: a55f3801fe390fe336dc5234cb0c4d4654ae49dcb8fa6af4a81600decd404170
     lines:
-      Qmmbt4403lt1: [140786, 140796]
-    fetched: '2026-09-21'
+      Qmmbt4403lt1: [14, 24]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: Qmmbt4403lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
   - source: microcap12
     name: mmbt4403lt1
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: mmbt4403lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt4403lt1.sp3
+      sha256: 81117fb0a2ce0183c41b075737ff88e99dfed227f5c0bb83d2ddceb0516eec93
+  - source: onsemi
+    name: Qmmbt4403lt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/mmbt4403lt1.lib
+      sha256: 6fe94e89ee1624436e571963a118a32058f6a829c67de8bb1a038dcff16378d8
   - source: microcap12
     name: Qmmbt4403wt1
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbt4403wt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt4403wt1g.sp2
+      sha256: 611b6f3c95a2dacdabed6b49ad5c953d0f12f363d3a72034cb02dce3640b0d1c
+  - source: onsemi
+    name: mmbt4403wt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt4403wt1g.sp3
+      sha256: 5612cac06f0aeacf8e2936bb18ad3ecacd7c25d4241c28e85f6fa01a7de33eb7
+  - source: onsemi
+    name: Qmmbt4403wt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/mmbt4403wt1g.lib
+      sha256: 7155f3bb48642520adec7175acd8626445dbd50ff12f84a784405607a77b919f
+- source: panjit
+  name: MMBT4403
+  def: subckt
+  hash: 51195984ca978ffd4af3faf3c4a27661fe818e46
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT4403.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 1dda8f7e871669f1afa1bcb1109f4e9dc2fdfd12817bb42f6f5039c63311c55c
+    lines:
+      MMBT4403: [11, 25]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: MMBT4403
   def: model

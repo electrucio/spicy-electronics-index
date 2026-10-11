@@ -6,6 +6,30 @@ models:
 - source: onsemi
   name: mmbta63lt1
   def: subckt
+  hash: 16c217e2e98dc9bbfbe24d9151d37d70cf27cbb2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbta63lt1.lib
+    sha256: 34f77958fc61e40c21dcbfb89dfbdc5af0f527f65cdc5c8d6c43ce664a2b3349
+    lines:
+      mmbta63lt1: [1, 48]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: mmbta63lt1
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_small.lib
+      sha256: 03de7eeee5291d83d8017fe3dafdab3fd5afa7d3bb2da1da44bf953eb4973e5a
+  - source: microcap12
+    name: mmbta63lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/m_small.lib
+      sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
+- source: onsemi
+  name: mmbta63lt1
+  def: subckt
   hash: 82dc8be14ed1e2ec66afddb12eee761fade077c1
   type: SUBCKT
   verbatim: true
@@ -16,28 +40,13 @@ models:
       mmbta63lt1: [1, 48]
     fetched: '2026-09-21'
   copies:
+  - source: onsemi
+    name: mmbta63lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbta63lt1.sp2
+      sha256: 9e05892e957a6caf20f5a998aa66c9d8b49bedfa15eb354cc6822d703a1dd90f
   - source: spice-model-cd
     name: mmbta63lt1
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbta63lt1.t
       sha256: e158edc1f8f0ee6ac877409d30854a4fb14817003d98276b373d63b8996fca85
-- source: microcap12
-  name: mmbta63lt1
-  def: subckt
-  hash: 16c217e2e98dc9bbfbe24d9151d37d70cf27cbb2
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/m_small.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c403ca137e1d5d18c11cc981157276d7856cd98f9b8dd32cf3a51a2f3054d7cd
-    lines:
-      mmbta63lt1: [372, 419]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: mmbta63lt1
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/m_small.lib
-      sha256: 03de7eeee5291d83d8017fe3dafdab3fd5afa7d3bb2da1da44bf953eb4973e5a

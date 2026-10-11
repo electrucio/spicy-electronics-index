@@ -3,6 +3,19 @@ kind: mosfet
 priority: 4
 group: power_vertical
 models:
+- source: nexperia
+  name: BSH105
+  def: subckt
+  hash: 98a13bfb225cbae59a962248328816317d8cd768
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BSH105
+    sha256: 7f74e157161ba3a8133e61f72946c02dbb83430bbc1d219a9ee3e11474fb5803
+    lines:
+      BSH105: [24, 86]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: BSH105_PH
   def: subckt
@@ -37,15 +50,15 @@ models:
   - source: ltwiki
     name: BSH105
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NMOS_Philips.lib
-      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
-  - source: ltwiki
-    name: BSH105
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/NMOSFET/BSH105.PRM
       sha256: e2cb57e7e4ff7c10e87c4cb7c49e8685c90363ccc461ee90c6a09e9c93b84fb9
+  - source: ltwiki
+    name: BSH105
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NMOS_Philips.lib
+      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
   - source: kicad-spice-library
     name: BSH105_PH
     get:

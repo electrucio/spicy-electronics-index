@@ -32,30 +32,24 @@ models:
     name: TIP127
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.txt
-      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: bordodynov-qspice
     name: TIP127
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
   - source: kicad-spice-library
     name: TIP127
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/PNPdarlington.lib
       sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: ltwiki
-    name: TIP127
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
-  - source: ltwiki
     name: tip127
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Educational/PAsystem/TIP127.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Educational/PAsystem/TIP127.LIB
       sha256: 5fd969eaeffc488f38726138cb32fb27e262ec7fa29eecb8c774b9ca05583255
   - source: ltwiki
     name: TIP127
@@ -66,17 +60,23 @@ models:
   - source: ltwiki
     name: tip127
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/Educational/PAsystem/TIP127.LIB
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Educational/PAsystem/TIP127.LIB
       sha256: 5fd969eaeffc488f38726138cb32fb27e262ec7fa29eecb8c774b9ca05583255
+  - source: ltwiki
+    name: TIP127
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: microcap12
     name: tip127
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
-- source: ltwiki
-  name: tip127
+- source: onsemi
+  name: Xtip127
   def: subckt
   hash: 0861e02bc8b7ed2962d7afdbc2a6d977ab38aa0b
   type: SUBCKT
@@ -86,16 +86,23 @@ models:
   - E
   verbatim: true
   get:
-    url: https://ltwiki.org/images/f/f5/TIP127.sub
-    sha256: 5a9550a1eebde78c3bbb01c4fa1d4501d2ad2d4fb2b7f01c18998d0985a25c34
+    url: https://www.onsemi.com/download/models/sp2/tip127.sp2
+    sha256: fac8a6b7b92e201d5ff8afd7eea16b634d323ef9ad3287218338078690defa8b
     lines:
-      tip127: [12, 50]
-    fetched: '2026-09-14'
-    note: file uploaded to the wiki (Special:ListFiles)
-    symbol:
-      url: https://ltwiki.org/images/3/30/TIP127.asy
-      sha256: 9a4b5e38ae39f8a373c096990d63cce78059a241232e4778f11910fdaf6502a6
+      Xtip127: [12, 50]
+    fetched: '2026-10-10'
   note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: tip127
+    get:
+      url: https://ltwiki.org/images/f/f5/TIP127.sub
+      sha256: 5a9550a1eebde78c3bbb01c4fa1d4501d2ad2d4fb2b7f01c18998d0985a25c34
+  - source: onsemi
+    name: tip127
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip127.sp3
+      sha256: 5a9550a1eebde78c3bbb01c4fa1d4501d2ad2d4fb2b7f01c18998d0985a25c34
 - source: ltwiki
   name: TIP127
   def: subckt

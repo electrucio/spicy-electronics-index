@@ -3,6 +3,58 @@ kind: diode
 priority: 4
 group: tvs
 models:
+- source: stmicro
+  name: SM15T33CA
+  def: subckt
+  hash: bfa19f0f0fd0d9c937b255566724a49c9cc0cd8f
+  type: SUBCKT
+  deps:
+  - TRANSILB
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm15t_pspice.zip
+    member: SM15T.lib
+    archive_sha256: 206548fa86259f7c40f362249bc65003766672ed120abc8c72ad6202c55f6a63
+    sha256: 8248790ae88fb8c5044bb9ec31e024b82a9f095e46d8871056141441462669af
+    lines:
+      SM15T33CA: [273, 278]
+      TRANSILB: [67, 93]
+    fetched: '2026-10-10'
+  copies:
+  - source: stmicro
+    name: SM15T33CAY
+    get:
+      url: https://www.st.com/resource/en/spice_model/sm15ty-series_pspice.zip
+      member: SM15TY.lib
+      sha256: 91b16ba5e19ba67fc1b32052d755598d164906efa4518af114557a459af2a9f7
+- source: stmicro
+  name: SM15T33CAY_STM
+  def: subckt
+  hash: 43790b30ce60be3b5db5b74aa5b0a3e553fb2599
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm15ty-series-thermal-edsim-simetrix-pspice-1-2.zip
+    member: sm15ty_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: aa43c4269ffe53411402fb91ca7b042504d72ad35a285b9e38b7633e5c24cc26
+    sha256: 4ffdbbead5d44d9e22a70ddf1cabad0be506d0825fe570d5a878350424d6bee8
+    lines:
+      SM15T33CAY_STM: [1612, 1680]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SM15T33CA_STM
+  def: subckt
+  hash: 3f4d51236d7fe50e237bbefea0e17efe97d0848e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm15t-series-thermal-edsim-pspice-simetrix-edsim.zip
+    member: sm15t_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 8911e374d9f152ca79874031e56a2be79222637f1198d306161887ed71190973
+    sha256: 57b5a33502c359aed3afd0d073b1a9067fb4768f1d6900b380bb3760eca17f51
+    lines:
+      SM15T33CA_STM: [1597, 1665]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: SM15T33CA
   def: subckt
@@ -29,13 +81,13 @@ models:
     name: SM15T33CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: bordodynov
     name: SM15T33CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SM15T33CA
@@ -56,8 +108,14 @@ models:
   - source: ltwiki
     name: SM15T33CA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SM15T33CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SM15T33CA
@@ -68,12 +126,6 @@ models:
   - source: ltwiki
     name: SM15T33CA
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: ltwiki
-    name: SM15T33CA
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

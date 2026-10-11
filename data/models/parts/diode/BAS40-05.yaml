@@ -3,6 +3,50 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: nexperia
+  name: BAS40-05
+  def: subckt
+  hash: 30a4cf4682e7b88e3d9095a11d3fdba73e2d9b92
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS40-05
+    sha256: 0f2255fba9ff68779f381086cd0dafa4458591533e8c48a30d8e6fc184faa58c
+    lines:
+      BAS40-05: [38, 62]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: nexperia
+    name: BAS40-05W
+    get:
+      url: https://www.nexperia.com/product/BAS40-05W
+      sha256: 698bdc92bc505125612c8101d37d8f5b81ce312130b6ac37b7ae918c12f48b2b
+- source: nexperia
+  name: BAS40-05V
+  def: subckt
+  hash: f14b1ef2b7a54378482f0ee699e0f5820723d0aa
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS40-05V.txt
+    sha256: fb9a7e7470b27a3444d2256a37ead50d1c3d4bb1d02f81d992e388707dae116d
+    lines:
+      BAS40-05V: [33, 50]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BAS40-05
+  def: subckt
+  hash: d49a1ef0c91f84016ef9582a8bd208c80916b742
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8437fc58c6b2df2bb1f859c25e7fe606faa43fc40a32455d0fef48c14e7ba835
+    lines:
+      BAS40-05: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: BAS40-05_PH
   def: subckt
@@ -139,6 +183,12 @@ models:
   - source: ltwiki
     name: BAS40-05HM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS40-05HM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -148,12 +198,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAS40-05HM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: ltwiki
   name: BAS40-05
   def: subckt
@@ -248,14 +292,14 @@ models:
   - source: ltwiki
     name: BAS40-05HY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS40-05HY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BAS40HY

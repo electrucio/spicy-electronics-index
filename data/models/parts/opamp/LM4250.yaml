@@ -39,8 +39,9 @@ models:
   - source: ltwiki
     name: LM4250/NS
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: LM4250/NS
     get:
@@ -50,20 +51,14 @@ models:
   - source: ltwiki
     name: LM4250/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
   - source: microcap12
     name: LM4250_NS
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nation.lib
       sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
-  - source: kicad-spice-library
-    name: LM4250CN
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATBJT.LIB
-      sha256: cf6a0a8ae76413edbbe02dda7fa5372957d07a3454547dfb80f3bff10d99492a
   - source: kicad-spice-library
     name: LM4250C_NS
     get:
@@ -75,6 +70,11 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nation.lib
       sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+  - source: kicad-spice-library
+    name: LM4250CN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATBJT.LIB
+      sha256: cf6a0a8ae76413edbbe02dda7fa5372957d07a3454547dfb80f3bff10d99492a
 - source: ltwiki
   name: LM4250_NSC
   def: subckt

@@ -3,6 +3,21 @@ kind: tube
 priority: 3
 group: triode
 models:
+- source: onsemi
+  name: t6_30V_LL
+  def: subckt
+  hash: 5bd69fca7ce99b06a4c7af99b7cfb43d9b1038bd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/t6_30v_ll_soa_simetrix.zip
+    member: T6_30V_LL_SOA_rev1p3_simetrix.txt
+    archive_sha256: e80df254a4c774d949d7c25c43696627fe1a244b7418ff1a1d0cf8931164842b
+    sha256: a2973401176ed1c32d0d9a40c9093a75dac832cb21d10cd995da833d6c676e71
+    lines:
+      t6_30V_LL: [826, 1635]
+    fetched: '2026-10-10'
+  note: found under the alias 6Н30П
 - source: bordodynov
   name: 6H30
   def: subckt

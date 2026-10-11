@@ -3,6 +3,79 @@ kind: diode
 priority: 3
 group: audio_docs
 models:
+- source: taiwan-semi
+  name: BAV20WS
+  def: model
+  hash: 39126b6e8483db496128c1130455231555394131
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 341b323f5fc6d31fe835d867e2b1e2d331944301ba28441ad9f8d349fcd40eb1
+    lines:
+      BAV20WS: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAV20W
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 7943a5ee84068580ce9157b07172316da05abe3a4d3ee2bc4aae565d523025c7
+  - source: taiwan-semi
+    name: BAV20W-G
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 3f70e3cc4a148c91993e452668f75dab662df92d314e97537d1f0987a4f0b126
+  - source: taiwan-semi
+    name: BAV20WS-G
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 7aa039744db6527253c677e4e7fcd18cde8a03f74536ae4d36868a8636c7c111
+- source: panjit
+  name: BAV20WS
+  def: subckt
+  hash: 2258472a7cf373654f8cf286795614b3a7270697
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV20WS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: e44a9d04403cec5385fa4ce3821532ac1ce04863ddd4b59d5afb42952c13ff06
+    lines:
+      BAV20WS: [12, 48]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAV20WS-AU
+  def: subckt
+  hash: 8c8a087c4d092fa826333c979226576299c054f5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV20WS-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 81f3b0493816b729a15fcc8fd5ca4f0a2a03328c431fe180352f2a1c5999d4ad
+    lines:
+      BAV20WS-AU: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: mcc
+  name: BAV20WS
+  def: subckt
+  hash: 58c7457353e2675d21a7d5faad8bdd915217e8e5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/BAV20WS.zip
+    member: BAV20WS.sp
+    archive_sha256: e60fbf42388f367af3d6e7650e8837957a47bf4959f25f626e1a0c6dc303faae
+    sha256: 740b8c59f13e823fe27182db3fa2e89e2d1498ac4cac5b5b9b26fb1cd75a2bfa
+    lines:
+      BAV20WS: [4, 16]
+    fetched: '2026-10-10'
 - source: microcap12
   name: BAV20WS
   def: model

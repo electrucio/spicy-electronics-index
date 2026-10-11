@@ -33,6 +33,80 @@ models:
     lines:
       BZX84C3V6LT1G: [123, 141]
     fetched: '2026-09-19'
+- source: onsemi
+  name: bzx84c3v6lt1g
+  def: subckt
+  hash: 25c56acd1b0de10ba844709706541fbd7d20b13f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bzx84c36lt1g.sp3
+    sha256: 8d3b3a570ce80ccfa2dfc7fe6da225a9b9c897e6022fa3fe92d4d1e1563efb88
+    lines:
+      bzx84c3v6lt1g: [1, 40]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BZX84-C3V6
+  def: model
+  hash: a17237d293754386a502e5de2d50ae582ecc4809
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZX84-C3V6.txt
+    sha256: b685355da6ebb2880e9436753c3368c859f126a62558de24d285d2ea95dea7c3
+    lines:
+      BZX84-C3V6: [28, 39]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: BZX84C3V6
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C3V6.PRM
+      sha256: 78afa332670149a47809ce47888ba51b15f18b0e9a89c9ed25aa2990884f9fbf
+- source: taiwan-semi
+  name: BZX84C3V6
+  def: model
+  hash: 5f685dc8655da875a7b70305bc99a1112e1b69f6
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: c78a8ccb863a5d92ce4034c49e4da1cdd7596c4a282006d127a4bb63f88ecb76
+    lines:
+      BZX84C3V6: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZX84C3V6
+  def: subckt
+  hash: 47ec87cc227ddef516ee818cd42ce4cef26a04ca
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C3V6.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 970517ed23f49422b04c8630e3dea55f15767c6a343036d3ec4c7be08b18340b
+    lines:
+      BZX84C3V6: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZX84C3V6-AU
+  def: subckt
+  hash: f1ebae20b471cc3bcd2594dfcba199643ea83512
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C3V6-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 01c98e75a1f5878454b1808d0cdb28411fde6a338b54f7abca9a5e51e49967bf
+    lines:
+      BZX84C3V6-AU: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: spice-model-cd
   name: BZX84C3V6
   def: model
@@ -303,20 +377,6 @@ models:
       DF: [6016, 6016]
     fetched: '2026-09-14'
   note: 'same code also in: kicad-spice-library, ltwiki; pins from default order (unverified)'
-- source: ltwiki
-  name: BZX84C3V6
-  def: model
-  hash: a17237d293754386a502e5de2d50ae582ecc4809
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BZX84-C3V6.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 78afa332670149a47809ce47888ba51b15f18b0e9a89c9ed25aa2990884f9fbf
-    lines:
-      BZX84C3V6: [6, 17]
-    fetched: '2026-09-21'
 - source: bordodynov
   name: BZX84C3V6
   def: model
@@ -346,12 +406,12 @@ models:
   - source: ltwiki
     name: BZX84C3V6
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C3V6
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455

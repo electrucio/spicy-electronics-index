@@ -3,27 +3,6 @@ kind: regulator
 priority: 4
 models:
 - source: onsemi
-  name: TLV431
-  def: subckt
-  hash: 3fd6a1b0b691182ebd5c1c2b047eda9ea94b6962
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/zip/ncp1205is.zip
-    member: ONIC.LIB
-    archive_sha256: 1f31a322a79cc052cb8a78d0de266cf6ad41dde83cbd480d1dc973c49bf58fe8
-    sha256: 2205b1dca9be0f1465a30b1880ff6f9b9bf273bfdd12359dcd4622db942cba8c
-    lines:
-      TLV431: [3361, 3380]
-    fetched: '2026-09-19'
-  copies:
-  - source: onsemi
-    name: TLV431_ON
-    get:
-      url: https://www.onsemi.com/download/models/zip/mc33163_model.zip
-      member: MC33163 MODEL/onic.lib
-      sha256: 4b75d2a5b998dbc4b9048dda08ddab54587bf815a725128b3f9f747851cacfb7
-- source: onsemi
   name: TLV431_ON
   def: subckt
   hash: c46f16a03f1757d5cb38a901856bb05e3caf76d6
@@ -49,6 +28,27 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: onsemi
+  name: TLV431_ON
+  def: subckt
+  hash: 3fd6a1b0b691182ebd5c1c2b047eda9ea94b6962
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/zip/mc33163_model.zip
+    member: MC33163 MODEL/onic.lib
+    archive_sha256: 9a2c3d4e5fd4cac8c077696b7589a4f75e12ab29049cbdad1da48101e6ea1d95
+    sha256: 4b75d2a5b998dbc4b9048dda08ddab54587bf815a725128b3f9f747851cacfb7
+    lines:
+      TLV431_ON: [3521, 3540]
+    fetched: '2026-09-19'
+  copies:
+  - source: onsemi
+    name: TLV431
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncp1205is.zip
+      member: ONIC.LIB
+      sha256: 2205b1dca9be0f1465a30b1880ff6f9b9bf273bfdd12359dcd4622db942cba8c
 - source: onsemi
   name: TLV431
   def: subckt
@@ -89,6 +89,12 @@ models:
       url: https://www.ti.com/lit/zip/SLVM088
       member: TLV431_TINA/TLV431.LIB
       sha256: c09dc591e17dd1631c15d08d5451edf1ca3ec45ba94d002b6bdb8417023958d0
+  - source: stmicro
+    name: TLV431
+    get:
+      url: https://www.st.com/resource/en/spice_model/viper31_pspice_models.zip
+      member: VIPer31_Pspice_models/TB_VIPER31_PSPICE_ENCRY/libs/tb_models.lib
+      sha256: b3e171c18f342e975b103e20ce274dbf58d095471ce8b956f2a9099b523be0b0
 - source: microcap12
   name: TLV431
   def: subckt
@@ -261,37 +267,6 @@ models:
       member: lib/sub/Sborka.lib
       sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
 - source: bordodynov
-  name: TLV431
-  def: subckt
-  hash: 3d523c467c3b9190d26317104cfe40cf99bb9122
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/Sborka.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
-    lines:
-      TLV431: [17557, 17582]
-    fetched: '2026-09-21'
-    symbol:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/REF/tlv431.asy
-      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-      sha256: a3974214885964ad373cfbbb525c61d1cdec690e52aec7be965aa896595c6f72
-  copies:
-  - source: kicad-spice-library
-    name: TLV431
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
-      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
-  - source: ltwiki
-    name: TLV431
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Sborka.lib
-      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
-- source: bordodynov
   name: tlv431_my
   def: subckt
   hash: 3a51ccaa6c9248b9ccc3cd8f099f8daac8977232
@@ -318,6 +293,37 @@ models:
       sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
   - source: ltwiki
     name: tlv431_my
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+- source: bordodynov
+  name: TLV431
+  def: subckt
+  hash: 3d523c467c3b9190d26317104cfe40cf99bb9122
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Sborka.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    lines:
+      TLV431: [17557, 17582]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/REF/tlv431.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: a3974214885964ad373cfbbb525c61d1cdec690e52aec7be965aa896595c6f72
+  copies:
+  - source: kicad-spice-library
+    name: TLV431
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Sborka.lib
+      sha256: 4e8d7a6bf0bd47bd876d4fa21302fd7cd2fad4eb84720b0201a76d27d401e793
+  - source: ltwiki
+    name: TLV431
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Sborka.lib

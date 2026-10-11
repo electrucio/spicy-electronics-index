@@ -23,6 +23,66 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: BC817
+  def: subckt
+  hash: 2f647515544fce53208b1513894bedf86b6e96c8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC817.txt
+    sha256: f489063dfcd7304b474e7f4808b71e859d875473cf5a787f9522cde7cd93d39e
+    lines:
+      BC817: [34, 93]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC817W
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817W.txt
+      sha256: 2420ff18349fd8026aa955d37f5b1079b6575876bb65fbfa540d468eead8b41e
+  - source: nexperia
+    name: BC817RA
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817RA.txt
+      sha256: 9a10f5019b1f2c5ee6c12a83274dc24bf9f108537cfd7a21e37be464301cb482
+  - source: nexperia
+    name: BC817_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-Q.txt
+      sha256: 53cdf2e86135ee7f46aa0d3062362c7cae6de09e177bac48fafd2032bffd58ae
+  - source: nexperia
+    name: BC817W_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817W-Q.txt
+      sha256: 616d155dab65879cf4d2886254699b6627968757fee1c37abae23862ac940e06
+- source: nexperia
+  name: BC817DS
+  def: subckt
+  hash: 79c339f2872d48f643c948fd69ee54850fe78cc2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC817DS.txt
+    sha256: 5b6ff6cd12cdbb56ba82fc1b0605ccc62e7625c6e3b1b68be8416fbfafa89ced
+    lines:
+      BC817DS: [31, 72]
+    fetched: '2026-10-10'
+- source: panjit
+  name: BC817DPN
+  def: subckt
+  hash: 8dc5e87b9cd9b6504cd4f5ef5a9b343db446c9df
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC817DPN.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d343d497e59d6804b10e816cea267c99e0cdecece94d9f52f274bc622dfcdd95
+    lines:
+      BC817DPN: [11, 40]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: spice-model-cd
   name: BC817
   def: model
@@ -259,8 +319,8 @@ models:
   - source: ltwiki
     name: BC817
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BC817
@@ -271,8 +331,8 @@ models:
   - source: ltwiki
     name: BC817
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: groupsio-ltspice
   name: BC817

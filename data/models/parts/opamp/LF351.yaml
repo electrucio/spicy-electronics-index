@@ -51,8 +51,9 @@ models:
   - source: ltwiki
     name: LF351/NS
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: LF351/NS
     get:
@@ -62,9 +63,8 @@ models:
   - source: ltwiki
     name: LF351/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
   - source: microcap12
     name: LF351_NS
     get:
@@ -295,13 +295,13 @@ models:
     name: LF351
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: LF351
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF351
@@ -312,13 +312,13 @@ models:
     name: LF351
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: LF351
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: kicad-spice-library
   name: LF351_NS
@@ -341,18 +341,6 @@ models:
     note: git clone --depth 1, commit a868895
   note: pins from comment words
 - source: kicad-spice-library
-  name: LF351M
-  def: subckt
-  hash: bf74c4d4d8776421c689adec1af09857a6f8101d
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/MOTOR.LIB
-    sha256: 44f08a5cfceeb4c72d4f6e77e1eac1d108b46f7cb81dee8f3296a908b1eb53e6
-    lines:
-      LF351M: [13, 47]
-    fetched: '2026-09-14'
-- source: kicad-spice-library
   name: LF351S
   def: subckt
   hash: bb6da62b761839a96ef6c7274daab2b3484fea78
@@ -363,6 +351,18 @@ models:
     sha256: 9dca4e312e997d808a21cfa05a667948fe085291fa3433406b85d9d7e53a4832
     lines:
       LF351S: [4, 49]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: LF351M
+  def: subckt
+  hash: bf74c4d4d8776421c689adec1af09857a6f8101d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/MOTOR.LIB
+    sha256: 44f08a5cfceeb4c72d4f6e77e1eac1d108b46f7cb81dee8f3296a908b1eb53e6
+    lines:
+      LF351M: [13, 47]
     fetched: '2026-09-14'
 datasheet:
   url: https://www.futurlec.com/Datasheet/Linear/LF351N.pdf

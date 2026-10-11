@@ -3,20 +3,18 @@ kind: diode
 priority: 4
 group: tvs
 models:
-- source: microcap12
+- source: nexperia
   name: PESD12VS1UB
   def: model
   hash: 11d210d68fe296b6bc3c413037edc3589d0f142e
   type: D
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    url: https://www.nexperia.com/product/PESD12VS1UB
+    sha256: 9ef3984b48674244b7772487cf73bd193ab307e9ab18ed206232f3d84a6f561b
     lines:
-      PESD12VS1UB: [2416, 2425]
-    fetched: '2026-09-21'
+      PESD12VS1UB: [38, 47]
+    fetched: '2026-10-10'
   copies:
   - source: ltwiki
     name: PESD12VS1UB
@@ -24,41 +22,88 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD12VS1UB.PRM
       sha256: 5570ab08f38e90d8e53fcd0f9736bcd170cbde567fee082a723b7d2ea4d26464
-- source: microcap12
+  - source: microcap12
+    name: PESD12VS1UB
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+  - source: nexperia
+    name: PESD12VS1UB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PESD12VS1UB.txt
+      sha256: f53c3146c5bd28b32a47de1762386c72857bf76e5485feb4d70f94d72a8e8973
+- source: nexperia
   name: PESD12VS1UA
   def: model
   hash: 557dd4a675d214fad290b4f33b67745732b1ea18
   type: D
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    url: https://assets.nexperia.com/documents/spice-model/PESD12VS1UA.txt
+    sha256: fa77d7bafbfaf5691738df7ce41fb03682a2584a684e389b07d8cafbdba3d019
     lines:
-      PESD12VS1UA: [22791, 22799]
-    fetched: '2026-09-21'
+      PESD12VS1UA: [28, 36]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: PESD12VS1UA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
   - source: microcap12
     name: PESD12VS1UJ
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nxp.lib
       sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-- source: microcap12
+  - source: nexperia
+    name: PESD12VS1UJ
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PESD12VS1UJ.txt
+      sha256: 2c144564d6b6821dd630031d0d3272e2a758fead27e2dca57913adeec22236c6
+  - source: nexperia
+    name: PESD12VS1UJ
+    get:
+      url: https://www.nexperia.com/product/PESD12VS1UJ
+      sha256: bb5375353e6f592b731343e0c202f9a5c56f68df70f8b541d57f28bb6b3ec792
+- source: nexperia
   name: PESD12VS1UL
   def: model
   hash: 5deb7f548549fdbb91185a9850ef34915e7e0764
   type: D
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    url: https://assets.nexperia.com/documents/spice-model/PESD12VS1UL.txt
+    sha256: d397f577660ddb3e8301d39b6ad6ab8230772e5c335dc207d32aa1080fb922a6
     lines:
-      PESD12VS1UL: [4784, 4793]
-    fetched: '2026-09-21'
+      PESD12VS1UL: [28, 37]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PESD12VS1UL
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+  - source: nexperia
+    name: PESD12VS1UL
+    get:
+      url: https://www.nexperia.com/product/PESD12VS1UL
+      sha256: 22bded061164ddbc0a18a9be390bc9a75c44d60ff1fb8d1c71d328c848336f69
+- source: nexperia
+  name: PESD12VS1ULD
+  def: subckt
+  hash: 65f938424aee4df309a8ec26a389b440b516d9b5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PESD12VS1ULD.txt
+    sha256: 2ff29db73ecb4c8d45a1fc20636ecca996d79cc8b5f9cc3dbb8a05a964a28170
+    lines:
+      PESD12VS1ULD: [33, 57]
+    fetched: '2026-10-10'
 - source: microcap12
   name: PESD12VS1ULD
   def: subckt

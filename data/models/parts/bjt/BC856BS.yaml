@@ -17,6 +17,49 @@ models:
     fetched: '2026-09-19'
     note: 'BC856BWT1.SP3: bc856bwt1'
   note: found under the alias BC856B
+- source: nexperia
+  name: BC856BSH_Q
+  def: subckt
+  hash: 0ebca0637eee70fb92cff25c2ef0e81ef0b5306d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC856BSH-Q.txt
+    sha256: 82afa780d47bd3e4cb0888a79b37601df657ff41a6e928a643a11e04cf37184d
+    lines:
+      BC856BSH_Q: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC856BSH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC856BSH.txt
+      sha256: db8ee597c030d47627c0792f2c095b01f9d8855696828d6d046bcb350a7df1ad
+- source: nexperia
+  name: BC856BS
+  def: subckt
+  hash: e266b375f05e0c89b73bf39292b3c089988a75e0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC856BS.txt
+    sha256: aaf1442e612fc567882d00b8ef2a512d18d72dd7480bcdecfdbe261cb22f9b3c
+    lines:
+      BC856BS: [37, 95]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BC856BSH
+  def: model
+  hash: 687c4ef5709b2c3bade509a34d8cd85b1e3306d8
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: f02011dbfbbf352fb49309f42230d398497e57fed89a12eb3d00e07c0ad3fd97
+    lines:
+      BC856BSH: [9, 35]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: BC856BS
   def: subckt

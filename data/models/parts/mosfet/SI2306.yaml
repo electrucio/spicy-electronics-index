@@ -25,18 +25,6 @@ models:
   - source: ltwiki
     name: Si2306BDS
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Mos&Fet/si2306bd.sub
-      sha256: a727ee88a45ae74278571fc2ef071e43768d2e796acc7fb1b4fff30fc49a02b6
-  - source: ltwiki
-    name: Si2306BDS
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Mos&Fet/Mos_Misc/si2306bd.sub
-      sha256: a727ee88a45ae74278571fc2ef071e43768d2e796acc7fb1b4fff30fc49a02b6
-  - source: ltwiki
-    name: Si2306BDS
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/si2306bd.sub
       sha256: a727ee88a45ae74278571fc2ef071e43768d2e796acc7fb1b4fff30fc49a02b6
@@ -46,9 +34,49 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Mos&Fet/Mos_Misc/si2306bd.sub
       sha256: a727ee88a45ae74278571fc2ef071e43768d2e796acc7fb1b4fff30fc49a02b6
+  - source: ltwiki
+    name: Si2306BDS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Mos&Fet/si2306bd.sub
+      sha256: a727ee88a45ae74278571fc2ef071e43768d2e796acc7fb1b4fff30fc49a02b6
+  - source: ltwiki
+    name: Si2306BDS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Mos&Fet/Mos_Misc/si2306bd.sub
+      sha256: a727ee88a45ae74278571fc2ef071e43768d2e796acc7fb1b4fff30fc49a02b6
   - source: microcap12
     name: Si2306BDS
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/vishaymosfet.lib
       sha256: 23bc5e3e06c64162cbb4b96205c8a4b30b08d7cfd780d41fd3043fede09671f7
+- source: mcc
+  name: SI2306K
+  def: subckt
+  hash: b16870aef45dbba6ac61649c3cffb8ed2b12c11a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2306K.zip
+    member: SI2306K.txt
+    archive_sha256: 3dccf1f966fbd821a63a4fee1da0a67bdb2032dd6cad26583e64010fc74636d1
+    sha256: 3936d138aa79fa43bbb6c1eea8e85aa5d76a43188ea933cf9cdebea8d658a176
+    lines:
+      SI2306K: [7, 28]
+    fetched: '2026-10-10'
+- source: mcc
+  name: SI2306
+  def: subckt
+  hash: a0706bbe32a5728f68ef52092dc865d7ed5c6d81
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2306K.zip
+    member: SI2306.txt
+    archive_sha256: 3dccf1f966fbd821a63a4fee1da0a67bdb2032dd6cad26583e64010fc74636d1
+    sha256: 6daee7a7bd32616948e14fbbac32ef3094f58d91b36bfc9357260935bfef4c38
+    lines:
+      SI2306: [8, 29]
+    fetched: '2026-10-10'

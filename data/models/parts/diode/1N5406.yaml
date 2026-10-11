@@ -29,6 +29,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: D1n5406rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n5406rl.sp2
+      sha256: 6c7addaeaaca150118d1e26a3d19a139dcace62628881d744ef8f41c8d40c6d3
+  - source: onsemi
+    name: 1n5406rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n5406rl.sp3
+      sha256: 79efe2016a651ebeb121cf0d8d03f419d318f21a8d0d686c35f10677a0a3c1c7
 - source: onsemi
   name: D1N5406
   def: model
@@ -36,7 +46,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -58,7 +68,13 @@ models:
   - source: onsemi
     name: D1N5406
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncp1608%20avg%20pspice%20model.zip
+      member: User Library/ncp1608 avg model.lib
+      sha256: 32740b0f951e1740701aa06ff8d7f6c5679c9263638faba3b74d082af4e9b132
+  - source: onsemi
+    name: D1N5406
+    get:
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: microcap12
@@ -95,31 +111,13 @@ models:
   verbatim: true
   get:
     url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/Off-Line Converters/Fullwave Rectifier Passive PFC.cir
+    member: DATA/Off-Line Converters/Fullwave In-rush.cir
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: dc8f118307d67b447cae09e765cf3697d4d470a3d61f965574f65677843d0a54
+    sha256: 826255feb011d1f6cab0d0c46feb32143ea86da1f8dcaa6b1cd2dcb6ffdabf30
     lines:
-      1N5406: [619, 620]
+      1N5406: [786, 787]
     fetched: '2026-09-21'
   copies:
-  - source: microcap12
-    name: 1N5406
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/Off-Line Converters/Fullwave Rectifier.cir
-      sha256: 2c32da9bb05240345fc68ed5628fcabe3efe8ca1c46a8ad346ef106f50e07a13
-  - source: microcap12
-    name: 1N5406
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/Off-Line Converters/Doubler.cir
-      sha256: ff4ee4d4dffa14db1fabaae4b92f6409120eb9ef648599c1d704d3f52d9c388a
-  - source: microcap12
-    name: 1N5406
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/Off-Line Converters/Hold-up Time.cir
-      sha256: 4ccb439588d4ef82464f83112e54c2756ef8bef9a18de2a43b214cd34b1028be
   - source: microcap12
     name: 1N5406
     get:
@@ -130,14 +128,32 @@ models:
     name: 1N5406
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: DATA/Off-Line Converters/Fullwave In-rush.cir
-      sha256: 826255feb011d1f6cab0d0c46feb32143ea86da1f8dcaa6b1cd2dcb6ffdabf30
+      member: DATA/Off-Line Converters/Hold-up Time.cir
+      sha256: 4ccb439588d4ef82464f83112e54c2756ef8bef9a18de2a43b214cd34b1028be
+  - source: microcap12
+    name: 1N5406
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: DATA/Off-Line Converters/Fullwave Rectifier.cir
+      sha256: 2c32da9bb05240345fc68ed5628fcabe3efe8ca1c46a8ad346ef106f50e07a13
+  - source: microcap12
+    name: 1N5406
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: DATA/Off-Line Converters/Fullwave Rectifier Passive PFC.cir
+      sha256: dc8f118307d67b447cae09e765cf3697d4d470a3d61f965574f65677843d0a54
   - source: microcap12
     name: 1N5406
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: DATA/Off-Line Converters/Fullwave Mains Impedance.cir
       sha256: f9df6d5c3ef34da6c1c47ae97779447c8bd14af8aa5037d7536a52b451d21d50
+  - source: microcap12
+    name: 1N5406
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: DATA/Off-Line Converters/Doubler.cir
+      sha256: ff4ee4d4dffa14db1fabaae4b92f6409120eb9ef648599c1d704d3f52d9c388a
 - source: microcap12
   name: 1N5406
   def: model

@@ -50,6 +50,18 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/TIP121%26131.SUB
       sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
   - source: ltwiki
+    name: tip122
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/TIP121&131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: ltwiki
+    name: TIP122
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Darlington/NPNdarlington.lib
+      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
     name: TIP122
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
@@ -61,24 +73,30 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/TIP121&131.SUB
       sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
-  - source: ltwiki
-    name: TIP122
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Darlington/NPNdarlington.lib
-      sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
-  - source: ltwiki
-    name: tip122
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/TIP121&131.SUB
-      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
   - source: microcap12
     name: tip122
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xtip122
+  def: subckt
+  hash: abd4d6b4569bff361801184a7e7284fc4eb90148
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip122.sp2
+    sha256: 17b06491276fe789597489dc7cf16a049c5f7f55750d8e87acbf3a4f1844803a
+    lines:
+      Xtip122: [1, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip122
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip122.sp3
+      sha256: 5104ab108a9093b2551c26feb72778200f2470f33d33708b4d2fc284be709ecc
 - source: ltwiki
   name: TIP122
   def: subckt

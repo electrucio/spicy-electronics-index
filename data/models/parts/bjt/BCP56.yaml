@@ -22,6 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qbcp56
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bcp56-10t1.sp2
+      sha256: 705f678812adb63ac848a436fcd69dcb92f71fc69f6ba8d13e8c7cba05a580ce
+  - source: onsemi
+    name: bcp56
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bcp56-10t1.sp3
+      sha256: 26a5ec3fe56d53a941209c38d28508bf0bb68615f9e4983af787d52a575ab8ed
 - source: onsemi
   name: Qbcp56m
   def: model
@@ -58,6 +68,48 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BCP56 (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
   note: pins from comment words
+- source: nexperia
+  name: BCP56H
+  def: subckt
+  hash: cdad443308d99c950259c2231310ed33d964bf73
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCP56H.txt
+    sha256: 49e11234725b292d57cd49293410d0e323862bf4542533d98c75d85defcbfc1b
+    lines:
+      BCP56H: [35, 93]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BCP56T
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BCP56T.txt
+      sha256: f5d1e62d96fc34f4fe384a4e8b5fc2ac97eb89bdcf34c2aecd9b73cf949464ee
+- source: nexperia
+  name: BCP56T_Q
+  def: subckt
+  hash: d9844485c9e3fe893066c34ead3827847b586187
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCP56T-Q.txt
+    sha256: 62e1a285063e4fe6078de81e3e83fc5d68fe20e413195ebef6b7eeb7480cdb3c
+    lines:
+      BCP56T_Q: [33, 91]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BCP56_Q
+  def: subckt
+  hash: cfe91d2792622859920dbff488884b256bf82a41
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCP56-Q.txt
+    sha256: 61546b9af89d8ea958be75c2e056093577b43dfa5467536ecf38d8318c2ad486
+    lines:
+      BCP56_Q: [33, 91]
+    fetched: '2026-10-10'
 - source: diodes-inc
   name: BCP56
   def: model
@@ -160,14 +212,14 @@ models:
   - source: ltwiki
     name: BCP56
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BCP56
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: BCP56

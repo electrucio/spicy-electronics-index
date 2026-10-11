@@ -3,30 +3,66 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
+- source: rohm
   name: DTA113ZE
   def: subckt
   hash: d3ee8e0bfcde921f1a0bbfe2447bff51f1bb8237
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta113ze_ltspice.zip
+    member: dta113ze_ltspice/dta113ze_ltspice.lib
+    archive_sha256: e9add70d72b0d626fce8031cfe54d9f58cb64eef1f8f1ec412bd1224d5ffc7e3
+    sha256: 1f904f9d1b280be2f26eb5baac419a3f3bb8734f1c7572cf156b4594c03c6e27
     lines:
-      DTA113ZE: [25514, 25548]
-    fetched: '2026-09-21'
+      DTA113ZE: [5, 39]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTA113ZE
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA113ZE
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta113ze_spice.zip
+      member: dta113ze.lib
+      sha256: 1f904f9d1b280be2f26eb5baac419a3f3bb8734f1c7572cf156b4594c03c6e27
   - source: microcap12
     name: DTA113ZKA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA113ZKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta113zka_ltspice.zip
+      member: dta113zka_ltspice/dta113zka_ltspice.lib
+      sha256: 93d6c76208cfcd4b5e6273b4b93c49050da83e892f00b9f8ea66ce8007176a11
+  - source: rohm
+    name: DTA113ZKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta113zka_spice.zip
+      member: dta113zka.lib
+      sha256: 93d6c76208cfcd4b5e6273b4b93c49050da83e892f00b9f8ea66ce8007176a11
   - source: microcap12
     name: DTA113ZUA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA113ZM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTA113ZM_SPICE.zip
+      member: DTA113ZM_SPICE/DTA113ZM.lib
+      sha256: 3e046de8d006ed2befb37d13d68b57d087a760f71f6a45d792ed116a6929f33a
+  - source: rohm
+    name: DTA113ZEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTA113ZEB_SPICE.zip
+      member: DTA113ZEB_SPICE/DTA113ZEB.lib
+      sha256: 54864d5fed34b3a5ee3a7031354d9ff2014bf6c5bcad2453836dac2ea7951017

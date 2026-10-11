@@ -29,6 +29,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: D1n4004rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n4004rl.sp2
+      sha256: 9b604370cd469424fb0b179877d4390a7b58226bb51a228629779857f8af6707
+  - source: onsemi
+    name: 1n4004rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n4004rl.sp3
+      sha256: 1e7917dad88b678c190a5c18937e2cec34c10a184929551aaee7cd4f4535f3c8
 - source: onsemi
   name: D1N4004
   def: model
@@ -38,7 +48,7 @@ models:
   - D1N4001
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -66,7 +76,7 @@ models:
   - source: onsemi
     name: D1N4004
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: vishay
@@ -82,6 +92,34 @@ models:
       1N4004: [6, 12]
     fetched: '2026-09-14'
     note: 'model(s): 1N4004 (D .model)'
+- source: mcc
+  name: 1N4004
+  def: subckt
+  hash: 0ba35cc4f696c3f1895a4da60b0e3a9b84dd6181
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4004GP.zip
+    member: 1N4004.sp
+    archive_sha256: a61cbb35e46b0de4872ad4cab26d218baaff3be91f4a582ee513a86c84675cb1
+    sha256: 4c02997982d8d8f1e979ea041c74acabcddc261fda395f933e09f0862352e4af
+    lines:
+      1N4004: [4, 16]
+    fetched: '2026-10-10'
+- source: mcc
+  name: 1N4004GP
+  def: subckt
+  hash: 4d6699b4bd083faa99f3f12a1e1ae91be73f3bd4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4004GP.zip
+    member: 1N4004GP.sp
+    archive_sha256: a61cbb35e46b0de4872ad4cab26d218baaff3be91f4a582ee513a86c84675cb1
+    sha256: 4729987b24805b00086d0f5d66e8a8b82ee492ae30d11d90340b7e46b3837834
+    lines:
+      1N4004GP: [4, 16]
+    fetched: '2026-10-10'
 - source: microcap12
   name: 1N4004G
   def: model
@@ -178,16 +216,6 @@ models:
     fetched: '2026-09-14'
     note: Cordell Models 12/07/2010 (older version bundled in zip; RB=10 in small-signal BJTs)
   copies:
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/Cordell-Models.txt
-      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
-  - source: diyaudio
-    name: 1N4004
-    get:
-      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
-      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
   - source: bordodynov-qspice
     name: 1N4004C
     get:
@@ -198,91 +226,25 @@ models:
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
       member: SPICE Tutorial Examples/Figure 19_5/Gummel Plot/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      member: SPICE Tutorial Examples/Figure 19_5/Bata vs Ic/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
       member: SPICE Tutorial Examples/Figure 19_3/DC Step/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
     name: 1N4004C
@@ -300,6 +262,12 @@ models:
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_3/Stepped Simulations/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
       member: SPICE Tutorial Examples/Figure 19_6/Bata vs Ic/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
@@ -312,19 +280,7 @@ models:
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_4/Wingspread/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
-      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
-  - source: cordell
-    name: 1N4004C
-    get:
-      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
     name: 1N4004C
@@ -336,7 +292,13 @@ models:
     name: 1N4004C
     get:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
-      member: SPICE Tutorial Examples/Figure 19_1/AC/Cordell Models.txt
+      member: SPICE Tutorial Examples/Figure 19_1/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_1/noise/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: cordell
     name: 1N4004C
@@ -344,6 +306,77 @@ models:
       url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
       member: SPICE Tutorial Examples/Figure 19_1/DC/Cordell Models.txt
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Inferring OLG/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/AC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Stability sweep/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Transient/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Harmonic Distortion/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Out Stage Pwr Diss/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Signal to Noise/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Damping factor/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/Square Wave/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/CCIF IM/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/SPICE_Tutorial_Examples.zip
+      member: SPICE Tutorial Examples/Figure 19_7/DC/Cordell Models.txt
+      sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: cordell
+    name: 1N4004C
+    get:
+      url: https://www.cordellaudio.com/book/Cordell-Models.txt
+      sha256: efe0150bcf2c835b10fe8c7b84cbb59e3e3f5bd4cf4fe974f8284e96dafda573
   - source: kicad-spice-library
     name: 1N4004C
     get:
@@ -352,8 +385,8 @@ models:
   - source: ltwiki
     name: 1N4004C
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
   - source: ltwiki
     name: 1N4004C
@@ -364,9 +397,14 @@ models:
   - source: ltwiki
     name: 1N4004C
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Cordell_Spice_Tutorial/Figure 19_1/AC/Cordell_Mods
       sha256: ae2d30efd938496e2a633e5de71d2fceae0e588c0dde475cb2ec8ff6fe9f2bba
+  - source: diyaudio
+    name: 1N4004
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
 - source: duncanamps
   name: D1N4004
   def: model
@@ -486,14 +524,14 @@ models:
   - source: ltwiki
     name: 1N4004
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N4004
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: D1N4004
@@ -519,14 +557,14 @@ models:
   - source: ltwiki
     name: D1N4004
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: D1N4004
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: D1N4004

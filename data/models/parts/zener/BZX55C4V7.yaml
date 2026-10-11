@@ -15,6 +15,19 @@ models:
       bzx84c4v7: [1, 40]
     fetched: '2026-09-19'
   note: 'STAND-IN: model of BZX84-C4V7, not of BZX55C4V7; the equivalence is declared in data/models/wanted.yaml'
+- source: onsemi
+  name: bzx84c4v7
+  def: subckt
+  hash: 3bea4266835c5eaa928ab38fde1dbee294a76024
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bzx84c4v7.sp3
+    sha256: 0914e1592775fd09aaa372f0905e912f6a9330eb0469c13471b81e55797d9300
+    lines:
+      bzx84c4v7: [1, 40]
+    fetched: '2026-10-10'
+  note: 'STAND-IN: model of BZX84-C4V7, not of BZX55C4V7; the equivalence is declared in data/models/wanted.yaml'
 - source: nexperia
   name: BZX84-C4V7
   def: model
@@ -63,18 +76,12 @@ models:
   - source: kicad-spice-library
     name: DI_BZX84C4V7
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
-      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
+      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
   - source: kicad-spice-library
     name: DI_BZX84C4V7
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
-      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
-  - source: ltwiki
-    name: DI_BZX84C4V7
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/zener.lib
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
       sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
   - source: ltwiki
     name: DI_BZX84C4V7
@@ -82,6 +89,42 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/DIODES.COM/ZENER/LIB/zener.lib
       sha256: 6a9b1f3823ca8671b8cd73d91b5565680e6e287ecafcdc8f90055614b7dd5629
+  - source: ltwiki
+    name: DI_BZX84C4V7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/zener.lib
+      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+- source: taiwan-semi
+  name: BZX84C4V7
+  def: model
+  hash: 88f30a265eca1cfe7730d498bd1a0b7a4be366d9
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 0cd1f6babc2cee52cd0826f73b6bae7621c64dbbc2ea3c05614a8922f437e7b1
+    lines:
+      BZX84C4V7: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  note: 'STAND-IN: model of BZX84-C4V7, not of BZX55C4V7; the equivalence is declared in data/models/wanted.yaml'
+- source: panjit
+  name: BZX84C4V7
+  def: subckt
+  hash: 1818f13544c5bf08bb5d1462ac93d68c1aebc39e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C4V7.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: e09e457214c7576bc340ed016591b75c5714b3611ca90bab6ffa03ca95776780
+    lines:
+      BZX84C4V7: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  note: 'STAND-IN: model of BZX84-C4V7, not of BZX55C4V7; the equivalence is declared in data/models/wanted.yaml'
 - source: spice-model-cd
   name: BZX84C4V7
   def: model
@@ -207,14 +250,14 @@ models:
   - source: ltwiki
     name: BZX84C4V7
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C4V7
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BZX794V7

@@ -3,20 +3,30 @@ kind: diode
 priority: 4
 group: schottky
 models:
-- source: microcap12
+- source: nexperia
   name: PMEG2010ER
   def: subckt
   hash: 4decde80aacbf5aae98249415d8a9a234dc0aa57
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2010ER.txt
+    sha256: f9ce5cccd292fec395cbd1072ebc90ead8887cdd31966c77eb0ad3f6be2b9996
     lines:
-      PMEG2010ER: [25310, 25333]
-    fetched: '2026-09-21'
+      PMEG2010ER: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PMEG2010ER
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG2010ER
+    get:
+      url: https://www.nexperia.com/product/PMEG2010ER
+      sha256: 7dd49f3039f1cbcaad55166f84565d2a0f12aba6dc6b1c1f1448e74639fa464e
 - source: ltwiki
   name: PMEG2010EA
   def: model

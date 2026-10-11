@@ -65,18 +65,12 @@ models:
   - source: kicad-spice-library
     name: DI_BZX84C18
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
-      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
+      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
   - source: kicad-spice-library
     name: DI_BZX84C18
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/zener.lib
-      sha256: 3d2df1d6cf28a21f84965a37718a2b6531092b0686919fa189ccacda5d7fc194
-  - source: ltwiki
-    name: DI_BZX84C18
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/zener.lib
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/zener.lib
       sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
   - source: ltwiki
     name: DI_BZX84C18
@@ -84,6 +78,42 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/DIODES.COM/ZENER/LIB/zener.lib
       sha256: 6a9b1f3823ca8671b8cd73d91b5565680e6e287ecafcdc8f90055614b7dd5629
+  - source: ltwiki
+    name: DI_BZX84C18
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/zener.lib
+      sha256: 8d38737d9771d4ca6d8e3394f3e18499568bacd1e4cf61cdd7b094ad337f92e3
+- source: taiwan-semi
+  name: BZX84C18
+  def: model
+  hash: d699f084f25a9fa69b0db699a426c61317f4a786
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 419903528b609420f0321bacb842284c85818e9ee498aa3420cafa5df9c7631b
+    lines:
+      BZX84C18: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  note: 'STAND-IN: model of BZX84-C18, not of BZX79C18; the equivalence is declared in data/models/wanted.yaml'
+- source: panjit
+  name: BZX84C18
+  def: subckt
+  hash: 881a9d7109990e8d1676cbd03211a4d1b831a617
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZX84C18.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 7ca8e98cc7c35539e90ef8d5b1035c70c360d9856f8a41c4ee9cc162b4e08879
+    lines:
+      BZX84C18: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  note: 'STAND-IN: model of BZX84-C18, not of BZX79C18; the equivalence is declared in data/models/wanted.yaml'
 - source: spice-model-cd
   name: BZX84C18
   def: model
@@ -181,14 +211,14 @@ models:
   - source: ltwiki
     name: BZX84C18
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BZX84C18
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BZX79A18

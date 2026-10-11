@@ -2,6 +2,137 @@ part: LF412
 kind: opamp
 priority: 3
 models:
+- source: ti
+  name: LF412/NS
+  def: subckt
+  hash: f2a1e83395a5911382a5b328670a28b076bd3f02
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM258
+    member: LF412.MOD
+    archive_sha256: 8fb21fd3324abc618a22608aa1693096886746f15bfc0985dbeaf276033eaded
+    sha256: a265c98a7b59c9ca5ccd9566cb428b61590c03804fa9b0660a16f2582ed14714
+    lines:
+      LF412/NS: [38, 122]
+    fetched: '2026-10-10'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: LF412/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: kicad-spice-library
+    name: LF412/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: kicad-spice-library
+    name: LF412/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nat_semi.lib
+      sha256: 15227be98f4559bf0b6fcabdea3c86cbd6c5f1d41d47ecf7375d001362f06a28
+  - source: kicad-spice-library
+    name: LF412_NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
+      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
+  - source: ltwiki
+    name: LF412/NS
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Bifets/lf412.mod
+      sha256: a265c98a7b59c9ca5ccd9566cb428b61590c03804fa9b0660a16f2582ed14714
+  - source: ltwiki
+    name: LF412/NS
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: LF412/NS
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Bifets/lf412.mod
+      sha256: a265c98a7b59c9ca5ccd9566cb428b61590c03804fa9b0660a16f2582ed14714
+  - source: ltwiki
+    name: LF412/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: LF412/NS
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+  - source: microcap12
+    name: LF412_NS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nation.lib
+      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+  - source: spice-model-cd
+    name: LF412/NS
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/National_Semiconductors/Spice/LF412.cir
+      sha256: 1a2c12149de09aa4997dccb9f97aca34ee2cc050616466709cb6f3b891054d3b
+  - source: kicad-spice-library
+    name: LF412N
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATJFET.LIB
+      sha256: d6bcbc7742015b04a5bafb439140aa87d077822a537c68e845e25b10c0598cc8
+- source: ti
+  name: LF412C
+  def: subckt
+  hash: 02bf52632d66498a0f74098a315cd3b0d5c5858b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SLOJ041
+    member: LF412C.301
+    archive_sha256: 3a8d7625d86efe05b4f7c4fa73e52372a24344d9a1ad28a90bac52a44863ec23
+    sha256: 90664e5fba28acfa0ff7696c88276069703f4d259b01290abd16f22524546059
+    lines:
+      LF412C: [10, 42]
+    fetched: '2026-10-10'
+  copies:
+  - source: bordodynov
+    name: LF412C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/texas.lib
+      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
+  - source: kicad-spice-library
+    name: LF412C
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Texas%20Instruments/lf412c.mod
+      sha256: b0f3a4d61799196001454cdd472f9c9f762498201a74bccb0fd8df7e4b3c671b
+  - source: ltwiki
+    name: LF412C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/texas.lib
+      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
+  - source: kicad-spice-library
+    name: LF412C_TI
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
+      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
+  - source: microcap12
+    name: LF412C_TI
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ti.lib
+      sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
 - source: spice-model-cd
   name: LF412
   def: subckt
@@ -26,19 +157,19 @@ models:
     name: LF412
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: LF412
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF412
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: LF412
     get:
@@ -47,24 +178,18 @@ models:
   - source: kicad-spice-library
     name: LF412
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF412
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: ltwiki
     name: LF412
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
-  - source: ltwiki
-    name: LF412
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: LF412
@@ -75,8 +200,14 @@ models:
   - source: ltwiki
     name: LF412
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: LF412
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: spice-model-cd
     name: LF412
@@ -128,19 +259,19 @@ models:
     name: LF412A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: LF412A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF412A
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: LF412A
     get:
@@ -149,24 +280,18 @@ models:
   - source: kicad-spice-library
     name: LF412A
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF412A
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: ltwiki
     name: LF412A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
-  - source: ltwiki
-    name: LF412A
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: LF412A
@@ -177,8 +302,14 @@ models:
   - source: ltwiki
     name: LF412A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: LF412A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: spice-model-cd
     name: LF412A
@@ -207,87 +338,6 @@ models:
       member: LIBRARY/linear.lib
       sha256: 5d5712376842d66fb67ffd85965e2bb0c4127fd76527fe92e1252ddd530526f4
 - source: spice-model-cd
-  name: LF412/NS
-  def: subckt
-  hash: f2a1e83395a5911382a5b328670a28b076bd3f02
-  type: SUBCKT
-  pins:
-  - INP
-  - INN
-  - VP
-  - VN
-  - OUT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/National_Semiconductors/Spice/LF412.cir
-    sha256: 1a2c12149de09aa4997dccb9f97aca34ee2cc050616466709cb6f3b891054d3b
-    lines:
-      LF412/NS: [38, 122]
-    fetched: '2026-09-21'
-  note: pins from comment words
-  copies:
-  - source: bordodynov
-    name: LF412/NS
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: kicad-spice-library
-    name: LF412/NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: kicad-spice-library
-    name: LF412/NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nat_semi.lib
-      sha256: 15227be98f4559bf0b6fcabdea3c86cbd6c5f1d41d47ecf7375d001362f06a28
-  - source: kicad-spice-library
-    name: LF412_NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
-      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
-  - source: ltwiki
-    name: LF412/NS
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
-  - source: ltwiki
-    name: LF412/NS
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: ltwiki
-    name: LF412/NS
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Bifets/lf412.mod
-      sha256: a265c98a7b59c9ca5ccd9566cb428b61590c03804fa9b0660a16f2582ed14714
-  - source: ltwiki
-    name: LF412/NS
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: ltwiki
-    name: LF412/NS
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Bifets/lf412.mod
-      sha256: a265c98a7b59c9ca5ccd9566cb428b61590c03804fa9b0660a16f2582ed14714
-  - source: microcap12
-    name: LF412_NS
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/nation.lib
-      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
-  - source: kicad-spice-library
-    name: LF412N
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATJFET.LIB
-      sha256: d6bcbc7742015b04a5bafb439140aa87d077822a537c68e845e25b10c0598cc8
-- source: spice-model-cd
   name: LF412
   def: subckt
   hash: 2496f5f061bac8569f66585cc7072ce68cb5f3cb
@@ -297,7 +347,7 @@ models:
   - DM2
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -308,7 +358,7 @@ models:
   - source: spice-model-cd
     name: LF412
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
 - source: spice-model-cd
   name: LF412A
@@ -320,7 +370,7 @@ models:
   - DM2
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -331,45 +381,8 @@ models:
   - source: spice-model-cd
     name: LF412A
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
-- source: microcap12
-  name: LF412C_TI
-  def: subckt
-  hash: 02bf52632d66498a0f74098a315cd3b0d5c5858b
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ti.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
-    lines:
-      LF412C_TI: [3691, 3723]
-    fetched: '2026-09-21'
-  copies:
-  - source: bordodynov
-    name: LF412C
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/texas.lib
-      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
-  - source: kicad-spice-library
-    name: LF412C
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Texas%20Instruments/lf412c.mod
-      sha256: b0f3a4d61799196001454cdd472f9c9f762498201a74bccb0fd8df7e4b3c671b
-  - source: ltwiki
-    name: LF412C
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/texas.lib
-      sha256: 011d267514db76d7e8dd8bcffcc1ba9a5288edef9dc322b5b800b777c67e4429
-  - source: kicad-spice-library
-    name: LF412C_TI
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
-      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
 - source: ltwiki
   name: LF412_NSC
   def: subckt
@@ -439,14 +452,14 @@ models:
   - source: ltwiki
     name: LF412/ON
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/on_amp.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: LF412/ON
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: kicad-spice-library
     name: LF412/MC
@@ -466,8 +479,9 @@ models:
   - source: ltwiki
     name: LF412/MC
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
-      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: LF412/MC
     get:
@@ -477,9 +491,8 @@ models:
   - source: ltwiki
     name: LF412/MC
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
-      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
+      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
   - source: microcap12
     name: LF412_MC
     get:
@@ -512,13 +525,13 @@ models:
     name: LF412C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: LF412C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF412C
@@ -529,13 +542,13 @@ models:
     name: LF412C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: LF412C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: ltwiki
   name: LF412
@@ -552,6 +565,18 @@ models:
       LF411: [1309, 1343]
       LF412: [1352, 1355]
     fetched: '2026-09-21'
+- source: kicad-spice-library
+  name: LF412M
+  def: subckt
+  hash: b3a8a35323d2ffed9b663dc62fe62451ebcc1042
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/MOTOR.LIB
+    sha256: 44f08a5cfceeb4c72d4f6e77e1eac1d108b46f7cb81dee8f3296a908b1eb53e6
+    lines:
+      LF412M: [153, 187]
+    fetched: '2026-09-14'
 - source: kicad-spice-library
   name: LF412L
   def: subckt
@@ -575,16 +600,4 @@ models:
     sha256: 0bb0c1e2ab47a36f3cc696d94f2944cb645528b29ffce4720f52863baacfc0d1
     lines:
       LF412AL: [2201, 2262]
-    fetched: '2026-09-14'
-- source: kicad-spice-library
-  name: LF412M
-  def: subckt
-  hash: b3a8a35323d2ffed9b663dc62fe62451ebcc1042
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/MOTOR.LIB
-    sha256: 44f08a5cfceeb4c72d4f6e77e1eac1d108b46f7cb81dee8f3296a908b1eb53e6
-    lines:
-      LF412M: [153, 187]
     fetched: '2026-09-14'

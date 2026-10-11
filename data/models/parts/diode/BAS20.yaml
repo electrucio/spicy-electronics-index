@@ -28,6 +28,11 @@ models:
     get:
       url: https://www.onsemi.com/download/models/lib/bas20ht1g.lib.lib
       sha256: d7550e389f45291dc4121ca88cca924b0526eeb265c872421229662f61b0496d
+  - source: onsemi
+    name: Dbas20ht1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bas20ht1g.sp2.sp2
+      sha256: 5c0029fa14ee4a64434f1d14e31a7e7f32098db5e0730530e2d19095a64ce818
 - source: onsemi
   name: Dbas20lt1
   def: model
@@ -53,6 +58,57 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_diode.lib
       sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: Dbas20lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bas20lt1.sp2
+      sha256: d88c8a9b42f36361eff65821568e78a9be295a32ecd516724585a3d3086f61f9
+  - source: onsemi
+    name: bas20lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bas20lt1.sp3
+      sha256: 4c615c56629cb68cd085b7f32d0f490962b25948b6f12cadae01868502291f58
+- source: taiwan-semi
+  name: BAS20
+  def: model
+  hash: 5072f9597c534c44e5b8f3bf7d8765b69ae40b95
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: aa0af0d81274415f2b93e6d4012c279bebcd9995880caded25956d23377b9631
+    lines:
+      BAS20: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAS20W
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c71a1b3631325ad3f01a3f7d752ad3d2d60982b0cb8617012061dfaa41a4361f
+- source: panjit
+  name: BAS20
+  def: subckt
+  hash: 3c2d37e4ee684feb62493d3c67e95bca87857360
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS20.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d79bbc6a906def9cb8e76a6260a3c41c4a3634f38afeda009fbe8fffe5dc0edf
+    lines:
+      BAS20: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS20-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS20-AU.txt
+      sha256: 2f493ad8b1ded04576a9f8709c737c8227f0e6cbdabf023737b152f3a3eba8ae
 - source: spice-model-cd
   name: BAS20
   def: model
@@ -69,13 +125,13 @@ models:
   - source: kicad-spice-library
     name: BAS20
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
   - source: kicad-spice-library
     name: BAS20
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
-      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: spice-model-cd
     name: BAS20-Z
     get:

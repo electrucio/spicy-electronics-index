@@ -3,6 +3,107 @@ kind: diode
 priority: 3
 group: schottky
 models:
+- source: nexperia
+  name: BAT42LS
+  def: subckt
+  hash: ddec46f86a51b5626373d5e952506d4b1c4b4111
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAT42LS.txt
+    sha256: 20f925c7127223a270236c56481696cd9bd729ccf07e45fabed5ef1dc2d41f57
+    lines:
+      BAT42LS: [33, 49]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BAT42W
+  def: model
+  hash: 80c3415935362efab06865eac5016e338aecec8b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 507d07a344a53911f25c3f77e44d8eca035b1735969d7e9a27bb884750c248d2
+    lines:
+      BAT42W: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAT42WS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 6b97f55976fce74a4317fc6b587d57a16385155e05f0f762ffe23f493a63436e
+- source: panjit
+  name: BAT42W
+  def: subckt
+  hash: 5d68c2fa75a20e3c2a4cd6f3d3e5bb91e6ee1fe0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAT42W.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: cebe59e3e9bcf24552605559638e5a23516b04bc2abe24d883e51ae3adc63e39
+    lines:
+      BAT42W: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAT42WS
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAT42WS.txt
+      sha256: 5f243d3f69c356123e9cbf860aaefa302a2ed25acc7802d7897aec14d51d5429
+- source: panjit
+  name: BAT42WS-AU
+  def: subckt
+  hash: 19cf11d099779552b20b5eb9388311fc84f22f56
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAT42WS-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d527426a472c7af26ec024e4a41b004accd2c2ab4a37c2ccb7aac3b5b71d8cd2
+    lines:
+      BAT42WS-AU: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAT42W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAT42W-AU.txt
+      sha256: 55af5b7a449f433fc087f222ae36081e78ede7204079fa4d58900f3737f1838b
+- source: stmicro
+  name: BAT42
+  def: model
+  hash: 84ae764172fe10cda0274c9d40e2f976d85e91e1
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAT42: [359, 361]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: BAT42
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
+      sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
+  - source: ltwiki
+    name: BAT42
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
 - source: microcap12
   name: BAT42W
   def: model
@@ -45,26 +146,6 @@ models:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
       member: standard.dio
       sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-- source: ltwiki
-  name: BAT42
-  def: model
-  hash: 84ae764172fe10cda0274c9d40e2f976d85e91e1
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
-    lines:
-      BAT42: [515, 517]
-    fetched: '2026-09-14'
-  copies:
-  - source: kicad-spice-library
-    name: BAT42
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
-      sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
 - source: kicad-spice-library
   name: BAT42
   def: model

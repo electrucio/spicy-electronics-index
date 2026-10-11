@@ -2,6 +2,72 @@ part: BZT52C12
 kind: zener
 priority: 4
 models:
+- source: nexperia
+  name: BZT52-C12
+  def: subckt
+  hash: a3de0ad4f081f08c20fce44045fb50f9bf28f36e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZT52-C12.txt
+    sha256: 668924fb21f08ddbb48f1a5fea51bbb09b86e674b9d052abe7fd74d270553101
+    lines:
+      BZT52-C12: [37, 65]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BZT52C12-G
+  def: model
+  hash: 2aaa626ae94d546ebf94229535fbbd67decd2ea0
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 6889ac5465216a931045733e09346af2faac46b4f765a9d7f6d1058de76190dc
+    lines:
+      BZT52C12-G: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BZT52C12K
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 0f7df75f8dc91d2eb098d1e5d43bbd31f5848afa32c02e0925f4eafae87dd899
+- source: taiwan-semi
+  name: BZT52C12
+  def: model
+  hash: 00cd9eceda498717c395ef1d2739ae5fe8dd5827
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 39dc4a3a3646e923af9bb6c7cdb23a2d39b8d215c093a67b9306419b0d7b194d
+    lines:
+      BZT52C12: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZT52-C12
+  def: subckt
+  hash: 2599f1d0cc572afeb9f4a40985a69b0064728283
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZT52-C12.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: c01b5d45e55ea05ef3597768b3324f0502d4da74937c545d31f4a988b69c5285
+    lines:
+      BZT52-C12: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BZT52-C12-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/BZT52-C12-AU.txt
+      sha256: 123aa4d59a652c9c301ab7d51a073b147854197e6e43fe377d22f342978c2a36
 - source: microcap12
   name: BZT52C12
   def: subckt

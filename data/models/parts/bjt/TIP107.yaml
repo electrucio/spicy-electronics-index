@@ -26,14 +26,14 @@ models:
     name: TIP107
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.txt
-      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: bordodynov-qspice
     name: TIP107
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
   - source: kicad-spice-library
     name: TIP107
     get:
@@ -42,21 +42,45 @@ models:
   - source: ltwiki
     name: TIP107
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
-  - source: ltwiki
-    name: TIP107
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/PNPdarlington.lib
       sha256: 59a95f21cebb26aebfa460323a2fbdb5ee49fb7a3b9808eb38860e29327fc152
+  - source: ltwiki
+    name: TIP107
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: microcap12
     name: tip107
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xtip107
+  def: subckt
+  hash: 6a1f58636e2086369eaf654d3c17219570a5335c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip107.sp2
+    sha256: c6bed5b1ac093f71f102f0dc5acedb7c83b475921709a094c9d689d02963ff70
+    lines:
+      Xtip107: [1, 50]
+    fetched: '2026-10-10'
+- source: onsemi
+  name: tip107
+  def: subckt
+  hash: a34d47b447abc04c8fac03e95b82209fd4479d12
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/tip107.sp3
+    sha256: 450a49032b741cac2cfbd0514dcaac994d25a998432035ae10dd38212bce42de
+    lines:
+      tip107: [1, 50]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: TIP107
   def: subckt

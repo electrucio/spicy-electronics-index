@@ -1,0 +1,49 @@
+part: MSS1260-104
+kind: inductor
+priority: 3
+models:
+- source: coilcraft
+  name: MSS1260-104_freq
+  def: subckt
+  hash: 3eeb06bd4add0e9ed8cd0f490e8de55d885f3470
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.coilcraft.com/getmedia/a4abb0cb-96fb-4566-9513-0770a933394d/CoilcraftLTAdvLib.zip
+    member: MSS1260.lib
+    archive_sha256: 391b9340179d75666082714218e4eae7e2393f2dc3d167234659170659493cf9
+    sha256: c7a8accf0722a52d0490acba4f90378348d8765d1a2ae5b4006dd885eb152f1e
+    lines:
+      MSS1260-104_freq: [1214, 1231]
+    fetched: '2026-09-20'
+- source: coilcraft
+  name: MSS1260-104_imp
+  def: subckt
+  hash: 382db19fa2da217c5441bcbebabdec6a8b0a2d52
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.coilcraft.com/getmedia/a4abb0cb-96fb-4566-9513-0770a933394d/CoilcraftLTAdvLib.zip
+    member: MSS1260.lib
+    archive_sha256: 391b9340179d75666082714218e4eae7e2393f2dc3d167234659170659493cf9
+    sha256: c7a8accf0722a52d0490acba4f90378348d8765d1a2ae5b4006dd885eb152f1e
+    lines:
+      MSS1260-104_imp: [1244, 1261]
+    fetched: '2026-09-20'
+- source: coilcraft
+  name: MSS1260-104
+  def: subckt
+  hash: 54089c242d09b12768bec3a2d94dc0a1fe91ed6a
+  type: SUBCKT
+  deps:
+  - Model1A
+  verbatim: true
+  get:
+    url: https://www.coilcraft.com/getmedia/83078e07-32c0-4803-97a6-644708a2e94d/Coilcraft_PSpiceLib.zip
+    member: Coilcraft_PSpiceLib.lib
+    archive_sha256: 1caec0f653f6d86674f5dd54cb088c3e62f32827edeb30cca126d4d549ea04ee
+    sha256: f42f67f6042cd50e563dfc4fed45f1410f64be45ebd451f8502553e349ce3de0
+    lines:
+      MSS1260-104: [32724, 32740]
+      Model1A: [81211, 81228]
+    fetched: '2026-09-20'

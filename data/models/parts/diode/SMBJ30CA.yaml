@@ -6,18 +6,6 @@ models:
 - source: vishay
   name: smbj30ca
   def: subckt
-  hash: 471bae5bcfd436a7a4ff3bdb4f92d6606a218abd
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://www.vishay.com/docs/87831/smbj30ca.txt
-    sha256: 658f05e9bde386ad17ef1a48c85aeb720720191bdc2e9c0873ebc1b18db79fc0
-    lines:
-      smbj30ca: [8, 36]
-    fetched: '2026-09-19'
-- source: vishay
-  name: smbj30ca
-  def: subckt
   hash: ef1246a83cdaee002831d92476c08879b5a9413a
   type: SUBCKT
   verbatim: true
@@ -27,6 +15,62 @@ models:
     lines:
       smbj30ca: [5, 33]
     fetched: '2026-09-19'
+- source: vishay
+  name: smbj30ca
+  def: subckt
+  hash: 471bae5bcfd436a7a4ff3bdb4f92d6606a218abd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87831/smbj30ca.txt
+    sha256: 658f05e9bde386ad17ef1a48c85aeb720720191bdc2e9c0873ebc1b18db79fc0
+    lines:
+      smbj30ca: [8, 36]
+    fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SMBJ30CA
+  def: subckt
+  hash: 37a693b7096eb144f7b7c717fb43c809752334a9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 1c7ead4285a6bea3836e6b5b86a3b7030693f263347bc2021b74de77137ef8a7
+    lines:
+      SMBJ30CA: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: stmicro
+  name: SMBJ30CA
+  def: subckt
+  hash: ea747ba0185d7457b6d3bdaa2009af4c4bc49d82
+  type: SUBCKT
+  deps:
+  - TRANSILB
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj_pspice.zip
+    member: SMBJ.lib
+    archive_sha256: 5d854e5b2fbbb3804288f0c69953e1652692188175a4fabb6584a7cff041f12b
+    sha256: f0fd64a5751d0bb7b668e9289fc91fc92000be2b1d6f0c455c8d616f7671caaf
+    lines:
+      SMBJ30CA: [329, 334]
+      TRANSILB: [67, 93]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SMBJ30CA_STM
+  def: subckt
+  hash: 8c2c86d308ee921103539926a7e22f4e91a61c2c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smbj-series-thermal-edsim-simetrix-pspice.zip
+    member: smbj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 42edb3e4ad623552356e50e9134bc03fd8338c56b478b2360712bc9249fa59e6
+    sha256: 858c9cc68721df47364f5698c06e37345339fba45805a8380594f4ede1359420
+    lines:
+      SMBJ30CA_STM: [2326, 2393]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: SMBJ30CA
   def: subckt
@@ -53,13 +97,13 @@ models:
     name: SMBJ30CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: bordodynov
     name: SMBJ30CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SMBJ30CA
@@ -80,8 +124,14 @@ models:
   - source: ltwiki
     name: SMBJ30CA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMBJ30CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMBJ30CA
@@ -92,12 +142,6 @@ models:
   - source: ltwiki
     name: SMBJ30CA
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: ltwiki
-    name: SMBJ30CA
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

@@ -2,6 +2,60 @@ part: BZT52C5V6
 kind: zener
 priority: 4
 models:
+- source: taiwan-semi
+  name: BZT52C5V6
+  def: model
+  hash: ec8e432bf9df35fb8f1c88f1c00126f7690a3749
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: b30c5598a84b3342af18cb322a88caeeed22e0b20b45059489b2b1f7d0504836
+    lines:
+      BZT52C5V6: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BZT52C5V6S
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: dbe346fd79c0d97098f2c9800dfb3cc186d352d67955e524b825edc1dc64936a
+- source: taiwan-semi
+  name: BZT52C5V6-G
+  def: model
+  hash: 441acea5cc06034e5c84396f490d90f2e722eeb3
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 45ce4f5510688015bd217c19dc97afc489f32cd134f0a62897fecfb59b555370
+    lines:
+      BZT52C5V6-G: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZT52-C5V6
+  def: subckt
+  hash: 204bbe89b7cb78982362625ab3587000e8cb32dc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZT52-C5V6.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: e49647e81d5529d4ba9c7fce481a833d1469d04a06dc62991d36e99fd41ea2a0
+    lines:
+      BZT52-C5V6: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BZT52-C5V6-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/BZT52-C5V6-AU.txt
+      sha256: 11895e9c65552c0fd6865bb7344b30313e1170178081d379f9f486b3d8d046de
 - source: microcap12
   name: BZT52C5V6
   def: subckt

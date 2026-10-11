@@ -4,7 +4,7 @@ priority: 4
 group: small_signal
 models:
 - source: diodes-inc
-  name: ZVN4306A
+  name: ZVN4306AV
   def: subckt
   hash: a883903bd0bb8262472a4ea84fc779abee8d8fd4
   type: SUBCKT
@@ -14,13 +14,24 @@ models:
   - S
   verbatim: true
   get:
-    url: https://www.diodes.com/spice/download/1809/ZVN4306A.spice.txt
-    sha256: 7586f92d96a85f9b33f70d81bc6b23d4ebb9bfb1314305a60be570c9c62d10d9
+    url: https://www.diodes.com/spice/download/1810/ZVN4306AV.spice.txt
+    sha256: 8764016b61ae72ae97afe2af58e38691d708160a79ab619ad75a47b99616943b
     lines:
-      ZVN4306A: [19, 31]
+      ZVN4306AV: [19, 31]
     fetched: '2026-09-19'
   note: pins from default order (unverified)
   copies:
+  - source: microcap12
+    name: ZVN4306AV
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/zetex.lib
+      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+  - source: diodes-inc
+    name: ZVN4306A
+    get:
+      url: https://www.diodes.com/spice/download/1809/ZVN4306A.spice.txt
+      sha256: 7586f92d96a85f9b33f70d81bc6b23d4ebb9bfb1314305a60be570c9c62d10d9
   - source: kicad-spice-library
     name: ZVN4306A
     get:
@@ -37,17 +48,6 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zvn4306a.lib
       sha256: 18cd75f71b07db30c0a5c011843ad4eff0a197f0efc0666fa7af07a17c453408
-  - source: diodes-inc
-    name: ZVN4306AV
-    get:
-      url: https://www.diodes.com/spice/download/1810/ZVN4306AV.spice.txt
-      sha256: 8764016b61ae72ae97afe2af58e38691d708160a79ab619ad75a47b99616943b
-  - source: microcap12
-    name: ZVN4306AV
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/zetex.lib
-      sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
   - source: microcap12
     name: ZVN4306A_ZX
     get:

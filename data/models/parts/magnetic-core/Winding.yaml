@@ -25,12 +25,6 @@ models:
   - source: bordodynov
     name: Winding
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Core.lib
-      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
-  - source: bordodynov
-    name: Winding
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Mutual_Ind_K_F(V)/Core.lib
       sha256: b90c98dadaa64400fd509c2cce4b79a82c5718e3bb9224795d88a2456abf62df
@@ -40,6 +34,12 @@ models:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Alternative_a_transformer/Core.lib
       sha256: dae16b179a1af6a2ba2f8b91acded73ec0f4c4db94d3e9ed4ec83f67ffd96e9b
+  - source: bordodynov
+    name: Winding
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Core.lib
+      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
   - source: kicad-spice-library
     name: Winding
     get:
@@ -48,12 +48,6 @@ models:
   - source: ltwiki
     name: Winding
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Core.lib
-      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
-  - source: ltwiki
-    name: Winding
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Mutual_Ind_K_F(V)/Core.lib
       sha256: b90c98dadaa64400fd509c2cce4b79a82c5718e3bb9224795d88a2456abf62df
@@ -63,18 +57,12 @@ models:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Alternative_a_transformer/Core.lib
       sha256: dae16b179a1af6a2ba2f8b91acded73ec0f4c4db94d3e9ed4ec83f67ffd96e9b
-- source: ltwiki
-  name: Winding
-  def: subckt
-  hash: 7bf0f2e1853e9679dbfa87229b6997b6117afb01
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/index.php?title=Transformers
-    sha256: ecf51dac3bdbbb10f8b0699b70b699903961bfaaff30cecbdc21eb9135492425
-    lines:
-      Winding: [16, 20]
-    fetched: '2026-09-14'
+  - source: ltwiki
+    name: Winding
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Core.lib
+      sha256: a5a330ed6ceb5755fd3ab3819f0e4115d2222427b275b2884503f9561ff2f47e
 - source: ltwiki
   name: Winding
   def: subckt
@@ -94,3 +82,15 @@ models:
       member: winding.asy
       archive_sha256: 1ee64925c00080519963bba711ba63df18c865ed49edda97984ab067bb4b9476
       sha256: 01db9050994a5d68d17a1ebe40dfcf603eac94c675e1afea21929532e23bfdad
+- source: ltwiki
+  name: Winding
+  def: subckt
+  hash: 7bf0f2e1853e9679dbfa87229b6997b6117afb01
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/index.php?title=Transformers
+    sha256: ecf51dac3bdbbb10f8b0699b70b699903961bfaaff30cecbdc21eb9135492425
+    lines:
+      Winding: [16, 20]
+    fetched: '2026-09-14'

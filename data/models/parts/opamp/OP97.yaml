@@ -15,10 +15,10 @@ models:
   - OUT
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
-    sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/OP97.lib
+    sha256: 3a2637e96a1996501a72fce7edf7d414259dcc6158b7abff1069be0e7dfa8ea5
     lines:
-      OP97: [16311, 16349]
+      OP97: [11, 49]
     fetched: '2026-09-21'
   note: pins from DIP-8 pin numbers (single op-amp pin-out)
   copies:
@@ -26,19 +26,19 @@ models:
     name: OP97
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: OP97
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP97
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: OP97
     get:
@@ -47,24 +47,18 @@ models:
   - source: kicad-spice-library
     name: OP97
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP97
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: ltwiki
     name: OP97
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
-  - source: ltwiki
-    name: OP97
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: OP97
@@ -75,14 +69,20 @@ models:
   - source: ltwiki
     name: OP97
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: OP97
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: spice-model-cd
     name: OP97
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/OP97.lib
-      sha256: 3a2637e96a1996501a72fce7edf7d414259dcc6158b7abff1069be0e7dfa8ea5
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
+      sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
   - source: kicad-spice-library
     name: OP97_LT
     get:
@@ -138,15 +138,15 @@ models:
   - source: ltwiki
     name: OP97
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP97
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP97
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: kicad-spice-library
     name: OP97A
     get:
@@ -196,15 +196,15 @@ models:
   - source: ltwiki
     name: OP97A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP97A
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP97A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: bordodynov
     name: OP97E
     get:
@@ -219,15 +219,35 @@ models:
   - source: ltwiki
     name: OP97E
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP97E
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP97E
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
+  - source: kicad-spice-library
+    name: OP-97A/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: OP-97A/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+  - source: kicad-spice-library
+    name: OP-97E/AD
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
+      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
+  - source: ltwiki
+    name: OP-97E/AD
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
+      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
   - source: kicad-spice-library
     name: OP97AA
     get:
@@ -238,26 +258,6 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD4.LIB
       sha256: 14cfc53c2fd4c92ba89f0cd1cb78de7f56c3b4234bb7a73b6d27fe403b33077c
-  - source: kicad-spice-library
-    name: OP-97A/AD
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
-      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
-  - source: ltwiki
-    name: OP-97A/AD
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
-      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
-  - source: kicad-spice-library
-    name: OP-97E/AD
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/anlg_dev.lib
-      sha256: 505283370bc2c5b5cb15401e3a43d58793d1598e62e1b422bb333be402ada1b9
-  - source: ltwiki
-    name: OP-97E/AD
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
-      sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
 - source: spice-model-cd
   name: OP-97F/AD
   def: subckt
@@ -292,20 +292,15 @@ models:
   - source: ltwiki
     name: OP97F
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP97F
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
-  - source: kicad-spice-library
-    name: OP97FA
+  - source: ltwiki
+    name: OP97F
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD4.LIB
-      sha256: 14cfc53c2fd4c92ba89f0cd1cb78de7f56c3b4234bb7a73b6d27fe403b33077c
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: kicad-spice-library
     name: OP-97F/AD
     get:
@@ -316,6 +311,11 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/anlg_dev.lib
       sha256: d35db6d0ae84971c8fbeea5cf543df725be973dce3bb9a4e9d881b1bf8f519ec
+  - source: kicad-spice-library
+    name: OP97FA
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/AD4.LIB
+      sha256: 14cfc53c2fd4c92ba89f0cd1cb78de7f56c3b4234bb7a73b6d27fe403b33077c
 - source: spice-model-cd
   name: OP97
   def: subckt
@@ -326,7 +326,7 @@ models:
   - DM2
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -337,7 +337,7 @@ models:
   - source: spice-model-cd
     name: OP97
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
 - source: bordodynov
   name: OP97E

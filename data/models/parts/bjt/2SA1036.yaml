@@ -3,20 +3,33 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
-  name: 2SA1036K
+- source: rohm
+  name: Q2SA1036K
   def: model
   hash: 29494b70e70277edeb9cfac14ce738eb1a9c968a
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sa1036k_ltspice.zip
+    member: 2sa1036k_ltspice/2sa1036k_ltspice.lib
+    archive_sha256: 605ae5ca49cb4d448b17269c1a65e66ffa46e13d23d826ba12ae224224fd5dc7
+    sha256: 71a49ab8118674eda7e9fc836250dd1eba1ae7b9553f2e8ba0bfb8899fb6595f
     lines:
-      2SA1036K: [5, 30]
-    fetched: '2026-09-21'
+      Q2SA1036K: [3, 28]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SA1036K
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SA1036K
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sa1036k_spice.zip
+      member: 2sa1036k.lib
+      sha256: 71a49ab8118674eda7e9fc836250dd1eba1ae7b9553f2e8ba0bfb8899fb6595f
 - source: bordodynov
   name: 2SA1036K
   def: model
@@ -51,6 +64,12 @@ models:
   - source: ltwiki
     name: 2SA1036K
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA1036K
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -60,12 +79,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SA1036K
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SA1036K
   def: model

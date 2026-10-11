@@ -20,18 +20,6 @@ models:
   - source: ltwiki
     name: D1N4001
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
-  - source: ltwiki
-    name: D1N4001
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
-      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
-  - source: ltwiki
-    name: D1N4001
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
       sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
@@ -40,6 +28,18 @@ models:
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+  - source: ltwiki
+    name: D1N4001
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Reg_Vref/lm/723Reg-DCsupply/Models.lib
+      sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
+  - source: ltwiki
+    name: D1N4001
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Reg&Vref/lm/723Reg-DCsupply/Models.lib
       sha256: d93ad29c658c801ebb3a0e5e1f8155084f689ddcd56791d87b61c8436b5851b8
   - source: microcap12
     name: D1n4001rl
@@ -53,6 +53,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: D1n4001rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n4001rl.sp2
+      sha256: 33e07a541fae6223496a9cd9419527bc9e08837db5f9328e8e883c9c10cf1d3a
+  - source: onsemi
+    name: 1n4001rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n4001rl.sp3
+      sha256: e40716b7e5e3fee588c113185446d4fcbd333f0d08f00392bbda9cb2f7afb6cc
 - source: onsemi
   name: D1N4001
   def: model
@@ -60,7 +70,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -87,9 +97,37 @@ models:
   - source: onsemi
     name: D1N4001
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: mcc
+  name: 1N4001
+  def: subckt
+  hash: 95b49521e7f4037bc7ed94f784230b9b6d996445
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4001GP.zip
+    member: 1N4001.sp
+    archive_sha256: 7c188fc86ccf6a5f8997df75121f888220dc1a46c936dedff33ed99143384825
+    sha256: 709594fbf06ed1ae3cafa189546f7dcc5bbf5f73fc8052f626a1f178700a71c0
+    lines:
+      1N4001: [4, 16]
+    fetched: '2026-10-10'
+- source: mcc
+  name: 1N4001GP
+  def: subckt
+  hash: 960cd71a3a1753f0945746da12d58afe5262d168
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4001GP.zip
+    member: 1N4001GP.sp
+    archive_sha256: 7c188fc86ccf6a5f8997df75121f888220dc1a46c936dedff33ed99143384825
+    sha256: 619c2c7d6b502f82f132a6bf37371eb9bb1f7b4e4d2270e2feaae98f8a587666
+    lines:
+      1N4001GP: [4, 16]
+    fetched: '2026-10-10'
 - source: microcap12
   name: 1N4001G
   def: model
@@ -140,20 +178,6 @@ models:
 - source: microcap12
   name: 1N4001
   def: model
-  hash: 8f0d882306bd6a30e7490816eace06d1a0021220
-  type: D
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/UC1845_BOOST.CIR
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 8c36885e3412332013fcdb9ca11a62418b776836f1262267604164887c19f813
-    lines:
-      1N4001: [979, 980]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: 1N4001
-  def: model
   hash: cb3ae45778425b37a5405a4372bed4b34196d771
   type: D
   verbatim: true
@@ -164,6 +188,20 @@ models:
     sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
     lines:
       1N4001: [233, 234]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: 1N4001
+  def: model
+  hash: 8f0d882306bd6a30e7490816eace06d1a0021220
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: DATA/UC1845_BOOST.CIR
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 8c36885e3412332013fcdb9ca11a62418b776836f1262267604164887c19f813
+    lines:
+      1N4001: [979, 980]
     fetched: '2026-09-21'
 - source: qspice
   name: 1N4001
@@ -235,6 +273,11 @@ models:
   - source: kicad-spice-library
     name: 1N4001
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: kicad-spice-library
+    name: 1N4001
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard3.dio
       sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
   - source: kicad-spice-library
@@ -242,17 +285,6 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
       sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
-  - source: kicad-spice-library
-    name: 1N4001
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: 1N4001
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: 1N4001
     get:
@@ -265,6 +297,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: 1N4001
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: groups-io
   name: 1N4001G
   def: model
@@ -333,14 +371,14 @@ models:
   - source: ltwiki
     name: D1N4001
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: D1N4001
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: 1N4001
@@ -366,14 +404,14 @@ models:
   - source: ltwiki
     name: 1N4001
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N4001
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: D1N4001

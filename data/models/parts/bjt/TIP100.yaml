@@ -35,21 +35,39 @@ models:
   - source: ltwiki
     name: TIP100
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
-    name: TIP100
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/NPNdarlington.lib
       sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
+    name: TIP100
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
   - source: microcap12
     name: tip100
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xtip100
+  def: subckt
+  hash: f8a2b4c2274d065ff9e2628de0f524882e598eb5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip100.sp2
+    sha256: 76db3f00c9e760aa2647bc7b30a6f3de771a3d28af087f9be16de521f1de07a2
+    lines:
+      Xtip100: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip100
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip100.sp3
+      sha256: 5979137676bd120bd22ee183e4571b55cb5e8292e5d7ca38ca126f8e1c1d5c57
 - source: kicad-spice-library
   name: TIP100
   def: subckt

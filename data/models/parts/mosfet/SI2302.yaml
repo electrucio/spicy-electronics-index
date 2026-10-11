@@ -3,6 +3,19 @@ kind: mosfet
 priority: 3
 group: small_signal
 models:
+- source: nexperia
+  name: SI2302DS
+  def: subckt
+  hash: c8c34c43e571cae76cd21482f4fa965aa57a23ef
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/SI2302DS
+    sha256: 57d7fda37494ad19663ebc1f8552349c3d593a5b520c93f575f7ffca4a1db431
+    lines:
+      SI2302DS: [24, 86]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: vishay
   name: Si2302ADS
   def: subckt
@@ -46,6 +59,72 @@ models:
     fetched: '2026-09-19'
     note: 'MOSFETs, PSpice Models (*.txt): Si2302CDS, NMOS, PMOS, DBD, RTEMP'
   note: pins from names
+- source: vishay
+  name: Si2302ADS
+  def: subckt
+  hash: c84ccb5b1ab82d5c5be8b5e5b7cdcc9c84328bf5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/76812/si2302ad.txt
+    sha256: 862b0602325c818f170037f55d4d831f93b75f12903624d9edf206cd653f927e
+    lines:
+      Si2302ADS: [3, 28]
+    fetched: '2026-10-10'
+- source: vishay
+  name: Si2302CDS
+  def: subckt
+  hash: 818dac22f966b6bf9bac1254c1abad1604eda365
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/68507/si2302cd.txt
+    sha256: bd54704d15c3c3ee9d7fff7f2bfd77719b2cf2e0930ffc459215ddac7150bb63
+    lines:
+      Si2302CDS: [7, 35]
+    fetched: '2026-10-10'
+- source: mcc
+  name: SI2302A
+  def: subckt
+  hash: ea32284d05470f948d612eb53492cb63c77645ad
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2302A.zip
+    member: SI2302A.txt
+    archive_sha256: bd8760fb49ffc991d68902c6154aa3968596f5960f9d3ab6f760ae11a8ccf3ae
+    sha256: b3729ec55ec3f611318f42e15250d73bc3b7c042cdf6e23016799dabbe0a44f5
+    lines:
+      SI2302A: [8, 31]
+    fetched: '2026-10-10'
+- source: mcc
+  name: SI2302
+  def: subckt
+  hash: 9e29f088b66e9ea650dd2f323ad118329d93ae78
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2302B.zip
+    member: SI2302.txt
+    archive_sha256: faaff71b7971229f647290f5d9069074744da32e850d32f888cb650610792d0f
+    sha256: 5623c93d1de580d3bf4b2de6bd332076893032fe051d4596716b36e661138b91
+    lines:
+      SI2302: [8, 29]
+    fetched: '2026-10-10'
+- source: mcc
+  name: SI2302B
+  def: subckt
+  hash: 6cb96fb5f2f55c01517116a970cdc068093a5c9a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2302B.zip
+    member: SI2302B.txt
+    archive_sha256: faaff71b7971229f647290f5d9069074744da32e850d32f888cb650610792d0f
+    sha256: 84629131b5466aa1889dbdecaad7f49c13eed3fd0653451fce2e39a6e5123763
+    lines:
+      SI2302B: [7, 28]
+    fetched: '2026-10-10'
 - source: microcap12
   name: si2302n_SI
   def: subckt

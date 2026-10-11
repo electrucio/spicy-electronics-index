@@ -10,23 +10,25 @@ models:
   type: PNP
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/tip32b.lib
-    sha256: 059c9aec7eaf5151218eeb81cd6adf1ab2f24171bcaaf1d4769278071ea7ed52
+    url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
+    member: nud4001p.lib
+    archive_sha256: 31a7f1aeea7036a735053b6565f2c2cb65895fbe1a972826cb0f693fb6dfe648
+    sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
     lines:
-      Qtip32b: [12, 22]
+      Qtip32b: [4, 14]
     fetched: '2026-09-19'
   copies:
   - source: ltwiki
     name: Qtip32b
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: ltwiki
     name: Qtip32b
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: microcap12
     name: Qtip32b
@@ -43,9 +45,18 @@ models:
   - source: onsemi
     name: Qtip32b
     get:
-      url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
-      member: nud4001p.lib
-      sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
+      url: https://www.onsemi.com/download/models/lib/tip32b.lib
+      sha256: 059c9aec7eaf5151218eeb81cd6adf1ab2f24171bcaaf1d4769278071ea7ed52
+  - source: onsemi
+    name: Qtip32b
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip32b.sp2
+      sha256: db10a5d013b7800f96453360b164378c75037f0f8bcd25c14661d8e9bc2375c0
+  - source: onsemi
+    name: tip32b
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip32b.sp3
+      sha256: 133073aa88848aac1d23ede35b49a2cbf4017b39e5d7221e6259c0f16e5006fa
 - source: groupsio-ltspice
   name: TIP32B
   def: model

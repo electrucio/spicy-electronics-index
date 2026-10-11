@@ -3,6 +3,89 @@ kind: diode
 priority: 3
 group: silicon_signal
 models:
+- source: nexperia
+  name: BAV21
+  def: model
+  hash: 4a2c47a7b0500fd86e0bd1ea59bfbc9512eb353f
+  type: D
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAV21
+    sha256: 19cf5f16c837854176cea2023837f3af2b2b2c8351b2da901915fddaac41316a
+    lines:
+      BAV21: [38, 49]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: bordodynov-qspice
+    name: BAV21
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/KT-Cordell models.txt
+      sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
+- source: taiwan-semi
+  name: BAV21W
+  def: model
+  hash: ea40c08fcbf9824fd4a12dc787b4d2ecd2e287b8
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: b836a8fddb2f80257915865b54c91c7ddfbc946937a0b994048075b298e2384f
+    lines:
+      BAV21W: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAV21WS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 4cc17845afcae570cb0e729ef6ae7513fb669dfb5664671faa5f6fa5c0995698
+  - source: taiwan-semi
+    name: BAV21WS-G
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 8c342c58bacd7422037b2032668dbebc372bf390204253288153e03df64322e9
+  - source: taiwan-semi
+    name: BAV21W-G
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 3c099bd011c89e84806a8c0a99543ef6ed101e3e920f970b3d3de5c3a56df55e
+- source: panjit
+  name: BAV21W
+  def: subckt
+  hash: e7aec4dd7755fd35d77ecdc873a0dd57e9fd7c5c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV21W.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 1160189535d41fd86c6ed9e7e64d19a26fb19d03b85a2b98409114066d9df322
+    lines:
+      BAV21W: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAV21WS
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV21WS.txt
+      sha256: d317c90dd7b117302231cfe81489412fb7dfefa7a2fa1a87f020246ea82ec490
+  - source: panjit
+    name: BAV21WS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV21WS-AU.txt
+      sha256: dedd13a3305ee7da89448b992c60f0e80cca4238f32e74fc7ceb4185b1244546
+  - source: panjit
+    name: BAV21W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV21W-AU.txt
+      sha256: d2793ebe82182b65e426fb81db60cb7b79661337185a3bb1d4adbc1976a7c3b5
 - source: microcap12
   name: BAV21W
   def: model
@@ -50,20 +133,6 @@ models:
     lines:
       BAV21: [205, 206]
     fetched: '2026-09-21'
-- source: bordodynov-qspice
-  name: BAV21
-  def: model
-  hash: 4a2c47a7b0500fd86e0bd1ea59bfbc9512eb353f
-  type: D
-  verbatim: true
-  get:
-    url: https://disk.yandex.ru/d/71M79VuY5sOWew
-    member: QSPICE/KT-Cordell models.txt
-    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
-    sha256: d5673436d486b73461b3ac8f70a4f439351ea4518bb3ba4acc7677caa5292434
-    lines:
-      BAV21: [397, 408]
-    fetched: '2026-09-29'
 - source: groups-io
   name: BAV21W
   def: model

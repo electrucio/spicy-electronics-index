@@ -27,14 +27,14 @@ models:
     name: irf740lc
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf740lc.spi
-      sha256: 3dbc23f0aff0960a42676efb5e4b876015679762c12fa569dc1bb10abfa47da5
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf740lc.spi
+      sha256: fadb37a781db8d1674193eeeb9d5de306b433cd4ed41d24c635d40d38a638770
   - source: bordodynov
     name: irf740lc
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irf740lc.spi
-      sha256: fadb37a781db8d1674193eeeb9d5de306b433cd4ed41d24c635d40d38a638770
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf740lc.spi
+      sha256: 3dbc23f0aff0960a42676efb5e4b876015679762c12fa569dc1bb10abfa47da5
   - source: kicad-spice-library
     name: irf740lc
     get:
@@ -43,8 +43,8 @@ models:
   - source: ltwiki
     name: irf740lc
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf740lc.spi
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf740lc.spi
       sha256: 3dbc23f0aff0960a42676efb5e4b876015679762c12fa569dc1bb10abfa47da5
   - source: ltwiki
     name: irf740lc
@@ -55,8 +55,8 @@ models:
   - source: ltwiki
     name: irf740lc
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf740lc.spi
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf740lc.spi
       sha256: 3dbc23f0aff0960a42676efb5e4b876015679762c12fa569dc1bb10abfa47da5
   - source: kicad-spice-library
     name: irf740lc_IR
@@ -78,18 +78,6 @@ models:
       IRF740: [621, 625]
     fetched: '2026-09-21'
 - source: spice-model-cd
-  name: IRF740
-  def: subckt
-  hash: 5d2a4c159891527e49b5aeee651993589e262ce2
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
-    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
-    lines:
-      IRF740: [362, 369]
-    fetched: '2026-09-21'
-- source: spice-model-cd
   name: IRF740LC
   def: subckt
   hash: 5c4bd4153be1102218aa37b770ea32f0326a558f
@@ -100,6 +88,18 @@ models:
     sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
     lines:
       IRF740LC: [402, 409]
+    fetched: '2026-09-21'
+- source: spice-model-cd
+  name: IRF740
+  def: subckt
+  hash: 5d2a4c159891527e49b5aeee651993589e262ce2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/MOSFET.LB
+    sha256: 9287b7f0b7ae8ab0fa02300dfe2bdbf54cd76d2720f610592fdc5fcb2528d29b
+    lines:
+      IRF740: [362, 369]
     fetched: '2026-09-21'
 - source: microcap12
   name: IRF740
@@ -162,13 +162,9 @@ models:
   - source: ltwiki
     name: IRF740_
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: IRF740_
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: IRF740_
     get:
@@ -178,9 +174,13 @@ models:
   - source: ltwiki
     name: IRF740_
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF740_
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: groupsio-ltspice
   name: IRF740LC
   def: model
@@ -216,13 +216,9 @@ models:
   - source: ltwiki
     name: IRF740LC
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: IRF740LC
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: IRF740LC
     get:
@@ -232,9 +228,13 @@ models:
   - source: ltwiki
     name: IRF740LC
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF740LC
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: groupsio-ltspice
   name: IRF740
   def: model
@@ -291,14 +291,14 @@ models:
   - source: ltwiki
     name: IRF740
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.mos
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
       sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: IRF740
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.mos
       sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
 - source: ltwiki
   name: IRF740

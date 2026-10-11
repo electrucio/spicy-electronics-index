@@ -22,6 +22,42 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: ES2D
+  def: subckt
+  hash: a8a39c91ac70a1f6b147e099a85d6b70c0cef2e7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/ES2D.txt
+    sha256: ebe03e7b519e23017ac07e1f91474e148dfd396d7967c5a606fdba042d7b577a
+    lines:
+      ES2D: [37, 66]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: ES2DP
+  def: subckt
+  hash: 52cabce4a3e6f00002d683ddf0b6ca92743ed7f9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/ES2DP.txt
+    sha256: 36bfa44c10256716b7e42192e97896c8de7765aec516589b28fa39008c786677
+    lines:
+      ES2DP: [38, 67]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: ES2DVR
+  def: subckt
+  hash: aecdeae0ccb1eb47e2be52ce297600ba8b5fe43d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/ES2DVR.txt
+    sha256: efaaeeb71d100b90162b74400ab82695197b448022ad1d7338085034f7b7f305
+    lines:
+      ES2DVR: [38, 67]
+    fetched: '2026-10-10'
 - source: vishay
   name: es2d
   def: model
@@ -35,6 +71,118 @@ models:
       es2d: [7, 10]
     fetched: '2026-09-19'
     note: 'Ultrafast Recovery, PSpice Models (*.txt): es2d'
+- source: taiwan-semi
+  name: ES2DFSH
+  def: model
+  hash: e6ab428b8cd8e5341d762518591bc3c7386cb732
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: c1784db13de9211bcf429f4f77a506e5f429feb3deb295f25862310bb89956c7
+    lines:
+      ES2DFSH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES2DAL
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 596d96ae8beb32b154f7fb5a9e796a51209bc8956e3583c6c5a3eab82be3842a
+  - source: taiwan-semi
+    name: ES2DALH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 4cad1da70f071acb7a64bda25d45d98b6f93a83b9a0fa5a3f0113ed3aec3e774
+  - source: taiwan-semi
+    name: ES2DFS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c67b2913cf1064db68154679770bb4ee1ab8a0d573eb77d25af5f2efb3eb8ba8
+- source: taiwan-semi
+  name: ES2D
+  def: model
+  hash: a0ec69377c3c66ccfc4857c2668b9c9f1282f525
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8996278f76903fb989afc44b6c6d9d4c06eadc7efb788e99629fdee77906a8e1
+    lines:
+      ES2D: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES2DH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 65c93ff2952de73cbc4e6a2c735880b1f84d704ca17922b576f057a9471162da
+- source: taiwan-semi
+  name: ES2DA
+  def: model
+  hash: 150a7b6523a916f195eb20fd16d1deced820df63
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: f5302441243bdcdca2aae288c6d4a813301f67349c2159c2b7eb7595a9f1712e
+    lines:
+      ES2DA: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES2DAH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: cb0547e82eb1620d43cd9cf385ba0883eda500b916be01b5c7c583a6bc21811b
+- source: taiwan-semi
+  name: ES2DV
+  def: model
+  hash: a5c7a5a81a034f47327e52c1106ab16281f47b02
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 6794d245ebfdf43b058b25f19c88b892bcad2d98bad110b575b677095a379885
+    lines:
+      ES2DV: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES2DVH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 7b4f53e25e1f02829349ccfcdbd40482ec6f300cf8678fe5a3e5291decde9546
+- source: taiwan-semi
+  name: ES2DAF-T
+  def: model
+  hash: 24a5fbb50cb4ae0a31141ba458e8c8063018c8c6
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 775e8857535c5cecd133f87c877f0732e34d042ab3f8a087517dc63353269415
+    lines:
+      ES2DAF-T: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: ES2DFL
+  def: model
+  hash: 010cd15d50449d7f7bf3bf280c11b3804cf34ac0
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 28712974b7b88787c67c636acd51e985fbb45ad7a0be3fe11494a0811a50eacd
+    lines:
+      ES2DFL: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: ES2D
   def: model

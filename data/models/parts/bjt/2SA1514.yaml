@@ -3,20 +3,33 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
-  name: 2SA1514K
+- source: rohm
+  name: Q2SA1514K
   def: model
   hash: 10197c9ffc0fe0976f27046a570470cac2b4fd26
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sa1514k_ltspice.zip
+    member: 2sa1514k_ltspice/2sa1514k_ltspice.lib
+    archive_sha256: 5433b30f5cc2930d2f853977f8c98d064e4839d2dd2b179e2cfd657fcbaeef86
+    sha256: f4885bed015b8356c4a98c9e0a956d294f4d2741cb84427addf156b196548e3e
     lines:
-      2SA1514K: [90, 114]
-    fetched: '2026-09-21'
+      Q2SA1514K: [3, 27]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SA1514K
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SA1514K
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sa1514k_spice.zip
+      member: 2sa1514k.lib
+      sha256: f4885bed015b8356c4a98c9e0a956d294f4d2741cb84427addf156b196548e3e
 - source: bordodynov
   name: 2SA1514K
   def: model
@@ -51,6 +64,12 @@ models:
   - source: ltwiki
     name: 2SA1514K
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA1514K
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -60,12 +79,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SA1514K
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SA1514K
   def: model

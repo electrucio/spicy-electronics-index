@@ -15,21 +15,33 @@ models:
     lines:
       DTA115TE: [1, 30]
     fetched: '2026-09-19'
-- source: microcap12
-  name: DTA115TE
+  copies:
+  - source: onsemi
+    name: XDTA115TE
+    get:
+      url: https://www.onsemi.com/download/models/sp2/dta115te.sp2
+      sha256: 9a22fc18b68256269c885a73ab4eb3849cf9343ee524a331612345265cb6353a
+- source: rohm
+  name: DTA115TM
   def: subckt
   hash: 6c4ed9f08fe5950d71d43acc54d6206c06e28150
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta115tm_ltspice.zip
+    member: dta115tm_ltspice/dta115tm_ltspice.lib
+    archive_sha256: def9e90e8d7f772497625c3013becb3a99a1c2f965939aaed81073aa2fcf9965
+    sha256: 8ba44d579b8a1cadcef75e8e4c01f2f8a2ad419efd272d86d8db83efbf09b6a5
     lines:
-      DTA115TE: [26852, 26883]
-    fetched: '2026-09-21'
+      DTA115TM: [5, 36]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTA115TE
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
   - source: microcap12
     name: DTA115TKA
     get:
@@ -42,9 +54,27 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA115TM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta115tm_spice.zip
+      member: dta115tm.lib
+      sha256: 8ba44d579b8a1cadcef75e8e4c01f2f8a2ad419efd272d86d8db83efbf09b6a5
   - source: microcap12
     name: DTA115TUA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA115TUA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta115tua_spice.zip
+      member: dta115tua.lib
+      sha256: 4257a7f48c311e24282b93283f2b0ab800844eb02e8fd560fd67f06e3a4ce055
+  - source: rohm
+    name: DTA115TUA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta115tua_ltspice.zip
+      member: dta115tua_ltspice/dta115tua_ltspice.lib
+      sha256: 4257a7f48c311e24282b93283f2b0ab800844eb02e8fd560fd67f06e3a4ce055

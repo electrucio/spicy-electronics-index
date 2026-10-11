@@ -48,6 +48,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qmmbt5551lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt5551lt1.sp2
+      sha256: 8bbc50d3ed54e8e53a8fb3a4df6c0376e875b49d928573574d871188bf0896c2
+  - source: onsemi
+    name: mmbt5551lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt5551lt1.sp3
+      sha256: 0ad31ef50b91add2062d3cbd5bf2ef8f79e7479b3e7a3289a2a32d3b5fcb94f9
 - source: diodes-inc
   name: MMBT5551
   def: model
@@ -72,6 +82,28 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/DiodesInc_BJT.lib
       sha256: ac818db38211ec4c269bfe0d996ed3f05dcdcf6317d97f887ab018ffd5a50a70
+- source: panjit
+  name: MMBT5551
+  def: subckt
+  hash: cf558e75528fdd22531ff5faf031c37b6e4bd99e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT5551.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: cfc749f4e55b12fbd3841dd732cd12fe0fce390ae1ff3f620793d2c3c5951385
+    lines:
+      MMBT5551: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBT5551-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBT5551-AU.txt
+      sha256: a65aa2b779663a9b86cfc7e9e2a17709c0d676ab28543f496e0cb83489388f4d
 - source: qspice
   name: MMBT5551
   def: model

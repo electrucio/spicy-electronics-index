@@ -4,6 +4,29 @@ priority: 3
 group: listed
 models:
 - source: onsemi
+  name: bcw30lt1
+  def: model
+  hash: 74ea9e91bd6fbf837f42ba201e0bc21abe986e92
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/bcw30lt.sp3
+    sha256: 48de5ad65f22bdfbf39b396820cac8ec33e8d82da7d57fef594cb412a113a037
+    lines:
+      bcw30lt1: [14, 24]
+    fetched: '2026-09-21'
+  copies:
+  - source: onsemi
+    name: Qbcw30lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bcw30lt.sp2
+      sha256: 98331bd84a93173d4a080d7fd8b1326f43fc8e98565c581b28cbd6b73d587b35
+  - source: onsemi
+    name: Qbcw30lt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/bcw30lt.lib
+      sha256: fd7edb6bc2b886fdcfa983e28b5c6395d0bc4d3db6601f5468131eb8e8963a4f
+- source: onsemi
   name: BCW30
   def: model
   hash: 4489571e2777e8b0e18c5d9ddb983d62f40c15d8
@@ -22,18 +45,18 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: onsemi
-  name: bcw30lt1
-  def: model
-  hash: 74ea9e91bd6fbf837f42ba201e0bc21abe986e92
-  type: PNP
+- source: nexperia
+  name: BCW30
+  def: subckt
+  hash: 23642e672ff62654db8d5ca8bc2f91d1a22e1bc8
+  type: SUBCKT
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/sp3/bcw30lt.sp3
-    sha256: 48de5ad65f22bdfbf39b396820cac8ec33e8d82da7d57fef594cb412a113a037
+    url: https://assets.nexperia.com/documents/spice-model/BCW30.txt
+    sha256: 54401c292e0432b0d6eaa957072d831d1f95359547ca3c78cb386ec2fd1cd15a
     lines:
-      bcw30lt1: [14, 24]
-    fetched: '2026-09-21'
+      BCW30: [28, 69]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: QBCW30
   def: model

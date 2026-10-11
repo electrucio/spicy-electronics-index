@@ -26,14 +26,14 @@ models:
     name: bd680
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.txt
-      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
+      member: QSPICE/PNPdarlington.lib
+      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
   - source: bordodynov-qspice
     name: bd680
     get:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/PNPdarlington.lib
-      sha256: 9fd13c60ed7d52561e062cddcedb28989feb03631abf73d57c95c07beae6a586
+      member: QSPICE/PNPdarlington.txt
+      sha256: ac9748c14501e190d73f832103db941171aa4f1a9de6d5f04a6a9af8784a456a
   - source: kicad-spice-library
     name: bd680
     get:
@@ -62,3 +62,31 @@ models:
     get:
       url: https://www.onsemi.com/download/models/lib/bd680a.lib
       sha256: 1311b34c3380e586857d226c322cea769c2eec1396a55f007464c7dc516d026f
+- source: onsemi
+  name: Xbd680
+  def: subckt
+  hash: 62510e2b6cf2c55724fbfdfbad547c9c3a8f1c1b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/bd680.sp2
+    sha256: aac3a6fe513cb5c6e3ff8e37c59dedbd4e9ebf72862c5a0bc2f9ae0fac3aa533
+    lines:
+      Xbd680: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: bd680
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bd680.sp3
+      sha256: a4b35f13eb7c83ded324e9e2edebeae2f7f23bfc76a3412006ea13d82fd491ce
+  - source: onsemi
+    name: Xbd680a
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bd680a.sp2
+      sha256: 114c1c1d9b32f754bc638cc61ad52f6eeddf2a7dc18b87e1a9fc5adff7dcfd21
+  - source: onsemi
+    name: bd680a
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bd680a.sp3
+      sha256: a03b16d78d8af45ce20fa6f603f6bb25e593c7fb8236f47de40508c5241c5176

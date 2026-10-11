@@ -20,6 +20,24 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): PMEG2010AEH (.subckt 1 2), PMEG2010AEH (D .model)'
   note: 'found under the alias PMEG2010A; same code also in: ltwiki; pins from comment words'
+- source: nexperia
+  name: PMEG2010AEB
+  def: subckt
+  hash: 27049635d18b9ddb20e5911be058c18ad47f7523
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2010AEB.txt
+    sha256: e622a19280ed65c07ddca5f1ee3f064a7d46eaa1e763fba89fc57164a766ceaf
+    lines:
+      PMEG2010AEB: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMEG2010AEB
+    get:
+      url: https://www.nexperia.com/product/PMEG2010AEB
+      sha256: 19832f988018d6a8bdd95e306ef83d6a08c126c4f42aa93da01c76b989fd21de
 - source: microcap12
   name: PMEG2010AEB
   def: subckt
@@ -70,14 +88,14 @@ models:
     name: PMEG2010AEB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: PMEG2010AEB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: PMEG2010AEB
     get:
@@ -98,25 +116,25 @@ models:
   - source: kicad-spice-library
     name: PMEG2010AEB
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
+      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
   - source: kicad-spice-library
     name: PMEG2010AEB
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
-      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: PMEG2010AEB
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: PMEG2010AEB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: PMEG2010AEB
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: PMEG2010AEB
     get:
@@ -132,9 +150,9 @@ models:
   - source: ltwiki
     name: PMEG2010AEB
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: groups-io
   name: PMEG2010AEB
   def: model
@@ -142,45 +160,34 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
-    sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
     lines:
-      PMEG2010AEB: [79, 79]
+      PMEG2010AEB: [8136, 8136]
     fetched: '2026-10-10'
   copies:
   - source: groups-io
     name: PMEG2010AEB
     get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
+      sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+  - source: groups-io
+    name: PMEG2010AEB
+    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio
       sha256: 7a8c775b562871d34029ca77fefa3188c91dc2e1ce4d25979a317f653d32d8b3
-  - source: groups-io
-    name: PMEG2010AEB
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: groups-io
-    name: PMEG2010AEB
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: kicad-spice-library
-    name: PMEG2010AEB
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
   - source: kicad-spice-library
     name: PMEG2010AEB
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
       sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
+  - source: kicad-spice-library
     name: PMEG2010AEB
     get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
   - source: ltwiki
     name: PMEG2010AEB
     get:
@@ -193,6 +200,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
       sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: PMEG2010AEB
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: ltwiki
   name: PMEG2010AEB
   def: model

@@ -4,6 +4,24 @@ priority: 4
 group: schottky
 models:
 - source: onsemi
+  name: murs360t3
+  def: model
+  hash: 16dcf1b5eaed0a8bb2bd808949ae38140adca8c0
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/murs360t3.sp3
+    sha256: 03d06f99b117e03019a10fa24a0a203f130af983463a8866be45f46efa9f496b
+    lines:
+      murs360t3: [14, 18]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: murs360t3_ON
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/onsemi.lib
+      sha256: ab36300f668bd5cba477d9d9d5c9f2cd9b6cf3535b5988bf1643121ac05899d4
+- source: onsemi
   name: Dmurs360t3
   def: model
   hash: c8ca6724c0c27fb4243603d3e7545228edf7adec
@@ -46,6 +64,18 @@ models:
     lines:
       murs360: [7, 10]
     fetched: '2026-09-19'
+- source: vishay
+  name: murs360
+  def: model
+  hash: 14e7882b7caf236af4732baae46b033ddc8c14bb
+  type: D
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/87276/_p_murs360.txt
+    sha256: 7f2b8fa226ccd09272e324fabb11743d078c629f89f5e6e76f55a6e37d1c9589
+    lines:
+      murs360: [4, 7]
+    fetched: '2026-10-10'
 - source: microcap12
   name: murs360
   def: model
@@ -60,16 +90,3 @@ models:
     lines:
       murs360: [8294, 8297]
     fetched: '2026-09-21'
-- source: kicad-spice-library
-  name: murs360t3_ON
-  def: model
-  hash: 16dcf1b5eaed0a8bb2bd808949ae38140adca8c0
-  type: D
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/onsemi.lib
-    sha256: ab36300f668bd5cba477d9d9d5c9f2cd9b6cf3535b5988bf1643121ac05899d4
-    lines:
-      murs360t3_ON: [3314, 3318]
-    fetched: '2026-09-14'
-    note: git clone --depth 1, commit a868895

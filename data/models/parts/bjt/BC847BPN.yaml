@@ -3,6 +3,88 @@ kind: bjt
 priority: 3
 group: matched_pairs
 models:
+- source: nexperia
+  name: BC847BPN_NPN
+  def: subckt
+  hash: c898aa1e28e5d398a5b0dd76d5b01c43e0e9b126
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847BPN.txt
+    sha256: 6d104737dc876e6691967a216f0d60cd4ded52d99084f1c9d10f9d5aeca4975a
+    lines:
+      BC847BPN_NPN: [33, 91]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC847BPN_Q_NPN
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC847BPN-Q.txt
+      sha256: 3b19a37f22dfe7a1aa518bb326c2c19f62eeb3e46db9c00beb8c2ea7eca3e438
+- source: nexperia
+  name: BC847BPN_PNP
+  def: subckt
+  hash: e266b375f05e0c89b73bf39292b3c089988a75e0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847BPN.txt
+    sha256: 6d104737dc876e6691967a216f0d60cd4ded52d99084f1c9d10f9d5aeca4975a
+    lines:
+      BC847BPN_PNP: [93, 151]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC847BPN_Q_PNP
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC847BPN-Q.txt
+      sha256: 3b19a37f22dfe7a1aa518bb326c2c19f62eeb3e46db9c00beb8c2ea7eca3e438
+- source: nexperia
+  name: BC847BPNH_NPN
+  def: subckt
+  hash: 5344ded674c1fccd76eadd4bc777f2fc830322e4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847BPNH.txt
+    sha256: 17575b8446bf0a16f92a174bbcbc7e4fa10ef207534c65df2b21e164196dfffb
+    lines:
+      BC847BPNH_NPN: [34, 92]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BC847BPNH_PNP
+  def: subckt
+  hash: 0ebca0637eee70fb92cff25c2ef0e81ef0b5306d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC847BPNH.txt
+    sha256: 17575b8446bf0a16f92a174bbcbc7e4fa10ef207534c65df2b21e164196dfffb
+    lines:
+      BC847BPNH_PNP: [94, 152]
+    fetched: '2026-10-10'
+- source: panjit
+  name: BC847BPN
+  def: subckt
+  hash: 1ea9dabc8091691bf321c78abbecf9b93f161b73
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC847BPN.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 9b54a2c0343a1d747ba6acfd0b9c88cf47685d3180b34594c1c0945bfcbfb049
+    lines:
+      BC847BPN: [11, 40]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC847BPN-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC847BPN-AU.txt
+      sha256: b2fe2d4b7066c1ff72a928e4c5d092778d1165041569276626debf438210906b
 - source: microcap12
   name: BC847BPN_NPN
   def: model

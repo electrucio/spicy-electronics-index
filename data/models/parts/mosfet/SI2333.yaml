@@ -80,6 +80,18 @@ models:
       member: Si2333DDS_PS_RC.txt
       sha256: a49308dcd7812a50af6cf9f2b9eadb53e7951dc32cd1754e8f8a494218c25df1
 - source: vishay
+  name: Si2333DS
+  def: subckt
+  hash: 4042febc79d57b0c13be7ec0ce7e70819a5a310c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/75709/si2333hs.txt
+    sha256: 0c2b6893d2ef7c04082e6334e0910faef000fd9243fa34b1941b032f196682d7
+    lines:
+      Si2333DS: [3, 28]
+    fetched: '2026-10-10'
+- source: vishay
   name: Si2333DDS
   def: subckt
   hash: 26078d73db52c16cb3f5b1ec52f750d04e591455
@@ -93,3 +105,36 @@ models:
     lines:
       Si2333DDS: [7, 33]
     fetched: '2026-09-19'
+- source: vishay
+  name: Si2333CDS
+  def: subckt
+  hash: b06f3de1d31cb90ff61d5420062ba3579be33dfb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/68515/si2333cd.txt
+    sha256: ae32dea7ac49d91adb6eaceea866150d7dadf4125269917cfde0ea7cfc24b550
+    lines:
+      Si2333CDS: [7, 35]
+    fetched: '2026-10-10'
+- source: mcc
+  name: SI2333
+  def: subckt
+  hash: d644e89fbea9ccee4da005229931bc6d4effc681
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SI2333A.zip
+    member: SI2333.txt
+    archive_sha256: a519b9ca05e5dc4115a7846e0f32a826c32fb66982098768d50180491a603c8d
+    sha256: de3956bc433c7efdff3035913027ad8aa95d97e648d440c0a1f40e6a3e7e5835
+    lines:
+      SI2333: [8, 28]
+    fetched: '2026-10-10'
+  copies:
+  - source: mcc
+    name: SI2333A
+    get:
+      url: https://www.mccsemi.com/diodespicemodel/SI2333A.zip
+      member: SI2333A.txt
+      sha256: 613260bff0cc2bedd255dd05d71b6a118d82710b713fd5fd624c5408100dfabb

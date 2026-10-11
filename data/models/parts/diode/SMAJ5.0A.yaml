@@ -37,6 +37,50 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Zener_TVS/TransZorb_TVS/smaj5_0a.t
       sha256: 4b0b7c0ca4282048c1065ced57f42a9988b2f1a943cac1be1c7203eeaa3dc673
+- source: taiwan-semi
+  name: SMAJ5.0A
+  def: model
+  hash: d1e093596da6e3e4945e7dedafc9c92f08cfd0c0
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 2659d63b3d731456e856fd05214ff5f49b168d7766b5329b448703d08bb7ea16
+    lines:
+      SMAJ5.0A: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: stmicro
+  name: SMAJ5_0A
+  def: subckt
+  hash: f43dbe0b3c57c77cc6a4aab728dbab9237db2556
+  type: SUBCKT
+  deps:
+  - TRANSIL
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smaj-series_pspice.zip
+    member: SMAJ.lib
+    archive_sha256: 1b11f6d6d91c58f8febc1908271afc9c3cea425649038e81697ebb284db920e5
+    sha256: 3a9a10c565345a137bb851a228d337a4da4ab1a775d598d8fcee2288e3d8d9fd
+    lines:
+      SMAJ5_0A: [126, 131]
+      TRANSIL: [29, 62]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SMAJ5_0A_STM
+  def: subckt
+  hash: f345c8cd85b4a87cfd9e45e39d52425fed5d824d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smaj-series-thermal-edsim-simetrix-pspice.zip
+    member: smaj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 5ddf41b58477df42a0587d75cb969a8a239ecfdcbc30b7c18b6f2028a87def01
+    sha256: 095badfab4385d3619aa07253572aa3ef272c6666d71251bba63086f3e5d7c28
+    lines:
+      SMAJ5_0A_STM: [44, 121]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SMAJ5.0A
   def: subckt
@@ -79,6 +123,12 @@ models:
     name: SMAJ5_0A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: bordodynov
+    name: SMAJ5_0A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST1.lib
       sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: bordodynov
@@ -86,12 +136,6 @@ models:
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: bordodynov
-    name: SMAJ5_0A
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SMAJ5_0A
@@ -112,14 +156,14 @@ models:
   - source: ltwiki
     name: SMAJ5_0A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST1.lib
-      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMAJ5_0A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMAJ5_0A
@@ -130,12 +174,12 @@ models:
   - source: ltwiki
     name: SMAJ5_0A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST1.lib
+      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: ltwiki
     name: SMAJ5_0A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

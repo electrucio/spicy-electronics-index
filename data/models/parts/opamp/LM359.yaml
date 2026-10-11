@@ -2,6 +2,20 @@ part: LM359
 kind: opamp
 priority: 3
 models:
+- source: ti
+  name: LM359
+  def: subckt
+  hash: 19d1c7869714a26e048dc8cae632c194e18c646b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNVM007
+    member: LM359.LIB
+    archive_sha256: 416160539b3a228b8fd4cfe849f867a6bb789cf1a1f05377aa3e7bd3691d991e
+    sha256: 214ac55ea5d6d7e2535de2f9474cdf407d291de2b63b0cf930c3e9c22f0a0953
+    lines:
+      LM359: [44, 79]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: LM359/NS
   def: subckt
@@ -49,8 +63,9 @@ models:
   - source: ltwiki
     name: LM359/NS
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: LM359/NS
     get:
@@ -60,9 +75,8 @@ models:
   - source: ltwiki
     name: LM359/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
   - source: microcap12
     name: LM359_NS
     get:

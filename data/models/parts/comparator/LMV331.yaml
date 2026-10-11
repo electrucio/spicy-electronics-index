@@ -2,6 +2,18 @@ part: LMV331
 kind: comparator
 priority: 4
 models:
+- source: onsemi
+  name: LMV331
+  def: subckt
+  hash: 4180868a8ea1c5c48409566f8583e4e164ad0ba6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/lmv331%20lib.lib
+    sha256: 649abfddb9228d74362cf6f4bb6e8edebed71d4796e0dc48952fa33c70ddf2b5
+    lines:
+      LMV331: [27, 183]
+    fetched: '2026-10-10'
 - source: ti
   name: LMV331
   def: subckt
@@ -63,6 +75,79 @@ models:
       VCC_Range: [189, 193]
       VINRANGE_393: [195, 199]
     fetched: '2026-09-19'
+- source: ti
+  name: lmv331
+  def: subckt
+  hash: eae4f10902b6e6ed2c548ac05ec2f41b62e40afd
+  type: SUBCKT
+  pins:
+  - INP
+  - INN
+  - VP
+  - VN
+  - OUT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM073
+    member: LMV331.MOD
+    archive_sha256: 361045a7d9e78506e7b84626b3f24af9ab93fed64c77d5fa489b8af25b6c42e9
+    sha256: b0935d3428a12533bc4be3e9085fa14f17b2900b0e5ebb0d411065b651fcebb6
+    lines:
+      lmv331: [29, 91]
+    fetched: '2026-10-10'
+  note: pins from comment words
+  copies:
+  - source: bordodynov
+    name: lmv331
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_NSC.lib
+      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
+  - source: kicad-spice-library
+    name: lmv331
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_NSC.lib
+      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
+  - source: ltwiki
+    name: lmv331
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/OpAmp_NSC.lib
+      sha256: 640cf42a735c898a54951becb5657cb42ecbfd75453e22e5d739958213f9cf2c
+  - source: ltwiki
+    name: lmv331
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_NSC.lib
+      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
+  - source: kicad-spice-library
+    name: lmv331_NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
+      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
+  - source: microcap12
+    name: lmv331_NS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nation.lib
+      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+- source: stmicro
+  name: LMV331
+  def: subckt
+  hash: ff9af8bc79884f68576430845a75411c1ac6dc61
+  type: SUBCKT
+  deps:
+  - VCCAP_PSPICE
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/lmv33x_pspice_model.zip
+    member: LMV331.txt
+    archive_sha256: c1a76543b7cdcd39d0d288d96a9ece93df7f60beddac6ac7a0c7cc948b91d008
+    sha256: 4646cbc6ed4f3e1fc9267bacc49fff34b2c2f604eb97aff992911b6dc8c8fcf8
+    lines:
+      LMV331: [32, 216]
+      VCCAP_PSPICE: [222, 230]
+    fetched: '2026-10-10'
 - source: microcap12
   name: LMV331
   def: subckt
@@ -86,56 +171,6 @@ models:
       limit: [219382, 219391]
       nmos: [161508, 161508]
     fetched: '2026-09-21'
-- source: ltwiki
-  name: lmv331
-  def: subckt
-  hash: eae4f10902b6e6ed2c548ac05ec2f41b62e40afd
-  type: SUBCKT
-  pins:
-  - INP
-  - INN
-  - VP
-  - VN
-  - OUT
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sub/OpAmp_NSC.lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 640cf42a735c898a54951becb5657cb42ecbfd75453e22e5d739958213f9cf2c
-    lines:
-      lmv331: [13268, 13330]
-    fetched: '2026-09-21'
-  note: pins from comment words
-  copies:
-  - source: bordodynov
-    name: lmv331
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_NSC.lib
-      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
-  - source: kicad-spice-library
-    name: lmv331
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OpAmp_NSC.lib
-      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
-  - source: ltwiki
-    name: lmv331
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_NSC.lib
-      sha256: 550c8ef5e03f37440e21036d4893441275208962052f8aa522027fde738fec84
-  - source: kicad-spice-library
-    name: lmv331_NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
-      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
-  - source: microcap12
-    name: lmv331_NS
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/nation.lib
-      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
 - source: bordodynov
   name: lmv331/NS
   def: subckt
@@ -166,14 +201,14 @@ models:
   - source: ltwiki
     name: lmv331/NS
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
       sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: lmv331/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
       sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
 - source: bordodynov
   name: lmv331

@@ -3,6 +3,93 @@ kind: bjt
 priority: 2
 group: matched_pairs
 models:
+- source: nexperia
+  name: BCM857BSH_Q
+  def: subckt
+  hash: 0ebca0637eee70fb92cff25c2ef0e81ef0b5306d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCM857BSH-Q.txt
+    sha256: f168b6901ef3e6a74bd008c4eb71ea2bea5418f4bbb882ca1ee8d704884ef4a2
+    lines:
+      BCM857BSH_Q: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BCM857BSH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BCM857BSH.txt
+      sha256: 527e8d3b680e2bc366e77c26f870b1bb4cbcf29e966357cf7c42d5451e43f747
+- source: nexperia
+  name: BCM857BS
+  def: subckt
+  hash: f31b1d324f2609ddfe9727ee9db1d19e2fefcaa3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCM857BS.txt
+    sha256: d2983f88a60593c27ea5251b3b64bd763bc79643ca404a308e0ad5956864c78e
+    lines:
+      BCM857BS: [36, 94]
+    fetched: '2026-10-10'
+- source: diodes-inc
+  name: BCM857BS
+  def: model
+  hash: 6e4d50a218fb93aaa7cab1b9a5303ca030e99ac0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/4254/BCM857BS.spice.txt
+    sha256: 0e095ea7541535a8ec01d03bb177dc7df56e6f7fa4d936cfb55c6e7a4dbcd538
+    lines:
+      BCM857BS: [47, 65]
+    fetched: '2026-10-10'
+- source: diodes-inc
+  name: BCM857BS_fast
+  def: subckt
+  hash: e325a640104ba0d5e1dd55ddd1af9061a568dfc0
+  type: SUBCKT
+  deps:
+  - BCM857BS
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/4254/BCM857BS.spice.txt
+    sha256: 0e095ea7541535a8ec01d03bb177dc7df56e6f7fa4d936cfb55c6e7a4dbcd538
+    lines:
+      BCM857BS: [47, 65]
+      BCM857BS_fast: [33, 35]
+    fetched: '2026-10-10'
+- source: diodes-inc
+  name: BCM857BS_slow
+  def: subckt
+  hash: 653a1b632c1448cd385fc871c282b97532f2b76b
+  type: SUBCKT
+  deps:
+  - BCM857BS
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/4254/BCM857BS.spice.txt
+    sha256: 0e095ea7541535a8ec01d03bb177dc7df56e6f7fa4d936cfb55c6e7a4dbcd538
+    lines:
+      BCM857BS: [47, 65]
+      BCM857BS_slow: [38, 40]
+    fetched: '2026-10-10'
+- source: diodes-inc
+  name: BCM857BS_typ
+  def: subckt
+  hash: b42ae1a056b8dc20fb10970fcb73a2e2ace72bff
+  type: SUBCKT
+  deps:
+  - BCM857BS
+  verbatim: true
+  get:
+    url: https://www.diodes.com/spice/download/4254/BCM857BS.spice.txt
+    sha256: 0e095ea7541535a8ec01d03bb177dc7df56e6f7fa4d936cfb55c6e7a4dbcd538
+    lines:
+      BCM857BS: [47, 65]
+      BCM857BS_typ: [43, 45]
+    fetched: '2026-10-10'
 - source: microcap12
   name: BCM857BS
   def: subckt
@@ -63,9 +150,9 @@ models:
   verbatim: true
   get:
     url: http://bordodynov.ltwiki.org/example.zip
-    member: examples/Bordodynov/Amplifier_classA_and_AB/models.lib
+    member: examples/Bordodynov/AmpliferZoutCurrentAC/models.lib
     archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
-    sha256: b7a1e9b31a8dde47f8de8b4e81ee13a4d4d5d57f59a29ef1c175e0595ba418ae
+    sha256: 68455c852f18e43fef0ad6e4f13d356c2b0c258617469256c2e8102798ad8941
     lines:
       bcm857bs: [1, 1]
     fetched: '2026-09-21'
@@ -74,5 +161,5 @@ models:
     name: bcm857bs
     get:
       url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/AmpliferZoutCurrentAC/models.lib
-      sha256: 68455c852f18e43fef0ad6e4f13d356c2b0c258617469256c2e8102798ad8941
+      member: examples/Bordodynov/Amplifier_classA_and_AB/models.lib
+      sha256: b7a1e9b31a8dde47f8de8b4e81ee13a4d4d5d57f59a29ef1c175e0595ba418ae

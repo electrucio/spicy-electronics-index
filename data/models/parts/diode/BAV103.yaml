@@ -3,6 +3,25 @@ kind: diode
 priority: 3
 group: audio_docs
 models:
+- source: nexperia
+  name: BAV103
+  def: model
+  hash: 4a2c47a7b0500fd86e0bd1ea59bfbc9512eb353f
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAV103.txt
+    sha256: df73a50d9661c976dddc84b12cc9ced29dfaaf79a8a5ff75166bd6b4e1d80e50
+    lines:
+      BAV103: [27, 38]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: BAV103
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAV103.PRM
+      sha256: 568f2ec2527e2ea5a908b7f665ea8e7ec34dd2d9779d81a80db2807c92853434
 - source: spice-model-cd
   name: bav103
   def: model
@@ -29,20 +48,6 @@ models:
     lines:
       BAV103: [237, 238]
     fetched: '2026-09-21'
-- source: ltwiki
-  name: BAV103
-  def: model
-  hash: 4a2c47a7b0500fd86e0bd1ea59bfbc9512eb353f
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAV103.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 568f2ec2527e2ea5a908b7f665ea8e7ec34dd2d9779d81a80db2807c92853434
-    lines:
-      BAV103: [5, 16]
-    fetched: '2026-09-14'
 - source: ltwiki
   name: BAV103
   def: model

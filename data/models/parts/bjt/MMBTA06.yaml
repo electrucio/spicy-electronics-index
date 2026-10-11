@@ -4,6 +4,47 @@ priority: 4
 group: small_signal_npn
 models:
 - source: onsemi
+  name: Qmmbta06wt1
+  def: model
+  hash: 75b86ffb26373ec75de9cdda3d7100c4a17d2218
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/mmbta06wt1.sp2
+    sha256: dc355bbb5c1ec297a3f6d2cb65fb4d40afe10cb52ef61303e664167397bc5e97
+    lines:
+      Qmmbta06wt1: [14, 24]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: mmbta06lt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: microcap12
+    name: Qmmbta06wt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mmbta06wt1
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_bjt.lib
+      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: mmbta06wt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbta06wt1.sp3
+      sha256: 8c3ae128b8f51aa31c0b4cefd96a8e145fa9d4b80ecaf4745ce06d81d9eb3e59
+  - source: onsemi
+    name: Qmmbta06wt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/mmbta06wt1.lib
+      sha256: 6a33d06f69f4f324bf224d907e658d467449d9b8ca4e3149109ad1cd2479eb46
+- source: onsemi
   name: Qmmbta06lt1
   def: model
   hash: 08c58084fcc5dea034704eec3c91bd3652267880
@@ -22,6 +63,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbta06lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbta06lt1.sp2
+      sha256: fd0f7dae0c931570971f1584d3e4deddacc355616e39ff8ab5f10a73e030753b
+  - source: onsemi
+    name: mmbta06lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbta06lt1.sp3
+      sha256: e459635ac05d1531add2f007e6a7928c7cfe2d5f9a53556f04c17572883a67b6
 - source: nexperia
   name: MMBTA06
   def: subckt
@@ -40,33 +91,21 @@ models:
     fetched: '2026-09-19'
     note: 'MMBTA06: MMBTA06, MMBTA06, DIODE'
   note: pins from comment words
-- source: microcap12
-  name: Qmmbta06wt1
-  def: model
-  hash: 75b86ffb26373ec75de9cdda3d7100c4a17d2218
-  type: NPN
+- source: panjit
+  name: MMBTA06-AU
+  def: subckt
+  hash: 78b431ac19e17b04e5bfb5b40563603cb0d062a6
+  type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/On_Semi.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBTA06-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 366bbbd0e139d73744331f3b6fa1450cfcdcdfcde871c35af4374874d7796268
     lines:
-      Qmmbta06wt1: [141208, 141218]
-    fetched: '2026-09-21'
-  copies:
-  - source: microcap12
-    name: mmbta06lt1
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/on_bjt.lib
-      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
-  - source: microcap12
-    name: mmbta06wt1
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/on_bjt.lib
-      sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+      MMBTA06-AU: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: MMBTA06
   def: model
@@ -143,25 +182,13 @@ models:
   - source: kicad-spice-library
     name: MMBTA06
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: MMBTA06
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
-  - source: ltwiki
-    name: MMBTA06
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: MMBTA06
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/standard.bjt
-      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
   - source: ltwiki
     name: MMBTA06
     get:
@@ -171,15 +198,27 @@ models:
   - source: ltwiki
     name: MMBTA06
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: MMBTA06
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MMBTA06
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
   - source: ltwiki
     name: MMBTA06
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: groupsio-ltspice
   name: mmbta06lt1
   def: model
@@ -224,29 +263,15 @@ models:
   - source: ltwiki
     name: mmbta06lt1
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: mmbta06lt1
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-- source: bordodynov-qspice
-  name: MMBTA06
-  def: model
-  hash: 671a75f4933b7b71a40259afef9aa8e792b1e898
-  type: NPN
-  verbatim: true
-  get:
-    url: https://disk.yandex.ru/d/71M79VuY5sOWew
-    member: QSPICE/npnmy.txt
-    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
-    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
-    lines:
-      MMBTA06: [474, 474]
-    fetched: '2026-09-29'
 - source: bordodynov-qspice
   name: mmbta06lt1
   def: model
@@ -260,4 +285,18 @@ models:
     sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
     lines:
       mmbta06lt1: [812, 812]
+    fetched: '2026-09-29'
+- source: bordodynov-qspice
+  name: MMBTA06
+  def: model
+  hash: 671a75f4933b7b71a40259afef9aa8e792b1e898
+  type: NPN
+  verbatim: true
+  get:
+    url: https://disk.yandex.ru/d/71M79VuY5sOWew
+    member: QSPICE/npnmy.txt
+    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    sha256: 228d5c44f98b63f1b053f3c14436f781a0e42078ef0b724b3344d4487a8f1892
+    lines:
+      MMBTA06: [474, 474]
     fetched: '2026-09-29'

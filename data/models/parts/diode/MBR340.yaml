@@ -4,13 +4,48 @@ priority: 4
 group: schottky
 models:
 - source: onsemi
+  name: mbr340rl
+  def: model
+  hash: e1f7d69ef6478a75a637f83c3dcd049479cd1e67
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/mbr340rl.sp3
+    sha256: 9ce1518d7d1f6c050fd80a56617ae320311f93055c7e61c7e30fd9940aa3c40a
+    lines:
+      mbr340rl: [12, 16]
+    fetched: '2026-09-21'
+  copies:
+  - source: microcap12
+    name: Dmbr340rl
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: microcap12
+    name: mbr340rl
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/on_diode.lib
+      sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
+  - source: onsemi
+    name: Dmbr340rl
+    get:
+      url: https://www.onsemi.com/download/models/lib/mur340rl.lib
+      sha256: 49dbe8e03a17d552e0c2b24e9a2e1e53616f2bc518baa9b66b78d91f40898998
+  - source: onsemi
+    name: Dmbr340rl
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mbr340rl.sp2
+      sha256: c9998a946bc91c91832e5e26db639c4d6f13ea538cde27913d7b576a45ac32e1
+- source: onsemi
   name: MBR340
   def: model
   hash: 6a62d934f5d7f27b082f88a1615f7c56a9afd2c3
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -32,7 +67,7 @@ models:
   - source: onsemi
     name: MBR340
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: onsemi
@@ -42,7 +77,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -64,7 +99,7 @@ models:
   - source: onsemi
     name: MBR340M
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: onsemi
@@ -74,7 +109,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -96,39 +131,9 @@ models:
   - source: onsemi
     name: MBR340P
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
-- source: onsemi
-  name: Dmbr340rl
-  def: model
-  hash: e1f7d69ef6478a75a637f83c3dcd049479cd1e67
-  type: D
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/lib/mur340rl.lib
-    sha256: 49dbe8e03a17d552e0c2b24e9a2e1e53616f2bc518baa9b66b78d91f40898998
-    lines:
-      Dmbr340rl: [12, 16]
-    fetched: '2026-09-19'
-  copies:
-  - source: microcap12
-    name: Dmbr340rl
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/On_Semi.lib
-      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-  - source: microcap12
-    name: mbr340rl
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/on_diode.lib
-      sha256: b22e1d5ee75d5fe192f4e75a25f3addd1671eb17659c3b2a8cb964cfc96d10bc
-  - source: onsemi
-    name: mbr340rl
-    get:
-      url: https://www.onsemi.com/download/models/sp3/mbr340rl.sp3
-      sha256: 9ce1518d7d1f6c050fd80a56617ae320311f93055c7e61c7e30fd9940aa3c40a
 - source: onsemi
   name: MBR340
   def: model

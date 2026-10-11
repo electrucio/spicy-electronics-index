@@ -3,6 +3,75 @@ kind: diode
 priority: 4
 group: tvs
 models:
+- source: stmicro
+  name: SM6T6V8AY
+  def: subckt
+  hash: 21d4f30c3dc161548f35ec59a789a78e5bfbd266
+  type: SUBCKT
+  deps:
+  - TRANSIL
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm6t-series_pspice.zip
+    member: SM6T.lib
+    archive_sha256: 703e7d15ec205a7c762f683f9456ad8e727ce6552e32d009e82db06a67a220c1
+    sha256: e031ae84c70f004cb13fae7ded04484f508058cf51e7c3229d4af3c12cbf590c
+    lines:
+      SM6T6V8AY: [140, 145]
+      TRANSIL: [29, 62]
+    fetched: '2026-10-10'
+  copies:
+  - source: stmicro
+    name: SM6T6V8AY
+    get:
+      url: https://www.st.com/resource/en/spice_model/sm6ty-series_pspice.zip
+      member: sm6ty.lib
+      sha256: d259cb16e171d72e1950e97eb9268176167efa6b43b1f213dc3b693966e47e72
+- source: stmicro
+  name: SM6T6V8A
+  def: subckt
+  hash: 6d0639e0fefe2c19c52928d378d82edc09d37328
+  type: SUBCKT
+  deps:
+  - TRANSIL
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm6t-series_pspice.zip
+    member: SM6T.lib
+    archive_sha256: 703e7d15ec205a7c762f683f9456ad8e727ce6552e32d009e82db06a67a220c1
+    sha256: e031ae84c70f004cb13fae7ded04484f508058cf51e7c3229d4af3c12cbf590c
+    lines:
+      SM6T6V8A: [126, 131]
+      TRANSIL: [29, 62]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SM6T6V8A_STM
+  def: subckt
+  hash: 4a1f29bb27be98289661e6fb682d563eadb1ac29
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm6t-series-thermal-edsim-simetrix-pspice.zip
+    member: sm6t_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 45916efd2e4948dfaad3c1e53efca24444db65dd86d3ebd3cbdd7f96273b29c4
+    sha256: 37c1e272e069b97f09e03ebaa49871e46ffb52ca27245ae7cb65e58cf41a643a
+    lines:
+      SM6T6V8A_STM: [43, 119]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SM6T6V8AY_STM
+  def: subckt
+  hash: 2ceaf86763df44d2ea9c1ff5b042d370a8c4f223
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/sm6ty-series-thermal-edsim-simetrix-pspice-1-1.zip
+    member: sm6ty_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 55aadbe200e0b7e2a40e297f0a332c38f61abd35a17db4e88b98cd217466edd1
+    sha256: f2c0920a5701dddc0ecdb3cf5fac1a964b873b809bb465de2ffaef8c60ccbfaf
+    lines:
+      SM6T6V8AY_STM: [42, 118]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: SM6T6V8A
   def: subckt
@@ -31,6 +100,12 @@ models:
     name: SM6T6V8A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: bordodynov
+    name: SM6T6V8A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST1.lib
       sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: bordodynov
@@ -38,12 +113,6 @@ models:
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: bordodynov
-    name: SM6T6V8A
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SM6T6V8A
@@ -64,14 +133,14 @@ models:
   - source: ltwiki
     name: SM6T6V8A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST1.lib
-      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SM6T6V8A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SM6T6V8A
@@ -82,12 +151,12 @@ models:
   - source: ltwiki
     name: SM6T6V8A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST1.lib
+      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: ltwiki
     name: SM6T6V8A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

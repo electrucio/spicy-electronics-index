@@ -17,11 +17,6 @@ models:
     fetched: '2026-09-21'
   copies:
   - source: kicad-spice-library
-    name: BB914s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
-      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
-  - source: kicad-spice-library
     name: BB914
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
@@ -37,6 +32,11 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/DIODE/S_DIODE.LIB
       sha256: 5b0c047f0241963047cfdccac9eb3038eecfe7d78d04fc568cd0ac9135423c2a
+  - source: kicad-spice-library
+    name: BB914s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
+      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
 - source: spice-model-cd
   name: BB914
   def: subckt
@@ -101,15 +101,15 @@ models:
   - source: ltwiki
     name: BB914/SIE
     get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: BB914/SIE
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
       sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: BB914/SIE
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: groupsio-ltspice
   name: BB914/SIE
   def: model
@@ -153,14 +153,14 @@ models:
   - source: ltwiki
     name: BB914/SIE
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BB914/SIE
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BB914/SIE

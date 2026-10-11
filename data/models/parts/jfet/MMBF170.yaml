@@ -22,11 +22,28 @@ models:
     note: 'MMBF170: mmbf170lt1, MM, MD, MD1, MD2, MD3'
   note: pins from default order (unverified)
   copies:
+  - source: onsemi
+    name: mmbf170lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbf170lt1.sp3
+      sha256: bc87c987c10c8a7bd6df27511d7c7e520d177c95ead7e2645714c9332b7e43b3
   - source: spice-model-cd
     name: mmbf170lt1
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Motorola/Spice/SmallSig/mmbf170lt1.t
       sha256: b582ec3cfa427dd1d7650f9985836c1f0ab30924a55df2286151670447b68e94
+- source: onsemi
+  name: Xmmbf170lt1
+  def: subckt
+  hash: 2c1ad76dbb3bae368443f569bdb5ffdc91e9d3a1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/mmbf170lt1.sp2
+    sha256: 9ed05e45ec327fc3f901dc0f95ad362ce23babfc5a388612dfac90d69c2c0c91
+    lines:
+      Xmmbf170lt1: [1, 60]
+    fetched: '2026-10-10'
 - source: diodes-inc
   name: MMBF170Q
   def: subckt

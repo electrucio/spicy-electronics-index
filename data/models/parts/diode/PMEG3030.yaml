@@ -27,17 +27,80 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nxp.lib
       sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-- source: microcap12
+  - source: nexperia
+    name: PMEG3030EP
+    get:
+      url: https://www.nexperia.com/product/PMEG3030EP
+      sha256: 2dbe67c0658f6adbea09a5eb82c97568b2a1ebf00845589d608c25731c3ea838
+- source: nexperia
   name: PMEG3030BEP
   def: subckt
   hash: 351a5af8338c14009aaf9a996158106adf318641
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3030BEP.txt
+    sha256: 4a877c2812027892f1641aa0ba8fb5193ccacac2fb71e054d299413ca6b85621
     lines:
-      PMEG3030BEP: [26455, 26478]
-    fetched: '2026-09-21'
+      PMEG3030BEP: [33, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PMEG3030BEP
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG3030BEP
+    get:
+      url: https://www.nexperia.com/product/PMEG3030BEP
+      sha256: 3bda14ca900d82ae8fa2763a049ae331082993d5e79d16568969faf87c8567f3
+- source: nexperia
+  name: PMEG3030EXE-Q
+  def: subckt
+  hash: d39ec1d593291e6e27f2cafcbd2e5e520e09e8d7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3030EXE-Q.txt
+    sha256: 12868f8d0ae0842f2f05afd48c2e3efe99f64506cf692fde43637fb90313ee56
+    lines:
+      PMEG3030EXE-Q: [37, 66]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMEG3030EXE
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG3030EXE.txt
+      sha256: ef8265d44e953f57e41d912bd1b43755bc26dcab9e30d51836cd133ef09f7dbd
+- source: nexperia
+  name: PMEG3030CEP
+  def: subckt
+  hash: f043cec30867f662ae70289b8db9e8f0a18ee73c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3030CEP.txt
+    sha256: 2d8f13473a34d39498de532a3a11d95b880bd1b2f0615aab13c80ae440835e00
+    lines:
+      PMEG3030CEP: [45, 63]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMEG3030CEP-Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG3030CEP-Q.txt
+      sha256: ebdcf061838569e41383064d0a3d6a55161f27fa64486c6b0adb34547559b72d
+- source: nexperia
+  name: PMEG3030CER-Q
+  def: subckt
+  hash: 12a362efc9513c5e796d58100010ac399ddf9101
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3030CER-Q.txt
+    sha256: e503e29e427c653ad78c1b13ab4ac5472992fbbd6846043a111b96deed1ccf39
+    lines:
+      PMEG3030CER-Q: [37, 66]
+    fetched: '2026-10-10'

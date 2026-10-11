@@ -3,6 +3,69 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: taiwan-semi
+  name: SK24A
+  def: model
+  hash: b48267bb5dc4c1c7e1cfd26ac67b28b4d728c70d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 736ff2be64a52818993cd7c2e4a9e0d7e9cdfd588ffb9a2c70a106a1c84b0ecf
+    lines:
+      SK24A: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SK24AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: b7802c4ee751be005a9cf2802c54fefb3b47e102c617325c9f2f0e78fa69040f
+- source: panjit
+  name: SK24
+  def: subckt
+  hash: 480cbef25f1fbc4a57f7bf15beab07f3f623264a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-2. Power Schottky/SK24.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 1dbb352641e90875e24cbf4b109a7124f0d4d50ae466a6a0f62adac8f6fa6ac6
+    lines:
+      SK24: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: SK24-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-2. Power Schottky/SK24-AU.txt
+      sha256: 12db3a9ffb24403d696b55b2c58e2f536d62c1b17322b23a40469f34125e09c3
+- source: panjit
+  name: SK24L
+  def: subckt
+  hash: ea3cb4cdabd83f7634ee4e4d46e0f0ad72871aff
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-2. Power Schottky/SK24L.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 45a9b8a34d7478957c6107a0e6171579bddd8a572f3b0ce90437f2df1e2d9b88
+    lines:
+      SK24L: [11, 39]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: SK24L-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-2. Power Schottky/SK24L-AU.txt
+      sha256: 028ba037eed412cc6360871c01c1353aaf57659e45de8fa43ac9e9c9c4784f16
 - source: central-semi
   name: 1N5822
   def: model

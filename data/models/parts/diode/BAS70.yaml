@@ -22,6 +22,138 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: BAS70
+  def: subckt
+  hash: a29134fc6ae96cac8fd1e50720b1e3d85a286386
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS70
+    sha256: d7d38c55704560c753df4108a7eca65b53af4c58fcff518e8b218d742f9cb10a
+    lines:
+      BAS70: [2, 22]
+    fetched: '2026-10-10'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BAS70
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70.PRM
+      sha256: d7d38c55704560c753df4108a7eca65b53af4c58fcff518e8b218d742f9cb10a
+  - source: ltwiki
+    name: BAS70W
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70W.PRM
+      sha256: 9a3a0671dec8cb559036efabe471acfa9ea1b52554232de1f21aa5076a107469
+- source: nexperia
+  name: BAS70H
+  def: subckt
+  hash: 50d55caac8c6f209a65fdf79f80603344adc6b63
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS70H.txt
+    sha256: b4376d4e73ef506ae4ac3c23bf76f06b85bc7ebc8ebd487bc4989ca76a4ca46e
+    lines:
+      BAS70H: [33, 49]
+    fetched: '2026-10-10'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BAS70H
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70H.PRM
+      sha256: 6d95b7a67e895922fe4f6a79b57c5e32cf0e83ed4d7035abcb989051a2dc3f03
+  - source: microcap12
+    name: BAS70H
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+  - source: nexperia
+    name: BAS70VV
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS70VV.txt
+      sha256: a1f2159cf5aff51e91a469a277819b9397e8fbf0ab6f70f444000caf46e0b19f
+- source: nexperia
+  name: BAS70L
+  def: subckt
+  hash: 2d91b2b9fd9c2737fd4edb41180e0b1f2bf85317
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS70L.txt
+    sha256: a0299cd12b0739dbbdb058106262e31af0735b9150f5efe9d02e8da28a117cff
+    lines:
+      BAS70L: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: BAS70L
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70L.PRM
+      sha256: 4c3ec28bf6f866f8efa3fd9dce961be828ba1a4b10751280834862d50469f2d5
+  - source: microcap12
+    name: BAS70L
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+- source: nexperia
+  name: BAS70LS
+  def: subckt
+  hash: 1b8d66d0431275f2e2c8667bf49f2f0c0e739210
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS70LS.txt
+    sha256: 543bb30ff24c8929d1efa564cba3703c7eed0fa66709c45b39ad20f2af498ba9
+    lines:
+      BAS70LS: [38, 66]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS70VY
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS70VY.txt
+      sha256: 7599afd8ba965a5dadbd86f2b15ed85777d22e535284593af8cf8c48319e8bd7
+- source: nexperia
+  name: BAS70W
+  def: subckt
+  hash: fc42c98a0a39a6228d074c366325224767b7b486
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS70W
+    sha256: 866b1414850b1cb6d6f56ceae3da902a8bc5253c27f86d94dd774271390488f7
+    lines:
+      BAS70W: [38, 61]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: BAS70XY
+  def: subckt
+  hash: 53e72e05c899ff93cd55bdd3251c3cbc45834279
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS70XY
+    sha256: f39a55900a70ebb2b71163825313ccfad5cf083367e8b057d720dde536ef799b
+    lines:
+      BAS70XY: [38, 61]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: diodes-inc
   name: BAS70LP
   def: model
@@ -41,6 +173,117 @@ models:
     get:
       url: https://www.diodes.com/productcollection/spicemodels/8333/collection.spice.txt
       sha256: 5ef137bd240eef7ab0d08017d778783c6a26367f24e1153006548e452231be6d
+- source: taiwan-semi
+  name: BAS70
+  def: model
+  hash: 0d0846fdab5549668a5558c66896824236d3300d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: a6b85ea994e4692a3fefe4226f47f05068f0e37583631c0b7628273bd7cc9bb6
+    lines:
+      BAS70: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAS70
+  def: subckt
+  hash: 92ec72797c7b49dcb76965f3d0ab9f873b051c41
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS70.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 5887db316479024c7f4e1d75c19982d8501aa56565beece54db2947dc4149ac7
+    lines:
+      BAS70: [11, 42]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS70S
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70S.txt
+      sha256: 36ff1cb27c1da08d18e41b3ddc39eef00e2c1dfe7adb159744c8848e11257ccc
+  - source: panjit
+    name: BAS70A
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70A.txt
+      sha256: 0f4b7ac1ade74dcfe5557f54cb59e1439fe9a5ca99cc0f104f388ee25d2b5c51
+  - source: panjit
+    name: BAS70C
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70C.txt
+      sha256: 69c718bc4961e2fc3a0d74edab73bcfc901f11f0e6c914ead578358c1e1a6298
+  - source: panjit
+    name: BAS70WS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70WS-AU.txt
+      sha256: f2bbef0957fb94862e9c4360dc3537ccf1f9a4334afa6b7e0651b760a5ad9418
+  - source: panjit
+    name: BAS70WS
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70WS.txt
+      sha256: bb492f00d396970c298a3aacd8f8cdb06c959d9c4e0e11c12b2c4106af3d7fa8
+  - source: panjit
+    name: BAS70-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70-AU.txt
+      sha256: 107c95deae6bede3b1f767721485bfbfd30d41c17270ea2069dacef16917cc07
+  - source: panjit
+    name: BAS70S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70S-AU.txt
+      sha256: 8d08938e18253249e3d88ad6dca09b2fbffc65f3c7532abf895959707c6f19f3
+  - source: panjit
+    name: BAS70C-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70C-AU.txt
+      sha256: b2adfc48010e41264b089354a6069d890c1a932798dcdff41fa009a503698105
+  - source: panjit
+    name: BAS70A-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS70A-AU.txt
+      sha256: 292e8b1630b2914027d79fc641be685625432a8f07d7620a6aa8cfc0860cb5b6
+- source: mcc
+  name: BAS70LP
+  def: subckt
+  hash: 22d3c03ab686d6a4a256c0813f661ce64b7973d2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/BAS70LP.zip
+    member: BAS70LP.sp
+    archive_sha256: 8ff2547c2d359b85d33070102b2ce9c9457967ec130d414d49b26f393193a563
+    sha256: a727a7b6f511535c2e0592fd7400f5bc5c1ad0b4048028c7a92e389b5b7167e7
+    lines:
+      BAS70LP: [4, 16]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: BAS70FILM
+  def: subckt
+  hash: 874f7bba3bc60ff43e44f41c4ee207f66913fdcb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAS70FILM: [731, 736]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: BAS70
   def: model
@@ -54,11 +297,6 @@ models:
       BAS70: [455, 456]
     fetched: '2026-09-21'
   copies:
-  - source: kicad-spice-library
-    name: BAS70s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
-      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
   - source: ltwiki
     name: BAS70/SIE
     get:
@@ -69,31 +307,11 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
       sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
-- source: microcap12
-  name: BAS70H
-  def: subckt
-  hash: 50d55caac8c6f209a65fdf79f80603344adc6b63
-  type: SUBCKT
-  pins:
-  - A
-  - K
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
-    lines:
-      BAS70H: [1986, 2008]
-    fetched: '2026-09-21'
-  note: pins from default order (unverified)
-  copies:
-  - source: ltwiki
-    name: BAS70H
+  - source: kicad-spice-library
+    name: BAS70s
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70H.PRM
-      sha256: 6d95b7a67e895922fe4f6a79b57c5e32cf0e83ed4d7035abcb989051a2dc3f03
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
+      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
 - source: microcap12
   name: BAS70BRW
   def: model
@@ -169,27 +387,6 @@ models:
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70VV.PRM
       sha256: 4adb541cb2e587018b887e3924b7238db94867afe00f3e56324eabb67857f1c3
 - source: microcap12
-  name: BAS70L
-  def: subckt
-  hash: 2d91b2b9fd9c2737fd4edb41180e0b1f2bf85317
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
-    lines:
-      BAS70L: [2011, 2033]
-    fetched: '2026-09-21'
-  copies:
-  - source: ltwiki
-    name: BAS70L
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70L.PRM
-      sha256: 4c3ec28bf6f866f8efa3fd9dce961be828ba1a4b10751280834862d50469f2d5
-- source: microcap12
   name: BAS70XY
   def: subckt
   hash: a163d902ed62415f8b8a9480bf5d9eeb6dcbeaf9
@@ -253,19 +450,13 @@ models:
   - source: kicad-spice-library
     name: bas70
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
-      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
   - source: kicad-spice-library
     name: bas70
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
-    name: bas70
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
+      sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
   - source: ltwiki
     name: bas70
     get:
@@ -275,15 +466,21 @@ models:
   - source: ltwiki
     name: bas70
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: bas70
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.dio
       sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: bas70
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: groups-io
   name: BAS70BRW
   def: model
@@ -358,40 +555,15 @@ models:
   - source: ltwiki
     name: BAS70H
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS70H
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BAS70
-  def: subckt
-  hash: a29134fc6ae96cac8fd1e50720b1e3d85a286386
-  type: SUBCKT
-  pins:
-  - A
-  - K
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: d7d38c55704560c753df4108a7eca65b53af4c58fcff518e8b218d742f9cb10a
-    lines:
-      BAS70: [2, 22]
-    fetched: '2026-09-14'
-  note: pins from default order (unverified)
-  copies:
-  - source: ltwiki
-    name: BAS70W
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS70W.PRM
-      sha256: 9a3a0671dec8cb559036efabe471acfa9ea1b52554232de1f21aa5076a107469
 - source: ltwiki
   name: BAS70W
   def: subckt

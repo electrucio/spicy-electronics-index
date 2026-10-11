@@ -3,6 +3,25 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: taiwan-semi
+  name: B0520LW
+  def: model
+  hash: 85cec0e324319bdfa715738099e2c020f89b66b5
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: e93cd71826210d3f7e1f4caf820a7e581d69b5cb329ea811fe7db5206653035a
+    lines:
+      B0520LW: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: B0520LWF
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: fbeae02463c8ea2c186c299c4645a4e1ac7a16b9876ddb3b84194ec3f841ce10
 - source: microcap12
   name: B0520LW
   def: model

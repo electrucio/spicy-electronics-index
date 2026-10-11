@@ -4,29 +4,31 @@ priority: 4
 group: small_signal_npn
 models:
 - source: onsemi
-  name: Qmmbt4401lt1
+  name: mmbt4401lt1
   def: model
   hash: 7fa794eb2afe09dca43453a8bddaa402ec4ef3be
   type: NPN
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/mmbt4401lt1.lib
-    sha256: 975c1390f9593ed524f4c4b7aef4e0fd24ef8787c14edd62d96777fa9be5375b
+    url: https://www.onsemi.com/download/models/zip/ncp1351%20pspice%20model.zip
+    member: ncp1351_ORCAD/application.lib
+    archive_sha256: 41cb75a7b8ed10158e01fbbddf0f1cc283833d94d5d08a3a2ec1dc84c3a05028
+    sha256: 5617ad21da819be996732ece6f515658a40de55ea6685e48fcd3ec27b14a1159
     lines:
-      Qmmbt4401lt1: [14, 24]
+      mmbt4401lt1: [129, 139]
     fetched: '2026-09-19'
   copies:
   - source: ltwiki
     name: Qmmbt4401lt1
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: ltwiki
     name: Qmmbt4401lt1
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: microcap12
     name: Qmmbt4401lt1
@@ -41,11 +43,42 @@ models:
       member: nud4001p.lib
       sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
   - source: onsemi
+    name: Qmmbt4401lt1
+    get:
+      url: https://www.onsemi.com/download/models/lib/mmbt4401lt1.lib
+      sha256: 975c1390f9593ed524f4c4b7aef4e0fd24ef8787c14edd62d96777fa9be5375b
+  - source: onsemi
+    name: Qmmbt4401lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt4401lt1.sp2
+      sha256: 89bbd3d84b6138b3d75e26502d164424274796a21754631ea7ccbe4acdb387be
+  - source: onsemi
     name: mmbt4401lt1
     get:
-      url: https://www.onsemi.com/download/models/zip/ncp1351%20pspice%20model.zip
-      member: ncp1351_ORCAD/application.lib
-      sha256: 5617ad21da819be996732ece6f515658a40de55ea6685e48fcd3ec27b14a1159
+      url: https://www.onsemi.com/download/models/sp3/mmbt4401lt1.sp3
+      sha256: dc8d59ce1bb1d5c2655a38d492d6cb3e126718fea630e9109a7cc24abb0edc9b
+- source: panjit
+  name: MMBT4401
+  def: subckt
+  hash: 9f88067c9a49ec584ff6e4d8794c053c5e7547b8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT4401.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 330176f39e5cb1d40387dbc26dc22bbbed2167e60621732239c781be85db22fe
+    lines:
+      MMBT4401: [11, 37]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBT4401-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBT4401-AU.txt
+      sha256: a6dd5210c9b0d6a1de98e3ed386bd2fc46718f148c95ee2df20be03c062ddaab
 - source: microcap12
   name: MMBT4401
   def: model

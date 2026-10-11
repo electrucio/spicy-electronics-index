@@ -3,20 +3,18 @@ kind: diode
 priority: 4
 group: silicon_signal
 models:
-- source: microcap12
+- source: nexperia
   name: BAV199
   def: model
   hash: 20d55e3958666041257209b4c95e9337b96fb1a2
   type: D
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    url: https://assets.nexperia.com/documents/spice-model/BAV199.txt
+    sha256: 37ca9619403894293238c41fbe05a9748c1d4d7d0a17b71ddde6dc2a8ba104e6
     lines:
-      BAV199: [45375, 45386]
-    fetched: '2026-09-21'
+      BAV199: [28, 39]
+    fetched: '2026-10-10'
   copies:
   - source: ltwiki
     name: BAV199
@@ -24,6 +22,101 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAV199.PRM
       sha256: 001902ff8216baa24deadb264472f438e7b44717254844916c407c186ddb9cd4
+  - source: microcap12
+    name: BAV199
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: BAV199W
+    get:
+      url: https://www.nexperia.com/product/BAV199W
+      sha256: 7c8ad1030f8be9d3712ef84637a7cdf6946f95ef320440c19d5d1afaa90ee2d5
+- source: nexperia
+  name: BAV199QC
+  def: subckt
+  hash: 473f3f266eea960ef5cd94b42df0cafea27ba083
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAV199QC.txt
+    sha256: 54f7416f9203275514c16e270d530cfff8b26a5287c5805ddde35ffceee0bc00
+    lines:
+      BAV199QC: [37, 65]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAV199QC-Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAV199QC-Q.txt
+      sha256: 4b50c745cc0a1ffb5be910bd30e5136c96c00e13bc4b54cfc739f49407696e90
+- source: rohm
+  name: DBAV199FM
+  def: model
+  hash: 24da4569c04651f36563cc9b4e239364a08db188
+  type: D
+  verbatim: true
+  get:
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/diode/switching/bav199fm_SPICE.zip
+    member: bav199fm_SPICE/bav199fm_SPICE.lib
+    archive_sha256: 87ab592aa9b23681e53440f0b2956f76b4de6d16c026edb047e4d8578f82021a
+    sha256: 123d1f5b20035b3d9c4a95c7a0b8db50c04a426a1df10de646df9e8cdea0db67
+    lines:
+      DBAV199FM: [7, 19]
+    fetched: '2026-10-10'
+  copies:
+  - source: rohm
+    name: DBAV199FM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/diode/switching/bav199fm_ltspice.zip
+      member: bav199fm_ltspice/bav199fm_ltspice.lib
+      sha256: 123d1f5b20035b3d9c4a95c7a0b8db50c04a426a1df10de646df9e8cdea0db67
+- source: panjit
+  name: BAV199
+  def: subckt
+  hash: d3c6884bae2ae8c7832249fa10526f068159d413
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV199.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 42e4ac5bf503a471b41b45a64e20c3d01ae4bb7bd4e4743bd8691f36c2003c36
+    lines:
+      BAV199: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAV199-AU
+  def: subckt
+  hash: f9b6b96bdd9992b24f20f710a8386cbf15f2fa7e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV199-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 851c92db4804f5cf19190117160ef89f4dfc42cda7daf334d9f10b255af5e3a6
+    lines:
+      BAV199-AU: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAV199TB-AU
+  def: subckt
+  hash: dac38432e6dd03bb7ef4a7516cb3367146b35b25
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAV199TB-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 8a3fb14d35bbca56a9e300c411ce547501d6f1b39e6c61e9f11bfaa7b436d67e
+    lines:
+      BAV199TB-AU: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: BAV199DW
   def: model
@@ -212,6 +305,12 @@ models:
   - source: ltwiki
     name: BAV199HM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAV199HM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -221,12 +320,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAV199HM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BAV199HY
   def: model
@@ -251,14 +344,14 @@ models:
   - source: ltwiki
     name: BAV199HY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAV199HY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: bordodynov-qspice
     name: BAV199UM
@@ -269,14 +362,14 @@ models:
   - source: ltwiki
     name: BAV199UM
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAV199UM
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: BAV199UM

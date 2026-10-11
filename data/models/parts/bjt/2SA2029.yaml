@@ -3,20 +3,39 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
-  name: 2SA2029
+- source: rohm
+  name: Q2SA2029
   def: model
   hash: 02b7b58fb3f5e9af781ed0763ef724b37a68adc7
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2SA2029HZG_SPICE.zip
+    member: 2SA2029HZG_SPICE/2SA2029hzg_SPICE.lib
+    archive_sha256: c994d5adf1601c55179064fd94dd527c2d2c7533d5d7864393d2b293b180a116
+    sha256: 0e1681e8394249d7c9355ad1b4d9d850e7d0ce81ee99c8215c6a5796815ac034
     lines:
-      2SA2029: [431, 455]
-    fetched: '2026-09-21'
+      Q2SA2029: [3, 27]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SA2029
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SA2029
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sa2029_spice.zip
+      member: 2sa2029.lib
+      sha256: 0e1681e8394249d7c9355ad1b4d9d850e7d0ce81ee99c8215c6a5796815ac034
+  - source: rohm
+    name: Q2SA2029
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sa2029_ltspice.zip
+      member: 2sa2029_ltspice/2sa2029_ltspice.lib
+      sha256: 0e1681e8394249d7c9355ad1b4d9d850e7d0ce81ee99c8215c6a5796815ac034
 - source: bordodynov
   name: 2SA2029
   def: model
@@ -51,6 +70,12 @@ models:
   - source: ltwiki
     name: 2SA2029
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SA2029
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -60,12 +85,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SA2029
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SA2029
   def: model

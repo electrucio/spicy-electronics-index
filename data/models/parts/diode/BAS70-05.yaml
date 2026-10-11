@@ -3,6 +3,25 @@ kind: diode
 priority: 4
 group: silicon_signal
 models:
+- source: nexperia
+  name: BAS70-05
+  def: subckt
+  hash: fc42c98a0a39a6228d074c366325224767b7b486
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS70-05
+    sha256: 423804c9ff66fe6309bdf85e3c9b43a732c5bc29a198a2f8bac4532cdcee6e44
+    lines:
+      BAS70-05: [38, 62]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: nexperia
+    name: BAS70-05W
+    get:
+      url: https://www.nexperia.com/product/BAS70-05W
+      sha256: 8e5e5331b452b546e518a28162c1dbe3dbbbf117d48f444ca23a80fc76eb496e
 - source: diodes-inc
   name: BAS70LP
   def: model
@@ -17,6 +36,33 @@ models:
     fetched: '2026-09-19'
     note: 'model(s): BAS70LP'
   note: found under the alias BAS70
+- source: taiwan-semi
+  name: BAS70-05
+  def: subckt
+  hash: 9a4b4c14ed26a83009259c769de07a05e8538289
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 639881cd7653b4ef43ea4782bdf3e4e8cdef61517918d2114215dc1b177027aa
+    lines:
+      BAS70-05: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: stmicro
+  name: BAS70-05FILM
+  def: subckt
+  hash: a33f126c7a6e02eadbf604e4dd705f8726fb0ccc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAS70-05FILM: [764, 770]
+    fetched: '2026-10-10'
 - source: microcap12
   name: BAS70-05_PH
   def: subckt

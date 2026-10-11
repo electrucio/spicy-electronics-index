@@ -10,23 +10,25 @@ models:
   type: PNP
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/tip32b.lib
-    sha256: 059c9aec7eaf5151218eeb81cd6adf1ab2f24171bcaaf1d4769278071ea7ed52
+    url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
+    member: nud4001p.lib
+    archive_sha256: 31a7f1aeea7036a735053b6565f2c2cb65895fbe1a972826cb0f693fb6dfe648
+    sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
     lines:
-      Qtip32b: [12, 22]
+      Qtip32b: [4, 14]
     fetched: '2026-09-19'
   copies:
   - source: ltwiki
     name: Qtip32b
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: ltwiki
     name: Qtip32b
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Miscel/NUD4001_lt/nud4001p.lib
       sha256: 0972dffca437f578418e6ec1a6cf68806a88d0f44e873852a40af543f9e66f08
   - source: microcap12
     name: Qtip32b
@@ -43,9 +45,18 @@ models:
   - source: onsemi
     name: Qtip32b
     get:
-      url: https://www.onsemi.com/download/models/zip/nud4001.models.zip
-      member: nud4001p.lib
-      sha256: 1577e6cacf2cfaee80160b796c7d711743eae365212bdbb5d4011b09a4c2fb4c
+      url: https://www.onsemi.com/download/models/lib/tip32b.lib
+      sha256: 059c9aec7eaf5151218eeb81cd6adf1ab2f24171bcaaf1d4769278071ea7ed52
+  - source: onsemi
+    name: Qtip32b
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip32b.sp2
+      sha256: db10a5d013b7800f96453360b164378c75037f0f8bcd25c14661d8e9bc2375c0
+  - source: onsemi
+    name: tip32b
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip32b.sp3
+      sha256: 133073aa88848aac1d23ede35b49a2cbf4017b39e5d7221e6259c0f16e5006fa
   - source: microcap12
     name: Qtip32
     get:
@@ -63,6 +74,16 @@ models:
     get:
       url: https://www.onsemi.com/download/models/lib/tip32.lib
       sha256: 1ed11a85f82e28ceaa3914910970377e3f312d61f1e9e25a4ec6a723673b7879
+  - source: onsemi
+    name: Qtip32
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip32.sp2
+      sha256: 135bd656c3f0f9cd5e4a7a36b440afa313e839aba9b18d4a1fccd34499b3b9bb
+  - source: onsemi
+    name: tip32
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip32.sp3
+      sha256: cba16cf1e8d0cbe33a5129f53e23a52508f115a412700f6831d39b498a271714
   - source: microcap12
     name: Qtip32a
     get:
@@ -80,6 +101,16 @@ models:
     get:
       url: https://www.onsemi.com/download/models/lib/tip32a.lib
       sha256: 61474549d41410ab9e0947b1050470c9b9afe9e9eaf5158b5813631baffa7051
+  - source: onsemi
+    name: Qtip32a
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip32a.sp2
+      sha256: 4aff2dabcf61d5694fb7dcc330c7faff9e4d0ef68e762584da1de8024a858b11
+  - source: onsemi
+    name: tip32a
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip32a.sp3
+      sha256: 3f89520c6fa9fecddbed7cda5bec76dcc1206c35bd375767044a27847b49df81
 - source: onsemi
   name: Qtip32c
   def: model
@@ -105,6 +136,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qtip32c
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip32c.sp2
+      sha256: 0db2976aee84be2f450310bd25a5d55306ff589ae47d7ab6a4f8bc80829f0607
+  - source: onsemi
+    name: tip32c
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip32c.sp3
+      sha256: 047b93dc207c30200375fa7747deef6d1035dd0828d8afcea3f5e09f002e8baf
 - source: central-semi
   name: TIP32C
   def: model
@@ -156,7 +197,7 @@ models:
       TIP32C: [687, 695]
     fetched: '2026-10-09'
 - source: groupsio-ltspice
-  name: TIP32C
+  name: TIP32B
   def: model
   hash: 307c021366bd4d526cbb11d5218e6f38bd933c30
   type: PNP
@@ -167,28 +208,28 @@ models:
     archive_sha256: 5f90f4747ab15955dc7d6889861bbad328afe007d891206085e4dcf3ba7cbc3f
     sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
     lines:
-      TIP32C: [8727, 8727]
+      TIP32B: [8724, 8724]
     fetched: '2026-09-21'
   copies:
-  - source: groupsio-ltspice
-    name: TIP32C
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
-      member: standard.bjt
-      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
   - source: ltwiki
-    name: TIP32C
+    name: TIP32B
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
       sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
   - source: groupsio-ltspice
-    name: TIP32B
+    name: TIP32C
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
+      member: standard.bjt
+      sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
+  - source: groupsio-ltspice
+    name: TIP32C
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.bjt%202.zip
       member: standard.bjt
       sha256: 3e289bd4a0d14ca4b49f0e44be650a368fdc188989dec9c2aad63389a6458d87
   - source: ltwiki
-    name: TIP32B
+    name: TIP32C
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/pwrbjt.lib
       sha256: 30a0b2113b846773bf8dc3f872c0edaed5312f72b3907f053aaba5badf6b8034
@@ -244,25 +285,13 @@ models:
   - source: kicad-spice-library
     name: TIP32C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: TIP32C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
-  - source: ltwiki
-    name: TIP32C
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: TIP32C
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/standard.bjt
-      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
   - source: ltwiki
     name: TIP32C
     get:
@@ -272,15 +301,27 @@ models:
   - source: ltwiki
     name: TIP32C
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: TIP32C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: TIP32C
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
   - source: ltwiki
     name: TIP32C
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: TIP32C
   def: model
@@ -296,18 +337,6 @@ models:
       TIP32C: [223, 223]
     fetched: '2026-09-29'
 - source: kicad-spice-library
-  name: TIP32C
-  def: subckt
-  hash: e4a9d26b4b2f93df8c15a717f4cbb60b4c994fd6
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
-    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
-    lines:
-      TIP32C: [696, 705]
-    fetched: '2026-09-14'
-- source: kicad-spice-library
   name: TIP32B
   def: subckt
   hash: 95fe15aadffe11e7c2fc8b5fef79f83baf38b753
@@ -318,6 +347,18 @@ models:
     sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
     lines:
       TIP32B: [682, 691]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: TIP32C
+  def: subckt
+  hash: e4a9d26b4b2f93df8c15a717f4cbb60b4c994fd6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/POWBJT.LIB
+    sha256: a64b2703fc28c849c7760139346aa1e0c31b83f7701a15e8e7a8d12b01c7befc
+    lines:
+      TIP32C: [696, 705]
     fetched: '2026-09-14'
 - source: kicad-spice-library
   name: TIP32

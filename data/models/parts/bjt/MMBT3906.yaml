@@ -52,25 +52,11 @@ models:
     get:
       url: https://www.onsemi.com/download/models/sp3/pspice%20model%20sp3%20file.sp3
       sha256: eb275a5f0784944d1c26f123db96da092b98e8592c25a7a926dc27c9ac053630
-- source: onsemi
-  name: MMBT3906SL
-  def: model
-  hash: 69d0a5b5bedf439bd5f5ef523939660c011f7e6c
-  type: PNP
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/lib/mmbt3906sl.lib
-    sha256: 2463fa59b05c297152f2a709550e6b06458c3c81c0c78c8fe907171db583d72f
-    lines:
-      MMBT3906SL: [5, 16]
-    fetched: '2026-09-19'
-  copies:
-  - source: microcap12
-    name: MMBT3906SL
+  - source: onsemi
+    name: Qmmbt3906lt1
     get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/On_Semi.lib
-      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+      url: https://www.onsemi.com/download/models/sp2/mmbt3906lt1.sp2
+      sha256: 86310922c7f4f76271bb670d39718815b63be229bdcf9f6e51919132da785d8e
 - source: onsemi
   name: Qmmbt3906tt1
   def: model
@@ -90,6 +76,59 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Qmmbt3906tt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt3906tt1.sp2
+      sha256: 4617cc53f456eef0b568c1ab9f612405539d5396c2cdc6520a99d3a7f3f5f3ac
+  - source: onsemi
+    name: mmbt3906tt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbt3906tt1.sp3
+      sha256: 7257b4d713326cfa4522e943bcc73692a7faa1a1122151a8bcfb83e56aa56126
+- source: onsemi
+  name: MMBT3906SL
+  def: model
+  hash: 69d0a5b5bedf439bd5f5ef523939660c011f7e6c
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/mmbt3906sl.lib
+    sha256: 2463fa59b05c297152f2a709550e6b06458c3c81c0c78c8fe907171db583d72f
+    lines:
+      MMBT3906SL: [5, 16]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: MMBT3906SL
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: MMBT3906
+  def: subckt
+  hash: f906b812946dd4aaed8213d0a5ce228f95287f98
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/MMBT3906.txt
+    sha256: 552c1e8112a0c226ecaf128e18f576733b1e13608059b64a677fc32ee6c4cd81
+    lines:
+      MMBT3906: [31, 89]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: MMBT3906_Q
+  def: subckt
+  hash: 20cceaf970a303828a3e02374a41cc49cddf09ec
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/MMBT3906-Q.txt
+    sha256: b1442f48877163dfcbbc0b01e5df27a169fb787e5f566eb378169fac1bc41dd1
+    lines:
+      MMBT3906_Q: [33, 91]
+    fetched: '2026-10-10'
 - source: diodes-inc
   name: MMBT3906LP
   def: model
@@ -118,6 +157,67 @@ models:
     get:
       url: https://www.diodes.com/productcollection/spicemodels/8429/collection.spice.txt
       sha256: 25759a6cbafe23350b32480fe33bf874370db0e87a747168f643ea8b1031ac30
+- source: taiwan-semi
+  name: MMBT3906
+  def: model
+  hash: baed4faf0d56d2ff6c9ef89bb6496d7af0276f40
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 23718296de8cf82eb0a3bfb957034d75a38dff145de6de1a03942a7e0b84fbf8
+    lines:
+      MMBT3906: [8, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: MMBT3906T
+  def: model
+  hash: eb4809d0d46127bc878b13a4176e3975c810095d
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 11614650a2c1cbac89b30518a93ca5d4663a3faf2691bc5183875b9b22b194d9
+    lines:
+      MMBT3906T: [8, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: MMBT3906H
+  def: model
+  hash: a52d86d81706cdbd3ed690647691bd800428b0a0
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: a7799b5eef10504f9fe3db03820540ddbef2cbe4f256e350e23da764cd7ebeac
+    lines:
+      MMBT3906H: [7, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: MMBT3906
+  def: subckt
+  hash: 52b7b125265f8bf1dad728fbd04d389c18fb9978
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT3906.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: fc713b2630cdc7a1a050cb2f1804862ebe68b14325809ca56127e958e1821012
+    lines:
+      MMBT3906: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBT3906-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/MMBT3906-AU.txt
+      sha256: e53d1423edc3a1e38f70ee2bba7681ad86d5d6287a29aa7c5ac66aa7bb317a3a
 - source: microcap12
   name: MMBT3906
   def: model
@@ -272,25 +372,13 @@ models:
   - source: kicad-spice-library
     name: MMBT3906
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: MMBT3906
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
-  - source: ltwiki
-    name: MMBT3906
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: MMBT3906
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/standard.bjt
-      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
   - source: ltwiki
     name: MMBT3906
     get:
@@ -300,15 +388,27 @@ models:
   - source: ltwiki
     name: MMBT3906
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: MMBT3906
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: MMBT3906
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
   - source: ltwiki
     name: MMBT3906
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: groupsio-ltspice
   name: MMBT3906
   def: model

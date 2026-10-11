@@ -28,20 +28,35 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
-- source: microcap12
+  - source: onsemi
+    name: Qtip47
+    get:
+      url: https://www.onsemi.com/download/models/sp2/tip47.sp2
+      sha256: 06d8dea6e13c9c7d38920fcddd02497ae5fd3b91c9cff48b17d1aa47e219e05e
+  - source: onsemi
+    name: tip47
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip47.sp3
+      sha256: 86b9221c328f196d07d659b78de5c2f79677d75d7b4fb9738fbe189334b4711e
+- source: central-semi
   name: TIP47
   def: model
   hash: 6cb677167eb07f6587dbbf98a5c59c8a7525de32
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/TIP47.LIB
+    sha256: 12c8e972f7e2a278f5347069ff57bba003274b2a2d3f60439c5cb26a968a8dc6
     lines:
-      TIP47: [29273, 29298]
-    fetched: '2026-09-21'
+      TIP47: [24, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: TIP47
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: spice-model-cd
   name: TIP47
   def: model

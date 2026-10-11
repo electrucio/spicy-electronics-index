@@ -30,15 +30,33 @@ models:
   - source: ltwiki
     name: TIP140
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
-    name: TIP140
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/NPNdarlington.lib
       sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
+    name: TIP140
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
+- source: onsemi
+  name: Xtip140
+  def: subckt
+  hash: 7e6c465487ad4f057d5b0b743a8e6d0b84e6166e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip140.sp2
+    sha256: 24a9622f2780ebe64b040a064dc7b93663c2da57e2fa8a4733a53ca0461d74f8
+    lines:
+      Xtip140: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip140
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip140.sp3
+      sha256: 44ac9684887fb507f5f28883b6253c708a1394565a54763306eeb93215edae58
 - source: microcap12
   name: tip140
   def: subckt

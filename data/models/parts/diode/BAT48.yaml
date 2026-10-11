@@ -3,6 +3,31 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: stmicro
+  name: BAT48
+  def: model
+  hash: 1f4ba49f17b9750f54216e3fd881c5a35d5aba20
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAT48: [603, 605]
+    fetched: '2026-10-10'
+  copies:
+  - source: diyaudio
+    name: BAT48
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+  - source: kicad-spice-library
+    name: BAT48
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
+      sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
 - source: spice-model-cd
   name: BAT48
   def: model
@@ -15,24 +40,6 @@ models:
     lines:
       BAT48: [411, 413]
     fetched: '2026-09-21'
-- source: diyaudio
-  name: BAT48
-  def: model
-  hash: 1f4ba49f17b9750f54216e3fd881c5a35d5aba20
-  type: D
-  verbatim: true
-  get:
-    url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
-    sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
-    lines:
-      BAT48: [1340, 1342]
-    fetched: '2026-10-09'
-  copies:
-  - source: kicad-spice-library
-    name: BAT48
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
-      sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
 - source: ltwiki
   name: BAT48
   def: model

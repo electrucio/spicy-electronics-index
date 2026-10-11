@@ -22,6 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dss26
+    get:
+      url: https://www.onsemi.com/download/models/sp2/ss26.sp2
+      sha256: 67b1376c4274a968be32493bbc28e6bc7df933e54aae6549691cd11f251b4be7
+  - source: onsemi
+    name: ss26
+    get:
+      url: https://www.onsemi.com/download/models/sp3/ss26.sp3
+      sha256: 55efff5ef54beb5369e08b0c1da4e66029cf5d5d3b9b8bacf1348121c6be5dbc
 - source: onsemi
   name: SS26FL
   def: model
@@ -81,3 +91,74 @@ models:
     lines:
       SS26S: [20, 32]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SS26
+  def: model
+  hash: 7d8f80c22127f8bd1ecc0d4b6cb349680c385278
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: e6ffc4ffdb396c6c14fffda1f20cc239e7b36c05fbedfe710865f68e2177d90c
+    lines:
+      SS26: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS26H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: cf7c6249254435ca6df69479a8eb3d06bcd0adf403b42e5b85ec70d0dd73b6f3
+- source: taiwan-semi
+  name: SS26LWH
+  def: model
+  hash: e8f881f6e40e21eadba85611cf13d14d797452c3
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 946aaedeb1ee02af0acfc2742bfca25f723b612de3e14c2ab6255c7bd2e7e349
+    lines:
+      SS26LWH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS26LW
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 85ee52678e068b652bb02d43e30558ac396b60f69b7953efc408d45b4b444a6f
+- source: taiwan-semi
+  name: SS26FSH
+  def: model
+  hash: d893ed3b55d62dca5bf718019e2ff39339def43c
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 68a7311959097c377101eeb2b736b6cf0976f75e544b9c898e4f7d4e645f1b11
+    lines:
+      SS26FSH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS26ALH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c2e20f32502d3ed27482e6b668b0044aa45a65d46a95ad7207a0bec20e487325
+- source: mcc
+  name: SS26
+  def: subckt
+  hash: 9dc357ae136f6c0be431ffee2a5cb40802808eb9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/SS26.zip
+    member: SS26.sp
+    archive_sha256: d634b6d1eb120156862057ee16fb85779302a135ae56bf4b8a56581ed2c64f81
+    sha256: f38e9d3c4faeb1324aff01942a85be721c2cb4aa6f6472506993b3d26501be09
+    lines:
+      SS26: [4, 16]
+    fetched: '2026-10-10'

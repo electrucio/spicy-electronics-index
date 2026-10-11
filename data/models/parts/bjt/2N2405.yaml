@@ -3,20 +3,25 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N2405
   def: model
   hash: fe4e1862710f324c5ae2e9dfaf351efb88ccf480
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N2405.LIB
+    sha256: 556d81923d017390d9c71650ecbf47bb764803973af3c4934c296f24cc6a449e
     lines:
-      2N2405: [1455, 1459]
-    fetched: '2026-09-21'
+      2N2405: [23, 27]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N2405
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: groupsio-ltspice
   name: 2N2405
   def: model

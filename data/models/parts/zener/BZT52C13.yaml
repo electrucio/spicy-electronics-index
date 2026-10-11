@@ -2,6 +2,56 @@ part: BZT52C13
 kind: zener
 priority: 4
 models:
+- source: nexperia
+  name: BZT52-C13
+  def: subckt
+  hash: bab2e1e683554def5ddf4e40d55babf4a168a2dd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZT52-C13.txt
+    sha256: 6eadbb2642f7624b33d39acf25ed6a64a71286d28c30ed0c678a0a607d72c536
+    lines:
+      BZT52-C13: [37, 65]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BZT52C13
+  def: model
+  hash: 4bb2272ea2c0380f85cacb5b4006d8873d3b5315
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 15e19b0f3dabe6466c4fe47f695d5fd5810dcf85aac9bf52d117c2c02e9f9f6b
+    lines:
+      BZT52C13: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BZT52C13S
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: cd237d0fbc9f282493d2530f6db369abe98b7dab2ec12bede71eedf9df138eac
+- source: taiwan-semi
+  name: BZT52C13-G
+  def: model
+  hash: 6ce9d7ca5936c68d3201c17d1cf84e3599867b3d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 9fe982765ba274dc60cbc4a743ac583c61e08dd0182e4dff64de1c0186e211a8
+    lines:
+      BZT52C13-G: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BZT52C13K
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 7b2c6ceb24b05d223ea7d313c3ffe35f63f926b70cd225981d6d7945a84818a4
 - source: microcap12
   name: BZT52C13
   def: subckt

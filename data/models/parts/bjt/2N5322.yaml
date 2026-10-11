@@ -3,17 +3,22 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N5322
   def: model
   hash: cee28a2896aeec6bb057dded90502c1c069c08ad
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N5322.LIB
+    sha256: 0fe585593f6afb658fe2d19851823ecfc728869b8aa85a715efb205bd2a24129
     lines:
-      2N5322: [3265, 3267]
-    fetched: '2026-09-21'
+      2N5322: [24, 26]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N5322
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d

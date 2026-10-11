@@ -3,6 +3,20 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: stmicro
+  name: BAT30FILM
+  def: subckt
+  hash: 6d83d63b5345aa382a5d5d1b5f9332c58fa47e3c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAT30FILM: [92, 97]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: BAT30FILM
   def: subckt

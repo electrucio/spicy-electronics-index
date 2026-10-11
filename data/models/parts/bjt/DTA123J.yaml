@@ -3,39 +3,93 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
+- source: rohm
   name: DTA123JE
   def: subckt
   hash: cb5ecca68d10968feca198d59a62a795c276dad6
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta123je_spice.zip
+    member: dta123je.lib
+    archive_sha256: 6e37fee4bbec11381605083da37121a2b0279f0fe50f06248db42680d39a9ae3
+    sha256: eae94ce0897d3867bf572ccff38aa94bc52291c40058bb9a02f855b691d560c6
     lines:
-      DTA123JE: [27160, 27194]
-    fetched: '2026-09-21'
+      DTA123JE: [5, 39]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTA123JE
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA123JE
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta123je_ltspice.zip
+      member: dta123je_ltspice/dta123je_ltspice.lib
+      sha256: eae94ce0897d3867bf572ccff38aa94bc52291c40058bb9a02f855b691d560c6
   - source: microcap12
     name: DTA123JEB
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA123JEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta123jeb_ltspice.zip
+      member: dta123jeb_ltspice/dta123jeb_ltspice.lib
+      sha256: 4b5fca7891982f9a72e87d50de6b17b40aab83f741b1b4646dbf932d1fbc11e5
+  - source: rohm
+    name: DTA123JEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta123jeb_spice.zip
+      member: dta123jeb.lib
+      sha256: 4b5fca7891982f9a72e87d50de6b17b40aab83f741b1b4646dbf932d1fbc11e5
   - source: microcap12
     name: DTA123JKA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA123JKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta123jka_ltspice.zip
+      member: dta123jka_ltspice/dta123jka_ltspice.lib
+      sha256: 512d5a7a5e653e21633826ca2fcd897a61ae6507141612c3e3079e0c34cda18c
+  - source: rohm
+    name: DTA123JKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta123jka_spice.zip
+      member: dta123jka.lib
+      sha256: 512d5a7a5e653e21633826ca2fcd897a61ae6507141612c3e3079e0c34cda18c
   - source: microcap12
     name: DTA123JM
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA123JM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta123jm_spice.zip
+      member: dta123jm.lib
+      sha256: 8d60289e864d4498df662a441e7284ce4b81e1b39c37d0dbc9aa60b5ee214c1c
+  - source: rohm
+    name: DTA123JM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta123jm_ltspice.zip
+      member: dta123jm_ltspice/dta123jm_ltspice.lib
+      sha256: 8d60289e864d4498df662a441e7284ce4b81e1b39c37d0dbc9aa60b5ee214c1c
+  - source: rohm
+    name: DTA123JM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTA123JMHZG_SPICE.zip
+      member: DTA123JMHZG_SPICE/dta123jmhzg_SPICE.lib
+      sha256: 8d60289e864d4498df662a441e7284ce4b81e1b39c37d0dbc9aa60b5ee214c1c
   - source: microcap12
     name: DTA123JUA
     get:
@@ -48,3 +102,27 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTA123JUB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dta123jub_ltspice.zip
+      member: dta123jub_ltspice/dta123jub_ltspice.lib
+      sha256: 012d266a43ccae2cadd3cd4f3d97b3c18c90fe8ef88b33ee807f8d0dfac0e54d
+  - source: rohm
+    name: DTA123JUB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dta123jub_spice.zip
+      member: dta123jub.lib
+      sha256: 012d266a43ccae2cadd3cd4f3d97b3c18c90fe8ef88b33ee807f8d0dfac0e54d
+  - source: rohm
+    name: DTA123J
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/umd25n_ltspice.zip
+      member: umd25n_ltspice/umd25n_ltspice.lib
+      sha256: bf1d0e4c6b66e7d7cda9fe904ffd5c1e16fb673b7a751a4aebecb2ef8e298e2f
+  - source: rohm
+    name: DTA123J
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/umd25n_spice.zip
+      member: umd25n.lib
+      sha256: bf1d0e4c6b66e7d7cda9fe904ffd5c1e16fb673b7a751a4aebecb2ef8e298e2f

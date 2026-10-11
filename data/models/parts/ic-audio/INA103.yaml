@@ -2,6 +2,27 @@ part: INA103
 kind: ic-audio
 priority: 2
 models:
+- source: ti
+  name: INA103
+  def: subckt
+  hash: d2d36168c1dccc57c34f9df84483009a4da3107f
+  type: SUBCKT
+  deps:
+  - A1_103E
+  - A2_103E
+  - A3_103E
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOM008
+    member: INA103.LIB
+    archive_sha256: 085429772b74e84a2adb0c4191f2d6af557ba612e06981ce2bc2a9f7b4204ee5
+    sha256: 4095af66fecbe3c7dfdfd27d363560d6fed3052b0247626175b297af94f0ed9c
+    lines:
+      A1_103E: [119, 169]
+      A2_103E: [177, 227]
+      A3_103E: [235, 285]
+      INA103: [50, 111]
+    fetched: '2026-10-10'
 - source: microcap12
   name: INA103_BB
   def: subckt
@@ -34,15 +55,15 @@ models:
     fetched: '2026-09-21'
   copies:
   - source: kicad-spice-library
-    name: INA103/BB
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
-      sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
-  - source: kicad-spice-library
     name: INA103_BB
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burrbn.lib
       sha256: 0cf1e02a8be40a2dd64ea79ba281cf359d8b5fab59844264bee4b3ac20e97ed8
+  - source: kicad-spice-library
+    name: INA103/BB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
+      sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
   - source: ltwiki
     name: INA103/BB
     get:
@@ -80,15 +101,15 @@ models:
     fetched: '2026-09-21'
   copies:
   - source: kicad-spice-library
-    name: INA103E/BB
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
-      sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
-  - source: kicad-spice-library
     name: INA103E_BB
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burrbn.lib
       sha256: 0cf1e02a8be40a2dd64ea79ba281cf359d8b5fab59844264bee4b3ac20e97ed8
+  - source: kicad-spice-library
+    name: INA103E/BB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/burr-brn.lib
+      sha256: 24467fdf16f7135ce54f90c7424e35ce1e6d2131c277351a4ee7276cdd6e2664
   - source: ltwiki
     name: INA103E/BB
     get:

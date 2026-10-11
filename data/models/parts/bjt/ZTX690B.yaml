@@ -22,17 +22,17 @@ models:
   type: NPN
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
-    sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/ztx690b.lib
+    sha256: b16b6e815886ede97c47b283b6714c2e08cda8bea050cdf6b387ecf1875f4617
     lines:
-      ZTX690B: [1898, 1901]
+      ZTX690B: [3, 6]
     fetched: '2026-09-21'
   copies:
   - source: kicad-spice-library
     name: ZTX690B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
+      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
   - source: kicad-spice-library
     name: ZTX690B
     get:
@@ -41,8 +41,8 @@ models:
   - source: kicad-spice-library
     name: ZTX690B
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJTN.LIB
-      sha256: 2c85b6bbf3a7dcb9403d646a1c120714fdc7bce5c8287c8e537012a1cf3ef6c2
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: ltwiki
     name: ZTX690B
     get:
@@ -52,8 +52,8 @@ models:
   - source: spice-model-cd
     name: ZTX690B
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/ztx690b.lib
-      sha256: b16b6e815886ede97c47b283b6714c2e08cda8bea050cdf6b387ecf1875f4617
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Zetex/zmodels.lib
+      sha256: df79c20130b55541a1047df22b4cca3bfdb260045dfee6f538354adc6cfb78d6
   - source: ltwiki
     name: ZTX690B/ZTX
     get:
@@ -130,6 +130,12 @@ models:
   - source: ltwiki
     name: ZTX690B
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: ZTX690B
+    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Mixer/standard.bjt
       sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
@@ -139,12 +145,6 @@ models:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
-  - source: ltwiki
-    name: ZTX690B
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
 - source: groupsio-ltspice
   name: ZTX690B
   def: model
@@ -187,14 +187,14 @@ models:
   - source: ltwiki
     name: ZTX690B
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: ZTX690B
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: ZTX690B

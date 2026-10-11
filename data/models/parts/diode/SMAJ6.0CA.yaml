@@ -15,6 +15,37 @@ models:
     lines:
       smaj60ca: [5, 33]
     fetched: '2026-09-19'
+- source: stmicro
+  name: SMAJ6_0CA
+  def: subckt
+  hash: 092f735a60a56d3b69156a972d132a8c2d14c198
+  type: SUBCKT
+  deps:
+  - TRANSILB
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smaj-series_pspice.zip
+    member: SMAJ.lib
+    archive_sha256: 1b11f6d6d91c58f8febc1908271afc9c3cea425649038e81697ebb284db920e5
+    sha256: 3a9a10c565345a137bb851a228d337a4da4ab1a775d598d8fcee2288e3d8d9fd
+    lines:
+      SMAJ6_0CA: [147, 152]
+      TRANSILB: [67, 93]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SMAJ6_0CA_STM
+  def: subckt
+  hash: f894442b84d14d8f9d14336db6ef9aab6827b27c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smaj-series-thermal-edsim-simetrix-pspice.zip
+    member: smaj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 5ddf41b58477df42a0587d75cb969a8a239ecfdcbc30b7c18b6f2028a87def01
+    sha256: 095badfab4385d3619aa07253572aa3ef272c6666d71251bba63086f3e5d7c28
+    lines:
+      SMAJ6_0CA_STM: [273, 342]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SMAJ6.0CA
   def: subckt
@@ -69,13 +100,13 @@ models:
     name: SMAJ6_0CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: bordodynov
     name: SMAJ6_0CA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SMAJ6_0CA
@@ -96,8 +127,14 @@ models:
   - source: ltwiki
     name: SMAJ6_0CA
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: ltwiki
+    name: SMAJ6_0CA
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMAJ6_0CA
@@ -108,12 +145,6 @@ models:
   - source: ltwiki
     name: SMAJ6_0CA
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: ltwiki
-    name: SMAJ6_0CA
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab

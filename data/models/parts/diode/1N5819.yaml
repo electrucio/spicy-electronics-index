@@ -23,6 +23,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: D1n5819
+    get:
+      url: https://www.onsemi.com/download/models/sp2/1n5819.sp2
+      sha256: 941575ac46b4d1c11e7fb7366bea46d49b6321121cb9fe0f7af66495607623fd
+  - source: onsemi
+    name: 1n5819
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n5819.sp3
+      sha256: 33983e448e6aec9816296b149d3bd8be0cf9154ed792d87fb05bd24f7104c8b7
   - source: kicad-spice-library
     name: 1n5819_ON
     get:
@@ -41,7 +51,7 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -57,7 +67,7 @@ models:
   - source: onsemi
     name: D1N5819
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: central-semi
@@ -73,6 +83,20 @@ models:
       1N5819: [25, 37]
     fetched: '2026-09-14'
     note: 'model(s): 1N5819 (D .model)'
+- source: mcc
+  name: 1N5819
+  def: subckt
+  hash: 598377ceac09a9b345f2fb320fdd0350bb7a0e5d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N5819.zip
+    member: 1N5819.sp
+    archive_sha256: d6321d0e3107e2b16a0448b1a902f47005992d76dfe38e83799f82431e24479c
+    sha256: acf4d6f6ca1f367d6b9e6b567bd4fbad7ac08b54290a2227442066f02c0c7a64
+    lines:
+      1N5819: [4, 16]
+    fetched: '2026-10-10'
 - source: stmicro
   name: 1N5819
   def: model
@@ -80,13 +104,13 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
-    member: ST_POWER_SCHOTTKY_V10.LIB
-    archive_sha256: 36169e895d25ae28c8b2cf6461de0a0da374c1f60d105dbfb8faee880ea76ca6
-    sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
+    url: https://www.st.com/resource/en/spice_model/viper122_pspice_model.zip
+    member: TB_encrypted/libs/sense_and_power_diode_models_available.lib
+    archive_sha256: d39e2d9f80413a7b0e4fb5e55fdff897696898bf7cca80418bc50d59add347d2
+    sha256: 8de4b1cacba602c97a5d0326964b678a596a85fb848e4b883b98f71e909452b9
     lines:
-      1N5819: [1120, 1122]
-    fetched: '2026-09-21'
+      1N5819: [225, 227]
+    fetched: '2026-10-10'
   copies:
   - source: ltwiki
     name: 1N5819
@@ -99,6 +123,12 @@ models:
     get:
       url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PartModels/basic_models/diodes/1N5819.mod
       sha256: 2ccf2ba8dc17e303f8810baa8c3e414de439bb873479c6adff1ef27f8f6dea5e
+  - source: stmicro
+    name: 1N5819
+    get:
+      url: https://www.st.com/resource/en/spice_model/st_power_schottky_diodes_pspice_models_v6.zip
+      member: ST_POWER_SCHOTTKY_V10.LIB
+      sha256: 633fb9263215d27c308e42fa32be0577889347a388021460cf87ddfe9e4e7bad
 - source: microcap12
   name: 1N5819HW
   def: model
@@ -128,20 +158,6 @@ models:
 - source: microcap12
   name: 1N5819
   def: model
-  hash: 261d570d016c695a377a208c7a5aeb3d3e5a0837
-  type: D
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: DATA/A_BOOST_VM.cir
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: bcd5a50478dfaee3142daa1e651844f712954288ab27c3168fb6e80ffce07e85
-    lines:
-      1N5819: [787, 788]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: 1N5819
-  def: model
   hash: 3c7f0ec3231935e4912b6ba46e2c3ed14cf37899
   type: D
   verbatim: true
@@ -152,6 +168,20 @@ models:
     sha256: 4f07396942f9fa67d623899d6904636fa4a5be596d413ed863bc6e2b63a2e01d
     lines:
       1N5819: [353, 354]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: 1N5819
+  def: model
+  hash: 261d570d016c695a377a208c7a5aeb3d3e5a0837
+  type: D
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: DATA/A_BOOST_VM.cir
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: bcd5a50478dfaee3142daa1e651844f712954288ab27c3168fb6e80ffce07e85
+    lines:
+      1N5819: [787, 788]
     fetched: '2026-09-21'
 - source: qspice
   name: 1N5819
@@ -197,14 +227,14 @@ models:
     name: 1N5819
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: 1N5819
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: 1N5819
     get:
@@ -238,18 +268,13 @@ models:
   - source: kicad-spice-library
     name: 1N5819
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: kicad-spice-library
+    name: 1N5819
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
       sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
-  - source: kicad-spice-library
-    name: 1N5819
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
-  - source: kicad-spice-library
-    name: 1N5819
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: kicad-spice-library
     name: 1N5819
     get:
@@ -258,20 +283,43 @@ models:
   - source: kicad-spice-library
     name: 1N5819
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: 1N5819
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: 1N5819
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: 1N5819
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: 1N5819
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: 1N5819
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: 1N5819
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: 1N5819
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: 1N5819
     get:
@@ -287,27 +335,9 @@ models:
   - source: ltwiki
     name: 1N5819
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: 1N5819
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: 1N5819
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
-  - source: ltwiki
-    name: 1N5819
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: groups-io
   name: 1N5819
   def: model
@@ -386,14 +416,14 @@ models:
   - source: ltwiki
     name: 1N5819_
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N5819_
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: 1N5819HW
@@ -424,14 +454,14 @@ models:
   - source: ltwiki
     name: 1N5819HW
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N5819HW
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 datasheet:
   url: https://www.vishay.com/docs/88525/1n5817.pdf

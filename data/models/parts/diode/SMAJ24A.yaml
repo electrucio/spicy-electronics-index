@@ -27,6 +27,75 @@ models:
     lines:
       smaj24a: [13, 34]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SMAJ24A
+  def: model
+  hash: ba04b41109c3181cc17fa118d14086e58f2f6fd4
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 4375be558631d7e2f161bcabdc03ff0b74c586a0566f5d34816804c2a94d5324
+    lines:
+      SMAJ24A: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SMAJ24AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: c708b6aa764c9c0d7dc2cce5aa60fbadf8c2c6e9d0362dafd7d3bb178b2e5688
+- source: taiwan-semi
+  name: SMAJ24A
+  def: subckt
+  hash: 523d2e20fa0b2052a409830ed7b3aba8c63277a6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: cc3278e5b6b2ff3a415f80f682d53279fd9ec30c450930f982e67a99727b99b6
+    lines:
+      SMAJ24A: [7, 23]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SMAJ24AH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: b4ab763df26440050893bca98d5d8d2299338b70bb608b4115ed9a03ffe15bcb
+- source: stmicro
+  name: SMAJ24A
+  def: subckt
+  hash: 7b635f93125114898656f4a04af4c41beb061fbe
+  type: SUBCKT
+  deps:
+  - TRANSIL
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smaj-series_pspice.zip
+    member: SMAJ.lib
+    archive_sha256: 1b11f6d6d91c58f8febc1908271afc9c3cea425649038e81697ebb284db920e5
+    sha256: 3a9a10c565345a137bb851a228d337a4da4ab1a775d598d8fcee2288e3d8d9fd
+    lines:
+      SMAJ24A: [280, 285]
+      TRANSIL: [29, 62]
+    fetched: '2026-10-10'
+- source: stmicro
+  name: SMAJ24A_STM
+  def: subckt
+  hash: 8db80b32650a6bd172c0ef5181a32c86ee914573
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/smaj-series-thermal-edsim-simetrix-pspice.zip
+    member: smaj_thermal_05-07-25_eDSim_symbol_encrypted.lb
+    archive_sha256: 5ddf41b58477df42a0587d75cb969a8a239ecfdcbc30b7c18b6f2028a87def01
+    sha256: 095badfab4385d3619aa07253572aa3ef272c6666d71251bba63086f3e5d7c28
+    lines:
+      SMAJ24A_STM: [1544, 1621]
+    fetched: '2026-10-10'
 - source: microcap12
   name: SMAJ24A
   def: subckt
@@ -69,6 +138,12 @@ models:
     name: SMAJ24A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+  - source: bordodynov
+    name: SMAJ24A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST1.lib
       sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: bordodynov
@@ -76,12 +151,6 @@ models:
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
-  - source: bordodynov
-    name: SMAJ24A
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: groups-io
     name: SMAJ24A
@@ -102,14 +171,14 @@ models:
   - source: ltwiki
     name: SMAJ24A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST1.lib
-      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
+      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMAJ24A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/transil_ST.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
   - source: ltwiki
     name: SMAJ24A
@@ -120,14 +189,14 @@ models:
   - source: ltwiki
     name: SMAJ24A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/TRANSIL/transil_ST.lib
-      sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST1.lib
+      sha256: 93ff5cd289fe81c860e39217e1c54e74ea737baa8a1751c9667bc871452b4391
   - source: ltwiki
     name: SMAJ24A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ST/Transil/transil_ST.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/transil_ST.lib
       sha256: f29a54fcc3bbc3a2742bfe9f288a8313324de90707eeec5924bb82104f149bab
 - source: kicad-spice-library
   name: smaj24a

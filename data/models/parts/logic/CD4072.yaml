@@ -2,6 +2,33 @@ part: CD4072
 kind: logic
 priority: 3
 models:
+- source: ti
+  name: CD4072B
+  def: subckt
+  hash: f28dabca598ab8227a3ce7f54116178858b2f91b
+  type: SUBCKT
+  deps:
+  - LOGIC_FUNCTION_2_LVC_2i_OR_PP_CMOS_CD4072B
+  - LOGIC_ICC_LVC_2i_OR_PP_CMOS_CD4072B
+  - LOGIC_INPUT_LVC_2i_OR_PP_CMOS_CD4072B
+  - LOGIC_PP_OUTPUT_LVC_2i_OR_PP_CMOS_CD4072B
+  - TPD_LVC_2i_OR_PP_CMOS_CD4072B
+  - LOGIC_GATE_2PIN_OD_LVC_2i_OR_PP_CMOS_CD4072B
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SCHM014
+    member: CD4072B.cir
+    archive_sha256: 6fed629f93f36dd42b6c2d407883782c06748665c5a08bf91f57142ebc3bd84f
+    sha256: da8703c13d4d8597102055c66bc51c77bc5a63315e378d869afe3bf24af60342
+    lines:
+      CD4072B: [37, 39]
+      LOGIC_FUNCTION_2_LVC_2i_OR_PP_CMOS_CD4072B: [150, 165]
+      LOGIC_GATE_2PIN_OD_LVC_2i_OR_PP_CMOS_CD4072B: [43, 79]
+      LOGIC_ICC_LVC_2i_OR_PP_CMOS_CD4072B: [192, 200]
+      LOGIC_INPUT_LVC_2i_OR_PP_CMOS_CD4072B: [80, 149]
+      LOGIC_PP_OUTPUT_LVC_2i_OR_PP_CMOS_CD4072B: [180, 191]
+      TPD_LVC_2i_OR_PP_CMOS_CD4072B: [166, 179]
+    fetched: '2026-10-10'
 - source: microcap12
   name: CD4072B
   def: subckt
@@ -58,15 +85,9 @@ models:
   - source: ltwiki
     name: CD4072B
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
-      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
-  - source: ltwiki
-    name: CD4072B
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
-      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
   - source: ltwiki
     name: CD4072B
     get:
@@ -77,7 +98,13 @@ models:
     name: CD4072B
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
+      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+  - source: ltwiki
+    name: CD4072B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
       sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
 - source: ltwiki
   name: CD4072B

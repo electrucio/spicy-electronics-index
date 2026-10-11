@@ -2,6 +2,40 @@ part: CD4093
 kind: logic
 priority: 4
 models:
+- source: ti
+  name: CD4093B
+  def: subckt
+  hash: 0200331d45b1e5ad533c1b600e4989e1606beca4
+  type: SUBCKT
+  deps:
+  - LOGIC_FUNCTION_2_LVC_2i_NAND_PP_ST_CD4093B
+  - LOGIC_ICC_LVC_2i_NAND_PP_ST_CD4093B
+  - LOGIC_INPUT_LVC_2i_NAND_PP_ST_CD4093B
+  - LOGIC_PP_OUTPUT_LVC_2i_NAND_PP_ST_CD4093B
+  - TPD_LVC_2i_NAND_PP_ST_CD4093B
+  - LOGIC_GATE_2PIN_OD_LVC_2i_NAND_PP_ST_CD4093B
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SCHM024
+    member: CD4093B.cir
+    archive_sha256: 77f066755cbf4f988a5ecd5a3dd225af111377b790a45f66261e3fec95f7f93d
+    sha256: 39e113d7b2ba612a5c9f3d3e7c62c7ebd06bfc514b339f5c08f6a5c066bd340f
+    lines:
+      CD4093B: [37, 39]
+      LOGIC_FUNCTION_2_LVC_2i_NAND_PP_ST_CD4093B: [141, 156]
+      LOGIC_GATE_2PIN_OD_LVC_2i_NAND_PP_ST_CD4093B: [43, 76]
+      LOGIC_ICC_LVC_2i_NAND_PP_ST_CD4093B: [257, 265]
+      LOGIC_INPUT_LVC_2i_NAND_PP_ST_CD4093B: [77, 140]
+      LOGIC_PP_OUTPUT_LVC_2i_NAND_PP_ST_CD4093B: [171, 182]
+      TPD_LVC_2i_NAND_PP_ST_CD4093B: [157, 170]
+    fetched: '2026-10-10'
+  copies:
+  - source: ti
+    name: CD4093B
+    get:
+      url: https://www.ti.com/lit/zip/SCHM024
+      member: CD4093B.lib
+      sha256: 39e113d7b2ba612a5c9f3d3e7c62c7ebd06bfc514b339f5c08f6a5c066bd340f
 - source: microcap12
   name: CD4093B
   def: subckt
@@ -49,15 +83,9 @@ models:
   - source: ltwiki
     name: CD4093B
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
-      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
-  - source: ltwiki
-    name: CD4093B
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
-      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
   - source: ltwiki
     name: CD4093B
     get:
@@ -68,7 +96,13 @@ models:
     name: CD4093B
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
+      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+  - source: ltwiki
+    name: CD4093B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
       sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
 - source: ltwiki
   name: CD4093B

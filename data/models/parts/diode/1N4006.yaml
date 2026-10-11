@@ -29,6 +29,11 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_rect.lib
       sha256: 5d37da736c3d863a34a000b998e990752bd81320e62c69cd2ec73b64a46876bb
+  - source: onsemi
+    name: 1n4006rl
+    get:
+      url: https://www.onsemi.com/download/models/sp3/1n4006rl.sp3
+      sha256: 1b2603c693912f2eca061e0d2bf9125814fdae0af63597c2a61d9ab586c9c1be
 - source: onsemi
   name: D1N4006
   def: model
@@ -38,7 +43,7 @@ models:
   - D1N4001
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -66,9 +71,37 @@ models:
   - source: onsemi
     name: D1N4006
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
+- source: mcc
+  name: 1N4006
+  def: subckt
+  hash: 277e04775e6ecc2a0e7f2a9e8889a8174ce5a51a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4006GP.zip
+    member: 1N4006.sp
+    archive_sha256: 2566ec3b1953ce4339fa2b424c23fa01753942ba676fe19dfc9f3a6ad17bd837
+    sha256: 0635a641cb01160a331d30be91b8d192be4375fe92d56ddcbe6d3d585a22c20b
+    lines:
+      1N4006: [4, 16]
+    fetched: '2026-10-10'
+- source: mcc
+  name: 1N4006GP
+  def: subckt
+  hash: 3d48c5496f32f93564383d61f9b39767890422e1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4006GP.zip
+    member: 1N4006GP.sp
+    archive_sha256: 2566ec3b1953ce4339fa2b424c23fa01753942ba676fe19dfc9f3a6ad17bd837
+    sha256: e96dcd1b7c8f082bf951db0ec4e2b667730e6500ccef1a7966c1be03a0c9640f
+    lines:
+      1N4006GP: [4, 16]
+    fetched: '2026-10-10'
 - source: microcap12
   name: 1N4006G
   def: model
@@ -272,14 +305,14 @@ models:
   - source: ltwiki
     name: D1N4006
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: D1N4006
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: D1N4006

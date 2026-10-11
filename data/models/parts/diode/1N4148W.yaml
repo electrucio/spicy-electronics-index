@@ -44,12 +44,12 @@ models:
   - source: diodes-inc
     name: 1N4148WS
     get:
-      url: https://www.diodes.com/spice/download/1491/1N4148WS.spice.txt
+      url: https://www.diodes.com/spice/download/1593/1N4148WSQ.spice.txt
       sha256: fc11f92fe72ebfb649dfc740380acd5a89b0539e5fb0eebd48f462f8f75b01bf
   - source: diodes-inc
     name: 1N4148WS
     get:
-      url: https://www.diodes.com/spice/download/1593/1N4148WSQ.spice.txt
+      url: https://www.diodes.com/spice/download/1491/1N4148WS.spice.txt
       sha256: fc11f92fe72ebfb649dfc740380acd5a89b0539e5fb0eebd48f462f8f75b01bf
   - source: diodes-inc
     name: 1N4148WS
@@ -98,6 +98,129 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Diodes%20Incorporated/Spice/spicemodels_switching_diodes.txt
       sha256: b52ef8ad47d136ea6c399e3c3d1870cdeff29bfa7113e8f181aa447ddc1bdc82
+- source: taiwan-semi
+  name: 1N4148W
+  def: model
+  hash: d9fbd7e5118634beec22d6790c531abc35cf407a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8feb86f1eefb426de939961dccd033bff351207b09254297191d9ccc362f8070
+    lines:
+      1N4148W: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: 1N4148W-G
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 05b51abd3d3dd1df1b3414e420aa0174e405f31ccd0efa47e5c4baa08e663bc0
+  - source: taiwan-semi
+    name: 1N4148WS-G
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 70da046c6cbd51948d18830bb3c4bf09bb537ec685d6a3ed71f94470a4c6b874
+- source: taiwan-semi
+  name: 1N4148WS
+  def: model
+  hash: 2fff687b878c7ba31d00403975476fd08947f838
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8d2d8fe1111cf33e6a18049ad9419d60f121028916ab5482522ae74f872d998d
+    lines:
+      1N4148WS: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: 1N4148WSH
+  def: subckt
+  hash: 0e8dc7a7f2cefc49486ee60589b57784f04dbf92
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 9f8ac0a280cef29bc4a662fb23930f20ba8cc7ffae2525e4b7550483a0dec36d
+    lines:
+      1N4148WSH: [8, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: 1N4148W
+  def: subckt
+  hash: e107a91a6d65e12ad8e29d941d69fd0ecde10128
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/1N4148W.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 979f5fe5b2c8a0340bf309d6aee8c2ea1875f3204ad3587e9451cdeaeb2cdda5
+    lines:
+      1N4148W: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: 1N4148W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/1N4148W-AU.txt
+      sha256: 6e89c7504051da125c9a331a424c31a8576ad98830a19182f4e37f8e24c063cb
+- source: panjit
+  name: 1n4148ws
+  def: subckt
+  hash: 907fb95739a1a0d48c3f73ff0a7c337ef447b654
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/1N4148WS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: e11cee9cf937ced480fdeedef9db98c5e95ae00c4b6f0f4127d2add61a001007
+    lines:
+      1n4148ws: [16, 74]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: 1n4148ws-au
+  def: subckt
+  hash: 20af6a8b58c634db1529a563205cf958409dbdca
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/1N4148WS-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 75282765d2f540ad3d8cfac1778f80083fe2834d57de17a57d8bbf3a5539f067
+    lines:
+      1n4148ws-au: [16, 74]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: mcc
+  name: 1N4148W
+  def: subckt
+  hash: 7cb40dfbede2dfc9b3c4849f89d9e5cb65923e55
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4148WX.zip
+    member: 1N4148W.sp
+    archive_sha256: eb97345789b862e681f845cd5f07e9f52c71783bd648b8fb81dd38fc093676e2
+    sha256: d00dbe9b9720d9c5382a0477d33dbcda808ddeb724ff2d56fee8a6b494d2d240
+    lines:
+      1N4148W: [4, 16]
+    fetched: '2026-10-10'
+  copies:
+  - source: mcc
+    name: 1N4148WX
+    get:
+      url: https://www.mccsemi.com/diodespicemodel/1N4148WX.zip
+      member: 1N4148WX.sp
+      sha256: 2f5709ee560d1cf7aa22e7100f6c9b91b96d8b42bd35643a153ac3b95d05161f
 - source: microcap12
   name: 1N4148WT
   def: model

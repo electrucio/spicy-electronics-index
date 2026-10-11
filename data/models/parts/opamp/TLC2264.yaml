@@ -2,8 +2,8 @@ part: TLC2264
 kind: opamp
 priority: 3
 models:
-- source: microcap12
-  name: TLC2264_TI_5_2
+- source: ti
+  name: TLC2264
   def: subckt
   hash: 367a82432963f86bd0bfa28c952b9b952cd158b7
   type: SUBCKT
@@ -15,13 +15,13 @@ models:
   - OUT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ti.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    url: https://www.ti.com/lit/zip/SLOJ079
+    member: TLC2264.5_2
+    archive_sha256: b77ffff1c6e846382656f440b60eb3fcec5bcf6fac03f9715b6be06faef1ba94
+    sha256: 42961da9d7a78c95293afd4b0e17feeb5d5dca8f929de72f60aea3d9f06ec274
     lines:
-      TLC2264_TI_5_2: [7957, 8005]
-    fetched: '2026-09-21'
+      TLC2264: [10, 58]
+    fetched: '2026-10-10'
   note: pins from comment words
   copies:
   - source: bordodynov
@@ -89,8 +89,14 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
       sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
-- source: microcap12
-  name: TLC2264_TI_10
+  - source: microcap12
+    name: TLC2264_TI_5_2
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ti.lib
+      sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+- source: ti
+  name: TLC2264
   def: subckt
   hash: 99caf648f3616abbd304e8b1281f6b98117ed037
   type: SUBCKT
@@ -102,27 +108,33 @@ models:
   - OUT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ti.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    url: https://www.ti.com/lit/zip/SLOJ079
+    member: TLC2264.101
+    archive_sha256: b77ffff1c6e846382656f440b60eb3fcec5bcf6fac03f9715b6be06faef1ba94
+    sha256: 2dcb4fb9335524128d93a0242ded1f2192b7a882495a85a36dec7b25dbdad894
     lines:
-      TLC2264_TI_10: [7914, 7947]
-    fetched: '2026-09-21'
+      TLC2264: [10, 43]
+    fetched: '2026-10-10'
   note: pins from comment words
   copies:
-  - source: kicad-spice-library
-    name: TLC2264_TI_10
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
-      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
   - source: kicad-spice-library
     name: TLC2264T1
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/TI3.LIB
       sha256: afc339a85f89634ba18ad3c5c99a8ec481d9e3a16fcf10d3a9181a3f66be00a8
-- source: microcap12
-  name: TLC2264_TI_5
+  - source: kicad-spice-library
+    name: TLC2264_TI_10
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
+      sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
+  - source: microcap12
+    name: TLC2264_TI_10
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ti.lib
+      sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+- source: ti
+  name: TLC2264
   def: subckt
   hash: d1532d773c045b2eb3c1f61bb2cafb0fdb6b2f6b
   type: SUBCKT
@@ -134,13 +146,13 @@ models:
   - OUT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ti.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+    url: https://www.ti.com/lit/zip/SLOJ079
+    member: TLC2264.5_1
+    archive_sha256: b77ffff1c6e846382656f440b60eb3fcec5bcf6fac03f9715b6be06faef1ba94
+    sha256: 62fbd278b199b9f3a405cec012494d6d384c0052c0c62f56effdf6038e43189c
     lines:
-      TLC2264_TI_5: [8015, 8048]
-    fetched: '2026-09-21'
+      TLC2264: [10, 43]
+    fetched: '2026-10-10'
   note: pins from comment words
   copies:
   - source: kicad-spice-library
@@ -148,6 +160,26 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/ti.lib
       sha256: dd9664528e86f9ade2b8c226e22193fe1e4733d95fe8bda19f1630f573be1ee2
+  - source: microcap12
+    name: TLC2264_TI_5
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ti.lib
+      sha256: 454cd75d22669d329ec726e0081496a5e18790f5d916a542d2c9127da895f5f9
+- source: ti
+  name: TLC2264
+  def: subckt
+  hash: e3f9fda6972d1b22efed5bf6982b8ce57e971899
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SLOJ079
+    member: TLC2264.102
+    archive_sha256: b77ffff1c6e846382656f440b60eb3fcec5bcf6fac03f9715b6be06faef1ba94
+    sha256: c1c164452059615108459fd415b4be549249e2d93bc9fb1df1674a76f28d9c62
+    lines:
+      TLC2264: [10, 58]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: TLC2264
   def: subckt

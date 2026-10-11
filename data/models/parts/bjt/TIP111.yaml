@@ -4,6 +4,24 @@ priority: 3
 group: listed
 models:
 - source: onsemi
+  name: Xtip111
+  def: subckt
+  hash: 06f8c854bc04ba2d4c896052cd8e96b0595ecf32
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip111.sp2
+    sha256: aad83bf2a60983857bdf62f471b59059a749d74a75f82c50a6b4579561ebd056
+    lines:
+      Xtip111: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip111
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip111.sp3
+      sha256: da8824a60e2d28b422a299a41a1f3265c7b51181a36a4cd404bf6673d5b9d700
+- source: onsemi
   name: TIP111
   def: subckt
   hash: d5b091eb5361c67150c6ddb38c9e8e6861f737c5
@@ -44,15 +62,15 @@ models:
   - source: ltwiki
     name: TIP111
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
-    name: TIP111
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/NPNdarlington.lib
       sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
+    name: TIP111
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
 - source: kicad-spice-library
   name: TIP111
   def: subckt

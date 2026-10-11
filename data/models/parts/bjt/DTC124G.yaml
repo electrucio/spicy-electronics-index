@@ -3,24 +3,36 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
-  name: DTC124GKA
+- source: rohm
+  name: DTC124GUA
   def: subckt
   hash: fb075ba58ae1497762655044144039c0f260b2ea
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc124gua_ltspice.zip
+    member: dtc124gua_ltspice/dtc124gua_ltspice.lib
+    archive_sha256: 8582eda1e155cd5c776517c6cb5d0ce845de6a95d61869bd8a3b4bc907f3457a
+    sha256: 738337577297ec3a8f428fab923a459a6e8f8ca2e1603c72f892e244a18318dc
     lines:
-      DTC124GKA: [34114, 34145]
-    fetched: '2026-09-21'
+      DTC124GUA: [5, 36]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTC124GKA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
   - source: microcap12
     name: DTC124GUA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC124GUA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124gua_spice.zip
+      member: dtc124gua.lib
+      sha256: 738337577297ec3a8f428fab923a459a6e8f8ca2e1603c72f892e244a18318dc

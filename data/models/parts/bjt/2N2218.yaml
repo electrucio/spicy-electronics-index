@@ -3,19 +3,38 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N2218A
   def: model
   hash: 85715f99fd9862b07ef3a4a98767f28195af506a
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N2218A.LIB
+    sha256: 34c3d796cff66f387be57db3af1b10437bc4fec2293c0fcaa2f27cda24fd98a9
     lines:
-      2N2218A: [1247, 1272]
+      2N2218A: [24, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N2218A
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+- source: microcap12
+  name: 2N2218A
+  def: model
+  hash: 98ee71aa6f25afe49cfef43973aa62dd7932cc88
+  type: NPN
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: lbr_txt/msbjt_lbr.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
+    lines:
+      2N2218A: [155, 158]
     fetched: '2026-09-21'
 - source: microcap12
   name: 2N2218
@@ -30,20 +49,6 @@ models:
     sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
     lines:
       2N2218: [149, 152]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: 2N2218A
-  def: model
-  hash: 98ee71aa6f25afe49cfef43973aa62dd7932cc88
-  type: NPN
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: lbr_txt/msbjt_lbr.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 03fbaf82587d859e52f6b3e36166b65d7d6b6f241e460308f37d3b568e5fa96e
-    lines:
-      2N2218A: [155, 158]
     fetched: '2026-09-21'
 - source: groupsio-ltspice
   name: 2N2218
@@ -60,7 +65,7 @@ models:
       2N2218: [33, 33]
     fetched: '2026-09-21'
 - source: ltwiki
-  name: Q2N2218
+  name: Q2N2218A
   def: model
   hash: a5ce74c0dc6108625b039ef6970d592a45720050
   type: NPN
@@ -69,11 +74,11 @@ models:
     url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
     sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b
     lines:
-      Q2N2218: [241, 244]
+      Q2N2218A: [248, 251]
     fetched: '2026-09-21'
   copies:
   - source: ltwiki
-    name: Q2N2218A
+    name: Q2N2218
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/bipolar.lib
       sha256: c5e0e8839925adb5e550a6654a8d5d1c0634a0fd0f58e03c9701e24d9aa08b5b

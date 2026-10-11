@@ -3,36 +3,90 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
+- source: rohm
   name: DTC123EE
   def: subckt
   hash: 146364dae9871f3bdd8eac0d3c599334ff63ccac
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc123ee_spice.zip
+    member: dtc123ee.lib
+    archive_sha256: 3e21b0076c83ce532302d907dbd418b30a7856f0639ff9e4e0af49c93c5bf3ed
+    sha256: 94e43d6b0e272ffd060dbccd007b3024468876f141be4681ad0f833ab52cd454
     lines:
-      DTC123EE: [33317, 33351]
-    fetched: '2026-09-21'
+      DTC123EE: [5, 39]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: DTC123EE
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC123EE
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc123ee_ltspice.zip
+      member: dtc123ee_ltspice/dtc123ee_ltspice.lib
+      sha256: 94e43d6b0e272ffd060dbccd007b3024468876f141be4681ad0f833ab52cd454
   - source: microcap12
     name: DTC123EKA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC123EKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc123eka_ltspice.zip
+      member: dtc123eka_ltspice/dtc123eka_ltspice.lib
+      sha256: 6c01fd8884983265abe4dc628d80182808efff59fa5c9702133a468894ef1dfb
+  - source: rohm
+    name: DTC123EKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc123eka_spice.zip
+      member: dtc123eka.lib
+      sha256: 6c01fd8884983265abe4dc628d80182808efff59fa5c9702133a468894ef1dfb
   - source: microcap12
     name: DTC123EM
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC123EM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc123em_spice.zip
+      member: dtc123em.lib
+      sha256: 003467f3f4b18b3e0d40d7f9b00c217f58f6ab50d82ced6128e3fab14c47adb6
+  - source: rohm
+    name: DTC123EM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTC123EMHZG_SPICE.zip
+      member: DTC123EMHZG_SPICE/dtc123emhzg_SPICE.lib
+      sha256: 003467f3f4b18b3e0d40d7f9b00c217f58f6ab50d82ced6128e3fab14c47adb6
+  - source: rohm
+    name: DTC123EM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc123em_ltspice.zip
+      member: dtc123em_ltspice/dtc123em_ltspice.lib
+      sha256: 003467f3f4b18b3e0d40d7f9b00c217f58f6ab50d82ced6128e3fab14c47adb6
   - source: microcap12
     name: DTC123EUA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC123EEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc123eeb_ltspice.zip
+      member: dtc123eeb_ltspice/dtc123eeb_ltspice.lib
+      sha256: b889a416207f66572a910fd38e0bba5236f4e3189428a57fb5c703fa53a8b52a
+  - source: rohm
+    name: DTC123EEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc123eeb_spice.zip
+      member: dtc123eeb.lib
+      sha256: b889a416207f66572a910fd38e0bba5236f4e3189428a57fb5c703fa53a8b52a

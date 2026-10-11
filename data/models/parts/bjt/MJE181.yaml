@@ -3,20 +3,30 @@ kind: bjt
 priority: 3
 group: audio_docs
 models:
-- source: microcap12
+- source: onsemi
   name: Qmje181
   def: model
   hash: 16aa1c41d41de553e4e7b255cf163ba0e36b6d56
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/On_Semi.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    url: https://www.onsemi.com/download/models/sp2/mje181.sp2
+    sha256: ff499406055fee7d9adb971139b957e54c616ed92954a94591e8f5d914ed2808
     lines:
-      Qmje181: [137288, 137298]
-    fetched: '2026-09-21'
+      Qmje181: [12, 22]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: Qmje181
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: mje181
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mje181.sp3
+      sha256: 45a3265af7336271d27e27cfe5ce3de21754c9f8bf05f7d610e6d57e3bef06ed
 - source: microcap12
   name: MJE181
   def: model
@@ -66,14 +76,14 @@ models:
   - source: ltwiki
     name: mje181
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: mje181
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: groupsio-ltspice
   name: MJE181

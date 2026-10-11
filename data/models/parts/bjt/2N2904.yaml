@@ -3,18 +3,20 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: spice-model-cd
+- source: onsemi
   name: Q2N2904
   def: model
   hash: 91255da528baf2fe613658705c60bc2925eba13a
   type: PNP
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BIPOLAR.LB
-    sha256: bc06e66b73b3f9efd1d6681dcf3667599ed3205c8775c71f528f6c3cb22af447
+    url: https://www.onsemi.com/download/models/zip/ncp1380%20simplis%20models.zip
+    member: NCP1380_SIMPLIS/NCP1380_AND_SUBCKT/netlist.out
+    archive_sha256: 5ee071b42256dc2f97ec2e6e635f002988536247275554ede70cea4bdea75123
+    sha256: 9278261ac8a006bf99f5d9b5510c1631de0a89f8944a1b9db64c2336d0344729
     lines:
-      Q2N2904: [178, 181]
-    fetched: '2026-09-21'
+      Q2N2904: [27, 30]
+    fetched: '2026-10-10'
   copies:
   - source: bordodynov-qspice
     name: Q2N2904
@@ -22,6 +24,11 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/bipolar.txt
       sha256: 39488a5d05bc9e8639ef14d46055456cb298d497e88eaa170113e153ab076333
+  - source: spice-model-cd
+    name: Q2N2904
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/SiMetrix/BIPOLAR.LB
+      sha256: bc06e66b73b3f9efd1d6681dcf3667599ed3205c8775c71f528f6c3cb22af447
 - source: microcap12
   name: 2N2904
   def: model

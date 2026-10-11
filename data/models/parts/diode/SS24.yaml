@@ -22,6 +22,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: Dss24
+    get:
+      url: https://www.onsemi.com/download/models/sp2/ss24t3.rev0.sp2
+      sha256: 995e3960b3304fa386d1416be5dc4f19ffab4fe1cb9d240f8771b7fd4445eaf0
+  - source: onsemi
+    name: ss24
+    get:
+      url: https://www.onsemi.com/download/models/sp3/ss24t3.rev0.sp3
+      sha256: cf4ee29cd7c01ecbecec8134b9a3a5dbdff795a3503cd4a30e66d9c04736c6ec
 - source: onsemi
   name: SS24FL
   def: model
@@ -112,6 +122,82 @@ models:
     lines:
       ss24s: [7, 16]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: SS24
+  def: model
+  hash: a84f1f2a9b2026d988ecf4dc297bb18b898e940c
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 2531cb745246cbaf855bc26622c78cd871ce0f110f704b753b5ad97bf85e804c
+    lines:
+      SS24: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS24H
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 0b524712904c806ebef215cdf41420cefda07b48f83a2c1703d2f6d6bb0ee912
+- source: taiwan-semi
+  name: SS24MH
+  def: model
+  hash: 4b1e4fe7692ae4fb77e1e99184fbe8b5bd997a6b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 565607344fb99fde9f5ced40badad9ee0c011f2e38998f183b501518d897a045
+    lines:
+      SS24MH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS24M
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: fa2edf0b1c6a4bb66e1777949b6dc74bc2357a658dd34b84f65bb2c90969308c
+- source: taiwan-semi
+  name: SS24LWH
+  def: model
+  hash: a949f6be679c415e01ccd09ffaed0450a5cad694
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8556909fb7930e9f4db70f580fa2ce957867da7c332600bad34a1501357b0e15
+    lines:
+      SS24LWH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS24LW
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 58007361eedfdfc22778e056e929741bbb09bf05ac61735068d18bd9bf947894
+- source: taiwan-semi
+  name: SS24ALH
+  def: model
+  hash: 70502432e15b45aaeca8f332fd911c2866bb0d35
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: d747b6515c39dfa6759c6dc17d94bd62ef980a28dcd5d8f416613f72de658480
+    lines:
+      SS24ALH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: SS24FSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 8c208c178716317d958bbc28eb44bc226b2f4ac11aee1d6e45bc0753a0d32492
 - source: bordodynov
   name: SS24
   def: model
@@ -137,14 +223,14 @@ models:
     name: SS24
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: SS24
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: SS24
     get:
@@ -154,20 +240,20 @@ models:
   - source: groups-io
     name: SS24
     get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: SS24
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: SS24
+    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
       sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
-  - source: groups-io
-    name: SS24
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: groups-io
-    name: SS24
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
   - source: groupsio-ltspice
     name: SS24
     get:
@@ -177,18 +263,13 @@ models:
   - source: kicad-spice-library
     name: SS24
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: kicad-spice-library
+    name: SS24
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
       sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
-  - source: kicad-spice-library
-    name: SS24
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
-  - source: kicad-spice-library
-    name: SS24
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: kicad-spice-library
     name: SS24
     get:
@@ -197,20 +278,43 @@ models:
   - source: kicad-spice-library
     name: SS24
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: SS24
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: SS24
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: SS24
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: SS24
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: SS24
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: SS24
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: SS24
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: SS24
     get:
@@ -226,24 +330,6 @@ models:
   - source: ltwiki
     name: SS24
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: SS24
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: SS24
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
-  - source: ltwiki
-    name: SS24
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571

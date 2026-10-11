@@ -24,16 +24,6 @@ models:
   note: pins from default order (unverified)
   copies:
   - source: kicad-spice-library
-    name: irf3205s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
-      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
-  - source: kicad-spice-library
-    name: irf3205s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
-      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
-  - source: kicad-spice-library
     name: IRF3205
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
@@ -49,6 +39,21 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
       sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
   - source: kicad-spice-library
+    name: irf3205s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: irf3205s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/other_models/MOS_3TEN/INTRNTL2.LIB
+      sha256: 5e6d2a192f54b7e957f81573a6cbb8a0d9f59dcf4a64b887a76f2315358c51c8
+  - source: kicad-spice-library
+    name: IRF3205SM
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
+      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
+  - source: kicad-spice-library
     name: irf3205_IR
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
@@ -58,11 +63,6 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/irf.lib
       sha256: 565ac7c67bbca13525a3703823cf88a0be040e4904412caff5c018586020578c
-  - source: kicad-spice-library
-    name: IRF3205SM
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/IR.LIB
-      sha256: cbd1531949740d20c36c70e120ddea022bbdc236ba952745695131c8ea298718
 - source: spice-model-cd
   name: IRF3205S
   def: subckt
@@ -110,13 +110,9 @@ models:
   - source: ltwiki
     name: IRF3205S
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: IRF3205S
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: IRF3205S
     get:
@@ -126,9 +122,13 @@ models:
   - source: ltwiki
     name: IRF3205S
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF3205S
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: ltwiki
   name: irf3205s
   def: subckt
@@ -153,13 +153,13 @@ models:
     name: irf3205s
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205s.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205s.spi
       sha256: 227f75b9330958dd10bb1d9bc4a98d72e05eaed6ff23192fc2284b7af089c0e7
   - source: bordodynov
     name: irf3205s
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205s.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205s.spi
       sha256: 227f75b9330958dd10bb1d9bc4a98d72e05eaed6ff23192fc2284b7af089c0e7
   - source: kicad-spice-library
     name: irf3205s
@@ -170,13 +170,13 @@ models:
     name: irf3205s
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205s.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205s.spi
       sha256: 227f75b9330958dd10bb1d9bc4a98d72e05eaed6ff23192fc2284b7af089c0e7
   - source: ltwiki
     name: irf3205s
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205s.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205s.spi
       sha256: 227f75b9330958dd10bb1d9bc4a98d72e05eaed6ff23192fc2284b7af089c0e7
 - source: ltwiki
   name: irf3205
@@ -202,13 +202,13 @@ models:
     name: irf3205
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205.spi
       sha256: 3fa03fa995e12c5784add8101b394dcc45d24f9251d3c4c0c8959c411e1f4793
   - source: bordodynov
     name: irf3205
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205.spi
       sha256: 3fa03fa995e12c5784add8101b394dcc45d24f9251d3c4c0c8959c411e1f4793
   - source: kicad-spice-library
     name: irf3205
@@ -219,13 +219,13 @@ models:
     name: irf3205
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205.spi
       sha256: 3fa03fa995e12c5784add8101b394dcc45d24f9251d3c4c0c8959c411e1f4793
   - source: ltwiki
     name: irf3205
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irf3205.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf3205.spi
       sha256: 3fa03fa995e12c5784add8101b394dcc45d24f9251d3c4c0c8959c411e1f4793
 - source: kicad-spice-library
   name: irf3205

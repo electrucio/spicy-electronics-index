@@ -21,6 +21,34 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): PMBT2222A (.subckt 1 2 3), MAIN (NPN .model), DIODE (D .model)'
   note: pins from comment words
+- source: nexperia
+  name: PMBT2222AQA
+  def: subckt
+  hash: ffd8fc53905f6447de20e41c01d3de5dae062acb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMBT2222AQA.txt
+    sha256: 81b5b63f192837748adc932b0d0264849416df9b73f84d17fc16c05132a9bbab
+    lines:
+      PMBT2222AQA: [28, 88]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMBT2222AM
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT2222AM.txt
+      sha256: c69bf4b97930826b1d8174af9025027729f147db6f2d39726307e86e81c22572
+  - source: nexperia
+    name: PMBT2222AMB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT2222AMB.txt
+      sha256: 4b6cbbe4d9fd661fecea7b79ff8b7aba58bb12bc4312b9b0ee0a3eb5473508fd
+  - source: nexperia
+    name: PMBT2222AYS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMBT2222AYS.txt
+      sha256: b99a06e844f0b8b008377ba55490790ea2c37020af40f647244f8f5b0b99fd69
 - source: spice-model-cd
   name: QPMBT2222A
   def: model

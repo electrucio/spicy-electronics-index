@@ -12,7 +12,7 @@ models:
   - D1N4001
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
+    url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
     member: NCV887x_WEB MODEL rev2/diode.lib
     archive_sha256: 09d9ad961729090a1471436c772b81bf4e90a466232d3d95c0a60fb42540dd5a
     sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
@@ -41,7 +41,7 @@ models:
   - source: onsemi
     name: D1N4004
     get:
-      url: https://www.onsemi.com/download/models/zip/ncv8871%20pspice%20small-signal%20model%20(modeling%20examples%20included).zip
+      url: https://www.onsemi.com/download/models/zip/ncv8870%20pspice%20small-signal%20model%20(modeling%20example%20included).zip
       member: NCV887x_WEB MODEL rev2/diode.lib
       sha256: 1b6bc4e709a10348038d31d87ab7ce09b41f2043bd734d4561b814a97c853e52
 - source: vishay
@@ -59,6 +59,21 @@ models:
     note: 'model(s): 1N4004 (D .model)'
   note: 'STAND-IN: model of 1N4004, not of 1N2613; equivalence declared in catalog/wanted.yaml (see its
     note)'
+- source: mcc
+  name: 1N4004
+  def: subckt
+  hash: 0ba35cc4f696c3f1895a4da60b0e3a9b84dd6181
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/1N4004GP.zip
+    member: 1N4004.sp
+    archive_sha256: a61cbb35e46b0de4872ad4cab26d218baaff3be91f4a582ee513a86c84675cb1
+    sha256: 4c02997982d8d8f1e979ea041c74acabcddc261fda395f933e09f0862352e4af
+    lines:
+      1N4004: [4, 16]
+    fetched: '2026-10-10'
+  note: 'STAND-IN: model of 1N4004, not of 1N2613; the equivalence is declared in data/models/wanted.yaml'
 - source: spice-model-cd
   name: d1n4004
   def: model
@@ -225,14 +240,14 @@ models:
   - source: ltwiki
     name: 1N4004
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N4004
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: bordodynov
   name: D1N4004
@@ -260,14 +275,14 @@ models:
   - source: ltwiki
     name: D1N4004
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: D1N4004
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: D1N4004

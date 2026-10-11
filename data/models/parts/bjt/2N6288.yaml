@@ -3,20 +3,35 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: onsemi
   name: Q2n6288
   def: model
   hash: 07c975b39c83759a2efa36ce63ccf9dee6c628c4
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/On_Semi.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+    url: https://www.onsemi.com/download/models/sp2/2n6288.sp2
+    sha256: 97499db288511c5aa83a924155aa1242934c7ac2f20e6545a6f718abec07eae0
     lines:
-      Q2n6288: [5065, 5075]
-    fetched: '2026-09-21'
+      Q2n6288: [12, 22]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: Q2n6288
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: 2n6288
+    get:
+      url: https://www.onsemi.com/download/models/sp3/2n6288.sp3
+      sha256: 3a37a6cc31364ef7c0f56b548b33d66f942b073f80be392f3be36fe1c65bccea
+  - source: onsemi
+    name: Q2n6288
+    get:
+      url: https://www.onsemi.com/download/models/lib/2n6288.lib
+      sha256: b65d7675e9616b72f84ad72d64c6660ef07c690708d1974cb8f42fe253d5b01e
 - source: microcap12
   name: 2N6288
   def: model
@@ -92,12 +107,12 @@ models:
   - source: ltwiki
     name: 2N6288
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: 2N6288
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3

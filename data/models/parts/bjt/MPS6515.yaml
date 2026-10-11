@@ -3,18 +3,18 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: spice-model-cd
+- source: onsemi
   name: MPS6515
   def: model
   hash: 6a838ba6852712afb0b987e8d24f87592d852ce0
   type: NPN
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS6515.t
-    sha256: b62583404d409d41eca1e0fd36da36e74c872d18c4fb88ed40147dfd290c7b00
+    url: https://www.onsemi.com/download/models/mod/mps6515.mod
+    sha256: 9fc9ee575c1a0cf4fb2ecd8ee2b1e51b72eeb28cce9bde354de85afe2d910ad8
     lines:
-      MPS6515: [1, 4]
-    fetched: '2026-09-21'
+      MPS6515: [1, 7]
+    fetched: '2026-10-10'
   copies:
   - source: groupsio-ltspice
     name: MPS6515
@@ -49,6 +49,23 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/fairch.lib
       sha256: 53806c9a42d8b9f44b8c77ed3ae210ad6250b5eacb44d7e7f2b429e8f4559918
+  - source: spice-model-cd
+    name: MPS6515
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Fairchild/MP/MPS6515.t
+      sha256: b62583404d409d41eca1e0fd36da36e74c872d18c4fb88ed40147dfd290c7b00
+- source: central-semi
+  name: MPS6515
+  def: model
+  hash: b35e429b736f3e187ece5e53a817d3558bb95dc4
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/CSM1510.LIB
+    sha256: a0b65a2511b31b67b6c94997983c9d8cfdb4b5def6c59b152d2dbfb41e0a5713
+    lines:
+      MPS6515: [22, 47]
+    fetched: '2026-10-10'
 - source: bordodynov
   name: MPS6515
   def: model
@@ -76,12 +93,12 @@ models:
   - source: ltwiki
     name: MPS6515
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: MPS6515
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3

@@ -2,6 +2,27 @@ part: DRV135
 kind: opamp
 priority: 3
 models:
+- source: ti
+  name: DRV135
+  def: subckt
+  hash: 56319d03346980bdedf25c6e9922a7dcfdebbecd
+  type: SUBCKT
+  deps:
+  - SIMPLED
+  - SIMPLEQ
+  - OP1
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOM005
+    member: DRV135_PSPICE_AIO/DRV135.LIB
+    archive_sha256: 818de85a15c2b5ca16d081ec19634c255ae7dacffa7cef83017e39745ddd129b
+    sha256: 3dfed2262c5832d2df308f722ea019351d1a6f60f929a4236e376093bc7cbe05
+    lines:
+      DRV135: [49, 87]
+      OP1: [97, 129]
+      SIMPLED: [132, 132]
+      SIMPLEQ: [133, 133]
+    fetched: '2026-10-10'
 - source: microcap12
   name: DRV135
   def: subckt

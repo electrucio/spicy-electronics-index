@@ -2,6 +2,20 @@ part: LMV324
 kind: opamp
 priority: 2
 models:
+- source: ti
+  name: lmv324
+  def: subckt
+  hash: 373fa94d99658235b18f325d1d41d6063292d3cd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM072
+    member: LMV324.MOD
+    archive_sha256: db82d99e2b27fffaa9022d69ca9b5d68152c7470230d56c39fecc50f53909bed
+    sha256: d1df51cc8d75de85cdc27d0b5782636bf9241a2b5bae2342025b402757feb5e6
+    lines:
+      lmv324: [29, 170]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: lmv324
   def: subckt
@@ -71,14 +85,14 @@ models:
   - source: ltwiki
     name: lmv324/NS
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
       sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
   - source: ltwiki
     name: lmv324/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
       sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
 - source: microcap12
   name: lmv324_NS

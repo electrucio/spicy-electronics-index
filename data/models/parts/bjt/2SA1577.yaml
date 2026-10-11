@@ -3,20 +3,33 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
-  name: 2SA1577
+- source: rohm
+  name: Q2SA1577
   def: model
   hash: 29494b70e70277edeb9cfac14ce738eb1a9c968a
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sa1577_spice.zip
+    member: 2sa1577.lib
+    archive_sha256: d07715368f3bfd0b21b7a22009e5b7f993084f3f640600932c936e5a8d339f2f
+    sha256: b7e63499c0fb0e939dc763587727b3b98bb59d7480ecfc9078b9c2a72aaa2fe6
     lines:
-      2SA1577: [203, 228]
-    fetched: '2026-09-21'
+      Q2SA1577: [3, 28]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SA1577
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SA1577
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sa1577_ltspice.zip
+      member: 2sa1577_ltspice/2sa1577_ltspice.lib
+      sha256: b7e63499c0fb0e939dc763587727b3b98bb59d7480ecfc9078b9c2a72aaa2fe6
 - source: bordodynov
   name: 2SA1577
   def: model
@@ -35,14 +48,14 @@ models:
   - source: ltwiki
     name: 2SA1577
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: 2SA1577
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SA1577

@@ -21,26 +21,30 @@ models:
     note: 'PMEG2005CT: PMEG2005CT, PMEG2005CT'
   note: pins from comment words
   copies:
+  - source: nexperia
+    name: PMEG2005CT
+    get:
+      url: https://www.nexperia.com/product/PMEG2005CT
+      sha256: f6d4e06990dcee70ac89ed702bdbf13deef8d91e46f64dd02b3ba0c5703b8b51
   - source: microcap12
     name: PMEG2005CT
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nxp.lib
       sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-- source: microcap12
+- source: nexperia
   name: PMEG2005AEA
   def: subckt
   hash: 6d663d1113a16f358a89e22ac78d3622e8f5fceb
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    url: https://www.nexperia.com/product/PMEG2005AEA
+    sha256: eeb86473b3c095be382f0e216ede85f8de8d0d430dbe661b90812aa3ddbdb9a4
     lines:
-      PMEG2005AEA: [2842, 2864]
-    fetched: '2026-09-21'
+      PMEG2005AEA: [38, 60]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
   copies:
   - source: ltwiki
     name: PMEG2005AEA
@@ -48,18 +52,37 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005AEA.PRM
       sha256: 36ef0e59099952ab6c1e2d04d8f3c1e71f1db4bb733a014d68bd3ad2120a177f
-  - source: ltwiki
-    name: PMEG2005EH
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EH.PRM
-      sha256: 59c8a959a526bb3592a655261294b7c84b0639f2a001170c1c75c3e4ce138c9e
   - source: microcap12
-    name: PMEG2005EH
+    name: PMEG2005AEA
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/ph_shot.lib
       sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+  - source: nexperia
+    name: PMEG2005AEA
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005AEA.txt
+      sha256: 563f152325c96f2e37dc33ec524790417c5800c4d24f1b018ce98b19b452f984
+  - source: nexperia
+    name: PMEG2005ET
+    get:
+      url: https://www.nexperia.com/product/PMEG2005ET
+      sha256: 47ab84fcb1968353da5929fbe1c168306cf9589e21a1ae155c7f2daf8fe14f13
+  - source: nexperia
+    name: PMEG2005ET
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005ET.txt
+      sha256: 74634b4c99d264beb48acbf1b0ee16c6c2bb2a8a2f23aa622b7ef2925a56e217
+  - source: nexperia
+    name: PMEG2005AEV
+    get:
+      url: https://www.nexperia.com/product/PMEG2005AEV
+      sha256: 63711fb8f105363bb458346ca2ca2863db5517e67e7d81acaa79a451e52d61eb
+  - source: nexperia
+    name: PMEG2005AEV
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005AEV.txt
+      sha256: 5427440c5109f754e00081f11762466541234ecaf7f98fed48170e7e0a13d24b
   - source: ltwiki
     name: PMEG2005EJ
     get:
@@ -72,20 +95,51 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/ph_shot.lib
       sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
-- source: microcap12
+  - source: nexperia
+    name: PMEG2005EJ
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005EJ.txt
+      sha256: bf3b6ab26ce17aff7878b982cc0c83e5fe9c9bb6bf3ba7e2e392520353a97522
+  - source: nexperia
+    name: PMEG2005EJ
+    get:
+      url: https://www.nexperia.com/product/PMEG2005EJ
+      sha256: 9ce0e762ccdd7992c19eebb9e2c785ec9a20184267bddac3aae422734d9bb36b
+  - source: ltwiki
+    name: PMEG2005EH
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EH.PRM
+      sha256: 59c8a959a526bb3592a655261294b7c84b0639f2a001170c1c75c3e4ce138c9e
+  - source: microcap12
+    name: PMEG2005EH
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+  - source: nexperia
+    name: PMEG2005EH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005EH.txt
+      sha256: 5f13bdd8e23d9844dc0569825f3ffcabb8d6892ff5e1cc1d63993f4e7d9878f5
+  - source: nexperia
+    name: PMEG2005EH
+    get:
+      url: https://www.nexperia.com/product/PMEG2005EH
+      sha256: 935b3041cc530c149d2936fe2319ff25f0c7ba6d9c738036f1458c350b992d27
+- source: nexperia
   name: PMEG2005EB
   def: subckt
   hash: 58a9ac6999aa004d850cc03f8047182626a13cfd
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    url: https://www.nexperia.com/product/PMEG2005EB
+    sha256: 1fea2c45979e55fade6ea819bbdeec84c2a9fc7f45433b65be7876f43b26cf9b
     lines:
-      PMEG2005EB: [2925, 2947]
-    fetched: '2026-09-21'
+      PMEG2005EB: [38, 60]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
   copies:
   - source: ltwiki
     name: PMEG2005EB
@@ -93,27 +147,156 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EB.PRM
       sha256: f2e7e6fadd10ab2350e55ca8add9515d3051d1dbdb6149dd1f5e0704dd70eaa1
-- source: microcap12
-  name: PMEG2005AEL
+  - source: microcap12
+    name: PMEG2005EB
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+  - source: nexperia
+    name: PMEG2005EB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005EB.txt
+      sha256: 6dd554dac2d91a87d576e56f8ddd16a4b4c68f6493f94c8c815588ca772d48c5
+  - source: nexperia
+    name: PMEG2005EL
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005EL.txt
+      sha256: f6fc5b51eaf70ad86d60cc2e35a36a5b568bfff4035a6b12d9234fb4dfe51a2f
+  - source: nexperia
+    name: PMEG2005EL
+    get:
+      url: https://www.nexperia.com/product/PMEG2005EL
+      sha256: 32f67da8d12c91bc4ea7f59757d1e9b7aa1d0b6b2150d83ea90cfc40ea6a8d44
+- source: nexperia
+  name: PMEG2005AELD
   def: subckt
-  hash: 194ec04c041c2858b1b909f7dc0d026b47adee14
+  hash: f770e6882b7d42059aaf62080dd6121c731e98d5
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+    url: https://www.nexperia.com/product/PMEG2005AELD
+    sha256: 74dce7ac3ddd466dfcd8158f94fc20ee38a8d6401fd8d181002833cde800d455
     lines:
-      PMEG2005AEL: [2867, 2889]
-    fetched: '2026-09-21'
+      PMEG2005AELD: [38, 68]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
   copies:
-  - source: ltwiki
+  - source: microcap12
+    name: PMEG2005AELD
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG2005AELD
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG2005AELD.txt
+      sha256: 674be4b424631827986fce463eaff721ed3439fa99faa41dee5df06456a2afe6
+- source: nexperia
+  name: PMEG2005ELD
+  def: subckt
+  hash: 2b35898d4feca097bb60ec7d30636f2e3fe76e93
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005ELD.txt
+    sha256: 0855b4220839aed22c8320ba8ebf643a9acc1fc6f64a534d6ae49268e49e91e4
+    lines:
+      PMEG2005ELD: [33, 57]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PMEG2005ELD
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG2005ELD
+    get:
+      url: https://www.nexperia.com/product/PMEG2005ELD
+      sha256: 273b979fc9c71347f9fc4db336acfdead76e3d4bb018f51dde6d7ef92de48d9c
+- source: nexperia
+  name: PMEG2005AEL
+  def: subckt
+  hash: 27049635d18b9ddb20e5911be058c18ad47f7523
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005AEL.txt
+    sha256: c1b1acd419aaddaed5494f0195adc45ae202cc22ea84432e882ebec5bfc3b29a
+    lines:
+      PMEG2005AEL: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
     name: PMEG2005AEL
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005AEL.PRM
-      sha256: 9dedfa51dd8246a78016f88b5cc8acf93f050e7860a57500feb9f1d4944b0784
+      url: https://www.nexperia.com/product/PMEG2005AEL
+      sha256: 7a14089f82e48e5cded83edcd33d8094a2d982724c7b9676850c273d18d9e42a
+- source: nexperia
+  name: PMEG2005ESF
+  def: subckt
+  hash: 21cdf1013433ed437494e0313fd9e03739f61c79
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005ESF.txt
+    sha256: a2bdec1f0e063e5ad88c7e2d230f2cff86f993f937a5ab2e5df5ec4a927360ab
+    lines:
+      PMEG2005ESF: [38, 67]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: PMEG2005EGW
+  def: subckt
+  hash: 02a0453d68878cc9a9a3ade27958d903031397b9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005EGW.txt
+    sha256: 862441677c156ec667aa46e3912330f6ea5312e9035f18b0c4f467ce6dd69c99
+    lines:
+      PMEG2005EGW: [38, 67]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: PMEG2005AESF
+  def: subckt
+  hash: e32856c5f1eeeeeb7d572fcf5df5926f1bee0fac
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005AESF.txt
+    sha256: ec20001070af2296ae89adbe46a9a31eada7a23a6c79c67009305508ad260a2b
+    lines:
+      PMEG2005AESF: [38, 67]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: PMEG2005EPK
+  def: subckt
+  hash: 4992cf0c76182a789490c5df62ae71e30dd36611
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/PMEG2005EPK
+    sha256: 2af1fed1c1907cd2cb0da77c63443f01b6c203efc56053f4fb9ff407c1fa5287
+    lines:
+      PMEG2005EPK: [38, 66]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: PMEG2005BELD
+  def: subckt
+  hash: ea43d2a58a6b9fb510544779a87b04bbc7ab1a69
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/PMEG2005BELD
+    sha256: 59e60560278f6b7641c471d8038d3dff7371d87a249fd9819f90d2bcb02a25f9
+    lines:
+      PMEG2005BELD: [38, 65]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: PMEG2005EL
   def: subckt
@@ -136,9 +319,9 @@ models:
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EL.PRM
       sha256: ebdaf2063c2047c7d24b31aa334d4b40f3f384ee3d9708f3702c6ab0895261f0
 - source: microcap12
-  name: PMEG2005AEV
+  name: PMEG2005AEL
   def: subckt
-  hash: 17f865c2c123eb6565dae18bed3cd874edc6acea
+  hash: 194ec04c041c2858b1b909f7dc0d026b47adee14
   type: SUBCKT
   verbatim: true
   get:
@@ -147,8 +330,15 @@ models:
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
     sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
     lines:
-      PMEG2005AEV: [2892, 2922]
+      PMEG2005AEL: [2867, 2889]
     fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: PMEG2005AEL
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005AEL.PRM
+      sha256: 9dedfa51dd8246a78016f88b5cc8acf93f050e7860a57500feb9f1d4944b0784
 - source: microcap12
   name: PMEG2005ET
   def: subckt
@@ -164,32 +354,18 @@ models:
       PMEG2005ET: [3022, 3044]
     fetched: '2026-09-21'
 - source: microcap12
-  name: PMEG2005AELD
+  name: PMEG2005AEV
   def: subckt
-  hash: f770e6882b7d42059aaf62080dd6121c731e98d5
+  hash: 17f865c2c123eb6565dae18bed3cd874edc6acea
   type: SUBCKT
   verbatim: true
   get:
     url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
+    member: LIBRARY/ph_shot.lib
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
     lines:
-      PMEG2005AELD: [24994, 25024]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: PMEG2005ELD
-  def: subckt
-  hash: 2b35898d4feca097bb60ec7d30636f2e3fe76e93
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-    lines:
-      PMEG2005ELD: [25122, 25152]
+      PMEG2005AEV: [2892, 2922]
     fetched: '2026-09-21'
 - source: bordodynov
   name: PMEG2005AEA
@@ -216,14 +392,14 @@ models:
     name: PMEG2005AEA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: PMEG2005AEA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: PMEG2005AEA
     get:
@@ -244,25 +420,25 @@ models:
   - source: kicad-spice-library
     name: PMEG2005AEA
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
+      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
   - source: kicad-spice-library
     name: PMEG2005AEA
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
-      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: PMEG2005AEA
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: PMEG2005AEA
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: PMEG2005AEA
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: PMEG2005AEA
     get:
@@ -278,9 +454,9 @@ models:
   - source: ltwiki
     name: PMEG2005AEA
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: bordodynov
   name: PMEG2005EB
   def: model
@@ -306,14 +482,14 @@ models:
     name: PMEG2005EB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: PMEG2005EB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: PMEG2005EB
     get:
@@ -334,25 +510,25 @@ models:
   - source: kicad-spice-library
     name: PMEG2005EB
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
+      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
   - source: kicad-spice-library
     name: PMEG2005EB
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.dio
-      sha256: 273feb7f49f8eadc7ccba882f5dc69157a3eac38c27ae6400087936ab87aba13
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: ltwiki
+    name: PMEG2005EB
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: PMEG2005EB
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: PMEG2005EB
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: PMEG2005EB
     get:
@@ -368,9 +544,9 @@ models:
   - source: ltwiki
     name: PMEG2005EB
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
 - source: groups-io
   name: PMEG2005AEA
   def: model
@@ -378,45 +554,34 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
-    sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
     lines:
-      PMEG2005AEA: [77, 77]
+      PMEG2005AEA: [8133, 8133]
     fetched: '2026-10-10'
   copies:
   - source: groups-io
     name: PMEG2005AEA
     get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
+      sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+  - source: groups-io
+    name: PMEG2005AEA
+    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio
       sha256: 7a8c775b562871d34029ca77fefa3188c91dc2e1ce4d25979a317f653d32d8b3
-  - source: groups-io
-    name: PMEG2005AEA
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: groups-io
-    name: PMEG2005AEA
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: kicad-spice-library
-    name: PMEG2005AEA
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
   - source: kicad-spice-library
     name: PMEG2005AEA
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
       sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
+  - source: kicad-spice-library
     name: PMEG2005AEA
     get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
   - source: ltwiki
     name: PMEG2005AEA
     get:
@@ -429,6 +594,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
       sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: PMEG2005AEA
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: groups-io
   name: PMEG2005EB
   def: model
@@ -436,45 +607,34 @@ models:
   type: D
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
-    sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+    member: standard.dio
+    archive_sha256: 0266f89df5f5463b8b44188bd204359077278f8e51ed1b3473585b634da842be
+    sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
     lines:
-      PMEG2005EB: [78, 78]
+      PMEG2005EB: [8137, 8137]
     fetched: '2026-10-10'
   copies:
   - source: groups-io
     name: PMEG2005EB
     get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
+      sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
+  - source: groups-io
+    name: PMEG2005EB
+    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio
       sha256: 7a8c775b562871d34029ca77fefa3188c91dc2e1ce4d25979a317f653d32d8b3
-  - source: groups-io
-    name: PMEG2005EB
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: groups-io
-    name: PMEG2005EB
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: kicad-spice-library
-    name: PMEG2005EB
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
   - source: kicad-spice-library
     name: PMEG2005EB
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
       sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
-  - source: ltwiki
+  - source: kicad-spice-library
     name: PMEG2005EB
     get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
   - source: ltwiki
     name: PMEG2005EB
     get:
@@ -487,6 +647,12 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
       sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: PMEG2005EB
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
 - source: ltwiki
   name: PMEG2005AEA
   def: model
@@ -528,20 +694,6 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard3.dio
       sha256: 13cb55bb7184e06a29b64a8d1991371f8414622ef1213c5b7bcb01e358ed71ee
 - source: ltwiki
-  name: PMEG2005AEV
-  def: subckt
-  hash: e7a81999988bc402e74b680c07d1a2799f31c1aa
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005AEV.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 72baa8d17fd99ad080857ef78b40bc805cd35723ed64c8b17101bc1223d0055e
-    lines:
-      PMEG2005AEV: [2, 32]
-    fetched: '2026-09-21'
-- source: ltwiki
   name: PMEG2005ET
   def: subckt
   hash: 67cf2e6a66f22cc5f5f896d40231d385c563ee05
@@ -554,4 +706,18 @@ models:
     sha256: f6a8737d6df54afae4e1008e5dc1d09e6579a58d55755b7481d85975642130f3
     lines:
       PMEG2005ET: [2, 24]
+    fetched: '2026-09-21'
+- source: ltwiki
+  name: PMEG2005AEV
+  def: subckt
+  hash: e7a81999988bc402e74b680c07d1a2799f31c1aa
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005AEV.PRM
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 72baa8d17fd99ad080857ef78b40bc805cd35723ed64c8b17101bc1223d0055e
+    lines:
+      PMEG2005AEV: [2, 32]
     fetched: '2026-09-21'

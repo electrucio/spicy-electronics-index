@@ -43,11 +43,6 @@ models:
     note: subckt 5U4GB (A K)
   note: pins from names
   copies:
-  - source: duncanamps
-    name: 5U4GB
-    get:
-      url: https://www.duncanamps.com/spice/valves/5u4gb.inc
-      sha256: 5aeca254042d820857a75777ce0ad3c404c6b9839fe4349be7d5d0d07035a410
   - source: bordodynov
     name: 5U4GB
     get:
@@ -60,6 +55,11 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Valves.txt
       sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: duncanamps
+    name: 5U4GB
+    get:
+      url: https://www.duncanamps.com/spice/valves/5u4gb.inc
+      sha256: 5aeca254042d820857a75777ce0ad3c404c6b9839fe4349be7d5d0d07035a410
   - source: groups-io
     name: 5U4GB
     get:
@@ -74,14 +74,8 @@ models:
   - source: ltwiki
     name: 5U4GB
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 5U4GB
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: 5U4GB
@@ -92,9 +86,21 @@ models:
   - source: ltwiki
     name: 5U4GB
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 5U4GB
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: tdsl-cigna
+    name: 5U4GB
+    get:
+      url: http://tdsl.duncanamps.com/dcigna/tubes/spice/spice.zip
+      member: 5U4GB.INC
+      sha256: d8d458b21e61b104fa3b1bd3a41f7cc6c3fd155304980401d720b4b3fe835bc3
 - source: suusi-tubes
   name: 5U4GB
   def: subckt
@@ -207,14 +213,8 @@ models:
   - source: ltwiki
     name: 5U4GBRY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 5U4GBRY
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: 5U4GBRY
@@ -225,9 +225,15 @@ models:
   - source: ltwiki
     name: 5U4GBRY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 5U4GBRY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
   name: 5U4GB
   def: subckt
@@ -282,6 +288,20 @@ models:
       member: lib/sub/Diode_Ayumi.lib
       sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
 - source: groups-io
+  name: X5U4-GB
+  def: subckt
+  hash: d458d25c4b0a86f00dff13597316b91c0d478b2c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      X5U4-GB: [939, 945]
+    fetched: '2026-10-09'
+- source: groups-io
   name: 5U4GB
   def: subckt
   hash: 79dce047c20093fe7a189f7d6cd90efec50074f7
@@ -310,20 +330,6 @@ models:
     lines:
       5U4GB: [159, 162]
       VALVE1: [867, 873]
-    fetched: '2026-10-09'
-- source: groups-io
-  name: X5U4-GB
-  def: subckt
-  hash: d458d25c4b0a86f00dff13597316b91c0d478b2c
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-    member: TUBE/spice2.txt
-    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
-    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
-    lines:
-      X5U4-GB: [939, 945]
     fetched: '2026-10-09'
 datasheet:
   url: https://frank.pocnet.net/sheets/093/5/5U4GB.pdf

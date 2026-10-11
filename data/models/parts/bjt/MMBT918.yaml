@@ -4,17 +4,17 @@ priority: 3
 group: listed
 models:
 - source: onsemi
-  name: Qmmbt918lt1g
+  name: mmbt918lt1g
   def: model
   hash: 349ad88efb292b68319d68d1828557de35cf2a6e
   type: NPN
   verbatim: true
   get:
-    url: https://www.onsemi.com/download/models/lib/mmbt918lt1g.lib.lib
-    sha256: b83c6766ad4e0790df5fac38d03cebb7b4b67852370cd80f36bb2314acdb8a0f
+    url: https://www.onsemi.com/download/models/sp3/mmbt918lt1g.sp3.sp3
+    sha256: eb2c07425a909942fe1d747dee5f097932a3c3b8837223d169171eb85b371196
     lines:
-      Qmmbt918lt1g: [14, 24]
-    fetched: '2026-09-19'
+      mmbt918lt1g: [14, 24]
+    fetched: '2026-09-21'
   copies:
   - source: microcap12
     name: Qmmbt918lt1g
@@ -23,10 +23,37 @@ models:
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
   - source: onsemi
-    name: mmbt918lt1g
+    name: Qmmbt918lt1g
     get:
-      url: https://www.onsemi.com/download/models/sp3/mmbt918lt1g.sp3.sp3
-      sha256: eb2c07425a909942fe1d747dee5f097932a3c3b8837223d169171eb85b371196
+      url: https://www.onsemi.com/download/models/lib/mmbt918lt1g.lib.lib
+      sha256: b83c6766ad4e0790df5fac38d03cebb7b4b67852370cd80f36bb2314acdb8a0f
+  - source: onsemi
+    name: Qmmbt918lt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbt918lt1g.sp2.sp2
+      sha256: 6eaa7c5156bb96e19fda9e8ee31712fc889d42f8242392c631011e72422b813f
+- source: panjit
+  name: MMBT918
+  def: subckt
+  hash: 980df6725359ea5626f987e4f19aa4a7217d93d2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBT918.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: a718bfc4a80ac9a0360ad5a2f760f55c4abd799987a45a0f4ab697dd3cee15b9
+    lines:
+      MMBT918: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: MMBT918
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-2. General Purpose Rectifiers/MMBT918.txt
+      sha256: a718bfc4a80ac9a0360ad5a2f760f55c4abd799987a45a0f4ab697dd3cee15b9
 - source: groupsio-ltspice
   name: MMBT918
   def: model

@@ -42,6 +42,16 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qbc817-25lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bc817-25lt1.sp2
+      sha256: 6c6db4bea0be595f12c50d2bea975cbafea0eea146a63077c522283de22148d1
+  - source: onsemi
+    name: bc817-25lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/bc817-25lt1.sp3
+      sha256: 1f50135f85f688af12ad54f6ffc77cede3bcebf587ff05325682ac0c5d98700b
 - source: nexperia
   name: BC817_25
   def: subckt
@@ -60,6 +70,98 @@ models:
     fetched: '2026-09-14'
     note: 'model(s): BC817_25 (.subckt 1 2 3), Transistor (NPN .model), Diode (D .model)'
   note: pins from default order (unverified)
+  copies:
+  - source: nexperia
+    name: BC817_25W
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25W.txt
+      sha256: 3bde8322668f734aab4957970d5118b95c1724850881cfd6c23409de33098204
+  - source: nexperia
+    name: BC817_25QB_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QB-Q.txt
+      sha256: d5bc0e8ff822015f6e333785562434e2cd428fc6894d8b6485dd456225491bf1
+  - source: nexperia
+    name: BC817_25_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25-Q.txt
+      sha256: 3c5786a163fa0ce7ff03947726fa1db068c39507f1d49527dee534d49a817875
+  - source: nexperia
+    name: BC817_25QC_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QC-Q.txt
+      sha256: 76c73184ef9782bc3afaa86642de19c9ca28d040bb10c76654625e6439682627
+  - source: nexperia
+    name: BC817_25QC
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QC.txt
+      sha256: f77ed1b020d50f937fa54549731ec75cf537870befa39e72938b57a4f1898440
+  - source: nexperia
+    name: BC817_25QB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QB.txt
+      sha256: 532d56f3ccf1c9804b463a1f949c004250abca862bb80fb225889ecdcd1e08cb
+  - source: nexperia
+    name: BC817_25QA
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QA.txt
+      sha256: 956c39b194098ef81c02cbfd740eb5f3d8315eed352e46333fe6a62581fc34db
+  - source: nexperia
+    name: BC817_25QCH_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QCH-Q.txt
+      sha256: 75b7a9b4256a4f8100162e2b78aa17a8477b33add4062c94cd35fa1001151073
+  - source: nexperia
+    name: BC817_25W_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25W-Q.txt
+      sha256: a916cf0d9d3a8c502e5ef70fe139790e0c30cb0a640680dba82bb5bb51b160e0
+  - source: nexperia
+    name: BC817_25QBH_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC817-25QBH-Q.txt
+      sha256: d8f212bc8d3e019d4245232816eae8d98e5a44c6431d6465ed0de21fb2cc8baf
+- source: taiwan-semi
+  name: BC817-25H
+  def: model
+  hash: 5418a3161861eb329f1e86930debac25656e3ee5
+  type: NPN
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: a751af8e8d858d49e19f201f5e08d1614f065292b880989be10051579e4c53a3
+    lines:
+      BC817-25H: [7, 33]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BC817-25WH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 34e45cb3a6c4bb5dfb040919fe186b99abb4943257b0a22251441803d299d5e8
+- source: panjit
+  name: BC817-25
+  def: subckt
+  hash: 9d4893ed843cb6c125f5d7a80c9d73e7634e4ea7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC817-25.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 605c83b689287915d23756dea322a86c2402097da3ebf285e09f4463e50528d2
+    lines:
+      BC817-25: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC817-25-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC817-25-AU.txt
+      sha256: c95c911d9380039fbf81f30bc3aa22df03d211e852cdd13483676dcab514f004
 - source: spice-model-cd
   name: QBC817-25
   def: model
@@ -193,14 +295,14 @@ models:
     name: BC817-25
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
   - source: bordodynov
     name: BC817-25
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.bjt.bak
-      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: bordodynov-qspice
     name: BC817-25
     get:
@@ -221,25 +323,25 @@ models:
   - source: kicad-spice-library
     name: BC817-25
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
-      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
   - source: kicad-spice-library
     name: BC817-25
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
-      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: ltwiki
+    name: BC817-25
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BC817-25
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: BC817-25
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: ltwiki
     name: BC817-25
     get:
@@ -255,9 +357,9 @@ models:
   - source: ltwiki
     name: BC817-25
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
 - source: groupsio-ltspice
   name: BC817-25
   def: model
@@ -282,13 +384,25 @@ models:
   - source: kicad-spice-library
     name: BC817-25
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
-      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: BC817-25
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+  - source: ltwiki
+    name: BC817-25
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: BC817-25
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
   - source: ltwiki
     name: BC817-25
     get:
@@ -307,18 +421,6 @@ models:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
-  - source: ltwiki
-    name: BC817-25
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
-  - source: ltwiki
-    name: BC817-25
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
-      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
 - source: bordodynov
   name: BC817-25T116
   def: model

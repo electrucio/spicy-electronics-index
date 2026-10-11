@@ -3,20 +3,33 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
-  name: 2SC2411K
+- source: rohm
+  name: Q2SC2411K
   def: model
   hash: 98b7e9a696b7883989da95c3843ccd371e4e9e2d
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/Rohm_Transistor.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/bipolar/2sc2411k_spice.zip
+    member: 2sc2411k.lib
+    archive_sha256: 3152a00694d607d906a23784745d4ae072f147c3791733fb1324fdb74af96b2c
+    sha256: 304f5de579d43b130622d93dc1e091a7385e4b15d7f110120d05c55444401239
     lines:
-      2SC2411K: [2731, 2756]
-    fetched: '2026-09-21'
+      Q2SC2411K: [3, 28]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2SC2411K
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/Rohm_Transistor.lib
+      sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: Q2SC2411K
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/bipolar/2sc2411k_ltspice.zip
+      member: 2sc2411k_ltspice/2sc2411k_ltspice.lib
+      sha256: 304f5de579d43b130622d93dc1e091a7385e4b15d7f110120d05c55444401239
 - source: bordodynov
   name: 2SC2411K
   def: model
@@ -51,6 +64,12 @@ models:
   - source: ltwiki
     name: 2SC2411K
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+  - source: ltwiki
+    name: 2SC2411K
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
@@ -60,12 +79,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.bjt
       sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
-  - source: ltwiki
-    name: 2SC2411K
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: 2SC2411K
   def: model

@@ -168,14 +168,14 @@ models:
   - source: ltwiki
     name: TL064/ON
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/on_amp.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: TL064/ON
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: kicad-spice-library
     name: TL064/MC
@@ -195,8 +195,9 @@ models:
   - source: ltwiki
     name: TL064/MC
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
-      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: TL064/MC
     get:
@@ -206,9 +207,8 @@ models:
   - source: ltwiki
     name: TL064/MC
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
-      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
+      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
   - source: microcap12
     name: TL064_MC
     get:
@@ -262,13 +262,13 @@ models:
     name: TL064
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: TL064
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: TL064
@@ -279,13 +279,13 @@ models:
     name: TL064
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: TL064
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: ltwiki
   name: TL064
@@ -323,18 +323,6 @@ models:
       member: lib/sub/Opamp5.Lib
       sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
 - source: kicad-spice-library
-  name: TL064M
-  def: subckt
-  hash: e999b5fe38f93b581c216a81a42a3f77a96e3de6
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/MOTOR.LIB
-    sha256: 44f08a5cfceeb4c72d4f6e77e1eac1d108b46f7cb81dee8f3296a908b1eb53e6
-    lines:
-      TL064M: [2358, 2393]
-    fetched: '2026-09-14'
-- source: kicad-spice-library
   name: TL064T
   def: subckt
   hash: 252a3644c4fbee0e630a9070f3c3ef148013f70a
@@ -345,6 +333,18 @@ models:
     sha256: 9ab15d59dfe2a0a2393f98d60244934f66a2fdae82a8815b49b7517010d7b4ac
     lines:
       TL064T: [457, 489]
+    fetched: '2026-09-14'
+- source: kicad-spice-library
+  name: TL064M
+  def: subckt
+  hash: e999b5fe38f93b581c216a81a42a3f77a96e3de6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/MOTOR.LIB
+    sha256: 44f08a5cfceeb4c72d4f6e77e1eac1d108b46f7cb81dee8f3296a908b1eb53e6
+    lines:
+      TL064M: [2358, 2393]
     fetched: '2026-09-14'
 datasheet:
   url: https://www.ti.com/lit/ds/symlink/tl062.pdf

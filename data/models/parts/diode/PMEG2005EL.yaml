@@ -3,6 +3,58 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: nexperia
+  name: PMEG2005EL
+  def: subckt
+  hash: 58a9ac6999aa004d850cc03f8047182626a13cfd
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005EL.txt
+    sha256: f6fc5b51eaf70ad86d60cc2e35a36a5b568bfff4035a6b12d9234fb4dfe51a2f
+    lines:
+      PMEG2005EL: [33, 49]
+    fetched: '2026-10-10'
+  note: found under the alias PMEG2005E; pins from default order (unverified)
+  copies:
+  - source: nexperia
+    name: PMEG2005EL
+    get:
+      url: https://www.nexperia.com/product/PMEG2005EL
+      sha256: 32f67da8d12c91bc4ea7f59757d1e9b7aa1d0b6b2150d83ea90cfc40ea6a8d44
+  - source: ltwiki
+    name: PMEG2005EB
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EB.PRM
+      sha256: f2e7e6fadd10ab2350e55ca8add9515d3051d1dbdb6149dd1f5e0704dd70eaa1
+- source: nexperia
+  name: PMEG2005ELD
+  def: subckt
+  hash: 2b35898d4feca097bb60ec7d30636f2e3fe76e93
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG2005ELD.txt
+    sha256: 0855b4220839aed22c8320ba8ebf643a9acc1fc6f64a534d6ae49268e49e91e4
+    lines:
+      PMEG2005ELD: [33, 57]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PMEG2005ELD
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG2005ELD
+    get:
+      url: https://www.nexperia.com/product/PMEG2005ELD
+      sha256: 273b979fc9c71347f9fc4db336acfdead76e3d4bb018f51dde6d7ef92de48d9c
 - source: microcap12
   name: PMEG2005EL
   def: subckt
@@ -28,20 +80,6 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EL.PRM
       sha256: ebdaf2063c2047c7d24b31aa334d4b40f3f384ee3d9708f3702c6ab0895261f0
-- source: microcap12
-  name: PMEG2005ELD
-  def: subckt
-  hash: 2b35898d4feca097bb60ec7d30636f2e3fe76e93
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-    lines:
-      PMEG2005ELD: [25122, 25152]
-    fetched: '2026-09-21'
 - source: ltwiki
   name: PMEG2005EB
   def: model
@@ -72,24 +110,6 @@ models:
       PMEG2005EB: [68, 68]
     fetched: '2026-09-14'
   note: 'found under the alias PMEG2005E; same code also in: kicad-spice-library'
-- source: ltwiki
-  name: PMEG2005EB
-  def: subckt
-  hash: 58a9ac6999aa004d850cc03f8047182626a13cfd
-  type: SUBCKT
-  pins:
-  - A
-  - K
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/PMEG2005EB.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: f2e7e6fadd10ab2350e55ca8add9515d3051d1dbdb6149dd1f5e0704dd70eaa1
-    lines:
-      PMEG2005EB: [2, 24]
-    fetched: '2026-09-14'
-  note: found under the alias PMEG2005E; pins from default order (unverified)
 - source: ltwiki
   name: PMEG2005EH
   def: subckt

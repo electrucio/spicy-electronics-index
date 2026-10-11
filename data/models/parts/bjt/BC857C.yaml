@@ -15,6 +15,120 @@ models:
     lines:
       BC857C: [31, 89]
     fetched: '2026-09-14'
+  copies:
+  - source: nexperia
+    name: BC857CW
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CW.txt
+      sha256: b4653e564852c338fb9083ee8403e668669933e086552e43eeaa281354d750a3
+  - source: nexperia
+    name: BC857CW_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CW-Q.txt
+      sha256: 8ba705f44fab18a1c1a0ee4747f80845e40b3e60011eb73ebb6a2a8ecb0ebdb8
+  - source: nexperia
+    name: BC857C_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857C-Q.txt
+      sha256: f1923e6f8b28b0b001371d71201af0f62f7861d008040611096c08b33caa4b81
+- source: nexperia
+  name: BC857CM
+  def: subckt
+  hash: f0378ae56c373599599f538342fb2e888b8a8610
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC857CM.txt
+    sha256: 5152066b6eecd761744820c6ba7e167c25a05c39398f9bb050d528e209dd62d0
+    lines:
+      BC857CM: [34, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC857CQC_Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CQC-Q.txt
+      sha256: 0e6533879f06d8fd0f5376bdcf9c1c19228a4846fe64317308d0d96895d5be79
+  - source: nexperia
+    name: BC857CQB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CQB.txt
+      sha256: 1e14dc650d07550847994b68e71020e44af521c66ff0102f28602a0858197ade
+  - source: nexperia
+    name: BC857CQC
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CQC.txt
+      sha256: ead8cfac16e80563616b4b0e6d3834f8a1c471487663135155c98de8526685d6
+- source: nexperia
+  name: BC857CT
+  def: subckt
+  hash: e8a39a9803bd413b2e8abed72084e7bd9758bed8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BC857CT.txt
+    sha256: 6222311f231fe267f4e4af192329f8d2a029f990b49254a768e9be952ca3b9c3
+    lines:
+      BC857CT: [28, 69]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BC857CMB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CMB.txt
+      sha256: f4237d706edc9603f8a89309ab192b418d659865365d602059d61aae9df33b2d
+  - source: nexperia
+    name: BC857CQA
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BC857CQA.txt
+      sha256: 6cf4e0ed8d020c8b2f17d309b6afa813fea15143679e90ee14f341fed8233232
+- source: taiwan-semi
+  name: BC857CH
+  def: model
+  hash: a56f6114be20a70d06eace077c7f91486332b4a9
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 9766e5541273641016120caa4861a921df37a16482085cdf2c1d41e17f659e92
+    lines:
+      BC857CH: [7, 33]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BC857CW
+  def: subckt
+  hash: 7dd8a4080ea104d37b90b43d9d648f3a80e82feb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/BC857CW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d41fe4fa2175413bc5e1a9458a9997c039a3cba901c7c6d9bb272bd2d0c1b97a
+    lines:
+      BC857CW: [11, 26]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BC857CW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 07. BJT/7-1. BJT-GPB/BC857CW-AU.txt
+      sha256: 58896415196083aba380b4c3d67505089889fc1f062bbde8831f2e0ed31223d8
+- source: central-semi
+  name: BC857CT
+  def: model
+  hash: 96f30337a50a505ab3a2a2947083e67e5a972068
+  type: PNP
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/BC857CT.LIB
+    sha256: 0b744d4e1122c38b65d1d3ab2cee9602eb85bf5cd43b18733c8c4b2a76c8aa59
+    lines:
+      BC857CT: [25, 50]
+    fetched: '2026-10-10'
 - source: spice-model-cd
   name: QBC857C
   def: model
@@ -254,14 +368,14 @@ models:
     name: BC857C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
+      member: lib/cmp/Original/standard.bjt.bak
+      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
   - source: bordodynov
     name: BC857C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.bjt.bak
-      sha256: 02dfc96080b266ed8e131add4e00c0ab131be1a0f7e7757439dc95130a80e641
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: bordodynov-qspice
     name: BC857C
     get:
@@ -276,25 +390,25 @@ models:
   - source: kicad-spice-library
     name: BC857C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
-      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
+      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
   - source: kicad-spice-library
     name: BC857C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original/standard.bjt
-      sha256: fd6b2438eb878a1cbd61cdf1c5e68eb14e32cecdb76aa3a32d2ad5d80de206b1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.bjt
+      sha256: aee460a3fc543a01e0c89ebed60a96e8d33758fb825033570d07f7a2066574cc
+  - source: ltwiki
+    name: BC857C
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BC857C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: BC857C
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.bjt
-      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
   - source: ltwiki
     name: BC857C
     get:
@@ -310,9 +424,9 @@ models:
   - source: ltwiki
     name: BC857C
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.bjt
+      sha256: 7bc3409f9eac7e6ae2f8a5643ecb2d4b0ac997241fa9a39e6074d3124497e2ce
 - source: groupsio-ltspice
   name: BC857C_DI
   def: model
@@ -328,6 +442,18 @@ models:
       BC857C_DI: [1334, 1334]
     fetched: '2026-09-21'
   copies:
+  - source: ltwiki
+    name: BC857C_DIO
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
+      sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
+  - source: ltwiki
+    name: BC857C_DIO
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
+      sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
   - source: bordodynov
     name: BC857C_DI
     get:
@@ -348,8 +474,8 @@ models:
   - source: ltwiki
     name: BC857C_DI
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BC857C_DI
@@ -360,21 +486,9 @@ models:
   - source: ltwiki
     name: BC857C_DI
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: BC857C_DIO
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
-      sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
-  - source: ltwiki
-    name: BC857C_DIO
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
-      sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
 - source: groupsio-ltspice
   name: BC857C
   def: model
@@ -421,25 +535,13 @@ models:
   - source: kicad-spice-library
     name: BC857C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
-      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: BC857C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
-  - source: ltwiki
-    name: BC857C
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
-      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
-  - source: ltwiki
-    name: BC857C
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/standard.bjt
-      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.bjt
+      sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
   - source: ltwiki
     name: BC857C
     get:
@@ -452,6 +554,18 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.bjt
       sha256: 1657a1b27e3f6615d6a0d2fecb75bcfb84da0aaf4e28da0a104adaa6286de5a1
+  - source: ltwiki
+    name: BC857C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/distortion_OUTPUT_vs_bias/standard_BJT modified.txt
+      sha256: b11d82ef9412f3285ead0b742f082d8c60ba31108d4eb85c48c7268e54aeb9a4
+  - source: ltwiki
+    name: BC857C
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
 - source: ltwiki
   name: BC857C_PHI
   def: model
@@ -485,14 +599,14 @@ models:
   - source: ltwiki
     name: BC857C_PHIP
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
       sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
   - source: ltwiki
     name: BC857C_PHIP
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/ComparingModels/MyBC857x.lib
       sha256: d025dc636b8a620f0cdaecbcef96e00ccf150c2db1a60a892e2e91e5869daeff
 - source: ltwiki
   name: BC857C

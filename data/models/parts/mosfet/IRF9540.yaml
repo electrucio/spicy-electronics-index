@@ -27,13 +27,13 @@ models:
     name: irf9540n
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9540n.spi
+      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9540n.spi
       sha256: 7919db69f67779a6c2faba467c48033555ed3c65fc4047c6c229c11ce3f8a0de
   - source: bordodynov
     name: irf9540n
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/MOS/IRF/LIB/irf9540n.spi
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9540n.spi
       sha256: 7919db69f67779a6c2faba467c48033555ed3c65fc4047c6c229c11ce3f8a0de
   - source: kicad-spice-library
     name: IRF9540N
@@ -48,8 +48,8 @@ models:
   - source: ltwiki
     name: irf9540n
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9540n.spi
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf9540n.spi
       sha256: 7919db69f67779a6c2faba467c48033555ed3c65fc4047c6c229c11ce3f8a0de
   - source: ltwiki
     name: irf9540n
@@ -60,8 +60,8 @@ models:
   - source: ltwiki
     name: irf9540n
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/IRF/LIB/irf9540n.spi
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/IGBT/IRF/LIB/irf9540n.spi
       sha256: 7919db69f67779a6c2faba467c48033555ed3c65fc4047c6c229c11ce3f8a0de
 - source: microcap12
   name: irf9540n_IR
@@ -175,13 +175,9 @@ models:
   - source: ltwiki
     name: IRF9540
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: IRF9540
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: IRF9540
     get:
@@ -191,9 +187,13 @@ models:
   - source: ltwiki
     name: IRF9540
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: IRF9540
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: ltwiki
   name: IRF9540
   def: model
@@ -213,9 +213,9 @@ models:
   type: VDMOS
   verbatim: true
   get:
-    url: https://disk.yandex.ru/d/71M79VuY5sOWew
-    member: QSPICE/Library/MOS/IRF9540.qsym
-    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+    member: Library/MOS/IRF9540.qsym
+    archive_sha256: a866b6e66bc471c91faa9ccac9f35bf0d7200ef739b9280c86196bf4c92a4e3c
     sha256: 7b08a1a4d7057f11c400a30e9d491fb293f2ae29cc6d213f234307e41c0396de
     fetched: '2026-09-29'
     note: the model is inside the QSPICE symbol, in its «library file» field
@@ -223,8 +223,8 @@ models:
   - source: bordodynov-qspice
     name: IRF9540
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/MOS/IRF9540.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/MOS/IRF9540.qsym
       sha256: 7b08a1a4d7057f11c400a30e9d491fb293f2ae29cc6d213f234307e41c0396de
 - source: kicad-spice-library
   name: IRF9540N

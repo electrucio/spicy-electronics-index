@@ -2,6 +2,92 @@ part: BZT52C10
 kind: zener
 priority: 4
 models:
+- source: nexperia
+  name: BZT52-C10
+  def: subckt
+  hash: 47ad06260db5b8f3b0f25037e6b105c4781adecd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BZT52-C10.txt
+    sha256: d6991405c534e3cd9d5dd8787db003895858a282f2f32971ae01dc47bb52bf6c
+    lines:
+      BZT52-C10: [37, 65]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BZT52C10
+  def: model
+  hash: 70e185ae42ad79253a03d023d72560ae798f1098
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7f062e9109bc80799d004e14f31f68fbb41081fe6afd20e56a80cb38169cfd5c
+    lines:
+      BZT52C10: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BZT52C10S
+  def: model
+  hash: b35ffed60e6c2d7496dde46295c44b9bdcfcf38f
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 04fad044d8532dafba378f1257fd8dbf68ba36e629370c4c3f2b96c4275407ce
+    lines:
+      BZT52C10S: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BZT52C10-G
+  def: model
+  hash: 6b2b5798b0967ce9bb7aa8ac6785afbce47eb627
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 06578ab0c9277ee672eb6508146e5474303b7087459b858dd98dbf98b9958349
+    lines:
+      BZT52C10-G: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BZT52C10K
+  def: model
+  hash: 8c06e4a4d0ee25c2a7d2612044c3ebb2c58c4f82
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: e300f3559fb2d4e8b6561b3a0f42e961cb2934e75c00c1dcd136e0de7521d5ee
+    lines:
+      BZT52C10K: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BZT52-C10S
+  def: subckt
+  hash: e090fe49579b2d5eb0c63406a2a6599939dbb7f2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 06. Protection Devices/6-1. Zener/BZT52-C10S.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 29b20c6c08c537fab5404b68f1bc386ad580806f9486d3fbd38f1f2634a6df1d
+    lines:
+      BZT52-C10S: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BZT52-C10S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 06. Protection Devices/6-1. Zener/BZT52-C10S-AU.txt
+      sha256: eb72288b64711c71575e3f2f125829555d033aa3484cda16874b29dcd8825bc5
 - source: microcap12
   name: BZT52C10
   def: subckt

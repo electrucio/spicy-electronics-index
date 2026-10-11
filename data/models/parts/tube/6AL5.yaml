@@ -241,14 +241,8 @@ models:
   - source: ltwiki
     name: 6AL5RY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Valves.Lib
-      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
-  - source: ltwiki
-    name: 6AL5RY
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
   - source: ltwiki
     name: 6AL5RY
@@ -259,9 +253,15 @@ models:
   - source: ltwiki
     name: 6AL5RY
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
       sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: 6AL5RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
   name: 6AL5
   def: subckt
@@ -290,6 +290,20 @@ models:
       member: lib/sub/Diode_Ayumi.lib
       sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
 - source: groups-io
+  name: X6AL5
+  def: subckt
+  hash: 555987390628cc3b3bd573674485eeb5e8bcf8ff
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
+    lines:
+      X6AL5: [423, 427]
+    fetched: '2026-10-09'
+- source: groups-io
   name: 6AL5
   def: subckt
   hash: 02589f4534631374e2f9dff353cb1e54bad949de
@@ -303,20 +317,6 @@ models:
     lines:
       6AL5: [183, 186]
       VALVE1: [867, 873]
-    fetched: '2026-10-09'
-- source: groups-io
-  name: X6AL5
-  def: subckt
-  hash: 555987390628cc3b3bd573674485eeb5e8bcf8ff
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
-    member: TUBE/spice.txt
-    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
-    sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
-    lines:
-      X6AL5: [423, 427]
     fetched: '2026-10-09'
 - source: groups-io
   name: 6AL5_i1

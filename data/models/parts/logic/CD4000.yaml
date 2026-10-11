@@ -35,26 +35,6 @@ models:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cmos.lib
       sha256: 4ee830d7932c2cdfcd5d21972f96c0387c3440d5d449c6554a0016f8b0f4f5b0
 - source: microcap12
-  name: CD4000UB
-  def: subckt
-  hash: 6ff03c46e01d3c690fee497961c88e40f419dbe7
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cmos.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 355bb3dfa2be483f7c2d5b8d729acb8221874a18fbf49607f03a0bfc0d753917
-    lines:
-      CD4000UB: [51, 66]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: CD4000UB
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cmos.lib
-      sha256: 4ee830d7932c2cdfcd5d21972f96c0387c3440d5d449c6554a0016f8b0f4f5b0
-- source: microcap12
   name: CD4000_PWR
   def: subckt
   hash: df010715f935fc942ab08a2410cc6b25e6256a6b
@@ -74,6 +54,26 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/Digio.lib
       sha256: a954d950911b20f57014c630b367bf0d9338c30082243e1a00cdb3d3514ac247
+- source: microcap12
+  name: CD4000UB
+  def: subckt
+  hash: 6ff03c46e01d3c690fee497961c88e40f419dbe7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/cmos.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 355bb3dfa2be483f7c2d5b8d729acb8221874a18fbf49607f03a0bfc0d753917
+    lines:
+      CD4000UB: [51, 66]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: CD4000UB
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/cmos.lib
+      sha256: 4ee830d7932c2cdfcd5d21972f96c0387c3440d5d449c6554a0016f8b0f4f5b0
 - source: groups-io
   name: CD4000B
   def: subckt
@@ -102,15 +102,9 @@ models:
   - source: ltwiki
     name: CD4000B
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
-      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
-  - source: ltwiki
-    name: CD4000B
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
-      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
   - source: ltwiki
     name: CD4000B
     get:
@@ -121,7 +115,13 @@ models:
     name: CD4000B
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
+      member: LargeCollection/LTspiceIV/lib/sub/cd4000.lib
+      sha256: b782cfaab0d30efd686119cba75054d6d80ea98f2a6dec46ede1ccee4dd5c31d
+  - source: ltwiki
+    name: CD4000B
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Digital/cd4xxx/Test Circuit CD4029B/cd4000.lib
       sha256: db071ddc0bc4fe1e6050e259bd9d1917dbbee47101187031e8f27ad1039b5cf1
 - source: ltwiki
   name: CD4000B
@@ -187,6 +187,18 @@ models:
       D_CD4000B: [51, 54]
     fetched: '2026-09-21'
 - source: ltwiki
+  name: CD4000_PWR
+  def: subckt
+  hash: e6f897a28db1b14dd9082b48a0c20673aaca7bb1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/dig_io.lib
+    sha256: 4786ea546301c487bf3ce0d5924d9d25946a1e53747834334664392f8ba7de98
+    lines:
+      CD4000_PWR: [196, 204]
+    fetched: '2026-09-21'
+- source: ltwiki
   name: CD4000UB
   def: subckt
   hash: 55de1c8a23a2c9919c9f8acb0c646658b58ab965
@@ -200,18 +212,6 @@ models:
     lines:
       CD4000UB: [62, 71]
       D_CD4000UB: [73, 76]
-    fetched: '2026-09-21'
-- source: ltwiki
-  name: CD4000_PWR
-  def: subckt
-  hash: e6f897a28db1b14dd9082b48a0c20673aaca7bb1
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/dig_io.lib
-    sha256: 4786ea546301c487bf3ce0d5924d9d25946a1e53747834334664392f8ba7de98
-    lines:
-      CD4000_PWR: [196, 204]
     fetched: '2026-09-21'
 - source: ltwiki
   name: CD4000A

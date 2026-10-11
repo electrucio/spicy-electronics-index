@@ -16,6 +16,24 @@ models:
       Qbcp53m: [24, 34]
     fetched: '2026-09-19'
 - source: nexperia
+  name: BCP53T
+  def: subckt
+  hash: a113cf59b2c9a6428d804a43b1faa2b3d21f6b79
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BCP53T.txt
+    sha256: a7ae2ec18c6768a8239d0d29b9f176018349faf299a8ddf2504355c1ad453f01
+    lines:
+      BCP53T: [28, 92]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BCP53H
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BCP53H.txt
+      sha256: d78f96d3e32c7ff0b481f340b523b52fbb10995994fdc9fd458e539953e2d5a2
+- source: nexperia
   name: BCP53
   def: subckt
   hash: 7e062c653346418cd8f25476b854dd9e13b1189b
@@ -57,11 +75,6 @@ models:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Infineon/Other/BJT/S_afbjt.lib
       sha256: 55d3abf17fd13cdfeff5c57e966f88d85d90157d6caaf1ce3f72977d57494470
   - source: kicad-spice-library
-    name: BCP53s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
-      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
-  - source: kicad-spice-library
     name: BCP53/SIE
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/siemens.lib
@@ -71,6 +84,11 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_afbjt.lib
       sha256: e2c2bcb8a13097f87967907662a781eff72b0569fa8a31346a7b18186436f691
+  - source: kicad-spice-library
+    name: BCP53s
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_AFBJT.LIB
+      sha256: f291616debefaec544e891373962217f0cde067ea5c516609e5605b7fa9512b0
 - source: bordodynov-qspice
   name: BCP53
   def: model
@@ -150,14 +168,14 @@ models:
   - source: ltwiki
     name: BCP53
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: BCP53
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: bordodynov-qspice
   name: BCP53

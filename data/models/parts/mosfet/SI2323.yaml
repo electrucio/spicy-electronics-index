@@ -27,12 +27,6 @@ models:
     name: Si2323DDS
     get:
       url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
-      member: Si2323DDS_PS_RC.LIB
-      sha256: 278454923bd56fae7a888db5b9f434fe9f0798ade79fa2c22293e3ace1432373
-  - source: vishay
-    name: Si2323DDS
-    get:
-      url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
       member: Si2323DDS_PS.LIB
       sha256: 0ff4d8666b98956145df34eb44cf7064467855cbbf0083f314090e5f01081778
   - source: vishay
@@ -41,6 +35,12 @@ models:
       url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
       member: Si2323DDS_PS.TXT
       sha256: 0ff4d8666b98956145df34eb44cf7064467855cbbf0083f314090e5f01081778
+  - source: vishay
+    name: Si2323DDS
+    get:
+      url: https://www.vishay.com/docs/65629/si2323dds_ps.zip
+      member: Si2323DDS_PS_RC.LIB
+      sha256: 278454923bd56fae7a888db5b9f434fe9f0798ade79fa2c22293e3ace1432373
 - source: vishay
   name: Si2323DS
   def: subckt
@@ -93,13 +93,19 @@ models:
   verbatim: true
   get:
     url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
-    member: si2323cds_ps_rc Rev B.txt
+    member: si2323cds_ps Rev B.txt
     archive_sha256: 03e355d7f34df3ed5e2a044602c79cbd06ce7614c4cd3cbeeb7fe9ad5773066d
-    sha256: 8600abd7d2719a22337c2352a9de9f88f7daecf13fbf0166069791f4592c8dd8
+    sha256: 3219f6f035b6d3d7ac2194cccbb816ccd31d603ef7095e1af77957d93c714cc3
     lines:
       Si2323CDS: [12, 38]
     fetched: '2026-09-19'
   copies:
+  - source: vishay
+    name: Si2323CDS
+    get:
+      url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
+      member: si2323cds_ps_rc Rev B.txt
+      sha256: 8600abd7d2719a22337c2352a9de9f88f7daecf13fbf0166069791f4592c8dd8
   - source: vishay
     name: Si2323CDS
     get:
@@ -112,12 +118,18 @@ models:
       url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
       member: si2323cds_ps_rc Rev B.lib
       sha256: 8600abd7d2719a22337c2352a9de9f88f7daecf13fbf0166069791f4592c8dd8
-  - source: vishay
-    name: Si2323CDS
-    get:
-      url: https://www.vishay.com/docs/66541/si2323cds_ps_revb.zip
-      member: si2323cds_ps Rev B.txt
-      sha256: 3219f6f035b6d3d7ac2194cccbb816ccd31d603ef7095e1af77957d93c714cc3
+- source: vishay
+  name: Si2323DS
+  def: subckt
+  hash: 758081a265ee2f0c4ced5db1f618baad44daf152
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.vishay.com/docs/75747/si2323hs.txt
+    sha256: a0ba5a075d171f5c09733cf76c1ddb4c17369ad0edf2b1aeeef88a5a476c77c2
+    lines:
+      Si2323DS: [3, 28]
+    fetched: '2026-10-10'
 - source: vishay
   name: Si2323CDS
   def: subckt

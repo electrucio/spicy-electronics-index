@@ -3,20 +3,25 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N3502
   def: model
   hash: 80912b254247dfd288634531df24f3824c4b9ae6
   type: PNP
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N3502.LIB
+    sha256: 8329d9785a1c75bc53d3c32973deb125a58b1930b5fc3957c40f27baff1f3fc8
     lines:
-      2N3502: [2011, 2036]
-    fetched: '2026-09-21'
+      2N3502: [23, 48]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: 2N3502
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: groupsio-ltspice
   name: 2N3502
   def: model

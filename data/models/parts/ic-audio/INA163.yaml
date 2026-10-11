@@ -2,6 +2,20 @@ part: INA163
 kind: ic-audio
 priority: 2
 models:
+- source: ti
+  name: INA163
+  def: subckt
+  hash: de266dd9d16e2b55e8c67b32b014ad4de0c1e752
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SBOC057
+    member: INA163.LIB
+    archive_sha256: abdf69d9e311343d090c18959b366148bd59dc6110b8fd11a13659bc38f8fae8
+    sha256: a2ffeaa613d21fddbfc531bfd480f1cc5d1925b9c57c042386e8d6cf01f291f0
+    lines:
+      INA163: [61, 354]
+    fetched: '2026-10-10'
 - source: microcap12
   name: INA163
   def: subckt
@@ -48,12 +62,12 @@ models:
   - source: ltwiki
     name: INA163
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ina.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/ina.lib
       sha256: 526200d0189cd3bc5865e5e4c37dc2f7f9f264dcf636497cca8177d9b00a8763
   - source: ltwiki
     name: INA163
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/ina.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ina.lib
       sha256: 526200d0189cd3bc5865e5e4c37dc2f7f9f264dcf636497cca8177d9b00a8763

@@ -3,20 +3,18 @@ kind: diode
 priority: 4
 group: tvs
 models:
-- source: microcap12
+- source: nexperia
   name: PESD3V3S1UB
   def: model
   hash: 9e4beeee0dae0e0f9239093dda4e664da1685ce7
   type: D
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    url: https://www.nexperia.com/product/PESD3V3S1UB
+    sha256: 851217e73d8d218499bf76d87674844795962342136d84fb456217c66e53d360
     lines:
-      PESD3V3S1UB: [2950, 2959]
-    fetched: '2026-09-21'
+      PESD3V3S1UB: [38, 47]
+    fetched: '2026-10-10'
   copies:
   - source: ltwiki
     name: PESD3V3S1UB
@@ -24,17 +22,38 @@ models:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/PESD3V3S1UB.PRM
       sha256: b9406f2693c47ce394ea09b36143b591d53a5993d0037eed75b17825f00dbf0f
-- source: microcap12
+  - source: microcap12
+    name: PESD3V3S1UB
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+  - source: nexperia
+    name: PESD3V3S1UB
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PESD3V3S1UB.txt
+      sha256: 4e4ed8a4239a6a14815371ab8a76cc133ceda7abf4550bad3683063c070f826f
+- source: nexperia
   name: PESD3V3S1UL
   def: model
   hash: 8a70d5fc17a825b55f6aa5ac7500e1d395b9d228
   type: D
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_diode.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+    url: https://assets.nexperia.com/documents/spice-model/PESD3V3S1UL.txt
+    sha256: 0d06e318a679807381be810ac2ba3cc9937d3b7a61be6c0fcaaa25daf0498f42
     lines:
-      PESD3V3S1UL: [4817, 4826]
-    fetched: '2026-09-21'
+      PESD3V3S1UL: [28, 37]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PESD3V3S1UL
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_diode.lib
+      sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+  - source: nexperia
+    name: PESD3V3S1UL
+    get:
+      url: https://www.nexperia.com/product/PESD3V3S1UL
+      sha256: 0c26b805fc1a28a0ecb155aec076210c16bad9784fde7dba6074a71d71d95ccc

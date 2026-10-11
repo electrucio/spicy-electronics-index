@@ -15,9 +15,9 @@ models:
       OP37: [27, 177]
     fetched: '2026-09-20'
     symbol:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ltc/LT1037_OP37_Enhancement/op37.asy
-      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ltc/LT1037_OP37_Enhancement/op37.asy
+      archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
       sha256: 4e6ef5c0b3d8de863d7b4327275038d238a3bfebc4122a6382582290914a1077
   copies:
   - source: bordodynov
@@ -34,14 +34,8 @@ models:
   - source: ltwiki
     name: OP37
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Opamp5.Lib
-      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
-  - source: ltwiki
-    name: OP37
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ltc/LT1037_OP37_Enhancement/op37.cir
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ltc/LT1037_OP37_Enhancement/op37.cir
       sha256: d404b0882a29ebbff3bd8f46e16364f27736a7a51b082cde5cf3d0244dc058ec
   - source: ltwiki
     name: OP37
@@ -52,9 +46,15 @@ models:
   - source: ltwiki
     name: OP37
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/Ltc/LT1037_OP37_Enhancement/op37.cir
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/Ltc/LT1037_OP37_Enhancement/op37.cir
       sha256: d404b0882a29ebbff3bd8f46e16364f27736a7a51b082cde5cf3d0244dc058ec
+  - source: ltwiki
+    name: OP37
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Opamp5.Lib
+      sha256: 516235bcd01c53a4481f0fa61938da45d598af7edcb478d94943772330a11f47
   - source: kicad-spice-library
     name: OP37A
     get:
@@ -88,10 +88,10 @@ models:
   - OUT
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
-    sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/OP37A.lib
+    sha256: 10dfdf805bc40278e47e4d3f28f3042dfeda2f8e5e8d5bb3383055658f2997cd
     lines:
-      OP37A: [15187, 15244]
+      OP37A: [11, 68]
     fetched: '2026-09-21'
   note: pins from DIP-8 pin numbers (single op-amp pin-out)
   copies:
@@ -99,19 +99,19 @@ models:
     name: OP37A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: OP37A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP37A
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: OP37A
     get:
@@ -120,24 +120,18 @@ models:
   - source: kicad-spice-library
     name: OP37A
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP37A
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: ltwiki
     name: OP37A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
-  - source: ltwiki
-    name: OP37A
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: OP37A
@@ -148,14 +142,20 @@ models:
   - source: ltwiki
     name: OP37A
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: OP37A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: spice-model-cd
     name: OP37A
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/OP37A.lib
-      sha256: 10dfdf805bc40278e47e4d3f28f3042dfeda2f8e5e8d5bb3383055658f2997cd
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
+      sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
   - source: kicad-spice-library
     name: OP37A_LT
     get:
@@ -201,19 +201,19 @@ models:
     name: OP37C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: OP37C
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP37C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: OP37C
     get:
@@ -222,24 +222,18 @@ models:
   - source: kicad-spice-library
     name: OP37C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/OPAMPS.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP37C
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: ltwiki
     name: OP37C
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
-      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
-  - source: ltwiki
-    name: OP37C
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: OP37C
@@ -250,8 +244,14 @@ models:
   - source: ltwiki
     name: OP37C
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraOpamps/OPAMPS.LIB
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMP_.LIB
+      sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
+  - source: ltwiki
+    name: OP37C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: spice-model-cd
     name: OP37C
@@ -313,15 +313,15 @@ models:
   - source: ltwiki
     name: OP37A
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP37A
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP37A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: bordodynov
     name: OP37E
     get:
@@ -336,15 +336,15 @@ models:
   - source: ltwiki
     name: OP37E
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP37E
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP37E
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: kicad-spice-library
     name: OP-37A/AD
     get:
@@ -402,15 +402,15 @@ models:
   - source: ltwiki
     name: OP37C
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP37C
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP37C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: bordodynov
     name: OP37G
     get:
@@ -425,15 +425,15 @@ models:
   - source: ltwiki
     name: OP37G
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP37G
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP37G
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: kicad-spice-library
     name: OP-37C/AD
     get:
@@ -496,15 +496,15 @@ models:
   - source: ltwiki
     name: OP37B
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP37B
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP37B
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: bordodynov
     name: OP37F
     get:
@@ -519,15 +519,15 @@ models:
   - source: ltwiki
     name: OP37F
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OpAmp_AD.lib
-      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
-  - source: ltwiki
-    name: OP37F
-    get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sub/OpAmp_AD.lib
       sha256: cc39d6b59699f9692a349e254842de9cf2fe346877a3428d985609f2dfdf4cb3
+  - source: ltwiki
+    name: OP37F
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/OpAmp_AD.lib
+      sha256: 6c6cb70a324726f5e4bffba49b1355b4666d00d2ace4f17a0459dad156dd6375
   - source: kicad-spice-library
     name: OP-37B/AD
     get:
@@ -572,28 +572,28 @@ models:
   - OP37A
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
-    sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/OP37A.lib
+    sha256: 10dfdf805bc40278e47e4d3f28f3042dfeda2f8e5e8d5bb3383055658f2997cd
     lines:
-      OP37A: [15187, 15244]
-      OP37E: [15246, 15248]
+      OP37A: [11, 68]
+      OP37E: [70, 72]
     fetched: '2026-09-21'
   copies:
   - source: kicad-spice-library
     name: OP37E
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: OP37E
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: spice-model-cd
     name: OP37E
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/OP37A.lib
-      sha256: 10dfdf805bc40278e47e4d3f28f3042dfeda2f8e5e8d5bb3383055658f2997cd
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/LTC37.lib
+      sha256: d067d03736b9b3410257d9d18783c6af42ad7b1ed4a7c3217e0e4744cebe97e6
   - source: kicad-spice-library
     name: OP37E_LT
     get:
@@ -624,13 +624,13 @@ models:
   - source: kicad-spice-library
     name: OP37G
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
-      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
+      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
   - source: kicad-spice-library
     name: OP37G
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Linear%20Technology%20Corporation/LinearTech.lib
-      sha256: d08734cb6f0f2b03fe160350f7a07747c6e026f53ca9e3a0b281b9fbd2e23306
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/LTC_ampliop.lib
+      sha256: 140c4a222da3dfce63a2a5af619a118436c566ab1db5ac47c8fc5dfcec8f7a68
   - source: spice-model-cd
     name: OP37G
     get:
@@ -657,7 +657,7 @@ models:
   - DM2
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -668,7 +668,7 @@ models:
   - source: spice-model-cd
     name: OP37A
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
 - source: spice-model-cd
   name: OP37E
@@ -681,7 +681,7 @@ models:
   - OP37A
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -693,7 +693,7 @@ models:
   - source: spice-model-cd
     name: OP37E
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
 - source: spice-model-cd
   name: OP37C
@@ -705,7 +705,7 @@ models:
   - DM2
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -716,7 +716,7 @@ models:
   - source: spice-model-cd
     name: OP37C
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
 - source: spice-model-cd
   name: OP37G
@@ -729,7 +729,7 @@ models:
   - OP37C
   verbatim: true
   get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
+    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
     sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
     lines:
       DM1: [7066, 7066]
@@ -741,7 +741,7 @@ models:
   - source: spice-model-cd
     name: OP37G
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc.lib
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/LinearTech/Ltc-spice-collection.lib
       sha256: eae1fee2fa8143907eba7c718c30c3e9a912814c4cbbeecad8984874a31ab269
 - source: microcap12
   name: OP-37A_TI
@@ -1005,13 +1005,13 @@ models:
     name: OP37E
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: OP37E
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP37E
@@ -1022,13 +1022,13 @@ models:
     name: OP37E
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: OP37E
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: ltwiki
   name: OP37G
@@ -1056,13 +1056,13 @@ models:
     name: OP37G
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: OP37G
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: OP37G
@@ -1073,13 +1073,13 @@ models:
     name: OP37G
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: OP37G
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: ltwiki
   name: OP37E

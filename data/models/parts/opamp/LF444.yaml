@@ -2,6 +2,80 @@ part: LF444
 kind: opamp
 priority: 2
 models:
+- source: ti
+  name: LF444
+  def: subckt
+  hash: d6b607254241ce98aa7932ada2b1bc9e779abc33
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.ti.com/lit/zip/SNOM261
+    member: lf444.lib
+    archive_sha256: de44b65161b5975a663800edeb1a6961494e5dd4d4280b3e831f1316f23c46ae
+    sha256: 367fb67fb01d6b0f44a940d537139a1b79f88328635f1099554a3261a4c1b2d4
+    lines:
+      LF444: [40, 139]
+    fetched: '2026-10-10'
+  copies:
+  - source: diyaudio
+    name: LF444
+    get:
+      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
+      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
+  - source: bordodynov
+    name: LF444A/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: kicad-spice-library
+    name: LF444A/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: kicad-spice-library
+    name: LF444A/NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nat_semi.lib
+      sha256: 15227be98f4559bf0b6fcabdea3c86cbd6c5f1d41d47ecf7375d001362f06a28
+  - source: kicad-spice-library
+    name: LF444A_NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
+      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
+  - source: ltwiki
+    name: LF444A/NS
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: LF444A/NS
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: LF444A/NS
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+  - source: microcap12
+    name: LF444A_NS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nation.lib
+      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+  - source: spice-model-cd
+    name: LF444A/NS
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/National_Semiconductors/Spice/LF444A.cir
+      sha256: 014d3c8e50f872c71d3d1c683d64b65d4a246e58f1f0a2a0f12de63e7660e2d5
+  - source: kicad-spice-library
+    name: LF444AN
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATJFET.LIB
+      sha256: d6bcbc7742015b04a5bafb439140aa87d077822a537c68e845e25b10c0598cc8
 - source: spice-model-cd
   name: LF444B/NS
   def: subckt
@@ -50,8 +124,15 @@ models:
   - source: ltwiki
     name: LF444B/NS
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
+      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+  - source: ltwiki
+    name: LF444B/NS
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/OpAmp_NSC.lib
+      sha256: 640cf42a735c898a54951becb5657cb42ecbfd75453e22e5d739958213f9cf2c
   - source: ltwiki
     name: LF444B/NS
     get:
@@ -67,15 +148,8 @@ models:
   - source: ltwiki
     name: LF444B/NS
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sub/OpAmp_NSC.lib
-      sha256: 640cf42a735c898a54951becb5657cb42ecbfd75453e22e5d739958213f9cf2c
-  - source: ltwiki
-    name: LF444B/NS
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
+      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
   - source: microcap12
     name: LF444B_NS
     get:
@@ -83,85 +157,18 @@ models:
       member: LIBRARY/nation.lib
       sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
   - source: kicad-spice-library
+    name: LF444_NS
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
+      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
+  - source: microcap12
+    name: LF444_NS
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nation.lib
+      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
+  - source: kicad-spice-library
     name: LF444N
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATJFET.LIB
-      sha256: d6bcbc7742015b04a5bafb439140aa87d077822a537c68e845e25b10c0598cc8
-  - source: kicad-spice-library
-    name: LF444_NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
-      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
-  - source: microcap12
-    name: LF444_NS
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/nation.lib
-      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
-- source: spice-model-cd
-  name: LF444A/NS
-  def: subckt
-  hash: d6b607254241ce98aa7932ada2b1bc9e779abc33
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/National_Semiconductors/Spice/LF444A.cir
-    sha256: 014d3c8e50f872c71d3d1c683d64b65d4a246e58f1f0a2a0f12de63e7660e2d5
-    lines:
-      LF444A/NS: [40, 139]
-    fetched: '2026-09-21'
-  copies:
-  - source: diyaudio
-    name: LF444
-    get:
-      url: https://www.diyaudio.com/community/threads/diyab-amp-the-honey-badger-build-thread.211905/post-5569473
-      sha256: 41191b8e6f5ed2ab081bce0146a00fa4ed0ba34aa409de532e6cf2d82873a16d
-  - source: bordodynov
-    name: LF444A/NS
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: kicad-spice-library
-    name: LF444A/NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: kicad-spice-library
-    name: LF444A/NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nat_semi.lib
-      sha256: 15227be98f4559bf0b6fcabdea3c86cbd6c5f1d41d47ecf7375d001362f06a28
-  - source: kicad-spice-library
-    name: LF444A_NS
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/nation.lib
-      sha256: 97af188e570afc5c2b4b8246ade0670422d90c402c01a0f0383df0a6a37af9ac
-  - source: ltwiki
-    name: LF444A/NS
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/nat_semi.lib
-      sha256: 410011a53d15a487fda9fb1f4f6cbd0747427cf9274b6dbd90625f580bf75fe7
-  - source: ltwiki
-    name: LF444A/NS
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: ltwiki
-    name: LF444A/NS
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/ns_models.lib
-      sha256: 5742c699db56b65894a4b57ff011ad190ba22361cf79b5a3bf4761063d142434
-  - source: microcap12
-    name: LF444A_NS
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/nation.lib
-      sha256: 3fc09b6f184ee48ba06340ee116b44f0650e61c361bb5c44744d6c7a98b2f7ce
-  - source: kicad-spice-library
-    name: LF444AN
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/NATJFET.LIB
       sha256: d6bcbc7742015b04a5bafb439140aa87d077822a537c68e845e25b10c0598cc8
@@ -220,14 +227,14 @@ models:
   - source: ltwiki
     name: LF444/ON
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/on_amp.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: LF444/ON
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/on_amp.lib
       sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: bordodynov
     name: LF444/MC
@@ -253,8 +260,9 @@ models:
   - source: ltwiki
     name: LF444/MC
     get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
-      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
+      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
   - source: ltwiki
     name: LF444/MC
     get:
@@ -264,9 +272,8 @@ models:
   - source: ltwiki
     name: LF444/MC
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ExtraComparators/on_amp.lib
-      sha256: 5c6c06417c2f34175b2f0bbd544a5586530aa9b861e01f68cd1a158b87eb24e4
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/motoramp.lib
+      sha256: 97b71bfffb93dae60222a64a71347274be2cec93a83d7edb267b1e0d4bfa57e0
   - source: microcap12
     name: LF444_MC
     get:
@@ -292,13 +299,13 @@ models:
     name: LF444
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: bordodynov
     name: LF444
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: kicad-spice-library
     name: LF444
@@ -309,13 +316,13 @@ models:
     name: LF444
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMPS.LIB
+      member: lib/sub/OPAMP_.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
   - source: ltwiki
     name: LF444
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/OPAMP_.LIB
+      member: lib/sub/OPAMPS.LIB
       sha256: 4c97d1d4c5a7e4da1aad54aaebf412c399d2ae61c64db78a831607944d1e3788
 - source: kicad-spice-library
   name: LF444M

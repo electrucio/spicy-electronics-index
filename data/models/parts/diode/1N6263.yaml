@@ -3,6 +3,27 @@ kind: diode
 priority: 4
 group: schottky
 models:
+- source: stmicro
+  name: 1N6263
+  def: model
+  hash: efdd9d3c9547f82dac1958c79abeb4e3f4bf7c6d
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      1N6263: [662, 663]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: 1N6263
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
 - source: microcap12
   name: 1N6263W
   def: model
@@ -66,29 +87,15 @@ models:
   - source: ltwiki
     name: 1N6263
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: 1N6263
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: 1N6263
-  def: model
-  hash: efdd9d3c9547f82dac1958c79abeb4e3f4bf7c6d
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
-    lines:
-      1N6263: [838, 839]
-    fetched: '2026-09-14'
 - source: kicad-spice-library
   name: D1N6263
   def: model

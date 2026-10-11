@@ -36,15 +36,15 @@ models:
   - source: ltwiki
     name: TIP142
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
-    name: TIP142
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/NPNdarlington.lib
       sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
 - source: onsemi
   name: TIP142
   def: subckt
@@ -80,19 +80,8 @@ models:
   - source: ltwiki
     name: TIP142
     get:
-      url: https://ltwiki.org/images/4/49/TIP142.sub
-      sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
-  - source: ltwiki
-    name: TIP142
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/TIP121&131.SUB
-      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
-  - source: ltwiki
-    name: TIP142
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Bjt/TIP142_test/TIP140_141_142.lib
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/TIP142_test/TIP140_141_142.lib
       sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
   - source: ltwiki
     name: TIP142
@@ -103,9 +92,38 @@ models:
   - source: ltwiki
     name: TIP142
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/TIP142_test/TIP140_141_142.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/TIP142_test/TIP140_141_142.lib
       sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/TIP121&131.SUB
+      sha256: 6f4f88067a664168de8c881cafc983aecacc5b918b104b92ecf2a7539d3e50c0
+  - source: ltwiki
+    name: TIP142
+    get:
+      url: https://ltwiki.org/images/4/49/TIP142.sub
+      sha256: 7521011df93acf5377e50052a56fe2e82bf661f1270b932e4441e49362075f85
+- source: onsemi
+  name: Xtip142
+  def: subckt
+  hash: 7e6c465487ad4f057d5b0b743a8e6d0b84e6166e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip142.sp2
+    sha256: a32278aa56bd6bda3869c3b647b9b2a0bb93771e947d044feae4a365173442c4
+    lines:
+      Xtip142: [12, 50]
+    fetched: '2026-10-10'
+  copies:
+  - source: onsemi
+    name: tip142
+    get:
+      url: https://www.onsemi.com/download/models/sp3/tip142.sp3
+      sha256: 82b72c50686be2d0d0d8e3ccbd0f0f9b19d0e1ebfc231c828b906ff5d60384f3
 - source: microcap12
   name: tip142
   def: subckt

@@ -3,23 +3,32 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
-  name: 2N2857
+- source: central-semi
+  name: 2n2857UB
   def: model
   hash: c79cde1d354087c7ac92b298309b47046cdcdfcc
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N2857UB.LIB
+    sha256: 4406ef8ff7d753c746d1a19de2ad2f871bf84c0c280b9ef8b358a6cc65409923
     lines:
-      2N2857: [1504, 1513]
-    fetched: '2026-09-21'
+      2n2857UB: [24, 33]
+    fetched: '2026-10-10'
   copies:
   - source: microcap12
     name: 2n2857UB
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+  - source: central-semi
+    name: 2N2857
+    get:
+      url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N2857.LIB
+      sha256: 0d2f3a383d796dfa2df62ded0f5a07ecddd1c709b72d3135d1f08ade1cb4d826
+  - source: microcap12
+    name: 2N2857
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/cs.lib

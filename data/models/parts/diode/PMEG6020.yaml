@@ -21,29 +21,166 @@ models:
     note: 'PMEG6020ER: PMEG6020ER, PMEG6020ER'
   note: pins from comment words
   copies:
+  - source: nexperia
+    name: PMEG6020EP
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG6020EP.txt
+      sha256: 984e3b61ccd3267745f48a8628278756dcf7086d0a25a89acfb81d41484767ab
   - source: microcap12
     name: PMEG6020EP
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nxp.lib
       sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG6020EP
+    get:
+      url: https://www.nexperia.com/product/PMEG6020EP
+      sha256: 4d39b0b450f924251850f1089b52193a50d0a024783f44e9ca9fb2ab6fee6810
   - source: microcap12
     name: PMEG6020ER
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nxp.lib
       sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-- source: microcap12
+  - source: nexperia
+    name: PMEG6020ER
+    get:
+      url: https://www.nexperia.com/product/PMEG6020ER
+      sha256: f3ae162734c2d87f198b5178c134d41009ef77e40e0627ef5db3795bbddac7d6
+  - source: nexperia
+    name: PMEG6020ETR
+    get:
+      url: https://www.nexperia.com/product/PMEG6020ETR
+      sha256: fb9b74eb1acbcd31ab26f7ce6b49df41d259652dcd0449400aa6e2d114b70baa
+  - source: nexperia
+    name: PMEG6020ETP
+    get:
+      url: https://www.nexperia.com/product/PMEG6020ETP
+      sha256: 2233fbe2784044af438d8a34e1c6a0e1565374a51986c502d6725d28a522888d
+- source: nexperia
   name: PMEG6020EPA
   def: subckt
   hash: 07ea6a8dcff7836e28f0991b09470b21a6c5aa0f
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020EPA.txt
+    sha256: 809f34133b16d638b633688d1a9fc6cbf900faf3efc788579e0d816e40d778f1
     lines:
-      PMEG6020EPA: [27561, 27583]
-    fetched: '2026-09-21'
+      PMEG6020EPA: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PMEG6020EPA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG6020EPAS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG6020EPAS.txt
+      sha256: 9e8de371a2741ac5d5bbf5d0d5d6e8b4613f3e60f7592bf099794e521fdaa192
+- source: nexperia
+  name: PMEG6020AELR
+  def: subckt
+  hash: 5c2e1acc91a63080b97b13a42fa85f69d3cbd450
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020AELR.txt
+    sha256: bee753c673e210f823af2e802160f154f103176757b245d1961f3e0503b5cd18
+    lines:
+      PMEG6020AELR: [38, 67]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMEG6020AELP
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG6020AELP.txt
+      sha256: 0e137a7c2c8f0d3471e2c5c4b7d76d55f873fa069642a2c3eac09ad858f1bcf1
+- source: nexperia
+  name: PMEG6020EXD-Q
+  def: subckt
+  hash: 8875da554705d10395d90671abc52adc847ceda9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020EXD-Q.txt
+    sha256: 0b8aede5482a1674ff9b6029feea76d8440fbcf3c05fe0521779869c14fbd1fe
+    lines:
+      PMEG6020EXD-Q: [45, 69]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMEG6020EXD
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG6020EXD.txt
+      sha256: f2719e02f231a8e94da09e5a25334b2a9b71076e4f14ae2945d146eb6a6891a1
+- source: nexperia
+  name: PMEG6020EXE
+  def: subckt
+  hash: fcd48dda77f81fe81f9e4bdfa7ce74974ba42310
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020EXE.txt
+    sha256: 451b7d425a59d9b162b5b04d215c892aad885c8970382dd6f3f3ef632f044a7e
+    lines:
+      PMEG6020EXE: [37, 66]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: PMEG6020EXE-Q
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG6020EXE-Q.txt
+      sha256: 3524af6a608bba1d9bc93d8ddfef055ed8ec3fd49163c9e38f84b5cf67c3b2c0
+- source: nexperia
+  name: PMEG6020ELR
+  def: subckt
+  hash: 7e1b13d4c83c260feaac23802529e1d474ae3633
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020ELR.txt
+    sha256: e2c2bb6a364b8ab5381c714e67289291e04d7a4b7dca6b7d6376c858953c117f
+    lines:
+      PMEG6020ELR: [38, 68]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: PMEG6020ETR
+  def: subckt
+  hash: 4daccea76989129b364294c5e63cee56bfff1b9c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020ETR.txt
+    sha256: 2655651cf4549ea3bd010293880c1c9dff278e410273f50de1aaa60c3dec13b6
+    lines:
+      PMEG6020ETR: [33, 57]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: PMEG6020ELXD
+  def: subckt
+  hash: 13e64a3c2e11502275dc482cc1da9c166b750f43
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020ELXD.txt
+    sha256: a65f87a4f60537e11a62090995f12deedc890fb98e30991f0d0385c0ae5ec456
+    lines:
+      PMEG6020ELXD: [45, 69]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: PMEG6020CER-Q
+  def: subckt
+  hash: 2dc671f5fbb162c30c3f2fff427b41b6f4e2a2f0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/PMEG6020CER-Q.txt
+    sha256: c50a83813a4e559db7c6afc41f90493ddde574c44a53016c06224f89ab152cac
+    lines:
+      PMEG6020CER-Q: [37, 66]
+    fetched: '2026-10-10'

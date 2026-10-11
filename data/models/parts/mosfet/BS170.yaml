@@ -97,6 +97,18 @@ models:
     fetched: '2026-09-21'
   note: pins from default order (unverified)
   copies:
+  - source: ltwiki
+    name: BS170
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/NewModelsAdd.txt
+      sha256: fe99bff753a34d510c52cd5ba5eb5c5df1c739443f20770348b65d6a666443eb
+  - source: ltwiki
+    name: BS170
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Bjt/NewModelsAdd.txt
+      sha256: fe99bff753a34d510c52cd5ba5eb5c5df1c739443f20770348b65d6a666443eb
   - source: bordodynov
     name: BS170PLP
     get:
@@ -107,12 +119,6 @@ models:
     name: BS170PLP
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/NMOS_Philips.lib
-      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
-  - source: ltwiki
-    name: BS170PLP
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NMOS_Philips.lib
       sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
   - source: ltwiki
     name: BS170/PLP
@@ -133,17 +139,11 @@ models:
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/FET/phil_fet.lib
       sha256: 076ac616a0609f62809b545ebb366d97166bc3f492193100395aaa8fff9d6b56
   - source: ltwiki
-    name: BS170
+    name: BS170PLP
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Bjt/NewModelsAdd.txt
-      sha256: fe99bff753a34d510c52cd5ba5eb5c5df1c739443f20770348b65d6a666443eb
-  - source: ltwiki
-    name: BS170
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Bjt/NewModelsAdd.txt
-      sha256: fe99bff753a34d510c52cd5ba5eb5c5df1c739443f20770348b65d6a666443eb
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NMOS_Philips.lib
+      sha256: ed3135fdb4ff7044442d0bc22b9c7076a200c2ba671011b9cacf98d84e134602
 - source: spice-model-cd
   name: BS-170
   def: subckt
@@ -328,13 +328,9 @@ models:
   - source: ltwiki
     name: BS170
     get:
-      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
-      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
-  - source: ltwiki
-    name: BS170
-    get:
-      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
-      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.mos
+      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
   - source: ltwiki
     name: BS170
     get:
@@ -344,9 +340,13 @@ models:
   - source: ltwiki
     name: BS170
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.mos
-      sha256: bf72cd277c70963d7f2f27bca87bd83ed67bb8993bee3c5655a12eabc82615a3
+      url: http://bordodynov.ltwiki.org/standard.mos.XVII.txt
+      sha256: b2e9468b7304ac412108e29242a96aaa20f9dd68f826444c03b92cae51e5bfad
+  - source: ltwiki
+    name: BS170
+    get:
+      url: http://bordodynov.ltwiki.org/standard.mos.IV.txt
+      sha256: 2553d2c9f4f11801190c5f3ad8387bb38b5521632244feb150188419b12e9482
 - source: ltwiki
   name: BS170
   def: subckt

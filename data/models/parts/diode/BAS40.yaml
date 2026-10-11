@@ -22,6 +22,131 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+- source: nexperia
+  name: BAS40
+  def: subckt
+  hash: ba8ff800aea9b4889492ab3ab471ec9565d489aa
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS40
+    sha256: 3051e5480b95b1775e944c5604f99c3fc558414283afe9e5f7d6eeb9855a8ace
+    lines:
+      BAS40: [2, 24]
+    fetched: '2026-10-10'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BAS40
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40.PRM
+      sha256: 3051e5480b95b1775e944c5604f99c3fc558414283afe9e5f7d6eeb9855a8ace
+  - source: ltwiki
+    name: BAS40W
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40W.PRM
+      sha256: bce9c0779b1927b898b007dab5c7769b13da3fecc6fba61795c50f1304a0bfcf
+- source: nexperia
+  name: BAS40H
+  def: subckt
+  hash: 37322ffd824c1a847eeed37cf206ce03d8eaae1a
+  type: SUBCKT
+  pins:
+  - A
+  - K
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS40H.txt
+    sha256: 8d02bbbc527db1943a136b41648cb5794db6adb934f90065ef7dedcd14cb58e3
+    lines:
+      BAS40H: [33, 49]
+    fetched: '2026-10-10'
+  note: pins from default order (unverified)
+  copies:
+  - source: ltwiki
+    name: BAS40H
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40H.PRM
+      sha256: 583dffe37502d303233db67284ac0b89cb98114ce669b240a1ecd6480098f587
+  - source: microcap12
+    name: BAS40H
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+  - source: nexperia
+    name: BAS40XY
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS40XY.txt
+      sha256: fbdae79ba8231feaf399664cf7eec9447a13da683dad231b167f9cc0e4947fb4
+- source: nexperia
+  name: BAS40L
+  def: subckt
+  hash: 904d8ccdd484e887c1562488308042385ca52282
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS40L.txt
+    sha256: acfe3e0f4a00b0a2d2ba5c42568c915639f4475ca5d1ecc33ad164e26248c408
+    lines:
+      BAS40L: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: BAS40L
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/ph_shot.lib
+      sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
+- source: nexperia
+  name: BAS40DY
+  def: subckt
+  hash: 280d16f536d16dba4639678c1442124378a784da
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS40DY.txt
+    sha256: 7ee8e8b8b513b8366c80324c1dff101fb0e5ab766e1bf9e8bd0b2e99013b81e2
+    lines:
+      BAS40DY: [39, 67]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS40VY
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS40VY.txt
+      sha256: 6abc6693d614762a90830d8ff10e7bf7c0fc72538242905902f7c261db156b03
+- source: nexperia
+  name: BAS40W
+  def: subckt
+  hash: 30a4cf4682e7b88e3d9095a11d3fdba73e2d9b92
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAS40W
+    sha256: df12956f8e364a146624e2edfea0084e2bfa04b0f08361dea539d0e2a8f3dcda
+    lines:
+      BAS40W: [38, 62]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: nexperia
+  name: BAS40LS
+  def: subckt
+  hash: 14f4fbc6aee4898b9bce2f39927923f95b483ba8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS40LS.txt
+    sha256: df070ab0ec5a1b6d5dfabb785b46607f2d56243054a3b5eaf225c0bc8aa91397
+    lines:
+      BAS40LS: [38, 66]
+    fetched: '2026-10-10'
 - source: vishay
   name: BAS40
   def: subckt
@@ -34,6 +159,244 @@ models:
     lines:
       BAS40: [11, 52]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: BAS40
+  def: model
+  hash: d7381d344eec75c062aec006ae1143cb5420efe0
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: fc0acd70a70d81a4acedf4252b0bb43061cb03520203b8e131111534bba7328d
+    lines:
+      BAS40: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAS40
+  def: subckt
+  hash: 2f695cda25a343a5c8bb5175eaa8745c982824b9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 232e0236e74e2717f59a1d1cbd67aaca60aca223124e93459431fd968e53f206
+    lines:
+      BAS40: [11, 42]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS40S
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40S.txt
+      sha256: 6e336ffabc0af8fc3694f7a82d2755f1256c5c3fc2026b73b40cf6b83e8616ed
+  - source: panjit
+    name: BAS40S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40S-AU.txt
+      sha256: c37673748db9eed12d845c0f499c947d1d64d56145292cf7500d515b06accd3d
+  - source: panjit
+    name: BAS40A
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40A.txt
+      sha256: 1fa7470c3fd9497f9f31d7ed20f7af76af8e699fab28fc46c5d439493d830732
+  - source: panjit
+    name: BAS40C
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40C.txt
+      sha256: 409287053ee364731584909c289d22cf375119f8789de418553f42498b135a55
+  - source: panjit
+    name: BAS40WS
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40WS.txt
+      sha256: ede9d396d0bc6d7dafdafb0e1ea4f342c4ee644fc080dd5ad96ee93664ccb880
+  - source: panjit
+    name: BAS40A-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40A-AU.txt
+      sha256: dada9a4a45bfa601f5b8884808c2b3df4985d07d998c1d75c9cf012148375273
+  - source: panjit
+    name: BAS40C-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40C-AU.txt
+      sha256: b9adbfafb80f8641bf91d781e6b66bbaf1b487e35e9e81c568fdd2c63edc9c73
+  - source: panjit
+    name: BAS40WS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40WS-AU.txt
+      sha256: d9d32fe48072e37267b3f6c5836e128aa0fca7ffc8a9ecbe465614df7357606a
+  - source: panjit
+    name: BAS40-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40-AU.txt
+      sha256: bd78c83a20d7132b6d8801ad89ee0aaaa17b3323b0e2b883e70da07f858b3486
+- source: panjit
+  name: BAS40TW
+  def: subckt
+  hash: 5c948d5b939f12bca071a2ea582efe881ffc99b1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40TW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d2a4c589a50e87a1785e2dde7ad540831a17cbc1ccd70d08badeaf81b1aba67c
+    lines:
+      BAS40TW: [11, 34]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS40TW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40TW-AU.txt
+      sha256: 37cebc564d750d5116078c6326f76e09c81186a4730d55a329d63f6869cf7314
+- source: panjit
+  name: BAS40W
+  def: subckt
+  hash: 80f9a63a1cd94989712e145def431a995cd217be
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40W.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 7b697bdcda24b2ab9edd355f93b3e425a58c65e1e7ad234bc6ac44ccf1c9f058
+    lines:
+      BAS40W: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS40W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40W-AU.txt
+      sha256: de9de558bdddcea0dc6f7908f5c23e9bb2b9e4f66f20bc136b679fb2c585ead3
+- source: panjit
+  name: BAS40CW
+  def: subckt
+  hash: cf588adf9f82abf016babaefba74a46daf7c684c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40CW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 99874ec6d8c7e214a22a898b4daab8c1973426624d96a7032118ab9fbddbe4e3
+    lines:
+      BAS40CW: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS40CW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40CW-AU.txt
+      sha256: d1201944ddc226f4059bbfba1a286bfe8fc5385ada7ec9608eca9644fc7a8edf
+- source: panjit
+  name: BAS40SW-AU
+  def: subckt
+  hash: 61a14fef64edae0a89528b2eaecd6b8f13664226
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40SW-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 48a403de8d8dc049b8d4634f50e51abd6cc27c140ec7feeae6cafaa119841261
+    lines:
+      BAS40SW-AU: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS40SW
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40SW.txt
+      sha256: fea38a386b4e66204c450e769442deb772cb6a567187949a0a6db882662dc628
+- source: panjit
+  name: BAS40AW-AU
+  def: subckt
+  hash: f9f9d743f0b99fa694e2fda534425cd63c0a860e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40AW-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: c83c9d9761e354848e1dc781736add39e0dde21d72adc7caa78ea6e0b2c0c62b
+    lines:
+      BAS40AW-AU: [11, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS40AW
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAS40AW.txt
+      sha256: faa139f65add549225d8eb47e627294ab4ad068a173322c4d72f49e091d429d6
+- source: panjit
+  name: BAS40SDW
+  def: subckt
+  hash: ee4c23b7fefd403deec70e65d93414b6c75c765b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40SDW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 981cc51101f77cc54eaa2c8ed9ffc6f9cb05c94acf170b350e903e62f7c26e28
+    lines:
+      BAS40SDW: [11, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAS40ADW
+  def: subckt
+  hash: 050ad4375be0e429a536ba320ae2f9a228bbead8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40ADW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: a0237e716855c8a8fa12a1b3dc422cf1c673c95ebe5a1b2d2b1d2a4fbb4c4575
+    lines:
+      BAS40ADW: [11, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAS40CDW
+  def: subckt
+  hash: 5d8be450fc14435a75541ec488aa8d9ce50c6438
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAS40CDW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: c98bed04b24e5c7d36f3a1e9d1bfc9cb657841fa1efb6a5fe0e052fed00c6777
+    lines:
+      BAS40CDW: [11, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: spice-model-cd
   name: BAS40
   def: model
@@ -47,11 +410,6 @@ models:
       BAS40: [449, 450]
     fetched: '2026-09-21'
   copies:
-  - source: kicad-spice-library
-    name: BAS40s
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
-      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
   - source: ltwiki
     name: BAS40/SIE
     get:
@@ -62,31 +420,11 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Siemens/S_diode.lib
       sha256: 5db13a4ff341739aa880aa23a7c2a0378e5c0a9f01d9c1ef30d8f9965b1fea64
-- source: microcap12
-  name: BAS40H
-  def: subckt
-  hash: 37322ffd824c1a847eeed37cf206ce03d8eaae1a
-  type: SUBCKT
-  pins:
-  - A
-  - K
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
-    lines:
-      BAS40H: [1913, 1935]
-    fetched: '2026-09-21'
-  note: pins from default order (unverified)
-  copies:
-  - source: ltwiki
-    name: BAS40H
+  - source: kicad-spice-library
+    name: BAS40s
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40H.PRM
-      sha256: 583dffe37502d303233db67284ac0b89cb98114ce669b240a1ecd6480098f587
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/S_DIODE.LIB
+      sha256: c9fda6f359d82175cc33b2d5022078515b6c97969631ba29cf77d12a36f704d1
 - source: microcap12
   name: BAS40T
   def: model
@@ -147,20 +485,6 @@ models:
     sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
     lines:
       BAS40LP: [46, 47]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: BAS40L
-  def: subckt
-  hash: 904d8ccdd484e887c1562488308042385ca52282
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/ph_shot.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6367af2c60015e9fb5ecc3771d731c998ee74c0f74ef57bce37e58e08532f5d
-    lines:
-      BAS40L: [1938, 1960]
     fetched: '2026-09-21'
 - source: microcap12
   name: BAS40XY
@@ -283,6 +607,12 @@ models:
   - source: ltwiki
     name: BAS40HM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS40HM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -292,37 +622,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAS40HM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BAS40
-  def: subckt
-  hash: ba8ff800aea9b4889492ab3ab471ec9565d489aa
-  type: SUBCKT
-  pins:
-  - A
-  - K
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 3051e5480b95b1775e944c5604f99c3fc558414283afe9e5f7d6eeb9855a8ace
-    lines:
-      BAS40: [2, 24]
-    fetched: '2026-09-14'
-  note: pins from default order (unverified)
-  copies:
-  - source: ltwiki
-    name: BAS40W
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAS40W.PRM
-      sha256: bce9c0779b1927b898b007dab5c7769b13da3fecc6fba61795c50f1304a0bfcf
 - source: ltwiki
   name: BAS40W
   def: subckt
@@ -395,14 +694,14 @@ models:
   - source: ltwiki
     name: BAS40HY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS40HY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BAS40

@@ -9,25 +9,25 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/Sborka.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/LTSpice/SW_R.txt
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+    sha256: d6eee03d0cc354143cb069355f26f5f905697e0ab7eef432cd414afc573b38ac
     lines:
-      SW_R: [12892, 12896]
-    fetched: '2026-09-21'
+      SW_R: [1, 5]
+    fetched: '2026-09-29'
     symbol:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/switch/SW_R.asy
-      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-      sha256: 5c5f0d79bb7a08166835deda54b1c48d24e1f8342661f588426f3b9bae091191
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LTSpice/SW_R.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      sha256: 513645d3500f763e6f0c750ab2f3391c8c4166c15f8ae5a23547f2e1d5b48dc5
   copies:
   - source: bordodynov
     name: SW_R
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LTSpice/SW_R.txt
-      sha256: d6eee03d0cc354143cb069355f26f5f905697e0ab7eef432cd414afc573b38ac
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
   - source: kicad-spice-library
     name: SW_R
     get:
@@ -36,12 +36,12 @@ models:
   - source: ltwiki
     name: SW_R
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Sborka.lib
-      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5
-  - source: ltwiki
-    name: SW_R
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/LTSpice/SW_R.txt
       sha256: d6eee03d0cc354143cb069355f26f5f905697e0ab7eef432cd414afc573b38ac
+  - source: ltwiki
+    name: SW_R
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Sborka.lib
+      sha256: 1dbc33e05d20d5c2f1029fa37e55a44fd157718bb0d6f42183b52cdbd8795dc5

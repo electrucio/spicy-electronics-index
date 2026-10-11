@@ -34,14 +34,14 @@ models:
   - source: ltwiki
     name: 2N6027
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/2N6027.LIB
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ON/Tiristors/2N6027.LIB
       sha256: 77b8e12af72b83545ebe277c96c9f383543f7ebba2b57b570858c8a8055948a1
   - source: ltwiki
     name: 2N6027
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/ValVol/ON/Tiristors/2N6027.LIB
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/2N6027.LIB
       sha256: 77b8e12af72b83545ebe277c96c9f383543f7ebba2b57b570858c8a8055948a1
   - source: microcap12
     name: 2N6027
@@ -49,3 +49,15 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_thyristor.lib
       sha256: edd4cf82fc9b7f5072f4723c3346c0d040ba1912fa54caa9ee8d01ad01302aee
+- source: central-semi
+  name: 2N6027
+  def: subckt
+  hash: 7be28b1ccff9886bf72cce14a855a8dd650ac1e1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/CSM1569.LIB
+    sha256: 16b768994f74c03127cacc2224a5ff7ab49fcf35889ddf759d8e9e6ed5556249
+    lines:
+      2N6027: [20, 31]
+    fetched: '2026-10-10'

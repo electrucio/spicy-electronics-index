@@ -24,6 +24,29 @@ models:
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
 - source: onsemi
+  name: Dbas16ht
+  def: model
+  hash: 8051f2828010d7ae23ef0698f4c606976ac0d0c8
+  type: D
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/bas16ht.lib
+    sha256: 5ac7050243afec37a3e758fcfdd75f2bcf49e89314d6d0bfd34198a9b8d7fcce
+    lines:
+      Dbas16ht: [14, 18]
+    fetched: '2026-09-19'
+  copies:
+  - source: onsemi
+    name: Dbas16ht
+    get:
+      url: https://www.onsemi.com/download/models/txt/bas16ht.sp2.txt
+      sha256: a05a5d22f2018966f66760e48adc8bce76a0ca45867c09532837e28de2844f81
+  - source: onsemi
+    name: bas16ht
+    get:
+      url: https://www.onsemi.com/download/models/txt/bas16ht.sp3.txt
+      sha256: 31c1fce58120ca2a8318ac51588c9242393ac5a4999daf18d126470d82b5e067
+- source: onsemi
   name: Dbas16wt1g
   def: model
   hash: 02ba57211da1b4f3796708af397843d5c85ca1f6
@@ -41,24 +64,11 @@ models:
     get:
       url: https://www.onsemi.com/download/models/txt/bas16w.sp3.txt
       sha256: 6638896f15f0e1d7f48be5d0c9431d7acc68e35763a5d445dc10a5c4a53e3d09
-- source: onsemi
-  name: Dbas16ht
-  def: model
-  hash: 8051f2828010d7ae23ef0698f4c606976ac0d0c8
-  type: D
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/txt/bas16ht.sp2.txt
-    sha256: a05a5d22f2018966f66760e48adc8bce76a0ca45867c09532837e28de2844f81
-    lines:
-      Dbas16ht: [14, 18]
-    fetched: '2026-09-19'
-  copies:
   - source: onsemi
-    name: Dbas16ht
+    name: Dbas16wt1g
     get:
-      url: https://www.onsemi.com/download/models/lib/bas16ht.lib
-      sha256: 5ac7050243afec37a3e758fcfdd75f2bcf49e89314d6d0bfd34198a9b8d7fcce
+      url: https://www.onsemi.com/download/models/txt/bas16w.sp2.txt
+      sha256: f5fe660db2443a25ded3c38ae5992f9b9486930b848ba96baddc485392c4e460
 - source: onsemi
   name: bas16lt1g
   def: model
@@ -71,6 +81,17 @@ models:
     lines:
       bas16lt1g: [14, 18]
     fetched: '2026-09-21'
+  copies:
+  - source: onsemi
+    name: Dbas16lt1g
+    get:
+      url: https://www.onsemi.com/download/models/sp2/bas16lt1g.sp2
+      sha256: 23b9a37e814d5446d7571634a13b7b9df779b2f6151729bf66546bda32789858
+  - source: onsemi
+    name: Dbas16lt1g
+    get:
+      url: https://www.onsemi.com/download/models/lib/bas16lt1g.lib
+      sha256: 8237ab870cc490e6541f8679c28170cd230404ab9883c85e504465d2c9747ef5
 - source: nexperia
   name: BAS16
   def: subckt
@@ -120,6 +141,126 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/ph_diode.lib
       sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
+  - source: nexperia
+    name: BAS16VV
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS16VV.txt
+      sha256: 02617ca911e100ed047554408279ce2ac9c190259ac009dd9f46764bb0f9f72c
+- source: nexperia
+  name: BAS16J
+  def: model
+  hash: 7d781a99f6fae9e7158835d834be8960875606d8
+  type: D
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16J.txt
+    sha256: 586c03484193b8b0f3deb86026a1e32323a2040356b928a29e530373b0f59a4b
+    lines:
+      BAS16J: [28, 40]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: BAS16J
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+- source: nexperia
+  name: BAS16LS-Q
+  def: subckt
+  hash: 7124871c132f304cf8c00c9e2781c14f47fff9fa
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16LS-Q.txt
+    sha256: 2948e0620145cdd59b2b19f0149cd7f889000c6bcc35446f0b3518c4400f103f
+    lines:
+      BAS16LS-Q: [37, 65]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS16LS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS16LS.txt
+      sha256: 0a1d79ee28f118ed141b4fb3d4b2a0d888a96519de493512b030b2d931f0c2c0
+- source: nexperia
+  name: BAS16GW
+  def: subckt
+  hash: ef3c7a10fb694b0dd21385a562b359bca4f855f5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16GW.txt
+    sha256: a31f0ca2a222074c3b9ed6cf3aa04370cf032310b546e0901a0f16b6a0c26518
+    lines:
+      BAS16GW: [38, 67]
+    fetched: '2026-10-10'
+  copies:
+  - source: nexperia
+    name: BAS16TH
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/BAS16TH.txt
+      sha256: 887020873eaa3960572bbb3adcc33b57b309b72389c834e8ae9397c20a114c64
+- source: nexperia
+  name: BAS16W
+  def: subckt
+  hash: fda9c9cdae1fd50396ac0a20e6aee78b682163f9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16W.txt
+    sha256: b90546e237619aeeec77b8ad167d7035d37579e013934778392200a7c8833fc5
+    lines:
+      BAS16W: [38, 68]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BAS16L
+  def: subckt
+  hash: fa814ea46cdfbc0d05b51d932047030402b276bb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16L.txt
+    sha256: ff7242890ed75f6e3c5308784c4cdb655825f83bf70a555f5ef22d9f038a3132
+    lines:
+      BAS16L: [33, 57]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BAS16VY
+  def: subckt
+  hash: ee671db53be434afa9937e075ca7c6808a1ef61a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16VY.txt
+    sha256: 2afc8a92baef237b6f549867787c9c013a276877c62530fde54e357b6bcbd125
+    lines:
+      BAS16VY: [36, 58]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BAS16DY
+  def: subckt
+  hash: 0c7fca51d9a61c6154a8136a0d658fd4540bcdbf
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16DY.txt
+    sha256: 966f2e7f428ce372d828d13f86ef01140dff5d08e230dc9d2f183468a050b8d0
+    lines:
+      BAS16DY: [39, 67]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: BAS16QA
+  def: subckt
+  hash: 6e72a3c00f0eb480191fe2cafbae8abeb489e2e6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAS16QA.txt
+    sha256: e16fe1a541ce256e7a10cd6cef8515cade2d28877011dc36272287712b2f57ad
+    lines:
+      BAS16QA: [38, 67]
+    fetched: '2026-10-10'
 - source: vishay
   name: BAS16L
   def: subckt
@@ -132,6 +273,110 @@ models:
     lines:
       BAS16L: [12, 21]
     fetched: '2026-09-19'
+- source: taiwan-semi
+  name: BAS16
+  def: model
+  hash: 56518e6d376716e825ebec8be951e156b90c810a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 7c50351fffcdb034a667cd62fd19550dcb6fbaebd157ac2e7595f584ec546f94
+    lines:
+      BAS16: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAS16H
+  def: subckt
+  hash: d42dff195b3579948e2b05c3311a2aaf7d72fad9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 4f674f529522965e767afe6b504fb424f6d6df30c530fe824ca766b5fd2b65d3
+    lines:
+      BAS16H: [8, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAS16TW
+  def: subckt
+  hash: 8b4d0ce26e748cb29423f06e04351503399a98f5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16TW.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: e1bdebbe37f3ad6226c645ab10fd8946db4794fdad4ceba81c2790d5e607379e
+    lines:
+      BAS16TW: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS16TS
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16TS.txt
+      sha256: e9f3cec6cf792bc4f3283da3189c870e47ccdf77e2cdde2d9bf2672619152ad4
+  - source: panjit
+    name: BAS16TW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16TW-AU.txt
+      sha256: eaf8109fde5d11d4c164c52d20822c4691c08ab28125669d499b5d91e5cf19e7
+  - source: panjit
+    name: BAS16TS-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16TS-AU.txt
+      sha256: 58cc63a06001d155f25433f5e7585954e147ecd9a3201f4e584f730d556c9e18
+- source: panjit
+  name: BAS16
+  def: subckt
+  hash: ddd3ade3e4b45a1a151340b6790656860be05969
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: b4ce7511ba4b9b97d22029e5b6e1c2aa605fabf16ee02001b8d46628ca66de95
+    lines:
+      BAS16: [11, 29]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS16-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16-AU.txt
+      sha256: 3b725db0653c544decb7714e31f9f51cab2e334a27914e0d709c036e0ad2b15d
+- source: panjit
+  name: BAS16W
+  def: subckt
+  hash: 4d74c286adf77b9f1f69154ef99db0dc32e72067
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16W.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 751049570d3e0ad4776409ec58112aa8cb7f33d4668f7fbb495f31e29381acaf
+    lines:
+      BAS16W: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAS16W-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 04. Diodes/4-1. Small Signal Switching Rectifiers/BAS16W-AU.txt
+      sha256: 2b7427f57bf2ef497f93361c41898318e1dc4921bcad07ce007b368ecbe4ca81
 - source: spice-model-cd
   name: BAS16
   def: model
@@ -148,13 +393,13 @@ models:
   - source: kicad-spice-library
     name: BAS16
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
-      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
+      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
   - source: kicad-spice-library
     name: BAS16
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Zetex%20Semiconductors/ZMODELS.LIB
-      sha256: 356f4751706278dd76767c0cbdfceab52ea806ed01a3669b26584507bf29f3e0
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zmodels.lib
+      sha256: 044af538d5f9c5ca0e2600f281950d11f666576107b0af16a9a414c7ba506739
   - source: spice-model-cd
     name: BAS16-Z
     get:
@@ -212,7 +457,7 @@ models:
       BAS16C/SIE: [59, 63]
     fetched: '2026-09-21'
 - source: microcap12
-  name: BAS16VY
+  name: BAS16VV
   def: subckt
   hash: 69cf5fa1f419cece73d27562c0712e47142c1055
   type: SUBCKT
@@ -223,23 +468,23 @@ models:
     archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
     sha256: f9df24ec0c294f52c0b42dcb8aa86242c24d1c52b5df04656c47544b89fac977
     lines:
-      BAS16VY: [507, 526]
+      BAS16VV: [486, 505]
     fetched: '2026-09-21'
   copies:
-  - source: ltwiki
-    name: BAS16VY
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS16VY.PRM
-      sha256: 11bd4da89eeff9ef373ba9ddd54df165e7bfa5d873eb4a9b512c644fceb56f20
   - source: ltwiki
     name: BAS16VV
     get:
       url: http://ltwiki.org/files/LargeCollection.zip
       member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS16VV.PRM
       sha256: da28e0a813cea9ff182a10b443e63e7885393b0c0b415ad4758b93963441a0d1
+  - source: ltwiki
+    name: BAS16VY
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/DIODES/BAS16VY.PRM
+      sha256: 11bd4da89eeff9ef373ba9ddd54df165e7bfa5d873eb4a9b512c644fceb56f20
   - source: microcap12
-    name: BAS16VV
+    name: BAS16VY
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/ph_diode.lib
@@ -266,26 +511,6 @@ models:
       member: LIBRARY/DiodesInc.lib
       sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
 - source: microcap12
-  name: BAS16_ZX
-  def: subckt
-  hash: 2c3e30c1f6f6b21bc8de14efd6cbf69986b4d00b
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/zetex.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
-    lines:
-      BAS16_ZX: [1832, 1842]
-    fetched: '2026-09-21'
-  copies:
-  - source: kicad-spice-library
-    name: BAS16_ZX
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
-      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
-- source: microcap12
   name: BAS16C_IN
   def: subckt
   hash: a72295c66f2bbbc5fc3c302f5a1f502167497615
@@ -305,6 +530,26 @@ models:
     get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/Infineon%20Technologies/infineon.lib
       sha256: 06c1d0847f268f69e5d6655adae6c2942997148829254bf22af1c5202a381ed7
+- source: microcap12
+  name: BAS16_ZX
+  def: subckt
+  hash: 2c3e30c1f6f6b21bc8de14efd6cbf69986b4d00b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/zetex.lib
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 4111a5cc3f7b0614712e515ee542ea874960d03e54d2c5544edf5a1c556646e2
+    lines:
+      BAS16_ZX: [1832, 1842]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: BAS16_ZX
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/zetex.lib
+      sha256: 453392deca3bd0ddfca565d56241c4a5bb4d2e8f14c6efa92c1c453ed434fdca
 - source: microcap12
   name: BAS16L
   def: model
@@ -367,20 +612,6 @@ models:
     sha256: a9b6075fc7d4ca8f95f70ab7701bcbd1a2cedd67c3df48dddedf3f9092b12a15
     lines:
       BAS16V: [9277, 9278]
-    fetched: '2026-09-21'
-- source: microcap12
-  name: BAS16J
-  def: model
-  hash: 7d781a99f6fae9e7158835d834be8960875606d8
-  type: D
-  verbatim: true
-  get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-    lines:
-      BAS16J: [2950, 2962]
     fetched: '2026-09-21'
 - source: ltwiki
   name: BAS16/SIE
@@ -598,6 +829,12 @@ models:
   - source: ltwiki
     name: BAS16HM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAS16HM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -607,12 +844,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAS16HM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: ltwiki
   name: BAS16
   def: model
@@ -663,14 +894,14 @@ models:
   - source: ltwiki
     name: BAS16HY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAS16HY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BAS16

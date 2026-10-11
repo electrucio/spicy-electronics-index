@@ -3,6 +3,94 @@ kind: diode
 priority: 3
 group: schottky
 models:
+- source: taiwan-semi
+  name: BAT43W
+  def: model
+  hash: 80c3415935362efab06865eac5016e338aecec8b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 8d5022ecb15ed5afdb0a00fddc3b10908183e73bf9e586add9221cbd6635f136
+    lines:
+      BAT43W: [20, 32]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: BAT43WS
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: d0dd6bf88f53e630411315daa3bacbdadc17dc6f5ebc680a0c586f8d66c35d4d
+- source: taiwan-semi
+  name: BAT43WSH
+  def: subckt
+  hash: 99332b81edfea42fc45ed2448a24555e5c58731d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 03cb9656d5b6b173ce6aa2a3c13d2ffdd8aa80e6897e6483a0f549633621fccb
+    lines:
+      BAT43WSH: [10, 27]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAT43WS
+  def: subckt
+  hash: f0f49c6012328a918118ef53bcb8e5379f9ba19c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAT43WS.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: ed886d41e81a34ea4693d77f35306fbfa9aa6abe8cf6dd297582e8b21ad9f901
+    lines:
+      BAT43WS: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAT43WS-AU
+  def: subckt
+  hash: 0f05af9266639a30b07814d5e3749944b6ab3ae1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAT43WS-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 6a128aad7b3c6e6105978e5eb53be5c765222bf3e8dcb0caf6b380a91c735688
+    lines:
+      BAT43WS-AU: [11, 30]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: stmicro
+  name: BAT43
+  def: model
+  hash: 84ae764172fe10cda0274c9d40e2f976d85e91e1
+  type: D
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAT43: [377, 379]
+    fetched: '2026-10-10'
+  copies:
+  - source: kicad-spice-library
+    name: BAT43
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
+      sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
+  - source: ltwiki
+    name: BAT43
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
+      sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
 - source: microcap12
   name: BAT43W
   def: model
@@ -80,35 +168,15 @@ models:
   - source: ltwiki
     name: BAT43
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAT43
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BAT43
-  def: model
-  hash: 84ae764172fe10cda0274c9d40e2f976d85e91e1
-  type: D
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/ST/DIOD/DIODE_ST_10.lib
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 5fbff1861259b242b3696034eae7e9618dee580d80ef08990e75eff81815a0f7
-    lines:
-      BAT43: [535, 537]
-    fetched: '2026-09-14'
-  copies:
-  - source: kicad-spice-library
-    name: BAT43
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/diode_ST.lib
-      sha256: 5481ed55e9738303fe20e33d9889db3f5a684d384e1d83667fa178b6c99ac49d
 - source: kicad-spice-library
   name: BAT43
   def: model

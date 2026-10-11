@@ -36,21 +36,45 @@ models:
   - source: ltwiki
     name: TIP102
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/NPNdarlington.lib
-      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
-  - source: ltwiki
-    name: TIP102
-    get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/Bordodynov/Darlington/NPNdarlington.lib
       sha256: 4ce414c0015ac72a9be2b93a94e4fd8bb1ec8ec81bb9cb66d93c766e1fc14806
+  - source: ltwiki
+    name: TIP102
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/NPNdarlington.lib
+      sha256: 807671d304dd74e6ece6d7da13675cd8730356ed292fe05efe3a611da6b98ab5
   - source: microcap12
     name: tip102
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+- source: onsemi
+  name: Xtip102
+  def: subckt
+  hash: a64794207699d4263e8369a065aec5b5d156f47f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp2/tip102.sp2
+    sha256: 9b9c24b50689edefa1a59a422afb9cf96bf793d4718c7a902b56c03da2247137
+    lines:
+      Xtip102: [1, 50]
+    fetched: '2026-10-10'
+- source: onsemi
+  name: tip102
+  def: subckt
+  hash: d703aadb079f6f5334dbff53cb0542f8d6f9329c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/sp3/tip102.sp3
+    sha256: ff8d03090116d30ee787dc3b2a13a7dcedc7d9f89516ac655f561bfefeb0d075
+    lines:
+      tip102: [1, 50]
+    fetched: '2026-10-10'
 - source: ltwiki
   name: TIP102
   def: subckt

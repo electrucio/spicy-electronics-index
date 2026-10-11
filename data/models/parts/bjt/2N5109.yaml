@@ -3,21 +3,30 @@ kind: bjt
 priority: 3
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: 2N5109
   def: model
   hash: 8ba3a97b5bff340f55aa35df8c47a618a5cc58ab
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N5109.LIB
+    sha256: a301e4c99c9837696fb0ddc69f58d3d8c897c21ca0f9c1b5d5585bb458dcd270
     lines:
-      2N5109: [3116, 3125]
-    fetched: '2026-09-21'
+      2N5109: [25, 34]
+    fetched: '2026-10-10'
   copies:
+  - source: microcap12
+    name: 2N5109
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+  - source: central-semi
+    name: 2N5109UB
+    get:
+      url: https://www.centralsemi.com/docs/ENGINEERING/csm/2N5109UB.LIB
+      sha256: 825e5cad25f3a06dc2ab57f505f2f5f5ffcae2b31db06df868e81fc2b8310960
   - source: microcap12
     name: 2N5109UB
     get:
@@ -68,25 +77,13 @@ models:
   - source: kicad-spice-library
     name: 2N5109
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
-      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
+      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
   - source: kicad-spice-library
     name: 2N5109
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Transistor/BJT/BJT.lib
-      sha256: 1f07e6e6b38c9b5d8d19dbccfd3c29741281ead66a7b48cc40eb82e9684580eb
-  - source: ltwiki
-    name: 2N5109
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
-      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
-  - source: ltwiki
-    name: 2N5109
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/Bordodynov/Mixer/standard.bjt
-      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.bjt
+      sha256: bf3a32a2e58b4d9f4075a1685ce203d74868e2a3fd8a043e72c0944f1dcc6528
   - source: ltwiki
     name: 2N5109
     get:
@@ -96,15 +93,27 @@ models:
   - source: ltwiki
     name: 2N5109
     get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
+      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+  - source: ltwiki
+    name: 2N5109
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/Bordodynov/Mixer/standard.bjt
+      sha256: d7a7fb8e61b6e55d353a44642cf90b60ec052fe5068c09f2cf58af81c8877df6
+  - source: ltwiki
+    name: 2N5109
+    get:
       url: https://ltwiki.org/files/Standard.zip
       member: Standard/standard.bjt
       sha256: 0f87e9840e1130e025a7add442288c0f67048f9755108d0384d1594296884e82
   - source: ltwiki
     name: 2N5109
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.bjt
-      sha256: e9e508d6c38a6b2c760214e5e7c5c1f0c0d5a5f980e8e36920ec09571ae3407b
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
+      sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: groupsio-ltspice
   name: 2N5109_RF
   def: model
@@ -140,8 +149,8 @@ models:
   - source: ltwiki
     name: 2N5109_RF
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
   - source: ltwiki
     name: 2N5109_RF
@@ -152,8 +161,8 @@ models:
   - source: ltwiki
     name: 2N5109_RF
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.bjt
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.bjt
       sha256: ae4030f8738fc2dc5146be87cd5ad98cd9cb043209c91421579b7436e21b6ce3
 - source: groupsio-ltspice
   name: 2N5109
@@ -182,9 +191,9 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: https://disk.yandex.ru/d/71M79VuY5sOWew
-    member: QSPICE/Library/NPNRF/2N5109.qsym
-    archive_sha256: 6189e3b1aa8c8728289c3f259982466b852aced242a6482f8080235f06a8c1ca
+    url: https://disk.yandex.ru/d/UEodTEDFRfihLA
+    member: Library/NPNRF/2N5109.qsym
+    archive_sha256: a866b6e66bc471c91faa9ccac9f35bf0d7200ef739b9280c86196bf4c92a4e3c
     sha256: cd1eeeacc8d0db7f712181d462b50a2866c32f9ea351bb73c646a68401076419
     fetched: '2026-09-29'
     note: the model is inside the QSPICE symbol, in its «library file» field
@@ -192,6 +201,6 @@ models:
   - source: bordodynov-qspice
     name: 2N5109
     get:
-      url: https://disk.yandex.ru/d/UEodTEDFRfihLA
-      member: Library/NPNRF/2N5109.qsym
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Library/NPNRF/2N5109.qsym
       sha256: cd1eeeacc8d0db7f712181d462b50a2866c32f9ea351bb73c646a68401076419

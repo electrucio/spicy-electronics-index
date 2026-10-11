@@ -4,25 +4,6 @@ priority: 2
 group: listed
 models:
 - source: onsemi
-  name: DTC124EE_npn
-  def: subckt
-  hash: 59b7a9afdfabc573d5ea80e169defc1880fa2812
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: https://www.onsemi.com/download/models/lib/dtc124ee.lib
-    sha256: c25b6f9f05442fe869a37c8713f91c7510200a0e3af71ca72de1b9817838ba52
-    lines:
-      DTC124EE_npn: [3, 33]
-    fetched: '2026-09-19'
-  copies:
-  - source: microcap12
-    name: DTC124EE_npn
-    get:
-      url: http://www.spectrum-soft.com/download/mc12cd.zip
-      member: LIBRARY/On_Semi.lib
-      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
-- source: onsemi
   name: dtc124erlra
   def: subckt
   hash: f3f56ca868c4e9d70181253634f9f5091ce64645
@@ -41,20 +22,44 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/On_Semi.lib
       sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
+  - source: onsemi
+    name: dtc124erlra
+    get:
+      url: https://www.onsemi.com/download/models/sp3/dtc124erlra.sp3
+      sha256: 2a951bb2270227421d88797fdd69ff0bef7f24ac8f018bd049caf980fc5d7076
+- source: onsemi
+  name: DTC124EE_npn
+  def: subckt
+  hash: 59b7a9afdfabc573d5ea80e169defc1880fa2812
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.onsemi.com/download/models/lib/dtc124ee.lib
+    sha256: c25b6f9f05442fe869a37c8713f91c7510200a0e3af71ca72de1b9817838ba52
+    lines:
+      DTC124EE_npn: [3, 33]
+    fetched: '2026-09-19'
+  copies:
+  - source: microcap12
+    name: DTC124EE_npn
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/On_Semi.lib
+      sha256: 408bd5bdc24784f72cee7e62e070f1ed6a26f8a689ddfd605a0ecf88f61b0d86
 - source: rohm
-  name: DTC124EKA
+  name: DTC124EE
   def: subckt
   hash: ab15c794f7df0724d0c23245c8c5a98d5da1e6a4
   type: SUBCKT
   verbatim: true
   get:
-    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124eka_spice.zip
-    member: dtc124eka.lib
-    archive_sha256: 2034272c75e8b8869e87d3529dc2b7f7bcb732e3bef572ab57234d01cbfa7f19
-    sha256: 63b1844d0b1a4975bc6b7f0f67b91c2a4b1f4fbc621bed1521821db02d939e16
+    url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124ee_spice.zip
+    member: dtc124ee.lib
+    archive_sha256: c51a80e281d4aa12034bae3d1f7301870bc5ec63b5532f4b22e4097f74c88201
+    sha256: 229237c997636bae5600aa0d0c744cd341d200782164ae4335adf89d5ddd4cd1
     lines:
-      DTC124EKA: [5, 39]
-    fetched: '2026-10-09'
+      DTC124EE: [5, 39]
+    fetched: '2026-10-10'
   copies:
   - source: microcap12
     name: DTC124EE
@@ -62,12 +67,30 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC124EE
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc124ee_ltspice.zip
+      member: dtc124ee_ltspice/dtc124ee_ltspice.lib
+      sha256: 229237c997636bae5600aa0d0c744cd341d200782164ae4335adf89d5ddd4cd1
   - source: microcap12
     name: DTC124EEB
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC124EEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124eeb_spice.zip
+      member: dtc124eeb.lib
+      sha256: 94dc6018f9eea596f4927cfa490bc16091fcd6faaf21b131ad86ae7584ef08f1
+  - source: rohm
+    name: DTC124EEB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc124eeb_ltspice.zip
+      member: dtc124eeb_ltspice/dtc124eeb_ltspice.lib
+      sha256: 94dc6018f9eea596f4927cfa490bc16091fcd6faaf21b131ad86ae7584ef08f1
   - source: microcap12
     name: DTC124EKA
     get:
@@ -80,12 +103,36 @@ models:
       url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc124eka_ltspice.zip
       member: dtc124eka_ltspice/dtc124eka_ltspice.lib
       sha256: 63b1844d0b1a4975bc6b7f0f67b91c2a4b1f4fbc621bed1521821db02d939e16
+  - source: rohm
+    name: DTC124EKA
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124eka_spice.zip
+      member: dtc124eka.lib
+      sha256: 63b1844d0b1a4975bc6b7f0f67b91c2a4b1f4fbc621bed1521821db02d939e16
   - source: microcap12
     name: DTC124EM
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC124EM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124em_spice.zip
+      member: dtc124em.lib
+      sha256: 91dc92db1985a668549bf85cd517f33ea82b6cb8416028bb590042c588b406ad
+  - source: rohm
+    name: DTC124EM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc124em_ltspice.zip
+      member: dtc124em_ltspice/dtc124em_ltspice.lib
+      sha256: 91dc92db1985a668549bf85cd517f33ea82b6cb8416028bb590042c588b406ad
+  - source: rohm
+    name: DTC124EM
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/DTC124EMHZG_SPICE.zip
+      member: DTC124EMHZG_SPICE/dtc124emhzg_SPICE.lib
+      sha256: 91dc92db1985a668549bf85cd517f33ea82b6cb8416028bb590042c588b406ad
   - source: microcap12
     name: DTC124EUA
     get:
@@ -98,3 +145,15 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/Rohm_Transistor.lib
       sha256: 1cbe6d8014bfa7d1ee23b0c234e874df292c740a48514f4eca3ec6ac0bcab31e
+  - source: rohm
+    name: DTC124EUB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/ltspice/discrete/transistor/digital/dtc124eub_ltspice.zip
+      member: dtc124eub_ltspice/dtc124eub_ltspice.lib
+      sha256: ae6b222739f050236483a5b249a2d8cb1f1ca87f82546954a59b7bd250eb87f9
+  - source: rohm
+    name: DTC124EUB
+    get:
+      url: https://fscdn.rohm.com/en/products/library/spice/discrete/transistor/digital/dtc124eub_spice.zip
+      member: dtc124eub.lib
+      sha256: ae6b222739f050236483a5b249a2d8cb1f1ca87f82546954a59b7bd250eb87f9

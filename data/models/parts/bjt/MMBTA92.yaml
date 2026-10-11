@@ -48,6 +48,58 @@ models:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/on_bjt.lib
       sha256: 51c53cfb504901a1c84e2f9aa0919a027394b4728375fdecf34d9e727c84da77
+  - source: onsemi
+    name: Qmmbta92lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp2/mmbta92lt1.sp2
+      sha256: af5331b20830523f4a987e3d2451fef933795e8d4ac065693ce898b43bec578a
+  - source: onsemi
+    name: mmbta92lt1
+    get:
+      url: https://www.onsemi.com/download/models/sp3/mmbta92lt1.sp3
+      sha256: b4f53be61c561f14c71ed82fe4e5195f443e876382d5a38dbca49662f902c038
+- source: nexperia
+  name: MMBTA92
+  def: subckt
+  hash: d5022a62cdcb3e7b4c536ebd26e074805f388ce5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/MMBTA92.txt
+    sha256: a7e860962e19bfa0baac73c3747365aeffcb085b3e46a95629eb50cac044d6eb
+    lines:
+      MMBTA92: [33, 91]
+    fetched: '2026-10-10'
+- source: panjit
+  name: MMBTA92
+  def: subckt
+  hash: a01a8109fffb11d8d7d992c803cd657ef3f51bf2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBTA92.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: d85c711d574931baa0a7ea961b656f8a04d5f423ff773139060cb4e5c16a8f98
+    lines:
+      MMBTA92: [11, 46]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: MMBTA92-AU
+  def: subckt
+  hash: 895c030bdd10c42820941dfac19f4e8b1d4e3cb8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 07. BJT/7-1. BJT-GPB/MMBTA92-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: b47a38d8e50e9ecd8ec6f2df5c4927ca6229a40c9af607950d9c9d179ac3d0b6
+    lines:
+      MMBTA92-AU: [11, 43]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
 - source: microcap12
   name: MMBTA92_PH
   def: subckt

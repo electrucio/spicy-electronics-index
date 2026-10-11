@@ -3,20 +3,25 @@ kind: bjt
 priority: 2
 group: listed
 models:
-- source: microcap12
+- source: central-semi
   name: BFY90
   def: model
   hash: c79cde1d354087c7ac92b298309b47046cdcdfcc
   type: NPN
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/cs.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
+    url: https://www.centralsemi.com/docs/ENGINEERING/csm/BFY90.LIB
+    sha256: 18ec50509508d72ae2a2e4296acb819d0611e01402229b9999ef20880c63e35c
     lines:
-      BFY90: [5169, 5178]
-    fetched: '2026-09-21'
+      BFY90: [25, 34]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: BFY90
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/cs.lib
+      sha256: 4daf7b77d9c13771dc3a2e074d972af2c69c71839a7469d1915bdd9c39e69f3d
 - source: groupsio-ltspice
   name: BFY90
   def: model

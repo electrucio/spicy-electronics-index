@@ -3,6 +3,42 @@ kind: diode
 priority: 4
 group: rectifier
 models:
+- source: nexperia
+  name: ES1D
+  def: subckt
+  hash: 7da6d4bd5d79b9413573698ad9c0be275ad82222
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/ES1D.txt
+    sha256: a85740b2446137c8af2561b7b46765123c27c0dbd6f49aab89a6e91f23580680
+    lines:
+      ES1D: [37, 66]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: ES1DR
+  def: subckt
+  hash: 0ec185663c7fcd72a3c70f2a304e523c813d440b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/ES1DR.txt
+    sha256: f147b2df67b2f31ad5caa8745365c90ddc3b9fb13a067113c7b6675c311e6a1a
+    lines:
+      ES1DR: [38, 67]
+    fetched: '2026-10-10'
+- source: nexperia
+  name: ES1DVR
+  def: subckt
+  hash: 7f7e91114ac1d79eb5a260686f7dc82b99783103
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/ES1DVR.txt
+    sha256: 7b9c32b79d1c337ba597f1e236dbff876c5a63501edf1567a06d3914b6dfce22
+    lines:
+      ES1DVR: [38, 72]
+    fetched: '2026-10-10'
 - source: vishay
   name: es1d
   def: model
@@ -32,18 +68,140 @@ models:
   - source: kicad-spice-library
     name: ES1D
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/GenSemiUltraRect.lib
-      sha256: 43f8d9ef8b0f17890590821a887eb76a131c531f450f5579fb43d62b8417c709
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
+      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
   - source: kicad-spice-library
     name: ES1D
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Manufacturer/General%20Semiconductor/General%20Semiconductor.lb5
-      sha256: 29db97b9e48c44570530220654814e32bc2a2cb0d10d0a4a018887fb43ef592d
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/spice_complete/GenSemiUltraRect.lib
+      sha256: 43f8d9ef8b0f17890590821a887eb76a131c531f450f5579fb43d62b8417c709
   - source: spice-model-cd
     name: ES1D
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/General_Semi/Rectifiers/Ultrafast/es1d.lib
       sha256: 23311956ef9d151e986092671c253d38773435171bd9c2038f9ea600bae04d17
+- source: taiwan-semi
+  name: ES1DFS
+  def: model
+  hash: 509235cd690a77c441e6d4f5e7a5b5c42e12a90b
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 2db26f909ecf8675674a0eeccb9939cc7c4c78651b46366e37f46cf6f886ab29
+    lines:
+      ES1DFS: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES1DFSH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 624af99930678a1af19f24aa81d9383b0df8ca6bb1238516ca12bfb404bcf3fd
+  - source: taiwan-semi
+    name: ES1DALH
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 854051e486e0d79218b8fcf4f27b6a7e81615859c1bfe496fda094a42d0179c7
+  - source: taiwan-semi
+    name: ES1DAL
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 346c12f7b163a29e895cf0259a0c06a9d567a30bd1e1fb42ef90a0695af36050
+- source: taiwan-semi
+  name: ES1DLWH
+  def: model
+  hash: 214d547b9f7cf08dde3066e46b1ef9302b13ce49
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 07f212ddbcac828e6dde12488ebe80cf132ccb9db1a35dfcc39171dad30bc965
+    lines:
+      ES1DLWH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES1DLW
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 907c52c8104d30dea5566b36665956925a37c3b89de48cb9cddfe16d3ebe50e3
+- source: taiwan-semi
+  name: ES1DVH
+  def: model
+  hash: 9180265b865e7e3b571106fbdb11ec388f4ca05a
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: df115bc211eb8f9f35d4e613e26d30c15cb8d5767c24928110bfb37a259898e3
+    lines:
+      ES1DVH: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: taiwan-semi
+    name: ES1DV
+    get:
+      url: https://www.taiwansemi.com/en/resources/tools/
+      sha256: 6cbfaefd0b344b7d5067c2e6641ae65991e06868ac2eb2b9434eed94a8fc749d
+- source: taiwan-semi
+  name: ES1DL
+  def: model
+  hash: 65b3de392e424cae329b5562f355a70005cc566f
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 5de61b6f6aae619215ed76c86b070b9aa6f42d6df1376e4e9df4a67f2aa359be
+    lines:
+      ES1DL: [7, 19]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: ES1DH
+  def: model
+  hash: de244737e71f22b36c46fe41dd0354e4803c8ba4
+  type: D
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 311c46ce6bc8f95904050d0b7304f27bf7787c2c8e95364ac5d91ee0a0426567
+    lines:
+      ES1DH: [21, 33]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: ES1D
+  def: subckt
+  hash: 0a118368fa6d9d7700e4af3c03287d577a08cf07
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 04. Diodes/4-5. Super Fast Recovery Rectifiers/ES1D.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: de139eb8a000561c6f2b827fafa296b11c39071bc3a40ffe08fa60d0f78b908d
+    lines:
+      ES1D: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: mcc
+  name: ES1D-L
+  def: subckt
+  hash: aa2699e86b90880872c6fdb20148b55ac7310207
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.mccsemi.com/diodespicemodel/ES1D-L.zip
+    member: ES1D-L.txt
+    archive_sha256: 3111018464995f3c73d78c9e3a00d4f4d46e792db2aa579eb67a3a9b6096b801
+    sha256: 745ffa2060736570c23918e5a8e117c73257f77f4613c8b1d3bae9b6b64734b1
+    lines:
+      ES1D-L: [7, 22]
+    fetched: '2026-10-10'
 - source: microcap12
   name: ES1D
   def: model
@@ -102,14 +260,14 @@ models:
     name: ES1D
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+      member: lib/cmp/Original/standard.dio
+      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
   - source: bordodynov
     name: ES1D
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Original/standard.dio
-      sha256: d642ab3308ad8af4b0a1cb884dade229d936190ce5706a8c6233c3d57984a067
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: bordodynov-qspice
     name: ES1D
     get:
@@ -119,26 +277,26 @@ models:
   - source: groups-io
     name: ES1D
     get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: ES1D
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: ES1D
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
+      member: standard.dio
+      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
+  - source: groups-io
+    name: ES1D
+    get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.txt
       sha256: 15c22060b2809a2d2d55525d1001d5661ed1e75982e4cfca362d842f1c608e7f
-  - source: groups-io
-    name: ES1D
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: groups-io
-    name: ES1D
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
-  - source: groups-io
-    name: ES1D
-    get:
-      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/standard.dio.zip
-      member: standard.dio
-      sha256: f33f86f7658b963c1f06aca311c1af4715bdec34c0cc410669bae2437bc564a7
   - source: groupsio-ltspice
     name: ES1D
     get:
@@ -148,18 +306,13 @@ models:
   - source: kicad-spice-library
     name: ES1D
     get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
+      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+  - source: kicad-spice-library
+    name: ES1D
+    get:
       url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.dio
       sha256: 85043335b56cc10779c03bcd2c237472827cf28c004628c9ddacb6fb3d8705c7
-  - source: kicad-spice-library
-    name: ES1D
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
-  - source: kicad-spice-library
-    name: ES1D
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: kicad-spice-library
     name: ES1D
     get:
@@ -168,20 +321,43 @@ models:
   - source: kicad-spice-library
     name: ES1D
     get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/Diode/DIODE2.lib
-      sha256: 30ed855dc84e2de25e560deac3c77134cb73d072e10199aa8de3d2a7155af902
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
+  - source: kicad-spice-library
+    name: ES1D
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: ES1D
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: ES1D
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
+      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
+  - source: ltwiki
+    name: ES1D
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
+      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+  - source: ltwiki
+    name: ES1D
+    get:
+      url: https://ltwiki.org/files/Standard.zip
+      member: Standard/standard.dio
+      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
   - source: ltwiki
     name: ES1D
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: ES1D
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/Standard/standard.dio
-      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
   - source: ltwiki
     name: ES1D
     get:
@@ -197,24 +373,6 @@ models:
   - source: ltwiki
     name: ES1D
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-  - source: ltwiki
-    name: ES1D
-    get:
-      url: https://ltwiki.org/files/Standard.zip
-      member: Standard/standard.dio
-      sha256: 280ae7054bb689df4bc233122d3ada1c585f77b4e44a3df1ebf059805c199683
-  - source: ltwiki
-    name: ES1D
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/standard.dio
-      sha256: c37cd3feda2bf48e371d1b329a4f08dcedf3e90acb6a8b98ec28a8063b633c21
-  - source: ltwiki
-    name: ES1D
-    get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/lib/cmp/Original_IV/standard.dio
-      sha256: 4e0554bdaf142e7e9ba803406136235d5a40a3524f8dc902855578244b8fb05e
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/Standard/standard.dio
+      sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571

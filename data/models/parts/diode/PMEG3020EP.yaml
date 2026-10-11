@@ -55,23 +55,38 @@ models:
     note: 'PMEG3020EP: PMEG3020EP, PMEG3020EP'
   note: pins from comment words
   copies:
+  - source: nexperia
+    name: PMEG3020EP
+    get:
+      url: https://www.nexperia.com/product/PMEG3020EP
+      sha256: 493e65b21ce585f8f842557ec45d75e07e7bf65582c050ce67767adf56bf8e57
   - source: microcap12
     name: PMEG3020EP
     get:
       url: http://www.spectrum-soft.com/download/mc12cd.zip
       member: LIBRARY/nxp.lib
       sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
-- source: microcap12
+- source: nexperia
   name: PMEG3020EPA
   def: subckt
   hash: 85c3e40e1e81323f4f20f2f87caf3dd56c6d37e2
   type: SUBCKT
   verbatim: true
   get:
-    url: http://www.spectrum-soft.com/download/mc12cd.zip
-    member: LIBRARY/nxp.lib
-    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
-    sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+    url: https://assets.nexperia.com/documents/spice-model/PMEG3020EPA.txt
+    sha256: 043ce65b267bf7a8d0b3cc6b7a05b22a532f88d1ee2a0cfc2c022a005d8083db
     lines:
-      PMEG3020EPA: [26327, 26349]
-    fetched: '2026-09-21'
+      PMEG3020EPA: [33, 49]
+    fetched: '2026-10-10'
+  copies:
+  - source: microcap12
+    name: PMEG3020EPA
+    get:
+      url: http://www.spectrum-soft.com/download/mc12cd.zip
+      member: LIBRARY/nxp.lib
+      sha256: c6620454e846c70419b487c8481e8110865784f67d3779886960efccca1f8bde
+  - source: nexperia
+    name: PMEG3020EPAS
+    get:
+      url: https://assets.nexperia.com/documents/spice-model/PMEG3020EPAS.txt
+      sha256: 1cde3d38431e03310571b6ad0e581a7e7d57b7c450b1579500f3358360947be7

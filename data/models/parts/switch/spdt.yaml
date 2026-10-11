@@ -9,31 +9,31 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+    url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
     member: switches.sub
-    archive_sha256: 12bc0c4bed1df2e80e812730b710d27f5b4ed3d81d76e9d992e42b9e498580d2
+    archive_sha256: eda5b2ebae0d88f997ddc7c80acbba4d363d9a2b359df8751ea12114faad3a12
     sha256: 33721934633f3b8bad09f56227ffa27766200fd9d6326936439a41e3f2804f4b
     lines:
       spdt: [11, 15]
     fetched: '2026-09-14'
     symbol:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
       member: spdt.asy
-      archive_sha256: 12bc0c4bed1df2e80e812730b710d27f5b4ed3d81d76e9d992e42b9e498580d2
+      archive_sha256: eda5b2ebae0d88f997ddc7c80acbba4d363d9a2b359df8751ea12114faad3a12
       sha256: 41b989d817b2ccfd6fa883a7ee1bb98271995e7bc0cfed88c643a68a12164e33
   copies:
-  - source: bordodynov
-    name: spdt
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Pote.lib
-      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
   - source: bordodynov
     name: spdt
     get:
       url: http://bordodynov.ltwiki.org/example.zip
       member: examples/LtSpicePlus/Discretos/Sw&Pote/Simple Switches/switches.sub
       sha256: 33721934633f3b8bad09f56227ffa27766200fd9d6326936439a41e3f2804f4b
+  - source: bordodynov
+    name: spdt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
   - source: kicad-spice-library
     name: spdt
     get:
@@ -42,14 +42,8 @@ models:
   - source: ltwiki
     name: spdt
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Pote.lib
-      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
-  - source: ltwiki
-    name: spdt
-    get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/LtSpicePlus/Discretos/Sw&Pote/Simple Switches/switches.sub
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Sw&Pote/Simple Switches/switches.sub
       sha256: 33721934633f3b8bad09f56227ffa27766200fd9d6326936439a41e3f2804f4b
   - source: ltwiki
     name: spdt
@@ -60,13 +54,19 @@ models:
   - source: ltwiki
     name: spdt
     get:
-      url: http://ltwiki.org/files/LargeCollection.zip
-      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/Discretos/Sw&Pote/Simple Switches/switches.sub
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/Discretos/Sw&Pote/Simple Switches/switches.sub
       sha256: 33721934633f3b8bad09f56227ffa27766200fd9d6326936439a41e3f2804f4b
+  - source: ltwiki
+    name: spdt
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pote.lib
+      sha256: 368ebb98677c59652e2f199ead5be72d7f37be18150884d3349b04fba49cce07
   - source: robrobinette
     name: spdt
     get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: switches.sub
       sha256: 33721934633f3b8bad09f56227ffa27766200fd9d6326936439a41e3f2804f4b
 - source: bordodynov
@@ -76,24 +76,24 @@ models:
   type: SUBCKT
   verbatim: true
   get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/control.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    url: http://bordodynov.ltwiki.org/example.zip
+    member: examples/control/control.lib
+    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
     sha256: 842db720da3aa627d1b64c571cf6ade9e8afc659b69c693680de9af8c2a29722
     lines:
       spdt: [186, 191]
-    fetched: '2026-09-21'
+    fetched: '2026-09-29'
     symbol:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ZZZ/zcontrol/spdt.asy
-      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/control/spdt.asy
+      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
       sha256: 24452c7a118574102dc45049e0c47f6442224b482683df4d6a44d756d1d25a76
   copies:
   - source: bordodynov
     name: spdt
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/control/control.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/control.lib
       sha256: 842db720da3aa627d1b64c571cf6ade9e8afc659b69c693680de9af8c2a29722
   - source: kicad-spice-library
     name: spdt
@@ -103,14 +103,14 @@ models:
   - source: ltwiki
     name: spdt
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/control.lib
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/control/control.lib
       sha256: 842db720da3aa627d1b64c571cf6ade9e8afc659b69c693680de9af8c2a29722
   - source: ltwiki
     name: spdt
     get:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/control/control.lib
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/control.lib
       sha256: 842db720da3aa627d1b64c571cf6ade9e8afc659b69c693680de9af8c2a29722
 - source: bordodynov
   name: SPDT

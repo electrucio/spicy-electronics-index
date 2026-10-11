@@ -3,6 +3,150 @@ kind: diode
 priority: 3
 group: schottky
 models:
+- source: nexperia
+  name: BAT54S
+  def: subckt
+  hash: 90ad635cd52dc415bda61d799283f767d56daf29
+  type: SUBCKT
+  pins:
+  - '1'
+  - '2'
+  - '3'
+  verbatim: true
+  get:
+    url: https://www.nexperia.com/product/BAT54S
+    sha256: 950d6bc1f5be7fb2dd59dc5d7b04c3b3f96ea109862b16864820546d2c987dba
+    lines:
+      BAT54S: [2, 26]
+    fetched: '2026-10-10'
+  copies:
+  - source: ltwiki
+    name: BAT54S
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAT54S.PRM
+      sha256: 950d6bc1f5be7fb2dd59dc5d7b04c3b3f96ea109862b16864820546d2c987dba
+- source: nexperia
+  name: BAT54SW
+  def: subckt
+  hash: 543bb3a09b68209b26dca671d6a88258603cb9f3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://assets.nexperia.com/documents/spice-model/BAT54SW.txt
+    sha256: 02ae977ebe3350fe0c46f101e651ef36216534c461f3938a976e912b2b9cb7e3
+    lines:
+      BAT54SW: [33, 50]
+    fetched: '2026-10-10'
+- source: taiwan-semi
+  name: BAT54S
+  def: subckt
+  hash: aca1de78dc9c7893d6e0bb2b12d703007c009371
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 6e21674fe0f810c6de527c484a91ef9308096e4b0fb69669aaa0f0e52b8c6a60
+    lines:
+      BAT54S: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAT54SW
+  def: subckt
+  hash: a2231b2e0f0cab2dc722cd786e61e0996d752a77
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 3e23ac9a54330f3cda1ae61fc88e26903c5b554b11db37c8802bea851d1916df
+    lines:
+      BAT54SW: [20, 36]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: taiwan-semi
+  name: BAT54SD
+  def: subckt
+  hash: fa5f4fd48c0b27d3157897dc71d0ca3e8f02e528
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.taiwansemi.com/en/resources/tools/
+    sha256: 66853ea0ebc19de3e940fb5da2f7bc7ebe99a1ad7f07ffb44437c6bdbbf982c9
+    lines:
+      BAT54SD: [20, 38]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+- source: panjit
+  name: BAT54S
+  def: subckt
+  hash: 45ede85eb4e0bfc472e13b62933dddb2ebc8a73b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAT54S.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: 99f5bc69012243205b2a7924b1d4895d26bfeaa14d04a23531e2ee17539f73af
+    lines:
+      BAT54S: [11, 42]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAT54SW
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAT54SW.txt
+      sha256: ef37fd8b91e7d0f629634e1f5dfa94fe0c51dc21b00043ffb3fdff29bc06bee9
+  - source: panjit
+    name: BAT54S-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAT54S-AU.txt
+      sha256: ebeed8abd95bf262ab1b1d306ec8f302161ad63aa8c7879509826a44e4d96982
+  - source: panjit
+    name: BAT54SW-AU
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAT54SW-AU.txt
+      sha256: c71cf7af35a6d5d515e70bd1666f963109b09ccb05e5f30ff628a6733ba802bc
+- source: panjit
+  name: BAT54STB-AU
+  def: subckt
+  hash: 3822018456e253862ead70f62b88de35e1c577cc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.panjit.com.tw/en/Support?filter=34
+    member: 02. Schottky/2-1. Small Signal Schottky/BAT54STB-AU.txt
+    archive_sha256: ef3eb331cd2c53c9327349b46fc96fe970cca9c710060962e21c6879c323b114
+    sha256: b620c307fff00d3da6a99283b1a89da2fb738e4b516e50e34eb09540a1b9c061
+    lines:
+      BAT54STB-AU: [11, 31]
+    fetched: '2026-10-10'
+    note: the URL is where the source publishes its files, not this file
+  copies:
+  - source: panjit
+    name: BAT54STB
+    get:
+      url: https://www.panjit.com.tw/en/Support?filter=34
+      member: 02. Schottky/2-1. Small Signal Schottky/BAT54STB.txt
+      sha256: 62bb6bb40a1bba1d99dd971785632d2ffd4acf35ed919987a16720c5c945f2c3
+- source: stmicro
+  name: BAT54SFILM
+  def: subckt
+  hash: 5883343b8c772755dba5c4a3b3eb0710ba9edfef
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.st.com/resource/en/spice_model/st_signal_schottky_diodes_pspice_models_v4.zip
+    member: ST_SIGNAL_SCHOTTKY_V8.LIB
+    archive_sha256: 5b256603d6d12fa9957aa6d149d3762e2fd623eff37a50aa67a4fb4499e6f197
+    sha256: e13ae4b81b33ac2d257afdeba6a1db818469654ad9b9d4d2d0e170276572b6f5
+    lines:
+      BAT54SFILM: [475, 481]
+    fetched: '2026-10-10'
 - source: microcap12
   name: BAT54ST
   def: model
@@ -143,6 +287,12 @@ models:
   - source: ltwiki
     name: BAT54SHM
     get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
+      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
+  - source: ltwiki
+    name: BAT54SHM
+    get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
@@ -152,30 +302,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/Standard/standard.dio
       sha256: f2458802fa6c40912b3a09421d9e56386828f30ecee452b9c5688d586fc79571
-  - source: ltwiki
-    name: BAT54SHM
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
-      sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
-- source: ltwiki
-  name: BAT54S
-  def: subckt
-  hash: 90ad635cd52dc415bda61d799283f767d56daf29
-  type: SUBCKT
-  pins:
-  - '1'
-  - '2'
-  - '3'
-  verbatim: true
-  get:
-    url: http://ltwiki.org/files/LargeCollection.zip
-    member: LargeCollection/LTspiceIV/lib/sym/EXTRA/Philips/SCHOTTKY/BAT54S.PRM
-    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
-    sha256: 950d6bc1f5be7fb2dd59dc5d7b04c3b3f96ea109862b16864820546d2c987dba
-    lines:
-      BAT54S: [2, 26]
-    fetched: '2026-09-14'
 - source: ltwiki
   name: BAT54SFILM
   def: subckt
@@ -271,14 +397,14 @@ models:
   - source: ltwiki
     name: BAT54SHY
     get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
   - source: ltwiki
     name: BAT54SHY
     get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.dio
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.dio
       sha256: ebaef11cadc640725a8fa067c98d29df4bc88d246cbcce9f3db6b32778dce455
 - source: kicad-spice-library
   name: BAT54S
