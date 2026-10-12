@@ -23,7 +23,9 @@ manual is one result with twelve page links, not twelve results.
 published use — "preamp stage V1A in the Trainwreck Express amplifier" — and the kind of use it is: a
 circuit, a technique, a reference table, an advert, a mention, or not a component at all. The line goes
 beside the link, because "page 47" is a link and not yet an answer; the kind sends a document whose
-every page only mentions or sells the part below the ones that use it.
+every page only mentions or sells the part below the ones that use it. A page read as not a component at
+all — a pin name, a power label, a sidebar link — is the extractor's mistake and not a use, so it is left
+off the page and out of every count.
 
 And three answers to "where is it used" are three different questions, so they travel apart: a project
 page or a factory sheet is a circuit somebody built, a magazine page is an article about one, and a
@@ -70,6 +72,11 @@ REPO_CAP = 200        # GitHub projects listed for one part
 # looking for a circuit wants to start, so a document whose every summarised page is one of those
 # sorts after the rest. A page not summarised yet says nothing either way.
 NOT_A_USE = frozenset(("mention", "advert", "none"))
+# A page `summarise` read as not this part at all: a pin label, a mains rating ("110/127 V" for AC127, "110 W"
+# for AC110W), a code in a header, a link in a sidebar. It is noise, not a use, so it is dropped before
+# anything is counted: off the part's page, out of the list's usages, and a part only ever read that way is
+# not listed for its uses.
+NOT_THIS_PART = "none"
 
 # The kinds of source whose documents the site shows. A forum's attachments and the bundles a publisher
 # hands out whole (diyAudio, Toragi's zips) are indexed and stay indexed, but whether they belong on the
@@ -345,6 +352,8 @@ def index() -> dict:
         lines[s] = {(r["doc"], r["page"], r["part"]): (r["kind"], r["line"])
                     for r in rows(schematics_lines(s))}
         for u in rows(schematics_uses(s)):
+            if lines[s].get((u["doc"], u["page"], u["part"]), ("",))[0] == NOT_THIS_PART:
+                continue
             url = (docs[s].get(u["doc"]) or {}).get("url", "")
             gone = (stats.get(repo_of(url).lower()) or {}).get("status") == "gone"
             if shown(kind.get(s, ""), url) and not gone:

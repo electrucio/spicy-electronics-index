@@ -342,6 +342,26 @@ def test_a_document_that_only_mentions_the_part_sorts_after_one_that_uses_it(dat
     assert [d["t"] for d in page["docs"]] == ["Bassman 5F6-A", "A Sale", "Opamp Bypassing"]
 
 
+
+def test_a_page_read_as_not_this_part_is_left_off_the_page_and_out_of_every_count(data):
+    """A pin label or a power rating is the extractor's mistake, not a use: AC127 on a "110/127 V" selector,
+    AC110W on a "110 W" label. `summarise` reads such a page as not this part, and the page, the counts and
+    the list leave it out, so a part only ever read that way is not listed for its uses."""
+    with open(config.schematics_uses("esp"), "a", newline="", encoding="utf-8") as f:
+        csv.writer(f, lineterminator="\n").writerows([["TL072", "0", "1", "1", ""], ["AC110W", "0", "1", "1", ""]])
+    with open(config.schematics_lines("esp"), "a", newline="", encoding="utf-8") as f:
+        csv.writer(f, lineterminator="\n").writerows(
+            [["0", "1", "TL072", "none", "A pin label on the power supply, not a component."],
+             ["0", "1", "AC110W", "none", "The 110 W rating on the mains label."]])
+    idx = P.index()
+    page = P.part_payload("TL072", idx, None)
+    assert [d["t"] for d in page["docs"]] == ["Opamp Bypassing"]
+    assert page["n"]["documents"] == 1
+    rows, _ = P.search_index(idx, P.model_recipes()[0])
+    counts = {r[0]: (r[1], r[2]) for r in rows}
+    assert counts["TL072"] == (1, 1)
+    assert "AC110W" not in counts
+
 def test_a_part_says_the_oldest_dated_document_that_prints_it(data):
     idx = P.index()
     page = P.part_payload("12AX7", idx, None)
