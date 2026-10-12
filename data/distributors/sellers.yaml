@@ -1,0 +1,2449 @@
+# Where parts are bought: the sellers a reader of this index may want, worldwide, with what each is for.
+# Compiled on 2026-10-11 from the maintainer's buying guide of that date; the guide's own corrections of
+# shipping, duty and reliability claims are not repeated here, because they are dated and regional.
+# `sei web build` reads this into the site's catalogue. A part page shows the sellers whose catalogues
+# cover the part's kind, in tiers — the broad distributors and the maker's own store first, then the
+# specialists, then the regional shops and the marketplaces folded away — each with a search at the
+# seller for the part wherever `search` gives the address pattern ({part} is replaced). The sellers page
+# (?sellers=all) shows every seller, with its profile. These are links, not findings: no seller's stock
+# is read here, and a seller that forbids scripts loses nothing in the order of the page.
+#
+# Fields
+#   title, url      the seller as it names itself, and its official site
+#   type            one of `types` below: what kind of seller it is, which says what still needs checking
+#   base            ISO 3166 country of its base or principal market — not where a parcel ships from; WW
+#                   for a marketplace, where the seller you buy from is anywhere
+#   group           one of `groups` below; a group's `kinds` are the kinds of part whose page lists it
+#   kinds           optional: the kinds this seller's catalogue covers, when they differ from its group's;
+#                   [] keeps it off every part page
+#   makers          optional: the makers (ids of data/parts/makers.yaml) it is the store of; shown first
+#                   on those makers' parts, the lineage included
+#   useful_for      what its catalogue covers, from the guide; a judgment on the catalogue, not a service test
+#   search          optional: the address of a search for a part number at the seller ({part} is replaced)
+#   search_checked, search_result   what following `search` gave on that date; an address the site would
+#                   not let a script verify says so, and is to be checked in a browser
+#   priority        the maintainer's order of first comparison: 1 compare first, 2 the usual, 3 last resort
+#                   (marketplaces and surplus, where the seller and the item decide what arrives)
+#   checked         when the entry was last read against the seller's site
+#   robots          what the seller's robots.txt said on `robots_checked`, asked for `*` and for the AI-agent
+#                   names core.http checks, for the home page and for the part search: the technical permission
+#                   to read by script. A site's terms of use may say more. Nothing follows the searches by
+#                   script; the field is kept so that nothing ever does without reading it first.
+#   about           optional profile: {url, checked, says} — the seller's own account of itself, read at
+#                   `url` on `checked` and put in the maintainer's words, never quoted
+#   ships           optional: {text, url, checked} — where it ships, as its own pages say
+#   opinions        optional: [{forum, title, url, date, gist}] — threads where readers of the forums
+#                   discuss the seller: the forum, the thread's title and address, when it was written,
+#                   and its gist in the maintainer's words. Links to opinions, not verdicts: the forum is
+#                   the source, and a thread is one reader's experience on one day.
+#
+# "Useful for" is not a reliability score. The guide's rule stands: compare the landed basket, record the
+# actual seller and dispatch country, and read the delivery term shown for the transaction.
+types:
+  manufacturer_direct: the part from its manufacturer
+  authorized_distributor: a distributor the manufacturer authorizes for stated lines and territories
+  specialist: a focused retailer, often with kits, matching or finishing services
+  independent: a sourcing route outside the manufacturer's authorized channel
+  marketplace: a platform through which individual sellers transact
+  surplus: residual inventory and unusual parts
+  fabricator: builds a board, enclosure or panel to your files
+  aggregator: compares availability and prices across sellers
+  reseller_directory: a manufacturer's list of its resellers
+groups:
+- id: search
+  title: Search and aggregation
+  note: Compare availability and prices across sellers; a lead to verify at the seller's own checkout.
+  kinds: []
+- id: direct
+  title: Manufacturer direct
+  note: The part from its maker; eligibility, minimums and shipping vary.
+  kinds: []
+- id: broadline
+  title: Broad component distributors
+  note: Authorized distribution of many makers' lines; the first comparison for a bill of material.
+  kinds: [opamp, ic-audio, regulator, logic, bjt, jfet, mosfet, diode, zener, opto, led, comparator, ota, vca, control, smps, sit, digital-audio, mic-preamp]
+- id: obsolete
+  title: Obsolete and long-lifecycle parts
+  note: Authorized inventory and licensed manufacture of discontinued semiconductors; before independent brokers.
+  kinds: [bjt-ge, diode-ge, ic-audio, jfet, sit, vca]
+- id: pedal_tube_synth
+  title: Pedal, guitar, tube and synth specialists
+  note: Focused catalogues with kits, hardware and selected or matched parts.
+  kinds: [tube, bjt-ge, diode-ge, jfet, bjt, opamp, ic-audio, vca, ota, sit, digital-audio]
+- id: project_pcbs
+  title: Project PCBs and kits
+  note: A design on a board, with its own build document; not a fabricator.
+  kinds: []
+- id: hifi_transformers
+  title: Hi-fi, speakers and transformers
+  note: Audio-specific parts and the makers of transformers and audio ICs.
+  kinds: [tube]
+- id: enclosures
+  title: Enclosures, chassis and panels
+  note: Boxes by full model number and drawing; customisation and panel services.
+  kinds: []
+- id: maker
+  title: Maker boards, controls and sensors
+  note: 'Documented modules around the audio circuit: controls, power, displays, MIDI, digital effects.'
+  kinds: []
+- id: regional
+  title: Regional shops
+  note: A nearby shop with confirmed physical stock; export terms vary.
+  kinds: []
+- id: pcb_fab
+  title: PCB fabrication and assembly
+  note: Your files made into boards; the headline price is not the delivered, populated board.
+  kinds: []
+- id: marketplace_surplus
+  title: Marketplaces, independent sourcing and surplus
+  note: The seller and the item, not the platform, decide what you get.
+  kinds: [bjt-ge, diode-ge, tube, jfet, bjt, sit]
+  caveat: S97
+sellers:
+- id: trustedparts
+  title: TrustedParts
+  url: https://www.trustedparts.com/en
+  type: aggregator
+  base: US
+  group: search
+  useful_for: Inventory from distributors authorized for the products shown; a start when provenance matters.
+  search: https://www.trustedparts.com/en/search/{part}
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+  about:
+    url: https://www.trustedparts.com/en/about-us
+    checked: '2026-10-12'
+    says: 'Launched in 2010 as ECIAauthorized.com by the Electronic Components Industry Association with a group of
+      its distributor members, made global in 2016 and renamed TrustedParts.com: aggregated price and availability
+      for genuine parts from authorized sources only.'
+- id: octopart
+  title: Octopart
+  url: https://octopart.com/
+  type: aggregator
+  base: US
+  group: search
+  useful_for: Part-number search, datasheets, price and stock comparison across authorized and independent sellers.
+  search: https://octopart.com/search?q={part}
+  checked: '2026-10-11'
+  robots: part search allowed; crawl-delay 1 s
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+  opinions:
+  - forum: EEVblog
+    title: Octopart is not Your friend.
+    url: https://www.eevblog.com/forum/chat/octopart-is-not-your-friend/
+    date: '2019-09-08'
+    gist: A poster objects to a paid tier after years of free use; replies say the searches stay free, question what
+      the fee covers, and mention ad tracking, removed price-history graphs and the ownership by Altium.
+  - forum: EEVblog
+    title: octopart / findchips
+    url: https://www.eevblog.com/forum/chat/octopart-findchips/
+    date: '2018-01-21'
+    gist: A bill of materials uploaded without an account came back costed with availability warnings.
+  about:
+    url: https://octopart.com/about
+    checked: '2026-10-12'
+    says: Calls itself the industry's leading part search engine, used by more than 20 million people, giving price,
+      availability, specifications and reference designs for millions of components so that engineers and buyers can
+      compare and decide quickly; the comparison is free.
+- id: findchips
+  title: Findchips
+  url: https://www.findchips.com/
+  type: aggregator
+  base: US
+  group: search
+  useful_for: A second availability and price cross-check, with authorized and independent filters.
+  search: https://www.findchips.com/search/{part}
+  checked: '2026-10-11'
+  robots: part search allowed; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: EEVblog
+    title: FindChips.com
+    url: https://www.eevblog.com/forum/chat/findchips-com/
+    date: '2010-10-14'
+    gist: Fast and useful for comparing stock and prices; the sale of the site to an advertising company and a paid-inclusion
+      model drew criticism.
+  - forum: EEVblog
+    title: octopart / findchips
+    url: https://www.eevblog.com/forum/chat/octopart-findchips/
+    date: '2018-01-21'
+    gist: Its BOM tool refused an Excel file, wanted a CSV, and then asked for a monthly subscription.
+- id: sourcengine
+  title: Sourcengine
+  url: https://www.sourcengine.com/
+  type: aggregator
+  base: US
+  group: search
+  useful_for: A marketplace for professional buyers that compares price, stock and lead time from many distributors
+    and suppliers for one part, authorized and independent together; the seller named on the line supplies it.
+  search: https://www.sourcengine.com/search?q={part}
+  checked: '2026-10-12'
+  robots: part search disallowed for scripts (/search); the home page allowed
+  robots_checked: '2026-10-12'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave 160 results
+  about:
+    url: https://www.sourcengine.com/about-us
+    checked: '2026-10-12'
+    says: Describes itself as an e-commerce marketplace for professional buyers, run with its partner company Sourceability
+      of Doral, Florida, where one part is compared across sellers and a whole bill of materials can go on one order.
+- id: oemsecrets
+  title: OEMsecrets
+  url: https://www.oemsecrets.com/
+  type: aggregator
+  base: GB
+  group: search
+  useful_for: Price and stock comparison across more than 140 distributors, with a bill-of-materials tool; a York,
+    England company by its own press releases.
+  search: https://www.oemsecrets.com/compare/{part}
+  checked: '2026-10-12'
+  robots: 'compare pages not disallowed; /search/ disallowed; a bot challenge stands before the site, which a browser
+    passes after a few seconds'
+  robots_checked: '2026-10-12'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: answers in a browser after the bot challenge; TL072 gave a comparison page
+- id: ti_direct
+  title: TI store
+  url: https://www.ti.com/
+  type: manufacturer_direct
+  base: US
+  group: direct
+  makers: [texas-instruments, national, burr-brown, unitrode]
+  useful_for: TI analog, power and embedded parts and evaluation hardware, from the maker.
+  search: https://www.ti.com/product/{part}
+  checked: '2026-10-11'
+  robots: part search allowed; crawl-delay 1 s
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: HTTP 404
+  about:
+    url: https://www.ti.com/support/buying-with-ti.html
+    checked: '2026-10-12'
+    says: 'The maker''s own channel: pricing, inventory and product data in real time and purchase through TI.com
+      or its APIs, with localized transactions and several distribution centres around the world, pitched as the supply-chain
+      partner from selection to shipment.'
+  ships:
+    text: From TI's own distribution centres, with localized ordering per country, as its buying page says; whether
+      a part is sold direct is shown on its product page.
+    url: https://www.ti.com/support/buying-with-ti.html
+    checked: '2026-10-12'
+  opinions:
+  - forum: EEVblog
+    title: 'Texas Instruments to Hobbyists: No soup for you!'
+    url: https://www.eevblog.com/forum/chat/texas-instruments-to-hobbyists-no-soup-for-you!/
+    date: '2014-10-24'
+    gist: Free samples were restricted to design engineers; posters split over whether hobbyist sampling was an abuse,
+      and several note that sample and store orders arrive quickly.
+  - forum: diyAudio
+    title: Buying directly from Texas Instruments
+    url: https://www.diyaudio.com/community/threads/buying-directly-from-texas-instruments.369628/
+    date: '2021-03-20'
+    gist: One poster calls buying from the maker a last resort, dearer and slower than the authorized distributors;
+      others buy op-amps direct from TI without trouble.
+- id: microchipdirect
+  title: microchipDIRECT
+  url: https://www.microchip.com/en-us/microchipdirect
+  type: manufacturer_direct
+  base: US
+  group: direct
+  makers: [microchip, microsemi]
+  useful_for: Microchip microcontrollers, analog parts, programmers and development tools.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.microchipdirect.com/product/search/all/{part}
+  search_checked: '2026-10-12'
+  search_result: answers (the page is titled with the part)
+- id: adi_buy
+  title: Analog Devices purchasing
+  url: https://www.analog.com/en/support/buy-products.html
+  type: manufacturer_direct
+  base: US
+  group: direct
+  makers: [analog-devices, linear-technology, maxim]
+  useful_for: ADI analog, mixed-signal and evaluation products; online purchase depends on the country.
+  checked: '2026-10-11'
+  robots: no answer to a script (refused or timed out)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.analog.com/en/search.html?q={part}
+  search_checked: '2026-10-12'
+  search_result: answers; the site's search page, with results for the part
+- id: raspberrypi_resellers
+  title: Raspberry Pi approved resellers
+  url: https://www.raspberrypi.com/resellers/
+  type: reseller_directory
+  base: GB
+  group: direct
+  useful_for: The maker's own directory of regional Pi resellers.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: 'no part search: a directory of resellers, not a shop'
+- id: mouser
+  title: Mouser
+  url: https://www.mouser.com/
+  type: authorized_distributor
+  base: US
+  group: broadline
+  useful_for: Semiconductors, passives, connectors, electromechanical parts and development boards; exact maker
+    part numbers.
+  search: https://www.mouser.com/c/?q={part}
+  checked: '2026-10-11'
+  robots: 'robots.txt is served as an HTML page (a bot challenge): nothing readable by script'
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+  opinions:
+  - forum: EEVblog
+    title: Mouser vs. DigiKey?
+    url: https://www.eevblog.com/forum/beginners/mouser-vs-digikey/
+    date: '2023-11-28'
+    gist: Often a little cheaper than Digi-Key, with bill-of-materials tools posters like; free-shipping thresholds
+      vary by country; some orders at both companies were held for export-compliance review.
+  - forum: EEVblog
+    title: Digikey or Mouser?
+    url: https://www.eevblog.com/forum/beginners/digikey-or-mouser/
+    date: '2019-06-02'
+    gist: Slightly cheaper for small lots, with a website praised for order history; cheaper FedEx and USPS options
+      suit hobbyists; a German poster buys there for VAT-free sales.
+  - forum: Mod Wiggler
+    title: DIYers in Europe - where do you buy parts?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=163327
+    date: '2016-06-15'
+    gist: European builders buy most parts there but fill the basket to the free-shipping threshold; shipping and
+      import to Sweden cost about as much as a small order.
+  - forum: Mod Wiggler
+    title: The best supplier of electronic components
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=253628
+    date: '2021-09-24'
+    gist: Named first by many as the most reliable, with the cheapest shipping in the US; Digi-Key preferred for hardware
+      and hard-to-find lines.
+  about:
+    url: https://www.mouser.com/aboutus/
+    checked: '2026-10-12'
+    says: An authorized global distributor of electronic components and industrial automation products, part of the
+      TTI family of specialists, counting 6.8 million products from more than 1,200 makers and shipping daily to 223
+      countries and regions from its distribution centre.
+  ships:
+    text: Daily to 223 countries and regions, as its about page says; local offices and currencies per country.
+    url: https://www.mouser.com/aboutus/
+    checked: '2026-10-12'
+- id: digikey
+  title: DigiKey
+  url: https://www.digikey.com/
+  type: authorized_distributor
+  base: US
+  group: broadline
+  useful_for: Broad components, prototypes, modules and tools; its own stock is separate from marketplace fulfilment.
+  search: https://www.digikey.com/en/products/result?keywords={part}
+  checked: '2026-10-11'
+  robots: part search allowed; names AI agents
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+  opinions:
+  - forum: EEVblog
+    title: Mouser vs. DigiKey?
+    url: https://www.eevblog.com/forum/beginners/mouser-vs-digikey/
+    date: '2023-11-28'
+    gist: Stronger on service and speed of fulfilment, with a criticised website and prices often a little higher;
+      which of the two has stock usually decides.
+  - forum: EEVblog
+    title: Digikey or Mouser?
+    url: https://www.eevblog.com/forum/beginners/digikey-or-mouser/
+    date: '2019-06-02'
+    gist: Fast, with a wide selection and a strong search; next-day delivery for a Canadian poster; stocks parts other
+      distributors lack.
+  - forum: EEVblog
+    title: LCSC vs Digikey
+    url: https://www.eevblog.com/forum/manufacture/lcsc-vs-digikey/
+    date: '2019-09-10'
+    gist: 'The benchmark LCSC is measured against: trusted provenance, fast and well stocked, dearer on identical
+      part numbers.'
+  - forum: Mod Wiggler
+    title: The best supplier of electronic components
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=253628
+    date: '2021-09-24'
+    gist: Credited for its KiCad library and footprints and for hard-to-find lines; in the US the first choice when
+      hardware is needed with the components.
+  - forum: diyAudio
+    title: Digikey vs Mouser for hole through parts
+    url: https://www.diyaudio.com/community/threads/digikey-vs-mouser-for-hole-through-parts.391013/
+    date: '2022-10-08'
+    gist: Through-hole builders compare the two on the stock of older parts, shipping and minimums.
+  about:
+    url: https://www.digikey.com/en/resources/about-digikey
+    checked: '2026-10-12'
+    says: Calls itself the leading global distributor of electronic components and automation products, with selection,
+      service and delivery speed as its claims; it began in 1972 as a small mail-order business in Minnesota and says
+      it distributes the most new product introductions in the industry.
+  ships:
+    text: US orders by FedEx, UPS or USPS at flat rates per shipment (USPS Ground Advantage the cheapest); other countries
+      have their own rates page and local sites.
+    url: https://www.digikey.com/en/help-support/delivery-information/delivery-time-and-cost
+    checked: '2026-10-12'
+- id: farnell
+  title: Farnell
+  url: https://www.farnell.com/
+  type: authorized_distributor
+  base: GB
+  group: broadline
+  useful_for: Broad components, test equipment and development products; Europe's brand of the element14 family.
+  search: https://www.farnell.com/search?st={part}
+  checked: '2026-10-11'
+  robots: part search allowed; crawl-delay 20 s
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+  opinions:
+  - forum: EEVblog
+    title: Element 14 is now......Newark.com
+    url: https://www.eevblog.com/forum/chat/element-14-is-now-newark-com/
+    date: '2012-06-29'
+    gist: UK prices called reasonable; same- or next-day delivery when in stock; better for industrial items like
+      fuses and hardware than for components against Digi-Key and Mouser.
+  - forum: EEVblog
+    title: Digikey or Mouser?
+    url: https://www.eevblog.com/forum/beginners/digikey-or-mouser/
+    date: '2019-06-02'
+    gist: Praised by a UK poster; a German hobbyist says it wanted a business account.
+  - forum: Mod Wiggler
+    title: DIYers in Europe - where do you buy parts?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=163327
+    date: '2016-06-15'
+    gist: A UK builder buys most things there and from RS occasionally, going to Mouser only for orders over about
+      thirty pounds.
+  about:
+    url: https://uk.farnell.com/about-us
+    checked: '2026-10-12'
+    says: Describes itself as a fast and reliable distributor of products and technology for electronic and industrial
+      design, maintenance and repair, part of Avnet since 2016, with regional brands that share one global inventory.
+  ships:
+    text: 'UK site: standard delivery in 1 to 2 business days, free on orders of 40 pounds and above and 8.99 pounds
+      below; express next business day by 1 pm for 11.99 pounds; other countries through their own Farnell or element14
+      sites.'
+    url: https://uk.farnell.com/help-delivery-information
+    checked: '2026-10-12'
+- id: newark
+  title: Newark
+  url: https://www.newark.com/
+  type: authorized_distributor
+  base: US
+  group: broadline
+  useful_for: The Americas' brand of the element14 family.
+  search: https://www.newark.com/search?st={part}
+  checked: '2026-10-11'
+  robots: part search allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+  opinions:
+  - forum: diyAudio
+    title: What were they thinking? Newark vs Mouser & DigiKey
+    url: https://www.diyaudio.com/community/threads/what-were-they-thinking-newark-vs-mouser-digikey.333973/
+    date: '2019-02-15'
+    gist: A first Canadian order arrived with no part description on the bags, unlike Mouser and Digi-Key; others
+      answer that the bags are made for purchasing departments.
+  - forum: diyAudio
+    title: Have you ordered from Newark before?
+    url: https://www.diyaudio.com/community/threads/have-you-ordered-from-newark-before.400897/
+    date: '2023-07-03'
+    gist: Long-time buyers report smooth orders over decades and point to it being part of the Farnell group; Mouser
+      stays some posters' preferred supplier.
+  - forum: EEVblog
+    title: Element 14 is now......Newark.com
+    url: https://www.eevblog.com/forum/chat/element-14-is-now-newark-com/
+    date: '2012-06-29'
+    gist: Newark serves the US and Farnell Europe under one parent; strong for next-day delivery of stocked items
+      and for industrial parts, less so for components against Digi-Key and Mouser.
+  about:
+    url: https://www.newark.com/about-us
+    checked: '2026-10-12'
+    says: The Americas' brand of the same Avnet company as Farnell and element14, describing itself as a fast and
+      reliable distributor for electronic and industrial design, maintenance and repair.
+  ships:
+    text: 'US: standard delivery in 1 to 3 business days, free over 150 dollars and 9.99 dollars below, priority next
+      business day for 26.99 dollars; Canada and Mexico from the US with their own thresholds; customs may add time.'
+    url: https://www.newark.com/help-delivery-information
+    checked: '2026-10-12'
+- id: element14
+  title: element14
+  url: https://www.element14.com/
+  type: authorized_distributor
+  base: SG
+  group: broadline
+  useful_for: The Asia-Pacific brand of the same family.
+  checked: '2026-10-11'
+  robots: 'no robots.txt: nothing forbidden, nothing promised'
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://sg.element14.com/search?st={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave 15 results
+  opinions:
+  - forum: EEVblog
+    title: Element 14 is now......Newark.com
+    url: https://www.eevblog.com/forum/chat/element-14-is-now-newark-com/
+    date: '2012-06-29'
+    gist: One family with Farnell and Newark, each brand serving its region; strong for next-day delivery of stocked
+      items and for industrial parts.
+  about:
+    url: https://sg.element14.com/about-us
+    checked: '2026-10-12'
+    says: The Asia-Pacific brand of the same Avnet company as Farnell and Newark, describing itself as a fast and
+      reliable distributor for electronic and industrial design, maintenance and repair, with one global inventory
+      behind the regional brands.
+- id: arrow
+  title: Arrow
+  url: https://www.arrow.com/
+  type: authorized_distributor
+  base: US
+  group: broadline
+  useful_for: Broad semiconductors and electronic components.
+  search: https://www.arrow.com/en/products/search?q={part}
+  checked: '2026-10-11'
+  robots: no answer to a script (refused or timed out)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: HTTP 0
+- id: avnet
+  title: Avnet
+  url: https://www.avnet.com/
+  type: authorized_distributor
+  base: US
+  group: broadline
+  useful_for: Components, embedded products, design and production sourcing.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.avnet.com/americas/products/c/search?search={part}
+  search_checked: '2026-10-12'
+  search_result: answers; the address the site's own search redirects to (the Americas shop)
+- id: future
+  title: Future Electronics
+  url: https://www.futureelectronics.com/
+  type: authorized_distributor
+  base: CA
+  group: broadline
+  useful_for: Semiconductors, passives, connectivity and production sourcing.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.futureelectronics.com/search?q={part}
+  search_checked: '2026-10-12'
+  search_result: answers; the site adds the visitor's language to the address; TL072 gave 11 results
+- id: tti
+  title: TTI
+  url: https://www.tti.com/
+  type: authorized_distributor
+  base: US
+  group: broadline
+  useful_for: Passives, connectors, electromechanical and discrete components; pack quantities matter.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.tti.com/content/ttiinc/en/apps/part-search.html?q={part}
+  search_checked: '2026-10-12'
+  search_result: 'answers; the address the site''s own search redirects to (TL072 gave no result: TTI sells passives
+    and connectors)'
+- id: rutronik24
+  title: Rutronik24
+  url: https://www.rutronik24.com/
+  type: authorized_distributor
+  base: DE
+  group: broadline
+  useful_for: Broad semiconductors, passives, connectors and embedded products.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.rutronik24.com/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: rs
+  title: RS
+  url: https://www.rs-online.com/
+  type: authorized_distributor
+  base: GB
+  group: broadline
+  useful_for: Industrial, electrical, electronic, maintenance and test products; regional businesses.
+  search: https://uk.rs-online.com/web/c/?searchTerm={part}
+  checked: '2026-10-11'
+  robots: 'robots.txt is served as an HTML page (a bot challenge): nothing readable by script'
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+  opinions:
+  - forum: EEVblog
+    title: RS Components and same day shipping
+    url: https://www.eevblog.com/forum/chat/rs-components-and-same-day-shipping/
+    date: '2018-10-17'
+    gist: In-stock orders usually arrive the next day in the UK, some delayed, cancelled or wrong; imported items
+      take five to six days to Australia.
+  - forum: diyAudio
+    title: RS Components rant
+    url: https://www.diyaudio.com/community/threads/rs-components-rant.378472/
+    date: '2021-10-21'
+    gist: A hobbyist's leaded-solder order was cancelled under REACH for a non-trade customer, with website and basket
+      complaints; others order components there without trouble.
+  - forum: Mod Wiggler
+    title: DIYers in Europe - where do you buy parts?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=163327
+    date: '2016-06-15'
+    gist: An occasional source beside Farnell for a UK builder.
+  about:
+    url: https://uk.rs-online.com/web/content/about-rs
+    checked: '2026-10-12'
+    says: Presents itself as a global partner for industrial and electronics products, with more than 875,000 items
+      in stock from over 2,500 suppliers and a century of trading, aimed at those who design, build and maintain industrial
+      equipment.
+  ships:
+    text: 'UK site: free delivery for private and guest customers on orders over 60 pounds ex VAT, 9.50 pounds below;
+      business accounts free over 50 pounds; other countries through their own RS sites.'
+    url: https://uk.rs-online.com/web/content/support/all-articles/delivery
+    checked: '2026-10-12'
+- id: tme
+  title: TME
+  url: https://www.tme.eu/
+  type: authorized_distributor
+  base: PL
+  group: broadline
+  search: https://www.tme.eu/en/katalog/?queryPhrase={part}
+  checked: '2026-10-11'
+  robots: part search allowed; crawl-delay 1 s
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: EEVblog
+    title: TME - why so cheap?
+    url: https://www.eevblog.com/forum/manufacture/tme-why-so-cheap/
+    date: '2020-05-16'
+    gist: Prices often well below Mouser, Digi-Key, RS and Farnell, which posters attribute to packing in Poland;
+      a narrower selection with fewer parts in stock; well packed; delivery about five pounds.
+  about:
+    url: https://www.tme.eu/en/about-us/
+    checked: '2026-10-12'
+    says: A family company from Łódź, Poland, operating since 1989 and established as a firm in 1990, grown from a
+      small components shop into a global distributor of electronic and electrotechnical components, workshop equipment
+      and automation, headquartered in Poland with 11 subsidiaries.
+  useful_for: Components, connectors, enclosures, tools and industrial products; prices in local currencies across
+    Europe.
+- id: lcsc
+  title: LCSC
+  url: https://www.lcsc.com/
+  type: authorized_distributor
+  base: CN
+  group: broadline
+  useful_for: SMD-heavy bills of material, Asian maker lines, passives and connectors; through-hole too.
+  search: https://www.lcsc.com/search?q={part}
+  checked: '2026-10-11'
+  robots: part search allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+  opinions:
+  - forum: EEVblog
+    title: Does anyone from the EU have any experience with ordering from LCSC?
+    url: https://www.eevblog.com/forum/beginners/does-anyone-from-the-eu-have-any-experience-with-ordering-from-lcsc/
+    date: '2023-06-29'
+    gist: EU buyers report the Global Direct Standard Line arriving on time with no VAT or fees charged at checkout
+      or delivery, while some doubt whether a carrier might invoice later.
+  - forum: EEVblog
+    title: LCSC vs Digikey
+    url: https://www.eevblog.com/forum/manufacture/lcsc-vs-digikey/
+    date: '2019-09-10'
+    gist: Far cheaper than Digi-Key for identical part numbers, with the gap narrowing on expensive parts and a narrower
+      selection; authenticity trusted by some after testing and doubted by others.
+  - forum: Mod Wiggler
+    title: lcsc.com for crazy affordable parts
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=219517
+    date: '2019-07-11'
+    gist: Parts reach Texas in under a week by DHL at prices well under Digi-Key's and Mouser's; a poster wonders
+      whether such prices mean genuine parts, another answers with the lower costs of the warehouse.
+  about:
+    url: https://www.lcsc.com/about/company
+    checked: '2026-10-12'
+    says: Established in 2012 in China to supply engineers with genuine component samples and small production runs;
+      now a global distributor that counts some 760,000 part numbers from 4,400 makers in its own warehouses and about
+      24,000 orders a day.
+- id: distrelec
+  title: Distrelec
+  url: https://www.distrelec.com/global/?language=en
+  type: authorized_distributor
+  base: CH
+  group: broadline
+  useful_for: Components, industrial supplies and test equipment; country-specific arrangements with RS.
+  checked: '2026-10-11'
+  robots: 'robots.txt is served as an HTML page (a bot challenge): nothing readable by script'
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.distrelec.ch/en/search?q={part}
+  search_checked: '2026-10-12'
+  search_result: answers; the Swiss shop, one of its country shops (TL072 gave no result there)
+- id: soselectronic
+  title: SOS electronic
+  url: https://www.soselectronic.com/
+  type: authorized_distributor
+  base: SK
+  group: broadline
+  useful_for: Components, embedded, power, industrial and measurement products.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'no search address found: no form on the home page and none of the usual platforms'' addresses
+    answered with the part'
+- id: rochester
+  title: Rochester Electronics
+  url: https://www.rocelec.com/
+  type: authorized_distributor
+  base: US
+  group: obsolete
+  useful_for: Authorized inventory and licensed manufacture of active and discontinued semiconductors.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.rocelec.com/search?q={part}
+  opinions:
+  - forum: diyAudio
+    title: Rochester Electronics
+    url: https://www.diyaudio.com/community/threads/rochester-electronics.409474/
+    date: '2024-02-21'
+    gist: Called legitimate and highly trustworthy by posters who know it from military and avionics work; the catches
+      are minimum quantities of 50 or 100 and a question over selling to individuals, though one buyer got an order
+      going by phone and found the staff helpful.
+  - forum: diyAudio
+    title: Rochester Electronics Ordering?
+    url: https://www.diyaudio.com/community/threads/rochester-electronics-ordering.437639/
+    date: '2026-02-20'
+    gist: A hobbyist struggles to reach the 250-dollar minimum order even by padding the basket.
+  about:
+    url: https://knowledge.rocelec.com/knowledge/is-rochester-electronics-an-authorized-supplier
+    checked: '2026-10-12'
+    says: Describes itself as an original-manufacturer stocking distributor holding authorizations from the component
+      makers listed on its supplier line card, with more than 15 billion devices in stock, many of them end-of-life
+      semiconductors, offered direct from the factory.
+- id: lansdale
+  title: Lansdale Semiconductor
+  url: https://www.lansdale.com/
+  type: manufacturer_direct
+  base: US
+  group: obsolete
+  useful_for: Licensed aftermarket manufacture of selected legacy IC families.
+  checked: '2026-10-11'
+  robots: 'no robots.txt: nothing forbidden, nothing promised'
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.lansdale.com/part_search.php?search={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: retroamplis
+  title: Retroamplis
+  url: https://www.retroamplis.com/
+  type: specialist
+  base: ES
+  group: pedal_tube_synth
+  useful_for: Pedal and amp components, selected NOS, hardware, audio ICs.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.retroamplis.com/?ObjectID=3081577&ViewAction=FacetedSearchProducts&FocusReference=RemoteSearch_NavBarLeft_0&SearchString={part}
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+- id: amptek
+  title: Amptek
+  url: https://amptek.es/
+  type: specialist
+  base: ES
+  group: pedal_tube_synth
+  useful_for: Tube-amplifier components and repair, restoration and valve-amplification service.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://amptek.es?e_search_props=b5040a6-8399&s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: musikding
+  title: Das Musikding
+  url: https://www.musikding.de/
+  type: specialist
+  base: DE
+  group: pedal_tube_synth
+  useful_for: Pedal kits, project PCBs, switches, pots, enclosures, active and passive parts.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://www.musikding.de/search/{part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: Mod Wiggler
+    title: DIYers in Europe - where do you buy parts?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=163327
+    date: '2016-06-15'
+    gist: A German builder's regular shop that never disappointed; others use it for knobs and pots, with Reichelt
+      or Mouser for the rest.
+  - forum: Musiker-Board
+    title: Elektronik-Händler Rangliste?!
+    url: https://www.musiker-board.de/threads/elektronik-haendler-rangliste.338022/
+    date: '2009-07-08'
+    gist: 'In German: praised for fast dispatch, cheap graded postage on small orders and a personal touch beside
+      Conrad and Reichelt; one poster finds the service uneven from order to order.'
+  - forum: Sequencer.de
+    title: Weiß jemand, ob mit/bei Musikding irgendetwas nicht stimmt?
+    url: https://www.sequencer.de/synthesizer/threads/weiss-jemand-ob-mit-bei-musikding-irgendetwas-nicht-stimmt.140048/
+    date: '2018-04-06'
+    gist: 'In German: an order that sat two weeks without a dispatch mail around Easter, and an item shown in stock
+      that was not; others had orders arrive normally.'
+  - forum: Musiker-Board
+    title: Bestellung bei Musikding - aktuell Lieferverzögerungen?
+    url: https://www.musiker-board.de/threads/bestellung-bei-musikding-aktuell-lieferverzoegerungen.720771/
+    date: '2021-05-31'
+    gist: 'In German: a two-week wait that turned out to be the shop''s holiday, announced late; regulars describe
+      a small Bavarian shop whose owner answers mail promptly and sets things right when they go wrong.'
+  about:
+    url: https://www.musikding.de/About-us
+    checked: '2026-10-12'
+    says: A one-owner shop in Kulz, Bavaria, by the dispatch address on its own pages, selling pedal kits, project
+      boards and parts for guitar and synth builders, with its own forum.
+  ships:
+    text: Parcels and letters from Germany, with payment methods and shipping terms for Germany and abroad listed
+      on its shipping page; costs shown per country.
+    url: https://www.musikding.de/Shipping-costs
+    checked: '2026-10-12'
+- id: tubetown
+  title: Tube-Town
+  url: https://www.tubetown.net/ttstore/en/
+  type: specialist
+  base: DE
+  group: pedal_tube_synth
+  useful_for: Tube and amp parts, chassis, boards, hardware and build services.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://www.tubetown.net/ttstore/en/en/advanced_search_result.php?inc_subcat=1&keywords={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: TDPRI
+    title: Tube-Town Emma Kit Opinions
+    url: https://www.tdpri.com/threads/tube-town-emma-kit-opinions.713090/
+    date: '2017-03-10'
+    gist: Kits go together well with high-grade parts and a helpful forum, but ship without step-by-step instructions,
+      so the builder reads the schematic and layout.
+  - forum: TDPRI
+    title: Tube town kits in US?
+    url: https://www.tdpri.com/threads/tube-town-kits-in-us.1051469/
+    date: '2020-10-12'
+    gist: US posters expect shipping and duty to make a kit dear beside domestic ones; a European builder calls it
+      their preferred supplier after two builds.
+  about:
+    url: https://www.tubetown.net/ttstore/de/info/impressum.html
+    checked: '2026-10-12'
+    says: Tube-Town GmbH of Lemberg, Germany, by its imprint; technical questions go by e-mail or to its own forum,
+      not by phone, and the shop gives no repair support.
+  ships:
+    text: Germany by DHL or GLS at weight-based rates listed on the page; for other countries and carriers the cart
+      computes the exact cost once the delivery country is chosen, and taxes vary by country.
+    url: https://www.tubetown.net/ttstore/de/info/versandkosten.html
+    checked: '2026-10-12'
+- id: guitar_electronics_eu
+  title: Guitar-Electronics.eu
+  url: https://guitar-electronics.eu/
+  type: specialist
+  base: PL
+  group: pedal_tube_synth
+  useful_for: Guitar and bass DIY effects and preamp projects.
+  checked: '2026-10-11'
+  robots: crawl-delay 1 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://guitar-electronics.eu/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: banzai
+  title: Banzai Music
+  url: https://www.banzaimusic.com/
+  type: specialist
+  base: DE
+  group: pedal_tube_synth
+  useful_for: Wide music-electronics, guitar, amp and tube catalogue; lead times shown per item.
+  checked: '2026-10-11'
+  robots: no answer to a script (refused or timed out)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.banzaimusic.com/search.php?mode=search&substring={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave 7 results
+- id: tayda
+  title: Tayda Electronics
+  url: https://www.taydaelectronics.com/
+  type: specialist
+  base: TH
+  group: pedal_tube_synth
+  useful_for: Common components and pedal hardware; enclosure drilling, coating and UV printing.
+  search: https://www.taydaelectronics.com/catalogsearch/result/?q={part}
+  checked: '2026-10-11'
+  robots: part search allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  about:
+    url: https://www.taydaelectronics.com/about/
+    checked: '2026-10-12'
+    says: Presents itself as a parts source for electronics hobbyists worldwide, shipping daily by the most economical
+      methods, with low prices and a large selection as its pitch.
+  ships:
+    text: Worldwide, shipped daily; where from and how long before dispatch are answered in its FAQ.
+    url: https://www.taydaelectronics.com/faq-page/
+    checked: '2026-10-12'
+  opinions:
+  - forum: Mod Wiggler
+    title: Tayda Electronics + speedy delivery
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=100664
+    date: '2013-12-27'
+    gist: DHL orders from Bangkok reached Belfast and others in about two days for a few dollars, while the cheaper
+      postal option took weeks and one parcel was still missing after a month.
+  - forum: Mod Wiggler
+    title: in 2020 which Tayda parts do you buy, which do you avoid?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=241153
+    date: '2020-12-03'
+    gist: Resistors, capacitors, logic ICs and the Alpha pots are bought with confidence; jacks, toggle switches and
+      knobs are what several builders avoid, and some now restock at Mouser, Digi-Key or Thonk instead.
+  - forum: Mod Wiggler
+    title: DIYers in Europe - where do you buy parts?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=163327
+    date: '2016-06-15'
+    gist: Used a lot for cheap parts; two to three weeks to Sweden.
+  - forum: Mod Wiggler
+    title: The best supplier of electronic components
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=253628
+    date: '2021-09-24'
+    gist: Named as pretty good next to Mouser.
+- id: stompboxparts
+  title: Stomp Box Parts
+  url: https://stompboxparts.com/
+  type: specialist
+  base: US
+  group: pedal_tube_synth
+  useful_for: Pedal components, hardware, enclosures and manufacturing services.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://stompboxparts.com/search.php?search_query={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave 2 results
+- id: lovemyswitches
+  title: Love My Switches
+  url: https://lovemyswitches.com/
+  type: specialist
+  base: US
+  group: pedal_tube_synth
+  useful_for: Footswitches, knobs, jacks, pots and enclosure hardware.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://lovemyswitches.com/?nav-quick-search={part}
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+- id: smallbear
+  title: Small Bear Electronics
+  url: https://smallbear-electronics.mybigcommerce.com/
+  type: specialist
+  base: US
+  group: pedal_tube_synth
+  useful_for: Pedal and synth components and selected hard-to-find items; part of synthCube.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://smallbear-electronics.mybigcommerce.com/search.php?search_query={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: Mod Wiggler
+    title: Small Bear Electronics NEWS - retiring.. but Synthcube stepping in now!!
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=253599
+    date: '2021-09-23'
+    gist: Builders mourn the founders' retirement and praise the shop as a first stop for parts not found domestically;
+      synthCube took the business on.
+  - forum: Mod Wiggler
+    title: UPDATE Small Bear Electronics + synthCube 4/22
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=260449
+    date: '2022-03-30'
+    gist: 'synthCube''s own account of taking over: the inventory moved from New York to Boston in April 2022 and
+      the Small Bear webstore kept running.'
+  - forum: DIYstompboxes
+    title: Small Bear @ Synthcube
+    url: https://www.diystompboxes.com/smfforum/index.php?topic=128975.0
+    date: '2022-03-30'
+    gist: The same announcement, as pedal builders received it.
+  - forum: Mod Wiggler
+    title: What's going on with synthCube?
+    url: https://www.modwiggler.com/forum/viewtopic.php?p=4323445
+    date: '2025-04-14'
+    gist: During the move to a new web platform in April 2025 buyers lost their order history and had to reset passwords,
+      and one order arrived missing a board; posters took it for the merging of the synthCube and Small Bear systems.
+  about:
+    url: https://synthcube.com/about-us
+    checked: '2026-10-12'
+    says: Run since 2022 by synthCube, a family of shops for electronic-music enthusiasts in Waltham, Massachusetts,
+      which answers e-mail faster than the phone and keeps shop hours by appointment on some days.
+  ships:
+    text: US and international shipments, with optional shipping insurance at checkout since July 2025 and the risk
+      of loss, theft or damage on the buyer without it.
+    url: https://synthcube.com/shipping-info
+    checked: '2026-10-12'
+- id: amplifiedparts
+  title: Amplified Parts
+  url: https://www.amplifiedparts.com/
+  type: specialist
+  base: US
+  group: pedal_tube_synth
+  useful_for: Tubes, amp restoration parts, capacitors, sockets, transformers and hardware; Antique Electronic Supply
+    is merging into it.
+  checked: '2026-10-11'
+  robots: home page disallowed; names AI agents
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.amplifiedparts.com/search?keywords={part}
+  opinions:
+  - forum: Audiokarma
+    title: Antique Electronic Supply
+    url: https://audiokarma.org/forums/threads/antique-electronic-supply.874126/
+    date: '2019-06-20'
+    gist: Called a solid, reputable shop by long-time buyers of tubes and parts, one of them since the paper-catalogue
+      days; a specialist matcher is suggested for matched sets.
+  - forum: TDPRI
+    title: Antique Electronic Supply
+    url: https://www.tdpri.com/threads/antique-electronic-supply.517760/
+    date: '2014-10-15'
+    gist: One order lost at checkout and resent the next day; the others report great service from AES and Amplified
+      Parts, its sister shop.
+  - forum: The Gear Page
+    title: Is tubedepot good place to buy tubes?
+    url: https://www.thegearpage.net/board/index.php?threads/is-tubedepot-good-place-to-buy-tubes.2505651/
+    date: '2023-10-19'
+    gist: Named as the shop whose tube matching is tighter.
+  about:
+    url: https://www.amplifiedparts.com/customer-service/about-us
+    checked: '2026-10-12'
+    says: 'A Tempe, Arizona shop established in 2007 for present-day and vintage equipment parts: vacuum tubes, electronic
+      parts, speakers, accessories and literature, with sales staff who are musicians; Antique Electronic Supply is
+      merging into it.'
+  ships:
+    text: Everything ships from Tempe, Arizona, generally the same day for orders before 2 pm Arizona time on weekdays;
+      international addresses accepted, with duties and taxes assessed at delivery and the carrier chosen at checkout.
+    url: https://www.amplifiedparts.com/customer-service/shipping-and-delivery
+    checked: '2026-10-12'
+- id: tubedepot
+  title: TubeDepot
+  url: https://www.tubedepot.com/
+  type: specialist
+  base: US
+  group: pedal_tube_synth
+  useful_for: Tubes with testing and selection options, amp parts and kits.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://www.tubedepot.com/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: TDPRI
+    title: the tube store vs the tube depot
+    url: https://www.tdpri.com/threads/the-tube-store-vs-the-tube-depot.160992/
+    date: '2009-05-04'
+    gist: Frequent buyers report no problems and the best pricing for a retube; bad tubes were replaced quickly by
+      both shops compared.
+  - forum: The Gear Page
+    title: Is tubedepot good place to buy tubes?
+    url: https://www.thegearpage.net/board/index.php?threads/is-tubedepot-good-place-to-buy-tubes.2505651/
+    date: '2023-10-19'
+    gist: Sells the same tubes as the other major dealers, with good reviews of its select series; Amplified Parts
+      is said to match output tubes more tightly.
+  - forum: TDPRI
+    title: Anybody deal with tubedepot
+    url: https://www.tdpri.com/threads/anybody-deal-with-tubedepot.616024/
+    date: '2016-03-01'
+    gist: Several buyers report fast shipping, good prices and no problems; one waited for an order confirmation email.
+  about:
+    url: https://www.tubedepot.com/pages/shipping-faq
+    checked: '2026-10-12'
+    says: A tube and parts shop trading as TubeDepot, LLC since 1997 by its own footer; its shipping FAQ is the page
+      that describes how it works.
+  ships:
+    text: US orders over 99 dollars ship free by a carrier of the shop's choice, heavy parcels excepted; international
+      orders are accepted, with duty and tax for the buyer, as the FAQ explains.
+    url: https://www.tubedepot.com/pages/shipping-faq
+    checked: '2026-10-12'
+- id: tubeampdoctor
+  title: Tube Amp Doctor
+  url: https://www.tubeampdoctor.com/en/
+  type: specialist
+  base: DE
+  group: pedal_tube_synth
+  useful_for: Tubes, amp kits, service parts, sockets and hardware.
+  checked: '2026-10-11'
+  robots: no answer to a script (refused or timed out)
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.tubeampdoctor.com/en/search?search={part}
+  about:
+    url: https://www.tubeampdoctor.com/en/custom/index/sCustom/3
+    checked: '2026-10-12'
+    says: Tube Amp Doctor Musikhandels GmbH of Worms, Germany, by its imprint, a shop and wholesaler of amplifier
+      tubes and accessories with click-and-collect hours and a separate amp-service contact.
+  ships:
+    text: Worldwide, with a shipping-cost table per country on its site.
+    url: https://www.tubeampdoctor.com/en/versandkostentabelle
+    checked: '2026-10-12'
+  opinions:
+  - forum: TDPRI
+    title: Tube Amp Doctor tubes
+    url: https://www.tdpri.com/threads/tube-amp-doctor-tubes.707432/
+    date: '2017-02-14'
+    gist: 'About the shop''s own-brand tubes rather than its service: the 6L6WGC-STR and KT66 are loved and taken
+      for rebranded Shuguang, while one pair of 6V6s failed within minutes in a 1955 Deluxe.'
+  - forum: diyAudio
+    title: Experiences with TAD EL34?
+    url: https://www.diyaudio.com/community/threads/experiences-with-tad-el34.184346/
+    date: '2011-03-03'
+    gist: Its EL34B-STR matched pairs are taken for selected Shuguang tubes; one poster finds them overpriced, another
+      says the price is average for Germany.
+- id: thonk
+  title: Thonk
+  url: https://www.thonk.co.uk/
+  type: specialist
+  base: GB
+  group: pedal_tube_synth
+  useful_for: Synth DIY parts, pots, jacks, kits and specialist ICs.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://www.thonk.co.uk/?post_type=product&wps-title=1&wps-excerpt=1&wps-content=1&wps-categories=1&wps-attributes=1&wps-tags=1&wps-sku=1&orderby=date-DESC&ixwps=1&s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  about:
+    url: https://www.thonk.co.uk/faq/
+    checked: '2026-10-12'
+    says: A small business in Brighton, UK, selling DIY synthesizer kits, components and some assembled modules online.
+  ships:
+    text: Worldwide but for a short list of countries; orders leave within 12 to 36 hours; UK VAT removed outside
+      the UK, local VAT collected for the EU, Norway and Australia, duties on arrival elsewhere; free shipping only
+      on UK orders over 100 pounds.
+    url: https://www.thonk.co.uk/faq/#ordering-and-shipping
+    checked: '2026-10-12'
+  opinions:
+  - forum: Mod Wiggler
+    title: DIYers in Europe - where do you buy parts?
+    url: https://www.modwiggler.com/forum/viewtopic.php?t=163327
+    date: '2016-06-15'
+    gist: Where European builders buy pots, knobs and the special parts, with Mouser for the rest.
+- id: synthcube
+  title: synthCube
+  url: https://synthcube.com/
+  type: specialist
+  base: US
+  group: pedal_tube_synth
+  useful_for: Synth kits, PCBs and panels and related components.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://synthcube.com/search.php?search_query={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: electricdruid
+  title: Electric Druid
+  url: https://electricdruid.net/
+  type: specialist
+  base: GB
+  group: pedal_tube_synth
+  useful_for: Synth and stompbox ICs, control chips, projects and explanations.
+  checked: '2026-10-11'
+  robots: crawl-delay 5 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://electricdruid.net/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: pedalpcb
+  title: PedalPCB
+  url: https://www.pedalpcb.com/
+  type: specialist
+  base: US
+  group: project_pcbs
+  useful_for: Guitar-effect project boards and related parts; each revision has its own build document.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.pedalpcb.com/?post_type=product&s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: aionfx
+  title: Aion FX
+  url: https://aionfx.com/
+  type: specialist
+  base: US
+  group: project_pcbs
+  useful_for: Guitar-pedal PCBs and complete kits with documentation.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://aionfx.com/search/?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: guitarpcb
+  title: GuitarPCB
+  url: https://guitarpcb.com/
+  type: specialist
+  base: US
+  group: project_pcbs
+  useful_for: Pedal project PCBs, modification boards and build support.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://guitarpcb.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: pedalparts_uk
+  title: Fuzz Dog's Pedal Parts
+  url: https://shop.pedalparts.co.uk/
+  type: specialist
+  base: GB
+  group: project_pcbs
+  useful_for: Pedal kits, PCBs and switching options.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://shop.pedalparts.co.uk/index.aspx?pageid=847125&pageid=847125&chainID=90736&txtQuickSearch={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: partsexpress
+  title: Parts Express
+  url: https://www.parts-express.com/
+  type: specialist
+  base: US
+  group: hifi_transformers
+  useful_for: Loudspeaker drivers, crossovers, amplifier modules, cabinets and audio hardware.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.parts-express.com/search?keyword={part}
+  opinions:
+  - forum: Audiokarma
+    title: What's the deal with Parts Express and shipping fees?!
+    url: https://audiokarma.org/forums/threads/whats-the-deal-with-parts-express-and-shipping-fees.377556/
+    date: '2011-06-24'
+    gist: Shipping quotes on small orders drew complaints; regular buyers answer that they keep orders over the free-shipping
+      threshold or buy its items through Amazon.
+  - forum: diyAudio
+    title: Parts-Express --> Canada = $$$
+    url: https://www.diyaudio.com/community/threads/parts-express-canada.202193/
+    date: '2011-12-09'
+    gist: A Canadian buyer was billed brokerage fees by the carrier on top of a shipping option sold as fees included;
+      others trade stories of carrier fees at the border.
+  - forum: diyAudio
+    title: Parts Express's new website is cancer.
+    url: https://www.diyaudio.com/community/threads/parts-expresss-new-website-is-cancer.367613/
+    date: '2021-02-10'
+    gist: The redesigned site's search returned near matches rather than the item typed, and long-time customers found
+      it hard to navigate.
+  about:
+    url: https://www.parts-express.com/about
+    checked: '2026-10-12'
+    says: Founded in 1986 and based in Springboro, Ohio, with some 90 employees, selling home, commercial, professional
+      and mobile audio products to enthusiasts, installers, OEMs, schools and government.
+  ships:
+    text: Free shipping on eligible orders over 99 dollars to a single address in the contiguous US, flat 9.95 dollars
+      economy below that, most orders shipped the same day before 4 pm Eastern; international orders are answered
+      in its FAQ.
+    url: https://www.parts-express.com/shipping
+    checked: '2026-10-12'
+- id: partsconnexion
+  title: Parts Connexion
+  url: https://partsconnexion.com/
+  type: specialist
+  base: CA
+  group: hifi_transformers
+  kinds: [tube, opamp, ic-audio, bjt, jfet, mosfet]
+  useful_for: DIY audio components, connectors, capacitors, resistors; some lines have territory restrictions.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://partsconnexion.com/?search_query={part}
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+- id: audiophonics
+  title: Audiophonics
+  url: https://www.audiophonics.fr/en/
+  type: specialist
+  base: FR
+  group: hifi_transformers
+  kinds: [tube, opamp, ic-audio, bjt, mosfet, vca]
+  useful_for: DIY hi-fi modules, power supplies, connectors, chassis and audio parts.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://www.audiophonics.fr/en/search?search_query={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  about:
+    url: https://www.audiophonics.fr/en/content/4-about-us
+    checked: '2026-10-12'
+    says: A French online distributor founded in 2005 for hi-fi, audio and do-it-yourself products, which also makes
+      products under its own brand in its workshops; a small team that handles customer service and after-sales by
+      e-mail only.
+  ships:
+    text: Orders placed before noon on working days are generally shipped the same or the next day with tracking;
+      costs depend on weight and country and are shown in the cart; Colissimo for France and some European countries;
+      free delivery in France from 149 euros under its conditions.
+    url: https://www.audiophonics.fr/en/content/1-delivery
+    checked: '2026-10-12'
+  opinions:
+  - forum: diyAudio
+    title: Reliable place to buy drivers in EU?
+    url: https://www.diyaudio.com/community/threads/reliable-place-to-buy-drivers-in-eu.341330/
+    date: '2019-08-12'
+    gist: Named among the EU shops a poster has had only good experiences with, beside Costruire Audio, Quint-Store
+      and Thomann.
+- id: soundimports
+  title: SoundImports
+  url: https://www.soundimports.eu/en/
+  type: specialist
+  base: NL
+  group: hifi_transformers
+  useful_for: Speaker-building parts, crossover components, kits and amplifier modules.
+  checked: '2026-10-11'
+  robots: crawl-delay 2 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.soundimports.eu/en/search/?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: hificollective
+  title: HiFi Collective
+  url: https://www.hificollective.co.uk/
+  type: specialist
+  base: GB
+  group: hifi_transformers
+  kinds: [tube, opamp, ic-audio, bjt]
+  useful_for: Audio passives, connectors, wire, tubes and specialist brands.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.hificollective.co.uk/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: hammond_transformers
+  title: Hammond transformers
+  url: https://www.hammfg.com/
+  type: manufacturer_direct
+  base: CA
+  group: hifi_transformers
+  useful_for: Power, audio and tube-amplifier transformers, sold through distributors.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.hammfg.com/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: edcor
+  title: EDCOR
+  url: https://edcorusa.com/
+  type: manufacturer_direct
+  base: US
+  group: hifi_transformers
+  useful_for: Audio, power and custom transformers; manufacturing lead time applies.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://edcorusa.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: toroidy
+  title: Toroidy
+  url: https://sklep.toroidy.pl/en_US/index
+  type: manufacturer_direct
+  base: PL
+  group: hifi_transformers
+  useful_for: Toroidal power transformers and audio-oriented options.
+  checked: '2026-10-11'
+  robots: crawl-delay 1 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://sklep.toroidy.pl/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: lundahl
+  title: Lundahl
+  url: https://www.lundahltransformers.com/
+  type: manufacturer_direct
+  base: SE
+  group: hifi_transformers
+  useful_for: Signal, input, output and other specialist audio transformers, through distributors.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.lundahltransformers.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: thatcorp
+  title: THAT Corporation
+  url: https://thatcorp.com/sales/
+  type: manufacturer_direct
+  base: US
+  group: hifi_transformers
+  kinds: [vca]
+  makers: [that]
+  useful_for: Audio VCAs, preamplifier and line-interface ICs; the maker's distributor page.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://thatcorp.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: soundsemiconductor
+  title: Sound Semiconductor
+  url: https://www.soundsemiconductor.com/
+  type: manufacturer_direct
+  base: US
+  group: hifi_transformers
+  useful_for: 'Synth and effects analog ICs: VCAs, filters, oscillators, BBDs, in current production.'
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: 'no part search: the maker''s site, which sells through distributors'
+- id: hammond_enclosures
+  title: Hammond Manufacturing
+  url: https://www.hammfg.com/electronics/small-case/diecast
+  type: manufacturer_direct
+  base: CA
+  group: enclosures
+  useful_for: Die-cast, plastic, instrument and other enclosure families, through distributors.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://www.hammfg.com/search?referer=electronics/small-case&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  about:
+    url: https://www.hammfg.com/about
+    checked: '2026-10-12'
+    says: A maker that began in a backyard workshop in Guelph, Ontario in 1916, founded as O.S. Hammond and Son in
+      1917, built tube radio sets in the 1920s, made Canada's first 2-post racks in the 1930s, and became a major
+      supplier of transformers, racks, cabinets and enclosures; it sells through distributors.
+- id: altinkaya
+  title: Altınkaya
+  url: https://www.altinkaya.com/
+  type: manufacturer_direct
+  base: TR
+  group: enclosures
+  useful_for: Plastic and aluminium enclosures, CNC work, printing and customisation.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.altinkaya.com/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: modushop
+  title: Modushop / Hi-Fi 2000
+  url: https://modushop.biz/
+  type: specialist
+  base: IT
+  group: enclosures
+  useful_for: Hi-fi and rack chassis, heatsink cases, panel machining.
+  checked: '2026-10-11'
+  robots: 'no robots.txt: nothing forbidden, nothing promised'
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: 'no part search: chassis by model, not parts'
+- id: gojira
+  title: Gojira FX
+  url: https://gojira.co.uk/
+  type: specialist
+  base: GB
+  group: enclosures
+  useful_for: Pedal enclosures and UV-printing services.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://gojira.co.uk?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: gorva
+  title: Gorva Design
+  url: https://gorvadesign.com/
+  type: manufacturer_direct
+  base: IT
+  group: enclosures
+  useful_for: Pedal enclosures, switches and other pedal hardware, through regional retailers.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://gorvadesign.com/search?type=product&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: daier
+  title: Daier
+  url: https://www.chinadaier.com/
+  type: manufacturer_direct
+  base: CN
+  group: enclosures
+  useful_for: Switches, pedal hardware, enclosures and electromechanical products, quoted by quantity.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.chinadaier.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: takachi
+  title: Takachi
+  url: https://www.takachi-enclosure.com/
+  type: manufacturer_direct
+  base: JP
+  group: enclosures
+  useful_for: Instrument, aluminium, plastic and custom-sized cases.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.takachi-enclosure.com/search?text={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: bud
+  title: Bud Industries
+  url: https://www.budind.com/
+  type: manufacturer_direct
+  base: US
+  group: enclosures
+  useful_for: Electronic, industrial, rack and plastic enclosures.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.budind.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: okw
+  title: OKW
+  url: https://www.okw.com/en
+  type: manufacturer_direct
+  base: DE
+  group: enclosures
+  useful_for: Handheld, desktop and plastic instrument housings and knobs.
+  checked: '2026-10-11'
+  robots: crawl-delay 5 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.okw.com/de/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: polycase
+  title: Polycase
+  url: https://www.polycase.com/
+  type: manufacturer_direct
+  base: US
+  group: enclosures
+  useful_for: Plastic, metal and industrial enclosures with customisation.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: 'no part search: enclosures by model, not parts'
+- id: schaeffer
+  title: Schaeffer AG
+  url: https://www.schaeffer-ag.de/en/
+  type: fabricator
+  base: DE
+  group: enclosures
+  useful_for: Machined and engraved front panels and enclosure parts, from your design.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.schaeffer-ag.de/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: frontpanelexpress
+  title: Front Panel Express
+  url: https://www.frontpanelexpress.com/
+  type: fabricator
+  base: US
+  group: enclosures
+  useful_for: Custom front panels and enclosures with Front Panel Designer.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.frontpanelexpress.com/search?search={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: protocase
+  title: Protocase
+  url: https://www.protocase.com/
+  type: fabricator
+  base: CA
+  group: enclosures
+  useful_for: Custom sheet-metal enclosures and mechanical fabrication.
+  checked: '2026-10-11'
+  robots: names AI agents
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.protocase.com/search.php?addsearch={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: adafruit
+  title: Adafruit
+  url: https://www.adafruit.com/
+  type: specialist
+  base: US
+  group: maker
+  useful_for: Documented modules, analog and digital audio boards, sensors, controls, tools and tutorials.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.adafruit.com/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: sparkfun
+  title: SparkFun
+  url: https://www.sparkfun.com/
+  type: specialist
+  base: US
+  group: maker
+  useful_for: Breakouts, sensors, audio boards and development products.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.sparkfun.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: seeed
+  title: Seeed Studio
+  url: https://www.seeedstudio.com/
+  type: specialist
+  base: CN
+  group: maker
+  useful_for: Grove modules, embedded and IoT boards.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.seeedstudio.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: dfrobot
+  title: DFRobot
+  url: https://www.dfrobot.com/
+  type: specialist
+  base: CN
+  group: maker
+  useful_for: Sensors, analog interfaces, robotics, embedded and educational products.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.dfrobot.com/search-{part}.html
+- id: pololu
+  title: Pololu
+  url: https://www.pololu.com/
+  type: specialist
+  base: US
+  group: maker
+  useful_for: Regulators, motor control, motors, sensors, robotics and mechanical parts.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.pololu.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: pimoroni
+  title: Pimoroni
+  url: https://shop.pimoroni.com/
+  type: specialist
+  base: GB
+  group: maker
+  useful_for: Maker boards, displays, controls and Raspberry Pi products.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://shop.pimoroni.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: thepihut
+  title: The Pi Hut
+  url: https://thepihut.com/
+  type: specialist
+  base: GB
+  group: maker
+  useful_for: Raspberry Pi and maker ecosystem products.
+  checked: '2026-10-11'
+  robots: crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://thepihut.com/search?sort_by=relevency&page=1&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: arduino
+  title: Arduino Store
+  url: https://store.arduino.cc/
+  type: manufacturer_direct
+  base: IT
+  group: maker
+  useful_for: Official boards, development hardware, kits and accessories.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://search.arduino.cc/search?tab=store&storeLocation=world&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers (HTTP 200)
+- id: robotshop
+  title: RobotShop
+  url: https://www.robotshop.com/
+  type: specialist
+  base: CA
+  group: maker
+  useful_for: Robotics, motors, actuators, control products and mechanical parts.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'no search address found: no form on the home page and none of the usual platforms'' addresses
+    answered with the part'
+- id: cytron
+  title: Cytron
+  url: https://www.cytron.io/
+  type: specialist
+  base: MY
+  group: maker
+  useful_for: Motor drivers, robotics, Raspberry Pi and educational hardware.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'no search address found: no form on the home page and none of the usual platforms'' addresses
+    answered with the part'
+- id: jameco
+  title: Jameco
+  url: https://www.jameco.com/
+  type: specialist
+  base: US
+  group: regional
+  useful_for: Hobby and education components, kits, tools and own-brand products.
+  checked: '2026-10-11'
+  robots: home page disallowed; names AI agents
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.jameco.com/search?w={part}
+- id: abra
+  title: ABRA Electronics
+  url: https://abra-electronics.com/
+  type: specialist
+  base: CA
+  group: regional
+  useful_for: Components, maker and education products, test and workshop supplies.
+  checked: '2026-10-11'
+  robots: crawl-delay 1 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://abra-electronics.com/?match=all&subcats=Y&pcode_from_q=Y&pshort=Y&pfull=Y&pname=Y&pkeywords=Y&search_performed=Y&dispatch=products.search&security_hash=1ba3b518743aa0d4058146579f2b7c8d&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: leeselectronic
+  title: Lee's Electronic
+  url: https://leeselectronic.com/en/
+  type: specialist
+  base: CA
+  group: regional
+  useful_for: General components, modules, tools; local pickup in Vancouver.
+  checked: '2026-10-11'
+  robots: no answer to a script (refused or timed out)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'no search address found: no form on the home page and none of the usual platforms'' addresses
+    answered with the part'
+- id: rapid
+  title: Rapid Electronics
+  url: https://www.rapidonline.com/
+  type: specialist
+  base: GB
+  group: regional
+  useful_for: Components, connectors, cables, tools, industrial and education products.
+  search: https://www.rapidonline.com/catalogue/search?query={part}
+  checked: '2026-10-11'
+  robots: part search allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: cpc
+  title: CPC
+  url: https://cpc.farnell.com/
+  type: specialist
+  base: GB
+  group: regional
+  useful_for: Components, audio and AV, cables, tools and workshop supplies.
+  search: https://cpc.farnell.com/search?st={part}
+  checked: '2026-10-11'
+  robots: part search allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+- id: switchelectronics
+  title: Switch Electronics
+  url: https://www.switchelectronics.co.uk/
+  type: specialist
+  base: GB
+  group: regional
+  useful_for: General components, switches, connectors and small project supplies.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.switchelectronics.co.uk/search?type=product&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: reichelt
+  title: Reichelt
+  url: https://www.reichelt.com/
+  type: specialist
+  base: DE
+  group: regional
+  useful_for: Components, tools, test equipment and maker products; ships to many countries.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 503)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.reichelt.com/index.html?ACTION=446&q={part}
+- id: conrad
+  title: Conrad
+  url: https://www.conrad.com/
+  type: specialist
+  base: DE
+  group: regional
+  useful_for: Electronics, industrial equipment, tools and marketplace offerings; European delivery only.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.conrad.com/en/search.html?search={part}
+- id: electrokit
+  title: Electrokit
+  url: https://www.electrokit.com/en/
+  type: specialist
+  base: SE
+  group: regional
+  useful_for: Components, kits, instruments and maker hardware.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.electrokit.com/en/search.php?keyword={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: tinytronics
+  title: TinyTronics
+  url: https://www.tinytronics.nl/en
+  type: specialist
+  base: NL
+  group: regional
+  useful_for: Modules, components, sensors and maker parts.
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 403)
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.tinytronics.nl/en/search?q={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave no result
+- id: botland
+  title: Botland
+  url: https://botland.store/
+  type: specialist
+  base: PL
+  group: regional
+  useful_for: Robotics, development boards, maker products and educational kits.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://botland.store/search?controller=search&s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: diotronic
+  title: Diotronic
+  url: https://diotronic.com/
+  type: specialist
+  base: ES
+  group: regional
+  useful_for: General components, tools and equipment; shops in Barcelona, Madrid and Zaragoza.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://diotronic.com/busqueda?controller=search&s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: ondaradio
+  title: Onda Radio
+  url: https://www.ondaradio.es/
+  type: specialist
+  base: ES
+  group: regional
+  useful_for: Components, connectors, enclosures, instrumentation and soldering equipment.
+  checked: '2026-10-11'
+  robots: home page disallowed; names AI agents
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.ondaradio.es/busqueda?controller=search&s={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave results
+- id: bricogeek
+  title: BricoGeek
+  url: https://tienda.bricogeek.com/
+  type: specialist
+  base: ES
+  group: regional
+  useful_for: Maker, robotics, sensors and development boards.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://tienda.bricogeek.com/buscar?controller=search&orderby=position&orderway=desc&search_query={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: jaycar_au
+  title: Jaycar Australia
+  url: https://www.jaycar.com.au/
+  type: specialist
+  base: AU
+  group: regional
+  useful_for: General project parts, kits, tools and local stores.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.jaycar.com.au/search?text={part}
+- id: jaycar_nz
+  title: Jaycar NZ
+  url: https://www.jaycar.co.nz/
+  type: specialist
+  base: NZ
+  group: regional
+  useful_for: General project parts, kits, tools and local stores.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://www.jaycar.co.nz/search?text={part}
+- id: altronics
+  title: Altronics
+  url: https://www.altronics.com.au/
+  type: specialist
+  base: AU
+  group: regional
+  useful_for: Components, enclosures, connectors, audio and test equipment.
+  checked: '2026-10-11'
+  robots: 'robots.txt is served as an HTML page (a bot challenge): nothing readable by script'
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.altronics.com.au/search/?q={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave results
+- id: coreelectronics
+  title: Core Electronics
+  url: https://core-electronics.com.au/
+  type: specialist
+  base: AU
+  group: regional
+  useful_for: Maker hardware, sensors, robotics and educational resources.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://core-electronics.com.au/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: nicegear
+  title: nicegear
+  url: https://nicegear.nz/
+  type: specialist
+  base: NZ
+  group: regional
+  useful_for: Open hardware, maker boards and related electronics.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: the site's own search form answers 404 (nginx); no address works
+- id: robu
+  title: Robu
+  url: https://robu.in/
+  type: specialist
+  base: IN
+  group: regional
+  useful_for: Robotics, modules, motors, development boards and project supplies.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://robu.in/?s={part}&post_type=product
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave 98 results
+- id: evelta
+  title: Evelta
+  url: https://evelta.com/
+  type: specialist
+  base: IN
+  group: regional
+  useful_for: Electronic components, connectors, development and maker products.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://evelta.com/search.php?search_query={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave no result
+- id: akizuki
+  title: Akizuki Denshi
+  url: https://akizukidenshi.com/
+  type: specialist
+  base: JP
+  group: regional
+  useful_for: Components, modules and kits; a Japanese domestic buying route.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://akizukidenshi.com/catalog/goods/search.aspx?search=x&keyword={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: marutsu
+  title: Marutsu
+  url: https://www.marutsu.co.jp/
+  type: specialist
+  base: JP
+  group: regional
+  useful_for: Components, tools, development products and distribution sourcing.
+  checked: '2026-10-11'
+  robots: crawl-delay 5 s
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.marutsu.co.jp/GoodsListNavi.jsp?path=&q={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave 102 results
+- id: communica
+  title: Communica
+  url: https://www.communica.co.za/
+  type: specialist
+  base: ZA
+  group: regional
+  useful_for: Components, modules, tools and test equipment.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.communica.co.za/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: mantech
+  title: Mantech
+  url: https://www.mantech.co.za/
+  type: specialist
+  base: ZA
+  group: regional
+  useful_for: Components, industrial products, tools and measurement equipment.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.mantech.co.za/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: robocore
+  title: RoboCore
+  url: https://www.robocore.net/
+  type: specialist
+  base: BR
+  group: regional
+  useful_for: Robotics, controls, maker components and educational products.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.robocore.net/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: makerhero
+  title: MakerHero
+  url: https://www.makerhero.com/
+  type: specialist
+  base: BR
+  group: regional
+  useful_for: Arduino-related products, modules, components and maker education.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.makerhero.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: steren
+  title: Steren
+  url: https://www.steren.com.mx/
+  type: specialist
+  base: MX
+  group: regional
+  useful_for: General electronics, connectors, project supplies and local stores.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.steren.com.mx/catalogsearch/result/?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: sigma
+  title: Sigma Electrónica
+  url: https://www.sigmaelectronica.net/
+  type: specialist
+  base: CO
+  group: regional
+  useful_for: Components, modules, tools and development hardware.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.sigmaelectronica.net/?post_type=product&s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: jlcpcb
+  title: JLCPCB
+  url: https://jlcpcb.com/
+  type: fabricator
+  base: CN
+  group: pcb_fab
+  useful_for: Bare boards, stencils, PCB assembly and mechanical services.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search_checked: '2026-10-11'
+  search_result: 'address written from the maintainer''s knowledge, not verified: the site refuses scripts or hides
+    its form behind JavaScript; check it in a browser'
+  search: https://jlcpcb.com/parts/componentSearch?searchTxt={part}
+  opinions:
+  - forum: EEVblog
+    title: Your recent experience with PCBWay, JLCPCB and other similar China factories
+    url: https://www.eevblog.com/forum/manufacture/your-recent-experience-with-pcbway-jlcpcb-and-other-similar-china-factories/
+    date: '2025-03-19'
+    gist: Bare boards called reliable and assembly generally good, with occasional missing or tombstoned parts; the
+      complaints are shipping cost from bulky packaging, slow answers and delays while parts are sourced.
+  - forum: EEVblog
+    title: What is happening with JLCPB?
+    url: https://www.eevblog.com/forum/manufacture/what-is-happening-with-jlcpb/
+    date: '2021-12-31'
+    gist: A poster saw silkscreen, solder mask, plating and support decline over a year; others saw nothing of the
+      kind, and the company replied in the thread asking for order numbers and saying the silkscreen issues were fixed.
+  about:
+    url: https://jlcpcb.com/about-us
+    checked: '2026-10-12'
+    says: Founded in 2006 as a one-stop platform joining PCB manufacturing, parts sourcing and assembly, with EasyEDA,
+      3D printing, CNC and mechanical parts in the same group; it counts 9.5 million customers and 180 countries served
+      as of December 2025.
+  ships:
+    text: Worldwide by DHL, FedEx, UPS and postal services chosen per order, with delivery times given as industry
+      averages; import duties, taxes and the carrier's handling fees fall to the buyer at destination.
+    url: https://jlcpcb.com/shipping
+    checked: '2026-10-12'
+- id: pcbway
+  title: PCBWay
+  url: https://www.pcbway.com/
+  type: fabricator
+  base: CN
+  group: pcb_fab
+  useful_for: Bare boards, assembly and mechanical prototyping.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.pcbway.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: oshpark
+  title: OSH Park
+  url: https://oshpark.com/
+  type: fabricator
+  base: US
+  group: pcb_fab
+  useful_for: Pooled prototype PCB fabrication.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search_checked: '2026-10-12'
+  search_result: 'no part search: a fabricator of boards from your files'
+- id: aisler
+  title: AISLER
+  url: https://aisler.net/
+  type: fabricator
+  base: DE
+  group: pcb_fab
+  useful_for: Prototype PCBs, assembly and electronic project manufacturing in Europe.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 1
+  search: https://aisler.net/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+  opinions:
+  - forum: EEVblog
+    title: Has anyone used aisler.net ?
+    url: https://www.eevblog.com/forum/eda/has-anyone-used-aisler-net/
+    date: '2019-10-21'
+    gist: Mostly clean, precise boards from the German fab, with a few tool strikes, drilling offsets and under-etching
+      reported; turnaround from about five days to three weeks; support reviews mixed.
+  - forum: EEVblog
+    title: New EU cheap manufacturer - AISLER
+    url: https://www.eevblog.com/forum/eda/new-eu-cheap-manufacturer-aisler/
+    date: '2022-12-19'
+    gist: A reasonably priced European option, a little above the Asian pool services for small runs; bare boards
+      rated good, assembly and turnaround more mixed, and strict file-format requirements.
+  about:
+    url: https://aisler.net/en/about
+    checked: '2026-10-12'
+    says: 'A German platform for agile electronics development that calls itself a pioneer of fab-less manufacturing:
+      it takes native CAD projects, prices them instantly, sources components across the major distributors and has
+      certified partner factories make the boards and assemblies.'
+  ships:
+    text: 'Explained in a primer on its community site: the shop computes shipping per order and destination.'
+    url: https://community.aisler.net/t/a-quick-primer-about-shipping-at-aisler/672
+    checked: '2026-10-12'
+- id: eurocircuits
+  title: Eurocircuits
+  url: https://www.eurocircuits.com/
+  type: fabricator
+  base: BE
+  group: pcb_fab
+  useful_for: PCB and assembly prototypes and small series in Europe.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 2
+  search: https://www.eurocircuits.com/?s={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: aliexpress
+  title: AliExpress
+  url: https://www.aliexpress.com/
+  type: marketplace
+  base: WW
+  group: marketplace_surplus
+  useful_for: Low-cost project supplies, maker stores, modules and mechanical items; the seller is who you buy from.
+  search: https://www.aliexpress.com/w/wholesale-{part}.html
+  checked: '2026-10-11'
+  robots: part search allowed; crawl-delay 0.5 s
+  robots_checked: '2026-10-11'
+  priority: 3
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: temu
+  title: Temu
+  url: https://www.temu.com/
+  type: marketplace
+  base: WW
+  group: marketplace_surplus
+  useful_for: General supplies where specification and traceability can be checked independently.
+  checked: '2026-10-11'
+  robots: 'robots.txt is served as an HTML page (a bot challenge): nothing readable by script'
+  robots_checked: '2026-10-11'
+  priority: 3
+  search: https://www.temu.com/search_result.html?search_key={part}
+  search_checked: '2026-10-12'
+  search_result: the site puts a security check (a puzzle) before the results, in a browser too
+- id: wish
+  title: Wish
+  url: https://www.wish.com/
+  type: marketplace
+  base: WW
+  group: marketplace_surplus
+  useful_for: General supplies where specification and traceability can be checked independently.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 3
+  search: https://www.wish.com/search?q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: amazon
+  title: Amazon
+  url: https://www.amazon.com/
+  type: marketplace
+  base: WW
+  group: marketplace_surplus
+  useful_for: Local delivery, used equipment, genuine maker storefronts and hard-to-find items.
+  search: https://www.amazon.com/s?k={part}
+  checked: '2026-10-11'
+  robots: home page disallowed; part search disallowed; names AI agents
+  robots_checked: '2026-10-11'
+  priority: 3
+  search_checked: '2026-10-11'
+  search_result: not tried
+- id: ebay
+  title: eBay
+  url: https://www.ebay.com/
+  type: marketplace
+  base: WW
+  group: marketplace_surplus
+  useful_for: Used equipment, NOS and hard-to-find parts; seller, condition and provenance to be judged per listing.
+  search: https://www.ebay.com/sch/i.html?_nkw={part}
+  checked: '2026-10-11'
+  robots: robots.txt refused to a script (HTTP 418)
+  robots_checked: '2026-10-11'
+  priority: 3
+  search_checked: '2026-10-11'
+  search_result: HTTP 403
+- id: utsource
+  title: UTsource
+  url: https://www.utsource.net/
+  type: independent
+  base: WW
+  group: marketplace_surplus
+  useful_for: Independent sourcing of older ICs and replacement parts; the actual seller and condition to be verified.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 3
+  search: https://www.utsource.net/search/{part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: electronicgoldmine
+  title: Electronic Goldmine
+  url: https://theelectronicgoldmine.com/
+  type: surplus
+  base: US
+  group: marketplace_surplus
+  useful_for: Surplus parts, hardware and unusual components.
+  checked: '2026-10-11'
+  robots: allowed
+  robots_checked: '2026-10-11'
+  priority: 3
+  search: https://theelectronicgoldmine.com/search?options%5Bprefix%5D=last&sort_by=price-descending&q={part}
+  search_checked: '2026-10-11'
+  search_result: answers; the part number appears on the page
+- id: skycraft
+  title: Skycraft Surplus
+  url: https://skycraftsurplus.com/
+  type: surplus
+  base: US
+  group: marketplace_surplus
+  useful_for: Surplus electronic and electromechanical parts and hardware; includes MPJA inventory.
+  checked: '2026-10-11'
+  robots: names AI agents; crawl-delay 10 s
+  robots_checked: '2026-10-11'
+  priority: 3
+  search: https://skycraftsurplus.com/search.php?search_query={part}
+  search_checked: '2026-10-12'
+  search_result: answers; TL072 gave no result

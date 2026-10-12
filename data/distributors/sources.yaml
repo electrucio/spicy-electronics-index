@@ -1,0 +1,56 @@
+# Which distributors are asked what they sell of the parts this index holds, through which API, at what
+# pace, under which terms, and what each asks to be shown beside its data. `sei distributors tme` reads
+# the TME entry and writes data/distributors/tme.csv (order numbers, status, stock, prices) and
+# tme_files.csv (links to photos and documents): the distributor's values as returned on the day in
+# `checked`, nothing computed from them. The whole of every answer is kept in the private tree.
+#
+# Why a distributor's data is published at all: a reader who finds a part here wants to know whether it
+# can still be bought, and roughly for how much. Why TME: its API terms (2026-07-01, §8.5) license
+# displaying the content on a website of the user's own, ask for the notice in `notice` (§8.7) and the
+# statement in `ip_notice` (§8.8), and forbid derivative works — hence verbatim values and a date. The
+# terms of Mouser, Digi-Key and Farnell forbid storing their data or building a database from it, so
+# those three are linked by search only.
+# status: proposed | active | paused | blocked
+tme:
+  title: TME
+  legal_name: Transfer Multisort Elektronik Sp. z o.o.
+  home_url: https://www.tme.eu/
+  api: https://api.tme.eu
+  terms: https://developers.tme.eu/pdfs/en/terms_2026-07-01.pdf
+  country: ES                  # prices and availability as shown to a buyer in Spain
+  country_name: Spain
+  currency: EUR
+  language: en
+  link: 'https://www.tme.eu/es/katalog/?queryPhrase={symbol}'   # a catalogue search: the API returns no product-page address
+  notice: 'Data powered by TME.eu Data – no guarantee of data accuracy'
+  ip_notice: 'All intellectual property rights to the content obtained through the TME API belong to
+    TME, its subsidiaries, the manufacturers of the goods and the other entities that created or own it.'
+  # A product is kept only when its category sits under one of these first-level TME categories, chosen
+  # by the kind the dictionary files the part under. The number alone is not enough: "6550" is a valve
+  # here and a socket wrench there, "300B" a triode and an N connector, "EL34" a pentode and an
+  # electronic load. `default` applies to every kind not named.
+  categories:
+    default: [Semiconductors, Optoelectronics]
+    relay: [Relays and Contactors]
+    connector: [Connectors]
+    battery: [Power Sources]
+    crystal_oscillator: [Passives]
+    thermistor: [Passives]
+    ferrite_bead: [Passives, Transformers and Ferrite Cores]
+    fuse: [Fuses and Circuit Breakers]
+    switch: [Switches and Indicators]
+    motor: [Automation, Mechanical components]
+    other_component: [Semiconductors, Optoelectronics, Passives, Relays and Contactors]
+    other: [Semiconductors, Optoelectronics, Passives]
+    module: [Semiconductors, Embedded and IoT systems]
+    power_module: [Semiconductors, Power Sources]
+  status: active
+  delay: 0.15                  # the API allows 10 requests a second per token
+  data_delay: 0.5              # and 2 a second for prices, stock and delivery
+  max_age: 30                  # days before a part's prices and stock are asked for again
+  notes: 'API v2, OAuth 2.0 client credentials, read on 2026-10-11 from developers.tme.eu/en/api-doc/v2.
+    Requests carry `request-context: anonymous` so prices are the market prices, not an account''s.
+    /products by manufacturer part number matches exactly, so a family (TL072 → TL072CP, TL072IP, TL072CDT)
+    is found with /products/search and kept only where a manufacturer symbol starts with the part number
+    (distributors/match.py). Photos are linked, with TME''s watermark, never copied (§8.2). Documents of
+    type LNK are a text file holding a link, served behind a bot challenge, and are not published.'
