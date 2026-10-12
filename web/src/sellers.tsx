@@ -509,8 +509,9 @@ export function SellersPage({ cat: given }: { cat?: Catalogue | null }) {
         {Object.entries(list.types).map(([k, v]) => <><dt>{k.replace(/_/g, ' ')}</dt><dd>{v}</dd></>)}
       </dl>
       <p class="muted small">
-        Compiled from a buying guide reviewed on 2026-10-11. Shipping, duty and delivery terms change by
-        destination and date and are not recorded here; read them at the seller's checkout. A marketplace is
+        Compiled from a buying guide reviewed on 2026-10-11 and enlarged on 2026-10-12 from the distributors
+        Octopart lists for common parts and from shops read one by one. Shipping, duty and delivery terms change
+        by destination and date and are not recorded here; read them at the seller's checkout. A marketplace is
         based nowhere: the seller you buy from there is anywhere.
       </p>
     </section>
