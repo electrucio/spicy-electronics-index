@@ -259,6 +259,16 @@ def main(argv: list[str] | None = None) -> int:
     dsb.add_argument("--list-only", action="store_true", help="say how many books the search keeps")
     dsb.add_argument("--reread", action="store_true", help="read the kept text again with today's reader")
 
+    dist = sub.add_parser("distributors", help="what distributors sell of the parts: order numbers, status, stock, prices").add_subparsers(
+        dest="dist_cmd", required=True)
+    dtm = dist.add_parser("tme", help="ask TME's API about the indexed parts, under its terms")
+    dtm.add_argument("--part", action="append", help="only these parts (repeatable)")
+    dtm.add_argument("--top-per-kind", type=int, default=0, help="the N most printed parts of each kind in the dictionary")
+    dtm.add_argument("--limit", type=int, default=0, help="at most this many parts matched in this run")
+    dtm.add_argument("--max-age", type=int, default=None, help="days before prices and stock are asked for again")
+    dtm.add_argument("--refresh", action="store_true", help="ask again for every part, whatever its age")
+    dtm.add_argument("--reread", action="store_true", help="match again from the answers kept, asking for nothing")
+
     ds = sub.add_parser("datasets", help="the distilled research datasets").add_subparsers(
         dest="ds_cmd", required=True)
     dr = ds.add_parser("repos", help="read how much attention each open-source project has")
@@ -571,6 +581,14 @@ def main(argv: list[str] | None = None) -> int:
         argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
         argv2 += ["--limit", str(args.limit)] if args.limit else []
         return register.main(argv2 + (["--reread"] if args.reread else []))
+
+    if args.cmd == "distributors" and args.dist_cmd == "tme":
+        from spicy_electronics_index.distributors import tme
+        argv2 = [x for pair in (("--part", p) for p in args.part or []) for x in pair]
+        argv2 += ["--top-per-kind", str(args.top_per_kind)] if args.top_per_kind else []
+        argv2 += ["--limit", str(args.limit)] if args.limit else []
+        argv2 += ["--max-age", str(args.max_age)] if args.max_age is not None else []
+        return tme.main(argv2 + (["--refresh"] if args.refresh else []) + (["--reread"] if args.reread else []))
 
     if args.cmd == "datasheets" and args.dsh_cmd == "polarity":
         from spicy_electronics_index.datasheets import polarity

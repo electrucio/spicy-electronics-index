@@ -14,6 +14,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 
 import { AboutPart, Databooks } from './about'
 import { Heading } from './anchor'
+import { SellersSection } from './sellers'
 import { DATA, loadIndex, partPath, reloadIndex } from './data'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
@@ -618,6 +619,7 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
         <>
           <AboutPart page={page} kind={kind} />
           <Listed page={page} />
+          <SellersSection page={page} kind={kind} />
           <Models page={page} />
           {fresh ? <Uses page={page} sources={sources} kinds={kinds} />
             : reload === 'done' ? (

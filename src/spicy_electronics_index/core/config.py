@@ -292,6 +292,41 @@ def character_state() -> Path:
     return PUBLIC_DATA / "verification" / "models" / "state.csv"
 
 
+# --- public: what distributors sell of the parts ----------------------------------------------------
+def distributors_registry() -> Path:
+    """The distributor registry: who is asked, through which API, at what pace, under which terms, and
+    the notice each asks to be shown beside its data."""
+    return PUBLIC_DATA / "distributors" / "sources.yaml"
+
+
+def distributors_table(distributor: str) -> Path:
+    """What the distributor sells of each part — its order numbers, their status, stock and prices — as
+    its API returned them on the day in `checked`. Values verbatim, nothing computed."""
+    return PUBLIC_DATA / "distributors" / f"{distributor}.csv"
+
+
+def distributors_files(distributor: str) -> Path:
+    """The photos and documents the distributor links for each order number: URLs, never the files."""
+    return PUBLIC_DATA / "distributors" / f"{distributor}_files.csv"
+
+
+def distributors_state(distributor: str) -> Path:
+    """Processing ledger, one row per part asked about."""
+    return PUBLIC_DATA / "distributors" / "state" / f"{distributor}.csv"
+
+
+def sellers_found() -> Path:
+    """What following each seller's part search found, when a stage does: part, seller, result (found,
+    not_found, unclear), the address followed, and the date. Absent until that stage exists."""
+    return PUBLIC_DATA / "distributors" / "sellers_found.csv"
+
+
+def sellers_registry() -> Path:
+    """Where parts are bought, worldwide: each seller with its kind, base, catalogue and, where it has
+    one, the address of a search for a part number. Links only; no seller's stock is read here."""
+    return PUBLIC_DATA / "distributors" / "sellers.yaml"
+
+
 # --- public: the part dictionary and the repository itself ------------------------------------------
 def known_parts() -> Path:
     return PUBLIC_DATA / "parts" / "known_parts.csv"
@@ -462,6 +497,13 @@ def datasheets_text(source: str) -> Path:
     """The text of every data sheet the harvest read, page by page, compressed: the manufacturer's, so it
     stays here, and a better reader costs no second download."""
     return material_root() / "datasheets_text" / source
+
+
+def distributor_cache(distributor: str) -> Path:
+    """Every answer the distributor's API gave, whole and gzipped, one file per part and endpoint. The
+    public tables publish a few fields of it; a new use of the rest costs a re-read, not another call,
+    and the distributor's terms can be met by deleting one directory."""
+    return material_root() / "distributors" / distributor
 
 
 def census_cache(source: str) -> Path:
@@ -747,6 +789,12 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("datasheet_reference", "public", ()),
     ("datasheet_figures", "public", ("2N3904_onsemi",)),
     ("datasheet_figure_reference", "public", ()),
+    ("distributors_registry", "public", ()),
+    ("distributors_table", "public", ("tme",)),
+    ("distributors_files", "public", ("tme",)),
+    ("distributors_state", "public", ("tme",)),
+    ("sellers_registry", "public", ()),
+    ("sellers_found", "public", ()),
     ("verification", "public", ("bjt", "2N3904")),
     ("verification_state", "public", ()),
     ("bench_measurements", "public", ()),
@@ -787,6 +835,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("census_cache", "private", ("frank_pocnet",)),
     ("datasheets_cache", "private", ("ti_products",)),
     ("datasheets_text", "private", ("onsemi_docs",)),
+    ("distributor_cache", "private", ("tme",)),
     ("index_db", "private", ()),
     ("page_sizes", "private", ()),
     ("downloads", "private", ("esp",)),

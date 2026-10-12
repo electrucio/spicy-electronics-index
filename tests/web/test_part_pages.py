@@ -104,6 +104,33 @@ def test_the_recipe_is_trimmed_to_what_the_page_shows_and_carries_no_model_text(
     assert "score" not in m and "rows" not in m and "preferred" not in page["models"]
 
 
+def test_a_makers_catalogue_category_gives_a_kind_when_nothing_nearer_does():
+    """Toshiba files the RN2903 under bipolar transistors with bias resistors: a BJT, where the number's
+    shape says nothing. Words the menu has no device for give nothing rather than a guess."""
+    row = lambda category, title="": [  # noqa: E731
+        "toshiba_parametric", "toshiba", category, "ACTIVE", title, "", "https://t.example/x", "", "2026-10-12", ""]
+    assert P.catalogue_kind([row("Bipolar Transistors > Transistors with Bias Resistors (BRT, Digital Transistors)")]) == "bjt"
+    assert P.catalogue_kind([row("Isolators/Solid State Relays > Photorelays (MOSFET Output)")]) == "opto"
+    assert P.catalogue_kind([row("Small-signal Product > Zener Diode")]) == "zener"
+    assert P.catalogue_kind([row("transistors")]) == "transistor"
+    assert P.catalogue_kind([row("Precision ADCs"), row("Load switches")]) == ""
+    assert P.catalogue_kind([row("N-Channel", "IRF540 power MOSFET")]) == "mosfet"
+    idx = {"catalogue_kind": {"RN2903": "bjt"}, "dictionary": {}}
+    assert P.part_kind("RN2903", {}, {}, idx["catalogue_kind"]) == "bjt"
+    assert P.kind_of("RN2903", None, idx) == "bjt"
+    assert P.kind_of("RN2903", None, {"dictionary": {"RN2903": "mosfet"}, "catalogue_kind": {"RN2903": "bjt"}}) == "mosfet"
+
+
+def test_a_part_page_says_its_kind_and_the_devices_it_answers_to(data):
+    """The sellers section picks the sellers for the part's kind from the page, not from the menu's words."""
+    idx = P.index()
+    recipes, _ = P.model_recipes()
+    page = P.part_payload("TL072", idx, recipes["TL072"])
+    assert page["kind"] == "opamp" and page["devices"] == ["opamp"]
+    page = P.part_payload("XQ9999", idx, None)   # a part nothing knows: the keys are absent, not empty
+    assert "kind" not in page and "devices" not in page
+
+
 def test_a_stand_in_or_an_alias_is_said_beside_the_model():
     """A stand-in is a model of another part: the page must say so without the reader opening anything."""
     stand_in, alias = P.trim_models({"models": [

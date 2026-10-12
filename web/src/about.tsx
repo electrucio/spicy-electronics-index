@@ -48,7 +48,7 @@ export function A({ href, children }: { href: string; children: preact.Component
 }
 
 /** The references behind a statement, as their ids, each linking to the source with its title on hover. */
-function Refs({ ids, cat }: { ids?: string[]; cat: Catalogue }) {
+export function Refs({ ids, cat }: { ids?: string[]; cat: Catalogue }) {
   const known = (ids ?? []).flatMap((id) => { const r = cat.refs[id]; return r ? [[id, r] as const] : [] })
   if (!known.length) return null
   return (
@@ -298,11 +298,51 @@ export function Databooks({ page }: { page: PartPage }) {
 }
 
 /** The top of a part's page, under its name: what it is, then its data sheets. `kind` is the parts list's. */
+/** How a relation reads from this part's side ("out") and from the other's ("in" or "both"). */
+export const RELATED: Record<string, [string, string]> = {
+  replacement_for: ['a replacement for', 'replaced by'],
+  next_generation_of: ['the next generation of', 'succeeded by'],
+  same_product_as: ['the same product as', 'the same product as'],
+  same_datasheet: ['documented in one data sheet with', 'documented in one data sheet with'],
+}
+
+export function relationWords(relation: string, direction: 'out' | 'in' | 'both'): string {
+  const pair = RELATED[relation]
+  if (!pair) return `${relation.replace(/_/g, ' ')} ${direction === 'out' ? '→' : '←'}`
+  return direction === 'out' ? pair[0] : pair[1]
+}
+
+/**
+ * The other parts a document relates this one to — a declared replacement, the next generation, the
+ * same product under another name, one data sheet for several — each with the document that says so.
+ * `data/parts/relations.csv`; a row without a reference is refused there, so every line here has one.
+ */
+function Related({ page, cat }: { page: PartPage; cat: Catalogue }) {
+  const rel = page.about?.related
+  if (!rel?.length) return null
+  return (
+    <section class="stack-s">
+      <Heading slug="related">Related parts</Heading>
+      <ul class="uselist">
+        {rel.map(([relation, other, direction, refs, note, status], i) => (
+          <li key={i}>
+            {relationWords(relation, direction)} <strong><A href={partHref(other)}>{other}</A></strong>
+            {note && <span class="muted small"> · {note}</span>}
+            {' '}<Refs ids={refs} cat={cat} />
+            {status === 'draft' && <> <span class="chip" title="recorded with its source, not yet reviewed">draft</span></>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 export function AboutPart({ page, kind }: { page: PartPage; kind: string }) {
   const cat = useCatalogue()
   return (
     <>
       <PartInfo page={page} kind={kind} />
+      {cat && <Related page={page} cat={cat} />}
       {cat && page.about && <Datasheets page={page} cat={cat} />}
     </>
   )

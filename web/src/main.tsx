@@ -2,6 +2,7 @@ import { render } from 'preact'
 import { useEffect, useRef, useState } from 'preact/hooks'
 
 import { FamilyPage, MakerPage, SchemePage } from './about'
+import { SellersPage } from './sellers'
 import { DATA } from './data'
 import { Feedback } from './feedback'
 import { LICENCE_URL, Licence } from './licence'
@@ -14,7 +15,7 @@ import './style.css'
 import type { Manifest } from './types'
 
 /** A page of the catalogue, when one is open: a family, a naming scheme or an organisation. */
-type Topic = { family?: string; scheme?: string; maker?: string; bench?: string }
+type Topic = { family?: string; scheme?: string; maker?: string; bench?: string; sellers?: string }
 
 /**
  * Which part is open, kept in the URL, or which catalogue page a part linked to.
@@ -27,7 +28,7 @@ function useRoute(): [string | null, Topic, (p?: string | null) => void] {
     const q = new URLSearchParams(location.search)
     const topic: Topic = {
       family: q.get('family') ?? undefined, scheme: q.get('scheme') ?? undefined, maker: q.get('maker') ?? undefined,
-      bench: q.get('bench') ?? undefined,
+      bench: q.get('bench') ?? undefined, sellers: q.get('sellers') ?? undefined,
     }
     return [q.get('part'), topic] as const
   }
@@ -49,7 +50,7 @@ function App() {
   const [data, setData] = useState<{ m: Manifest } | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [part, topic, go] = useRoute()
-  const onTopic = Boolean(topic.family || topic.scheme || topic.maker || topic.bench)
+  const onTopic = Boolean(topic.family || topic.scheme || topic.maker || topic.bench || topic.sellers)
   // The header's height, for CSS: what stays in view under it (the list, the part's name) starts there.
   const head = useRef<HTMLElement>(null)
   useEffect(() => {
@@ -97,6 +98,7 @@ function App() {
         {data && topic.scheme && <SchemePage id={topic.scheme} />}
         {data && topic.maker && <MakerPage id={topic.maker} />}
         {data && topic.bench && <MethodsPage id={topic.bench} />}
+        {data && topic.sellers && <SellersPage />}
         {data && !onTopic && <Browser part={part} onPick={go} />}
       </main>
 

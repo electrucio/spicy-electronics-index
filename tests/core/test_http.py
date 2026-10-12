@@ -46,6 +46,28 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def do_POST(self):
+        length = int(self.headers.get("Content-Length") or 0)
+        form = self.rfile.read(length).decode()
+        body, status, headers = b"not found", 404, {}
+        if self.path == "/token":
+            if self.headers.get("Authorization", "").startswith("Basic ") and "grant_type=client_credentials" in form:
+                body, status = b'{"access_token": "abc", "expires_in": 300}', 200
+            else:
+                body, status = b'{"error": "invalid_client"}', 401
+        elif self.path == "/token-slow":
+            type(self).flaky_hits += 1
+            if type(self).flaky_hits < 2:
+                body, status, headers = b"too many", 429, {"Retry-After": "0.25"}
+            else:
+                body, status = b'{"access_token": "abc"}', 200
+        self.send_response(status)
+        self.send_header("Content-Length", str(len(body)))
+        for k, v in headers.items():
+            self.send_header(k, v)
+        self.end_headers()
+        self.wfile.write(body)
+
 
 @pytest.fixture()
 def base():
@@ -136,3 +158,16 @@ def test_a_rule_written_for_an_ai_agent_is_a_rule_about_this(base):
     assert not http.allowed(f"{base}/noai/doc.pdf")          # named for us, not for `*`
     assert not http.allowed(f"{base}/private/doc.pdf")       # and `*` is still read
     assert not http.get(f"{base}/noai/doc.pdf", delay=0).ok
+
+
+def test_a_form_post_carries_its_headers_and_is_paced_like_a_get(base):
+    r = http.post(f"{base}/token", data={"grant_type": "client_credentials"}, headers={"Authorization": "Basic eDp5"}, delay=0)
+    assert r.ok and b"access_token" in r.body
+    r = http.post(f"{base}/token", data={"grant_type": "client_credentials"}, delay=0)
+    assert r.status == 401 and not r.ok
+
+
+def test_a_post_told_to_wait_waits(base):
+    t = time.time()
+    r = http.post(f"{base}/token-slow", data={"a": "b"}, delay=0)
+    assert r.ok and r.attempts == 2 and time.time() - t >= 0.25

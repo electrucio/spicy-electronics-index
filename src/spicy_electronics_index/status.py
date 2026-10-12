@@ -8,7 +8,13 @@ from pathlib import Path
 
 import yaml
 
-from spicy_electronics_index.core.config import models_dir, schematics_dir, status_md
+from spicy_electronics_index.core.config import (
+    distributors_registry,
+    distributors_state,
+    models_dir,
+    schematics_dir,
+    status_md,
+)
 from spicy_electronics_index.core.ledger import Ledger, today
 
 # How each stage is named in the "Next" column. A stage with no entry falls back to its own name,
@@ -115,6 +121,51 @@ def render_models() -> list[str]:
     return out + [""]
 
 
+def distributor_rows() -> list[dict]:
+    """Per distributor: how many parts were asked about, how many it sells something of, how many it has
+    nothing for, and how many answers are older than the registry's `max_age`."""
+    reg = distributors_registry()
+    if not reg.exists():
+        return []
+    from spicy_electronics_index.distributors import tme as tme_stage
+    rows = []
+    for name, entry in (yaml.safe_load(reg.read_text(encoding="utf-8")) or {}).items():
+        f = distributors_state(name)
+        if not f.exists():   # the stage has never run (or its answers were withdrawn): nothing to report
+            continue
+        led = Ledger(f, stages=tme_stage.STAGES, fields=tme_stage.FIELDS, versioned=tme_stage.VERSIONED)
+        rs = list(led.rows.values())
+        max_age = int((entry or {}).get("max_age", 30))
+        with_offers = [r for r in rs if int(r["n_exact"] or 0) + int(r["n_variant"] or 0)]
+        rows.append(dict(source=name, status=(entry or {}).get("status", ""), asked=len(rs), offers=len(with_offers),
+                         none=sum(1 for r in rs if r["match_at"] and r not in with_offers and not r["skip_reason"]),
+                         stale=sum(1 for r in with_offers if tme_stage.stale(r["data_at"], max_age)),
+                         skipped=sum(1 for r in rs if r["skip_reason"]),
+                         last=last_activity(led), max_age=max_age))
+    return rows
+
+
+def render_distributors() -> list[str]:
+    rows = distributor_rows()
+    if not rows:
+        return []
+    out = [
+        "## Distributors",
+        "",
+        "What each distributor sells of the indexed parts, as its API answered: order numbers, status, stock and",
+        "prices, verbatim and dated. Registry: `data/distributors/sources.yaml`; tables: `data/distributors/<id>.csv`",
+        "and `<id>_files.csv`; ledger: `data/distributors/state/<id>.csv`, one row per part asked about. **Stale**",
+        "counts parts whose prices and stock are older than the registry's `max_age` and will be asked for again.",
+        "",
+        "| Distributor | Status | Parts asked | With offers | Nothing sold | Stale | Skipped | Last activity |",
+        "|---|---|--:|--:|--:|--:|--:|---|",
+    ]
+    for r in rows:
+        out.append(f"| {r['source']} | {r['status']} | {r['asked']:,} | {r['offers']:,} | {r['none']:,} | "
+                   f"{r['stale']:,} | {r['skipped']:,} | {r['last']} |")
+    return out + [""]
+
+
 def render() -> str:
     rows = schematics_rows()
     total = {k: sum(r[k] for r in rows) for k in ("items", "download", "ocr", "index", "linkcheck", "skipped")}
@@ -150,6 +201,7 @@ def render() -> str:
             f"published on 2026-09-24, 291 belonged to a family newer than 1995.",
             ""]
     out += render_models()
+    out += render_distributors()
     return "\n".join(out)
 
 

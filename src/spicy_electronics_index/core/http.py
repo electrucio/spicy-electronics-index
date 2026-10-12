@@ -166,6 +166,26 @@ def get(url: str, *, ua: str | None = BROWSER_UA, transport: str = "requests", r
     return resp
 
 
+def post(url: str, *, data: dict[str, str], headers: dict[str, str] | None = None, ua: str | None = BROWSER_UA,
+         robots: bool = True, delay: float = DELAY, timeout: float = 60, retries: int = 4) -> Response:
+    """A form POST, for the one thing a GET cannot do: ask an API that issued us credentials for a token.
+    The same host pacing, the same waits after a 429, the same `Response`; nothing else is posted anywhere."""
+    host = urlparse(url).netloc
+    if robots and not allowed(url, ua):
+        return Response(0, url, why="disallowed by robots.txt", attempts=0)
+    resp = Response(0, url, why="not tried")
+    for attempt in range(1, retries + 1):
+        wait_turn(host)
+        resp = _requests(url, user_agent(ua), timeout, None, True, MAX_BYTES, headers, data=data)
+        resp.attempts = attempt
+        _next_ok[host] = time.time() + delay
+        if resp.status not in RETRY_STATUS:
+            return resp
+        _next_ok[host] = time.time() + (resp.retry_after or max(delay, 0.01) * 10 * attempt)
+    resp.why = resp.why or f"gave up after {retries} attempts ({resp.status})"
+    return resp
+
+
 def _once(url, ua, timeout, referer, follow, max_bytes, transport, headers=None) -> Response:
     ua = user_agent(ua)
     return (_curl(url, ua, timeout, referer, follow, max_bytes) if transport == "curl"
@@ -180,12 +200,13 @@ def _retry_after(value: str) -> float:
         return 0.0
 
 
-def _requests(url, ua, timeout, referer, follow, max_bytes, extra=None) -> Response:
+def _requests(url, ua, timeout, referer, follow, max_bytes, extra=None, data=None) -> Response:
     import requests
     headers = {k: v for k, v in (("User-Agent", ua), ("Referer", referer)) if v} | (extra or {})
     try:
-        with requests.get(url, headers=headers, timeout=(20, timeout), stream=True, allow_redirects=follow,
-                          verify=_trusted.get(urlparse(url).netloc, True)) as r:
+        with requests.request("POST" if data is not None else "GET", url, headers=headers, data=data,
+                              timeout=(20, timeout), stream=True, allow_redirects=follow,
+                              verify=_trusted.get(urlparse(url).netloc, True)) as r:
             body = b""
             for chunk in r.iter_content(1 << 16):
                 body += chunk

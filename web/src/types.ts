@@ -226,6 +226,12 @@ export interface PartPage {
   }
   /** What the part is, each piece present only when something says so. */
   about?: About
+  /** What a search at each seller found, by seller id: result (found, not_found, unclear), the address followed, date. */
+  sellers?: Record<string, [string, string, string]>
+  /** What the part is, as the dictionary's id (`opamp`, `bjt`, `bjt/jfet/mosfet`), when something says. */
+  kind?: string
+  /** The devices of the parts menu it answers to, from `kind` or from what a model library says. */
+  devices?: string[]
 }
 
 /** A part number read under the standard that assigned it: text, what the piece is, what it says. */
@@ -339,4 +345,44 @@ export interface Catalogue {
   schemes: Record<string, Scheme>
   refs: Record<string, Reference>
   listings: Record<string, { title: string; kind: string; maker: string }>
+  sellers?: SellersList
 }
+
+/** One seller of parts (`data/distributors/sellers.yaml`): what it is, where it is based, what its
+ *  catalogue covers, and, when it has one, the address of a search for a part number (`{part}`). */
+export interface Seller {
+  id: string
+  title: string
+  url: string
+  type: string
+  base: string
+  group: string
+  useful_for: string
+  search?: string
+  checked?: string
+  /** The maintainer's order of first comparison: 1 first, 2 the usual, 3 last resort. */
+  priority?: number
+  /** The kinds of part its catalogue covers, when they differ from its group's; `[]` keeps it off part pages. */
+  kinds?: string[]
+  /** The makers it is the store of (ids of `Catalogue.makers`): shown first on those makers' parts. */
+  makers?: string[]
+  /** What its robots.txt said when read, and when: the technical permission to read it by script. */
+  robots?: string
+  robots_checked?: string
+  /** What following `search` gave, and when. */
+  search_checked?: string
+  search_result?: string
+  /** The seller's own account of itself, paraphrased, with where it was read and when. */
+  about?: { url: string; checked: string; says: string }
+  /** Where it ships, as its own pages say. */
+  ships?: { text: string; url?: string; checked?: string }
+  /** What readers of the forums say about it: links, dated, with the gist in the maintainer's words. */
+  opinions?: { forum: string; title: string; url: string; date: string; gist: string }[]
+}
+
+/** A group of sellers: `kinds` are the kinds of part whose page lists the group (`[]`: none), and
+ *  `caveat` a reference the page cites beside it. */
+export interface SellerGroup { id: string; title: string; note: string; kinds: string[]; caveat?: string }
+
+/** The sellers list: the kinds of seller in words, the groups in order, and the sellers. */
+export interface SellersList { types: Record<string, string>; groups: SellerGroup[]; sellers: Seller[] }

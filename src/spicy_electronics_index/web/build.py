@@ -25,7 +25,12 @@ from datetime import date
 from pathlib import Path
 
 from spicy_electronics_index import status
-from spicy_electronics_index.core.config import datasheets_table, model_part, schematics_parts, web_data
+from spicy_electronics_index.core.config import (
+    datasheets_table,
+    model_part,
+    schematics_parts,
+    web_data,
+)
 from spicy_electronics_index.core.partfile import part_file
 from spicy_electronics_index.web import character as character_web
 from spicy_electronics_index.web import parts as part_pages

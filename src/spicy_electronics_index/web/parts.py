@@ -56,6 +56,8 @@ from spicy_electronics_index.core.config import (
     schematics_pages,
     schematics_registry,
     schematics_uses,
+    sellers_found,
+    sellers_registry,
     wanted_parts,
 )
 from spicy_electronics_index.core.parts import catalogue, polarity, schemes
@@ -201,20 +203,54 @@ def rows(path):
     return list(csvvol.read(path))                 # every volume, in order; nothing if it is not there
 
 
-def part_kind(part: str, recipes: dict, dictionary: dict[str, str]) -> str:
+# What a maker's own catalogue category says a part is, when nothing nearer says: the words makers file
+# their parts under, matched most specific first (a photorelay with a MOSFET output is an isolator, a
+# transistor with bias resistors a bipolar transistor). A category that says only "transistors" gives
+# `transistor`, which the menu reads as a bipolar transistor the way it reads a bare JEDEC number. Words
+# the menu has no device for (ADCs, load switches, LED drivers) give nothing, and the page says "not known".
+CATALOGUE_KINDS: tuple[tuple[str, str], ...] = (
+    (r"photocoupler|optocoupler|opto-?isolator|photorelay", "opto"),
+    (r"bias resistor|digital transistor|bipolar|\bbjt\b", "bjt"),
+    (r"\bmosfets?\b|\bn-channel\b|\bp-channel\b", "mosfet"),
+    (r"\bjfets?\b|junction fet", "jfet"),
+    (r"\bzener", "zener"),
+    (r"schottky|rectifier|\bdiodes?\b|\btvs\b|\bbridge\b", "diode"),
+    (r"\bop[ -]?amps?\b|operational amplifier", "opamp"),
+    (r"comparator", "comparator"),
+    (r"\bldo\b|linear regulator|voltage regulator|low-dropout", "regulator"),
+    (r"dc/dc|ac/dc|switching regulator|switching controller", "smps"),
+    (r"audio (power )?amplifier", "ic-audio"),
+    (r"audio (dac|adc|codec)", "digital-audio"),
+    (r"\btransistors?\b", "transistor"),
+)
+
+
+def catalogue_kind(catalogued: list[list[str]]) -> str:
+    """The kind a maker's catalogue rows give a part (`CATALOGUE_FIELDS` order): the first category, with
+    the data sheet's title beside it, that names a device of the menu."""
+    for r in catalogued:
+        c = dict(zip(CATALOGUE_FIELDS, r))
+        text = f"{c.get('category', '')} {c.get('title', '')}".lower()
+        for pattern, kind in CATALOGUE_KINDS:
+            if re.search(pattern, text):
+                return kind
+    return ""
+
+
+def part_kind(part: str, recipes: dict, dictionary: dict[str, str], catalogue: dict[str, str] | None = None) -> str:
     """What sort of device this part is, from the surest source that knows.
 
-    Three of them, in order: the curation, which decided; the part dictionary, which was judged; and the
-    extractor's family patterns, which recognise the shape of a number. The last is a guess and says so
-    — `2N3904` and `2N5457` are both JEDEC, one a transistor and one a JFET, and the family cannot tell
-    them apart. 93 % of parts get an answer this way.
+    Four of them, in order: the curation, which decided; the part dictionary, which was judged; the
+    extractor's family patterns, which recognise the shape of a number; and the maker's own catalogue,
+    whose category names the device (`catalogue_kind`). The third is a guess and says so — `2N3904` and
+    `2N5457` are both JEDEC, one a transistor and one a JFET, and the family cannot tell them apart.
     """
     if part in recipes:
         return recipes[part].get("kind", "")
     if part in dictionary:
         return dictionary[part]
     fam = family_of(canonical(part) or part)
-    return fam[1] if fam else ""
+    return fam[1] if fam else (catalogue or {}).get(part, "")
 
 
 def wanted() -> dict[str, list[dict]]:
@@ -325,6 +361,7 @@ def index() -> dict:
     idx["modelled_polarity"] = modelled_polarity()
     idx["sheet_polarity"] = sheet_polarity()
     idx["catalogued"] = catalogued()
+    idx["catalogue_kind"] = {p: k for p, rs in idx["catalogued"].items() if (k := catalogue_kind(rs))}
     idx["sheets"] = archive_sheets()
     idx["harvested"] = harvested_sheets()
     idx["databook"] = databook_pages()
@@ -332,7 +369,40 @@ def index() -> dict:
     for key in ("repos", "wanted", "wanted_kind"):
         idx[key] = fold_case(idx[key], idx["uses"])
     idx["first"] = first_seen(idx)
+    idx["found"] = found_at_sellers()
     return idx
+
+
+# What the site shows of a seller: the entry, its optional `kinds` (which override its group's) and
+# `makers` (the makers it is the store of), what its robots.txt and its search answered when checked,
+# and its profile — `about`, `ships`, `opinions` — when the maintainer has written one.
+SELLER_KEYS = ("id", "title", "url", "type", "base", "group", "useful_for", "search", "checked", "priority",
+               "kinds", "makers", "robots", "robots_checked", "search_checked", "search_result",
+               "about", "ships", "opinions")
+
+
+def sellers() -> dict:
+    """The sellers list for the site: its kinds of seller, its groups in order, and the sellers, each
+    trimmed to what the page shows, in the maintainer's priority and then by name — never by country,
+    so no country leads. An empty `kinds` list travels: it says a seller is on no part page."""
+    reg = sellers_registry()
+    if not reg.exists():
+        return {}
+    doc = yaml.safe_load(reg.read_text(encoding="utf-8")) or {}
+    rows = [{k: s[k] for k in SELLER_KEYS if s.get(k) is not None} for s in doc.get("sellers") or []]
+    rows.sort(key=lambda s: (int(s.get("priority") or 2), s.get("title", "").lower()))
+    return {"types": doc.get("types") or {}, "groups": doc.get("groups") or [], "sellers": rows}
+
+
+def found_at_sellers() -> dict[str, dict[str, list[str]]]:
+    """By part, by seller: [result, address followed, date] — what a search at the seller found, when a
+    stage has looked. Empty until then; the page then says "not checked"."""
+    out: dict[str, dict[str, list[str]]] = defaultdict(dict)
+    p = sellers_found()
+    if p.exists():
+        for r in rows(p):
+            out[r["part"]][r["seller"]] = [r.get("result", ""), r.get("url", ""), r.get("checked", "")]
+    return dict(out)
 
 
 def fold_case(by_part: dict, index_parts) -> dict:
@@ -632,7 +702,7 @@ def known_kinds(idx: dict, recipes: dict, names) -> dict[str, tuple[str, ...]]:
             out.setdefault(r["part"], KIND_MAP.get(r.get("kind", ""), ()))
     dictionary = idx.get("dictionary", {})
     for p in names:
-        devs = devices_of(p, part_kind(p, recipes, dictionary) or idx.get("wanted_kind", {}).get(p, ""), idx)
+        devs = devices_of(p, part_kind(p, recipes, dictionary, idx.get("catalogue_kind")) or idx.get("wanted_kind", {}).get(p, ""), idx)
         if devs or p not in out:             # a kind the index cannot tell does not erase the catalogue's
             out[p] = devs
     return out
@@ -646,7 +716,7 @@ def kind_of(part: str, recipe: dict | None, idx: dict) -> str:
     if k:
         return k
     fam = family_of(canonical(part) or part)
-    return fam[1] if fam else idx.get("wanted_kind", {}).get(part, "")
+    return fam[1] if fam else idx.get("catalogue_kind", {}).get(part) or idx.get("wanted_kind", {}).get(part, "")
 
 
 # The suffixes that change a part's package, its packing or its selection and leave the part itself: a
@@ -812,6 +882,7 @@ def catalogue_payload(idx: dict) -> dict:
         "refs": {k: {x: r[x] for x in ("title", "author", "url", "consulted", "link")}
                  for k, r in catalogue.references().items()},
         "listings": idx.get("listings", {}),
+        "sellers": sellers(),
     }
 
 
@@ -994,6 +1065,17 @@ def part_payload(part: str, idx: dict, recipe: dict | None) -> dict:
     info = about(part, idx, recipe)
     if info:
         out["about"] = info
+    # What the part is, as an id, and the devices of the menu it answers to: the sellers section picks
+    # the sellers whose catalogues cover the kind from these, instead of guessing from the menu's words.
+    kind = kind_of(part, recipe, idx)
+    if kind:
+        out["kind"] = kind
+    devices = devices_of(part, kind, idx)
+    if devices:
+        out["devices"] = list(devices)
+    found = idx.get("found", {}).get(part)
+    if found:
+        out["sellers"] = found
     return out
 
 
@@ -1045,7 +1127,7 @@ def search_index(idx: dict, recipes: dict) -> tuple[list[list], list[dict]]:
     tally = Counter()
     for part in sorted(set(counts) | set(idx.get("unshown", {})) | set(recipes) | set(listed_kind)):
         docs, uses = counts.get(part, (0, 0))
-        kind = part_kind(part, recipes, dictionary) or listed_kind.get(part, "")
+        kind = part_kind(part, recipes, dictionary, idx.get("catalogue_kind")) or listed_kind.get(part, "")
         devs = devices_of(part, kind, idx)
         named = schemes.decode(part, devs, idx.get("known"))
         fid, _ = catalogue.family_of(part, devs, named.families if named else None)
