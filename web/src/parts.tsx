@@ -19,6 +19,7 @@ import { DATA, loadIndex, partPath, reloadIndex } from './data'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
+import { CHARACTERIZATION } from './features'
 import { ModelKey } from './key'
 import { Loading } from './loading'
 import { modelKey } from './sealed'
@@ -305,7 +306,7 @@ function Models({ page }: { page: PartPage }) {
           </div>
         )}
       </SubSection>
-      <ModelCharacter page={page} />
+      {CHARACTERIZATION && <ModelCharacter page={page} />}
     </Section>
   )
 }

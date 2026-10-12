@@ -7,6 +7,7 @@ import { DATA } from './data'
 import { Feedback } from './feedback'
 import { LICENCE_URL, Licence } from './licence'
 import { Loading } from './loading'
+import { CHARACTERIZATION } from './features'
 import { MethodsPage } from './methods'
 import { Browser } from './parts'
 import { Unlock } from './unlock'
@@ -28,7 +29,7 @@ function useRoute(): [string | null, Topic, (p?: string | null) => void] {
     const q = new URLSearchParams(location.search)
     const topic: Topic = {
       family: q.get('family') ?? undefined, scheme: q.get('scheme') ?? undefined, maker: q.get('maker') ?? undefined,
-      bench: q.get('bench') ?? undefined, sellers: q.get('sellers') ?? undefined,
+      bench: CHARACTERIZATION ? q.get('bench') ?? undefined : undefined, sellers: q.get('sellers') ?? undefined,
     }
     return [q.get('part'), topic] as const
   }
