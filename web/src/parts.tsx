@@ -620,7 +620,6 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
         <>
           <AboutPart page={page} kind={kind} />
           <Listed page={page} />
-          <SellersSection page={page} kind={kind} />
           <Models page={page} />
           {fresh ? <Uses page={page} sources={sources} kinds={kinds} />
             : reload === 'done' ? (
@@ -636,6 +635,7 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
               {page.listed?.length ? ', which makes it one to look for.' : '.'}
             </p>
           )}
+          <SellersSection page={page} kind={kind} />
         </>
       )}
     </section>

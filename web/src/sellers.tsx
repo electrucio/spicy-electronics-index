@@ -223,7 +223,8 @@ function TierTable({ rows, part, list, groups, found }: {
   )
 }
 
-/** The section on a part page: where to buy this kind of part, in tiers. */
+/** The section on a part page, "Electronic providers", the last on it: where to buy this kind of part, in tiers.
+ *  Its address stays `#sellers`, the one links were handed out with. */
 export function SellersSection({ page, kind }: { page: PartPage; kind: string }) {
   const cat = useCatalogue()
   const [hidden, setHidden] = useHidden()
@@ -240,7 +241,7 @@ export function SellersSection({ page, kind }: { page: PartPage; kind: string })
   const marketGroup = groups.get('marketplace_surplus')
   const table = (rows: Seller[]) => <TierTable rows={rows} part={page.part} list={list} groups={groups} found={page.sellers} />
   return (
-    <Section title="Where to buy" anchor="sellers">
+    <Section title="Electronic providers" anchor="sellers">
       {t.aggregators.length > 0 && (
         <>
           <h3 class="tier-head">Compare stock and prices across distributors</h3>
