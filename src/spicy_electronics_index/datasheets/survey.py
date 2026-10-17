@@ -76,15 +76,15 @@ DOCS = {"opamp": "opamp-characterisation.md"}
 V = r"(?:vs\.?|versus|against|as a function of)"
 TESTS = [
     # A supply
-    ("iq_vs_vs", "A", "opa-iq", [rf"(quiescent|supply|power supply) current.*{V}.*(supply|vcc|v\+|vs\b)", rf"\bi(cc|q|dd|s)\b.*{V}.*supply", rf"(supply|quiescent) current.*{V}.*voltage"]),
-    ("iq_vs_t", "A", "opa-iq", [rf"(quiescent|supply|power supply) current.*{V}.*temp", rf"\bi(cc|q|dd|s)\b.*{V}.*temp"]),
+    ("iq_vs_vs", "A", "opa-iq", [rf"operating current.*{V}.*(operating|supply) voltage", rf"\biq\b.*{V}.*(vcc|vdd|\bvs\b|supply)",rf"(quiescent|supply|power supply) current.*{V}.*(supply|vcc|v\+|vs\b)", rf"\bi(cc|q|dd|s)\b.*{V}.*supply", rf"(supply|quiescent) current.*{V}.*voltage"]),
+    ("iq_vs_t", "A", "opa-iq", [rf"operating current.*{V}.*temp", rf"\biq\b.*{V}.*temp",rf"(quiescent|supply|power supply) current.*{V}.*temp", rf"\bi(cc|q|dd|s)\b.*{V}.*temp"]),
     ("pd_vs_t", "A", "none", [rf"(power dissipation|dissipation).*{V}.*temp", r"derating"]),
     ("pd_vs_vs", "A", "none", [rf"(power dissipation|dissipation).*{V}.*supply"]),
     ("turn_on", "A", "opa-iq", [r"turn[- ]?on", r"start[- ]?up", r"power[- ]on"]),
-    ("vs_range", "A", "opa-runs", [r"supply voltage range", rf"operating voltage.*{V}"]),
+    ("vs_range", "A", "opa-runs", [r"supply voltage range", rf"operating voltage.*{V}", rf"supply voltage.*{V}.*temp"]),
     # B input DC
     ("vos_distribution", "B", "opa-offset", [r"offset voltage.*(distribution|histogram)", r"vos.*distribution", r"offset.*production"]),
-    ("vos_drift_distribution", "B", "opa-offset", [r"(offset|vos).*drift.*(distribution|histogram)"]),
+    ("vos_drift_distribution", "B", "opa-offset", [r"(offset|vos).*drift.*(distribution|histogram)", r"(offset|vio).*temp.*co.?efficient", r"(offset|vio).*temp\.? co\b"]),
     ("vos_warmup", "B", "opa-offset", [r"warm[- ]?up", rf"offset.*{V}.*time after power"]),
     ("vos_longterm", "B", "opa-offset", [r"long[- ]term", r"elapsed time", r"time \(months\)", rf"offset.*{V}.*\btime\b"]),
     ("vos_thermal_shock", "B", "opa-offset", [r"thermal shock"]),
@@ -93,14 +93,14 @@ TESTS = [
     ("vos_vs_vs", "B", "opa-offset", [rf"offset voltage.*{V}.*(power supply|supply)", rf"\bvio\b.*{V}.*supply"]),
     ("vos_vs_rs", "B", "opa-offset", [rf"offset voltage.*{V}.*source resist"]),
     ("vos_adjust", "B", "none", [r"offset.*(null|adjust|trim)", r"(null|nulling|adjust).*offset", r"\bvos\b.*adjust"]),
-    ("ib_vs_t", "B", "opa-bias", [rf"bias current.*{V}.*temp", r"bias current and (input )?offset", rf"\biib\b.*{V}.*temp", rf"\bib\b.*{V}.*temp"]),
+    ("ib_vs_t", "B", "opa-bias", [rf"input bias.*{V}.*temp",rf"bias current.*{V}.*temp", r"bias current and (input )?offset", rf"\biib\b.*{V}.*temp", rf"\bib\b.*{V}.*temp"]),
     ("ib_vs_vcm", "B", "opa-bias", [rf"bias current.*{V}.*(common|input voltage|vcm)", rf"\bib\b.*{V}.*(vcm|common)"]),
     ("ib_vs_vs", "B", "opa-bias", [rf"bias current.*{V}.*supply"]),
     ("ios_vs_t", "B", "opa-bias", [rf"offset current.*{V}.*temp", rf"\biio\b.*{V}.*temp", rf"\bios\b.*{V}.*temp"]),
     ("ios_vs_vcm", "B", "opa-bias", [rf"offset current.*{V}.*(common|vcm)"]),
     ("zin_vs_f", "B", "opa-bias", [rf"input (impedance|resistance|capacitance).*{V}"]),
     # C range and rejection
-    ("vicr_vs_t", "C", "opa-offset", [rf"common.mode (input )?(voltage )?range.*{V}.*temp", rf"input voltage range.*{V}.*temp", rf"\bvicr\b.*{V}.*temp"]),
+    ("vicr_vs_t", "C", "opa-offset", [rf"^input voltage.*{V}.*temp",rf"common.mode (input )?(voltage )?range.*{V}.*temp", rf"input voltage range.*{V}.*temp", rf"\bvicr\b.*{V}.*temp"]),
     ("vicr_vs_vs", "C", "opa-offset", [rf"common.mode (input )?(voltage )?range.*{V}.*supply", rf"input voltage range.*{V}.*supply", rf"\bvicr\b.*{V}.*supply", rf"input (common.mode )?voltage.*{V}.*supply"]),
     ("cmrr_vs_f", "C", "opa-cmrr-f", [rf"(cmrr|cmr|common.mode rejection).*{V}.*freq", r"cmrr and psrr.*freq", r"common.mode rejection and (power.)?supply rejection"]),
     ("cmrr_vs_t", "C", "opa-offset", [rf"(cmrr|cmr|common.mode rejection).*{V}.*temp"]),
@@ -108,7 +108,7 @@ TESTS = [
     ("psrr_vs_f", "C", "opa-psrr-f", [rf"(psrr|pssr|psr|power.supply rejection|supply.voltage rejection|supply voltage sensitivity|ksvr).*{V}.*freq"]),
     ("psrr_vs_t", "C", "opa-offset", [rf"(psrr|psr|power.supply rejection|supply.voltage rejection|supply voltage sensitivity|ksvr).*{V}.*temp"]),
     ("psrr_vs_vs", "C", "opa-offset", [rf"(psrr|psr|power.supply rejection|supply.voltage rejection).*{V}.*supply"]),
-    ("emirr_vs_f", "C", "opa-emirr", [r"emirr", r"emi rejection", r"\bemi\b"]),
+    ("emirr_vs_f", "C", "opa-emirr", [r"emirr", r"emi rejection", r"\bemi\b", r"electromagnetic interference"]),
     ("rejection_vs_t", "C", "opa-offset", [rf"^rejection.*{V}.*temp"]),
     # D gain and frequency
     ("aol_phase_vs_f", "D", "opa-aol", [rf"(open.loop|large.signal|differential).*(gain|amplification|response).*{V}.*freq", rf"gain.*phase.*{V}.*freq", r"open.loop (frequency|gain).*(response|phase)", rf"(gain|phase).*shift.*{V}.*freq", r"\bgain/phase\b", rf"\bavd\b.*{V}.*freq", r"(voltage )?gain and phase", r"bode", rf"phase (shift|margin).*{V}.*freq", r"open.loop.*gain.*(magnitude|phase)"]),
@@ -127,7 +127,7 @@ TESTS = [
     ("gain_vs_f_comp", "D", "opa-aol", [r"compensation", r"\bcomp\b"]),
     # E output
     ("vout_vs_f", "E", "opa-max-vo-f", [r"large.signal frequency response",rf"(maximum|peak|output|undistorted).*(output )?(voltage|swing).*{V}.*freq", r"(power|output|swing|large.signal) bandwidth", rf"\bvo(m|pp|\(pp\))?\b.*{V}.*freq"]),
-    ("vout_vs_iout", "E", "opa-swing", [r"(sinking|sourcing) characteristics", rf"(low|high) level output.*{V}.*output", rf"saturation.*{V}.*load current", rf"saturation.*{V}.*current",rf"(output|saturation).*(voltage|swing).*{V}.*(output current|iout|sink|source|\bio\b)", rf"(output|saturation) voltage.*{V}.*current", rf"(high|low).level output.*{V}.*current", rf"\bvo[hl]\b.*{V}", r"output.*(sink|source).*current"]),
+    ("vout_vs_iout", "E", "opa-swing", [r"output characteristics.*(sourc|sink)", rf"output current.*{V}.*output voltage", rf"\bvout\b.*{V}.*\biout\b",r"(sinking|sourcing) characteristics", rf"(low|high) level output.*{V}.*output", rf"saturation.*{V}.*load current", rf"saturation.*{V}.*current",rf"(output|saturation).*(voltage|swing).*{V}.*(output current|iout|sink|source|\bio\b)", rf"(output|saturation) voltage.*{V}.*current", rf"(high|low).level output.*{V}.*current", rf"\bvo[hl]\b.*{V}", r"output.*(sink|source).*current"]),
     ("vout_vs_rl", "E", "opa-swing", [rf"saturation.*{V}.*load",rf"(output|saturation|peak|maximum).*(voltage|swing).*{V}.*load (resist|current)?", rf"(output|saturation).*voltage.*{V}.*\brl\b", rf"\bvo(m|pp)?\b.*{V}.*load"]),
     ("vout_vs_vs", "E", "opa-swing", [rf"(maximum|peak|output).*(voltage|swing).*{V}.*supply", rf"\bvo(m|pp)?\b.*{V}.*supply", rf"output (voltage )?swing.*{V}.*(vcc|vs\b)"]),
     ("vout_vs_t", "E", "opa-swing", [rf"(maximum|peak|output).*(voltage|swing).*{V}.*temp", rf"\bvo(m|pp)?\b.*{V}.*temp"]),
@@ -141,13 +141,13 @@ TESTS = [
     ("slew_vs_vs", "F", "opa-slew", [rf"slew rate.*{V}.*supply"]),
     ("slew_vs_cl", "F", "opa-slew", [rf"slew rate.*{V}.*(capacit|load)"]),
     ("slew_vs_gain", "F", "opa-slew", [rf"slew rate.*{V}.*gain"]),
-    ("large_step", "F", "opa-slew", [r"large.signal.*(step|pulse|transient|response|waveform)", r"(inverting|non.?inverting|follower).*(slew|large.signal|pulse)", r"(voltage|unity).?(gain )?follower.*(pulse|large)", r"pulse response.*large", r"slew(ing)? (response|waveform)", rf"large.signal.*{V}.*time", r"output.*swing.*(step|pulse)"]),
+    ("large_step", "F", "opa-slew", [r"^large signal$",r"large.signal.*(step|pulse|transient|response|waveform)", r"(inverting|non.?inverting|follower).*(slew|large.signal|pulse)", r"(voltage|unity).?(gain )?follower.*(pulse|large)", r"pulse response.*large", r"slew(ing)? (response|waveform)", rf"large.signal.*{V}.*time", r"output.*swing.*(step|pulse)"]),
     ("settling", "F", "opa-settling", [r"settling"]),
-    ("overload_recovery", "F", "opa-overload", [r"overload", r"over.?drive recovery", r"saturation recovery"]),
+    ("overload_recovery", "F", "opa-overload", [r"overload", r"over.?drive recovery", r"saturation recovery", r"over.?voltage recovery"]),
     ("phase_reversal", "F", "opa-phase-reversal", [r"phase reversal", r"phase inversion"]),
     ("input_overvoltage", "F", "opa-phase-reversal", [rf"{V} the input voltage", r"input (over.?voltage|beyond)", rf"output voltage( node)?.*{V}.*input( voltage)?$", rf"(differential|positive|negative) output voltage.*{V}.*input"]),
     # G small signal
-    ("small_step", "G", "opa-step", [r"dynamic (performance|response)", r"small.signal.*(follower|response)",r"small.signal.*(step|pulse|transient|response|waveform)", r"pulse response.*small", r"(step|pulse|transient) response", r"(rising|falling) edge"]),
+    ("small_step", "G", "opa-step", [r"^small signal$",r"dynamic (performance|response)", r"small.signal.*(follower|response)",r"small.signal.*(step|pulse|transient|response|waveform)", r"pulse response.*small", r"(step|pulse|transient) response", r"(rising|falling) edge"]),
     ("overshoot_vs_cl", "G", "opa-stability", [rf"overshoot.*{V}.*(capacit|load)", r"overshoot.*\bcl\b", r"amplifier overshoot", r"overshoot"]),
     # I distortion
     ("thd_vs_f", "I", "opa-thd-f", [rf"(thd|distortion|harmonic).*{V}.*freq"]),
@@ -201,7 +201,7 @@ SKIP = re.compile(r"(package|pin (configuration|function|assignment|out|connecti
                   r"protection|current source$|current sink$|i-v|\bdac\b|baxandall|simulation|notch|distribution amplifier|"
                   r"ac amplifier|telephone|load cell|thermocouple|photodiode|transimpedance|cable|coaxial|of the inverting amplifier|"
                   r"supply rails|flat amp|photovoltaic|compliance|high frequency pulse|basic (inverting|noninverting)|dc coupled|"
-                  r"power supply configurations|^[a-z]{1,4}(?:, [a-z]{1,4})*,? and [a-z]{1,4}$)", re.I)
+                  r"power supply configurations|thermistor|current sense|current pump|high.gain amplifier|unused op.?amp|single supply inverting|^[a-z]{1,4}(?:, [a-z]{1,4})*,? and [a-z]{1,4}$)", re.I)
 # Named before the skip list is asked: a test circuit is a circuit, and an offset-null circuit is not an application.
 FIRST = ("vos_adjust", "test_circuit")
 

@@ -72,6 +72,12 @@ TITLES = [
     ("Measured Deviation From Ideal RIAA Response", "skip"),
     ("Operational Amplifier Board Layout for Noninverting Configuration", "skip"),
     ("Input and Output Voltages of the Inverting Amplifier", "skip"),
+    ("Positive Over-Voltage Recovery", "overload_recovery"),            # 3PEAK, and ST's "Overvoltage Recovery"
+    ("VOUT vs. IOUT, Source", "vout_vs_iout"),
+    ("IQ vs. VCC, TP1242L1", "iq_vs_vs"),
+    ("Vio temperature co-efficient distribution (-40 °C to 25 °C)", "vos_drift_distribution"),
+    ("Electromagnetic Interference Rejection Ratio", "emirr_vs_f"),
+    ("Thermistor Measurement", "skip"),
     ("Pulsed Operation", ""),
 ]
 
@@ -154,7 +160,7 @@ def test_the_registry_says_how_every_sheet_is_reached_and_why_some_are_not():
     ids = [s["id"] for s in reg["sheets"]]
     assert len(ids) == len(set(ids))
     makers = {s["maker"] for s in reg["sheets"]}
-    assert {"ti", "onsemi", "adi", "st", "nisshinbo"} <= makers
+    assert {"ti", "onsemi", "umw", "3peak", "adi", "st", "nisshinbo"} <= makers
     for s in reg["sheets"]:
         assert s["how"] in SV.HOWS, s["id"]
         if s["how"] in ("direct", "wayback"):

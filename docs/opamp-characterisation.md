@@ -32,7 +32,10 @@ opinions, explained once per measurement, reproducible — with three additions:
 ## What the makers' sheets measure
 
 The survey (`make datasheets-survey`, `sei datasheets survey --kind opamp`) reads a set of sheets chosen
-from the top of the index's usage list and widened across makers, and publishes every figure's title, the
+from the top of the index's usage list and widened across makers — TI's four formats (Burr-Brown, National,
+legacy and post-2015), onsemi's Motorola and Fairchild sheets, and two Chinese makers' readings of the same
+parts, UMW's (which keep the format of the maker each part is named after) and 3PEAK's own designs — and
+publishes every figure's title, the
 test it draws and the conditions printed beside it (`data/datasheets/survey/opamp/`). The registry
 `data/datasheets/survey/opamp.yaml` says how each sheet is reached, and which are not: Nisshinbo's
 robots.txt disallows every PDF and Microchip's the whole site to scripts, so those sheets are linked and not
@@ -44,7 +47,7 @@ the surveyed sheets lack.
 
 <!-- survey:start -->
 
-Survey of 36 sheets read by `sei datasheets survey --kind opamp` (reader `survey-1`), 1373 figure titles, 1087 mapped to a test; the tables `data/datasheets/survey/opamp/{sheets,figures,matrix,conditions}.csv` hold every row.
+Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey-1`), 2026 figure titles, 1704 mapped to a test; the tables `data/datasheets/survey/opamp/{sheets,figures,matrix,conditions}.csv` hold every row.
 
 | sheet | maker | document | revision | date | pages | figures | mapped | read from |
 |---|---|---|---|---|---|---|---|---|
@@ -85,6 +88,15 @@ Survey of 36 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [MC34071](https://www.onsemi.com/download/data-sheet/pdf/mc34071-d.pdf) | onsemi | MC34071/D | 24 | October, 2021 | 26 | 64 | 36 | maker's site |
 | [MC33272A](https://www.onsemi.com/download/data-sheet/pdf/mc33272a-d.pdf) | onsemi | MC33272A/D | 15 | July, 2025 | 21 | 36 | 36 | maker's site |
 | [NCS20071](https://www.onsemi.com/download/data-sheet/pdf/ncs20071-d.pdf) | onsemi | NCS20071/D | 15 | February, 2026 | 29 | 30 | 27 | maker's site |
+| [LM2902A](https://www.onsemi.com/download/data-sheet/pdf/lm2902a-d.pdf) | onsemi |  | 1.0 |  | 14 | 12 | 12 | maker's site |
+| [LM301A](https://www.onsemi.com/download/data-sheet/pdf/lm301a-d.pdf) | onsemi | LM301A/D | 12 | July, 2025 | 11 | 15 | 13 | maker's site |
+| [MC1458](https://www.onsemi.com/download/data-sheet/pdf/mc1458-d.pdf) | onsemi | MC1458/D | 2 | March, 2001 | 9 | 15 | 13 | maker's site |
+| [MC33077](https://www.onsemi.com/download/data-sheet/pdf/mc33077-d.pdf) | onsemi | MC33077/D | 6 | July, 2025 | 17 | 38 | 36 | maker's site |
+| [MC33171](https://www.onsemi.com/download/data-sheet/pdf/mc33171-d.pdf) | onsemi | MC33171/D | 14 | July, 2025 | 20 | 15 | 9 | maker's site |
+| [MC33201](https://www.onsemi.com/download/data-sheet/pdf/mc33201-d.pdf) | onsemi | MC33201/D | 19 | October, 2021 | 16 | 29 | 27 | maker's site |
+| [MC33501](https://www.onsemi.com/download/data-sheet/pdf/mc33501-d.pdf) | onsemi | MC33501/D | 10 | July, 2006 | 15 | 36 | 30 | maker's site |
+| [MC4558](https://www.onsemi.com/download/data-sheet/pdf/mc4558-d.pdf) | onsemi |  | 5 |  | 9 | 11 | 11 | maker's site |
+| [NE5534](https://www.onsemi.com/download/data-sheet/pdf/ne5534-d.pdf) | onsemi | NE5534/D | 4 | December, 2024 | 12 | 17 | 14 | maker's site |
 | [OP27](https://www.analog.com/media/en/technical-documentation/data-sheets/OP27.pdf) | adi |  |  |  |  |  |  | not fetched yet |
 | [OP37](https://www.analog.com/media/en/technical-documentation/data-sheets/OP37.pdf) | adi |  |  |  |  |  |  | not fetched yet |
 | [OP07](https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf) | adi |  |  |  |  |  |  | not fetched yet |
@@ -110,132 +122,161 @@ Survey of 36 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [CA3130](https://www.renesas.com/us/en/document/dst/ca3130-ca3130a-datasheet) | renesas |  |  |  |  |  |  | not read: HTTP 403 |
 | CA3140 | renesas |  |  |  |  |  |  | not fetched yet |
 | CA3130 | renesas |  |  |  |  |  |  | not fetched yet |
+| [NJM4580](https://www.umw-ic.com/static/pdf/3fb7399a74ea65a686b0dd3b99ab915e.pdf) | umw |  |  |  | 8 | 6 | 6 | maker's site |
+| [LM358](https://www.umw-ic.com/static/pdf/989d9d9c30a14e30242b4cc708213fdf.pdf) | umw |  |  |  | 11 | 6 | 6 | maker's site |
+| [LM2904](https://www.umw-ic.com/static/pdf/9311660af74322a9f7f261a5abc03f5f.pdf) | umw |  |  |  | 9 | 13 | 13 | maker's site |
+| [LM2902](https://www.umw-ic.com/static/pdf/749d36fe6f677a887addd4ac20f10a46.pdf) | umw |  |  |  | 13 | 8 | 8 | maker's site |
+| [OPA277](https://www.umw-ic.com/static/pdf/d27508c041995d9cc3a342089caba6ea.pdf) | umw |  |  |  | 15 | 23 | 23 | maker's site |
+| [TLC2272](https://www.umw-ic.com/static/pdf/29f67d21a27790ec1689d6fa18cddd16.pdf) | umw |  |  |  | 30 | 57 | 57 | maker's site |
+| [MCP6002](https://www.umw-ic.com/static/pdf/f93fc427e29bccb5282e7f18e746b7b1.pdf) | umw |  |  |  | 17 | 21 | 21 | maker's site |
+| [AD8542](https://www.umw-ic.com/static/pdf/b36119e8c620dbec3fbb2c16b1913e60.pdf) | umw |  |  |  | 24 | 8 | 8 | maker's site |
+| [OP2177](https://www.umw-ic.com/static/pdf/927224c365e0f3cb1db31b04c8cdae58.pdf) | umw |  |  |  | 17 | 44 | 44 | maker's site |
+| [TSV912](https://www.umw-ic.com/static/pdf/85b4d26c12c9d2898d845ba3190223ed.pdf) | umw |  |  |  | 26 | 29 | 27 | maker's site |
+| [TSZ122](https://www.umw-ic.com/static/pdf/42d1b690a778470622f39134b72d817e.pdf) | umw |  |  |  | 21 | 35 | 35 | maker's site |
+| [OPA348](https://www.umw-ic.com/static/pdf/51ae346b884632fd3756b4003d788601.pdf) | umw |  |  |  | 15 | 18 | 18 | maker's site |
+| [TP07A](https://static.3peak.com/res/doc/ds/Datasheet_TP07A.pdf) | 3peak |  |  |  | 14 | 16 | 16 | maker's site |
+| [TP27](https://static.3peak.com/res/doc/ds/Datasheet_TP27.pdf) | 3peak |  |  |  | 14 | 16 | 16 | maker's site |
+| [TP2272](https://static.3peak.com/res/doc/ds/Datasheet_TP2271-TP2272-TP2274.pdf) | 3peak |  |  |  | 24 | 22 | 20 | maker's site |
+| [TP5532](https://static.3peak.com/res/doc/ds/Datasheet_TP5531-TP5532-TP5534.pdf) | 3peak |  |  |  | 30 | 22 | 19 | maker's site |
+| [TP5552](https://static.3peak.com/res/doc/ds/Datasheet_TP5551-TP5552-TP5554.pdf) | 3peak |  | B |  | 22 | 9 | 8 | maker's site |
+| [TP5592](https://static.3peak.com/res/doc/ds/Datasheet_TP5591-TP5592-TP5594.pdf) | 3peak |  |  |  | 26 | 14 | 11 | maker's site |
+| [TP6002](https://static.3peak.com/res/doc/ds/Datasheet_TP6001-TP6002-TP6004.pdf) | 3peak |  |  |  | 26 | 20 | 18 | maker's site |
+| [TP2302](https://static.3peak.com/res/doc/ds/Datasheet_TP2301-TP2302-TP2304.pdf) | 3peak |  |  |  | 22 | 19 | 19 | maker's site |
+| [TP1242](https://static.3peak.com/res/doc/ds/Datasheet_TP1241L1-TP1242L1.pdf) | 3peak |  |  |  | 18 | 18 | 18 | maker's site |
+| [LM358A](https://static.3peak.com/res/doc/ds/Datasheet_LM321A-LM358A-LM324A.pdf) | 3peak |  |  |  | 24 | 15 | 15 | maker's site |
+| [LM2904A](https://static.3peak.com/res/doc/ds/Datasheet_LM2904A-LM2902A.pdf) | 3peak |  |  |  | 18 | 10 | 10 | maker's site |
+| [TP2582](https://static.3peak.com/res/doc/ds/Datasheet_TP2581-TP2582-TP2584.pdf) | 3peak |  | A |  | 18 | 16 | 16 | maker's site |
 | [NJM2068](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [NJM4558](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4558_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [NJM4580](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4580_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [NJM5532](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM5532_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [MCP6001](https://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf) | microchip |  |  |  |  |  |  | not read: robots.txt disallows the whole site to every agent |
 
-Tests by category: how many of the 36 sheets draw each, in all and per maker (onsemi 9, ti 27); `bench` is the measurement that draws the same graph for a model.
+Tests by category: how many of the 69 sheets draw each, in all and per maker (3peak 12, onsemi 18, ti 27, umw 12); `bench` is the measurement that draws the same graph for a model.
 
-| test | bench | sheets | onsemi | ti |
-|---|---|---|---|---|
-| **A supply** | | |  |  |
-| `iq_vs_vs` | `opa-iq` | 22 | 7 | 15 |
-| `iq_vs_t` | `opa-iq` | 18 | 2 | 16 |
-| `pd_vs_t` | `none` | 7 | 4 | 3 |
-| `pd_vs_vs` | `none` | 1 |  | 1 |
-| **B input DC** | | |  |  |
-| `vos_distribution` | `opa-offset` | 7 |  | 7 |
-| `vos_warmup` | `opa-offset` | 3 |  | 3 |
-| `vos_longterm` | `opa-offset` | 3 |  | 3 |
-| `vos_vs_t` | `opa-offset` | 16 | 5 | 11 |
-| `vos_vs_vcm` | `opa-offset` | 7 | 1 | 6 |
-| `vos_vs_vs` | `opa-offset` | 7 | 1 | 6 |
-| `vos_adjust` | `none` | 8 | 1 | 7 |
-| `ib_vs_t` | `opa-bias` | 22 | 5 | 17 |
-| `ib_vs_vcm` | `opa-bias` | 18 | 5 | 13 |
-| `ib_vs_vs` | `opa-bias` | 8 | 4 | 4 |
-| `ios_vs_t` | `opa-bias` | 3 | 1 | 2 |
-| `ios_vs_vcm` | `opa-bias` | 1 |  | 1 |
-| **C range and rejection** | | |  |  |
-| `vicr_vs_t` | `opa-offset` | 4 | 4 |  |
-| `vicr_vs_vs` | `opa-offset` | 1 |  | 1 |
-| `cmrr_vs_f` | `opa-cmrr-f` | 24 | 6 | 18 |
-| `cmrr_vs_t` | `opa-offset` | 11 |  | 11 |
-| `cmrr_vs_vcm` | `opa-offset` | 1 |  | 1 |
-| `psrr_vs_f` | `opa-psrr-f` | 15 | 6 | 9 |
-| `psrr_vs_t` | `opa-offset` | 8 | 1 | 7 |
-| `psrr_vs_vs` | `opa-offset` | 1 |  | 1 |
-| `emirr_vs_f` | `opa-emirr` | 9 |  | 9 |
-| **D gain and frequency** | | |  |  |
-| `aol_phase_vs_f` | `opa-aol` | 31 | 8 | 23 |
-| `closed_loop_gain_vs_f` | `opa-closed-loop` | 14 | 3 | 11 |
-| `aol_vs_t` | `opa-aol` | 18 | 5 | 13 |
-| `aol_vs_vs` | `opa-aol-swing` | 7 | 2 | 5 |
-| `aol_vs_rl` | `opa-aol-swing` | 1 |  | 1 |
-| `gbw_vs_vs` | `opa-aol` | 5 | 2 | 3 |
-| `gbw_vs_t` | `opa-aol` | 11 | 5 | 6 |
-| `phase_margin_vs_cl` | `opa-stability` | 8 | 2 | 6 |
-| `phase_margin_vs_rs` | `opa-stability` | 4 | 4 |  |
-| `phase_margin_vs_t` | `opa-aol` | 3 | 3 |  |
-| `gain_vs_f_comp` | `opa-aol` | 1 | 1 |  |
-| **E output** | | |  |  |
-| `vout_vs_f` | `opa-max-vo-f` | 27 | 5 | 22 |
-| `vout_vs_iout` | `opa-swing` | 15 | 4 | 11 |
-| `vout_vs_rl` | `opa-swing` | 11 | 3 | 8 |
-| `vout_vs_vs` | `opa-swing` | 11 | 5 | 6 |
-| `vout_vs_t` | `opa-swing` | 4 | 1 | 3 |
-| `isc_vs_t` | `opa-isc` | 17 | 4 | 13 |
-| `isc_vs_vs` | `opa-isc` | 1 |  | 1 |
-| `zout_vs_f` | `opa-zout` | 18 | 5 | 13 |
-| **F large signal** | | |  |  |
-| `slew_vs_t` | `opa-slew` | 11 | 6 | 5 |
-| `slew_vs_vs` | `opa-slew` | 4 | 2 | 2 |
-| `large_step` | `opa-slew` | 23 | 8 | 15 |
-| `settling` | `opa-settling` | 7 | 2 | 5 |
-| `overload_recovery` | `opa-overload` | 7 |  | 7 |
-| `phase_reversal` | `opa-phase-reversal` | 5 |  | 5 |
-| `input_overvoltage` | `opa-phase-reversal` | 3 |  | 3 |
-| **G small signal** | | |  |  |
-| `small_step` | `opa-step` | 20 | 4 | 16 |
-| `overshoot_vs_cl` | `opa-stability` | 17 | 5 | 12 |
-| **I distortion** | | |  |  |
-| `thd_vs_f` | `opa-thd-f` | 22 | 6 | 16 |
-| `thd_vs_level` | `opa-thd-level` | 15 | 3 | 12 |
-| `imd` | `opa-imd` | 2 |  | 2 |
-| `spectrum` | `opa-thd-f` | 2 |  | 2 |
-| `thd_other` | `opa-thd-f` | 1 |  | 1 |
-| **H noise** | | |  |  |
-| `noise_0p1_10` | `opa-noise` | 13 | 2 | 11 |
-| `en_vs_vs` | `opa-noise` | 1 |  | 1 |
-| `en_vs_t` | `opa-noise` | 1 |  | 1 |
-| `noise_vs_rs` | `opa-noise-rs` | 10 | 2 | 8 |
-| `noise_vs_bandwidth` | `opa-noise` | 2 |  | 2 |
-| `in_vs_f` | `opa-noise` | 11 | 4 | 7 |
-| `en_vs_f` | `opa-noise` | 21 | 6 | 15 |
-| **J multichannel** | | |  |  |
-| `channel_separation_vs_f` | `opa-separation` | 20 | 5 | 15 |
-| **K test circuits** | | |  |  |
-| `test_circuit` | `none` | 27 | 6 | 21 |
-| **C range and rejection** | | |  |  |
-| `vicr_other` | `opa-offset` | 6 | 3 | 3 |
-| **E output** | | |  |  |
-| `vout_other` | `opa-swing` | 3 | 1 | 2 |
-| `isc_other` | `opa-isc` | 4 | 1 | 3 |
-| `zout_other` | `opa-zout` | 1 |  | 1 |
-| **D gain and frequency** | | |  |  |
-| `aol_other` | `opa-aol` | 3 | 1 | 2 |
-| `gbw_other` | `opa-aol` | 1 |  | 1 |
-| **F large signal** | | |  |  |
-| `slew_other` | `opa-slew` | 2 |  | 2 |
-| **B input DC** | | |  |  |
-| `ib_other` | `opa-bias` | 2 | 1 | 1 |
-| `ios_other` | `opa-bias` | 1 |  | 1 |
-| **A supply** | | |  |  |
-| `iq_other` | `opa-iq` | 2 | 1 | 1 |
-| **C range and rejection** | | |  |  |
-| `cmrr_other` | `opa-cmrr-f` | 2 |  | 2 |
-| `psrr_other` | `opa-psrr-f` | 1 |  | 1 |
-| **H noise** | | |  |  |
-| `noise_other` | `opa-noise` | 6 | 1 | 5 |
-| **N Norton amplifiers** | | |  |  |
-| `norton` | `none` | 2 |  | 2 |
+| test | bench | sheets | 3peak | onsemi | ti | umw |
+|---|---|---|---|---|---|---|
+| **A supply** | | |  |  |  |  |
+| `iq_vs_vs` | `opa-iq` | 41 | 7 | 11 | 15 | 8 |
+| `iq_vs_t` | `opa-iq` | 33 | 9 | 3 | 16 | 5 |
+| `pd_vs_t` | `none` | 10 |  | 7 | 3 |  |
+| `pd_vs_vs` | `none` | 1 |  |  | 1 |  |
+| `vs_range` | `opa-runs` | 1 |  | 1 |  |  |
+| **B input DC** | | |  |  |  |  |
+| `vos_distribution` | `opa-offset` | 19 | 4 | 2 | 7 | 6 |
+| `vos_drift_distribution` | `opa-offset` | 3 |  |  |  | 3 |
+| `vos_warmup` | `opa-offset` | 5 |  |  | 3 | 2 |
+| `vos_longterm` | `opa-offset` | 3 |  |  | 3 |  |
+| `vos_vs_t` | `opa-offset` | 27 | 7 | 6 | 11 | 3 |
+| `vos_vs_vcm` | `opa-offset` | 20 | 10 | 1 | 6 | 3 |
+| `vos_vs_vs` | `opa-offset` | 9 |  | 1 | 6 | 2 |
+| `vos_adjust` | `none` | 10 |  | 3 | 7 |  |
+| `ib_vs_t` | `opa-bias` | 35 | 4 | 8 | 17 | 6 |
+| `ib_vs_vcm` | `opa-bias` | 23 | 1 | 7 | 13 | 2 |
+| `ib_vs_vs` | `opa-bias` | 10 |  | 5 | 4 | 1 |
+| `ios_vs_t` | `opa-bias` | 2 |  |  | 2 |  |
+| `ios_vs_vcm` | `opa-bias` | 1 |  |  | 1 |  |
+| **C range and rejection** | | |  |  |  |  |
+| `vicr_vs_t` | `opa-offset` | 7 |  | 6 |  | 1 |
+| `vicr_vs_vs` | `opa-offset` | 3 |  | 1 | 1 | 1 |
+| `cmrr_vs_f` | `opa-cmrr-f` | 46 | 12 | 9 | 18 | 7 |
+| `cmrr_vs_t` | `opa-offset` | 19 | 3 |  | 11 | 5 |
+| `cmrr_vs_vcm` | `opa-offset` | 1 |  |  | 1 |  |
+| `psrr_vs_f` | `opa-psrr-f` | 30 | 9 | 9 | 9 | 3 |
+| `psrr_vs_t` | `opa-offset` | 14 | 3 | 1 | 7 | 3 |
+| `psrr_vs_vs` | `opa-offset` | 1 |  |  | 1 |  |
+| `emirr_vs_f` | `opa-emirr` | 19 | 9 |  | 9 | 1 |
+| **D gain and frequency** | | |  |  |  |  |
+| `aol_phase_vs_f` | `opa-aol` | 58 | 10 | 17 | 23 | 8 |
+| `closed_loop_gain_vs_f` | `opa-closed-loop` | 20 |  | 6 | 11 | 3 |
+| `aol_vs_t` | `opa-aol` | 23 | 1 | 8 | 13 | 1 |
+| `aol_vs_vs` | `opa-aol-swing` | 12 |  | 6 | 5 | 1 |
+| `aol_vs_rl` | `opa-aol-swing` | 2 |  |  | 1 | 1 |
+| `aol_vs_vo` | `opa-aol-swing` | 1 |  |  |  | 1 |
+| `gbw_vs_vs` | `opa-aol` | 7 |  | 3 | 3 | 1 |
+| `gbw_vs_t` | `opa-aol` | 17 | 1 | 9 | 6 | 1 |
+| `phase_margin_vs_cl` | `opa-stability` | 11 |  | 3 | 6 | 2 |
+| `phase_margin_vs_rs` | `opa-stability` | 5 |  | 5 |  |  |
+| `phase_margin_vs_t` | `opa-aol` | 3 |  | 3 |  |  |
+| `gain_vs_f_comp` | `opa-aol` | 3 |  | 3 |  |  |
+| **E output** | | |  |  |  |  |
+| `vout_vs_f` | `opa-max-vo-f` | 41 | 2 | 10 | 22 | 7 |
+| `vout_vs_iout` | `opa-swing` | 32 | 4 | 8 | 11 | 9 |
+| `vout_vs_rl` | `opa-swing` | 19 | 3 | 7 | 8 | 1 |
+| `vout_vs_vs` | `opa-swing` | 14 |  | 8 | 6 |  |
+| `vout_vs_t` | `opa-swing` | 5 |  | 1 | 3 | 1 |
+| `isc_vs_t` | `opa-isc` | 27 | 2 | 8 | 13 | 4 |
+| `isc_vs_vs` | `opa-isc` | 4 |  |  | 1 | 3 |
+| `zout_vs_f` | `opa-zout` | 24 |  | 6 | 13 | 5 |
+| **F large signal** | | |  |  |  |  |
+| `slew_vs_t` | `opa-slew` | 16 |  | 9 | 5 | 2 |
+| `slew_vs_vs` | `opa-slew` | 6 |  | 3 | 2 | 1 |
+| `slew_vs_cl` | `opa-slew` | 1 |  |  |  | 1 |
+| `large_step` | `opa-slew` | 41 | 2 | 14 | 15 | 10 |
+| `settling` | `opa-settling` | 10 | 1 | 2 | 5 | 2 |
+| `overload_recovery` | `opa-overload` | 19 | 10 |  | 7 | 2 |
+| `phase_reversal` | `opa-phase-reversal` | 8 |  |  | 5 | 3 |
+| `input_overvoltage` | `opa-phase-reversal` | 4 |  |  | 3 | 1 |
+| **G small signal** | | |  |  |  |  |
+| `small_step` | `opa-step` | 39 | 10 | 7 | 16 | 6 |
+| `overshoot_vs_cl` | `opa-stability` | 22 |  | 6 | 12 | 4 |
+| **I distortion** | | |  |  |  |  |
+| `thd_vs_f` | `opa-thd-f` | 30 | 3 | 9 | 16 | 2 |
+| `thd_vs_level` | `opa-thd-level` | 16 |  | 4 | 12 |  |
+| `imd` | `opa-imd` | 2 |  |  | 2 |  |
+| `spectrum` | `opa-thd-f` | 2 |  |  | 2 |  |
+| `thd_other` | `opa-thd-f` | 1 |  |  | 1 |  |
+| **H noise** | | |  |  |  |  |
+| `noise_0p1_10` | `opa-noise` | 21 | 2 | 3 | 11 | 5 |
+| `en_vs_vs` | `opa-noise` | 1 |  |  | 1 |  |
+| `en_vs_t` | `opa-noise` | 2 |  |  | 1 | 1 |
+| `noise_vs_rs` | `opa-noise-rs` | 13 |  | 5 | 8 |  |
+| `noise_vs_bandwidth` | `opa-noise` | 3 |  |  | 2 | 1 |
+| `in_vs_f` | `opa-noise` | 13 |  | 5 | 7 | 1 |
+| `en_vs_f` | `opa-noise` | 45 | 12 | 12 | 15 | 6 |
+| **J multichannel** | | |  |  |  |  |
+| `channel_separation_vs_f` | `opa-separation` | 28 | 1 | 8 | 15 | 4 |
+| **K test circuits** | | |  |  |  |  |
+| `test_circuit` | `none` | 34 | 2 | 9 | 21 | 2 |
+| **C range and rejection** | | |  |  |  |  |
+| `vicr_other` | `opa-offset` | 9 |  | 5 | 3 | 1 |
+| **E output** | | |  |  |  |  |
+| `vout_other` | `opa-swing` | 9 |  | 5 | 2 | 2 |
+| `isc_other` | `opa-isc` | 7 |  | 2 | 3 | 2 |
+| `zout_other` | `opa-zout` | 2 |  | 1 | 1 |  |
+| **D gain and frequency** | | |  |  |  |  |
+| `aol_other` | `opa-aol` | 5 |  | 2 | 2 | 1 |
+| `gbw_other` | `opa-aol` | 1 |  |  | 1 |  |
+| **F large signal** | | |  |  |  |  |
+| `slew_other` | `opa-slew` | 3 |  | 1 | 2 |  |
+| **B input DC** | | |  |  |  |  |
+| `ib_other` | `opa-bias` | 7 |  | 2 | 1 | 4 |
+| `ios_other` | `opa-bias` | 3 | 2 |  | 1 |  |
+| `vos_other` | `opa-offset` | 2 |  |  |  | 2 |
+| **A supply** | | |  |  |  |  |
+| `iq_other` | `opa-iq` | 7 | 2 | 3 | 1 | 1 |
+| **C range and rejection** | | |  |  |  |  |
+| `cmrr_other` | `opa-cmrr-f` | 5 | 1 | 1 | 2 | 1 |
+| `psrr_other` | `opa-psrr-f` | 2 | 1 |  | 1 |  |
+| **H noise** | | |  |  |  |  |
+| `noise_other` | `opa-noise` | 7 |  | 2 | 5 |  |
+| **N Norton amplifiers** | | |  |  |  |  |
+| `norton` | `none` | 11 | 5 | 2 | 2 | 2 |
 
 Titles no rule maps: 25 (listed in `figures.csv` with an empty `test`).
 
 Conditions named most often, over all sheets read (value, mentions):
 
-- **supply**: 15 V (69), 15V (68), 12V (50), 17V (50), ±15 V (45), 40 V (40), 36 V (38), 2.5V (38), ±15V (33), 30 V (32), 5 V (28), 5V (22)
-- **rl**: 2 kΩ (77), 10kΩ (71), 2 kΩ (58), 2kΩ (53), 2kΩ (52), 10kΩ (50), 600Ω (50), 10 kΩ (45), 600Ω (33), 10 kΩ (22), 1kΩ (19), 600 Ω (11)
-- **cl**: 100 pF (54), 20 pF (37), 20pF (22), 0 pF (21), 300 pF (16), 100pF (15), 25 pF (13), 10 pF (10), 500 pF (5), 30pF (5), 10pF (4), 1500 pF (3)
-- **vo**: 0 V (89), 3VRMS (41), 1.4V (28), 3 VRMS (21), ±10 V (18), 10VRMS (18), 0V (15), 1.4 V (14), 1 V (10), 1V (8), 2.5V (7), 15 V (7)
-- **f**: 1 kHz (95), 200kHz (48), 1kHz (46), 10 kHz (18), 10 Hz (15), 100 kHz (15), 20 Hz (14), 1.0 kHz (13), 0.1Hz (10), 1 MHz (9), 10Hz (9), 10kHz (9)
-- **gain**: 1 (141), +1 (90), 0dB (42), –1 (39), +1.0 (36), 100 (21), 10 (19), +10 (17), 1 V/V (14), –10 (13), 1000 (12), 1V/V (11)
-- **temp**: 25°C (413), –40°C (131), –55°C (46), –25°C (33), 125°C (21), 0°C (20), -55°C (5), 70°C (3), 85°C (3), -40°C (1)
-- **rs**: 50 Ω (18), 50Ω (16), 20 Ω (15), 50 Ω (12), 10 kΩ (6), 10 Ω (4), 10kΩ (3), 10 Ω (3), 1 kΩ (2), 0Ω (2), 100Ω (2), 100 Ω (2)
-- **vcm**: 0 V (56), VS / 2 (42), 0 (40), VOUT = midsupply (un (14), VICRmin (11), 0V (10), VOUT = midsupply (9), VOUT = mid-supply un (9), VOUT = VS / 2 (8), VS/2 (unless otherwi (7), 0 V) (6), 15V (4)
-- **band**: 80 kHz (20), 80kHz (18), 0.1 Hz to 10 Hz (17), 20 Hz to 20 kHz (17), 0.1Hz to 10Hz (12), 20Hz to 20kHz (5), 30kHz (3), 10 Hz to 10 kHz (2), 30 kHz (1)
+- **supply**: 15V (100), 5 V (84), 15 V (74), 5V (71), 30 V (62), 36 V (52), ±15 V (52), 12V (50), 17V (50), 2.5V (46), ±15V (44), 5.0 V (43)
+- **rl**: 10kΩ (143), 2 kΩ (95), 2kΩ (79), 10 kΩ (67), 2 kΩ (58), 10 kΩ (54), 2kΩ (54), 10kΩ (50), 600Ω (50), 600Ω (33), 1kΩ (19), 1MΩ (17)
+- **cl**: 100 pF (128), 100pF (60), 20 pF (37), 0 pF (32), 20pF (23), 300 pF (19), 10 pF (14), 25 pF (13), 500 pF (7), 30pF (6), 1500pF (6), 10pF (5)
+- **vo**: 0 V (115), 0V (46), 3VRMS (41), 1.4V (34), ±10 V (24), 3 VRMS (21), 10VRMS (18), 1V (14), 2.5V (14), 1.4 V (14), 6 VRMS (11), 1 V (11)
+- **f**: 1 kHz (127), 1kHz (84), 200kHz (49), 10 kHz (29), 100 kHz (26), 1.0 kHz (25), 10kHz (24), 0.1Hz (23), 10 Hz (22), 0.1 Hz (20), 20 Hz (16), 10Hz (14)
+- **gain**: 1 (220), +1 (104), 10 (56), +1.0 (49), 100 (42), 0dB (42), –1 (40), +10 (22), 1.0 (20), 1000 (19), 1 V/V (14), –10 (13)
+- **temp**: 25°C (664), –40°C (131), –55°C (46), -40°C (44), 125°C (33), –25°C (33), 0°C (25), -55°C (6), 85°C (4), 70°C (3), 27°C (3)
+- **rs**: 50Ω (44), 50 Ω (18), 50 Ω (16), 20 Ω (15), 0Ω (9), 10 kΩ (7), 10 kΩ (6), 10 Ω (4), 20 Ω (3), 100Ω (3), 10kΩ (3), 10 Ω (3)
+- **vcm**: 0 V (82), 0V (52), VS / 2 (45), 0 (40), 0 V) (15), VOUT = midsupply (un (14), VICRmin (12), 2.5V (11), 2.5 V (11), VOUT = midsupply (9), VOUT = mid-supply un (9), VSS (9)
+- **band**: 0.1 Hz to 10 Hz (35), 0.1Hz to 10Hz (24), 80 kHz (20), 80kHz (19), 20 Hz to 20 kHz (19), 20Hz to 20kHz (5), 30kHz (3), 10 Hz to 10 kHz (2), 30 kHz (2)
 <!-- survey:end -->
 
 ### Two layers, and what varies between makers
@@ -243,7 +284,7 @@ Conditions named most often, over all sheets read (value, mentions):
 Every sheet has the **electrical characteristics table** — min/typ/max at fixed conditions, 25 °C and a
 temperature range, which is what production tests — and the **typical characteristics**, curves of the same
 quantities against frequency, temperature, supply, load, common-mode voltage, time or capacitive load.
-The families of curves are the same from the 8 figures of a short sheet to the 134 of a long one; the long
+The families of curves are the same from the 6 figures of a short sheet to the 134 of a long one; the long
 sheets add axes per quantity and temperature as a parameter. What differs is the conditions, and the
 conditions differ by maker more than by device:
 
@@ -253,8 +294,8 @@ conditions differ by maker more than by device:
   from a rail; the curves use different axes.
 - **Load.** 2 kΩ is in every sheet; 10 kΩ for open-loop gain and for TI's new tables; 600 Ω on the audio
   parts (NE5532, LM833, LM4562, LME49720, OPA16xx, MC33078, NJM2068).
-- **Capacitive load.** 100 pF in eighteen of the sheets read (legacy TI, onsemi, Analog Devices); 20 pF in
-  TI's new format; onsemi gives its phase and gain margins at 0 and 100 pF; the audio sheets print overshoot
+- **Capacitive load.** 100 pF in 47 of the 69 sheets read (legacy TI, onsemi, Analog Devices, the Chinese
+  makers); 20 pF in TI's new format (8 sheets); onsemi gives its phase and gain margins at 0 and 100 pF; the audio sheets print overshoot
   and margin from 10 pF to 1 nF, OPA1656 with 0, 25 and 50 Ω of isolation resistor.
 - **Distortion level.** 1 Vrms (onsemi's curve), 3 Vrms (onsemi's table, NE5532, LM4562, LME49720), 5 V at
   20 dB gain (NJM2068), 6 Vrms (TL07x), 10 Vrms (OPA1656); analyser bandwidth 80 kHz (TI, Analog Devices),
@@ -267,8 +308,8 @@ conditions differ by maker more than by device:
 - **Gain-bandwidth.** Read at 100 kHz (onsemi), at 10 kHz and 100 kHz plus a unity-gain frequency
   (NJM2068: 27, 19 and 5.5 MHz for one device, so a GBW without its frequency is meaningless for a two-pole
   part), or extrapolated (TI).
-- **Temperature.** Three curves at −55/25/125 °C (onsemi, Analog Devices, legacy TI), −40/25/125 °C (TI new;
-  "–40°C" is named in thirteen sheets), 25 °C only in the Japanese tables.
+- **Temperature.** Three curves at −55/25/125 °C (onsemi, Analog Devices, legacy TI), −40/25/125 °C (TI new,
+  3PEAK; −40 °C is named in 20 sheets, 125 °C in 11, −55 °C in 10), 25 °C only in the Japanese tables.
 - **Source resistance for VOS.** 10 Ω (onsemi), 20 or 50 Ω (TI), up to 10 kΩ (Nisshinbo, which folds IB·RS
   into the offset).
 - **Tests one maker prints and the others do not.** EMIRR, no-phase-reversal and overload-recovery
@@ -286,16 +327,16 @@ another.
 
 | ladder | values | what the sheets say |
 |---|---|---|
-| supplies | ±15 V first; then ±5 V, ±2.5 V, ±9 V, ±18 V; single 5 V, 30 V, 36 V and 40 V with VS/2 as the reference | ±15 V in nearly every sheet; ±2.5 V on the audio sheets' CMRR and PSRR; 36/40 V in TI's new tables; 5 V and 30 V in the single-supply parts (LM358, LM324, MC34071, NCS20071) |
-| loads | 2 kΩ, 10 kΩ, 600 Ω, open; 100 Ω–10 kΩ sweep for swing and THD | 2 kΩ in every sheet, 10 kΩ for AOL and TI new, 600 Ω on audio parts |
-| capacitive loads | 0, 20, 100 pF; 10 pF–10 nF sweep for stability; isolation resistor 0, 25, 50 Ω | 100 pF (18 sheets), 20 pF (TI new), 300 pF and 1500 pF as single points |
-| gains | +1, −1, +10, −10, +100, +1000 | G = 1 printed on 24 sheets, −1 on 15, 100 on 14, 10 on 11, −10 on 8, 1000 on 7 |
-| output levels | 1, 3, 6, 10 Vrms; ±10 V and 0.3 V / 1.2 V from the rails for AOL; 10 mV, 100 mV, 2 V, 10 V, 20 V steps | 3 Vrms on most THD figures, ±10 V on AOL in twelve sheets, 10 mV small-signal and 10 V large-signal steps |
-| source resistances | 0, 10, 20, 50, 100 Ω, 1 kΩ, 10 kΩ, 100 kΩ, 1 MΩ, 10 MΩ | 50 Ω (six sheets), 20 Ω and 10 Ω (VOS), 10 kΩ (Nisshinbo), 300 Ω and 2.2 kΩ (weighted noise) |
-| temperatures | −55, −40, 0, 25, 70, 85, 125 °C | 25 °C everywhere; −40 (13 sheets), −55 (7), 125 (8), 0 (5), 85 and 70 (2 each) |
-| frequencies | 1 Hz–100 MHz at 20 points per decade; spot values 10 Hz, 100 Hz, 1 kHz, 10 kHz, 100 kHz, 1 MHz | 1 kHz on 18 sheets, 10 kHz and 100 kHz on 10 and 8 |
-| bands | 0.1–10 Hz; 20 Hz–20 kHz; 10 Hz–10 kHz; analyser low-pass 22, 30 and 80 kHz | 80 kHz on eleven sheets, 0.1–10 Hz on fourteen, 20 Hz–20 kHz on thirteen |
-| common mode | 0 (VS/2), the rails ±0.5 V, swept across | "VCM = 0 V" on thirteen sheets, "VS / 2" on five, VICR(min) on four |
+| supplies | ±15 V first; then ±5 V, ±2.5 V, ±9 V, ±18 V; single 5 V, 30 V, 36 V and 40 V with VS/2 as the reference | 5 V named in 26 sheets, ±15 V in 20 and 15 V in 19, 30 V in 18, 36 V in 12, ±5 V in 7, ±2.5 V in 6 (the audio sheets' CMRR and PSRR); 36/40 V in TI's new tables; 5 V and 30 V in the single-supply parts (LM358, LM324, MC34071, NCS20071, TSZ122) |
+| loads | 2 kΩ, 10 kΩ, 600 Ω, open; 100 Ω–10 kΩ sweep for swing and THD | 10 kΩ named in 44 sheets and 2 kΩ in 39, 600 Ω in 10 (the audio parts), 100 kΩ in 6 |
+| capacitive loads | 0, 20, 100 pF; 10 pF–10 nF sweep for stability; isolation resistor 0, 25, 50 Ω | 100 pF (47 sheets), 10 pF (11), 0 pF (9), 20 pF (8, TI new), 300 pF (6), 500 pF (5), 1500 pF as single points |
+| gains | +1, −1, +10, −10, +100, +1000 | G = 1 printed on 60 sheets (as "1" or "+1"), 10 on 35, 100 on 28, −1 on 16, 1000 on 13, −10 on 8 |
+| output levels | 1, 3, 6, 10 Vrms; ±10 V and 0.3 V / 1.2 V from the rails for AOL; 10 mV, 100 mV, 2 V, 10 V, 20 V steps | 3 Vrms on most THD figures (10 sheets; 6 Vrms on 8, 1 Vrms on 6), ±10 V on AOL in 18 sheets, 10 mV small-signal and 10 V large-signal steps |
+| source resistances | 0, 10, 20, 50, 100 Ω, 1 kΩ, 10 kΩ, 100 kΩ, 1 MΩ, 10 MΩ | 50 Ω (9 sheets), 20 Ω (8), 100 Ω (6), 10 kΩ (6; Nisshinbo folds it into VOS), 1 kΩ and 10 Ω (3 each), 300 Ω and 2.2 kΩ (weighted noise) |
+| temperatures | −55, −40, 0, 25, 70, 85, 125 °C | 25 °C everywhere; −40 (20 sheets), 125 (11), −55 (10), 0 (6), 85 (3), 70 (2) |
+| frequencies | 1 Hz–100 MHz at 20 points per decade; spot values 10 Hz, 100 Hz, 1 kHz, 10 kHz, 100 kHz, 1 MHz | 1 kHz on 49 sheets, 10 kHz on 24, 10 Hz on 18, 100 kHz on 15, 1 MHz on 12, 100 Hz on 11 |
+| bands | 0.1–10 Hz; 20 Hz–20 kHz; 10 Hz–10 kHz; analyser low-pass 22, 30 and 80 kHz | 0.1–10 Hz on 33 sheets, 20 Hz–20 kHz on 14, 80 kHz on 10, 30 kHz on 3 |
+| common mode | 0 (VS/2), the rails ±0.5 V, swept across | "VCM = 0 V" on 34 sheets, "VS / 2" on 8 and "VDD / 2" on 6, VICR(min) on 6 |
 
 Sampling and tolerances as the transistor bench: `reltol = 1e-4`, 20 points per decade in DC and AC, a
 transient is one deck per step, decimated curves. Every DC quantity is measured at every supply of the

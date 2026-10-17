@@ -1363,7 +1363,7 @@ ncs20071_onsemi,17,15,Non-inverting Small Signal Transient Response,VS = 36 V ; 
 ncs20071_onsemi,18,15,Inverting Small Signal Transient Response,VS = 36 V ; RL = 10 k,caption,small_step,G,opa-step
 ncs20071_onsemi,19,15,Non-inverting Large Signal Transient Response,VS = 36 V ; RL = 10 k,caption,large_step,F,opa-slew
 ncs20071_onsemi,20,16,Inverting Large Signal Transient Response,VS = 36 V ; RL = 10 k,caption,large_step,F,opa-slew
-ncs20071_onsemi,21,16,Input Bias and Offset Current vs Temperature,VS = 36 V,caption,ios_vs_t,B,opa-bias
+ncs20071_onsemi,21,16,Input Bias and Offset Current vs Temperature,VS = 36 V,caption,ib_vs_t,B,opa-bias
 ncs20071_onsemi,22,16,Input Bias Current vs. Common Mode Voltage,,caption,ib_vs_vcm,B,opa-bias
 ncs20071_onsemi,23,16,0.1 Hz to 10 Hz Noise,"RL = 10 k , CL = 100 pF ; AV = −1, VIN = 0 V",caption,noise_0p1_10,H,opa-noise
 ncs20071_onsemi,24,16,Channel Separation vs. Frequency,−20 CL = 25 pF ; VS = 2.7 V ; VS = 5 V ; VS = 10 V ; VS = 36 V,caption,channel_separation_vs_f,J,opa-separation
@@ -1372,3 +1372,656 @@ ncs20071_onsemi,26,17,Offset Voltage vs. Temperature,VS = 36 V,caption,vos_vs_t,
 ncs20071_onsemi,27,17,Large Signal Settling Time,VS = 36 V,caption,settling,F,opa-settling
 ncs20071_onsemi,28,17,Slew Rate vs. Temperature,,caption,slew_vs_t,F,opa-slew
 ncs20071_onsemi,29,18,Differential Input Pair listed in the Electrical Characteristics. The junction,,caption,skip,,
+lm2902a_onsemi,1,8,Input Voltage Range vs Supply Voltage,,caption,vicr_vs_vs,C,opa-offset
+lm2902a_onsemi,2,8,Input Current vs Temperature,,caption,norton,N,none
+lm2902a_onsemi,3,8,Supply Current vs Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+lm2902a_onsemi,4,8,Voltage Gain vs Supply Voltage,,caption,aol_vs_vs,D,opa-aol-swing
+lm2902a_onsemi,5,8,Open Loop Frequency Response,,caption,aol_phase_vs_f,D,opa-aol
+lm2902a_onsemi,6,8,Common mode Rejection Ratio,,caption,cmrr_other,C,opa-cmrr-f
+lm2902a_onsemi,7,9,Voltage Follower Pulse Response,,caption,large_step,F,opa-slew
+lm2902a_onsemi,8,9,Voltage Follower Pulse Response (Small Signal),,caption,large_step,F,opa-slew
+lm2902a_onsemi,9,9,Large Signal Frequency Response,,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+lm2902a_onsemi,10,9,Output Characteristics vs Current Sourcing,,caption,vout_vs_iout,E,opa-swing
+lm2902a_onsemi,11,9,Output Characteristics vs Current Sinking,,caption,vout_vs_iout,E,opa-swing
+lm2902a_onsemi,12,9,Current Limiting vs Temperature,,caption,isc_vs_t,E,opa-isc
+lm301a_onsemi,1,1,Standard Compensation and Offset Balancing Circuit,,caption,gain_vs_f_comp,D,opa-aol
+lm301a_onsemi,2,1,Double-Ended Limit Detector,VO = 4.8 V for ; VEE VO = -0.4 V,caption,skip,,
+lm301a_onsemi,3,2,Representative Circuit Schematic,,caption,skip,,
+lm301a_onsemi,4,5,Minimum Input Voltage Range,,caption,vicr_other,C,opa-offset
+lm301a_onsemi,5,5,Minimum Output Voltage Swing,RL = 10 k ; RL = 2.0 k,caption,vout_other,E,opa-swing
+lm301a_onsemi,6,5,Minimum Voltage Gain,,caption,aol_other,D,opa-aol
+lm301a_onsemi,7,5,Typical Supply Currents,,caption,iq_other,A,opa-iq
+lm301a_onsemi,8,5,Open Loop Frequency Response,C1 = 3.0 pF ; C1 = 30 pF,caption,aol_phase_vs_f,D,opa-aol
+lm301a_onsemi,9,5,Large Signal Frequency Response,C1 = 3.0 pF ; C1 = 30 pF,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+lm301a_onsemi,10,6,Voltage Follower Pulse Response,,caption,large_step,F,opa-slew
+lm301a_onsemi,11,6,Open Loop Frequency Response,,caption,aol_phase_vs_f,D,opa-aol
+lm301a_onsemi,12,6,Large Signal Frequency Response,,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+lm301a_onsemi,13,6,Inverter Pulse Response,,caption,small_step,G,opa-step
+lm301a_onsemi,14,6,Single−Pole Compensation,Cs = 30 pF,caption,gain_vs_f_comp,D,opa-aol
+lm301a_onsemi,15,6,Feedforward Compensation,fo = 3.0 MHz,caption,gain_vs_f_comp,D,opa-aol
+mc1458_onsemi,1,4,Burst Noise versus Source Resistance,,caption,noise_vs_rs,H,opa-noise-rs
+mc1458_onsemi,2,4,RMS Noise versus Source Resistance,,caption,noise_vs_rs,H,opa-noise-rs
+mc1458_onsemi,3,4,Output Noise versus Source Resistance,BW = 1.0 Hz to 1.0 kHz,caption,noise_vs_rs,H,opa-noise-rs
+mc1458_onsemi,4,4,Spectral Noise Density,BW = 1.0 Hz to 1.0 kHz,caption,en_vs_f,H,opa-noise
+mc1458_onsemi,5,4,Burst Noise Test Circuit,,caption,test_circuit,K,none
+mc1458_onsemi,6,5,Power Bandwidth (Large Signal Swing versus Frequency),,caption,vout_vs_f,E,opa-max-vo-f
+mc1458_onsemi,7,5,Open Loop Frequency Response,,caption,aol_phase_vs_f,D,opa-aol
+mc1458_onsemi,8,5,Positive Output Voltage Swing versus Load Resistance,THD < 5%,caption,vout_vs_rl,E,opa-swing
+mc1458_onsemi,9,5,Negative Output Voltage Swing versus Load Resistance,,caption,vout_vs_rl,E,opa-swing
+mc1458_onsemi,10,5,Output Voltage Swing versus Load Resistance (Single Supply Operation),,caption,vout_vs_rl,E,opa-swing
+mc1458_onsemi,11,5,Single Supply Inverting Amplifier,,caption,skip,,
+mc1458_onsemi,12,6,Noninverting Pulse Response,,caption,large_step,F,opa-slew
+mc1458_onsemi,13,6,Transient Response Test Circuit,,caption,test_circuit,K,none
+mc1458_onsemi,14,6,Unused OpAmp,,caption,skip,,
+mc1458_onsemi,15,6,Open Loop Voltage Gain versus Supply Voltage,,caption,aol_vs_vs,D,opa-aol-swing
+mc33077_onsemi,,2,Symbol vs VIDR,,bare,skip,,
+mc33077_onsemi,1,2,Representative Schematic Diagram (Each Amplifier),,caption,skip,,
+mc33077_onsemi,2,4,Maximum Power Dissipation versus Temperature,Equivalent Input Noise Current (f = 1.0 kHz) ; f = 1.0 kHz,caption,pd_vs_t,A,none
+mc33077_onsemi,3,4,Input Bias Current versus Supply Voltage,,caption,ib_vs_vs,B,opa-bias
+mc33077_onsemi,4,5,Input Bias Current versus Temperature,VEE = -15 V,caption,ib_vs_t,B,opa-bias
+mc33077_onsemi,5,5,Input Offset Voltage versus Temperature,VEE = -15 V ; RS = 10 ; VCM = 0 V,caption,vos_vs_t,B,opa-offset
+mc33077_onsemi,6,5,Input Bias Current versus Common Mode Voltage,VEE = -15 V ; TA = 25C,caption,ib_vs_vcm,B,opa-bias
+mc33077_onsemi,7,5,Input Common Mode Voltage Range versus Temperature,VEE = -3.0 V to -15 V ; VIO = 5.0 mV ; VO = 0 V,caption,vicr_vs_t,C,opa-offset
+mc33077_onsemi,8,5,Output Saturation Voltage versus Load Resistance to Ground,VEE = -15 V,caption,vout_vs_rl,E,opa-swing
+mc33077_onsemi,9,5,Output Short Circuit Current versus Temperature,VEE = -15 V ; RL < 100,caption,isc_vs_t,E,opa-isc
+mc33077_onsemi,10,6,Supply Current versus Temperature,,caption,iq_vs_t,A,opa-iq
+mc33077_onsemi,11,6,Common Mode Rejection versus Frequency,CMR = 20Log ; VCM = 0 V ; TA = 25C,caption,cmrr_vs_f,C,opa-cmrr-f
+mc33077_onsemi,12,6,Power Supply Rejection versus Frequency,+PSR = 20Log ; -PSR = 20Log ; VEE = -15 V ; TA = 25C,caption,psrr_vs_f,C,opa-psrr-f
+mc33077_onsemi,13,6,Gain Bandwidth Product versus Supply Voltage,RL = 10 k ; CL = 0 pF ; f = 100 kHz ; TA = 25C,caption,gbw_vs_vs,D,opa-aol
+mc33077_onsemi,14,6,Gain Bandwidth Product versus Temperature,VEE = -15 V ; f = 100 kHz ; RL = 10 k ; CL = 0 pF,caption,gbw_vs_t,D,opa-aol
+mc33077_onsemi,15,6,Maximum Output Voltage versus Supply Voltage,TA = 25C ; RL = 10 k ; RL = 2.0 k,caption,vout_vs_vs,E,opa-swing
+mc33077_onsemi,16,7,Output Voltage versus Frequency,VEE = -15 V,caption,vout_vs_f,E,opa-max-vo-f
+mc33077_onsemi,17,7,Open Loop Voltage Gain versus Supply Voltage,RL = 2.0 k ; f = 10 Hz ; VO = 2/3 (VCC -VEE) ; TA = 25C,caption,aol_vs_vs,D,opa-aol-swing
+mc33077_onsemi,18,7,Open Loop Voltage Gain versus Temperature,f = 10 Hz ; VO = -10 V to +10 V,caption,aol_vs_t,D,opa-aol
+mc33077_onsemi,19,7,Output Impedance versus Frequency,VEE = -15 V ; VO = 0 V ; TA = 25C ; AV = 10 ; AV = 1000 ; AV = 100,caption,zout_vs_f,E,opa-zout
+mc33077_onsemi,20,7,Channel Separation versus Frequency,RL = 2.0 k ; VOD = 20 Vpp ; TA = 25C ; CS = 20 Log,caption,channel_separation_vs_f,J,opa-separation
+mc33077_onsemi,21,7,Total Harmonic Distortion versus Frequency,VEE = -15 V TA = 25C,caption,thd_vs_f,I,opa-thd-f
+mc33077_onsemi,22,8,Total Harmonic Distortion versus Frequency,VEE = -15 V ; V0 = -10 Vpp,caption,thd_vs_f,I,opa-thd-f
+mc33077_onsemi,23,8,Total Harmonic Distortion versus Output Voltage,VEE = -15 V ; f = 20 kHz,caption,thd_vs_level,I,opa-thd-level
+mc33077_onsemi,24,8,Slew Rate versus Supply Voltage,Vin = 2/3 (VCC -VEE) ; TA = 25C,caption,slew_vs_vs,F,opa-slew
+mc33077_onsemi,25,8,Slew Rate versus Temperature,VEE = -15 V,caption,slew_vs_t,F,opa-slew
+mc33077_onsemi,26,8,Voltage Gain and Phase versus Frequency,VEE = -15 V ; RL = 2.0 k,caption,aol_phase_vs_f,D,opa-aol
+mc33077_onsemi,27,8,Open Loop Gain Margin and Phase Margin versus Output Load Capacitance,VO = 0 V,caption,aol_phase_vs_f,D,opa-aol
+mc33077_onsemi,28,9,Phase Margin versus Output Voltage,CL = 0 pF ; CL = 100 pF ; CL = 300 pF ; VEE = -15 V ; TA = 25C ; CL = 500 pF,caption,vout_other,E,opa-swing
+mc33077_onsemi,29,9,Overshoot versus Output Load Capacitance,Vin = 100 mV,caption,overshoot_vs_cl,G,opa-stability
+mc33077_onsemi,30,9,Input Referred Noise Voltage and Current versus Frequency,VEE = -15 V ; TA = 25C,caption,en_vs_f,H,opa-noise
+mc33077_onsemi,31,9,Total Input Referred Noise Voltage versus Source Resistant,f = 1.0 kHz ; VEE = -15 V ; TA = 25C,caption,noise_vs_rs,H,opa-noise-rs
+mc33077_onsemi,32,9,Phase Margin and Gain Margin versus Differential Source Resistance,VEE = -15 V ; VO = 0 V ; TA = 25C,caption,phase_margin_vs_rs,D,opa-stability
+mc33077_onsemi,33,9,Inverting Amplifier Slew Rate,VEE = -15 V ; AV = -1.0 ; RL = 2.0 k ; CL = 100 pF ; TA = 25C,caption,large_step,F,opa-slew
+mc33077_onsemi,34,10,Non−inverting Amplifier Slew Rate,VEE = -15 V ; RL = 2.0 k ; CL = 100 pF ; TA = 25C,caption,large_step,F,opa-slew
+mc33077_onsemi,35,10,Non−inverting Amplifier Overshoot,CL = 100 pF ; VEE = -15 V ; RL = 2.0 k ; TA = 25C,caption,overshoot_vs_cl,G,opa-stability
+mc33077_onsemi,36,10,Low Frequency Noise Voltage versus Time,VEE = -15 V ; BW = 0.1 Hz to 10 Hz ; TA = 25C,caption,noise_0p1_10,H,opa-noise
+mc33077_onsemi,37,12,Voltage Noise Test Circuit (0.1 Hz to 10 Hzp−p),"Voltage Gain = 50,000",caption,test_circuit,K,none
+mc33171_onsemi,1,2,Representative Schematic Diagram (Each Amplifier),,caption,skip,,
+mc33171_onsemi,2,4,Input Common Mode Voltage Range versus Temperature,Open Loop Output Impedance (f = 1.0 MHz),caption,vicr_vs_t,C,opa-offset
+mc33171_onsemi,3,4,Split Supply Output Saturation versus Load Current,,caption,vout_vs_iout,E,opa-swing
+mc33171_onsemi,4,5,Open Loop Voltage Gain and Phase versus Frequency,"RL = 10 k ; Vout = 0 V ; -20 2 - Phase, CL = 100 pF ; 4 - Gain, CL = 100 pF",caption,aol_phase_vs_f,D,opa-aol
+mc33171_onsemi,5,5,Phase Margin and Percent Overshoot versus Load Capacitance,VO = 20 mVpp ; TA = 25C,caption,phase_margin_vs_cl,D,opa-stability
+mc33171_onsemi,6,5,Normalized Gain Bandwidth Product and Slew Rate versus Temperature,RL = 10 k,caption,gbw_vs_t,D,opa-aol
+mc33171_onsemi,7,5,Small and Large Signal Transient Response,VCM = 0 V ; VO = 0 V ; TA = 25C,caption,large_step,F,opa-slew
+mc33171_onsemi,8,5,Output Impedance and Frequency,AV = 1000 ; CL = 100 pF ; TA = 25C ; AV = 100 ; AV = 10 ; AV = 1.0,caption,zout_other,E,opa-zout
+mc33171_onsemi,9,5,Supply Current versus Supply Voltage,2. TA = 25C,caption,iq_vs_vs,A,opa-iq
+mc33171_onsemi,10,8,AC Coupled Noninverting Amplifier with Single +5.0 V Supply,AV = 101,caption,skip,,
+mc33171_onsemi,11,8,AC Coupled Inverting Amplifier with Single +5.0 V Supply,AV = 10,caption,skip,,
+mc33171_onsemi,12,8,DC Coupled Inverting Amplifier Maximum Output Swing with Single,AV = 10,caption,skip,,
+mc33171_onsemi,13,8,Offset Nulling Circuit,,caption,vos_adjust,B,none
+mc33171_onsemi,14,8,Active High-Q Notch Filter,fo = 1.0 kHz,caption,skip,,
+mc33171_onsemi,15,8,Active Bandpass Filter,fo = 30 kHz ; Q = 10 ; HO = 1.0,caption,skip,,
+mc33201_onsemi,1,2,Circuit Schematic (Each Amplifier),,caption,skip,,
+mc33201_onsemi,,3,Symbol vs VIDR,,bare,skip,,
+mc33201_onsemi,2,5,Maximum Power Dissipation versus Temperature,,caption,pd_vs_t,A,none
+mc33201_onsemi,3,5,Input Offset Voltage Distribution,TA = 25°C,caption,vos_distribution,B,opa-offset
+mc33201_onsemi,4,5,Input Offset Voltage Temperature Coefficient Distribution,TA = 25°C,caption,vos_distribution,B,opa-offset
+mc33201_onsemi,5,5,Input Bias Current versus Temperature,VCM = 0 V to 0.5 V ; VCM > 1.0 V,caption,ib_vs_t,B,opa-bias
+mc33201_onsemi,6,5,Input Bias Current versus Common Mode Voltage,VCC = 12 V ; TA = 25°C,caption,ib_vs_vcm,B,opa-bias
+mc33201_onsemi,7,5,Open Loop Voltage Gain versus Temperature,RL = 600 ; VO = 0.5 V to 4.5 V,caption,aol_vs_t,D,opa-aol
+mc33201_onsemi,8,6,Output Voltage Swing versus Supply Voltage,RL = 600 ; TA = 25°C,caption,vout_vs_vs,E,opa-swing
+mc33201_onsemi,9,6,Output Saturation Voltage versus Load Current,TA = 25°C,caption,vout_vs_iout,E,opa-swing
+mc33201_onsemi,10,6,Output Voltage versus Frequency,,caption,vout_vs_f,E,opa-max-vo-f
+mc33201_onsemi,11,6,Common Mode Rejection versus Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+mc33201_onsemi,12,6,Power Supply Rejection versus Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+mc33201_onsemi,13,6,Output Short Circuit Current versus Output Voltage,TA = 25°C,caption,vout_other,E,opa-swing
+mc33201_onsemi,14,7,Output Short Circuit Current versus Temperature,,caption,isc_vs_t,E,opa-isc
+mc33201_onsemi,15,7,Supply Current per Amplifier versus Supply Voltage with No Load,TA = 125°C ; TA = 25°C,caption,iq_vs_vs,A,opa-iq
+mc33201_onsemi,16,7,Slew Rate versus Temperature,,caption,slew_vs_t,F,opa-slew
+mc33201_onsemi,17,7,Gain Bandwidth Product versus Temperature,f = 100 kHz,caption,gbw_vs_t,D,opa-aol
+mc33201_onsemi,18,7,Voltage Gain and Phase versus Frequency,"TA = 25°C ; 1A - Phase, CL = 0 pF ; 1B - Gain, CL = 0 pF ; 2A - Phase, CL = 300 pF ; 2B - Gain, CL = 300 pF",caption,aol_phase_vs_f,D,opa-aol
+mc33201_onsemi,19,7,Voltage Gain and Phase versus Frequency,CL = 0 pF ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33201_onsemi,20,8,Gain and Phase Margin versus Temperature,RL = 600 ; CL = 100 pF,caption,aol_phase_vs_f,D,opa-aol
+mc33201_onsemi,21,8,Gain and Phase Margin versus Differential Source Resistance,TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33201_onsemi,22,8,Gain and Phase Margin versus Capacitive Load,RL = 600 ; AV = 100 ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33201_onsemi,23,8,Channel Separation versus Frequency,AV = 100 ; AV = 10 ; TA = 25°C,caption,channel_separation_vs_f,J,opa-separation
+mc33201_onsemi,24,8,Total Harmonic Distortion versus Frequency,TA = 25°C ; RL = 600 ; VO = 2.0 Vpp ; AV = 1000 ; AV = 100 ; AV = 10 ; AV = 1.0,caption,thd_vs_f,I,opa-thd-f
+mc33201_onsemi,25,8,Equivalent Input Noise Voltage and Current versus Frequency,TA = 25°C,caption,en_vs_f,H,opa-noise
+mc33201_onsemi,26,9,Noninverting Amplifier Slew Rate,RL = 600 ; CL = 100 pF ; TA = 25°C,caption,large_step,F,opa-slew
+mc33201_onsemi,27,9,Small Signal Transient Response,RL = 600 ; CL = 100 pF ; TA = 25°C,caption,small_step,G,opa-step
+mc33201_onsemi,28,9,Large Signal Transient Response,RL = 600 ; CL = 100 pF ; AV = 1.0 ; TA = 25°C,caption,large_step,F,opa-slew
+mc33501_onsemi,1,2,Simplified Block Diagram,,caption,skip,,
+mc33501_onsemi,2,5,Representative Block Diagram,,caption,skip,,
+mc33501_onsemi,3,7,Output Saturation versus Load Resistance,VCC = 5.0 V ; VEE = 0 V,caption,vout_vs_rl,E,opa-swing
+mc33501_onsemi,4,7,Drive Output Source/Sink Saturation Voltage versus Load Current,TA = 125°C ; TA = 25°C ; 0.5 VCC − VEE = 5.0 V,caption,vout_vs_iout,E,opa-swing
+mc33501_onsemi,5,7,Input Current versus Temperature,,caption,norton,N,none
+mc33501_onsemi,6,7,Gain and Phase versus Frequency,Phase Margin = 60° ; VCC = 2.5 V,caption,aol_phase_vs_f,D,opa-aol
+mc33501_onsemi,7,7,Transient Response,VCC = 0.5 V ; ACL = 1.0 ; CL = 10 pF ; RL = 10 k ; TA = 25°C,caption,small_step,G,opa-step
+mc33501_onsemi,8,7,Slew Rate,VCC = 2.5 V ; ACL = 1.0 ; CL = 10 pF ; RL = 600 ; TA = 25°C,caption,slew_other,F,opa-slew
+mc33501_onsemi,9,8,Maximum Power Dissipation versus Temperature,,caption,pd_vs_t,A,none
+mc33501_onsemi,10,8,Open Loop Voltage Gain versus Temperature,VCC = 2.5 V ; RL = 600,caption,aol_vs_t,D,opa-aol
+mc33501_onsemi,11,8,Output Voltage versus Frequency,VCC = 2.5 V ; AV = 1.0 ; RL = 600 ; TA = 25°C,caption,vout_vs_f,E,opa-max-vo-f
+mc33501_onsemi,12,8,Common Mode Rejection versus Frequency,VCC = 2.5 V,caption,cmrr_vs_f,C,opa-cmrr-f
+mc33501_onsemi,13,8,Power Supply Rejection versus Frequency,VCC = 2.5 V ; VCC = 0.5 V ; TA = 25°C,caption,psrr_vs_f,C,opa-psrr-f
+mc33501_onsemi,14,8,Output Short Circuit Current versus Output Voltage,VCC = 2.5 V ; TA = 25°C,caption,vout_other,E,opa-swing
+mc33501_onsemi,15,9,Output Short Circuit Current versus Temperature,VCC = 2.5 V,caption,isc_vs_t,E,opa-isc
+mc33501_onsemi,16,9,Supply Current per Amplifier versus Supply Voltage with No Load,TA = 25°C,caption,iq_vs_vs,A,opa-iq
+mc33501_onsemi,17,9,Input Offset Voltage Temperature Coefficient Distribution,VCC = 3.0 V ; VO = 1.5 V ; VEE = 0 V,caption,vos_distribution,B,opa-offset
+mc33501_onsemi,18,9,Input Offset Voltage Distribution,VCC = 3.0 V ; VO = 1.5 V ; VEE = 0 V ; TA = 25°C,caption,vos_distribution,B,opa-offset
+mc33501_onsemi,19,9,Total Harmonic Distortion versus Frequency with 1.0 V Supply,AV = 1000 ; AV = 100 ; AV = 10 ; AV = 1.0 ; Vout = 0.5 Vpp ; RL = 600 ; VCC − VEE = 1.0 V,caption,thd_vs_f,I,opa-thd-f
+mc33501_onsemi,20,9,Total Harmonic Distortion versus Frequency with 5.0 V Supply,Vout = 4.0 Vpp ; RL = 600 ; AV = 1000 ; AV = 100 ; AV = 10 ; AV = 1.0 ; VCC − VEE = 5.0 V,caption,thd_vs_f,I,opa-thd-f
+mc33501_onsemi,21,10,Slew Rate versus Temperature,VCC − VEE = 1.0 V ; VCC − VEE = 5.0 V,caption,slew_vs_t,F,opa-slew
+mc33501_onsemi,22,10,Gain Bandwidth Product versus Temperature,f = 100 kHz,caption,gbw_vs_t,D,opa-aol
+mc33501_onsemi,23,10,Voltage Gain and Phase versus Frequency,VCC − VEE = 5.0 V ; VCC − VEE = 1.0 V ; RL = 600 ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33501_onsemi,24,10,Gain and Phase Margin versus Temperature,VCC − VEE = 5.0 V ; RL = 600 ; CL = 100 pF,caption,aol_phase_vs_f,D,opa-aol
+mc33501_onsemi,25,10,Gain and Phase Margin versus Differential Source Resistance,40 VCC − VEE = 5.0 V ; RL = 600 ; 30 CL = 100 pF ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33501_onsemi,26,10,Feedback Loop Gain and Phase versus Capacitive Load,VCC − VEE = 5.0 V ; RL = 600 ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33501_onsemi,27,11,Channel Separation versus Frequency,AV = 100 ; AV = 10 ; VCC − VEE = 5.0 V ; RL = 600 ; VO = 4.0 Vpp ; TA = 25°C,caption,channel_separation_vs_f,J,opa-separation
+mc33501_onsemi,28,11,Output Voltage Swing versus Supply Voltage,RL= 600 ; TA = 25°C,caption,vout_vs_vs,E,opa-swing
+mc33501_onsemi,29,11,Equivalent Input Noise Voltage versus Frequency,VCC − VEE = 5.0 V ; TA = 25°C,caption,en_vs_f,H,opa-noise
+mc33501_onsemi,30,11,Gain and Phase Margin versus Supply Voltage,RL = 600 ; CL = 0 ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+mc33501_onsemi,31,11,Useable Supply Voltage versus Temperature,AVOL ≥ 10 dB ; RL = 600,caption,vs_range,A,opa-runs
+mc33501_onsemi,32,11,Open Loop Gain versus Supply Voltage,RL = 600 ; TA = 25°C,caption,aol_vs_vs,D,opa-aol-swing
+mc33501_onsemi,33,12,1.0 V Oscillator,,caption,skip,,
+mc33501_onsemi,34,12,1.0 V Voiceband Filter,,caption,skip,,
+mc33501_onsemi,35,13,Power Supply Application,,caption,skip,,
+mc33501_onsemi,36,13,1.0 V Current Pump,,caption,skip,,
+mc4558_onsemi,1,4,Burst Noise versus Source Resistance,,caption,noise_vs_rs,H,opa-noise-rs
+mc4558_onsemi,2,4,RMS Noise versus Source Resistance,,caption,noise_vs_rs,H,opa-noise-rs
+mc4558_onsemi,3,4,Output Noise versus Source Resistance,BW = 1.0 Hz to 1.0 kHz,caption,noise_vs_rs,H,opa-noise-rs
+mc4558_onsemi,4,4,Spectral Noise Density,BW = 1.0 Hz to 1.0 kHz,caption,en_vs_f,H,opa-noise
+mc4558_onsemi,5,4,Burst Noise Test Circuit Positive,,caption,test_circuit,K,none
+mc4558_onsemi,6,5,Open Loop Frequency Response,,caption,aol_phase_vs_f,D,opa-aol
+mc4558_onsemi,7,5,Phase Margin versus Frequency,,caption,aol_phase_vs_f,D,opa-aol
+mc4558_onsemi,8,5,Positive Output Voltage Swing versus Load Resistance,,caption,vout_vs_rl,E,opa-swing
+mc4558_onsemi,9,5,Negative Output Voltage Swing versus Load Resistance,,caption,vout_vs_rl,E,opa-swing
+mc4558_onsemi,10,5,Power Bandwidth (Large Signal Swing versus Frequency),,caption,vout_vs_f,E,opa-max-vo-f
+mc4558_onsemi,11,5,Transient Response Test Circuit,,caption,test_circuit,K,none
+ne5534_onsemi,,2,Symbol vs VIN,,bare,skip,,
+ne5534_onsemi,1,2,Equivalent Schematic,,caption,skip,,
+ne5534_onsemi,2,5,Open-Loop Frequency Response,CC = 0 ; CC = 22pF,caption,aol_phase_vs_f,D,opa-aol
+ne5534_onsemi,3,5,Slew Rate as a Function of Compensation,,caption,gain_vs_f_comp,D,opa-aol
+ne5534_onsemi,4,5,Closed−Loop Frequency Response,CC = 0; RF = 10k ; RE = 100 ; CC = 0; RF = 9k ; RE = 1k ; CC = 22pF; RF = 1k ; RE = ∞,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+ne5534_onsemi,5,5,Large−Signal Frequency Response,,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+ne5534_onsemi,6,5,Output Short−Circuit Current,,caption,isc_other,E,opa-isc
+ne5534_onsemi,7,5,Input Bias Current,,caption,ib_other,B,opa-bias
+ne5534_onsemi,8,5,Input Common−Mode Voltage Range,,caption,vicr_other,C,opa-offset
+ne5534_onsemi,9,5,Supply Current Per Op Amp,IO = 0,caption,iq_other,A,opa-iq
+ne5534_onsemi,10,5,Input Noise Voltage Density,,caption,noise_other,H,opa-noise
+ne5534_onsemi,11,6,Input Noise Current Density,,caption,in_vs_f,H,opa-noise
+ne5534_onsemi,12,6,Total Input Noise Density,,caption,en_vs_f,H,opa-noise
+ne5534_onsemi,13,6,Broadband Input Noise Voltage,,caption,noise_other,H,opa-noise
+ne5534_onsemi,14,7,Frequency Compensation and Offset Voltage Adjustment Circuit,,caption,vos_adjust,B,none
+ne5534_onsemi,15,7,Closed-Loop Frequency Response,,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+ne5534_onsemi,16,7,Noise Test Block Diagram,,caption,skip,,
+njm4580_umw,1,4,Operating Current vs. Operating Voltage,,caption,iq_vs_vs,A,opa-iq
+njm4580_umw,2,4,Operating Current vs. Ambient Temperature,,caption,iq_vs_t,A,opa-iq
+njm4580_umw,3,4,Maximum Output Voltage Swing vs. Operating Voltage,,caption,vout_other,E,opa-swing
+njm4580_umw,4,4,Maximum Output Voltage Swing vs. Load Resistance,,caption,vout_vs_rl,E,opa-swing
+njm4580_umw,5,4,Maximum Output Voltage Swing vs Frequency,,caption,vout_vs_f,E,opa-max-vo-f
+njm4580_umw,6,4,Equivalent Input Noise Voltage vs. Frequency,,caption,en_vs_f,H,opa-noise
+lm358_umw,1,6,Input Voltage Range,,caption,vicr_other,C,opa-offset
+lm358_umw,2,6,Large-Signal Open Loop Voltage Gain,,caption,aol_other,D,opa-aol
+lm358_umw,3,6,Large-Signal Frequency Response,"VS = 15V ; RL = 2kΩ ; RI = 1kΩ, RF = 100kΩ ; Gain = -100",caption,closed_loop_gain_vs_f,D,opa-closed-loop
+lm358_umw,4,6,Small Signal Voltage Follower Pulse Response (Noninverting),VS = 30V ; CL = 50pF,caption,large_step,F,opa-slew
+lm358_umw,5,6,Power Supply Current,,caption,iq_other,A,opa-iq
+lm358_umw,6,6,Input Bias Current,,caption,ib_other,B,opa-bias
+lm2904_umw,1,4,Input Current vs Temperature,,caption,norton,N,none
+lm2904_umw,2,4,Supply Current vs Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+lm2904_umw,3,4,Voltage Gain vs Supply Voltage,RL=20K ; RL=2K,caption,aol_vs_vs,D,opa-aol-swing
+lm2904_umw,4,4,Common-Mode Rejection Ratio vs Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+lm2904_umw,5,4,Voltage Follower Large Signal Response (50 pF),,caption,large_step,F,opa-slew
+lm2904_umw,6,4,Voltage Follower Small Signal Response (50 pF),,caption,small_step,G,opa-step
+lm2904_umw,7,5,Maximum Output Swing vs Frequency,(VCC=15V),caption,vout_vs_f,E,opa-max-vo-f
+lm2904_umw,8,5,Output Sourcing Characteristics,,caption,vout_vs_iout,E,opa-swing
+lm2904_umw,9,5,Output Sinking Characteristics,(VCC=15V),caption,vout_vs_iout,E,opa-swing
+lm2904_umw,10,5,Source Current Limiting,,caption,isc_other,E,opa-isc
+lm2904_umw,11,6,Unity-Gain Amplifier,,caption,test_circuit,K,none
+lm2904_umw,12,6,Noise-Test Circuit,,caption,test_circuit,K,none
+lm2904_umw,13,6,"Test Circuit, G=-1, for THD+N and Small-Signal Step Response",,caption,test_circuit,K,none
+lm2902_umw,1,7,Output Sinking Characteristics,VCC = 15 V ; VCC = 5 V ; VCC = 30 V,caption,vout_vs_iout,E,opa-swing
+lm2902_umw,2,7,Output Sourcing Characteristics,VCC = 15 V,caption,vout_vs_iout,E,opa-swing
+lm2902_umw,3,7,Source Current Limiting,,caption,isc_other,E,opa-isc
+lm2902_umw,4,7,Voltage Follower Large Signal Response (50 pF),,caption,large_step,F,opa-slew
+lm2902_umw,5,7,Common-Mode Rejection Ratio,,caption,cmrr_other,C,opa-cmrr-f
+lm2902_umw,6,7,Maximum Output Swing vs. Frequency,(VCC = 15 V),caption,vout_vs_f,E,opa-max-vo-f
+lm2902_umw,7,8,Unity-Gain Amplifier,,caption,test_circuit,K,none
+lm2902_umw,8,8,Noise-Test Circuit,,caption,test_circuit,K,none
+opa277_umw,1,8,Open-Loop Gain and Phase vs Frequency,CL = 1500pF,caption,aol_phase_vs_f,D,opa-aol
+opa277_umw,2,8,Power Supply and Common-Mode Rejection vs Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+opa277_umw,3,8,Input Noise and Current Noise Spectral Density vs Frequency,,caption,in_vs_f,H,opa-noise
+opa277_umw,4,8,Input Noise Voltage vs Time,,caption,noise_0p1_10,H,opa-noise
+opa277_umw,5,8,Input Noise and Current Noise Spectral Density vs Frequency,"Dual and quad devices. G = 1,",caption,in_vs_f,H,opa-noise
+opa277_umw,6,8,Total Harmonic Distortion + Noise vs Frequency,"VOUT = 3.5Vrms ; G = 10, RL = 2kΩ, 10kΩ ; G = 1, RL = 2kΩ, 10kΩ",caption,thd_vs_f,I,opa-thd-f
+opa277_umw,7,9,Offset Voltage Production Distribution,,caption,vos_distribution,B,opa-offset
+opa277_umw,8,9,Offset Voltage Drift Production Distribution,,caption,vos_distribution,B,opa-offset
+opa277_umw,9,9,Warm-Up Offset Voltage Drift,,caption,vos_warmup,B,opa-offset
+opa277_umw,10,9,"AOL, CMR, PSR vs Temperature",,caption,cmrr_vs_t,C,opa-offset
+opa277_umw,11,9,Input Bias Current vs Temperature,,caption,ib_vs_t,B,opa-bias
+opa277_umw,12,9,Quiescent Current and Short-Circuit Current vs Temperature,,caption,iq_vs_t,A,opa-iq
+opa277_umw,13,10,Change in Input Bias Current vs Power-Supply Voltage,bias current with respect to VS = ±10V ; –0.5nA to +0.5nA at V S = ±10V. ; VCM = 0V,caption,ib_vs_vs,B,opa-bias
+opa277_umw,14,10,Change in Input Bias Current vs Common-Mode Voltage,with respect to VCM = 0V. Typical I B may range ; from –0.5nA to +0.5nA at V CM = 0V. ; VS = ±5V ; VS = ±15V,caption,ib_vs_vcm,B,opa-bias
+opa277_umw,15,10,Quiescent Current vs Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+opa277_umw,16,10,Settling Time vs Closed-Loop Gain,CL = 1500pF,caption,settling,F,opa-settling
+opa277_umw,17,10,Maximum Output Voltage vs Frequency,VS = ±15V ; VS = ±5V,caption,vout_vs_f,E,opa-max-vo-f
+opa277_umw,18,10,Output Voltage Swing vs Output Current,,caption,vout_vs_iout,E,opa-swing
+opa277_umw,19,11,Small-Signal Overshoot vs Load Capacitance,Gain = –1 ; Gain = ±10,caption,overshoot_vs_cl,G,opa-stability
+opa277_umw,20,11,Large-Signal Step Response,"10µs/div, G=1, CL=1500pF, VS=±15V",caption,large_step,F,opa-slew
+opa277_umw,21,11,Small-Signal Step Response,"1µs/div, G=1, CL= 0, VS=±15V",caption,small_step,G,opa-step
+opa277_umw,22,11,Small-Signal Step Response,"10µs/div, G=1, CL=1500pF, VS=±15V ; 1s/div, G=1, CL=1500pF, VS=±15V",caption,small_step,G,opa-step
+opa277_umw,23,11,Open-Loop Output Impedance,"1µs/div, G=1, CL= 0, VS=±15V ; 1s/div, G=1, CL=1500pF, VS=±15V ; Frequency (Hz), VS=±15V",caption,zout_vs_f,E,opa-zout
+tlc2272_umw,1,17,Distribution of TLC2272 Input Offset Voltage,TA = 25°C,caption,vos_other,B,opa-offset
+tlc2272_umw,2,17,Distribution of TLC2272 Input Offset Voltage,TA = 25°C,caption,vos_other,B,opa-offset
+tlc2272_umw,3,17,Distribution of TLC2274 Input Offset Voltage,VDD = ±2.5 V,caption,vos_other,B,opa-offset
+tlc2272_umw,4,17,Distribution of TLC2274 Input Offset Voltage,,caption,vos_other,B,opa-offset
+tlc2272_umw,5,17,Input Offset Voltage vs Common-Mode Voltage,VDD = 5 V ; TA = 25°C ; RS = 50 Ω,caption,vos_vs_vcm,B,opa-offset
+tlc2272_umw,6,17,Input Offset Voltage vs Common-Mode Voltage,VDD = ±5 V ; TA = 25°C ; RS = 50 Ω,caption,vos_vs_vcm,B,opa-offset
+tlc2272_umw,7,18,Distribution of TLC2272 vs Input Offset Voltage Temperature Coefficient,VDD = ±2.5 V,caption,vos_drift_distribution,B,opa-offset
+tlc2272_umw,8,18,Distribution of TLC2272 vs Input Offset Voltage Temperature Coefficient,VDD = ±5 V,caption,vos_drift_distribution,B,opa-offset
+tlc2272_umw,9,18,Distribution of TLC2274 vs Input Offset Voltage Temperature Coefficient,VDD = ±2.5 V ; TA = 25°C to 125°C,caption,vos_drift_distribution,B,opa-offset
+tlc2272_umw,10,18,Distribution of TLC2274 vs Input Offset Voltage Temperature Coefficient,VDD = ±2.5 V ; TA = 25°C to 125°C,caption,vos_drift_distribution,B,opa-offset
+tlc2272_umw,11,18,Input Bias and Input Offset Current vs Free-Air Temperature,VDD = ±2.5 V ; VIC = 0 V ; VO = 0 V ; RS = 50 Ω,caption,ib_vs_t,B,opa-bias
+tlc2272_umw,12,18,Input Voltage vs Supply Voltage,TA = 25°C,caption,vicr_vs_vs,C,opa-offset
+tlc2272_umw,13,19,Input Voltage vs Free-Air Temperature,VDD = 5 V,caption,vicr_vs_t,C,opa-offset
+tlc2272_umw,14,19,High-Level Output Voltage vs High-Level Output Current,VDD = 5 V ; TA = 25°C,caption,vout_vs_iout,E,opa-swing
+tlc2272_umw,15,19,Low-Level Output Voltage vs Low-Level Output Current,VDD = 5 V ; TA = 25°C ; VIC = 0 V ; VIC = 1.25 V ; VIC = 2.5 V,caption,vout_vs_iout,E,opa-swing
+tlc2272_umw,16,19,Low-Level Output Voltage vs Low-Level Output Current,VDD = 5 V ; VIC = 2.5 V ; TA = 125°C ; TA = 25°C,caption,vout_vs_iout,E,opa-swing
+tlc2272_umw,17,19,Maximum Positive Peak Output Voltage vs Output Current,TA = 25°C ; TA = 125°C,caption,vout_vs_iout,E,opa-swing
+tlc2272_umw,18,19,Maximum Positive Peak Output Voltage vs Output Current,VDD = ±5 V ; VIC = 0 V ; TA = 125°C ; TA = 25°C,caption,vout_vs_iout,E,opa-swing
+tlc2272_umw,19,20,Maximum Peak-to-Peak Output Voltage vs Frequency,RL = 10 kΩ ; TA = 25°C ; VDD = 5 V ; VDD = ±5 V,caption,vout_vs_f,E,opa-max-vo-f
+tlc2272_umw,20,20,Short-Circuit Output Current vs Supply Voltage,VID = 100 mV ; VO = 0 V ; TA = 25°C,caption,isc_vs_vs,E,opa-isc
+tlc2272_umw,21,20,Short-Circuit Output Current vs Free-Air Temperature,VO = 0 V ; VDD = ±5 V,caption,isc_vs_t,E,opa-isc
+tlc2272_umw,22,20,Output Voltage vs Differential Input Voltage,VDD = 5 V ; 4 VIC = 2.5 V,caption,input_overvoltage,F,opa-phase-reversal
+tlc2272_umw,23,20,Output Voltage vs Differential Input Voltage,VDD = ±5 V ; TA = 25°C ; RL = 10 kΩ ; 3 VIC = 0 V,caption,input_overvoltage,F,opa-phase-reversal
+tlc2272_umw,24,20,Large-Signal Differential Voltage Amplification vs Load Resistance,VO = ±1 V ; TA = 25°C ; VDD = ±5 V ; VDD = 5 V,caption,aol_vs_rl,D,opa-aol-swing
+tlc2272_umw,25,21,Large-Signal Differential Voltage Amplification and Phase Margin vs Frequency,VDD = 5 V ; RL = 10 kΩ ; CL = 100 pF 135° ; TA = 25°C,caption,aol_phase_vs_f,D,opa-aol
+tlc2272_umw,26,21,Large-Signal Differential Voltage Amplification and Phase Margin vs Frequency,VDD = ±5 V,caption,aol_phase_vs_f,D,opa-aol
+tlc2272_umw,27,21,Large-Signal Differential Voltage Amplification vs Free-Air Temperature,VDD = 5 V ; VIC = 2.5 V ; RL = 1 MΩ ; RL = 10 kΩ,caption,aol_vs_t,D,opa-aol
+tlc2272_umw,28,21,Large-Signal Differential Voltage Amplification vs Free-Air Temperature,VDD = ±5 V ; VIC = 0 V ; RL = 1 MΩ ; RL = 10 kΩ,caption,aol_vs_t,D,opa-aol
+tlc2272_umw,29,21,Output Impedance vs Frequency,VDD = 5 V ; TA = 25°C ; AV = 100 ; AV = 10 ; AV = 1,caption,zout_vs_f,E,opa-zout
+tlc2272_umw,30,21,Output Impedance vs Frequency,VDD = ±5 V ; TA = 25°C ; AV = 100 ; AV = 10 ; AV = 1,caption,zout_vs_f,E,opa-zout
+tlc2272_umw,31,22,Common-Mode Rejection Ratio vs Frequency,TA = 25°C ; VDD = ±5 V ; VDD = 5 V,caption,cmrr_vs_f,C,opa-cmrr-f
+tlc2272_umw,32,22,Common-Mode Rejection Ratio vs Free-Air Temperature,VDD = ±5 V ; VDD = 5 V ; VIC = 0 V to 2.7 V,caption,cmrr_vs_t,C,opa-offset
+tlc2272_umw,33,22,Supply-Voltage Rejection Ratio vs Frequency Figure 34: Supply-Voltage Rejection Ratio vs Frequency,VDD = 5 V ; VDD = ±5 V ; TA = 25°C,caption,psrr_vs_f,C,opa-psrr-f
+tlc2272_umw,35,22,Supply-Voltage Rejection Ratio vs Free-Air Temperature,VO = 0 V,caption,psrr_vs_t,C,opa-offset
+tlc2272_umw,36,22,TLC2272 Supply Current vs Supply Voltage,VO = 0 V ; TA = 25°C ; TA = 125°C,caption,iq_vs_vs,A,opa-iq
+tlc2272_umw,37,23,TLC2274 Supply Current vs Supply Voltage,VO = 0 V ; TA = 25°C ; TA = 125°C,caption,iq_vs_vs,A,opa-iq
+tlc2272_umw,38,23,TLC2272 Supply Current vs Free-Air Temperature,VDD = 5 V ; VO = 2.5 V,caption,iq_vs_t,A,opa-iq
+tlc2272_umw,39,23,TLC2274 Supply Current vs Free-Air Temperature,VDD = ±5 V ; VO = 0 V ; VDD = 5 V ; VO = 2.5 V,caption,iq_vs_t,A,opa-iq
+tlc2272_umw,40,23,Slew Rate vs Load Capacitance,VDD = 5 V ; TA = 25°C,caption,slew_vs_cl,F,opa-slew
+tlc2272_umw,41,23,Slew Rate vs Free-Air Temperature,VDD = 5 V ; RL = 10 kΩ ; CL = 100 pF ; AV = 1,caption,slew_vs_t,F,opa-slew
+tlc2272_umw,42,23,Inverting Large-Signal Pulse Response,VDD = 5 V ; RL = 10 kΩ ; CL = 100 pF ; TA = 25°C,caption,large_step,F,opa-slew
+tlc2272_umw,43,24,Inverting Large-Signal Pulse Response,VDD = ±5 V ; RL = 10 kΩ ; CL = 100 pF ; TA = 25°C,caption,large_step,F,opa-slew
+tlc2272_umw,44,24,Voltage-Follower Large-Signal Pulse Response,VDD = 5 V ; RL = 10 kΩ ; CL = 100 pF ; TA = 25°C,caption,large_step,F,opa-slew
+tlc2272_umw,45,24,Voltage-Follower Large-Signal Pulse Response,VDD = ±5 V ; RL = 10 kΩ ; CL = 100 pF ; TA = 25°C ; AV = 1,caption,large_step,F,opa-slew
+tlc2272_umw,46,24,Inverting Small-Signal Pulse Response,VDD = 5 V ; RL = 10 kΩ ; CL = 100 pF,caption,large_step,F,opa-slew
+tlc2272_umw,47,24,Inverting Small-Signal Pulse Response,VDD = ±5 V ; RL = 10 kΩ ; CL = 100 pF ; TA = 25°C ; AV = 1,caption,large_step,F,opa-slew
+tlc2272_umw,48,24,Voltage-Follower Small-Signal Pulse Response,VDD = 5 V ; RL = 10 kΩ ; CL = 100 pF ; 2.6 TA = 25°C ; AV = 1,caption,large_step,F,opa-slew
+tlc2272_umw,49,25,Voltage-Follower Small-Signal Pulse Response,VDD = ±5 V ; RL = 10 kΩ ; CL = 100 pF ; TA = 25°C ; 50 AV = 1,caption,large_step,F,opa-slew
+tlc2272_umw,50,25,Equivalent Input Noise Voltage vs Frequency,VDD = 5 V ; TA = 25°C ; RS = 20 Ω,caption,en_vs_f,H,opa-noise
+tlc2272_umw,51,25,Equivalent Input Noise Voltage vs Frequency,,caption,en_vs_f,H,opa-noise
+tlc2272_umw,52,25,Noise Voltage Over a 10 Second Period,VDD = 5 V ; f = 0.1 Hz to 10 Hz ; TA = 25°C,caption,noise_0p1_10,H,opa-noise
+tlc2272_umw,53,25,Integrated Noise Voltage vs Frequency,Lower Frequency = 1 Hz,caption,noise_vs_bandwidth,H,opa-noise
+tlc2272_umw,54,25,Total Harmonic Distortion + Noise vs Frequency,VDD = 5 V ; RL = 10 kΩ ; AV = 100 ; AV = 10 ; 0.001 AV = 1,caption,thd_vs_f,I,opa-thd-f
+tlc2272_umw,55,26,Gain-Bandwidth Product vs Supply Voltage,f = 10 kHz ; RL = 10 kΩ ; CL = 100 pF ; 2.4 TA = 25°C,caption,gbw_vs_vs,D,opa-aol
+tlc2272_umw,56,26,Gain-Bandwidth Product vs Free-Air Temperature,VDD = 5 V ; f = 10 kHz ; RL = 10 kΩ ; CL = 100 pF,caption,gbw_vs_t,D,opa-aol
+tlc2272_umw,57,26,Phase Margin vs Load Capacitance,VDD = ±5 V ; TA = 25°C ; Rnull = 100 Ω ; Rnull = 50 Ω ; Rnull = 20 Ω ; CL Rnull = 10 Ω,caption,phase_margin_vs_cl,D,opa-stability
+tlc2272_umw,58,26,Gain Margin vs Load Capacitance,VDD = 5 V ; AV = 1 ; RL = 10 kΩ ; TA = 25°C,caption,phase_margin_vs_cl,D,opa-stability
+mcp6002_umw,1,7,Input Offset Voltage,,caption,vos_other,B,opa-offset
+mcp6002_umw,2,7,Input Offset Voltage vs,VDD = 1.8V ; TA = -40°C ; Common-Mode Input Voltage at VDD = 1.8V.,caption,vos_other,B,opa-offset
+mcp6002_umw,3,7,Input Offset Voltage Drift,TA = -40°C to +125°C,caption,vos_other,B,opa-offset
+mcp6002_umw,4,7,Input Offset Voltage vs,Common-Mode Input Voltage at VDD = 1.8V. ; VDD = 5.5V ; TA = -40°C ; Common-Mode Input Voltage at VDD = 5.5V.,caption,vos_other,B,opa-offset
+mcp6002_umw,5,7,Input Offset Quadratic Temp. Co,,caption,vos_drift_distribution,B,opa-offset
+mcp6002_umw,6,7,Input Offset Voltage vs. Output Voltage,Common-Mode Input Voltage at VDD = 5.5V. ; VDD = 5.5V ; VDD = 1.8V,caption,vout_other,E,opa-swing
+mcp6002_umw,7,8,Input Bias Current at +85°C,12% VDD = 5.5V,caption,ib_other,B,opa-bias
+mcp6002_umw,8,8,"PSRR, CMRR vs. Frequency",,caption,cmrr_vs_f,C,opa-cmrr-f
+mcp6002_umw,9,8,Input Bias Current at +125°C,VDD = 5.5V,caption,ib_other,B,opa-bias
+mcp6002_umw,10,8,"Open-Loop Gain, Phase vs. Frequency",,caption,aol_phase_vs_f,D,opa-aol
+mcp6002_umw,11,8,"CMRR, PSRR vs. Ambient Temperature",VDD = 5.0V ; CMRR (VCM = -0.3V to +5.3V),caption,cmrr_vs_t,C,opa-offset
+mcp6002_umw,12,8,Input Noise Voltage Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+mcp6002_umw,13,9,Output Short-Circuit Current vs Power Supply Voltage.,TA = -40°C,caption,isc_vs_vs,E,opa-isc
+mcp6002_umw,14,9,"Small-Signal, Noninverting Pulse Response",,caption,large_step,F,opa-slew
+mcp6002_umw,15,9,Output Voltage Headroom vs. Output Current Magnitude.,,caption,vout_vs_iout,E,opa-swing
+mcp6002_umw,16,9,"Large-Signal, Noninverting Pulse Response",VDD = 5.0V,caption,large_step,F,opa-slew
+mcp6002_umw,17,9,Quiescent Current vs. Power Supply Voltage,TA = -40°C,caption,iq_vs_vs,A,opa-iq
+mcp6002_umw,18,9,Slew Rate vs. Ambient Temperature,VDD = 5.5V ; VDD = 1.8V,caption,slew_vs_t,F,opa-slew
+mcp6002_umw,19,10,Output Voltage Swing vs. Frequency,VDD = 5.5V ; VDD = 1.8V,caption,vout_vs_f,E,opa-max-vo-f
+mcp6002_umw,20,10,The MCP6001/2/4 Show No Phase Reversal,VDD = 5.0V,caption,phase_reversal,F,opa-phase-reversal
+mcp6002_umw,21,10,Measured Input Current vs. Input Voltage (below VSS),,caption,norton,N,none
+ad8542_umw,1,7,Open-loop Gain and Phase as a function of Frequency,,caption,aol_phase_vs_f,D,opa-aol
+ad8542_umw,2,7,Power Supply and Common-mode Rejection Ratio as a function of Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+ad8542_umw,3,7,Input Offset Voltage Production Distribution,,caption,vos_distribution,B,opa-offset
+ad8542_umw,4,7,Channel Separation as a function of Frequency,,caption,channel_separation_vs_f,J,opa-separation
+ad8542_umw,5,7,Large-Signal Step Response at 2.7V,,caption,large_step,F,opa-slew
+ad8542_umw,6,7,Small-Signal Step Response at 2.7V,,caption,small_step,G,opa-step
+ad8542_umw,7,8,Large-Signal Step Response at 5V,,caption,large_step,F,opa-slew
+ad8542_umw,8,8,Small-Signal Step Response at 5V,,caption,small_step,G,opa-step
+op2177_umw,1,6,Input Offset Voltage Distribution,VSY = ±15V,caption,vos_distribution,B,opa-offset
+op2177_umw,2,6,Output Voltage to Supply Rail vs Load Current,VSY = ±15V ; 1.6 TA = 25°C,caption,vout_vs_iout,E,opa-swing
+op2177_umw,3,6,Input Offset Voltage Drift Distribution,VSY = ±15V,caption,vos_distribution,B,opa-offset
+op2177_umw,4,6,Input Bias Current vs. Temperature,VSY = ±15V,caption,ib_vs_t,B,opa-bias
+op2177_umw,5,6,Input Bias Current Distribution,VSY = ±15V,caption,ib_other,B,opa-bias
+op2177_umw,6,6,Open-Loop Gain and Phase Shift vs Frequency,VSY = ±15V ; 50 CL = 0,caption,aol_phase_vs_f,D,opa-aol
+op2177_umw,7,7,Closed-Loop Gain vs. Frequency,VSY = ±15V ; VIN = 4mV p-p ; CL = 0 ; AV = 100 ; AV = 10 ; AV = 1,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+op2177_umw,8,7,Small Signal Transient Response,"VSY = ±15V ; CL = 1,000pF ; RL = 2k ; VIN = 100mV ; AV = 1",caption,small_step,G,opa-step
+op2177_umw,9,7,Output Impedance vs. Frequency,VSY = ±15V ; 450 VIN = 50mV p-p ; AV = 1 ; AV = 10 ; AV = 100,caption,zout_vs_f,E,opa-zout
+op2177_umw,10,7,Small Signal Overshoot vs Load Capacitance,VSY = ±15V ; VIN = 100mV p-p,caption,overshoot_vs_cl,G,opa-stability
+op2177_umw,11,7,Large Signal Transient Response,VSY = ±15V ; CL = 300pF ; RL = 2k ; AV = 1,caption,large_step,F,opa-slew
+op2177_umw,12,7,Positive Overvoltage Recovery,VSY = ±15V ; RL = 10k ; AV = –100 ; VIN = 200mV,caption,overload_recovery,F,opa-overload
+op2177_umw,13,8,Negative Overvoltage Recovery,VSY = ±15V ; RL = 10k ; AV = –100 ; VIN = 200mV,caption,overload_recovery,F,opa-overload
+op2177_umw,14,8,0.1 Hz to 10 Hz Input Voltage Noise,VSY = ±15V,caption,noise_0p1_10,H,opa-noise
+op2177_umw,15,8,CMRR vs. Frequency,VSY = ±15V,caption,cmrr_vs_f,C,opa-cmrr-f
+op2177_umw,16,8,Voltage Noise Density vs. Frequency,VSY = ±15V,caption,en_vs_f,H,opa-noise
+op2177_umw,17,8,PSRR vs. Frequency,VSY = ±15V,caption,psrr_vs_f,C,opa-psrr-f
+op2177_umw,18,8,Short-Circuit Current vs. Temperature,VSY = ±15V,caption,isc_vs_t,E,opa-isc
+op2177_umw,19,9,Output Voltage Swing vs. Temperature,VSY = ±15V,caption,vout_vs_t,E,opa-swing
+op2177_umw,20,9,CMRR vs. Temperature,VSY = ±15V,caption,cmrr_vs_t,C,opa-offset
+op2177_umw,21,9,Warm-Up Drift,VSY = ±15V,caption,vos_warmup,B,opa-offset
+op2177_umw,22,9,PSRR vs. Temperature,VSY = ±15V,caption,psrr_vs_t,C,opa-offset
+op2177_umw,23,9,Input Offset Voltage vs. Temperature,VSY = ±15V,caption,vos_vs_t,B,opa-offset
+op2177_umw,24,9,Input Offset Voltage Distribution,VSY = ±5V,caption,vos_distribution,B,opa-offset
+op2177_umw,25,10,Output Voltage to Supply Rail vs Load Current,VSY = ±5V ; TA = 25°C,caption,vout_vs_iout,E,opa-swing
+op2177_umw,26,10,Output Impedance vs. Frequency,VSY = ±5V ; AV = 100 ; AV = 1 ; AV = 10,caption,zout_vs_f,E,opa-zout
+op2177_umw,27,10,Open-Loop Gain and Phase Shift vs Frequency,VSY = ±5V ; CL = 0,caption,aol_phase_vs_f,D,opa-aol
+op2177_umw,28,10,Large Signal Transient Response,VSY = ±5V ; CL = 300pF ; RL = 2k ; VIN = 1V ; AV = 1,caption,large_step,F,opa-slew
+op2177_umw,29,10,Closed-Loop Gain vs. Frequency,VIN = 4mV p-p ; CL = 0 ; AV = 100 ; AV = 10 ; AV = 1,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+op2177_umw,30,10,Small Signal Transient Response,"VSY = ±5V ; CL = 1,000pF ; RL = 2k ; VIN = 100mV ; AV = 1",caption,small_step,G,opa-step
+op2177_umw,31,11,Small Signal Overshoot vs Load Capacitance,VSY = ±5V ; RL = 2k ; VIN = 100mV,caption,overshoot_vs_cl,G,opa-stability
+op2177_umw,32,11,No Phase Reversal,VS = ±5V,caption,phase_reversal,F,opa-phase-reversal
+op2177_umw,33,11,Positive Overvoltage Recovery,VSY = ±5V ; RL = 10k ; AV = –100,caption,overload_recovery,F,opa-overload
+op2177_umw,34,11,CMRR vs. Frequency,VSY = ±5V,caption,cmrr_vs_f,C,opa-cmrr-f
+op2177_umw,35,11,Negative Overvoltage Recovery,VSY = ±5V ; RL = 10k ; AV = –100 ; VIN = 200mV,caption,overload_recovery,F,opa-overload
+op2177_umw,36,11,PSRR vs. Frequency,VSY = ±5V,caption,psrr_vs_f,C,opa-psrr-f
+op2177_umw,37,12,0.1 Hz to 10 Hz Input Voltage Noise,VSY = ±5V,caption,noise_0p1_10,H,opa-noise
+op2177_umw,38,12,Output Voltage Swing vs. Temperature,VSY = ±5V,caption,vout_vs_t,E,opa-swing
+op2177_umw,39,12,Voltage Noise Density vs. Frequency,VSY = ±5V,caption,en_vs_f,H,opa-noise
+op2177_umw,40,12,Input Offset Voltage vs. Temperature,VSY = ±5V,caption,vos_vs_t,B,opa-offset
+op2177_umw,41,12,Short-Circuit Current vs. Temperature,VSY = ±5V,caption,isc_vs_t,E,opa-isc
+op2177_umw,42,12,Supply Current vs. Temperature,VSY = ±15V ; VSY = ±5V,caption,iq_vs_t,A,opa-iq
+op2177_umw,43,13,Supply Current vs. Supply Voltage,TA = 25°C,caption,iq_vs_vs,A,opa-iq
+op2177_umw,44,13,Channel Separation vs. Frequency,,caption,channel_separation_vs_f,J,opa-separation
+tsv912_umw,1,9,Offset Voltage Generation Distribution,,caption,vos_distribution,B,opa-offset
+tsv912_umw,2,9,Offset Voltage Drift Distribution,"Offset Voltage Drift (µV/C), TA=-40°C to 125°C",caption,vos_distribution,B,opa-offset
+tsv912_umw,3,9,Offset Voltage vs. Temperature,,caption,vos_vs_t,B,opa-offset
+tsv912_umw,4,9,Offset Voltage vs. Common Mode Voltage,"Offset Voltage Drift (µV/C), TA=-40°C to 125°C",caption,vos_vs_vcm,B,opa-offset
+tsv912_umw,5,9,Offset Voltage vs. Power Supply,"Supply Voltage (V), VS=2.5V to 5.5V",caption,vos_vs_vs,B,opa-offset
+tsv912_umw,6,9,Open-Loop Gain and Phase vs. Frequency,"Frequency (Hz), CL=10pF",caption,aol_phase_vs_f,D,opa-aol
+tsv912_umw,7,10,Closed-Loop Gain vs. Frequency,G = -1,caption,closed_loop_gain_vs_f,D,opa-closed-loop
+tsv912_umw,8,10,Input Bias Current vs. Temperature,,caption,ib_vs_t,B,opa-bias
+tsv912_umw,9,10,Output Voltage Swing vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tsv912_umw,14,11,0.1Hz to 10Hz input voltage noise,"Time (1s/div), VS=2.5V to 5.5V",caption,noise_0p1_10,H,opa-noise
+tsv912_umw,15,11,Input Voltage Noise Spectral Density Vs. Frequency,"Temperature (°C), VS=2.5V to 5.5V",caption,en_vs_f,H,opa-noise
+tsv912_umw,19,12,Quiescent Current vs Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+tsv912_umw,20,12,Quiescent Current vs Temperature,,caption,iq_vs_t,A,opa-iq
+tsv912_umw,21,12,Open-Loop Output Impedance vs Frequency,,caption,zout_vs_f,E,opa-zout
+tsv912_umw,22,12,Small Signal Overshoot vs Load Capacitance,,caption,overshoot_vs_cl,G,opa-stability
+tsv912_umw,23,12,Small Signal Overshoot vs Load Capacitance,,caption,overshoot_vs_cl,G,opa-stability
+tsv912_umw,24,12,No Phase Reversal,,caption,phase_reversal,F,opa-phase-reversal
+tsv912_umw,25,13,Quiescent Current vs Supply Voltage,"V+=2.75V, V-=-2.75V, G =-10V/V",caption,iq_vs_vs,A,opa-iq
+tsv912_umw,26,13,Small Signal Step Response,"V+=2.75V, V– = –2.75V, G = 1V/V",caption,small_step,G,opa-step
+tsv912_umw,27,13,Large Signal Step Response,"V+=2.75V, V-=-2.75V, G =-10V/V ; V+=2.75V, V-=-2.75V, CL=100pF, G=1V/V",caption,large_step,F,opa-slew
+tsv912_umw,28,13,Short Circuit Current vs Temperature,"V+=2.75V, V– = –2.75V, G = 1V/V",caption,isc_vs_t,E,opa-isc
+tsv912_umw,29,13,Electromagnetic Interference Rejection Ratio,"V+=2.75V, V-=-2.75V, CL=100pF, G=1V/V ; Frequency (Hz), PRF=-10dBm",caption,emirr_vs_f,C,opa-emirr
+tsv912_umw,30,13,Channel Separation vs Frequency,,caption,channel_separation_vs_f,J,opa-separation
+tsv912_umw,31,14,Phase Margin vs Capacitive Load,"Capacitive Load (pF), VS=5.5V",caption,phase_margin_vs_cl,D,opa-stability
+tsv912_umw,32,14,Open-Loop Voltage Gain Vs Output Voltage,"Output Voltage (V), VS=5.5V",caption,aol_vs_vo,D,opa-aol-swing
+tsv912_umw,33,14,Large Signal Settling Time (Positive),,caption,settling,F,opa-settling
+tsv912_umw,34,14,Large Signal Settling Time (Negative),,caption,settling,F,opa-settling
+tsv912_umw,35,17,TSV91x in a low-side motor control application,,caption,skip,,
+tsv912_umw,36,17,Low-Side Current Sense Transfer Function,,caption,skip,,
+tsz122_umw,1,11,Supply current vs. supply voltage,,caption,iq_vs_vs,A,opa-iq
+tsz122_umw,2,11,Input offset voltage distribution at VCC=5V,,caption,vos_distribution,B,opa-offset
+tsz122_umw,3,11,Input offset voltage distribution at VCC=3.3V,,caption,vos_distribution,B,opa-offset
+tsz122_umw,4,11,Input offset voltage distribution at VCC=1.8V,Figure 2: Input offset voltage distribution at VCC=5V,caption,vos_distribution,B,opa-offset
+tsz122_umw,5,11,Vio temperature co-efficient distribution (-40 °C to 25 °C),Figure 3: Input offset voltage distribution at VCC=3.3V,caption,vos_drift_distribution,B,opa-offset
+tsz122_umw,6,11,Vio temperature co-efficient distribution (25 °C to 125 °C),Figure 4: Input offset voltage distribution at VCC=1.8V,caption,vos_drift_distribution,B,opa-offset
+tsz122_umw,7,12,Input offset voltage vs. supply voltage,,caption,vos_vs_vs,B,opa-offset
+tsz122_umw,8,12,Input offset voltage vs. input common-mode,at VCC = 1.8 V,caption,vos_vs_vcm,B,opa-offset
+tsz122_umw,9,12,Input offset voltage vs. input common-mode,at VCC = 2.7 V,caption,vos_vs_vcm,B,opa-offset
+tsz122_umw,10,12,Input offset voltage vs. input common-mode,at VCC = 1.8 V ; at VCC = 5.5 V,caption,vos_vs_vcm,B,opa-offset
+tsz122_umw,11,12,Input offset voltage vs. temperature,at VCC = 2.7 V,caption,vos_vs_t,B,opa-offset
+tsz122_umw,12,12,VOH vs. supply voltage,at VCC = 5.5 V,caption,vout_vs_iout,E,opa-swing
+tsz122_umw,13,13,VOL vs. supply voltage,,caption,vout_vs_iout,E,opa-swing
+tsz122_umw,14,13,Output current vs. output voltage at,VCC = 1.8 V,caption,vout_vs_iout,E,opa-swing
+tsz122_umw,15,13,Output current vs. output voltage at,VCC = 5.5 V,caption,vout_vs_iout,E,opa-swing
+tsz122_umw,16,13,Input bias current vs. common mode at,VCC = 1.8 V ; VCC = 5 V,caption,ib_vs_vcm,B,opa-bias
+tsz122_umw,17,13,Input bias current vs. common mode at,VCC = 5.5 V ; VCC = 1.8 V,caption,ib_vs_vcm,B,opa-bias
+tsz122_umw,18,13,Input bias current vs. temperature,VCC = 5 V ; at VCC = 5 V,caption,ib_vs_t,B,opa-bias
+tsz122_umw,19,14,Bode diagram at VCC = 1.8 V,,caption,aol_phase_vs_f,D,opa-aol
+tsz122_umw,20,14,Bode diagram at VCC = 2.7 V,,caption,aol_phase_vs_f,D,opa-aol
+tsz122_umw,21,14,Bode diagram at VCC = 5.5 V,Figure 19: Bode diagram at VCC = 1.8 V,caption,aol_phase_vs_f,D,opa-aol
+tsz122_umw,22,14,Open loop gain vs. frequency,Figure 20: Bode diagram at VCC = 2.7 V,caption,aol_phase_vs_f,D,opa-aol
+tsz122_umw,23,14,Positive slew rate vs. supply voltage,Figure 21: Bode diagram at VCC = 5.5 V,caption,slew_vs_vs,F,opa-slew
+tsz122_umw,24,14,Negative slew rate vs. supply voltage,,caption,slew_vs_vs,F,opa-slew
+tsz122_umw,25,15,0.1 Hz to 10 Hz noise,,caption,noise_0p1_10,H,opa-noise
+tsz122_umw,26,15,Noise vs. frequency,,caption,en_vs_f,H,opa-noise
+tsz122_umw,27,15,Noise vs. frequency and temperature,,caption,en_vs_t,H,opa-noise
+tsz122_umw,28,15,Output overshoot vs. load capacitance,,caption,overshoot_vs_cl,G,opa-stability
+tsz122_umw,29,15,Small signal,,caption,small_step,G,opa-step
+tsz122_umw,30,15,Large signal,,caption,large_step,F,opa-slew
+tsz122_umw,31,16,Positive overvoltage recovery at VCC = 1.8 V,,caption,overload_recovery,F,opa-overload
+tsz122_umw,32,16,Positive overvoltage recovery at VCC = 5 V,,caption,overload_recovery,F,opa-overload
+tsz122_umw,33,16,Negative overvoltage recovery at VCC = 1.8 V Figure 34: Negative overvoltage recovery at VCC = 5 V,Figure 31: Positive overvoltage recovery at VCC = 1.8 V ; Figure 32: Positive overvoltage recovery at VCC = 5 V,caption,overload_recovery,F,opa-overload
+tsz122_umw,35,16,PSRR vs. frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tsz122_umw,36,16,Output impedance vs. frequency,,caption,zout_vs_f,E,opa-zout
+opa348_umw,1,6,Open-loop Gain And Phase vs Frequency,,caption,aol_phase_vs_f,D,opa-aol
+opa348_umw,2,6,PSRR and CMRR vs Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+opa348_umw,3,6,Maximum Output Voltage vs Frequency,VS = 5.5V ; VS = 5V ; VS = 2.5V,caption,vout_vs_f,E,opa-max-vo-f
+opa348_umw,4,6,Channel Separation vs Frequency,,caption,channel_separation_vs_f,J,opa-separation
+opa348_umw,5,6,Quiescent and Short-circuit Current vs Supply Voltage,,caption,isc_vs_vs,E,opa-isc
+opa348_umw,6,6,Output Voltage Swing vs Output Current,VS = 2.5V,caption,vout_vs_iout,E,opa-swing
+opa348_umw,7,7,Input Bias Current at +85°C,,caption,ib_other,B,opa-bias
+opa348_umw,8,7,"PSRR, CMRR vs. Frequency",,caption,cmrr_vs_f,C,opa-cmrr-f
+opa348_umw,9,7,Maximum Output Voltage vs Frequency,VS = 5.5V ; VS = 5V ; VS = 2.5V,caption,vout_vs_f,E,opa-max-vo-f
+opa348_umw,10,7,Channel Separation vs Frequency,,caption,channel_separation_vs_f,J,opa-separation
+opa348_umw,11,7,Quiescent and Short-circuit Current vs Supply Voltage,,caption,isc_vs_vs,E,opa-isc
+opa348_umw,12,7,Output Voltage Swing vs Output Current,VS = 2.5V,caption,vout_vs_iout,E,opa-swing
+opa348_umw,13,8,Common-mode Rejection vs Temperature,,caption,cmrr_vs_t,C,opa-offset
+opa348_umw,14,8,Open-loop Gain and PSRR vs Temperature,"AOL, RL = 100k ; AOL, RL = 5k",caption,psrr_vs_t,C,opa-offset
+opa348_umw,15,8,Quiescent and Short-circuit Current vs Temperature,,caption,isc_vs_t,E,opa-isc
+opa348_umw,16,8,Input Bias (IB) Current vs Temperature,,caption,ib_vs_t,B,opa-bias
+opa348_umw,17,8,Offset Voltage Production Distribution,,caption,vos_distribution,B,opa-offset
+opa348_umw,18,8,Offset Voltage Drift Magnitude Production Distribution,,caption,vos_distribution,B,opa-offset
+tp07a_3peak,1,8,Offset Voltage vs. Common-Mode Voltage,"All test conditions: VS = 30 V, TA = 25°C, RL = 10 kΩ, unless otherwise noted.",caption,vos_vs_vcm,B,opa-offset
+tp07a_3peak,2,8,VOS vs. Temperature,,caption,vos_vs_t,B,opa-offset
+tp07a_3peak,3,8,EMIRR vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+tp07a_3peak,4,8,Input Current in Large VDM vs. Temperature,,caption,norton,N,none
+tp07a_3peak,5,8,"IB vs. Temperature, −40 to 125°C",,caption,ib_vs_t,B,opa-bias
+tp07a_3peak,6,8,"IB vs. Temperature, −40 to 90°C",,caption,ib_vs_t,B,opa-bias
+tp07a_3peak,7,9,PSRR+ vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp07a_3peak,8,9,PSRR− vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp07a_3peak,9,9,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp07a_3peak,10,9,Voltage Noise Spectral Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+tp07a_3peak,11,9,Positive Output Voltage vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tp07a_3peak,12,9,Negative Output Voltage vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tp07a_3peak,13,10,Positive Overload Recovery,,caption,overload_recovery,F,opa-overload
+tp07a_3peak,14,10,Negative Overload Recovery,,caption,overload_recovery,F,opa-overload
+tp07a_3peak,15,10,20-mV Signal Step Response,"G = 10, VREF = GND; VIN = 5 VPP",caption,small_step,G,opa-step
+tp07a_3peak,16,10,10-V Signal Step Response,"G = 10, VREF = GND; VIN = 5 VPP",caption,small_step,G,opa-step
+tp27_3peak,1,8,Offset Voltage vs. Common-Mode Voltage,"All test conditions: VS = ±15 V, VCM = 0 V, RL = 10 kΩ, unless otherwise noted.",caption,vos_vs_vcm,B,opa-offset
+tp27_3peak,2,8,IQ vs. Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+tp27_3peak,3,8,"IQ vs. Temperature, ±2.5-V Supply 160",,caption,iq_vs_vs,A,opa-iq
+tp27_3peak,4,8,"IQ vs. Temperature, ±15-V Supply",,caption,iq_vs_vs,A,opa-iq
+tp27_3peak,5,8,EMIRR vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+tp27_3peak,6,8,Open-Loop Gain and Phase vs. Frequency,,caption,aol_phase_vs_f,D,opa-aol
+tp27_3peak,7,9,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp27_3peak,8,9,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp27_3peak,9,9,Positive Overload Recovery,"RL = 2 kΩ, CL = 100 pF, G = 10",caption,overload_recovery,F,opa-overload
+tp27_3peak,10,9,Negative Overload Recovery,"RL = 2 kΩ, CL = 100 pF, G = 10",caption,overload_recovery,F,opa-overload
+tp27_3peak,11,9,100-mV Signal Step Response,"RL = 2 kΩ, CL = 100 pF, G = 10 ; RL = 2 kΩ, CL = 100 pF, G = 1",caption,small_step,G,opa-step
+tp27_3peak,12,9,10-V Signal Step Response,"RL = 2 kΩ, CL = 100 pF, G = 10 ; RL = 2 kΩ, CL = 100 pF, G = 1",caption,small_step,G,opa-step
+tp27_3peak,13,10,Voltage Noise Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+tp27_3peak,14,10,"THD vs. Frequency, G = 1",,caption,thd_vs_f,I,opa-thd-f
+tp27_3peak,15,10,"VOUT vs. IOUT, Source",,caption,vout_vs_iout,E,opa-swing
+tp27_3peak,16,10,"VOUT vs. IOUT, Sink","Figure 14. THD vs. Frequency, G = 1",caption,vout_vs_iout,E,opa-swing
+tp2272_3peak,1,10,"Quiescent Current vs. Supply Voltage, 1- Channel OPA","All test conditions: VS = ±15 V, VCM = 0 V, RL = 10 kΩ, unless otherwise noted.",caption,iq_vs_vs,A,opa-iq
+tp2272_3peak,2,10,"Quiescent Current vs. Temperature, 1-Channel OPA","All test conditions: VS = ±15 V, VCM = 0 V, RL = 10 kΩ, unless otherwise noted. ; VS=±15V ; VS=±2.5V",caption,iq_vs_t,A,opa-iq
+tp2272_3peak,3,10,Offset Voltage vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+tp2272_3peak,4,10,VOS vs. Temperature,,caption,vos_vs_t,B,opa-offset
+tp2272_3peak,5,10,EMIRR vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+tp2272_3peak,6,10,Input Current in Large VDM vs. Temperature,,caption,norton,N,none
+tp2272_3peak,7,11,"IB vs. Temperature, −40 to 125°C",,caption,ib_vs_t,B,opa-bias
+tp2272_3peak,8,11,"IB vs. Temperature, −40 to 90°C",,caption,ib_vs_t,B,opa-bias
+tp2272_3peak,9,11,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp2272_3peak,10,11,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp2272_3peak,11,11,Maximum Output Voltage vs. Frequency,Vcc=±2.5V ; Vcc=±10V ; Vcc=±15V,caption,vout_vs_f,E,opa-max-vo-f
+tp2272_3peak,12,11,"Open-Loop Gain and Phase vs. Frequency,","RLOAD = 10 kΩ, CLOAD = 100 pF",caption,aol_phase_vs_f,D,opa-aol
+tp2272_3peak,13,12,Positive Output Voltage vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tp2272_3peak,14,12,Negative Output Voltage vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tp2272_3peak,15,12,Positive Overload Recovery,"G = −10, VIN = 5 VPP, RL = 2 kΩ, CL = 100 pF",caption,overload_recovery,F,opa-overload
+tp2272_3peak,16,12,Negative Overload Recovery,"G = −10, VIN = 5 VPP, RL = 2 kΩ, CL = 100 pF",caption,overload_recovery,F,opa-overload
+tp2272_3peak,17,12,100-mV Signal Step Response,"RL = 2 kΩ, CL = 100 pF, G = 1",caption,small_step,G,opa-step
+tp2272_3peak,18,12,10-V Signal Step Response,"RL = 2 kΩ, CL = 100 pF, G = 1",caption,small_step,G,opa-step
+tp2272_3peak,19,13,Voltage Noise Spectral Density vs. Frequency,"VS = ±15 V, VCM = 0 V",caption,en_vs_f,H,opa-noise
+tp2272_3peak,20,13,THD + N vs. Frequency,"RL=2K, ; VS = ±15 V, VCM = 0 V, G = 1",caption,thd_vs_f,I,opa-thd-f
+tp2272_3peak,21,14,Functional Block Diagram,,caption,skip,,
+tp2272_3peak,22,15,Typical Application Circuit,,caption,skip,,
+tp5532_3peak,1,11,Offset Voltage Distribution,,caption,vos_distribution,B,opa-offset
+tp5532_3peak,2,11,Offset Voltage vs. Temperature,,caption,vos_vs_t,B,opa-offset
+tp5532_3peak,3,11,Open-Loop Gain vs. Frequency,,caption,aol_phase_vs_f,D,opa-aol
+tp5532_3peak,4,11,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp5532_3peak,5,11,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp5532_3peak,6,11,Output Swing vs. Load Current,,caption,vout_vs_rl,E,opa-swing
+tp5532_3peak,7,12,IB vs. Common-Mode Voltage,,caption,ib_vs_vcm,B,opa-bias
+tp5532_3peak,8,12,Input Bias vs. Temperature,,caption,ib_vs_t,B,opa-bias
+tp5532_3peak,9,12,VOS vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+tp5532_3peak,10,12,Quiescent Current vs. Temperature,,caption,iq_vs_t,A,opa-iq
+tp5532_3peak,11,12,Quiescent Current Distribution,,caption,iq_other,A,opa-iq
+tp5532_3peak,12,12,Large-Scale Step Response,,caption,small_step,G,opa-step
+tp5532_3peak,13,13,Small-Scale Step Response,,caption,small_step,G,opa-step
+tp5532_3peak,14,13,Positive Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp5532_3peak,15,13,Negative Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp5532_3peak,16,13,0.1-Hz to 10-Hz Noise,,caption,noise_0p1_10,H,opa-noise
+tp5532_3peak,17,13,Voltage Noise Spectral Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+tp5532_3peak,18,15,Input Protection,,caption,test_circuit,K,none
+tp5532_3peak,19,17,Circuit Implication for Reducing Input Offset Current Effect,,caption,ios_other,B,opa-bias
+tp5532_3peak,20,17,The Layout of Guard Ring,,caption,skip,,
+tp5532_3peak,21,18,Bi-Directional Current Sense Amplifier,,caption,skip,,
+tp5532_3peak,22,18,Thermistor Measurement,,caption,skip,,
+tp5552_3peak,1,8,Supply Current Distribution p,,caption,iq_other,A,opa-iq
+tp5552_3peak,2,8,Offset Voltage Distribution,,caption,vos_distribution,B,opa-offset
+tp5552_3peak,3,8,Quiescent Current vs Temperature,,caption,iq_vs_t,A,opa-iq
+tp5552_3peak,4,8,Voltage Noise Spectral Density vs Frequency,,caption,en_vs_f,H,opa-noise
+tp5552_3peak,5,8,Open-Loop Gain vs Frequency,,caption,aol_phase_vs_f,D,opa-aol
+tp5552_3peak,6,8,CMRR vs Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp5552_3peak,7,9,Small-Scale Step Response,RL=10KΩ,caption,small_step,G,opa-step
+tp5552_3peak,8,9,Positive Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp5552_3peak,12,11,"Single Supply, High Gain Amplifier, AV = 10,000 V/V",,caption,skip,,
+tp5592_3peak,1,9,Quiescent Current vs. Temperature,,caption,iq_vs_t,A,opa-iq
+tp5592_3peak,2,9,Voltage Noise Spectral Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+tp5592_3peak,3,9,Open-Loop Gain vs. Frequency,,caption,aol_phase_vs_f,D,opa-aol
+tp5592_3peak,4,9,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp5592_3peak,5,9,Small-Scale Step Response,,caption,small_step,G,opa-step
+tp5592_3peak,6,9,Positive Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp5592_3peak,7,10,Negative Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp5592_3peak,8,10,Large-Scale Step Response,,caption,small_step,G,opa-step
+tp5592_3peak,9,10,Offset Voltage Distribution,,caption,vos_distribution,B,opa-offset
+tp5592_3peak,10,12,Input Protection,,caption,test_circuit,K,none
+tp5592_3peak,11,14,Circuit Implication for Reducing Input Offset Current Effect,,caption,ios_other,B,opa-bias
+tp5592_3peak,12,14,The Layout of Guard Ring,,caption,skip,,
+tp5592_3peak,13,15,"Single-Supply, High-Gain Amplifier, AV = 10,000 V/V",,caption,skip,,
+tp5592_3peak,14,15,Thermistor Measurement,"Figure 13. Single-Supply, High-Gain Amplifier, AV = 10,000 V/V",caption,skip,,
+tp6002_3peak,1,10,Unity Gain Bandwidth vs. Temperature,"All test conditions: VS = 5 V, VCM = 2.5 V, RL = Open, unless otherwise noted.",caption,gbw_vs_t,D,opa-aol
+tp6002_3peak,2,10,Open-Loop Gain and Phase,"All test conditions: VS = 5 V, VCM = 2.5 V, RL = Open, unless otherwise noted.",caption,aol_phase_vs_f,D,opa-aol
+tp6002_3peak,3,10,Supply Current vs. Temperature,VCM= 2.5V ; VCM= 5.0V ; VCM= 0V,caption,iq_vs_t,A,opa-iq
+tp6002_3peak,4,10,Short Circuit Current vs. Temperature,,caption,isc_vs_t,E,opa-isc
+tp6002_3peak,5,10,Quiescent Current vs. Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+tp6002_3peak,6,10,Offset Voltage vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+tp6002_3peak,7,11,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp6002_3peak,8,11,CMRR vs. Temperature,,caption,cmrr_vs_t,C,opa-offset
+tp6002_3peak,9,11,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp6002_3peak,10,11,PSRR vs. Temperature,,caption,psrr_vs_t,C,opa-offset
+tp6002_3peak,11,11,Input Voltage Noise Spectral Density,,caption,en_vs_f,H,opa-noise
+tp6002_3peak,12,11,0.1-Hz to 10-Hz Input Voltage Noise,,caption,noise_0p1_10,H,opa-noise
+tp6002_3peak,13,12,EMIRR IN+ vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+tp6002_3peak,14,12,Large-Scale Step Response,,caption,small_step,G,opa-step
+tp6002_3peak,15,12,Negative Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp6002_3peak,16,12,Positive Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp6002_3peak,17,12,Negative Output Swing vs. Load Current,,caption,vout_vs_rl,E,opa-swing
+tp6002_3peak,18,12,Positive Output Swing vs. Load Current,,caption,vout_vs_rl,E,opa-swing
+tp6002_3peak,19,14,Driving Large Capacitive Loads,,caption,skip,,
+tp6002_3peak,20,14,Typical Application Circuit,,caption,skip,,
+tp2302_3peak,1,9,Offset Voltage Production Distribution,"All test conditions: VS = ±2.5 V, VCM = 0 V, RL = Open, unless otherwise noted. ; Number = 55343 pcs",caption,vos_distribution,B,opa-offset
+tp2302_3peak,2,9,CMRR vs. Temperature,"All test conditions: VS = ±2.5 V, VCM = 0 V, RL = Open, unless otherwise noted.",caption,cmrr_vs_t,C,opa-offset
+tp2302_3peak,3,9,Open-Loop Gain and Phase,,caption,aol_phase_vs_f,D,opa-aol
+tp2302_3peak,4,9,Input Voltage Noise Spectral Density,,caption,en_vs_f,H,opa-noise
+tp2302_3peak,5,9,Common-Mode Rejection Ratio,,caption,cmrr_other,C,opa-cmrr-f
+tp2302_3peak,6,9,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp2302_3peak,7,10,Quiescent Current vs. Temperature,,caption,iq_vs_t,A,opa-iq
+tp2302_3peak,8,10,Short Circuit Current vs. Temperature,,caption,isc_vs_t,E,opa-isc
+tp2302_3peak,9,10,Power-Supply Rejection Ratio,,caption,psrr_other,C,opa-psrr-f
+tp2302_3peak,10,10,Quiescent Current vs. Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+tp2302_3peak,11,10,Power-Supply Rejection Ratio vs Temperature,,caption,psrr_vs_t,C,opa-offset
+tp2302_3peak,12,10,CMRR vs. Temperature,,caption,cmrr_vs_t,C,opa-offset
+tp2302_3peak,13,11,EMIRR IN+ vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+tp2302_3peak,14,11,Large-Scale Step Response,,caption,small_step,G,opa-step
+tp2302_3peak,15,11,Negative Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp2302_3peak,16,11,Positive Over-Voltage Recovery,,caption,overload_recovery,F,opa-overload
+tp2302_3peak,17,11,Negative Output Swing vs. Load Current,T=-40℃ ; T=25℃ ; T=130℃,caption,vout_vs_rl,E,opa-swing
+tp2302_3peak,18,11,Offset Voltage vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+tp2302_3peak,19,12,Positive Output Swing vs. Load Current,T=-40℃ ; T=25℃ ; T=130℃,caption,vout_vs_rl,E,opa-swing
+tp1242_3peak,1,9,"IQ vs. VCC, TP1242L1",,caption,iq_vs_vs,A,opa-iq
+tp1242_3peak,2,9,"IQ vs. VCC in Different Temperature, TP1242L1",,caption,iq_vs_vs,A,opa-iq
+tp1242_3peak,3,9,Offset Voltage vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+tp1242_3peak,4,9,VOS vs. Temperature,,caption,vos_vs_t,B,opa-offset
+tp1242_3peak,5,9,EMIRR vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+tp1242_3peak,6,9,Input Current in Large VDM vs. Temperature,,caption,norton,N,none
+tp1242_3peak,7,10,"IB vs. Temperature, −40°C to 125°C",,caption,ib_vs_t,B,opa-bias
+tp1242_3peak,8,10,"IB vs. Temperature, −40°C to 90°C",,caption,ib_vs_t,B,opa-bias
+tp1242_3peak,9,10,PSRR+ vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp1242_3peak,10,10,PSRR− vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp1242_3peak,11,10,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp1242_3peak,12,10,Voltage Noise Spectral Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+tp1242_3peak,13,11,Positive Output Voltage vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tp1242_3peak,14,11,Negative Output Voltage vs. Output Current,,caption,vout_vs_iout,E,opa-swing
+tp1242_3peak,15,11,Positive Overload Recovery,"G = 10, VREF = GND; VIN = 5 VPP",caption,overload_recovery,F,opa-overload
+tp1242_3peak,16,11,Negative Overload Recovery,"G = 10, VREF = GND; VIN = 5 VPP",caption,overload_recovery,F,opa-overload
+tp1242_3peak,17,11,20-mV Signal Step Response,"G = 10, VREF = GND; VIN = 5 VPP ; RL = 2 kΩ, CL = 100 pF, G = 1",caption,small_step,G,opa-step
+tp1242_3peak,18,11,10-V Signal Step Response,"G = 10, VREF = GND; VIN = 5 VPP ; RL = 2 kΩ, CL = 100 pF, G = 1",caption,small_step,G,opa-step
+lm358a_3peak,1,10,Quiescent Current vs. Supply Voltage,,caption,iq_vs_vs,A,opa-iq
+lm358a_3peak,2,10,Quiescent Current vs. Temperature,,caption,iq_vs_t,A,opa-iq
+lm358a_3peak,3,10,Offset Voltage vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+lm358a_3peak,4,10,Offset Voltage vs. Temperature,,caption,vos_vs_t,B,opa-offset
+lm358a_3peak,5,10,EMIRR+ vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+lm358a_3peak,6,10,Crosstalk vs. Frequency,,caption,channel_separation_vs_f,J,opa-separation
+lm358a_3peak,7,11,Open-Loop Gain and Phase vs. Frequency,,caption,aol_phase_vs_f,D,opa-aol
+lm358a_3peak,8,11,Open-Loop Gain vs. Temperature,,caption,aol_vs_t,D,opa-aol
+lm358a_3peak,9,11,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+lm358a_3peak,10,11,PSRR vs. Temperature,,caption,psrr_vs_t,C,opa-offset
+lm358a_3peak,11,11,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+lm358a_3peak,12,11,CMRR vs. Temperature,,caption,cmrr_vs_t,C,opa-offset
+lm358a_3peak,13,12,Voltage Noise Spectral Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+lm358a_3peak,14,12,Different Input Current vs. Temperature,,caption,norton,N,none
+lm358a_3peak,15,12,"Large-Signal Response, 4-V Step, G = 1",,caption,large_step,F,opa-slew
+lm2904a_3peak,1,9,Quiescent Current vs. Supply Voltage,"All test conditions: VS = +15 V, VCM = 0 V, RL = 10 kΩ, unless otherwise noted.",caption,iq_vs_vs,A,opa-iq
+lm2904a_3peak,2,9,Quiescent Current vs. Temperature,"All test conditions: VS = +15 V, VCM = 0 V, RL = 10 kΩ, unless otherwise noted.",caption,iq_vs_t,A,opa-iq
+lm2904a_3peak,3,9,Offset Voltage vs. Common-Mode Voltage,,caption,vos_vs_vcm,B,opa-offset
+lm2904a_3peak,4,9,Offset Voltage vs. Temperature,,caption,vos_vs_t,B,opa-offset
+lm2904a_3peak,5,10,EMIRR+ vs. Frequency,,caption,emirr_vs_f,C,opa-emirr
+lm2904a_3peak,6,10,Open-Loop Gain and Phase vs. Frequency,,caption,aol_phase_vs_f,D,opa-aol
+lm2904a_3peak,7,10,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+lm2904a_3peak,8,10,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+lm2904a_3peak,9,10,Voltage Noise Spectral Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+lm2904a_3peak,10,10,Different Input Current vs. Temperature,,caption,norton,N,none
+tp2582_3peak,1,8,"Quiescent Current vs. Temperature, TP2582, 3 Samples","VS = ±15V, VCM = 0V, RL = 10kΩ, unless otherwise specified.",caption,iq_vs_t,A,opa-iq
+tp2582_3peak,2,8,"VOS vs. Temperature, 10ch Data",,caption,vos_vs_t,B,opa-offset
+tp2582_3peak,3,8,"Offset Voltage vs. Common Mode Voltage, 3ch Data",,caption,vos_vs_vcm,B,opa-offset
+tp2582_3peak,4,8,EMIRR,,caption,emirr_vs_f,C,opa-emirr
+tp2582_3peak,5,8,Voltage Noise Density vs. Frequency,,caption,en_vs_f,H,opa-noise
+tp2582_3peak,6,8,THD+N vs. Frequency,,caption,thd_vs_f,I,opa-thd-f
+tp2582_3peak,7,9,PSRR vs. Frequency,,caption,psrr_vs_f,C,opa-psrr-f
+tp2582_3peak,8,9,CMRR vs. Frequency,,caption,cmrr_vs_f,C,opa-cmrr-f
+tp2582_3peak,9,9,"Large Signal Step Response,","G = 1, RL = 10kΩ, CL = 100pF",caption,large_step,F,opa-slew
+tp2582_3peak,10,9,"Small Signal Step Response,","G = 1, RL = 10kΩ, CL = 100pF",caption,small_step,G,opa-step
+tp2582_3peak,11,9,"Positive Settling Time,","G = 1, RL = 10kΩ, CL = 100pF ; VS = 3.3V, VCM = 1.65V, G = 11",caption,settling,F,opa-settling
+tp2582_3peak,12,9,"Negative Settling Time,","G = 1, RL = 10kΩ, CL = 100pF ; VS = 3.3V, VCM = 1.65V, G = 11",caption,settling,F,opa-settling
+tp2582_3peak,13,10,"Positive Overload Recovery,","VS = 3.3V, VCM = 1.65V, G = 11",caption,overload_recovery,F,opa-overload
+tp2582_3peak,14,10,"Negative Overload Recovery,","VS = 3.3V, VCM = 1.65V, G = 11",caption,overload_recovery,F,opa-overload
+tp2582_3peak,15,10,Open Loop Gain and Phase Margin vs Frequency,"VS = 3.3V, VCM = 1.65V, G = 11",caption,aol_phase_vs_f,D,opa-aol
+tp2582_3peak,16,10,Maximum Output Voltage vs Frequency,"VS = 3.3V, VCM = 1.65V, G = 11",caption,vout_vs_f,E,opa-max-vo-f

@@ -57,6 +57,15 @@ sheets:
 - {id: mc34071_onsemi, maker: onsemi, part: MC34071, url: https://www.onsemi.com/download/data-sheet/pdf/mc34071-d.pdf, how: direct}
 - {id: mc33272a_onsemi, maker: onsemi, part: MC33272A, url: https://www.onsemi.com/download/data-sheet/pdf/mc33272a-d.pdf, how: direct}
 - {id: ncs20071_onsemi, maker: onsemi, part: NCS20071, url: https://www.onsemi.com/download/data-sheet/pdf/ncs20071-d.pdf, how: direct}
+- {id: lm2902a_onsemi, maker: onsemi, part: LM2902A, url: https://www.onsemi.com/download/data-sheet/pdf/lm2902a-d.pdf, how: direct}
+- {id: lm301a_onsemi, maker: onsemi, part: LM301A, url: https://www.onsemi.com/download/data-sheet/pdf/lm301a-d.pdf, how: direct}
+- {id: mc1458_onsemi, maker: onsemi, part: MC1458, url: https://www.onsemi.com/download/data-sheet/pdf/mc1458-d.pdf, how: direct}
+- {id: mc33077_onsemi, maker: onsemi, part: MC33077, url: https://www.onsemi.com/download/data-sheet/pdf/mc33077-d.pdf, how: direct}
+- {id: mc33171_onsemi, maker: onsemi, part: MC33171, url: https://www.onsemi.com/download/data-sheet/pdf/mc33171-d.pdf, how: direct}
+- {id: mc33201_onsemi, maker: onsemi, part: MC33201, url: https://www.onsemi.com/download/data-sheet/pdf/mc33201-d.pdf, how: direct}
+- {id: mc33501_onsemi, maker: onsemi, part: MC33501, url: https://www.onsemi.com/download/data-sheet/pdf/mc33501-d.pdf, how: direct}
+- {id: mc4558_onsemi, maker: onsemi, part: MC4558, url: https://www.onsemi.com/download/data-sheet/pdf/mc4558-d.pdf, how: direct}
+- {id: ne5534_onsemi, maker: onsemi, part: NE5534, url: https://www.onsemi.com/download/data-sheet/pdf/ne5534-d.pdf, how: direct}
 # Analog Devices and Linear Technology, from the archive
 - {id: op27_adi, maker: adi, part: OP27, url: https://www.analog.com/media/en/technical-documentation/data-sheets/OP27.pdf, how: wayback}
 - {id: op37_adi, maker: adi, part: OP37, url: https://www.analog.com/media/en/technical-documentation/data-sheets/OP37.pdf, how: wayback}
@@ -90,6 +99,35 @@ sheets:
 - {id: ca3130_intersil, maker: renesas, part: CA3130, how: wayback-prefix, prefix: www.intersil.com/content/dam/intersil/documents/ca31/, pick: '(?i)/ca3130[^/]*\.pdf$'}
 # NXP (the Philips and Signetics sheets): none. Its document sitemap (data/datasheets/documents/nxp_docs.csv)
 # lists no NE5532 or NE5534 sheet, and the guessed addresses under /docs/en/data-sheet/ answer 404.
+# UMW (Youtai Semiconductor, Shenzhen): its own sheets for the parts it makes under the industry's numbers
+# (an NJM4580, an OPA277, an MCP6002…), published on its product list (/en/product?category_key=…), which
+# robots.txt allows. Another maker's reading of the same part, in another format.
+- {id: njm4580_umw, maker: umw, part: NJM4580, url: https://www.umw-ic.com/static/pdf/3fb7399a74ea65a686b0dd3b99ab915e.pdf, how: direct}
+- {id: lm358_umw, maker: umw, part: LM358, url: https://www.umw-ic.com/static/pdf/989d9d9c30a14e30242b4cc708213fdf.pdf, how: direct}
+- {id: lm2904_umw, maker: umw, part: LM2904, url: https://www.umw-ic.com/static/pdf/9311660af74322a9f7f261a5abc03f5f.pdf, how: direct}
+- {id: lm2902_umw, maker: umw, part: LM2902, url: https://www.umw-ic.com/static/pdf/749d36fe6f677a887addd4ac20f10a46.pdf, how: direct}
+- {id: opa277_umw, maker: umw, part: OPA277, url: https://www.umw-ic.com/static/pdf/d27508c041995d9cc3a342089caba6ea.pdf, how: direct}
+- {id: tlc2272_umw, maker: umw, part: TLC2272, url: https://www.umw-ic.com/static/pdf/29f67d21a27790ec1689d6fa18cddd16.pdf, how: direct}
+- {id: mcp6002_umw, maker: umw, part: MCP6002, url: https://www.umw-ic.com/static/pdf/f93fc427e29bccb5282e7f18e746b7b1.pdf, how: direct}
+- {id: ad8542_umw, maker: umw, part: AD8542, url: https://www.umw-ic.com/static/pdf/b36119e8c620dbec3fbb2c16b1913e60.pdf, how: direct}
+- {id: op2177_umw, maker: umw, part: OP2177, url: https://www.umw-ic.com/static/pdf/927224c365e0f3cb1db31b04c8cdae58.pdf, how: direct}
+- {id: tsv912_umw, maker: umw, part: TSV912, url: https://www.umw-ic.com/static/pdf/85b4d26c12c9d2898d845ba3190223ed.pdf, how: direct}
+- {id: tsz122_umw, maker: umw, part: TSZ122, url: https://www.umw-ic.com/static/pdf/42d1b690a778470622f39134b72d817e.pdf, how: direct}
+- {id: opa348_umw, maker: umw, part: OPA348, url: https://www.umw-ic.com/static/pdf/51ae346b884632fd3756b4003d788601.pdf, how: direct}
+# 3PEAK (Suzhou): its own designs (TP07A, TP27, TP55xx…) and its versions of the LM358 family, from the data
+# sheet links of its product selector, on a static host robots.txt allows.
+- {id: tp07a_3peak, maker: 3peak, part: TP07A, url: https://static.3peak.com/res/doc/ds/Datasheet_TP07A.pdf, how: direct}
+- {id: tp27_3peak, maker: 3peak, part: TP27, url: https://static.3peak.com/res/doc/ds/Datasheet_TP27.pdf, how: direct}
+- {id: tp2272_3peak, maker: 3peak, part: TP2272, url: https://static.3peak.com/res/doc/ds/Datasheet_TP2271-TP2272-TP2274.pdf, how: direct}
+- {id: tp5532_3peak, maker: 3peak, part: TP5532, url: https://static.3peak.com/res/doc/ds/Datasheet_TP5531-TP5532-TP5534.pdf, how: direct}
+- {id: tp5552_3peak, maker: 3peak, part: TP5552, url: https://static.3peak.com/res/doc/ds/Datasheet_TP5551-TP5552-TP5554.pdf, how: direct}
+- {id: tp5592_3peak, maker: 3peak, part: TP5592, url: https://static.3peak.com/res/doc/ds/Datasheet_TP5591-TP5592-TP5594.pdf, how: direct}
+- {id: tp6002_3peak, maker: 3peak, part: TP6002, url: https://static.3peak.com/res/doc/ds/Datasheet_TP6001-TP6002-TP6004.pdf, how: direct}
+- {id: tp2302_3peak, maker: 3peak, part: TP2302, url: https://static.3peak.com/res/doc/ds/Datasheet_TP2301-TP2302-TP2304.pdf, how: direct}
+- {id: tp1242_3peak, maker: 3peak, part: TP1242, url: https://static.3peak.com/res/doc/ds/Datasheet_TP1241L1-TP1242L1.pdf, how: direct}
+- {id: lm358a_3peak, maker: 3peak, part: LM358A, url: https://static.3peak.com/res/doc/ds/Datasheet_LM321A-LM358A-LM324A.pdf, how: direct}
+- {id: lm2904a_3peak, maker: 3peak, part: LM2904A, url: https://static.3peak.com/res/doc/ds/Datasheet_LM2904A-LM2902A.pdf, how: direct}
+- {id: tp2582_3peak, maker: 3peak, part: TP2582, url: https://static.3peak.com/res/doc/ds/Datasheet_TP2581-TP2582-TP2584.pdf, how: direct}
 # Nisshinbo (JRC): robots.txt disallows /*.pdf$ to every agent. The sheets are linked, never fetched; the
 # NJM2068 was read by hand from a copy a person opened (docs/opamp-characterisation.md says what it prints).
 - {id: njm2068_nisshinbo, maker: nisshinbo, part: NJM2068, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent, read_by_hand: true}
