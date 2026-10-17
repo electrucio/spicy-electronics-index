@@ -243,6 +243,10 @@ def main(argv: list[str] | None = None) -> int:
     dsl = dsh.add_parser("links", help="every data sheet an archive lists for each part, from its cached index")
     dsl.add_argument("--source", action="append", help="only these sources (repeatable)")
 
+    dli = dsh.add_parser("libraries", help="what the open EDA libraries say about each part: sheet link, package, values")
+    dli.add_argument("--source", action="append", help="only these sources (repeatable)")
+    dli.add_argument("--refresh", action="store_true", help="pull the library again before reading it")
+
     dsv = dsh.add_parser("harvest", help="read the data sheets a maker's sitemap lists, to learn what each covers")
     dsv.add_argument("--source", action="append", help="only these sources (repeatable)")
     dsv.add_argument("--limit", type=int, default=0, help="at most this many sheets fetched, per source")
@@ -604,6 +608,11 @@ def main(argv: list[str] | None = None) -> int:
         argv2 += ["--limit", str(args.limit)] if args.limit else []
         argv2 += ["--list-only"] if args.list_only else []
         return harvest.main(argv2 + (["--reread"] if args.reread else []))
+
+    if args.cmd == "datasheets" and args.dsh_cmd == "libraries":
+        from spicy_electronics_index.datasheets import libraries
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        return libraries.main(argv2 + (["--refresh"] if args.refresh else []))
 
     if args.cmd == "datasheets" and args.dsh_cmd == "catalogue":
         from spicy_electronics_index.datasheets import catalogues
