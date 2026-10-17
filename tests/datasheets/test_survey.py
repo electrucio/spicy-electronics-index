@@ -78,6 +78,11 @@ TITLES = [
     ("Vio temperature co-efficient distribution (-40 °C to 25 °C)", "vos_drift_distribution"),
     ("Electromagnetic Interference Rejection Ratio", "emirr_vs_f"),
     ("Thermistor Measurement", "skip"),
+    ("Supply Current – Supply Voltage", "iq_vs_vs"),                   # Rohm writes a dash for "vs"
+    ("Input Offset Voltage - Ambient Temperature", "vos_vs_t"),
+    ("40dB Gain/Phase vs. Frequency", "closed_loop_gain_vs_f"),        # Nisshinbo
+    ("Offset Voltage Change Due to Thermal Shock", "vos_thermal_shock"),
+    ("0.1 Hz to 10 Hz p-p Noise Tester Frequency Response", "test_circuit"),
     ("Pulsed Operation", ""),
 ]
 
@@ -131,7 +136,10 @@ def page_of_figures():
     page.insert_text((130, 436), "FREQUENCY", fontsize=10)
     page.insert_text((110, 470), "VCC = 15 V", fontsize=8)
     page.insert_text((140, 600), "Figure 8", fontsize=9)
-    page.insert_text((340, 600), "Input Bias Current vs Temperature", fontsize=9)
+    page.insert_text((340, 600), "Input Bias Current vs. Temperature", fontsize=9)
+    page.insert_text((100, 740), "Figure 9.", fontsize=9)                   # Rohm: number, quantity, "- axis"
+    page.insert_text((100, 752), "Maximum Output Voltage", fontsize=9)
+    page.insert_text((110, 764), "- Load Resistance", fontsize=9)
     page.insert_text((60, 700), "Figure 7-2 illustrates the ESD circuits contained in the device.", fontsize=9)
     return page
 
@@ -151,7 +159,9 @@ def test_a_legacy_three_line_title_and_a_bare_title_are_read():
     assert eight["title"] == "LARGE SIGNAL DIFFERENTIAL VOLTAGE AMPLIFICATION vs FREQUENCY"
     assert "VCC = 15 V" in eight["printed"]
     bare = [f for f in figs if f["source"] == "bare"]
-    assert [f["title"] for f in bare] == ["Input Bias Current vs Temperature"]
+    assert [f["title"] for f in bare] == ["Input Bias Current vs. Temperature"]
+    nine = next(f for f in figs if f["n"] == "9")
+    assert nine["title"] == "Maximum Output Voltage - Load Resistance" and SV.classify(nine["title"])[0] == "vout_vs_rl"
     assert SV.classify(eight["title"])[0] == "aol_phase_vs_f"
 
 

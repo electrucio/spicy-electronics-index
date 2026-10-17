@@ -259,6 +259,7 @@ def main(argv: list[str] | None = None) -> int:
     dss.add_argument("--limit", type=int, default=0, help="at most this many sheets fetched")
     dss.add_argument("--reread", action="store_true", help="read every sheet again with today's reader")
     dss.add_argument("--maker", action="append", help="only these makers' sheets are fetched or reread (repeatable)")
+    dss.add_argument("--deliver", action="append", metavar="ID=FILE", help="a sheet a person opened in a browser, for the registry id (repeatable)")
 
     dsb = dsh.add_parser("databooks", help="the pages of old databooks that head a known part")
     dsb.add_argument("--source", action="append", help="only these sources (repeatable)")
@@ -633,6 +634,7 @@ def main(argv: list[str] | None = None) -> int:
         from spicy_electronics_index.datasheets import survey
         argv2 = ["--kind", args.kind] + (["--limit", str(args.limit)] if args.limit else [])
         argv2 += [x for pair in (("--maker", m) for m in args.maker or []) for x in pair]
+        argv2 += [x for pair in (("--deliver", d) for d in args.deliver or []) for x in pair]
         return survey.main(argv2 + (["--fetch"] if args.fetch else []) + (["--reread"] if args.reread else []))
 
     if args.cmd == "datasheets" and args.dsh_cmd == "databooks":

@@ -40,14 +40,14 @@ test it draws and the conditions printed beside it (`data/datasheets/survey/opam
 `data/datasheets/survey/opamp.yaml` says how each sheet is reached, and which are not: Nisshinbo's
 robots.txt disallows every PDF and Microchip's the whole site to scripts, so those sheets are linked and not
 read; ST, Analog Devices and Rohm refuse scripts and are read from the Internet Archive's capture of their
-own address when the archive can be reached. What the tables below do not show is known from a sheet a
-person opened: the NJM2068 (Nisshinbo, ver. 2025-02-18) and the OP27 (Analog Devices, rev. H, pages 9–10)
-were read by hand before the survey existed, and their figures are named in the text where they add a test
-the surveyed sheets lack.
+own address when the archive can be reached. A sheet a person opened in a browser is handed to the survey
+with `--deliver id=file` and read like any other, its link and checksum published and the copy noted as
+"by hand": the OP27 (Analog Devices), the TL072 (ST), the BA4558 (Rohm) and the NJM2068 (Nisshinbo) came
+that way.
 
 <!-- survey:start -->
 
-Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey-1`), 2026 figure titles, 1704 mapped to a test; the tables `data/datasheets/survey/opamp/{sheets,figures,matrix,conditions}.csv` hold every row.
+Survey of 73 sheets read by `sei datasheets survey --kind opamp` (reader `survey-1`), 2149 figure titles, 1814 mapped to a test; the tables `data/datasheets/survey/opamp/{sheets,figures,matrix,conditions}.csv` hold every row.
 
 | sheet | maker | document | revision | date | pages | figures | mapped | read from |
 |---|---|---|---|---|---|---|---|---|
@@ -55,7 +55,7 @@ Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [TL082](https://www.ti.com/lit/ds/symlink/tl082.pdf) | ti | SLOS081O | O | SEPTEMBER 2025 | 78 | 51 | 39 | maker's site |
 | [TL062](https://www.ti.com/lit/ds/symlink/tl062.pdf) | ti | SLOS078N | N | AUGUST 2023 | 58 | 36 | 18 | maker's site |
 | [NE5532](https://www.ti.com/lit/ds/symlink/ne5532.pdf) | ti | SLOS075K | K | DECEMBER 2025 | 23 | 10 | 6 | maker's site |
-| [NE5534](https://www.ti.com/lit/ds/symlink/ne5534.pdf) | ti | SLOS070D | D | September 2004 | 27 | 16 | 11 | maker's site |
+| [NE5534](https://www.ti.com/lit/ds/symlink/ne5534.pdf) | ti | SLOS070D | D | September 2004 | 27 | 16 | 12 | maker's site |
 | [LM324](https://www.ti.com/lit/ds/symlink/lm324.pdf) | ti | SLOS066AE | AE | SEPTEMBER 2025 | 65 | 49 | 42 | maker's site |
 | [LM358](https://www.ti.com/lit/ds/symlink/lm358.pdf) | ti | SLOS068AB | AB | OCTOBER 2024 | 68 | 57 | 51 | maker's site |
 | [LM833](https://www.ti.com/lit/ds/symlink/lm833.pdf) | ti | SLOS481B | B | July 2010 | 36 | 47 | 43 | maker's site |
@@ -75,7 +75,7 @@ Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [OPA1656](https://www.ti.com/lit/ds/symlink/opa1656.pdf) | ti | SBOS901C | C | SEPTEMBER 2022 | 42 | 61 | 49 | maker's site |
 | [OPA1678](https://www.ti.com/lit/ds/symlink/opa1678.pdf) | ti | SBOS855E | E | DECEMBER 2022 | 57 | 48 | 34 | maker's site |
 | [OPA277](https://www.ti.com/lit/ds/symlink/opa277.pdf) | ti | SBOS079C | C | FEBRUARY 2023 | 43 | 38 | 27 | maker's site |
-| [OP27](https://www.ti.com/lit/ds/symlink/op27.pdf) | ti | SLOS100E | E | FEBRUARY 2010 | 25 | 31 | 27 | maker's site |
+| [OP27](https://www.ti.com/lit/ds/symlink/op27.pdf) | ti | SLOS100E | E | FEBRUARY 2010 | 25 | 31 | 29 | maker's site |
 | [LM318](https://www.ti.com/lit/ds/symlink/lm318.pdf) | ti | SLOS063B | B | DECEMBER 2002 | 16 | 1 | 1 | maker's site |
 | [TLC272](https://www.ti.com/lit/ds/symlink/tlc272.pdf) | ti | SLOS091F | F | JANUARY 2026 | 36 | 27 | 21 | maker's site |
 | [LM3900](https://www.ti.com/lit/ds/symlink/lm3900.pdf) | ti | SLOS059 |  | SEPTEMBER 1990 | 17 | 14 | 12 | maker's site |
@@ -97,7 +97,7 @@ Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [MC33501](https://www.onsemi.com/download/data-sheet/pdf/mc33501-d.pdf) | onsemi | MC33501/D | 10 | July, 2006 | 15 | 36 | 30 | maker's site |
 | [MC4558](https://www.onsemi.com/download/data-sheet/pdf/mc4558-d.pdf) | onsemi |  | 5 |  | 9 | 11 | 11 | maker's site |
 | [NE5534](https://www.onsemi.com/download/data-sheet/pdf/ne5534-d.pdf) | onsemi | NE5534/D | 4 | December, 2024 | 12 | 17 | 14 | maker's site |
-| [OP27](https://www.analog.com/media/en/technical-documentation/data-sheets/OP27.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [OP27](https://www.analog.com/media/en/technical-documentation/data-sheets/OP27.pdf) | adi |  | H |  | 21 | 48 | 35 | opened by a person |
 | [OP37](https://www.analog.com/media/en/technical-documentation/data-sheets/OP37.pdf) | adi |  |  |  |  |  |  | not fetched yet |
 | [OP07](https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf) | adi |  |  |  |  |  |  | not fetched yet |
 | [OP275](https://www.analog.com/media/en/technical-documentation/data-sheets/OP275.pdf) | adi |  |  |  |  |  |  | not fetched yet |
@@ -108,13 +108,13 @@ Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [ADA4898](https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4898-1_4898-2.pdf) | adi |  |  |  |  |  |  | not fetched yet |
 | LT1028 | adi |  |  |  |  |  |  | not fetched yet |
 | LT1115 | adi |  |  |  |  |  |  | not fetched yet |
-| [TL072](https://www.st.com/resource/en/datasheet/tl072.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| [TL072](https://www.st.com/resource/en/datasheet/tl072.pdf) | st |  | 8 | June 2014 | 16 | 21 | 18 | opened by a person |
 | [NE5532](https://www.st.com/resource/en/datasheet/ne5532.pdf) | st |  |  |  |  |  |  | not fetched yet |
 | [LM358](https://www.st.com/resource/en/datasheet/lm358.pdf) | st |  |  |  |  |  |  | not fetched yet |
 | [TS922](https://www.st.com/resource/en/datasheet/ts922.pdf) | st |  |  |  |  |  |  | not fetched yet |
 | [LM833](https://www.st.com/resource/en/datasheet/lm833.pdf) | st |  |  |  |  |  |  | not fetched yet |
 | [TL084](https://www.st.com/resource/en/datasheet/tl084.pdf) | st |  |  |  |  |  |  | not fetched yet |
-| BA4558 | rohm |  |  |  |  |  |  | not fetched yet |
+| [BA4558](https://fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/opamp/ba4558xxx-e.pdf) | rohm |  | 003 |  | 29 | 44 | 44 | opened by a person |
 | BA15218 | rohm |  |  |  |  |  |  | not fetched yet |
 | BA10358 | rohm |  |  |  |  |  |  | not fetched yet |
 | BA4560 | rohm |  |  |  |  |  |  | not fetched yet |
@@ -146,137 +146,140 @@ Survey of 69 sheets read by `sei datasheets survey --kind opamp` (reader `survey
 | [LM358A](https://static.3peak.com/res/doc/ds/Datasheet_LM321A-LM358A-LM324A.pdf) | 3peak |  |  |  | 24 | 15 | 15 | maker's site |
 | [LM2904A](https://static.3peak.com/res/doc/ds/Datasheet_LM2904A-LM2902A.pdf) | 3peak |  |  |  | 18 | 10 | 10 | maker's site |
 | [TP2582](https://static.3peak.com/res/doc/ds/Datasheet_TP2581-TP2582-TP2584.pdf) | 3peak |  | A |  | 18 | 16 | 16 | maker's site |
-| [NJM2068](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
+| [NJM2068](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf) | nisshinbo |  | 20260727 |  | 5 | 10 | 10 | opened by a person |
 | [NJM4558](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4558_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [NJM4580](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4580_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [NJM5532](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM5532_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
 | [MCP6001](https://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf) | microchip |  |  |  |  |  |  | not read: robots.txt disallows the whole site to every agent |
 
-Tests by category: how many of the 69 sheets draw each, in all and per maker (3peak 12, onsemi 18, ti 27, umw 12); `bench` is the measurement that draws the same graph for a model.
+Tests by category: how many of the 73 sheets draw each, in all and per maker (3peak 12, adi 1, nisshinbo 1, onsemi 18, rohm 1, st 1, ti 27, umw 12); `bench` is the measurement that draws the same graph for a model.
 
-| test | bench | sheets | 3peak | onsemi | ti | umw |
-|---|---|---|---|---|---|---|
-| **A supply** | | |  |  |  |  |
-| `iq_vs_vs` | `opa-iq` | 41 | 7 | 11 | 15 | 8 |
-| `iq_vs_t` | `opa-iq` | 33 | 9 | 3 | 16 | 5 |
-| `pd_vs_t` | `none` | 10 |  | 7 | 3 |  |
-| `pd_vs_vs` | `none` | 1 |  |  | 1 |  |
-| `vs_range` | `opa-runs` | 1 |  | 1 |  |  |
-| **B input DC** | | |  |  |  |  |
-| `vos_distribution` | `opa-offset` | 19 | 4 | 2 | 7 | 6 |
-| `vos_drift_distribution` | `opa-offset` | 3 |  |  |  | 3 |
-| `vos_warmup` | `opa-offset` | 5 |  |  | 3 | 2 |
-| `vos_longterm` | `opa-offset` | 3 |  |  | 3 |  |
-| `vos_vs_t` | `opa-offset` | 27 | 7 | 6 | 11 | 3 |
-| `vos_vs_vcm` | `opa-offset` | 20 | 10 | 1 | 6 | 3 |
-| `vos_vs_vs` | `opa-offset` | 9 |  | 1 | 6 | 2 |
-| `vos_adjust` | `none` | 10 |  | 3 | 7 |  |
-| `ib_vs_t` | `opa-bias` | 35 | 4 | 8 | 17 | 6 |
-| `ib_vs_vcm` | `opa-bias` | 23 | 1 | 7 | 13 | 2 |
-| `ib_vs_vs` | `opa-bias` | 10 |  | 5 | 4 | 1 |
-| `ios_vs_t` | `opa-bias` | 2 |  |  | 2 |  |
-| `ios_vs_vcm` | `opa-bias` | 1 |  |  | 1 |  |
-| **C range and rejection** | | |  |  |  |  |
-| `vicr_vs_t` | `opa-offset` | 7 |  | 6 |  | 1 |
-| `vicr_vs_vs` | `opa-offset` | 3 |  | 1 | 1 | 1 |
-| `cmrr_vs_f` | `opa-cmrr-f` | 46 | 12 | 9 | 18 | 7 |
-| `cmrr_vs_t` | `opa-offset` | 19 | 3 |  | 11 | 5 |
-| `cmrr_vs_vcm` | `opa-offset` | 1 |  |  | 1 |  |
-| `psrr_vs_f` | `opa-psrr-f` | 30 | 9 | 9 | 9 | 3 |
-| `psrr_vs_t` | `opa-offset` | 14 | 3 | 1 | 7 | 3 |
-| `psrr_vs_vs` | `opa-offset` | 1 |  |  | 1 |  |
-| `emirr_vs_f` | `opa-emirr` | 19 | 9 |  | 9 | 1 |
-| **D gain and frequency** | | |  |  |  |  |
-| `aol_phase_vs_f` | `opa-aol` | 58 | 10 | 17 | 23 | 8 |
-| `closed_loop_gain_vs_f` | `opa-closed-loop` | 20 |  | 6 | 11 | 3 |
-| `aol_vs_t` | `opa-aol` | 23 | 1 | 8 | 13 | 1 |
-| `aol_vs_vs` | `opa-aol-swing` | 12 |  | 6 | 5 | 1 |
-| `aol_vs_rl` | `opa-aol-swing` | 2 |  |  | 1 | 1 |
-| `aol_vs_vo` | `opa-aol-swing` | 1 |  |  |  | 1 |
-| `gbw_vs_vs` | `opa-aol` | 7 |  | 3 | 3 | 1 |
-| `gbw_vs_t` | `opa-aol` | 17 | 1 | 9 | 6 | 1 |
-| `phase_margin_vs_cl` | `opa-stability` | 11 |  | 3 | 6 | 2 |
-| `phase_margin_vs_rs` | `opa-stability` | 5 |  | 5 |  |  |
-| `phase_margin_vs_t` | `opa-aol` | 3 |  | 3 |  |  |
-| `gain_vs_f_comp` | `opa-aol` | 3 |  | 3 |  |  |
-| **E output** | | |  |  |  |  |
-| `vout_vs_f` | `opa-max-vo-f` | 41 | 2 | 10 | 22 | 7 |
-| `vout_vs_iout` | `opa-swing` | 32 | 4 | 8 | 11 | 9 |
-| `vout_vs_rl` | `opa-swing` | 19 | 3 | 7 | 8 | 1 |
-| `vout_vs_vs` | `opa-swing` | 14 |  | 8 | 6 |  |
-| `vout_vs_t` | `opa-swing` | 5 |  | 1 | 3 | 1 |
-| `isc_vs_t` | `opa-isc` | 27 | 2 | 8 | 13 | 4 |
-| `isc_vs_vs` | `opa-isc` | 4 |  |  | 1 | 3 |
-| `zout_vs_f` | `opa-zout` | 24 |  | 6 | 13 | 5 |
-| **F large signal** | | |  |  |  |  |
-| `slew_vs_t` | `opa-slew` | 16 |  | 9 | 5 | 2 |
-| `slew_vs_vs` | `opa-slew` | 6 |  | 3 | 2 | 1 |
-| `slew_vs_cl` | `opa-slew` | 1 |  |  |  | 1 |
-| `large_step` | `opa-slew` | 41 | 2 | 14 | 15 | 10 |
-| `settling` | `opa-settling` | 10 | 1 | 2 | 5 | 2 |
-| `overload_recovery` | `opa-overload` | 19 | 10 |  | 7 | 2 |
-| `phase_reversal` | `opa-phase-reversal` | 8 |  |  | 5 | 3 |
-| `input_overvoltage` | `opa-phase-reversal` | 4 |  |  | 3 | 1 |
-| **G small signal** | | |  |  |  |  |
-| `small_step` | `opa-step` | 39 | 10 | 7 | 16 | 6 |
-| `overshoot_vs_cl` | `opa-stability` | 22 |  | 6 | 12 | 4 |
-| **I distortion** | | |  |  |  |  |
-| `thd_vs_f` | `opa-thd-f` | 30 | 3 | 9 | 16 | 2 |
-| `thd_vs_level` | `opa-thd-level` | 16 |  | 4 | 12 |  |
-| `imd` | `opa-imd` | 2 |  |  | 2 |  |
-| `spectrum` | `opa-thd-f` | 2 |  |  | 2 |  |
-| `thd_other` | `opa-thd-f` | 1 |  |  | 1 |  |
-| **H noise** | | |  |  |  |  |
-| `noise_0p1_10` | `opa-noise` | 21 | 2 | 3 | 11 | 5 |
-| `en_vs_vs` | `opa-noise` | 1 |  |  | 1 |  |
-| `en_vs_t` | `opa-noise` | 2 |  |  | 1 | 1 |
-| `noise_vs_rs` | `opa-noise-rs` | 13 |  | 5 | 8 |  |
-| `noise_vs_bandwidth` | `opa-noise` | 3 |  |  | 2 | 1 |
-| `in_vs_f` | `opa-noise` | 13 |  | 5 | 7 | 1 |
-| `en_vs_f` | `opa-noise` | 45 | 12 | 12 | 15 | 6 |
-| **J multichannel** | | |  |  |  |  |
-| `channel_separation_vs_f` | `opa-separation` | 28 | 1 | 8 | 15 | 4 |
-| **K test circuits** | | |  |  |  |  |
-| `test_circuit` | `none` | 34 | 2 | 9 | 21 | 2 |
-| **C range and rejection** | | |  |  |  |  |
-| `vicr_other` | `opa-offset` | 9 |  | 5 | 3 | 1 |
-| **E output** | | |  |  |  |  |
-| `vout_other` | `opa-swing` | 9 |  | 5 | 2 | 2 |
-| `isc_other` | `opa-isc` | 7 |  | 2 | 3 | 2 |
-| `zout_other` | `opa-zout` | 2 |  | 1 | 1 |  |
-| **D gain and frequency** | | |  |  |  |  |
-| `aol_other` | `opa-aol` | 5 |  | 2 | 2 | 1 |
-| `gbw_other` | `opa-aol` | 1 |  |  | 1 |  |
-| **F large signal** | | |  |  |  |  |
-| `slew_other` | `opa-slew` | 3 |  | 1 | 2 |  |
-| **B input DC** | | |  |  |  |  |
-| `ib_other` | `opa-bias` | 7 |  | 2 | 1 | 4 |
-| `ios_other` | `opa-bias` | 3 | 2 |  | 1 |  |
-| `vos_other` | `opa-offset` | 2 |  |  |  | 2 |
-| **A supply** | | |  |  |  |  |
-| `iq_other` | `opa-iq` | 7 | 2 | 3 | 1 | 1 |
-| **C range and rejection** | | |  |  |  |  |
-| `cmrr_other` | `opa-cmrr-f` | 5 | 1 | 1 | 2 | 1 |
-| `psrr_other` | `opa-psrr-f` | 2 | 1 |  | 1 |  |
-| **H noise** | | |  |  |  |  |
-| `noise_other` | `opa-noise` | 7 |  | 2 | 5 |  |
-| **N Norton amplifiers** | | |  |  |  |  |
-| `norton` | `none` | 11 | 5 | 2 | 2 | 2 |
+| test | bench | sheets | 3peak | adi | nisshinbo | onsemi | rohm | st | ti | umw |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **A supply** | | |  |  |  |  |  |  |  |  |
+| `iq_vs_vs` | `opa-iq` | 44 | 7 | 1 | 1 | 11 | 1 |  | 15 | 8 |
+| `iq_vs_t` | `opa-iq` | 36 | 9 |  | 1 | 3 | 1 | 1 | 16 | 5 |
+| `pd_vs_t` | `none` | 12 |  |  |  | 7 | 1 | 1 | 3 |  |
+| `pd_vs_vs` | `none` | 1 |  |  |  |  |  |  | 1 |  |
+| `vs_range` | `opa-runs` | 1 |  |  |  | 1 |  |  |  |  |
+| **B input DC** | | |  |  |  |  |  |  |  |  |
+| `vos_distribution` | `opa-offset` | 19 | 4 |  |  | 2 |  |  | 7 | 6 |
+| `vos_drift_distribution` | `opa-offset` | 3 |  |  |  |  |  |  |  | 3 |
+| `vos_warmup` | `opa-offset` | 6 |  | 1 |  |  |  |  | 3 | 2 |
+| `vos_longterm` | `opa-offset` | 5 |  | 1 |  |  |  | 1 | 3 |  |
+| `vos_thermal_shock` | `opa-offset` | 1 |  | 1 |  |  |  |  |  |  |
+| `vos_vs_t` | `opa-offset` | 30 | 7 | 1 | 1 | 6 | 1 |  | 11 | 3 |
+| `vos_vs_vcm` | `opa-offset` | 21 | 10 |  |  | 1 | 1 |  | 6 | 3 |
+| `vos_vs_vs` | `opa-offset` | 10 |  |  |  | 1 | 1 |  | 6 | 2 |
+| `vos_adjust` | `none` | 11 |  | 1 |  | 3 |  |  | 7 |  |
+| `ib_vs_t` | `opa-bias` | 40 | 4 | 1 | 1 | 8 | 1 | 1 | 18 | 6 |
+| `ib_vs_vcm` | `opa-bias` | 23 | 1 |  |  | 7 |  |  | 13 | 2 |
+| `ib_vs_vs` | `opa-bias` | 11 |  |  |  | 5 | 1 |  | 4 | 1 |
+| `ios_vs_t` | `opa-bias` | 4 |  | 1 |  |  | 1 |  | 2 |  |
+| `ios_vs_vcm` | `opa-bias` | 1 |  |  |  |  |  |  | 1 |  |
+| `ios_vs_vs` | `opa-bias` | 1 |  |  |  |  | 1 |  |  |  |
+| **C range and rejection** | | |  |  |  |  |  |  |  |  |
+| `vicr_vs_t` | `opa-offset` | 7 |  |  |  | 6 |  |  |  | 1 |
+| `vicr_vs_vs` | `opa-offset` | 4 |  | 1 |  | 1 |  |  | 1 | 1 |
+| `cmrr_vs_f` | `opa-cmrr-f` | 47 | 12 | 1 |  | 9 |  |  | 18 | 7 |
+| `cmrr_vs_t` | `opa-offset` | 21 | 3 |  |  |  | 1 | 1 | 11 | 5 |
+| `cmrr_vs_vcm` | `opa-offset` | 1 |  |  |  |  |  |  | 1 |  |
+| `psrr_vs_f` | `opa-psrr-f` | 31 | 9 | 1 |  | 9 |  |  | 9 | 3 |
+| `psrr_vs_t` | `opa-offset` | 15 | 3 |  |  | 1 | 1 |  | 7 | 3 |
+| `psrr_vs_vs` | `opa-offset` | 1 |  |  |  |  |  |  | 1 |  |
+| `emirr_vs_f` | `opa-emirr` | 19 | 9 |  |  |  |  |  | 9 | 1 |
+| **D gain and frequency** | | |  |  |  |  |  |  |  |  |
+| `aol_phase_vs_f` | `opa-aol` | 61 | 10 | 1 |  | 17 | 1 | 1 | 23 | 8 |
+| `closed_loop_gain_vs_f` | `opa-closed-loop` | 21 |  |  | 1 | 6 |  |  | 11 | 3 |
+| `aol_vs_t` | `opa-aol` | 24 | 1 |  |  | 8 |  | 1 | 13 | 1 |
+| `aol_vs_vs` | `opa-aol-swing` | 13 |  | 1 |  | 6 |  |  | 5 | 1 |
+| `aol_vs_rl` | `opa-aol-swing` | 3 |  | 1 |  |  |  |  | 1 | 1 |
+| `aol_vs_vo` | `opa-aol-swing` | 1 |  |  |  |  |  |  |  | 1 |
+| `gbw_vs_vs` | `opa-aol` | 7 |  |  |  | 3 |  |  | 3 | 1 |
+| `gbw_vs_t` | `opa-aol` | 18 | 1 | 1 |  | 9 |  |  | 6 | 1 |
+| `phase_margin_vs_cl` | `opa-stability` | 11 |  |  |  | 3 |  |  | 6 | 2 |
+| `phase_margin_vs_rs` | `opa-stability` | 5 |  |  |  | 5 |  |  |  |  |
+| `phase_margin_vs_t` | `opa-aol` | 3 |  |  |  | 3 |  |  |  |  |
+| `gain_vs_f_comp` | `opa-aol` | 3 |  |  |  | 3 |  |  |  |  |
+| **E output** | | |  |  |  |  |  |  |  |  |
+| `vout_vs_f` | `opa-max-vo-f` | 45 | 2 | 1 | 1 | 10 | 1 | 1 | 22 | 7 |
+| `vout_vs_iout` | `opa-swing` | 34 | 4 |  | 1 | 8 | 1 |  | 11 | 9 |
+| `vout_vs_rl` | `opa-swing` | 23 | 3 | 1 | 1 | 7 | 1 | 1 | 8 | 1 |
+| `vout_vs_vs` | `opa-swing` | 17 |  |  | 1 | 8 | 1 | 1 | 6 |  |
+| `vout_vs_t` | `opa-swing` | 8 |  |  | 1 | 1 | 1 | 1 | 3 | 1 |
+| `isc_vs_t` | `opa-isc` | 27 | 2 |  |  | 8 |  |  | 13 | 4 |
+| `isc_vs_time` | `opa-isc` | 1 |  | 1 |  |  |  |  |  |  |
+| `isc_vs_vs` | `opa-isc` | 4 |  |  |  |  |  |  | 1 | 3 |
+| `zout_vs_f` | `opa-zout` | 24 |  |  |  | 6 |  |  | 13 | 5 |
+| **F large signal** | | |  |  |  |  |  |  |  |  |
+| `slew_vs_t` | `opa-slew` | 16 |  |  |  | 9 |  |  | 5 | 2 |
+| `slew_vs_vs` | `opa-slew` | 7 |  |  |  | 3 | 1 |  | 2 | 1 |
+| `slew_vs_cl` | `opa-slew` | 1 |  |  |  |  |  |  |  | 1 |
+| `large_step` | `opa-slew` | 43 | 2 | 1 |  | 14 |  | 1 | 15 | 10 |
+| `settling` | `opa-settling` | 10 | 1 |  |  | 2 |  |  | 5 | 2 |
+| `overload_recovery` | `opa-overload` | 19 | 10 |  |  |  |  |  | 7 | 2 |
+| `phase_reversal` | `opa-phase-reversal` | 8 |  |  |  |  |  |  | 5 | 3 |
+| `input_overvoltage` | `opa-phase-reversal` | 4 |  |  |  |  |  |  | 3 | 1 |
+| **G small signal** | | |  |  |  |  |  |  |  |  |
+| `small_step` | `opa-step` | 40 | 10 | 1 |  | 7 |  |  | 16 | 6 |
+| `overshoot_vs_cl` | `opa-stability` | 23 |  | 1 |  | 6 |  |  | 12 | 4 |
+| **I distortion** | | |  |  |  |  |  |  |  |  |
+| `thd_vs_f` | `opa-thd-f` | 31 | 3 |  |  | 9 |  | 1 | 16 | 2 |
+| `thd_vs_level` | `opa-thd-level` | 17 |  |  |  | 4 | 1 |  | 12 |  |
+| `imd` | `opa-imd` | 2 |  |  |  |  |  |  | 2 |  |
+| `spectrum` | `opa-thd-f` | 2 |  |  |  |  |  |  | 2 |  |
+| `thd_other` | `opa-thd-f` | 1 |  |  |  |  |  |  | 1 |  |
+| **H noise** | | |  |  |  |  |  |  |  |  |
+| `noise_0p1_10` | `opa-noise` | 22 | 2 | 1 |  | 3 |  |  | 11 | 5 |
+| `en_vs_vs` | `opa-noise` | 2 |  | 1 |  |  |  |  | 1 |  |
+| `en_vs_t` | `opa-noise` | 3 |  | 1 |  |  |  |  | 1 | 1 |
+| `noise_vs_rs` | `opa-noise-rs` | 14 |  | 1 |  | 5 |  |  | 8 |  |
+| `noise_vs_bandwidth` | `opa-noise` | 4 |  | 1 |  |  |  |  | 2 | 1 |
+| `in_vs_f` | `opa-noise` | 15 |  | 1 |  | 5 |  |  | 8 | 1 |
+| `en_vs_f` | `opa-noise` | 47 | 12 | 1 |  | 12 | 1 | 1 | 14 | 6 |
+| **J multichannel** | | |  |  |  |  |  |  |  |  |
+| `channel_separation_vs_f` | `opa-separation` | 28 | 1 |  |  | 8 |  |  | 15 | 4 |
+| **K test circuits** | | |  |  |  |  |  |  |  |  |
+| `test_circuit` | `none` | 36 | 2 | 1 |  | 9 |  | 1 | 21 | 2 |
+| **C range and rejection** | | |  |  |  |  |  |  |  |  |
+| `vicr_other` | `opa-offset` | 9 |  |  |  | 5 |  |  | 3 | 1 |
+| **E output** | | |  |  |  |  |  |  |  |  |
+| `vout_other` | `opa-swing` | 9 |  |  |  | 5 |  |  | 2 | 2 |
+| `isc_other` | `opa-isc` | 7 |  |  |  | 2 |  |  | 3 | 2 |
+| `zout_other` | `opa-zout` | 2 |  |  |  | 1 |  |  | 1 |  |
+| **D gain and frequency** | | |  |  |  |  |  |  |  |  |
+| `aol_other` | `opa-aol` | 5 |  |  |  | 2 |  |  | 2 | 1 |
+| `gbw_other` | `opa-aol` | 1 |  |  |  |  |  |  | 1 |  |
+| **F large signal** | | |  |  |  |  |  |  |  |  |
+| `slew_other` | `opa-slew` | 3 |  |  |  | 1 |  |  | 2 |  |
+| **B input DC** | | |  |  |  |  |  |  |  |  |
+| `ib_other` | `opa-bias` | 7 |  |  |  | 2 |  |  | 1 | 4 |
+| `ios_other` | `opa-bias` | 2 | 2 |  |  |  |  |  |  |  |
+| `vos_other` | `opa-offset` | 2 |  |  |  |  |  |  |  | 2 |
+| **A supply** | | |  |  |  |  |  |  |  |  |
+| `iq_other` | `opa-iq` | 7 | 2 |  |  | 3 |  |  | 1 | 1 |
+| **C range and rejection** | | |  |  |  |  |  |  |  |  |
+| `cmrr_other` | `opa-cmrr-f` | 5 | 1 |  |  | 1 |  |  | 2 | 1 |
+| `psrr_other` | `opa-psrr-f` | 2 | 1 |  |  |  |  |  | 1 |  |
+| **H noise** | | |  |  |  |  |  |  |  |  |
+| `noise_other` | `opa-noise` | 9 |  | 1 |  | 2 |  |  | 6 |  |
+| **N Norton amplifiers** | | |  |  |  |  |  |  |  |  |
+| `norton` | `none` | 11 | 5 |  |  | 2 |  |  | 2 | 2 |
 
-Titles no rule maps: 25 (listed in `figures.csv` with an empty `test`).
+Titles no rule maps: 24 (listed in `figures.csv` with an empty `test`).
 
 Conditions named most often, over all sheets read (value, mentions):
 
-- **supply**: 15V (100), 5 V (84), 15 V (74), 5V (71), 30 V (62), 36 V (52), ±15 V (52), 12V (50), 17V (50), 2.5V (46), ±15V (44), 5.0 V (43)
-- **rl**: 10kΩ (143), 2 kΩ (95), 2kΩ (79), 10 kΩ (67), 2 kΩ (58), 10 kΩ (54), 2kΩ (54), 10kΩ (50), 600Ω (50), 600Ω (33), 1kΩ (19), 1MΩ (17)
-- **cl**: 100 pF (128), 100pF (60), 20 pF (37), 0 pF (32), 20pF (23), 300 pF (19), 10 pF (14), 25 pF (13), 500 pF (7), 30pF (6), 1500pF (6), 10pF (5)
-- **vo**: 0 V (115), 0V (46), 3VRMS (41), 1.4V (34), ±10 V (24), 3 VRMS (21), 10VRMS (18), 1V (14), 2.5V (14), 1.4 V (14), 6 VRMS (11), 1 V (11)
-- **f**: 1 kHz (127), 1kHz (84), 200kHz (49), 10 kHz (29), 100 kHz (26), 1.0 kHz (25), 10kHz (24), 0.1Hz (23), 10 Hz (22), 0.1 Hz (20), 20 Hz (16), 10Hz (14)
-- **gain**: 1 (220), +1 (104), 10 (56), +1.0 (49), 100 (42), 0dB (42), –1 (40), +10 (22), 1.0 (20), 1000 (19), 1 V/V (14), –10 (13)
-- **temp**: 25°C (664), –40°C (131), –55°C (46), -40°C (44), 125°C (33), –25°C (33), 0°C (25), -55°C (6), 85°C (4), 70°C (3), 27°C (3)
-- **rs**: 50Ω (44), 50 Ω (18), 50 Ω (16), 20 Ω (15), 0Ω (9), 10 kΩ (7), 10 kΩ (6), 10 Ω (4), 20 Ω (3), 100Ω (3), 10kΩ (3), 10 Ω (3)
-- **vcm**: 0 V (82), 0V (52), VS / 2 (45), 0 (40), 0 V) (15), VOUT = midsupply (un (14), VICRmin (12), 2.5V (11), 2.5 V (11), VOUT = midsupply (9), VOUT = mid-supply un (9), VSS (9)
-- **band**: 0.1 Hz to 10 Hz (35), 0.1Hz to 10Hz (24), 80 kHz (20), 80kHz (19), 20 Hz to 20 kHz (19), 20Hz to 20kHz (5), 30kHz (3), 10 Hz to 10 kHz (2), 30 kHz (2)
+- **supply**: 15V (102), 5 V (84), 15 V (74), 5V (71), 30 V (62), ±15 V (58), ±15V (56), 36 V (52), 12V (50), 17V (50), 2.5V (46), 5.0 V (43)
+- **rl**: 10kΩ (145), 2 kΩ (105), 2kΩ (88), 2kΩ (69), 10 kΩ (67), 2 kΩ (67), 10 kΩ (57), 10kΩ (52), 600Ω (50), 600Ω (33), 1kΩ (19), 1MΩ (17)
+- **cl**: 100 pF (133), 100pF (64), 20 pF (37), 0 pF (32), 20pF (23), 300 pF (19), 10 pF (14), 25 pF (13), 500 pF (7), 30pF (6), 1500pF (6), 10pF (5)
+- **vo**: 0 V (115), 0V (64), 3VRMS (41), 1.4V (34), ±10 V (30), 3 VRMS (21), 10VRMS (18), 1V (14), 2.5V (14), 1.4 V (14), 6 VRMS (11), 1 V (11)
+- **f**: 1 kHz (129), 1kHz (91), 200kHz (49), 10 kHz (29), 100 kHz (27), 10kHz (26), 1.0 kHz (25), 0.1Hz (23), 10 Hz (22), 0.1 Hz (20), 20 Hz (16), 10Hz (14)
+- **gain**: 1 (222), +1 (105), 10 (56), +1.0 (49), 0dB (44), 100 (43), –1 (40), +10 (22), 1.0 (20), 1000 (19), 1 V/V (14), –10 (13)
+- **temp**: 25°C (671), –40°C (131), –55°C (46), -40°C (44), 125°C (33), –25°C (33), 0°C (25), -55°C (6), 85°C (4), 70°C (3), 27°C (3)
+- **rs**: 50Ω (46), 50 Ω (24), 50 Ω (16), 20 Ω (15), 0Ω (9), 100Ω (8), 10 kΩ (7), 10 kΩ (6), 10kΩ (6), 10 Ω (4), 20 Ω (3), 100Ω (3)
+- **vcm**: 0 V (82), 0V (66), VS / 2 (45), 0 (40), 0 V) (15), VOUT = midsupply (un (14), VICRmin (12), 2.5V (11), 2.5 V (11), VOUT = midsupply (9), VOUT = mid-supply un (9), VSS (9)
+- **band**: 0.1 Hz to 10 Hz (45), 0.1Hz to 10Hz (24), 80kHz (21), 80 kHz (20), 20 Hz to 20 kHz (19), 20Hz to 20kHz (5), 30kHz (4), 10 Hz to 10 kHz (2), 30 kHz (2), 0.1Hz TO 10Hz (1)
 <!-- survey:end -->
 
 ### Two layers, and what varies between makers
@@ -640,7 +643,7 @@ Absent: all of them when the card has no noise sources beyond resistors.
 #### Total noise against source resistance, noise figure and the weighted figures (`opa-noise-rs`)
 
 Group `noise` · analysis `noise` · engines qspice, ngspice · sheets `noise_vs_rs`; and the NJM2068's
-weighted figures, read by hand.
+weighted figures.
 
 Total input-referred noise VT = √(en² + (in·RS)² + 4kT·RS) at 1 kHz and 10 Hz against RS from 10 Ω to 10 MΩ
 (onsemi's and Analog Devices' figures), the noise figure against RS, and the integrated 20 Hz–20 kHz noise

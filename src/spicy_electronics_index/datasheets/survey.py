@@ -98,6 +98,7 @@ TESTS = [
     ("ib_vs_vs", "B", "opa-bias", [rf"bias current.*{V}.*supply"]),
     ("ios_vs_t", "B", "opa-bias", [rf"offset current.*{V}.*temp", rf"\biio\b.*{V}.*temp", rf"\bios\b.*{V}.*temp"]),
     ("ios_vs_vcm", "B", "opa-bias", [rf"offset current.*{V}.*(common|vcm)"]),
+    ("ios_vs_vs", "B", "opa-bias", [rf"offset current.*{V}.*supply"]),
     ("zin_vs_f", "B", "opa-bias", [rf"input (impedance|resistance|capacitance).*{V}"]),
     # C range and rejection
     ("vicr_vs_t", "C", "opa-offset", [rf"^input voltage.*{V}.*temp",rf"common.mode (input )?(voltage )?range.*{V}.*temp", rf"input voltage range.*{V}.*temp", rf"\bvicr\b.*{V}.*temp"]),
@@ -111,7 +112,7 @@ TESTS = [
     ("emirr_vs_f", "C", "opa-emirr", [r"emirr", r"emi rejection", r"\bemi\b", r"electromagnetic interference"]),
     ("rejection_vs_t", "C", "opa-offset", [rf"^rejection.*{V}.*temp"]),
     # D gain and frequency
-    ("aol_phase_vs_f", "D", "opa-aol", [rf"(open.loop|large.signal|differential).*(gain|amplification|response).*{V}.*freq", rf"gain.*phase.*{V}.*freq", r"open.loop (frequency|gain).*(response|phase)", rf"(gain|phase).*shift.*{V}.*freq", r"\bgain/phase\b", rf"\bavd\b.*{V}.*freq", r"(voltage )?gain and phase", r"bode", rf"phase (shift|margin).*{V}.*freq", r"open.loop.*gain.*(magnitude|phase)"]),
+    ("aol_phase_vs_f", "D", "opa-aol", [rf"^voltage gain.*{V}.*freq",rf"(open.loop|large.signal|differential).*(gain|amplification|response).*{V}.*freq", rf"^(?!\d+\s*db)gain.*phase.*{V}.*freq", r"open.loop (frequency|gain).*(response|phase)", rf"(gain|phase).*shift.*{V}.*freq", r"^(?!\d+\s*db).*\bgain/phase\b", rf"\bavd\b.*{V}.*freq", r"(voltage )?gain and phase", r"bode", rf"phase (shift|margin).*{V}.*freq", r"open.loop.*gain.*(magnitude|phase)"]),
     ("closed_loop_gain_vs_f", "D", "opa-closed-loop", [rf"closed.loop (gain|output|response|frequency).*{V}.*freq", r"\d+\s*db gain", r"closed.loop.*(freq|response)", rf"(voltage )?gain.*{V}.*freq.*closed", r"(small.signal )?(frequency|gain) response"]),
     ("aol_vs_t", "D", "opa-aol", [rf"(open.loop|large.signal|differential|voltage).*(gain|amplification).*{V}.*temp", rf"\b(avd|avol|aol)\b.*{V}.*temp"]),
     ("aol_vs_vs", "D", "opa-aol-swing", [rf"(open.loop|large.signal|differential|voltage).*(gain|amplification).*{V}.*supply", rf"\b(avd|avol|aol)\b.*{V}.*supply"]),
@@ -168,7 +169,7 @@ TESTS = [
     # J multichannel
     ("channel_separation_vs_f", "J", "opa-separation", [r"channel separation", r"crosstalk", r"cross.talk"]),
     # K test circuits and measurement information (not tests of the device, but how the tests are made)
-    ("test_circuit", "K", "none", [r"test circuit", r"^test figure", r"testing circuit", r"measurement circuit", r"test (set.?up|fixture|configuration)", r"(null|nulling) circuit", r"^unity.gain (amplifier|follower|buffer)$", r"^(inverting|non.?inverting) amplifier$", r"gain.of.\d+ (inverting )?amplifier", r"noise.*circuit", r"(circuit|setup) for", r"(slew.rate|settling.time|distortion|noise).*(circuit|setup)", r"offset.*(null|adjust).*circuit", r"input (protection|circuit)", r"equivalent (input )?circuit"]),
+    ("test_circuit", "K", "none", [r"test circuit", r"^test figure", r"testing circuit", r"noise tester", r"^voltage follower$", r"measurement circuit", r"test (set.?up|fixture|configuration)", r"(null|nulling) circuit", r"^unity.gain (amplifier|follower|buffer)$", r"^(inverting|non.?inverting) amplifier$", r"gain.of.\d+ (inverting )?amplifier", r"noise.*circuit", r"(circuit|setup) for", r"(slew.rate|settling.time|distortion|noise).*(circuit|setup)", r"offset.*(null|adjust).*circuit", r"input (protection|circuit)", r"equivalent (input )?circuit"]),
     # A quantity named without its axis (National's "Input Bias Current" over a graph whose axes say the rest)
     ("vicr_other", "C", "opa-offset", [r"common.mode (input )?voltage (range|limit)", r"input voltage range", r"common.mode voltage (low|high)"]),
     ("vout_other", "E", "opa-swing", [r"output (voltage )?swing", r"^voltage swing", r"output saturation", r"undistorted output", r"maximum (peak )?output voltage", r"output voltage$"]),
@@ -201,7 +202,7 @@ SKIP = re.compile(r"(package|pin (configuration|function|assignment|out|connecti
                   r"protection|current source$|current sink$|i-v|\bdac\b|baxandall|simulation|notch|distribution amplifier|"
                   r"ac amplifier|telephone|load cell|thermocouple|photodiode|transimpedance|cable|coaxial|of the inverting amplifier|"
                   r"supply rails|flat amp|photovoltaic|compliance|high frequency pulse|basic (inverting|noninverting)|dc coupled|"
-                  r"power supply configurations|thermistor|current sense|current pump|high.gain amplifier|unused op.?amp|single supply inverting|^[a-z]{1,4}(?:, [a-z]{1,4})*,? and [a-z]{1,4}$)", re.I)
+                  r"power supply configurations|burn.in|thermistor|current sense|current pump|high.gain amplifier|unused op.?amp|single supply inverting|^[a-z]{1,4}(?:, [a-z]{1,4})*,? and [a-z]{1,4}$)", re.I)
 # Named before the skip list is asked: a test circuit is a circuit, and an offset-null circuit is not an application.
 FIRST = ("vos_adjust", "test_circuit")
 
@@ -210,6 +211,8 @@ def normalise(title: str) -> str:
     t = title.lower().replace("—", "-").replace("–", "-").replace("’", "'")
     t = re.sub(r"\(.*?\)", " ", t)                  # "(LM358B)", "(sinking)"
     t = t.replace("versus", "vs").replace("vs.", "vs")
+    if not re.search(r"\bvs\b", t):
+        t = re.sub(r"^([a-z][a-z0-9 /().,+%°]{3,60}?)\s+[-–]\s*([a-z][a-z0-9 /().,+%°]{3,60})$", r"\1 vs \2", t)
     t = re.sub(r"[^a-z0-9+/%°.\- ]", " ", t)
     return re.sub(r"\s+", " ", t).strip()
 
@@ -266,7 +269,7 @@ DATE = re.compile(r"\b((?:JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPT
 # "Figure 5-12. Title", "FIGURE 12. TITLE", "Fig. 3 Title", ADI's "TPC 12. Title"; a legacy TI "Figure 8" with no
 # title at all (its title is printed over the graph). "Figure 7-2 illustrates…" in prose is not a caption.
 CAPTION = re.compile(r"^(?:Figure|FIGURE|Fig\.?|TPC)\s*(\d+(?:[-–]\d+)?[a-z]?)(?:\s*[.:]\s*(.*))?$")
-BARE = re.compile(r"^([A-Za-z][A-Za-z0-9 /().,+\-–°%']{2,70}?)\s+(?:vs\.?|versus)\s+([A-Za-z0-9 /().,+\-–°%']{2,60}?)\s*$")
+BARE = re.compile(r"^([A-Za-z0-9][A-Za-z0-9 /().,+\-–°%']{2,70}?)\s+(?:vs\.?|versus)\s+([A-Za-z0-9 /().,+\-–°%']{2,60}?)\s*$")
 VS_LINE = re.compile(r"^(?:vs\.?|versus)$", re.I)
 INCOMPLETE = re.compile(r"(\bvs\.?|\bversus|\band|\bof|\bthe|\bat|\bfor|\bwith|\bpower|\bsupply|\bper|,|-|–|\()$", re.I)
 COND = re.compile(r"[A-Za-z]\w*\s*[=≤≥<>]\s*[±\-–]?\d")
@@ -342,8 +345,12 @@ def above(segments: list[dict], i: int, near: float = NEAR) -> int | None:
 
 def wraps(title: str, nxt: str) -> bool:
     """Whether `nxt`, printed right under `title`, continues it."""
-    if CAPTION.match(nxt) or COND.search(nxt) or len(nxt) > 70 or VS_LINE.match(nxt):
+    if CAPTION.match(nxt) or len(nxt) > 70 or VS_LINE.match(nxt):
         return False
+    if nxt[:1] in "-–" and wordy(nxt):                   # Rohm: "Maximum Output Voltage" / "– Load Resistance"
+        return True
+    if COND.search(nxt) and not (INCOMPLETE.search(title) and re.match(r"^[a-z][a-z ]+\(", nxt)):
+        return False                                       # ST: "… versus" / "frequency (RL = 2 kΩ)"
     if not title or INCOMPLETE.search(title) or title.count("(") > title.count(")") or nxt[:1].islower() \
             or (nxt.startswith("(") and nxt.endswith(")")):
         return True
@@ -432,10 +439,14 @@ def figures_of(page, pno: int) -> list[dict]:
                 continue
             if title and title[:1].islower():
                 continue
-            j = below(segments, i)
-            if j is not None and j not in used and wraps(title, segments[j]["text"]):
+            k = i
+            for _ in range(3):                           # Rohm: "Figure 6." / "Maximum Output Voltage" / "– Load Resistance"
+                j = below(segments, k)
+                if j is None or j in used or not wraps(title, segments[j]["text"]):
+                    break
                 title = (title + " " + segments[j]["text"]).strip()
                 used.add(j)
+                k = j
             if not title:
                 title = title_above(segments, i, used)
             used.add(i)
@@ -447,7 +458,8 @@ def figures_of(page, pno: int) -> list[dict]:
         t = s["text"]
         if any(overlaps(c, s) and 0 < c["y"] - s["y"] < 300 for c in captions):
             continue
-        if BARE.match(t) and not re.search(r"(?i)^(table|section|chapter|\d)", t) and not re.search(r"\. |\.$", t) \
+        plain = re.sub(r"\b(vs|VS)\.", "vs", t)              # "vs." is not the end of a sentence
+        if BARE.match(t) and not re.search(r"(?i)^(table|section|chapter|\d+[\s.:])", t) and not re.search(r"\. |\.$", plain) \
                 and len(t.split()) <= 10 and wordy(t.split(" vs")[0]):
             title = t.strip()
             up = above(segments, i, 18.0)
@@ -616,6 +628,21 @@ def fetch(sheet: dict, led: Ledger, store: Path) -> bool:
     return True
 
 
+def deliver(kind: str, key: str, path: Path, led: Ledger, store: Path, sheet: dict) -> None:
+    """A sheet a person opened in a browser (one whose maker's robots.txt or site refuses scripts) is
+    handed to the survey: copied into the store under its registry id, its checksum and page count
+    stamped, the copy noted as "by hand". The maker's own address stays what is published."""
+    import hashlib
+    body = path.read_bytes()
+    if not body.startswith(b"%PDF"):
+        raise SystemExit(f"{path} is not a PDF")
+    store.mkdir(parents=True, exist_ok=True)
+    (store / f"{key}.pdf").write_bytes(body)
+    led.stamp(key, "fetch", url=sheet.get("url", ""), copy="by hand", http="", bytes=str(len(body)),
+              sha256=hashlib.sha256(body).hexdigest(), pages=str(page_count(store / f"{key}.pdf")), skip_reason="")
+    led.save()
+
+
 def page_count(pdf: Path) -> int:
     import pymupdf
     return pymupdf.open(pdf).page_count
@@ -680,7 +707,8 @@ def doc_section(kind: str, sheets: list[dict], figures: list[dict], conditions: 
            "| sheet | maker | document | revision | date | pages | figures | mapped | read from |", "|---|---|---|---|---|---|---|---|---|"]
     for s in sheets:
         link = f"[{s['part']}]({s['url']})" if s["url"] else s["part"]
-        src = ("archive copy" if s["copy"] else "maker's site" if s.get("figures") not in ("", None)
+        src = ("opened by a person" if s["copy"] == "by hand" else "archive copy" if s["copy"]
+               else "maker's site" if s.get("figures") not in ("", None)
                else f"not read: {s['why']}" if s["why"] else "not fetched yet")
         src = src.replace("HTTP 0", "the archive could not be reached")
         out.append(f"| {link} | {s['maker']} | {s['document']} | {s['revision']} | {s['date']} | {s['pages']} | {s['figures']} | {s['mapped']} | {src} |")
@@ -734,11 +762,18 @@ def rewrite_doc(kind: str, section: str) -> bool:
     return False
 
 
-def run(kind: str, do_fetch: bool = False, limit: int = 0, reread: bool = False, makers: list[str] | None = None) -> Counter:
+def run(kind: str, do_fetch: bool = False, limit: int = 0, reread: bool = False, makers: list[str] | None = None,
+        deliveries: dict[str, Path] | None = None) -> Counter:
     c: Counter = Counter()
     reg = registry(kind)
     led = Ledger(datasheet_survey_state(kind), stages=STAGES, fields=FIELDS, versioned=VERSIONED)
     store = datasheet_survey_store(kind)
+    by_id = {s["id"]: s for s in reg["sheets"]}
+    for key, path in (deliveries or {}).items():
+        if key not in by_id:
+            raise SystemExit(f"{key} is not in the registry")
+        deliver(kind, key, path, led, store, by_id[key])
+        c["delivered"] += 1
     figures = {f["doc"]: [] for f in load_csv(datasheet_survey(kind, "figures"))}
     for f in load_csv(datasheet_survey(kind, "figures")):
         figures[f["doc"]].append(f)
@@ -751,7 +786,7 @@ def run(kind: str, do_fetch: bool = False, limit: int = 0, reread: bool = False,
         key = s["id"]
         row = led.get(key) or {}
         pdf = store / f"{key}.pdf"
-        if s["how"] == "none":
+        if s["how"] == "none" and not pdf.exists():
             led.stamp(key, "fetch", url=s.get("url", ""), skip_reason=s.get("why", "not fetched"))
         elif not pdf.exists() and do_fetch and (not limit or c["fetched"] < limit) and (not makers or s["maker"] in makers):
             c["fetched"] += fetch(s, led, store)
@@ -775,7 +810,7 @@ def run(kind: str, do_fetch: bool = False, limit: int = 0, reread: bool = False,
                            "date": meta.get("date", ""), "title": meta.get("title", ""),
                            "figures": str(len(figs)) if figs else ("0" if pdf.exists() else ""), "untitled": str(untitled) if pdf.exists() else "",
                            "mapped": str(sum(1 for f in figs if f["test"] and f["test"] != "skip")) if figs else "",
-                           "how": s["how"], "why": s.get("why", "") or row.get("skip_reason", "")
+                           "how": s["how"], "why": "" if row.get("copy") == "by hand" else s.get("why", "") or row.get("skip_reason", "")
                            or (f"HTTP {row['http']}" if row.get("http") not in (None, "", "200") else "")})
     led.save()
     all_figs = [f for s in sheets_out for f in figures.get(s["doc"], [])]
@@ -798,10 +833,13 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--limit", type=int, default=0, help="at most this many sheets fetched")
     ap.add_argument("--reread", action="store_true", help="read every sheet again with today's reader")
     ap.add_argument("--maker", action="append", help="only these makers' sheets are fetched or reread (repeatable)")
+    ap.add_argument("--deliver", action="append", metavar="ID=FILE",
+                    help="a sheet a person opened in a browser, for the registry id (repeatable)")
     args = ap.parse_args(argv)
     t0 = time.time()
-    c = run(args.kind, do_fetch=args.fetch, limit=args.limit, reread=args.reread, makers=args.maker)
-    print(f"{c['sheets']} sheets read ({c['read']} now, {c['fetched']} fetched): {c['figures']} figures, "
+    deliveries = {k: Path(v) for k, v in (d.split("=", 1) for d in args.deliver or [])}
+    c = run(args.kind, do_fetch=args.fetch, limit=args.limit, reread=args.reread, makers=args.maker, deliveries=deliveries)
+    print(f"{c['sheets']} sheets read ({c['read']} now, {c['fetched']} fetched, {c['delivered']} delivered): {c['figures']} figures, "
           f"{c['unmapped']} unmapped; doc {'rewritten' if c['doc'] else 'unchanged'}; {time.time() - t0:.0f}s")
     return 0
 

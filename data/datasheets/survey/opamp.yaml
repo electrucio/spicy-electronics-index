@@ -13,7 +13,8 @@
 #                      `prefix` whose name matches `pick`
 #      none            robots.txt disallows the PDF to scripts (Nisshinbo: /*.pdf$ for every agent;
 #                      Microchip: everything): the address is published, the sheet is not read, and what
-#                      it prints is known only from a copy a person opened (`read_by_hand`)
+#                      it prints is known only from a copy a person opened and handed to the survey
+#                      (`--deliver id=file`; the ledger's `copy` column says "by hand")
 kind: opamp
 sheets:
 # Texas Instruments, National and Burr-Brown
@@ -86,7 +87,7 @@ sheets:
 - {id: lm833_st, maker: st, part: LM833, url: https://www.st.com/resource/en/datasheet/lm833.pdf, how: wayback}
 - {id: tl084_st, maker: st, part: TL084, url: https://www.st.com/resource/en/datasheet/tl084.pdf, how: wayback}
 # Rohm, from the archive
-- {id: ba4558_rohm, maker: rohm, part: BA4558, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba4558[^/]*-e\.pdf$'}
+- {id: ba4558_rohm, maker: rohm, part: BA4558, url: https://fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/opamp/ba4558xxx-e.pdf, how: wayback}
 - {id: ba15218_rohm, maker: rohm, part: BA15218, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba15218[^/]*-e\.pdf$'}
 - {id: ba10358_rohm, maker: rohm, part: BA10358, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba10358[^/]*-e\.pdf$'}
 - {id: ba4560_rohm, maker: rohm, part: BA4560, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba4560[^/]*-e\.pdf$'}
@@ -130,7 +131,7 @@ sheets:
 - {id: tp2582_3peak, maker: 3peak, part: TP2582, url: https://static.3peak.com/res/doc/ds/Datasheet_TP2581-TP2582-TP2584.pdf, how: direct}
 # Nisshinbo (JRC): robots.txt disallows /*.pdf$ to every agent. The sheets are linked, never fetched; the
 # NJM2068 was read by hand from a copy a person opened (docs/opamp-characterisation.md says what it prints).
-- {id: njm2068_nisshinbo, maker: nisshinbo, part: NJM2068, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent, read_by_hand: true}
+- {id: njm2068_nisshinbo, maker: nisshinbo, part: NJM2068, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}
 - {id: njm4558_nisshinbo, maker: nisshinbo, part: NJM4558, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4558_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}
 - {id: njm4580_nisshinbo, maker: nisshinbo, part: NJM4580, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4580_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}
 - {id: njm5532_nisshinbo, maker: nisshinbo, part: NJM5532, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM5532_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}

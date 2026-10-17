@@ -237,8 +237,8 @@ datasheets-catalogue:  ## (maintainer) read a maker's whole product list: each k
 datasheets-databooks:  ## (maintainer) the pages of old databooks on archive.org that head a known part; [LIMIT=N] [LIST=1] [REREAD=1]
 	uv run sei datasheets databooks $(if $(LIMIT),--limit $(LIMIT)) $(if $(LIST),--list-only) $(if $(REREAD),--reread)
 
-datasheets-survey:  ## (maintainer) what one kind's data sheets measure: every figure classified by its test, into data/datasheets/survey/; [KIND=opamp] [FETCH=1] [LIMIT=N] [REREAD=1] [MAKER='ti onsemi']
-	uv run --extra ocr sei datasheets survey --kind $(or $(KIND),opamp) $(if $(FETCH),--fetch) $(if $(LIMIT),--limit $(LIMIT)) $(if $(REREAD),--reread) $(foreach m,$(MAKER),--maker $(m))
+datasheets-survey:  ## (maintainer) what one kind's data sheets measure: every figure classified by its test, into data/datasheets/survey/; [KIND=opamp] [FETCH=1] [LIMIT=N] [REREAD=1] [MAKER='ti onsemi'] [DELIVER='op27_adi=~/Downloads/OP27.pdf']
+	uv run --extra ocr sei datasheets survey --kind $(or $(KIND),opamp) $(if $(FETCH),--fetch) $(if $(LIMIT),--limit $(LIMIT)) $(if $(REREAD),--reread) $(foreach m,$(MAKER),--maker $(m)) $(foreach d,$(DELIVER),--deliver $(d))
 
 datasheets-rows:  ## (maintainer) publish the reference sheets' rows, each located on its page, into data/datasheets/values/
 	$(RUN) sei datasheets rows
