@@ -1,0 +1,99 @@
+# The op-amp data sheets the survey reads (`sei datasheets survey --kind opamp`): what each maker measures
+# and prints, as the evidence docs/opamp-characterisation.md draws its bench from. Chosen from the top of the
+# index's usage list (data/models/wanted.yaml, `opamp`) and widened across makers, because the test set
+# varies more by maker than by device: TI's two formats (the post-2015 one with 40–90 figures, the legacy one
+# with a "Table of Graphs"), onsemi's Motorola designs, Analog Devices' precision and audio sheets, ST,
+# Rohm, NXP (the Philips/Signetics sheets), Renesas (the RCA/Intersil CMOS parts).
+#
+# how: direct          the maker's robots.txt lets a script read the sheet, at its pace
+#      wayback         the maker's site refuses scripts (ST, Analog Devices, Rohm — data/datasheets/sources.yaml
+#                      says how each was found out): the Internet Archive's capture of the maker's own address
+#                      is read, the maker's address is what is published, with the copy beside it
+#      wayback-prefix  the same, for an address the maker does not keep stable: the newest capture under
+#                      `prefix` whose name matches `pick`
+#      none            robots.txt disallows the PDF to scripts (Nisshinbo: /*.pdf$ for every agent;
+#                      Microchip: everything): the address is published, the sheet is not read, and what
+#                      it prints is known only from a copy a person opened (`read_by_hand`)
+kind: opamp
+sheets:
+# Texas Instruments, National and Burr-Brown
+- {id: tl072_ti, maker: ti, part: TL072, url: https://www.ti.com/lit/ds/symlink/tl072.pdf, how: direct}
+- {id: tl082_ti, maker: ti, part: TL082, url: https://www.ti.com/lit/ds/symlink/tl082.pdf, how: direct}
+- {id: tl062_ti, maker: ti, part: TL062, url: https://www.ti.com/lit/ds/symlink/tl062.pdf, how: direct}
+- {id: ne5532_ti, maker: ti, part: NE5532, url: https://www.ti.com/lit/ds/symlink/ne5532.pdf, how: direct}
+- {id: ne5534_ti, maker: ti, part: NE5534, url: https://www.ti.com/lit/ds/symlink/ne5534.pdf, how: direct}
+- {id: lm324_ti, maker: ti, part: LM324, url: https://www.ti.com/lit/ds/symlink/lm324.pdf, how: direct}
+- {id: lm358_ti, maker: ti, part: LM358, url: https://www.ti.com/lit/ds/symlink/lm358.pdf, how: direct}
+- {id: lm833_ti, maker: ti, part: LM833, url: https://www.ti.com/lit/ds/symlink/lm833.pdf, how: direct}
+- {id: lf353_ti, maker: ti, part: LF353, url: https://www.ti.com/lit/ds/symlink/lf353.pdf, how: direct}
+- {id: lf356_ti, maker: ti, part: LF356, url: https://www.ti.com/lit/ds/symlink/lf356.pdf, how: direct}
+- {id: lf411_ti, maker: ti, part: LF411, url: https://www.ti.com/lit/ds/symlink/lf411.pdf, how: direct}
+- {id: lm741_ti, maker: ti, part: LM741, url: https://www.ti.com/lit/ds/symlink/lm741.pdf, how: direct}
+- {id: rc4558_ti, maker: ti, part: RC4558, url: https://www.ti.com/lit/ds/symlink/rc4558.pdf, how: direct}
+- {id: mc33078_ti, maker: ti, part: MC33078, url: https://www.ti.com/lit/ds/symlink/mc33078.pdf, how: direct}
+- {id: lm4562_ti, maker: ti, part: LM4562, url: https://www.ti.com/lit/ds/symlink/lm4562.pdf, how: direct}
+- {id: lme49720_ti, maker: ti, part: LME49720, url: https://www.ti.com/lit/ds/symlink/lme49720.pdf, how: direct}
+- {id: opa134_ti, maker: ti, part: OPA134, url: https://www.ti.com/lit/ds/symlink/opa134.pdf, how: direct}
+- {id: opa604_ti, maker: ti, part: OPA604, url: https://www.ti.com/lit/ds/symlink/opa604.pdf, how: direct}
+- {id: opa627_ti, maker: ti, part: OPA627, url: https://www.ti.com/lit/ds/symlink/opa627.pdf, how: direct}
+- {id: opa1612_ti, maker: ti, part: OPA1612, url: https://www.ti.com/lit/ds/symlink/opa1612.pdf, how: direct}
+- {id: opa1642_ti, maker: ti, part: OPA1642, url: https://www.ti.com/lit/ds/symlink/opa1642.pdf, how: direct}
+- {id: opa1656_ti, maker: ti, part: OPA1656, url: https://www.ti.com/lit/ds/symlink/opa1656.pdf, how: direct}
+- {id: opa1678_ti, maker: ti, part: OPA1678, url: https://www.ti.com/lit/ds/symlink/opa1678.pdf, how: direct}
+- {id: opa277_ti, maker: ti, part: OPA277, url: https://www.ti.com/lit/ds/symlink/opa277.pdf, how: direct}
+- {id: op27_ti, maker: ti, part: OP27, url: https://www.ti.com/lit/ds/symlink/op27.pdf, how: direct}
+- {id: lm308_ti, maker: ti, part: LM308, url: https://www.ti.com/lit/ds/symlink/lm308-n.pdf, how: direct}   # the National sheet: lm308.pdf answers 404
+- {id: lm318_ti, maker: ti, part: LM318, url: https://www.ti.com/lit/ds/symlink/lm318.pdf, how: direct}
+- {id: tlc272_ti, maker: ti, part: TLC272, url: https://www.ti.com/lit/ds/symlink/tlc272.pdf, how: direct}
+- {id: lm3900_ti, maker: ti, part: LM3900, url: https://www.ti.com/lit/ds/symlink/lm3900.pdf, how: direct}
+# onsemi (the Motorola designs); robots.txt allows /download/ with Crawl-delay 10
+- {id: mc33078_onsemi, maker: onsemi, part: MC33078, url: https://www.onsemi.com/download/data-sheet/pdf/mc33078-d.pdf, how: direct}
+- {id: mc33178_onsemi, maker: onsemi, part: MC33178, url: https://www.onsemi.com/download/data-sheet/pdf/mc33178-d.pdf, how: direct}
+- {id: lm358_onsemi, maker: onsemi, part: LM358, url: https://www.onsemi.com/download/data-sheet/pdf/lm358-d.pdf, how: direct}
+- {id: lm324_onsemi, maker: onsemi, part: LM324, url: https://www.onsemi.com/download/data-sheet/pdf/lm324-d.pdf, how: direct}
+- {id: ne5532_onsemi, maker: onsemi, part: NE5532, url: https://www.onsemi.com/download/data-sheet/pdf/ne5532-d.pdf, how: direct}
+- {id: lm833_onsemi, maker: onsemi, part: LM833, url: https://www.onsemi.com/download/data-sheet/pdf/lm833-d.pdf, how: direct}
+- {id: mc34071_onsemi, maker: onsemi, part: MC34071, url: https://www.onsemi.com/download/data-sheet/pdf/mc34071-d.pdf, how: direct}
+- {id: mc33272a_onsemi, maker: onsemi, part: MC33272A, url: https://www.onsemi.com/download/data-sheet/pdf/mc33272a-d.pdf, how: direct}
+- {id: ncs20071_onsemi, maker: onsemi, part: NCS20071, url: https://www.onsemi.com/download/data-sheet/pdf/ncs20071-d.pdf, how: direct}
+# Analog Devices and Linear Technology, from the archive
+- {id: op27_adi, maker: adi, part: OP27, url: https://www.analog.com/media/en/technical-documentation/data-sheets/OP27.pdf, how: wayback}
+- {id: op37_adi, maker: adi, part: OP37, url: https://www.analog.com/media/en/technical-documentation/data-sheets/OP37.pdf, how: wayback}
+- {id: op07_adi, maker: adi, part: OP07, url: https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf, how: wayback}
+- {id: op275_adi, maker: adi, part: OP275, url: https://www.analog.com/media/en/technical-documentation/data-sheets/OP275.pdf, how: wayback}
+- {id: ad797_adi, maker: adi, part: AD797, url: https://www.analog.com/media/en/technical-documentation/data-sheets/AD797.pdf, how: wayback}
+- {id: ad712_adi, maker: adi, part: AD712, url: https://www.analog.com/media/en/technical-documentation/data-sheets/AD712.pdf, how: wayback}
+- {id: ad8597_adi, maker: adi, part: AD8597, url: https://www.analog.com/media/en/technical-documentation/data-sheets/AD8597_8599.pdf, how: wayback}
+- {id: ad825_adi, maker: adi, part: AD825, url: https://www.analog.com/media/en/technical-documentation/data-sheets/AD825.pdf, how: wayback}
+- {id: ada4898_adi, maker: adi, part: ADA4898, url: https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4898-1_4898-2.pdf, how: wayback}
+- {id: lt1028_adi, maker: adi, part: LT1028, how: wayback-prefix, prefix: www.analog.com/media/en/technical-documentation/data-sheets/1028, pick: '/1028f[a-z]*\.pdf$'}
+- {id: lt1115_adi, maker: adi, part: LT1115, how: wayback-prefix, prefix: www.analog.com/media/en/technical-documentation/data-sheets/1115, pick: '/1115f[a-z]*\.pdf$'}
+# STMicroelectronics, from the archive
+- {id: tl072_st, maker: st, part: TL072, url: https://www.st.com/resource/en/datasheet/tl072.pdf, how: wayback}
+- {id: ne5532_st, maker: st, part: NE5532, url: https://www.st.com/resource/en/datasheet/ne5532.pdf, how: wayback}
+- {id: lm358_st, maker: st, part: LM358, url: https://www.st.com/resource/en/datasheet/lm358.pdf, how: wayback}
+- {id: ts922_st, maker: st, part: TS922, url: https://www.st.com/resource/en/datasheet/ts922.pdf, how: wayback}
+- {id: lm833_st, maker: st, part: LM833, url: https://www.st.com/resource/en/datasheet/lm833.pdf, how: wayback}
+- {id: tl084_st, maker: st, part: TL084, url: https://www.st.com/resource/en/datasheet/tl084.pdf, how: wayback}
+# Rohm, from the archive
+- {id: ba4558_rohm, maker: rohm, part: BA4558, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba4558[^/]*-e\.pdf$'}
+- {id: ba15218_rohm, maker: rohm, part: BA15218, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba15218[^/]*-e\.pdf$'}
+- {id: ba10358_rohm, maker: rohm, part: BA10358, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba10358[^/]*-e\.pdf$'}
+- {id: ba4560_rohm, maker: rohm, part: BA4560, how: wayback-prefix, prefix: fscdn.rohm.com/en/products/databook/datasheet/ic/amp_linear/, pick: '/ba4560[^/]*-e\.pdf$'}
+# Renesas (the RCA and Intersil CMOS parts): robots.txt allows the sheet, and the site answered 403 to the
+# project's own user agent on 2026-10-17 (the bot challenge data/datasheets/sources.yaml records for its product
+# pages): recorded, never solved. The Intersil-era addresses are tried from the archive.
+- {id: ca3140_renesas, maker: renesas, part: CA3140, url: https://www.renesas.com/us/en/document/dst/ca3140-ca3140a-datasheet, how: direct}
+- {id: ca3130_renesas, maker: renesas, part: CA3130, url: https://www.renesas.com/us/en/document/dst/ca3130-ca3130a-datasheet, how: direct}
+- {id: ca3140_intersil, maker: renesas, part: CA3140, how: wayback-prefix, prefix: www.intersil.com/content/dam/intersil/documents/ca31/, pick: '(?i)/ca3140[^/]*\.pdf$'}
+- {id: ca3130_intersil, maker: renesas, part: CA3130, how: wayback-prefix, prefix: www.intersil.com/content/dam/intersil/documents/ca31/, pick: '(?i)/ca3130[^/]*\.pdf$'}
+# NXP (the Philips and Signetics sheets): none. Its document sitemap (data/datasheets/documents/nxp_docs.csv)
+# lists no NE5532 or NE5534 sheet, and the guessed addresses under /docs/en/data-sheet/ answer 404.
+# Nisshinbo (JRC): robots.txt disallows /*.pdf$ to every agent. The sheets are linked, never fetched; the
+# NJM2068 was read by hand from a copy a person opened (docs/opamp-characterisation.md says what it prints).
+- {id: njm2068_nisshinbo, maker: nisshinbo, part: NJM2068, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent, read_by_hand: true}
+- {id: njm4558_nisshinbo, maker: nisshinbo, part: NJM4558, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4558_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}
+- {id: njm4580_nisshinbo, maker: nisshinbo, part: NJM4580, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4580_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}
+- {id: njm5532_nisshinbo, maker: nisshinbo, part: NJM5532, url: https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM5532_E.pdf, how: none, why: robots.txt disallows *.pdf to every agent}
+# Microchip: ww1.microchip.com disallows everything to scripts (robots.txt, `User-agent: *` / `Disallow: /`)
+- {id: mcp6001_microchip, maker: microchip, part: MCP6001, url: https://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf, how: none, why: robots.txt disallows the whole site to every agent}
