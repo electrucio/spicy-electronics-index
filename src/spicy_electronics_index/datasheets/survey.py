@@ -554,29 +554,35 @@ def figure_order(n: str) -> tuple:
 
 
 # ---- fetching ----------------------------------------------------------------------------------------
-def cdx(query: str) -> list[list[str]]:
+def cdx(query: str) -> list[list[str]] | None:
+    """The archive's captures, or None when the archive could not be asked: not the same as none."""
     r = http.get(f"{CDX}?{query}", ua=PROJECT_UA, delay=ARCHIVE_DELAY, timeout=180)
     if not r.ok:
         print(f"  cdx: {r.status} {r.why}", file=sys.stderr)
-        return []
+        return None
     try:
         return json.loads(r.text() or "[]")[1:]
     except ValueError:
         return []
 
 
-def resolve(sheet: dict) -> tuple[str, str]:
-    """(the address to fetch, the maker's own address it stands for); the first empty when none is found."""
+def resolve(sheet: dict) -> tuple[str | None, str]:
+    """(the address to fetch, the maker's own address it stands for): the first empty when the archive
+    holds no capture, None when the archive could not be asked."""
     how = sheet["how"]
     if how == "direct":
         return sheet["url"], sheet["url"]
     if how == "wayback":
         bare = re.sub(r"^https?://", "", sheet["url"])
         rows = cdx(f"url={bare}&matchType=exact&filter=statuscode:200&filter=mimetype:application/pdf&fl=original,timestamp&output=json")
+        if rows is None:
+            return None, sheet["url"]
         row = max(rows, key=lambda r: r[1]) if rows else None
         return (f"https://web.archive.org/web/{row[1]}id_/{row[0]}", sheet["url"]) if row else ("", sheet["url"])
     rows = cdx(f"url={sheet['prefix']}&matchType=prefix&filter=statuscode:200&filter=mimetype:application/pdf"
                "&fl=original,timestamp&output=json&limit=20000")
+    if rows is None:
+        return None, ""
     rows = [r for r in rows if re.search(sheet["pick"], r[0].split("?")[0])]
     if not rows:
         return "", ""
@@ -589,6 +595,10 @@ def fetch(sheet: dict, led: Ledger, store: Path) -> bool:
     """Fetch one sheet into the store and stamp the ledger; False when it could not be had."""
     key = sheet["id"]
     fetch_url, own = resolve(sheet)
+    if fetch_url is None:                        # the archive could not be asked: tried again next run
+        led.stamp(key, "fetch", url=own, http="0")
+        print(f"{key}: the archive could not be reached", file=sys.stderr)
+        return False
     if not fetch_url:
         led.stamp(key, "fetch", url=own, http="0", skip_reason="no capture found")
         print(f"{key}: no capture found", file=sys.stderr)

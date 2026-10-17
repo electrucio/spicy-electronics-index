@@ -831,7 +831,8 @@ Transients are not repeatable bit for bit across simulators (each chooses its ow
 
 ## What is not measured
 
-Diodes on their own, IGBTs, SiC and GaN parts, op-amp macromodels, encrypted models; BSIM cards are
+Diodes on their own, IGBTs, SiC and GaN parts, op-amp macromodels (their bench is specified in
+[opamp-characterisation.md](opamp-characterisation.md) and not yet run), encrypted models; BSIM cards are
 recorded by family and not run. A PSpice `AKO` card is run written out in full when its file holds the
 base. A subcircuit of three to five pins (a Darlington, a transistor with its leads, a ThermalTrak part)
 is run only when the role of every pin can be traced through its netlist — pin order is never assumed.

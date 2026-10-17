@@ -1,0 +1,721 @@
+# Characterising the op-amp SPICE models
+
+The op-amp bench, specified before it is built: a catalogue of measurements at universal conditions, the
+same for every macromodel, drawn from what the makers' own data sheets measure. It follows the transistor
+bench ([model-characterisation.md](model-characterisation.md)) in its principles and its format, and it
+differs where a macromodel differs from a transistor card: a macromodel is a subcircuit with five or more
+pins that often has no noise sources, no temperature terms and an idealised output stage, so the bench has
+to report what a model *cannot* do as a finding, the way `bjt-breakdown` does.
+
+Status: this page is the specification and the evidence behind it. The entries of
+`data/bench/measurements.yaml` (kind `opamp`), the decks, the drawings and the runs are the next step; until
+then [model-characterisation.md](model-characterisation.md) lists op-amp macromodels under "What is not
+measured".
+
+## Principles
+
+The transistor bench's five principles hold unchanged — behaviour only, intrinsic ladders, numbers not
+opinions, explained once per measurement, reproducible — with three additions:
+
+- **Absences are results.** Most macromodels give one offset voltage whatever the temperature, no noise,
+  no input current change with common mode and no distortion beyond slew and clipping. Each measurement
+  says which of its numbers can come out `absent` and from what in the card (`opa-card` reads it), so a
+  reader sees "this model has no noise" and not a simulator default.
+- **Every maker's condition is run, not one chosen.** The sheets fix the same quantity at different
+  supplies (±15 V, ±5 V, 36 V single), loads (600 Ω, 2 kΩ, 10 kΩ), capacitive loads (20 pF, 100 pF) and
+  levels (1, 3, 6 Vrms); a model is measured at all of them, and the one a sheet quotes is read off the
+  ladder. The ladders below come from the survey, not from a preferred sheet.
+- **Model against model where no sheet gives a number.** Distortion, settling and channel separation are
+  published for comparison between models of a part; the sheet's own figure, when the sheet has one, is
+  shown beside it with its conditions.
+
+## What the makers' sheets measure
+
+The survey (`make datasheets-survey`, `sei datasheets survey --kind opamp`) reads a set of sheets chosen
+from the top of the index's usage list and widened across makers, and publishes every figure's title, the
+test it draws and the conditions printed beside it (`data/datasheets/survey/opamp/`). The registry
+`data/datasheets/survey/opamp.yaml` says how each sheet is reached, and which are not: Nisshinbo's
+robots.txt disallows every PDF and Microchip's the whole site to scripts, so those sheets are linked and not
+read; ST, Analog Devices and Rohm refuse scripts and are read from the Internet Archive's capture of their
+own address when the archive can be reached. What the tables below do not show is known from a sheet a
+person opened: the NJM2068 (Nisshinbo, ver. 2025-02-18) and the OP27 (Analog Devices, rev. H, pages 9–10)
+were read by hand before the survey existed, and their figures are named in the text where they add a test
+the surveyed sheets lack.
+
+<!-- survey:start -->
+
+Survey of 36 sheets read by `sei datasheets survey --kind opamp` (reader `survey-1`), 1373 figure titles, 1087 mapped to a test; the tables `data/datasheets/survey/opamp/{sheets,figures,matrix,conditions}.csv` hold every row.
+
+| sheet | maker | document | revision | date | pages | figures | mapped | read from |
+|---|---|---|---|---|---|---|---|---|
+| [TL072](https://www.ti.com/lit/ds/symlink/tl072.pdf) | ti | SLOS080W | W | JULY 2025 | 89 | 72 | 60 | maker's site |
+| [TL082](https://www.ti.com/lit/ds/symlink/tl082.pdf) | ti | SLOS081O | O | SEPTEMBER 2025 | 78 | 51 | 39 | maker's site |
+| [TL062](https://www.ti.com/lit/ds/symlink/tl062.pdf) | ti | SLOS078N | N | AUGUST 2023 | 58 | 36 | 18 | maker's site |
+| [NE5532](https://www.ti.com/lit/ds/symlink/ne5532.pdf) | ti | SLOS075K | K | DECEMBER 2025 | 23 | 10 | 6 | maker's site |
+| [NE5534](https://www.ti.com/lit/ds/symlink/ne5534.pdf) | ti | SLOS070D | D | September 2004 | 27 | 16 | 11 | maker's site |
+| [LM324](https://www.ti.com/lit/ds/symlink/lm324.pdf) | ti | SLOS066AE | AE | SEPTEMBER 2025 | 65 | 49 | 42 | maker's site |
+| [LM358](https://www.ti.com/lit/ds/symlink/lm358.pdf) | ti | SLOS068AB | AB | OCTOBER 2024 | 68 | 57 | 51 | maker's site |
+| [LM833](https://www.ti.com/lit/ds/symlink/lm833.pdf) | ti | SLOS481B | B | July 2010 | 36 | 47 | 43 | maker's site |
+| [LF353](https://www.ti.com/lit/ds/symlink/lf353.pdf) | ti | SLOS012C | C | August 1994 | 21 | 8 | 5 | maker's site |
+| [LF356](https://www.ti.com/lit/ds/symlink/lf356.pdf) | ti | SNOSBH0D | D | March 2013 | 47 | 62 | 38 | maker's site |
+| [LF411](https://www.ti.com/lit/ds/symlink/lf411.pdf) | ti | SLOS011D | D | OCTOBER 2025 | 16 | 0 |  | maker's site |
+| [LM741](https://www.ti.com/lit/ds/symlink/lm741.pdf) | ti |  | D | March 2013 | 17 | 3 | 0 | maker's site |
+| [RC4558](https://www.ti.com/lit/ds/symlink/rc4558.pdf) | ti | SLOS073H | H | OCTOBER 2024 | 37 | 35 | 31 | maker's site |
+| [MC33078](https://www.ti.com/lit/ds/symlink/mc33078.pdf) | ti | SLLS633C | C | NOVEMBER 2006 | 27 | 32 | 31 | maker's site |
+| [LM4562](https://www.ti.com/lit/ds/symlink/lm4562.pdf) | ti | SNAS326K | K | DECEMBER 2013 | 43 | 90 | 70 | maker's site |
+| [LME49720](https://www.ti.com/lit/ds/symlink/lme49720.pdf) | ti | SNAS393D | D | April 2013 | 49 | 134 | 113 | maker's site |
+| [OPA134](https://www.ti.com/lit/ds/symlink/opa134.pdf) | ti | SBOS058B | B | NOVEMBER 2024 | 35 | 33 | 27 | maker's site |
+| [OPA604](https://www.ti.com/lit/ds/symlink/opa604.pdf) | ti | SBOS019A | A | SEPTEMBER 2003 | 21 | 21 | 12 | maker's site |
+| [OPA627](https://www.ti.com/lit/ds/symlink/opa627.pdf) | ti | SBOS165C | C | JANUARY 2025 | 46 | 47 | 36 | maker's site |
+| [OPA1612](https://www.ti.com/lit/ds/symlink/opa1612.pdf) | ti | SBOS450C | C | August 2009 | 34 | 36 | 31 | maker's site |
+| [OPA1642](https://www.ti.com/lit/ds/symlink/opa1642.pdf) | ti | SBOS484D | D | April 2010 | 50 | 44 | 38 | maker's site |
+| [OPA1656](https://www.ti.com/lit/ds/symlink/opa1656.pdf) | ti | SBOS901C | C | SEPTEMBER 2022 | 42 | 61 | 49 | maker's site |
+| [OPA1678](https://www.ti.com/lit/ds/symlink/opa1678.pdf) | ti | SBOS855E | E | DECEMBER 2022 | 57 | 48 | 34 | maker's site |
+| [OPA277](https://www.ti.com/lit/ds/symlink/opa277.pdf) | ti | SBOS079C | C | FEBRUARY 2023 | 43 | 38 | 27 | maker's site |
+| [OP27](https://www.ti.com/lit/ds/symlink/op27.pdf) | ti | SLOS100E | E | FEBRUARY 2010 | 25 | 31 | 27 | maker's site |
+| [LM318](https://www.ti.com/lit/ds/symlink/lm318.pdf) | ti | SLOS063B | B | DECEMBER 2002 | 16 | 1 | 1 | maker's site |
+| [TLC272](https://www.ti.com/lit/ds/symlink/tlc272.pdf) | ti | SLOS091F | F | JANUARY 2026 | 36 | 27 | 21 | maker's site |
+| [LM3900](https://www.ti.com/lit/ds/symlink/lm3900.pdf) | ti | SLOS059 |  | SEPTEMBER 1990 | 17 | 14 | 12 | maker's site |
+| [MC33078](https://www.onsemi.com/download/data-sheet/pdf/mc33078-d.pdf) | onsemi | MC33078/D | 10 | July, 2025 | 19 | 36 | 34 | maker's site |
+| [MC33178](https://www.onsemi.com/download/data-sheet/pdf/mc33178-d.pdf) | onsemi | MC33178/D | 7 | October, 2006 | 19 | 38 | 35 | maker's site |
+| [LM358](https://www.onsemi.com/download/data-sheet/pdf/lm358-d.pdf) | onsemi | LM358/D | 36 | September, 2024 | 16 | 15 | 7 | maker's site |
+| [LM324](https://www.onsemi.com/download/data-sheet/pdf/lm324-d.pdf) | onsemi | LM324/D | 31 | October, 2021 | 15 | 16 | 7 | maker's site |
+| [NE5532](https://www.onsemi.com/download/data-sheet/pdf/ne5532-d.pdf) | onsemi | NE5532/D | 2 | September, 2013 | 11 | 11 | 9 | maker's site |
+| [LM833](https://www.onsemi.com/download/data-sheet/pdf/lm833-d.pdf) | onsemi | LM833/D | 8 | July, 2025 | 11 | 24 | 23 | maker's site |
+| [MC34071](https://www.onsemi.com/download/data-sheet/pdf/mc34071-d.pdf) | onsemi | MC34071/D | 24 | October, 2021 | 26 | 64 | 36 | maker's site |
+| [MC33272A](https://www.onsemi.com/download/data-sheet/pdf/mc33272a-d.pdf) | onsemi | MC33272A/D | 15 | July, 2025 | 21 | 36 | 36 | maker's site |
+| [NCS20071](https://www.onsemi.com/download/data-sheet/pdf/ncs20071-d.pdf) | onsemi | NCS20071/D | 15 | February, 2026 | 29 | 30 | 27 | maker's site |
+| [OP27](https://www.analog.com/media/en/technical-documentation/data-sheets/OP27.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [OP37](https://www.analog.com/media/en/technical-documentation/data-sheets/OP37.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [OP07](https://www.analog.com/media/en/technical-documentation/data-sheets/OP07.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [OP275](https://www.analog.com/media/en/technical-documentation/data-sheets/OP275.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [AD797](https://www.analog.com/media/en/technical-documentation/data-sheets/AD797.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [AD712](https://www.analog.com/media/en/technical-documentation/data-sheets/AD712.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [AD8597](https://www.analog.com/media/en/technical-documentation/data-sheets/AD8597_8599.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [AD825](https://www.analog.com/media/en/technical-documentation/data-sheets/AD825.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| [ADA4898](https://www.analog.com/media/en/technical-documentation/data-sheets/ADA4898-1_4898-2.pdf) | adi |  |  |  |  |  |  | not fetched yet |
+| LT1028 | adi |  |  |  |  |  |  | not fetched yet |
+| LT1115 | adi |  |  |  |  |  |  | not fetched yet |
+| [TL072](https://www.st.com/resource/en/datasheet/tl072.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| [NE5532](https://www.st.com/resource/en/datasheet/ne5532.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| [LM358](https://www.st.com/resource/en/datasheet/lm358.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| [TS922](https://www.st.com/resource/en/datasheet/ts922.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| [LM833](https://www.st.com/resource/en/datasheet/lm833.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| [TL084](https://www.st.com/resource/en/datasheet/tl084.pdf) | st |  |  |  |  |  |  | not fetched yet |
+| BA4558 | rohm |  |  |  |  |  |  | not fetched yet |
+| BA15218 | rohm |  |  |  |  |  |  | not fetched yet |
+| BA10358 | rohm |  |  |  |  |  |  | not fetched yet |
+| BA4560 | rohm |  |  |  |  |  |  | not fetched yet |
+| [CA3140](https://www.renesas.com/us/en/document/dst/ca3140-ca3140a-datasheet) | renesas |  |  |  |  |  |  | not read: HTTP 403 |
+| [CA3130](https://www.renesas.com/us/en/document/dst/ca3130-ca3130a-datasheet) | renesas |  |  |  |  |  |  | not read: HTTP 403 |
+| CA3140 | renesas |  |  |  |  |  |  | not fetched yet |
+| CA3130 | renesas |  |  |  |  |  |  | not fetched yet |
+| [NJM2068](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM2068_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
+| [NJM4558](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4558_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
+| [NJM4580](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM4580_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
+| [NJM5532](https://www.nisshinbo-microdevices.co.jp/en/pdf/datasheet/NJM5532_E.pdf) | nisshinbo |  |  |  |  |  |  | not read: robots.txt disallows *.pdf to every agent |
+| [MCP6001](https://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf) | microchip |  |  |  |  |  |  | not read: robots.txt disallows the whole site to every agent |
+
+Tests by category: how many of the 36 sheets draw each, in all and per maker (onsemi 9, ti 27); `bench` is the measurement that draws the same graph for a model.
+
+| test | bench | sheets | onsemi | ti |
+|---|---|---|---|---|
+| **A supply** | | |  |  |
+| `iq_vs_vs` | `opa-iq` | 22 | 7 | 15 |
+| `iq_vs_t` | `opa-iq` | 18 | 2 | 16 |
+| `pd_vs_t` | `none` | 7 | 4 | 3 |
+| `pd_vs_vs` | `none` | 1 |  | 1 |
+| **B input DC** | | |  |  |
+| `vos_distribution` | `opa-offset` | 7 |  | 7 |
+| `vos_warmup` | `opa-offset` | 3 |  | 3 |
+| `vos_longterm` | `opa-offset` | 3 |  | 3 |
+| `vos_vs_t` | `opa-offset` | 16 | 5 | 11 |
+| `vos_vs_vcm` | `opa-offset` | 7 | 1 | 6 |
+| `vos_vs_vs` | `opa-offset` | 7 | 1 | 6 |
+| `vos_adjust` | `none` | 8 | 1 | 7 |
+| `ib_vs_t` | `opa-bias` | 22 | 5 | 17 |
+| `ib_vs_vcm` | `opa-bias` | 18 | 5 | 13 |
+| `ib_vs_vs` | `opa-bias` | 8 | 4 | 4 |
+| `ios_vs_t` | `opa-bias` | 3 | 1 | 2 |
+| `ios_vs_vcm` | `opa-bias` | 1 |  | 1 |
+| **C range and rejection** | | |  |  |
+| `vicr_vs_t` | `opa-offset` | 4 | 4 |  |
+| `vicr_vs_vs` | `opa-offset` | 1 |  | 1 |
+| `cmrr_vs_f` | `opa-cmrr-f` | 24 | 6 | 18 |
+| `cmrr_vs_t` | `opa-offset` | 11 |  | 11 |
+| `cmrr_vs_vcm` | `opa-offset` | 1 |  | 1 |
+| `psrr_vs_f` | `opa-psrr-f` | 15 | 6 | 9 |
+| `psrr_vs_t` | `opa-offset` | 8 | 1 | 7 |
+| `psrr_vs_vs` | `opa-offset` | 1 |  | 1 |
+| `emirr_vs_f` | `opa-emirr` | 9 |  | 9 |
+| **D gain and frequency** | | |  |  |
+| `aol_phase_vs_f` | `opa-aol` | 31 | 8 | 23 |
+| `closed_loop_gain_vs_f` | `opa-closed-loop` | 14 | 3 | 11 |
+| `aol_vs_t` | `opa-aol` | 18 | 5 | 13 |
+| `aol_vs_vs` | `opa-aol-swing` | 7 | 2 | 5 |
+| `aol_vs_rl` | `opa-aol-swing` | 1 |  | 1 |
+| `gbw_vs_vs` | `opa-aol` | 5 | 2 | 3 |
+| `gbw_vs_t` | `opa-aol` | 11 | 5 | 6 |
+| `phase_margin_vs_cl` | `opa-stability` | 8 | 2 | 6 |
+| `phase_margin_vs_rs` | `opa-stability` | 4 | 4 |  |
+| `phase_margin_vs_t` | `opa-aol` | 3 | 3 |  |
+| `gain_vs_f_comp` | `opa-aol` | 1 | 1 |  |
+| **E output** | | |  |  |
+| `vout_vs_f` | `opa-max-vo-f` | 27 | 5 | 22 |
+| `vout_vs_iout` | `opa-swing` | 15 | 4 | 11 |
+| `vout_vs_rl` | `opa-swing` | 11 | 3 | 8 |
+| `vout_vs_vs` | `opa-swing` | 11 | 5 | 6 |
+| `vout_vs_t` | `opa-swing` | 4 | 1 | 3 |
+| `isc_vs_t` | `opa-isc` | 17 | 4 | 13 |
+| `isc_vs_vs` | `opa-isc` | 1 |  | 1 |
+| `zout_vs_f` | `opa-zout` | 18 | 5 | 13 |
+| **F large signal** | | |  |  |
+| `slew_vs_t` | `opa-slew` | 11 | 6 | 5 |
+| `slew_vs_vs` | `opa-slew` | 4 | 2 | 2 |
+| `large_step` | `opa-slew` | 23 | 8 | 15 |
+| `settling` | `opa-settling` | 7 | 2 | 5 |
+| `overload_recovery` | `opa-overload` | 7 |  | 7 |
+| `phase_reversal` | `opa-phase-reversal` | 5 |  | 5 |
+| `input_overvoltage` | `opa-phase-reversal` | 3 |  | 3 |
+| **G small signal** | | |  |  |
+| `small_step` | `opa-step` | 20 | 4 | 16 |
+| `overshoot_vs_cl` | `opa-stability` | 17 | 5 | 12 |
+| **I distortion** | | |  |  |
+| `thd_vs_f` | `opa-thd-f` | 22 | 6 | 16 |
+| `thd_vs_level` | `opa-thd-level` | 15 | 3 | 12 |
+| `imd` | `opa-imd` | 2 |  | 2 |
+| `spectrum` | `opa-thd-f` | 2 |  | 2 |
+| `thd_other` | `opa-thd-f` | 1 |  | 1 |
+| **H noise** | | |  |  |
+| `noise_0p1_10` | `opa-noise` | 13 | 2 | 11 |
+| `en_vs_vs` | `opa-noise` | 1 |  | 1 |
+| `en_vs_t` | `opa-noise` | 1 |  | 1 |
+| `noise_vs_rs` | `opa-noise-rs` | 10 | 2 | 8 |
+| `noise_vs_bandwidth` | `opa-noise` | 2 |  | 2 |
+| `in_vs_f` | `opa-noise` | 11 | 4 | 7 |
+| `en_vs_f` | `opa-noise` | 21 | 6 | 15 |
+| **J multichannel** | | |  |  |
+| `channel_separation_vs_f` | `opa-separation` | 20 | 5 | 15 |
+| **K test circuits** | | |  |  |
+| `test_circuit` | `none` | 27 | 6 | 21 |
+| **C range and rejection** | | |  |  |
+| `vicr_other` | `opa-offset` | 6 | 3 | 3 |
+| **E output** | | |  |  |
+| `vout_other` | `opa-swing` | 3 | 1 | 2 |
+| `isc_other` | `opa-isc` | 4 | 1 | 3 |
+| `zout_other` | `opa-zout` | 1 |  | 1 |
+| **D gain and frequency** | | |  |  |
+| `aol_other` | `opa-aol` | 3 | 1 | 2 |
+| `gbw_other` | `opa-aol` | 1 |  | 1 |
+| **F large signal** | | |  |  |
+| `slew_other` | `opa-slew` | 2 |  | 2 |
+| **B input DC** | | |  |  |
+| `ib_other` | `opa-bias` | 2 | 1 | 1 |
+| `ios_other` | `opa-bias` | 1 |  | 1 |
+| **A supply** | | |  |  |
+| `iq_other` | `opa-iq` | 2 | 1 | 1 |
+| **C range and rejection** | | |  |  |
+| `cmrr_other` | `opa-cmrr-f` | 2 |  | 2 |
+| `psrr_other` | `opa-psrr-f` | 1 |  | 1 |
+| **H noise** | | |  |  |
+| `noise_other` | `opa-noise` | 6 | 1 | 5 |
+| **N Norton amplifiers** | | |  |  |
+| `norton` | `none` | 2 |  | 2 |
+
+Titles no rule maps: 25 (listed in `figures.csv` with an empty `test`).
+
+Conditions named most often, over all sheets read (value, mentions):
+
+- **supply**: 15 V (69), 15V (68), 12V (50), 17V (50), ±15 V (45), 40 V (40), 36 V (38), 2.5V (38), ±15V (33), 30 V (32), 5 V (28), 5V (22)
+- **rl**: 2 kΩ (77), 10kΩ (71), 2 kΩ (58), 2kΩ (53), 2kΩ (52), 10kΩ (50), 600Ω (50), 10 kΩ (45), 600Ω (33), 10 kΩ (22), 1kΩ (19), 600 Ω (11)
+- **cl**: 100 pF (54), 20 pF (37), 20pF (22), 0 pF (21), 300 pF (16), 100pF (15), 25 pF (13), 10 pF (10), 500 pF (5), 30pF (5), 10pF (4), 1500 pF (3)
+- **vo**: 0 V (89), 3VRMS (41), 1.4V (28), 3 VRMS (21), ±10 V (18), 10VRMS (18), 0V (15), 1.4 V (14), 1 V (10), 1V (8), 2.5V (7), 15 V (7)
+- **f**: 1 kHz (95), 200kHz (48), 1kHz (46), 10 kHz (18), 10 Hz (15), 100 kHz (15), 20 Hz (14), 1.0 kHz (13), 0.1Hz (10), 1 MHz (9), 10Hz (9), 10kHz (9)
+- **gain**: 1 (141), +1 (90), 0dB (42), –1 (39), +1.0 (36), 100 (21), 10 (19), +10 (17), 1 V/V (14), –10 (13), 1000 (12), 1V/V (11)
+- **temp**: 25°C (413), –40°C (131), –55°C (46), –25°C (33), 125°C (21), 0°C (20), -55°C (5), 70°C (3), 85°C (3), -40°C (1)
+- **rs**: 50 Ω (18), 50Ω (16), 20 Ω (15), 50 Ω (12), 10 kΩ (6), 10 Ω (4), 10kΩ (3), 10 Ω (3), 1 kΩ (2), 0Ω (2), 100Ω (2), 100 Ω (2)
+- **vcm**: 0 V (56), VS / 2 (42), 0 (40), VOUT = midsupply (un (14), VICRmin (11), 0V (10), VOUT = midsupply (9), VOUT = mid-supply un (9), VOUT = VS / 2 (8), VS/2 (unless otherwi (7), 0 V) (6), 15V (4)
+- **band**: 80 kHz (20), 80kHz (18), 0.1 Hz to 10 Hz (17), 20 Hz to 20 kHz (17), 0.1Hz to 10Hz (12), 20Hz to 20kHz (5), 30kHz (3), 10 Hz to 10 kHz (2), 30 kHz (1)
+<!-- survey:end -->
+
+### Two layers, and what varies between makers
+
+Every sheet has the **electrical characteristics table** — min/typ/max at fixed conditions, 25 °C and a
+temperature range, which is what production tests — and the **typical characteristics**, curves of the same
+quantities against frequency, temperature, supply, load, common-mode voltage, time or capacitive load.
+The families of curves are the same from the 8 figures of a short sheet to the 134 of a long one; the long
+sheets add axes per quantity and temperature as a parameter. What differs is the conditions, and the
+conditions differ by maker more than by device:
+
+- **Supply reference.** ±15 V with ground (legacy TI, onsemi, Nisshinbo, Analog Devices; "VEE = −15 V"
+  beside most onsemi figures) against one supply of 36 V or 40 V with VS/2 as the reference (TI since about
+  2015: "VCM = VS / 2", "VOUT = midsupply"). The same quantity is quoted as ±V of swing or as mV of headroom
+  from a rail; the curves use different axes.
+- **Load.** 2 kΩ is in every sheet; 10 kΩ for open-loop gain and for TI's new tables; 600 Ω on the audio
+  parts (NE5532, LM833, LM4562, LME49720, OPA16xx, MC33078, NJM2068).
+- **Capacitive load.** 100 pF in eighteen of the sheets read (legacy TI, onsemi, Analog Devices); 20 pF in
+  TI's new format; onsemi gives its phase and gain margins at 0 and 100 pF; the audio sheets print overshoot
+  and margin from 10 pF to 1 nF, OPA1656 with 0, 25 and 50 Ω of isolation resistor.
+- **Distortion level.** 1 Vrms (onsemi's curve), 3 Vrms (onsemi's table, NE5532, LM4562, LME49720), 5 V at
+  20 dB gain (NJM2068), 6 Vrms (TL07x), 10 Vrms (OPA1656); analyser bandwidth 80 kHz (TI, Analog Devices),
+  30 kHz (NJM2068's RIAA figure), 22 kHz on some JRC sheets; at G = +1 or −1.
+- **Noise.** A spot density at 1 kHz everywhere, 10 kHz in TI, 10 Hz in Analog Devices; density against
+  frequency on all but Nisshinbo; 0.1–10 Hz peak-to-peak with a 10 s record in TI's new format, onsemi and
+  Analog Devices (onsemi prints the band-pass test circuit); total noise against source resistance in
+  onsemi and Analog Devices; a weighted integrated µVrms (FLAT + JIS-A at RS = 300 Ω, RIAA at 2.2 kΩ) only in
+  Nisshinbo; noise against supply voltage only in the OP27.
+- **Gain-bandwidth.** Read at 100 kHz (onsemi), at 10 kHz and 100 kHz plus a unity-gain frequency
+  (NJM2068: 27, 19 and 5.5 MHz for one device, so a GBW without its frequency is meaningless for a two-pole
+  part), or extrapolated (TI).
+- **Temperature.** Three curves at −55/25/125 °C (onsemi, Analog Devices, legacy TI), −40/25/125 °C (TI new;
+  "–40°C" is named in thirteen sheets), 25 °C only in the Japanese tables.
+- **Source resistance for VOS.** 10 Ω (onsemi), 20 or 50 Ω (TI), up to 10 kΩ (Nisshinbo, which folds IB·RS
+  into the offset).
+- **Tests one maker prints and the others do not.** EMIRR, no-phase-reversal and overload-recovery
+  oscillograms (TI new); phase and gain margin against differential source resistance, and the input
+  common-mode range against temperature (onsemi); warm-up, long-term and thermal-shock offset (OP27);
+  the input's current when driven beyond the rails (NE5534, NE5532); weighted and RIAA noise (NJM2068).
+  Only the Norton amplifier (LM3900: mirror gain, pull-down current) has tests of its own kind, and is
+  not an op-amp for this bench.
+
+## Universal conditions
+
+The ladders every `opa-*` measurement draws from. Each is the union of what the sheets fix, ordered by
+how many sheets name the value, so a sheet's own number is on the ladder and models can be laid over one
+another.
+
+| ladder | values | what the sheets say |
+|---|---|---|
+| supplies | ±15 V first; then ±5 V, ±2.5 V, ±9 V, ±18 V; single 5 V, 30 V, 36 V and 40 V with VS/2 as the reference | ±15 V in nearly every sheet; ±2.5 V on the audio sheets' CMRR and PSRR; 36/40 V in TI's new tables; 5 V and 30 V in the single-supply parts (LM358, LM324, MC34071, NCS20071) |
+| loads | 2 kΩ, 10 kΩ, 600 Ω, open; 100 Ω–10 kΩ sweep for swing and THD | 2 kΩ in every sheet, 10 kΩ for AOL and TI new, 600 Ω on audio parts |
+| capacitive loads | 0, 20, 100 pF; 10 pF–10 nF sweep for stability; isolation resistor 0, 25, 50 Ω | 100 pF (18 sheets), 20 pF (TI new), 300 pF and 1500 pF as single points |
+| gains | +1, −1, +10, −10, +100, +1000 | G = 1 printed on 24 sheets, −1 on 15, 100 on 14, 10 on 11, −10 on 8, 1000 on 7 |
+| output levels | 1, 3, 6, 10 Vrms; ±10 V and 0.3 V / 1.2 V from the rails for AOL; 10 mV, 100 mV, 2 V, 10 V, 20 V steps | 3 Vrms on most THD figures, ±10 V on AOL in twelve sheets, 10 mV small-signal and 10 V large-signal steps |
+| source resistances | 0, 10, 20, 50, 100 Ω, 1 kΩ, 10 kΩ, 100 kΩ, 1 MΩ, 10 MΩ | 50 Ω (six sheets), 20 Ω and 10 Ω (VOS), 10 kΩ (Nisshinbo), 300 Ω and 2.2 kΩ (weighted noise) |
+| temperatures | −55, −40, 0, 25, 70, 85, 125 °C | 25 °C everywhere; −40 (13 sheets), −55 (7), 125 (8), 0 (5), 85 and 70 (2 each) |
+| frequencies | 1 Hz–100 MHz at 20 points per decade; spot values 10 Hz, 100 Hz, 1 kHz, 10 kHz, 100 kHz, 1 MHz | 1 kHz on 18 sheets, 10 kHz and 100 kHz on 10 and 8 |
+| bands | 0.1–10 Hz; 20 Hz–20 kHz; 10 Hz–10 kHz; analyser low-pass 22, 30 and 80 kHz | 80 kHz on eleven sheets, 0.1–10 Hz on fourteen, 20 Hz–20 kHz on thirteen |
+| common mode | 0 (VS/2), the rails ±0.5 V, swept across | "VCM = 0 V" on thirteen sheets, "VS / 2" on five, VICR(min) on four |
+
+Sampling and tolerances as the transistor bench: `reltol = 1e-4`, 20 points per decade in DC and AC, a
+transient is one deck per step, decimated curves. Every DC quantity is measured at every supply of the
+ladder; curves are shown at ±15 V first.
+
+## The measurements
+
+Format as the transistor catalogue: group, analysis, engines, the circuit, conditions, what is read, the
+outputs and curves, the card parameters or subcircuit features that drive it, and what comes out `absent`.
+`sheets` names the survey's test ids the measurement covers (`data/datasheets/survey/opamp/matrix.csv` says
+how many sheets draw each).
+
+### Supply
+
+#### Does the model load, and at what operating point (`opa-runs`)
+
+Group `dc` · analysis `op` · engines qspice, ngspice, ltspice · sheets `vs_range`.
+
+Whether each simulator reads the subcircuit and finds one operating point as a unity-gain follower with the
+input at the reference (ground at ±VS, VS/2 on a single supply), at every supply of the ladder: the first
+fact about a macromodel, and the error class when it fails (dialect, convergence, timeout). The pins are
+taken from `opa-card`; a model whose pins cannot be traced is not run. What is read: that it runs, the
+supply current per amplifier, the output voltage (the offset, uncorrected), and the lowest supply at which
+the output still sits at the reference, which is the model's own idea of its supply range.
+
+Outputs: `runs@±15V` … `runs@5V` (code per supply), `iq@±15V` (A), `vout@±15V` (V), `vs_min` (V).
+Absent: nothing; `n/a` for a supply the model will not run at.
+
+#### Supply current against supply and temperature, and turn-on (`opa-iq`)
+
+Group `supply` · analysis `dc`, `tran` · engines qspice, ngspice, ltspice · sheets `iq_vs_vs`, `iq_vs_t`,
+`turn_on`, `pd_vs_t` (not measured: a package figure).
+
+The quiescent current as a follower with no load, swept from 0 to 40 V total supply (0 to ±20 V), at each
+temperature of the ladder; and the output's time to settle at the reference after a supply ramp of 0.3 V/µs
+(TI's turn-on condition). Macromodels of the Boyle family draw a current fixed by their current sources
+and ignore the supply; behavioural ones follow it.
+
+Outputs: `iq@±15V,25C`, `iq@±5V,25C`, `iq@36V,25C` (A); `iq_slope` (A/V, 10 to 36 V); `iq_ratio@125C/25C`;
+`turn_on@36V` (s). Curves: IQ against VS at each T; IQ against T at ±15 V.
+Absent: `iq_ratio` when the model has no temperature terms (every current source is a constant).
+
+### Input
+
+#### Offset: its value, and how it moves with common mode, supply and temperature (`opa-offset`)
+
+Group `input` · analysis `dc` · engines qspice, ngspice, ltspice · sheets `vos_vs_t`, `vos_vs_vcm`,
+`vos_vs_vs`, `vos_vs_rs`, `vos_distribution` (one number: a model has no distribution), `cmrr_vs_t`,
+`psrr_vs_t`, `psrr_vs_vs`, `cmrr_vs_vcm`, `rejection_vs_t`, `vicr_vs_t`, `vicr_vs_vs`, `vos_warmup`,
+`vos_longterm`, `vos_thermal_shock` (not simulable: recorded as not measured).
+
+VOS by a servo loop (an integrator holding the output at the reference, the input voltage read): at each
+supply of the ladder; against the common-mode voltage swept from 0.5 V beyond the negative rail to 0.5 V
+beyond the positive one, at −40, 25 and 125 °C; against the supply from the minimum to the maximum; against
+temperature from −55 to 125 °C; and with the source resistances of the ladder, which folds IB·RS in as
+Nisshinbo's table does. From the VCM sweep: the DC CMRR as the slope, the input range as where VOS leaves
+its mid-range value by more than 1 mV, and whether the output's sign reverses beyond it (the flag
+`opa-phase-reversal` confirms in time domain). From the supply sweep: the DC PSRR.
+
+Outputs: `vos@±15V` (V), `vos@36V`, `dvos/dt` (V/°C, −40 to 125), `cmrr_dc@±15V` (dB), `psrr_dc` (dB),
+`vicr_low@±15V`, `vicr_high@±15V` (V, from the rail), `vos@rs=10k` (V). Curves: VOS against VCM at three
+temperatures and each supply; VOS against VS; VOS against T; VICR against T.
+Absent: `dvos/dt` and `vicr` against T when the model has no temperature terms; `cmrr_dc` when the model's
+common-mode gain is zero by construction (reported as `> 200 dB`, which is the finding).
+
+#### Bias and offset currents, and the input impedance (`opa-bias`)
+
+Group `input` · analysis `dc`, `ac` · engines qspice, ngspice, ltspice · sheets `ib_vs_t`, `ib_vs_vcm`,
+`ib_vs_vs`, `ios_vs_t`, `ios_vs_vcm`, `zin_vs_f`.
+
+The two input currents at the reference, each supply, −55 to 125 °C (a JFET input's IB doubling every 10 K
+is what the sheets draw) and across the common-mode range; the differential and common-mode input
+impedances by AC injection at 1 kHz and 1 MHz as R ‖ C. A Boyle model's IB is the base current of its
+input pair and does move with temperature; a behavioural model's is often a constant source or nothing.
+
+Outputs: `ib@±15V,25C`, `ios@±15V,25C` (A), `ib_ratio@125C/25C`, `ib@vcm=+13V` (A), `rid` (Ω), `cid` (F),
+`ricm` (Ω), `cicm` (F). Curves: IB and IOS against T; IB against VCM; IB against VS.
+Absent: `ib_ratio` without temperature terms; `ib` itself when the inputs are ideal (reported as zero and
+flagged, since no amplifier has it).
+
+### Range and rejection
+
+#### CMRR against frequency (`opa-cmrr-f`)
+
+Group `rejection` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `cmrr_vs_f`, `cmrr_other`.
+
+The G = 1 difference amplifier with matched resistors, the common mode driven by the AC source, 1 Hz to
+100 MHz, at VCM = 0 and at 1.5 V from each rail (onsemi's two curves), at ±15 V, ±2.5 V (the audio sheets)
+and 36 V. Read: CMRR at 10 Hz, 1 kHz, 10 kHz, 100 kHz, 1 MHz, and the corner where it starts to fall.
+
+Outputs: `cmrr@1kHz,±15V`, `cmrr@100kHz,±15V` (dB), `cmrr_corner` (Hz). Curves: CMRR against f per VCM and
+supply.
+Absent: a model with no common-mode path reports infinity; the number is replaced by `absent`.
+
+#### PSRR against frequency, each rail alone and both together (`opa-psrr-f`)
+
+Group `rejection` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `psrr_vs_f`, `psrr_other`.
+
+The follower with 200 mV of ripple on the positive rail, on the negative, and on both in antiphase (onsemi
+varies them simultaneously, the audio sheets each alone), 1 Hz to 100 MHz. Read at 10 Hz, 1 kHz, 10 kHz,
+100 kHz, 1 MHz; the corner.
+
+Outputs: `psrr+@1kHz`, `psrr−@1kHz`, `psrr+@100kHz`, `psrr−@100kHz` (dB), `psrr_corner` (Hz). Curves: +PSRR,
+−PSRR, both against f.
+Absent: a model whose internal references are ideal reports infinity on one or both rails.
+
+#### Rejection of an RF carrier at the input (`opa-emirr`)
+
+Group `rejection` · analysis `tran` · engines qspice, ngspice · sheets `emirr_vs_f` (TI's new format only,
+nine sheets).
+
+A 100 mVp carrier at 10 MHz, 100 MHz, 400 MHz, 1 GHz, 2.4 GHz and 6 GHz on the non-inverting input of a
+follower, the DC shift of the output read after it settles, EMIRR = 20·log(VRF_peak/ΔVOS). Nearly every
+macromodel has no input filter and rectifies nothing: the result is a shift of zero and the code
+`absent`, which is what a reader needs to know before trusting a model near a transmitter.
+
+Outputs: `emirr@1GHz` (dB) or `absent`. Curve: EMIRR against f.
+
+### Gain and frequency
+
+#### Open-loop gain and phase, GBW and the margins (`opa-aol`)
+
+Group `gain` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `aol_phase_vs_f`, `aol_vs_t`,
+`gbw_vs_t`, `gbw_vs_rl`, `phase_margin_vs_t`, `phase_vs_vs`, `gain_vs_f_comp`, `aol_other`, `gbw_other`.
+
+The DC-servo method: an integrator holds the output at the reference, the AC signal enters at the input, the
+open-loop gain is the output over the input, 1 Hz to 100 MHz at 20 points per decade, at RL = 600 Ω, 2 kΩ,
+10 kΩ and open, CL = 0, 20 and 100 pF, −55, 25 and 125 °C, each supply. Read: AOL at DC, GBW at 10 kHz and
+at 100 kHz and as the extrapolated unity-gain product (Nisshinbo's three numbers), the unity-gain
+frequency, phase and gain margin at CL = 0 and 100 pF, the dominant pole and the second pole. A part with an
+external compensation pin (NE5534, LM308) is run at the sheet's compensation values (0, 22, 47 pF).
+
+Outputs: `aol_dc@2k,±15V` (dB), `gbw@10kHz`, `gbw@100kHz`, `gbw_ext`, `f_unity` (Hz), `pm@0pF`, `pm@100pF` (°),
+`gm@100pF` (dB), `f_p1`, `f_p2` (Hz), `aol_ratio@125C/25C`, `gbw_ratio@125C/25C`. Curves: gain and phase
+against f per RL, CL, T and supply.
+Absent: the temperature ratios without temperature terms; `f_p2` when the model is single-pole (reported,
+since no amplifier is).
+
+#### Open-loop gain against output swing, supply and load (`opa-aol-swing`)
+
+Group `gain` · analysis `dc` · engines qspice, ngspice, ltspice · sheets `aol_vs_vs`, `aol_vs_rl`,
+`aol_vs_vo`.
+
+The large-signal gain the tables quote: ΔVOUT/ΔVIN with the output swept ±10 V into 2 kΩ (every legacy
+table), and 0.3 V from the rails into 10 kΩ and 1.2 V from the rails into 2 kΩ (TI's new table), at each
+supply and load; AOL against the supply at VO = 2/3 VS (onsemi).
+
+Outputs: `aol@±10V,2k` (V/V and dB), `aol@0.3V,10k`, `aol@1.2V,2k`, `aol@600Ω`. Curves: AOL against VO; AOL
+against VS; AOL against RL.
+
+#### Closed-loop gain against frequency (`opa-closed-loop`)
+
+Group `gain` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `closed_loop_gain_vs_f`.
+
+The non-inverting amplifier at G = +1, +10, +100, +1000 and the inverter at −1 and −10 (feedback 1 kΩ to
+the ladder's gain, the feedback network's RT recorded), 1 Hz to 100 MHz, CL = 20 pF and 100 pF. Read: the
+−3 dB bandwidth and the peaking at each gain.
+
+Outputs: `bw@G=1`, `bw@G=10`, `bw@G=100`, `bw@G=1000` (Hz), `peak@G=1` (dB). Curves: gain against f per G.
+
+#### Stability against capacitive load and source resistance (`opa-stability`)
+
+Group `gain` · analysis `ac`, `tran` · engines qspice, ngspice, ltspice · sheets `phase_margin_vs_cl`,
+`phase_margin_vs_rs`, `overshoot_vs_cl`, `cl_drive`.
+
+Phase and gain margin from the open-loop deck with CL swept 1 pF to 10 nF at G = +1 and +10, with 0, 25 and
+50 Ω of isolation resistor (OPA1656's figure); margin against the differential source resistance
+RT = R1 + R2 at G = +100 from 10 Ω to 100 kΩ (onsemi's figure); and in time domain the overshoot of a 100 mV
+step at G = +1 and a 25 mV step at G = −1 into each CL of the sweep (the audio sheets' figures). Read: the
+largest CL at which the margin stays above 45° and the overshoot below 30 %.
+
+Outputs: `cl_max@45deg,G=1` (F), `overshoot@100pF,G=1`, `overshoot@1nF,G=1` (%), `pm@rt=10k,G=100` (°).
+Curves: PM against CL per G and RISO; overshoot against CL per G; PM against RT.
+
+### Output
+
+#### Output swing and headroom against load, current, supply and temperature (`opa-swing`)
+
+Group `output` · analysis `dc` · engines qspice, ngspice, ltspice · sheets `vout_vs_rl`, `vout_vs_iout`,
+`vout_vs_vs`, `vout_vs_t`, `vout_other`.
+
+The amplifier driven 1 V into saturation (onsemi's VID = 1 V), the output read against a load from 10 Ω to
+100 kΩ to ground, to each rail (MC33272A's figures) and to VS/2, sourcing and sinking, at −55, 25 and
+125 °C and each supply; and against the output current from 0 to 80 mA (Nisshinbo's axis), which is the same
+measurement read the other way. Published both as ±V (legacy tables) and as mV from the rail (TI's new
+tables) at 600 Ω, 2 kΩ and 10 kΩ.
+
+Outputs: `vom+@2k,±15V`, `vom−@2k,±15V` (V), `headroom+@10k,36V`, `headroom−@10k,36V`,
+`headroom+@2k,36V`, `headroom−@2k,36V` (V), `vom@600Ω` (V), `vol@sink=1mA,5V` (V, the single-supply
+parts' figure). Curves: VOUT against RL (sourcing, sinking, per T); VOUT against IOUT; VOM against VS; VOM
+against T.
+Absent: the temperature family without temperature terms.
+
+#### Short-circuit current (`opa-isc`)
+
+Group `output` · analysis `dc`, `tran` · engines qspice, ngspice, ltspice · sheets `isc_vs_t`, `isc_vs_time`,
+`isc_vs_vs`, `isc_other`.
+
+The output shorted to the reference with the input 1 V into saturation each way, at −55, 25 and 125 °C and
+each supply; and against time for 10 s (the OP27 draws it, since a real part heats). Macromodels limit the
+current with a clamp or not at all.
+
+Outputs: `isc+@±15V,25C`, `isc−@±15V,25C` (A), `isc_ratio@125C/25C`. Curves: ISC against T; ISC against VS.
+Absent: a model with no current limit reports the load line's number and the flag `no limit`.
+
+#### Output impedance, open- and closed-loop (`opa-zout`)
+
+Group `output` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `zout_vs_f`, `zout_other`.
+
+Current injected into the output, the voltage read: open-loop (the servo deck), 1 Hz to 100 MHz; closed-loop
+at G = +1, +10, +100, +1000 (onsemi's family); at IOUT = 0 and 5 mA of DC load (TI's two curves).
+
+Outputs: `zo_ol@1MHz` (Ω, TI's table), `zo_ol@9MHz` (onsemi's), `zo_cl@1kHz,G=1` (Ω). Curves: ZO against f
+open-loop and per G.
+
+#### Maximum output voltage against frequency (`opa-max-vo-f`)
+
+Group `output` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `vout_vs_f`.
+
+A sine stepped in amplitude at each frequency from 1 kHz to 10 MHz until the output's THD passes 1 %
+(onsemi's criterion; TI's legacy figure is the same information drawn), into 2 kΩ and 10 kΩ, at each supply.
+Read: the full-power bandwidth, and the swing at 20 kHz and 100 kHz.
+
+Outputs: `fpbw@2k,±15V` (Hz), `vopp@20kHz,2k`, `vopp@100kHz,2k` (V). Curves: VO(pp) against f per RL and VS.
+
+### Large signal
+
+#### Slew rate, and the large-signal step (`opa-slew`)
+
+Group `large-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `slew_vs_t`, `slew_vs_vs`,
+`slew_vs_cl`, `slew_vs_gain`, `large_step`, `slew_other`.
+
+Steps of 2, 10 and 20 V at G = +1 and G = −1, RL = 2 kΩ, CL = 20 pF and 100 pF (the two fixtures the sheets
+differ by: 20 to 50 % of the figure), each supply, −55 to 125 °C; the rising and falling slopes between 10 %
+and 90 %, and the waveforms kept at 80 points as the sheets print their oscillograms (5 V/div, 2 µs/div).
+
+Outputs: `sr+@10V,100pF,G=1`, `sr−@10V,100pF,G=1`, `sr+@10V,20pF,G=1`, `sr+@G=−1` (V/s), `sr_ratio@125C/25C`.
+Curves: SR against VS; SR against T; the step waveforms per fixture.
+Absent: the temperature ratio without temperature terms.
+
+#### Settling time (`opa-settling`)
+
+Group `large-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `settling`.
+
+Time from the step's edge to the output staying within 1 %, 0.1 % and 0.01 % of its final value, for 2 V
+and 10 V steps at G = +1, −1 and −4 (NE5534's figure), CL = 20 pF and 100 pF.
+
+Outputs: `ts@0.1%,10V,G=1`, `ts@0.01%,10V,G=1`, `ts@0.1%,2V,G=−1` (s). Curves: error against time per step.
+
+#### Overload recovery (`opa-overload`)
+
+Group `large-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `overload_recovery`.
+
+The inverter at G = −10 driven to 1.2 times the supply each way, the time from the input's return to the
+output's return within 1 % of linear (TI's 300 ns), positive and negative.
+
+Outputs: `trec+@G=−10`, `trec−@G=−10` (s). Curves: the two oscillograms.
+
+#### Phase reversal, and the input driven beyond the rails (`opa-phase-reversal`)
+
+Group `large-signal` · analysis `tran`, `dc` · engines qspice, ngspice, ltspice · sheets `phase_reversal`,
+`input_overvoltage`.
+
+The follower with the input swept 2 V beyond each rail: whether the output's polarity reverses (TI's
+no-phase-reversal figure), and the current the input draws against the input voltage (NE5534's and
+NE5532's figures), which says whether the model has the protection diodes.
+
+Outputs: `reversal` (flag), `iin@vcc+1V` (A). Curves: VOUT against VIN; IIN against VIN.
+Absent: `iin` when the input is ideal.
+
+### Small signal
+
+#### Small-signal step response (`opa-step`)
+
+Group `small-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `small_step`.
+
+A 10 mV step at G = +1 and G = −1 into CL = 20 pF and 100 pF (TI's and the legacy fixtures), RL = 2 kΩ: rise
+time 10–90 %, overshoot, ringing frequency, the waveforms rising and falling kept at 80 points.
+
+Outputs: `tr@20pF,G=1`, `tr@100pF,G=1` (s), `overshoot@100pF,G=1` (%), `f_ring` (Hz). Curves: the four
+waveforms.
+
+### Noise
+
+#### Voltage and current noise against frequency, the 1/f corner and 0.1–10 Hz (`opa-noise`)
+
+Group `noise` · analysis `noise`, `tran` · engines qspice, ngspice · sheets `en_vs_f`, `in_vs_f`,
+`noise_0p1_10`, `en_vs_vs`, `en_vs_t`, `noise_vs_bandwidth`, `noise_other`.
+
+`.noise` at G = +100 with RS = 0 (en) and RS = 100 kΩ, 10 MΩ for a JFET or CMOS input (in), 0.1 Hz to 1 MHz;
+spot values at 10 Hz, 100 Hz, 1 kHz and 10 kHz; the 1/f corner; the integrated rms over 10 Hz–10 kHz
+(legacy TL07x), 20 Hz–20 kHz and 0.1–10 Hz; the 0.1–10 Hz peak-to-peak from a 10 s transient through onsemi's
+band-pass (gain 50 000, 0.1 Hz high-pass, 10 Hz low-pass) when the model has noise sources, or from
+integration; en against the supply (OP27's figure). A macromodel with no noise sources (most) gives the
+resistors' thermal noise only: the result is `absent`, and `opa-card` says why.
+
+Outputs: `en@10Hz`, `en@1kHz`, `en@10kHz` (V/√Hz), `in@1kHz` (A/√Hz), `f_corner_en`, `f_corner_in` (Hz),
+`en_rms@20Hz-20kHz` (V), `en_pp@0.1-10Hz` (V). Curves: en and in against f; en against VS.
+Absent: all of them when the card has no noise sources beyond resistors.
+
+#### Total noise against source resistance, noise figure and the weighted figures (`opa-noise-rs`)
+
+Group `noise` · analysis `noise` · engines qspice, ngspice · sheets `noise_vs_rs`; and the NJM2068's
+weighted figures, read by hand.
+
+Total input-referred noise VT = √(en² + (in·RS)² + 4kT·RS) at 1 kHz and 10 Hz against RS from 10 Ω to 10 MΩ
+(onsemi's and Analog Devices' figures), the noise figure against RS, and the integrated 20 Hz–20 kHz noise
+flat, A-weighted (which stands for JIS-A) and RIAA-weighted through a 40 dB stage with a 30 kHz low-pass, at
+RS = 300 Ω and 2.2 kΩ — the Nisshinbo figures, the one test specific to the Japanese audio sheets.
+
+Outputs: `vt@1kHz,rs=1k` (V/√Hz), `nf@rs=1k` (dB), `en_a@rs=300` (V), `en_riaa@rs=2.2k` (V). Curves: VT
+against RS at 1 kHz and 10 Hz; NF against RS; weighted noise against RS.
+Absent: as `opa-noise`.
+
+### Distortion (model against model)
+
+#### THD against frequency (`opa-thd-f`)
+
+Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `thd_vs_f`, `thd_vs_gain`,
+`spectrum`, `thd_other`.
+
+A sine from 20 Hz to 100 kHz at 1 Vrms and 3 Vrms (and 6 and 10 Vrms where the swing allows), G = +1, +10,
++100 and +1000 (onsemi's family) and −1, RL = 2 kΩ and 600 Ω, each supply; harmonics 2 to 10 by Goertzel as
+`bjt-distortion` does, an 80 kHz analyser band, and the spectrum of a 1 kHz and a 10 kHz tone kept
+(OPA1656's FFT figures). Published for comparison between models: a macromodel's distortion is its slew,
+its clipping and whatever its output stage does, not the die's.
+
+Outputs: `thd@1kHz,3Vrms,2k,G=1`, `thd@20kHz,3Vrms,2k,G=1`, `thd@1kHz,3Vrms,600Ω,G=1`, `thd@1kHz,G=10`
+(ratio). Curves: THD against f per level, gain and load; the spectra.
+
+#### THD against output level (`opa-thd-level`)
+
+Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `thd_vs_level`.
+
+At 1 kHz and 2 kHz (onsemi), the level stepped from 10 mVrms to 10 Vrms, G = +1 and −1, 2 kΩ and 600 Ω, each
+supply: where the distortion turns up at the clipping end, and the noise floor at the low end for a model
+with noise.
+
+Outputs: `thd@1kHz,1Vrms`, `thd@1kHz,6Vrms` (ratio), `v_clip@1%` (V). Curves: THD against level per gain,
+load and supply.
+
+#### Intermodulation (`opa-imd`)
+
+Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `imd` (two sheets; the
+audio sheets' CCIF figure).
+
+SMPTE (60 Hz + 7 kHz, 4:1) and CCIF (19 + 20 kHz, 1:1) at 3 Vrms into 2 kΩ and 600 Ω, G = +1.
+
+Outputs: `imd_smpte@3Vrms`, `imd_ccif@3Vrms` (ratio).
+
+#### THD against load (`opa-thd-load`)
+
+Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `thd_vs_rl` (OPA1656's figure).
+
+At 1 kHz, 3 Vrms, G = +1, RL from 100 Ω to 10 kΩ: how a model's output stage behaves into a heavy load.
+
+Outputs: `thd@1kHz,3Vrms,100Ω`, `thd@1kHz,3Vrms,10k` (ratio). Curve: THD against RL.
+
+### Multichannel
+
+#### Channel separation (`opa-separation`)
+
+Group `multichannel` · analysis `ac`, `tran` · engines qspice, ngspice, ltspice · sheets
+`channel_separation_vs_f`.
+
+For a subcircuit with two or four amplifiers: onsemi's fixture, the driven channel at G = +1 with 20 Vpp
+(3 V and 10 V on the TI audio sheets) into 2 kΩ, 600 Ω and 10 kΩ, the measured channel at G = +100 with its
+inputs grounded, 10 Hz to 100 kHz; the DC separation as ΔVOS per ΔVO (TI's table). A macromodel of one
+amplifier in a package of two shares nothing: the result is infinity and the code `absent`, which is the
+finding.
+
+Outputs: `sep@1kHz,2k`, `sep@10kHz,2k`, `sep@100kHz,2k` (dB), `sep_dc` (V/V). Curves: separation against f
+per RL.
+Absent: a single-amplifier subcircuit, or one with no supply or substrate coupling between its copies.
+
+### Model facts
+
+#### What the card says it can do (`opa-card`)
+
+Group `facts` · no simulation · sheets none.
+
+Read from the subcircuit's text by `sei models cards`: the pins and their roles; the macromodel family
+(Boyle 1974 and its descendants, the PSpice generations of Analog Devices and Burr-Brown/TI, a behavioural
+model, an encrypted one); whether it carries noise sources, temperature terms, a supply-current model, a
+common-mode path, input protection, an output current limit, and what kind of output stage. These feed the
+`absent` codes above, so that every absence names its cause.
+
+Outputs: `family`, `pins`, `noise_sources`, `temperature_terms`, `supply_current_model`,
+`common_mode_path`, `input_protection`, `current_limit`, `output_stage` (codes).
+
+#### Do the three simulators agree? (`opa-agreement`)
+
+Group `facts` · every analysis · engines qspice, ngspice, ltspice.
+
+As `bjt-agreement`: per output, the spread between engines, and the engine whose curve is published.
+
+## Which groups matter for which use
+
+| use | groups | look at |
+|---|---|---|
+| Audio preamplifier or mixer stage | noise, distortion, gain, input | en at 10 Hz–1 kHz and the 1/f corner (or `absent`), THD against f at 3 Vrms, GBW and the margins at 100 pF, VOS at RS = 10 kΩ. |
+| Line driver, headphone stage | output, distortion, large-signal | swing into 600 Ω, ISC, THD against load, full-power bandwidth, SR. |
+| Active filter, tone control | gain, output, small-signal | closed-loop bandwidth at the gain used, ZO against f, overshoot against CL. |
+| Single-supply pedal or synth circuit | supply, input, output | runs at 5 V and 9 V, VICR to the negative rail, VOL at 1 mA sink, IQ, phase reversal. |
+| Precision DC, servo, reference buffer | input, rejection | VOS and its drift (or `absent`), IB and IOS against T, CMRR and PSRR at DC and 100 Hz. |
+
+## What is not measured
+
+Package thermal derating (`pd_vs_t`, `pd_vs_vs`), long-term and thermal-shock offset, ESD and latch-up: not
+simulable in a macromodel. The offset-null network and the test circuits (`vos_adjust`, `test_circuit`) are
+fixtures, not quantities. Norton amplifiers (LM3900) are another kind of part. A subcircuit whose pins
+cannot be traced is not run.
+
+## Next steps
+
+1. The entries of `data/bench/measurements.yaml` (kind `opamp`) in the format of the transistor ones:
+   conditions, grids, outputs, curves, the deck lines and the extraction; `make bench-methods` then copies
+   them into the methods page.
+2. The decks in `docker/sim/bench/` (the DC-servo loop for `opa-aol`, the Goertzel harmonics shared with
+   `bjt-distortion`), and `opa-card` in `models/cards.py`.
+3. The circuit drawings (`docker/circuitikz/benches.py`), one per measurement.
+4. The survey itself: the Analog Devices, ST, Rohm and Intersil sheets once the archive is reachable from the
+   machine that runs it, and more makers' sheets opened by hand where robots.txt says no.
