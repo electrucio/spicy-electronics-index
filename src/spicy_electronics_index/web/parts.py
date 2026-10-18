@@ -631,7 +631,9 @@ def datasheets(part: str, idx: dict, recipe: dict | None) -> list[list[str]]:
             "models", "the sheet the models were measured against")
     for c in idx.get("catalogued", {}).get(part, []):
         src, maker, _cat, _st, title, rev = c[:6]
-        add(c[6], maker, "", f"{title}, revision {rev}" if title and rev else title, src)
+        # A catalogue that titles the sheet names it so; one that only describes the part (an EDA library's
+        # "0.1A Ic, 45V Vce, NPN, TO-92") lends that line, which beats a file name.
+        add(c[6], maker, "", f"{title}, revision {rev}" if title and rev else title or c[9], src)
     for src, url in idx.get("listed_by", {}).get(part, []):
         if url.lower().split("?")[0].endswith(".pdf") or "/lit/gpn/" in url:
             add(url, idx.get("listings", {}).get(src, {}).get("maker", ""), "", "", src)

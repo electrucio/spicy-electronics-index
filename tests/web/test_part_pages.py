@@ -530,6 +530,22 @@ def test_a_transistor_is_filed_by_polarity_only_when_every_source_agrees(data):
     assert sorted(c[:3] for c in claims) == [["NPN", "catalogue", "sanken"], ["PNP", "name", "jis-c7012"]]
 
 
+def test_a_catalogue_row_without_a_sheet_title_lends_its_description_to_the_link(data):
+    """KiCad's library links BC547's sheet and describes the part; the link reads that line, not the PDF's
+    file name. A catalogue that titles the sheet keeps its title."""
+    idx = P.index()
+    cat = dict.fromkeys(P.CATALOGUE_FIELDS, "")
+    idx["catalogued"]["BC547"] = [
+        [{**cat, "source": "kicad_symbols", "maker": "onsemi", "url": "https://x.example/BC550-D.pdf",
+          "name": "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92"}[k] for k in P.CATALOGUE_FIELDS],
+        [{**cat, "source": "diotec_products", "maker": "diotec", "url": "https://x.example/bc547.pdf",
+          "title": "BC546 ... BC550", "revision": "3", "name": "BC547B"}[k] for k in P.CATALOGUE_FIELDS]]
+    rows = P.datasheets("BC547", idx, None)
+    assert [(r[0], r[3], r[4]) for r in rows] == [
+        ("https://x.example/BC550-D.pdf", "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92", "kicad_symbols"),
+        ("https://x.example/bc547.pdf", "BC546 ... BC550, revision 3", "diotec_products")]
+
+
 def test_a_grade_of_a_type_is_what_its_type_is_and_a_pair_is_not(data):
     """BC547B is a grade of BC547, which the libraries define as NPN. BC847BPN folds back to BC847 too,
     but it is an NPN and a PNP in one package. 2SC1815G's G is no rank JIS knows, and its C still says NPN."""

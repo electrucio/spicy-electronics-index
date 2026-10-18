@@ -156,6 +156,9 @@ const VIA: Record<string, string> = {
   wrh_books: "a data book World Radio History holds",
   archive_manuallib: "a single sheet the Internet Archive holds",
   datasheet_live: "a copy held by datasheet.live (not the maker's file)",
+  kicad_symbols: "KiCad's symbol library, the sheet its symbol links",
+  horizon_pool: "Horizon EDA's parts pool",
+  librepcb_base: "LibrePCB's base library",
 }
 
 function fileName(url: string): string {
