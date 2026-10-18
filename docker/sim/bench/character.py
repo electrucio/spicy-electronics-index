@@ -30,11 +30,11 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from bench import decks_bjt, decks_jfet, decks_mos, engines, raw  # noqa: E402
+from bench import decks_bjt, decks_jfet, decks_mos, decks_opamp, engines, raw  # noqa: E402
 from bench.num import n  # noqa: E402
 
 ENGINE = engines.engine_name()
-PLANS = {"bjt": decks_bjt, "jfet": decks_jfet, "mosfet": decks_mos}
+PLANS = {"bjt": decks_bjt, "jfet": decks_jfet, "mosfet": decks_mos, "amplifier": decks_opamp}
 POLARITY_SIGN = {"npn": 1, "pnp": -1, "n": 1, "p": -1}
 # the terminals a deck's device line names, by its first letter, in the order the line writes them
 TERMINALS = {"Q": "cbe", "J": "dgs", "M": "dgs", "X": ("inp", "inn", "vp", "vn", "out")}
