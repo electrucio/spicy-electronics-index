@@ -152,7 +152,9 @@ function Pane({ part, models, file, methods }: { part: string; models: PartModel
   const byId = useMemo(() => new Map((methods?.measurements ?? []).map((m) => [m.id, m])), [methods])
   const seen = new Set<string>()
   for (const c of cols) for (const mid of Object.keys(c.rec.codes)) seen.add(mid)
-  const kind = [...seen][0]?.split('-')[0] ?? ''
+  // the kind: that of the first measurement the records name that the catalogue knows (an older record may
+  // name its agreement after the job's group, "amplifier", where the catalogue says "opamp")
+  const kind = [...seen].map((id) => byId.get(id)?.kind).find((k) => k) ?? [...seen][0]?.split('-')[0] ?? ''
   const order = (methods?.measurements ?? []).filter((m) => m.kind === kind).map((m) => m.id)
   const mids = [...order.filter((id) => seen.has(id)), ...[...seen].filter((id) => !order.includes(id))]
   const rows = useMemo(() => curveRows((methods?.measurements ?? []).filter((m) => m.kind === kind), seen), [methods, cols])

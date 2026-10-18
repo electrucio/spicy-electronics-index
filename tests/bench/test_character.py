@@ -83,6 +83,12 @@ def test_a_model_run_in_one_engine_alone_has_no_agreement():
     assert rec["agree"] == {} and rec["codes"]["bjt-agreement"] == "n/a" and "bjt-agreement" not in rec["values"]
 
 
+def test_an_amplifiers_agreement_is_the_catalogues_opamp_entry():
+    job = {**fake_job(), "kind": "amplifier", "family": "subckt", "polarity": "n"}
+    rec = P.build_record("h1", {"ngspice": (fake_info("ngspice"), fake_result("ngspice"), job)}, C.load())
+    assert rec["codes"]["opamp-agreement"] == "n/a" and "amplifier-agreement" not in rec["codes"]
+
+
 def test_the_ledger_knows_which_engines_a_model_has_been_through(tmp_path):
     led = Ledger(tmp_path / "state.csv", stages=CHARACTER_STAGES, fields=CHARACTER_FIELDS, versioned=CHARACTER_VERSIONED)
     dig = "d1"

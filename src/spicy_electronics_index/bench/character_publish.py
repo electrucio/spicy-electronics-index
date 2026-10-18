@@ -20,7 +20,14 @@ from collections import Counter
 from pathlib import Path
 
 from spicy_electronics_index.bench import catalogue
-from spicy_electronics_index.bench.character import ENGINES, PRIMARY, VERSION, input_digest, ledger
+from spicy_electronics_index.bench.character import (
+    ENGINES,
+    PLANNED_KINDS,
+    PRIMARY,
+    VERSION,
+    input_digest,
+    ledger,
+)
 from spicy_electronics_index.bench.jobs import CHANGES
 from spicy_electronics_index.core.config import character, character_runs
 from spicy_electronics_index.core.ledger import today
@@ -260,7 +267,8 @@ def build_record(h: str, per_engine: dict[str, tuple[dict, dict, dict]], doc: di
         for e in list(by_engine):
             if e != primary and prim:
                 by_engine[e] = {k: v for k, v in by_engine[e].items() if differs(v, prim.get(k))}
-    kind = j0["kind"]
+    # the agreement entry is the catalogue's: an amplifier job's measurements are the `opamp` kind's
+    kind = PLANNED_KINDS.get(j0["kind"], (j0["kind"],))[0]
     if rec["agree"]:
         n_all = len(rec["agree"])
         within1 = sum(1 for a in rec["agree"].values() if a[1] == "1%")
