@@ -677,7 +677,7 @@ Drawing: DUT; 1 GH feedback inductor; 1 GF capacitor to ground; AC source; 2 kΩ
 - `aol_ratio@125°C/25°C`: DC gain at 125 °C over 25 °C
 - `gbw_ratio@125°C/25°C`: GBW at 125 °C over 25 °C
 
-Curves: gain (gain against f, log); phase (phase against f, lin); gain, 600Ω (gain against f, log, at RL = 600); gain, 10kΩ (gain against f, log, at RL = 10000); gain, ±5V (gain against f, log, at VS = 10); gain, ±9V (gain against f, log, at VS = 18); gain, -55°C (gain against f, log, at T = -55); gain, 125°C (gain against f, log, at T = 125).
+Curves: gain (gain against f, log, at RL = 2000, VS = 30, T = 25); phase (phase against f, lin); gain, 600Ω (gain against f, log, at RL = 600, VS = 30, T = 25); gain, 10kΩ (gain against f, log, at RL = 10000, VS = 30, T = 25); gain, ±5V (gain against f, log, at RL = 2000, VS = 10, T = 25); gain, ±9V (gain against f, log, at RL = 2000, VS = 18, T = 25); gain, -55°C (gain against f, log, at RL = 2000, VS = 30, T = -55); gain, 125°C (gain against f, log, at RL = 2000, VS = 30, T = 125). Shown first: RL = 2000, VS = 30, T = 25.
 
 **A high value.** A GBW that does not move with temperature or supply is a macromodel with fixed poles.
 
@@ -924,7 +924,7 @@ Drawing: DUT; AC current into the output; voltmeter. Differs from the netlist: t
 - `zo_ol@{f}` (Ω): open-loop output impedance
 - `zo_cl@{f},G={g}` (Ω): closed-loop output impedance at each gain
 
-Curves: ZO open loop (zo against f, log); ZO, G=1 (zo against f, log, at G = 1); ZO, G=10 (zo against f, log, at G = 10); ZO, G=100 (zo against f, log, at G = 100); ZO, G=1000 (zo against f, log, at G = 1000).
+Curves: ZO open loop (zo against f, log, at G = open loop); ZO, G=1 (zo against f, log, at G = 1); ZO, G=10 (zo against f, log, at G = 10); ZO, G=100 (zo against f, log, at G = 100); ZO, G=1000 (zo against f, log, at G = 1000). Shown first: G = open loop.
 
 **A low value.** An open-loop impedance that is one resistor at every frequency is the Boyle output stage.
 

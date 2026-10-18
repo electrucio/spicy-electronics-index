@@ -4131,14 +4131,15 @@ measurements:
   - {key: "aol_ratio@125°C/25°C", unit: "", what: "DC gain at 125 °C over 25 °C"}
   - {key: "gbw_ratio@125°C/25°C", unit: "", what: "GBW at 125 °C over 25 °C"}
   curves:
-  - {name: "gain", x: f, y: gain, scale: log, unit: ""}
+  - {name: "gain", x: f, y: gain, scale: log, unit: "", at: {RL: 2000, VS: 30, T: 25}}
   - {name: "phase", x: f, y: phase, scale: lin, unit: "°"}
-  - {name: "gain, 600Ω", x: f, y: gain, scale: log, unit: "", at: {RL: 600}}
-  - {name: "gain, 10kΩ", x: f, y: gain, scale: log, unit: "", at: {RL: 10000}}
-  - {name: "gain, ±5V", x: f, y: gain, scale: log, unit: "", at: {VS: 10}}
-  - {name: "gain, ±9V", x: f, y: gain, scale: log, unit: "", at: {VS: 18}}
-  - {name: "gain, -55°C", x: f, y: gain, scale: log, unit: "", at: {T: -55}}
-  - {name: "gain, 125°C", x: f, y: gain, scale: log, unit: "", at: {T: 125}}
+  - {name: "gain, 600Ω", x: f, y: gain, scale: log, unit: "", at: {RL: 600, VS: 30, T: 25}}
+  - {name: "gain, 10kΩ", x: f, y: gain, scale: log, unit: "", at: {RL: 10000, VS: 30, T: 25}}
+  - {name: "gain, ±5V", x: f, y: gain, scale: log, unit: "", at: {RL: 2000, VS: 10, T: 25}}
+  - {name: "gain, ±9V", x: f, y: gain, scale: log, unit: "", at: {RL: 2000, VS: 18, T: 25}}
+  - {name: "gain, -55°C", x: f, y: gain, scale: log, unit: "", at: {RL: 2000, VS: 30, T: -55}}
+  - {name: "gain, 125°C", x: f, y: gain, scale: log, unit: "", at: {RL: 2000, VS: 30, T: 125}}
+  select: {RL: 2000, VS: 30, T: 25}
   parameters: []
   reads_high: "A GBW that does not move with temperature or supply is a macromodel with fixed poles."
   reads_low: "A second pole absent is a single-pole model: its phase margin is 90° whatever the load, and a stability figure means nothing."
@@ -4461,11 +4462,12 @@ measurements:
   - {key: "zo_ol@{f}", unit: "Ω", what: "open-loop output impedance"}
   - {key: "zo_cl@{f},G={g}", unit: "Ω", what: "closed-loop output impedance at each gain"}
   curves:
-  - {name: "ZO open loop", x: f, y: zo, scale: log, unit: "Ω"}
+  - {name: "ZO open loop", x: f, y: zo, scale: log, unit: "Ω", at: {G: open loop}}
   - {name: "ZO, G=1", x: f, y: zo, scale: log, unit: "Ω", at: {G: 1}}
   - {name: "ZO, G=10", x: f, y: zo, scale: log, unit: "Ω", at: {G: 10}}
   - {name: "ZO, G=100", x: f, y: zo, scale: log, unit: "Ω", at: {G: 100}}
   - {name: "ZO, G=1000", x: f, y: zo, scale: log, unit: "Ω", at: {G: 1000}}
+  select: {G: open loop}
   parameters: []
   reads_high: ""
   reads_low: "An open-loop impedance that is one resistor at every frequency is the Boyle output stage."
