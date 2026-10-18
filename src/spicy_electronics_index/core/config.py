@@ -306,6 +306,15 @@ def character(model_hash: str) -> Path:
     return PUBLIC_DATA / "verification" / "models" / model_hash[:2] / f"{model_hash}.json"
 
 
+def character_supplement(model_hash: str | None = None) -> Path:
+    """Records the committed release asset does not carry yet, in git: a few models characterised on a
+    machine that cannot upload a release (a cloud session), so that the site can show them until the next
+    `sei bench character-release` packs them into the asset and the folder is emptied. The folder, or one
+    record in it by hash."""
+    d = PUBLIC_DATA / "verification" / "models" / "supplement"
+    return d / f"{model_hash}.json" if model_hash else d
+
+
 def character_release() -> Path:
     """What characterisation is published, and where: the release asset holding every record of the current
     catalogue version, with its size and sha256 (`sei bench character-release`, `character-fetch`)."""
@@ -836,6 +845,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("character", "built", ("0123456789abcdef0123456789abcdef01234567",)),
     ("character_state", "public", ()),
     ("character_release", "public", ()),
+    ("character_supplement", "public", ()),
     ("known_parts", "public", ()),
     ("wanted_parts", "public", ()),
     ("rejected_tokens", "public", ()),

@@ -95,6 +95,8 @@ def main(argv: list[str] | None = None) -> int:
     bch.add_parser("character-publish", help="publish the characterisation per model hash, with the deck digests to repeat it")
     bch.add_parser("character-release", help="(maintainer) pack the records and upload them as this catalogue version's release asset")
     bch.add_parser("character-fetch", help="download the released records the manifest names, check and unpack them")
+    bch_s = bch.add_parser("character-supplement", help="copy published records into the tracked supplement, for a machine that cannot release")
+    bch_s.add_argument("hashes", nargs="+")
     bdk = bch.add_parser("deck", help="regenerate the exact deck behind a published number from your own copy of the card")
     bdk.add_argument("measurement")
     bdk.add_argument("--card", required=True)
@@ -404,9 +406,9 @@ def main(argv: list[str] | None = None) -> int:
         from spicy_electronics_index.bench import character_publish
         return character_publish.main([])
 
-    if args.cmd == "bench" and args.bench_cmd in ("character-release", "character-fetch"):
+    if args.cmd == "bench" and args.bench_cmd in ("character-release", "character-fetch", "character-supplement"):
         from spicy_electronics_index.bench import character_release
-        return character_release.main([args.bench_cmd.split("-", 1)[1]])
+        return character_release.main([args.bench_cmd.split("-", 1)[1], *(getattr(args, "hashes", None) or [])])
 
     if args.cmd == "bench" and args.bench_cmd == "deck":
         from spicy_electronics_index.bench import deck as bench_deck

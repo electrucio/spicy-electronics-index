@@ -11,7 +11,7 @@ import { DATA } from './data'
 import { Loading } from './loading'
 import type { Measurement, MethodsFile } from './types'
 
-const KIND_NAME: Record<string, string> = { bjt: 'Bipolar transistors', jfet: 'JFETs', mosfet: 'MOSFETs' }
+const KIND_NAME: Record<string, string> = { bjt: 'Bipolar transistors', jfet: 'JFETs', mosfet: 'MOSFETs', opamp: 'Op-amps' }
 const REPO = 'https://github.com/electrucio/spicy-electronics-index'
 
 /** A condition as the page prints it: numbers in short form, nested blocks as `key: value` lists. */
@@ -70,7 +70,7 @@ export function MethodsPage({ id }: { id?: string }) {
       <h3>The measurements</h3>
       <p class="small">Circuits and deck lines for{' '}
         {['npn', 'pnp'].map((p) => <label key={p} class="pol"><input type="radio" name="polarity" checked={polarity === p} onChange={() => setPolarity(p)} /> {p.toUpperCase()}</label>)}
-        <span class="muted"> — a PNP runs the same benches with every source reversed; its curves are shown as magnitudes.</span></p>
+        <span class="muted"> — a PNP (and a P-channel FET) runs the same benches with every source reversed; its curves are shown as magnitudes. An op-amp has no polarity.</span></p>
       <ul class="toc small">
         {kinds.map((k) => (
           <li key={k}><b>{KIND_NAME[k] ?? k}:</b>{' '}
