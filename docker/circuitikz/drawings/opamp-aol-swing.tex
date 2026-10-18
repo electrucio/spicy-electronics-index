@@ -1,0 +1,46 @@
+% Open-loop gain against swing (opamp-aol-swing): the set-up a person would wire, semantically the deck's.
+%   VIN inb 0 0, .dc          the input sweep                                               -> source V_in (set)
+%   VOFF inp inb <vos>        riding on the model's own offset, from the runs deck          -> source V_OFF (set)
+%   XL0 inp 0 vp vn out0 DUT  the amplifier open loop, inverting input grounded             -> op amp
+%   RL0 out0 0 2000           the load; XL1 and XL2 into 600 Ω and 10 kΩ                   -> resistor R_L
+%   Three copies run in one deck, one per load; the drawing shows one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Open-loop gain against swing}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the inverting input grounded
+\draw (A.-) -- ++(-0.6,0) coordinate (Apg) -- (Apg |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(A.-)+(-0.3,0.03)$}{0}
+% the non-inverting input: the sweep riding on the offset
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-1.5,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$V_{in}$}] ++(0,-1.3) coordinate (inb);
+\draw[set] (inb) to[V, l_={$V_{OFF}$}] (inb |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{inp}
+\nodename{anchor=east}{$(inb)+(-0.05,0)$}{inb}
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$v_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the load
+\draw (Ao) -- ++(2.7,0) coordinate (Arl) to[R, l={$R_L$}] (Arl |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{OFF}$: the offset the runs deck found, so that the sweep is centred on the model's own zero;\quad $V_{in}$ swept $\pm 300$ \textmu V in 250 nV steps\\[2pt]
+  $R_L = 2$ k\ohm, 600 \ohm{} and 10 k\ohm, one copy each;\quad read $v_{out}(V_{in})$: $A_{OL}$ as the slope over $\pm 10$ V and $\pm 13$ V of swing%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

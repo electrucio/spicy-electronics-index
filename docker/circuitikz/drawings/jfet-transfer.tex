@@ -1,0 +1,42 @@
+% Transfer characteristic (jfet-transfer): the set-up a person would wire, semantically the deck's.
+%   VT0 dt0 0 5    the drain supply of one copy; its current is ID     -> source V_DS (set) + ammeter I_D (measured)
+%   VIG0 g gi0 0   a 0 V source from the gate drive into the gate       -> ammeter I_G (measured)
+%   JT0 dt0 gi0 0  the copy, source grounded                            -> njfet
+%   VGS g 0 0      the gate drive, swept, shared by the four copies     -> source V_GS (set)
+%   Four copies run in the deck, one per VDS; the drawing shows one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transfer characteristic}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (top) at ($(Q.D)+(0,1.7)$);
+\ammeter{Q.D}{top}{$I_D$}
+\nodename{anchor=west}{$(Q.D)+(0.1,0.25)$}{dt0}
+% the drain supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_{DS}$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (Q.G);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_G$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{GS}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{g}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS}$ swept $-10$ V to $+0.6$ V in 5 mV steps;\quad $V_{DS} = 5$, 10, 15 and 20 V, one copy of the circuit each\\[2pt]
+  read $I_D(V_{GS})$ and $I_G$;\quad $I_{DSS} = I_D$ at $V_{GS} = 0$;\quad $V_{GS(off)}$: the $V_{GS}$ at which $I_D$ reaches 1 nA, 10 nA and 1 \textmu A\\[2pt]
+  $V_{GS}$ at $I_D = 10$ \textmu A $\dots$ 100 mA on the 10 V curve, kept for the decks that bias the transistor there%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

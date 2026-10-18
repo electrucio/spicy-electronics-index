@@ -36,11 +36,7 @@
 \voltmeter{bvm |- 0,\gnd}{bvm}{$V_{BE}$}
 \draw (bvm |- 0,\gnd) node[ground]{};
 % the thermometer: the temperature is a simulator setting
-\coordinate (th) at ($(vtop)+(1.7,-2.6)$);
-\draw[set, thick] (th) circle (0.18); \fill[set] (th) circle (0.09);
-\draw[set, thick] ($(th)+(0,0.18)$) -- ++(0,1.4);
-\draw[set] ($(th)+(-0.12,0.6)$) -- ++(0.24,0) ($(th)+(-0.12,1.0)$) -- ++(0.24,0);
-\node[set, anchor=west] at ($(th)+(0.3,0.8)$) {$T$};
+\thermometer{$(vtop)+(1.7,-2.6)$}{$T$}
 % the definitions
 \definitions{0,-0.1}{%
   $I_B = 10^{k}\,\mathrm{A}$, $k = -9,\,-8.95,\,\dots,\,0$ \quad (20 points per decade, 1 nA to 1 A)\\[2pt]

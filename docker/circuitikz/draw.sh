@@ -17,11 +17,17 @@ work=$(mktemp -d)
 cp "$src" "$work/$name.tex"
 cp "$here/bench.sty" "$work/bench.sty"
 { echo '\def\pgfsysdriver{pgfsys-dvisvgm.def}'; cat "$src"; } > "$work/$name-dvi.tex"
-docker run --rm -u "$(id -u):$(id -g)" -v "$work":/w -e HOME=/tmp spicy-electronics-index-circuitikz bash -c '
-  cd /w && latex -interaction=batchmode -halt-on-error '"$name"'-dvi.tex > /dev/null 2>&1 || { grep -A6 "^!" '"$name"'-dvi.log | head -40; exit 2; }
+# the TeX Live image, or the machine's own TeX Live when there is no Docker (LOCAL=1, or none on the PATH)
+if [ -n "${LOCAL:-}" ] || ! docker info > /dev/null 2>&1; then
+  run() { bash -c "cd '$work' && $1"; }
+else
+  run() { docker run --rm -u "$(id -u):$(id -g)" -v "$work":/w -e HOME=/tmp spicy-electronics-index-circuitikz bash -c "cd /w && $1"; }
+fi
+run 'latex -interaction=batchmode -halt-on-error '"$name"'-dvi.tex > /dev/null 2>&1 || { grep -A6 "^!" '"$name"'-dvi.log | head -40; exit 2; }
   dvisvgm --no-fonts --exact-bbox --bbox=min --zoom=1.4 -o '"$name"'.svg '"$name"'-dvi.dvi > dvisvgm.log 2>&1 || { cat dvisvgm.log; exit 2; }
   pdflatex -interaction=batchmode -halt-on-error '"$name"'.tex > /dev/null 2>&1 || { grep -A6 "^!" '"$name"'.log | head -40; exit 2; }
   gs -q -sDEVICE=png16m -r110 -o '"$name"'.png '"$name"'.pdf'
+[ -n "${PNG:-}" ] && cp "$work/$name.png" "$PNG/$name.png"
 # the margin: the DVI bounding box is tight; width and height (dvisvgm's zoom of the natural size, so that every
 # drawing shows its text at one size) grow with it
 python3 - "$work/$name.svg" <<'PY'

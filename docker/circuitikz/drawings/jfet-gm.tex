@@ -1,0 +1,61 @@
+% Transconductance and output conductance (jfet-gm): the set-up a person would wire, semantically the deck's.
+%   VD0 d0 0 10              copy A's drain supply; its AC current is gfs            -> source V_DS (set) + ammeter I_D + i_d (measured)
+%   VG0 g0 0 DC <vgs> AC 1   copy A's gate bias with 1 V of AC on top                 -> source V_GS + v_gs (set)
+%   JM0 d0 g0 0 DUT          copy A, source grounded                                  -> njfet
+%   VDO0 do0 0 DC 10 AC 1    copy B's drain supply with the AC: its current is gos    -> source V_DS + v_ds (set) + ammeter I_D + i_d (measured)
+%   VGO0 go0 0 <vgs>         copy B's gate bias, held                                 -> source V_GS (set)
+%   One pair of copies per ladder current in the deck; the drawing shows one pair.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transconductance and output conductance}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[njfet] (QB) at (11,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$I_D + i_d$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{d0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS} + v_{gs}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{g0}
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$I_D + i_d$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{do0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DS} + v_{ds}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgsrc) at ($(Bg)+(-1.4,0)$);
+\draw (Bg) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{GS}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{go0}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS}$: the bias for $I_D = 10$ \textmu A, 30 \textmu A, 100 \textmu A $\dots$ 100 mA (from the transfer sweep), one pair of copies each;\quad $V_{DS} = 10$ V\\[2pt]
+  A: $v_{gs} = 1$ V of AC, the simulator's unit signal, not a real amplitude;\quad $g_{fs} = i_d / v_{gs}$ at $f = 1$ kHz\\[2pt]
+  B: $v_{ds} = 1$ V of AC on the drain, the gate held;\quad $g_{os} = i_d / v_{ds}$;\quad a ladder current the model never reaches is not read%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

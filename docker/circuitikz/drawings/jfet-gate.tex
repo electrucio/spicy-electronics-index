@@ -1,0 +1,63 @@
+% Gate diode and gate leakage (jfet-gate): the set-up a person would wire, semantically the deck's.
+%   VGF gf gsw 0     a 0 V source from the swept node into copy A's gate   -> ammeter I_G (measured)
+%   JF 0 gf 0 DUT    copy A, drain and source grounded                     -> njfet
+%   VGSW gsw 0, .dc  the gate drive, swept forward (and reverse)           -> source V_GS (set)
+%   VF0 sw df0 0     a 0 V source from the swept node to copy B's drain    -> ammeter I_D (measured)
+%   VGB0 gb0 0 -1.5  copy B's gate bias; its current is IG                 -> source V_GS (set) + ammeter I_G (measured)
+%   JD0 df0 gb0 0    copy B, source grounded                               -> njfet
+%   VSW sw 0, .dc    the swept drain supply                                -> source V_DS (set)
+%   Three decks: forward and reverse are copy A with two sweeps; the field deck is copy B, four copies.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Gate diode and gate leakage}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[njfet] (QB) at (11,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the drain grounded
+\draw (QA.D) -- ++(0,0.5) node[ground, rotate=180]{};
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{0}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (QA.G);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$I_G$}
+\coordinate (Agsrc) at ($(Agam)+(-1.4,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Agam)+(-0.4,0.02)$}{gf}
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$I_D$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{df0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DS}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Btop)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgam) at ($(Bg)+(-1.7,0)$);
+\ammeterh{Bgam}{Bg}{$I_G$}
+\coordinate (Bgsrc) at ($(Bgam)+(-1.4,0)$);
+\draw (Bgam) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{GS}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bgam)+(-0.4,0.02)$}{gb0}
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_{GS}$ swept 0 to $+0.9$ V in 5 mV steps (forward), and 0 to $-40$ V in 0.1 V steps (reverse), drain and source grounded;\quad read $I_G$\\[2pt]
+  B: $V_{GS}$ the bias for $I_D = 100$ \textmu A, 1, 3 and 10 mA (from the transfer sweep), one copy each;\quad $V_{DS}$ swept 0 to 25 V in 0.1 V steps\\[2pt]
+  read $I_G$ against $V_{DG} = V_{DS} - V_{GS}$;\quad $I_{GSS}$ at 10, 20 and 30 V from the reverse sweep%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -1,5 +1,7 @@
-"""Writes docker/circuitikz/drawings/<id>.tex for every bipolar bench, in the house style; run it from the
-repository root after editing, then `make bench-drawings NAME=<id>` for each (or `make bench-drawings-all`).
+"""Writes docker/circuitikz/drawings/<id>.tex for every bench, in the house style; run it from the repository
+root after editing, then `make bench-drawings NAME=<id>` for each (or `make bench-drawings-all`). This file
+holds the building blocks and the bipolar benches; benches_fet.py and benches_opamp.py draw the JFET, MOSFET
+and op-amp ones with the same blocks and are run from here.
 
 The style (bench.sty): one sans typeface, LaTeX mathematics for the quantities and their definitions; a title
 top-left and the colour key under it; the circuit in the middle with every quantity named beside its symbol;
@@ -20,8 +22,9 @@ LOG = r"$I_B = 10^{k}\,\mathrm{A}$, $k = -9,\,-8.95,\,\dots,\,0$ \quad (20 point
 
 
 class D:
-    def __init__(self, name, title, header, top=7.0, gnd=1.0):
-        self.name, self.title, self.header, self.top, self.gnd = name, title, header, top, gnd
+    def __init__(self, name, title, header, top=7.0, gnd=1.0, twin=True):
+        """twin: also write the PNP twin (the bipolar benches; a FET or an amplifier has none)"""
+        self.name, self.title, self.header, self.top, self.gnd, self.twin = name, title, header, top, gnd, twin
         self.lines = []
 
     def add(self, *lines):
@@ -37,8 +40,45 @@ class D:
                  rf"\node[anchor={anchor}, font=\small, align=left] at ({label_at}) {{{label}}};")
 
     def emitter_ground(self, terminal="Q.E"):
-        self.add("% emitter to ground", rf"\draw ({terminal}) -- ({terminal} |- 0,\gnd) node[ground]{{}};")
+        self.ground(terminal, "emitter")
+
+    def ground(self, terminal="Q.S", what="source"):
+        """a terminal straight down to ground"""
+        self.add(f"% {what} to ground", rf"\draw ({terminal}) -- ({terminal} |- 0,\gnd) node[ground]{{}};")
         self.nodename("west", rf"$({terminal})+(0.1,-0.3)$", "0")
+
+    # ---------------------------------------------------------------- the field-effect and amplifier blocks
+    def fet(self, kind, x=4, y=3, label="DUT", name="Q", flip=None, label_at=None):
+        """an N-channel JFET or MOSFET, drain up, gate left; a P-channel card runs with every source reversed"""
+        opt = ("njfet" if kind == "jfet" else "nmos") + (f", {flip}" if flip else "")
+        label_at = label_at or rf"$({name}.D)+(0.15,-0.55)$"
+        self.add("% the transistor", rf"\node[{opt}] ({name}) at ({x},{y}) {{}};",
+                 rf"\node[anchor=west, font=\small, align=left] at ({label_at}) {{{label}}};")
+
+    def gate(self, label="$V_{GS}$", node="g", dx=-1.4, kind="V", ammeter=None, terminal="Q.G", name="g"):
+        """the gate: a source from ground up into the gate wire, through an ammeter when the gate current is read"""
+        self.add(f"% the gate: a {'current' if kind == 'I' else 'voltage'} source from ground"
+                 + (", through an ammeter" if ammeter else ""),
+                 rf"\coordinate ({name}) at ({terminal});")
+        src = f"{name}src"
+        if ammeter:
+            self.add(rf"\coordinate ({name}am) at ($({name})+(-1.7,0)$);", rf"\ammeterh{{{name}am}}{{{name}}}{{{ammeter}}}",
+                     rf"\coordinate ({src}) at ($({name}am)+({dx},0)$);", rf"\draw ({name}am) -- ({src});")
+        else:
+            self.add(rf"\coordinate ({src}) at ($({name})+({dx},0)$);", rf"\draw ({name}) -- ({src});")
+        if label is not None and kind == "I":
+            self.add(rf"\draw[set] ({src} |- 0,\gnd) node[ground, black]{{}} to[I, l_={{{label}}}] ({src});")
+        elif label is not None:
+            self.add(rf"\draw[set] ({src}) to[V, l_={{{label}}}] ({src} |- 0,\gnd) node[ground, black]{{}};")
+        else:
+            self.add(rf"\draw ({src}) -- ({src} |- 0,\gnd) node[ground]{{}};")
+        if node and ammeter:
+            self.nodename("south", rf"$({name}am)+(-0.4,0.02)$", node)
+        elif node:
+            self.nodename("south", rf"$({name})+(-0.45,0.02)$", node)
+
+    def thermometer(self, at=r"$(vtop)+(1.7,-2.6)$", label="$T$"):
+        self.add("% the thermometer: the temperature is a simulator setting", rf"\thermometer{{{at}}}{{{label}}}")
 
     def ammeter(self, terminal="Q.C", label="$I_C$", node="ch", up=1.7, top="ctop"):
         """an ammeter from a terminal straight up to a new coordinate (the rail's end)"""
@@ -79,7 +119,8 @@ class D:
                          + self.lines + [r"\end{tikzpicture}", r"\end{document}"]) + "\n"
         OUT.mkdir(parents=True, exist_ok=True)
         (OUT / f"{self.name}.tex").write_text(text, encoding="utf-8")
-        (OUT / f"{self.name}-pnp.tex").write_text(pnp(text), encoding="utf-8")
+        if self.twin:
+            (OUT / f"{self.name}-pnp.tex").write_text(pnp(text), encoding="utf-8")
 
 
 def pnp(text):
@@ -216,12 +257,7 @@ QT ct bt 0    the transistor, emitter grounded          -> npn
 .temp -55 / 100 / 125 / 150 (and 25 from the hFE deck) -> the thermometer (set)
 The forced-ratio saturation copy (IC = 10 IB) rides in each deck; it is drawn in the saturation bench.""")
     d.transistor(); d.emitter_ground(); d.ammeter(node="ct"); d.supply(); d.base_source(node="bt"); d.base_voltmeter()
-    d.add("% the thermometer: the temperature is a simulator setting",
-          r"\coordinate (th) at ($(vtop)+(1.7,-2.6)$);",
-          r"\draw[set, thick] (th) circle (0.18); \fill[set] (th) circle (0.09);",
-          r"\draw[set, thick] ($(th)+(0,0.18)$) -- ++(0,1.4);",
-          r"\draw[set] ($(th)+(-0.12,0.6)$) -- ++(0.24,0) ($(th)+(-0.12,1.0)$) -- ++(0.24,0);",
-          r"\node[set, anchor=west] at ($(th)+(0.3,0.8)$) {$T$};")
+    d.thermometer()
     d.definitions([LOG, r"$V_{CE} = 5$ V;\quad $T = -55$, 25, 100, 125 and 150 \textdegree C, one deck each",
                    r"read $h_{FE}$, $V_{BE}$, and with the saturation copy ($I_C = 10\,I_B$) $V_{CE}(sat)$, $V_{BE}(sat)$, against $I_C$ at each $T$",
                    r"$dV_{BE}/dT$ against $I_C$ over each span between neighbouring temperatures"])
@@ -427,7 +463,8 @@ The gain-finding probe run is not drawn.""", top=7.8, gnd=2.0)
     d.write()
 
 
-if __name__ == "__main__":
+def main():
+    """every bipolar drawing, each with its PNP twin"""
     for f in (hfe_ic, runs, tracer, early, gummel, temperature, breakdown, reverse, saturation, vce_ib, switching, noise,
               capacitance, distortion):
         f()
@@ -435,4 +472,13 @@ if __name__ == "__main__":
     ac_gain("bjt-ft", "Transition frequency",
             [r"read $i_c(f)$, the AC part of the collector current, $f = 1$ kHz to 100 GHz;\quad $|h_{21}| = i_c / i_b$;\quad $f_T$: $|h_{21}| = 1$",
              r"also $f_T = |h_{21}| \cdot f$ at $f = 1$, 20 and 100 MHz, where $f$ is above $f_\beta$ and $|h_{21}| \geq 1.5$"], AC_HEADER)
-    print("16 drawings written, each with its PNP twin")
+    print("16 bipolar drawings written, each with its PNP twin")
+
+
+if __name__ == "__main__":
+    import benches_fet
+    import benches_opamp
+
+    main()
+    benches_fet.main()
+    benches_opamp.main()

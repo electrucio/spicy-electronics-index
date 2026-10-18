@@ -1,0 +1,47 @@
+% Intermodulation (opamp-imd): the set-up a person would wire, semantically the deck's.
+%   VIN in mid SIN(0 3.394 60), VIN2 mid 0 SIN(0 0.8485 7000)   two sine sources in series on the input   -> sources v_1, v_2 (set)
+%   XD in out vp vn out DUT, RL out 0 2000                      the follower and its load                 -> op amp, resistor R_L
+%   V(out) read                                                                                           -> voltmeter v_out (measured)
+%   One deck per method (SMPTE, CCIF).
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Intermodulation}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the feedback, around to the inverting input
+\coordinate (Afu) at ($(A.-)+(-0.5,0)$);
+\coordinate (Afl) at (Afu |- 0,2.3);
+\coordinate (Aol) at (Ao |- 0,2.3);
+\draw (Ao) -- (Aol) -- (Afl) -- (Afu) -- (A.-);
+% the input: two sources in series
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-1.5,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_=$v_1$] ++(0,-1.3) coordinate (mid);
+\draw[set] (mid) to[V, l_=$v_2$] (mid |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{in}
+\nodename{anchor=east}{$(mid)+(-0.05,0)$}{mid}
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$v_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the load
+\draw (Ao) -- ++(2.7,0) coordinate (Arl) to[R, l={$R_L$}] (Arl |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  SMPTE: $v_1 = 60$ Hz at 3.394 V peak, $v_2 = 7$ kHz at 0.8485 V peak (four to one);\quad CCIF: 19 and 20 kHz at 2.1213 V peak each;\quad $R_L = 2$ k\ohm\\[2pt]
+  read $v_{out}$ over the settled part of the run: the intermodulation products by Goertzel (model against model only)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

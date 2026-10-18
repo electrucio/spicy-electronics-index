@@ -33,6 +33,10 @@ checklist; every session that touches the bench starts here and ticks what it fi
       emptied.
 - [x] **The site shows them**: the characterisation pane is on, the method page lists the four kinds, each
       kind has its default curve and its groups' labels.
+- [x] **The drawings** of all 52 JFET, MOSFET and op-amp measurements, in the bipolar drawings' style
+      (blue for what the bench sets, red for what it measures, a circled A or V for a current or a voltage
+      read, green node names): `docker/circuitikz/benches_fet.py` and `benches_opamp.py`,
+      [bench-drawings.md](bench-drawings.md).
 
 ## Pending, in the order that unblocks the rest
 
@@ -41,20 +45,17 @@ checklist; every session that touches the bench starts here and ticks what it fi
    `data/models/wanted.yaml`; `character-publish`, `character-release`. The `*-agreement` measurements
    exist only then; today's nine records are one engine, on the host's ngspice 42 rather than the image's.
    Hours of simulation per engine for the transients.
-2. **The op-amp drawings**: 26 circuits for `docker/circuitikz/benches.py` and `bench.sty`, and the 26 FET
-   drawings moved from their own preamble into the same style; `make bench-drawings-all`. The op-amp entries
-   carry `drawing.file: ""` until then. Two sessions.
-3. **`opamp-card`** in `models/cards.py`: the family (Boyle/PARTS, the ADI and TI PSpice generations,
+2. **`opamp-card`** in `models/cards.py`: the family (Boyle/PARTS, the ADI and TI PSpice generations,
    behavioural, encrypted), whether the text carries noise sources, temperature terms, a supply-current
    model, input protection, a current limit; `sei models cards` over the amplifier group, so that every
    `absent` names its cause. The bench already reads the pins. One session.
-4. **Dual and quad subcircuits**: `opamp-separation` measured (onsemi's fixture), the bench running each
+3. **Dual and quad subcircuits**: `opamp-separation` measured (onsemi's fixture), the bench running each
    amplifier of a package. One session.
-5. **The survey for transistors**: `data/datasheets/survey/jfet.yaml` and `mosfet.yaml` with the makers'
+4. **The survey for transistors**: `data/datasheets/survey/jfet.yaml` and `mosfet.yaml` with the makers'
    sheets and a `TESTS` table per kind. One session.
-6. **Sheets beside the numbers**: the figure boxes located (`sei datasheets figures` over the survey's
+5. **Sheets beside the numbers**: the figure boxes located (`sei datasheets figures` over the survey's
    `figures.csv`) and cropped (`make datasheets-crops`), for every kind. One session.
-7. **The survey's missing sheets**: Analog Devices, ST, Rohm and Intersil from the Internet Archive when it
+6. **The survey's missing sheets**: Analog Devices, ST, Rohm and Intersil from the Internet Archive when it
    can be reached from the machine that runs it, and more sheets opened by hand where robots.txt says no
    (Nisshinbo, Microchip). Renesas answered 403.
 

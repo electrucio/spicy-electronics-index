@@ -1,0 +1,52 @@
+% Open-loop gain and phase (opamp-aol): the set-up a person would wire, semantically the deck's.
+%   VIN inp 0 DC 0 AC 1     the AC source on the non-inverting input                       -> source v_in (set)
+%   L1 out inn 1G           the loop: closed at DC through 1 GH, open above a microhertz    -> inductor L_1
+%   C1 inn 0 1G             1 GF holds the inverting input                                  -> capacitor C_1
+%   XA inp inn vp vn out DUT, RL out 0 2000, CL out 0 1e-10   the amplifier and its load    -> op amp, R_L, C_L
+%   V(out) read                                                                             -> voltmeter v_out (measured)
+%   One deck per variant (load, supply, temperature).
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Open-loop gain and phase}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the feedback, around to the inverting input
+\coordinate (Afu) at ($(A.-)+(-0.5,0)$);
+\coordinate (Afl) at (Afu |- 0,2.3);
+\coordinate (Aol) at (Ao |- 0,2.3);
+\draw (Ao) -- (Aol) to[L, l_={$L_1$}] (Afl) -- (Afu) -- (A.-);
+\nodename{anchor=south}{$(Afu)+(0.25,0.03)$}{inn}
+% the capacitor from the inverting input's node to ground
+\draw (Afl) to[C, l_=$C_1$] (Afl |- 0,\gnd) node[ground]{};
+% the gate: a voltage source from ground
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-2.0,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$v_{in}$}] (Aisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{inp}
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$v_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the load
+\draw (Ao) -- ++(2.7,0) coordinate (Arl) to[R, l={$R_L$}] (Arl |- 0,\gnd) node[ground]{};
+\draw (Arl) -- ++(1.0,0) coordinate (Acl) to[C, l={$C_L$}] (Acl |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $L_1 = 1$ GH, $C_1 = 1$ GF: the loop closed at DC, open above a microhertz;\quad $v_{in} = 1$ V of AC;\quad $R_L = 2$ k\ohm, $C_L = 100$ pF\\[2pt]
+  read $v_{out}(f) / v_{in}$, $f = 1$ Hz to 100 MHz, 20 points per decade: $A_{OL}$ and its phase;\quad GBW at 10 and 100 kHz;\quad $f_{unity}$, the phase and gain margins, the poles\\[2pt]
+  variants: $R_L = 600$ \ohm{} and 10 k\ohm;\quad $\pm 5$ and $\pm 9$ V;\quad $-55$ and 125 \textdegree C, one deck each%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

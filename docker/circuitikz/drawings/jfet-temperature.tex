@@ -1,0 +1,41 @@
+% Temperature (jfet-temperature): the set-up a person would wire, semantically the deck's.
+%   VT dt 0 10      the drain supply; its current is ID        -> source V_DS (set) + ammeter I_D (measured)
+%   VGS g 0, .dc    the gate drive, swept                      -> source V_GS (set)
+%   JT dt g 0       the transistor, source grounded            -> njfet
+%   .temp -55 / 100 / 125 / 150 (and 25 from the transfer deck) -> the thermometer (set)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Temperature}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (top) at ($(Q.D)+(0,1.7)$);
+\ammeter{Q.D}{top}{$I_D$}
+\nodename{anchor=west}{$(Q.D)+(0.1,0.25)$}{dt}
+% the drain supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_{DS}$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (g) at (Q.G);
+\coordinate (gsrc) at ($(g)+(-1.4,0)$);
+\draw (g) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{GS}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.45,0.02)$}{g}
+% the thermometer: the temperature is a simulator setting
+\thermometer{$(vtop)+(1.7,-2.6)$}{$T$}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS}$ swept $-10$ V to $+0.6$ V in 5 mV steps;\quad $V_{DS} = 10$ V;\quad $T = -55$, 100, 125 and 150 \textdegree C, one deck each; 25 \textdegree C from the transfer deck\\[2pt]
+  read $I_{DSS}$ and $V_{GS(off)}$ (10 nA) at each $T$;\quad $I_D$ against $T$ at $V_{GS} = 0$, $V_{GS(off)}/4$, /2 and 3/4\\[2pt]
+  the zero-TC point: where the 25 and 125 \textdegree C curves cross%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

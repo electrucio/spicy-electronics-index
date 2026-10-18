@@ -1,0 +1,69 @@
+% Output swing (opamp-swing): the set-up a person would wire, semantically the deck's.
+%   VIp0 ip0 0 1, XSp0 ip0 0 vp vn op0 DUT, RLp0   copy A: +1 V between the inputs, open loop, into the load   -> op amp saturated high
+%   VIn0 in0 0 -1, XSn0, RLn0                      a copy driven negative beside it                           -> the same, low
+%   VIsp isp 0 1, XIp isp 0 vp vn osp DUT, VSCp osp 0 0   copy B: the output to the reference through a 0 V source   -> ammeter I_SC (measured)
+%   IL op 0 0, .dc IL 0 0.08                       the current sweep: the saturated amplifier into a current sink
+%   The copies run in one deck; the drawing shows one per kind.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Output swing}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the inverting input grounded
+\draw (A.-) -- ++(-0.6,0) coordinate (Apg) -- (Apg |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(A.-)+(-0.3,0.03)$}{0}
+% the gate: a voltage source from ground
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-1.5,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$V_{in}$}] (Aisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{ip0}
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$V_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the load
+\draw (Ao) -- ++(2.7,0) coordinate (Arl) to[R, l={$R_L$}] (Arl |- 0,\gnd) node[ground]{};
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (B) at (12.5,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{B.up}{B.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(B.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(B.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (B.out) -- ++(0.8,0) coordinate (Bo);
+\nodename{anchor=south}{$(Bo)+(-0.35,0.05)$}{osp}
+% the inverting input grounded
+\draw (B.-) -- ++(-0.6,0) coordinate (Bpg) -- (Bpg |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(B.-)+(-0.3,0.03)$}{0}
+% the gate: a voltage source from ground
+\coordinate (Bi) at (B.+);
+\coordinate (Bisrc) at ($(Bi)+(-1.5,0)$);
+\draw (Bi) -- (Bisrc);
+\draw[set] (Bisrc) to[V, l_={$V_{in}$}] (Bisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bi)+(-0.45,0.02)$}{isp}
+% the output shorted to the reference through an ammeter
+\coordinate (Bsc) at ($(Bo)+(1.5,0)$);
+\draw (Bo) -- (Bsc);
+\ammeter{Bsc |- 0,\gnd}{Bsc}{$I_{SC}$}
+\draw (Bsc |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_{in} = +1$ V and $-1$ V between the inputs, one copy each: the amplifier saturated;\quad $R_L = 2$ k\ohm, 600 \ohm{} and 10 k\ohm, one pair each\\[2pt]
+  read $V_{out}$: $V_{OM}$ high and low, and the headroom to each rail;\quad also at $\pm 5$ and $\pm 9$ V, and at $-55$ and 125 \textdegree C\\[2pt]
+  B: the output shorted to the reference;\quad read $I_{SC}$ sourcing and sinking\\[2pt]
+  the swing against current: the saturated amplifier into a current sink, 0 to 80 mA in 1 mA steps, a second deck%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

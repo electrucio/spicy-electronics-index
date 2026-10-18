@@ -1,0 +1,70 @@
+% Distortion (jfet-distortion): the set-up a person would wire, semantically the deck's.
+%   VDD vdd 0 18, RD vdd d <rd>       the supply and the drain load                  -> source V_DD (set) + resistor R_D
+%   RS s 0 <rs>                       the source resistor, unbypassed                -> resistor R_S
+%   RIN in g 10000, VIN in 0 SIN(…)   the 1 kHz sine through 10 kΩ                   -> resistor R_in + source v_in (set)
+%   J1 d g s DUT, V(d) read           copy A, the common-source stage; its output    -> njfet, voltmeter v_out (measured)
+%   J1 vdd g s DUT, V(s) read         copy B, the follower deck: drain on the rail   -> voltmeter v_out on the source
+%   The follower is a second deck; the gain-finding probe run is not drawn.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.8}{Distortion}
+\def\gnd{2.0}
+% the transistor
+\node[njfet] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% copy A: the drain load up to the rail
+\draw (QA.D) -- ++(0,0.4) coordinate (Adj) to[R, l_={$R_D$}] ++(0,1.6) coordinate (Atop);
+\coordinate (Avtop) at ($(Atop)+(4.2,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DD}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Atop)+(1.0,0.05)$}{vdd}
+\nodename{anchor=east}{$(QA.D)+(-0.15,0.2)$}{d}
+% the gate: the source resistance and the signal source
+\coordinate (Ag) at (QA.G);
+\draw (Ag) -- ++(-0.3,0) coordinate (Agj) to[R, l_={$R_{in}$}] ++(-1.8,0) coordinate (Avin);
+\draw[set] (Avin) to[V, l_=$v_{in}$] (Avin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(Avin)+(-0.05,0.05)$}{in}
+% the source resistor to ground
+\draw (QA.S) to[R, l={$R_S$}] (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(QA.S)+(-0.1,-0.2)$}{s}
+% the voltmeter on Adj
+\coordinate (Avo) at ($(Adj)+(2.6,0)$);
+\draw (Adj) -- (Avo);
+\voltmeter{Avo |- 0,\gnd}{Avo}{$v_{out}$}
+\draw (Avo |- 0,\gnd) node[ground]{};
+% the transistor
+\node[njfet] (QB) at (14,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% copy B: the drain on the rail
+\draw (QB.D) -- ++(0,2.0) coordinate (Btop);
+\coordinate (Bvtop) at ($(Btop)+(4.2,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DD}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Btop)+(1.0,0.05)$}{vdd}
+% the gate: the source resistance and the signal source
+\coordinate (Bg) at (QB.G);
+\draw (Bg) -- ++(-0.3,0) coordinate (Bgj) to[R, l_={$R_{in}$}] ++(-1.8,0) coordinate (Bvin);
+\draw[set] (Bvin) to[V, l_=$v_{in}$] (Bvin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(Bvin)+(-0.05,0.05)$}{in}
+% the source resistor to ground
+\draw (QB.S) to[R, l_={$R_S$}] (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{s}
+\coordinate (Bsj) at ($(QB.S)+(0,-0.5)$);
+% the voltmeter on Bsj
+\coordinate (Bvo) at ($(Bsj)+(2.2,0)$);
+\draw (Bsj) -- (Bvo);
+\voltmeter{Bvo |- 0,\gnd}{Bvo}{$v_{out}$}
+\draw (Bvo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{DD} = 18$ V;\quad $R_S$ for $I_D = I_{DSS}/3$ (from the transfer sweep), unbypassed;\quad $R_D$ for $V_{DS} = 9$ V;\quad $R_{in} = 10$ k\ohm\\[2pt]
+  $v_{in}$ = 1 kHz sine, its level set by a 20 mV probe run for 1 V peak at the output (and 3 V for A, into the gate diode)\\[2pt]
+  A: common source, the output on the drain;\quad B: source follower, the drain on the rail, the output across $R_S$\\[2pt]
+  read $v_{out}$ over the last four of ten cycles: THD, HD2, HD3 by Goertzel%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,48 @@
+% Supply current (opamp-iq): the set-up a person would wire, semantically the deck's.
+%   VP vp 0 0, .dc VP 2 20    the positive rail, swept; its current is the supply current   -> rail +V_S (set) + ammeter I_Q (measured)
+%   EN vn 0 vp 0 -1           the negative rail mirrors the positive one                    -> rail -V_S (set)
+%   VIN in 0 0, XQ in out vp vn out DUT   the follower, no load                             -> op amp
+%   The turn-on deck ramps both rails from ±3 V to ±15 V; the temperature points come from the bias deck.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.4}{Supply current}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the positive supply pin through an ammeter, the negative one mirroring it
+\draw (A.up) -- ++(0,0.25) coordinate (vpp);
+\coordinate (vpt) at ($(vpp)+(0,1.5)$);
+\ammeter{vpp}{vpt}{$I_Q$}
+\draw[set, thick] (vpt) -- ++(0,0.3) coordinate (vpa);
+\fill[set] (vpa) -- ++(-0.09,-0.18) -- ++(0.18,0) -- cycle;
+\node[set, anchor=west, inner sep=2pt] at ($(vpa)+(0.05,-0.12)$) {$+V_S$};
+\draw (A.down) -- ++(0,-0.25) coordinate (vnp);
+\draw[set, thick] (vnp) -- ++(0,-0.3) coordinate (vna);
+\fill[set] (vna) -- ++(-0.09,0.18) -- ++(0.18,0) -- cycle;
+\node[set, anchor=west, inner sep=2pt] at ($(vna)+(0.05,0.12)$) {$-V_S$};
+\nodename{anchor=east}{$(A.up)+(-0.08,0.2)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the feedback, around to the inverting input
+\coordinate (Afu) at ($(A.-)+(-0.5,0)$);
+\coordinate (Afl) at (Afu |- 0,2.3);
+\coordinate (Aol) at (Ao |- 0,2.3);
+\draw (Ao) -- (Aol) -- (Afl) -- (Afu) -- (A.-);
+% the gate: a voltage source from ground
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-1.5,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$V_{in}$}] (Aisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{in}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_S$ swept 2 to 20 V in 125 mV steps (4 to 40 V of total supply);\quad $V_{in} = 0$;\quad no load\\[2pt]
+  read $I_Q$, the positive rail's current, against the total supply;\quad at $-55$, 25 and 125 \textdegree C from the bias deck\\[2pt]
+  turn-on: both rails ramped from $\pm 3$ V to $\pm 15$ V over 40 \textmu s with $R_L = 2$ k\ohm; read $v_{out}(t)$ for when it settles within 10 mV%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

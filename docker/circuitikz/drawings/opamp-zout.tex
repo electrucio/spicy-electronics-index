@@ -1,0 +1,49 @@
+% Output impedance (opamp-zout): the set-up a person would wire, semantically the deck's.
+%   L1 out inn 1G, C1 inn 0 1G     the servo: the loop closed at DC, open above a microhertz   -> inductor L_1, capacitor C_1
+%   XZO inp inn vp vn out DUT      the amplifier, non-inverting input at the reference         -> op amp
+%   IINJ 0 out AC 1                1 A of AC injected into the output                          -> current source i_inj (set)
+%   V(out) read                    the output's voltage: Z_out = v_out / i_inj                 -> voltmeter v_out (measured)
+%   The four closed-loop copies (G = 1, 10, 100, 1000, each with its own injection) run in a second deck.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Output impedance}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the feedback, around to the inverting input
+\coordinate (Afu) at ($(A.-)+(-0.5,0)$);
+\coordinate (Afl) at (Afu |- 0,2.3);
+\coordinate (Aol) at (Ao |- 0,2.3);
+\draw (Ao) -- (Aol) to[L, l_={$L_1$}] (Afl) -- (Afu) -- (A.-);
+\nodename{anchor=south}{$(Afu)+(0.25,0.03)$}{inn}
+% the capacitor from the inverting input's node to ground
+\draw (Afl) to[C, l_=$C_1$] (Afl |- 0,\gnd) node[ground]{};
+% the non-inverting input grounded
+\draw (A.+) -- ++(-1.5,0) coordinate (Apg) -- (Apg |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(A.+)+(-0.3,0.03)$}{0}
+% the current injected into the output, from ground
+\coordinate (inj) at ($(Ao)+(2.9,0)$);
+\draw (Ao) -- (inj);
+\draw[set] (inj |- 0,\gnd) node[ground, black]{} to[I, l_=$i_{inj}$] (inj);
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$v_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $L_1 = 1$ GH, $C_1 = 1$ GF;\quad $i_{inj} = 1$ A of AC, the simulator's unit signal;\quad no load\\[2pt]
+  read $v_{out}(f)$, $f = 10$ Hz to 100 MHz: $Z_{out} = v_{out} / i_{inj}$, open loop;\quad at 1 kHz, 1 MHz and 9 MHz\\[2pt]
+  closed loop: the follower and the non-inverting amplifier at $G = 10$, 100 and 1000 ($R_1 = 1$ k\ohm), the injection on each output, a second deck;\quad at 1 kHz and 100 kHz%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -62,7 +62,7 @@ The first fact about a model: whether the simulator reads the card and finds an 
 
 **Circuit.** The 10 V copy of the transfer sweep, read where the gate passes through 0 V: source grounded, the gate fed through a 0 V source (an ammeter), the drain held at 10 V.
 
-Drawing: DUT; VDS source 10 V; gate to ground through an ammeter; ammeter in the drain. Differs from the netlist: the point is read from the transfer sweep rather than from a separate operating-point deck.
+Drawing: DUT; VDS source 10 V; VGS source at 0 V through an ammeter in the gate; ammeter in the drain. Differs from the netlist: the point is read from the transfer sweep rather than from a separate operating-point deck.
 
 **Conditions.** {vds: 10, vgs: 0, temp_c: 25}
 
@@ -670,7 +670,7 @@ Whether the simulator reads the card and finds an operating point, and the first
 
 **Circuit.** The 1 V copy of the transfer sweep, read where the gate passes through 10 V and through 4.5 V; the body-diode sweep's VGS = 0 copy, read at VSD = 1 V.
 
-Drawing: DUT; VDS source 1 V; VGS source 10 V (or 4.5 V); ammeter in the drain; a third copy reversed. Differs from the netlist: the points are read from the transfer and body-diode sweeps rather than from a separate deck.
+Drawing: DUT; VDS source 1 V; VGS source 10 V (or 4.5 V); ammeter in the drain. Differs from the netlist: the points are read from the transfer and body-diode sweeps rather than from a separate deck; the body diode's copy is drawn in the body-diode measurement.
 
 **Conditions.** {vds: 1, vgs: [10, 4.5], diode_vsd: 1, temp_c: 25}
 
@@ -943,7 +943,7 @@ The curve a gate driver is sized from. A constant current into the gate makes th
 
 **Circuit.** A constant current into the gate (1 mA; 10 mA for the 10 A point), the gate caught at 15 V by a diode to a rail; the drain fed the load current by an ideal source with a clamp diode to the supply, so that the drain sits at the rail until the transistor takes the current and then falls; source grounded. The gate voltage against time is the charge curve (Q = IG × t from the current's start). Three points: 100 mA at 10 V, 1 A at 30 V, 10 A at 100 V.
 
-Drawing: DUT; gate current source; load current source with a clamp diode to VDD; probe on the gate and the drain. Differs from the netlist: the gate's own clamp at 15 V is not drawn.
+Drawing: DUT; gate current source; load current source with a clamp diode to VDD; voltmeters on the gate and on the drain. Differs from the netlist: the gate's own clamp at 15 V and the 1 GΩ to ground are not drawn; the drain clamp's own 30 V source is drawn as the supply rail it equals.
 
 **Conditions.** {points: [{id: 0.1, vdd: 10, ig: 0.001}, {id: 1, vdd: 30, ig: 0.001}, {id: 10, vdd: 100, ig: 0.01}], vgs_clamp: 15, vgs_read: [4.5, 10], t_start_s: 1e-07, t_end_s: 5e-05, max_step_s: 1e-08, curve_points: 80, temp_c: 25}
 
@@ -993,7 +993,7 @@ The four times every MOSFET sheet quotes at one point (VDD, ID, RG, VGS) and dra
 
 **Circuit.** Resistive: 30 V through RL = VDD/ID, the gate driven 0 to 10 V through RG = 10 Ω with 2 ns edges, 2 µs on, at 100 mA, 1 A and 10 A; at 1 A also through 25 Ω, and with a 4.5 V drive. Clamped inductive: the load current from an ideal source with a freewheeling diode to the supply (the inductor as the current source it is over the edges), a 10 Ω / 1 nF snubber on the drain, two gate pulses; the current is established by the first and the switching read on the second; Eon and Eoff as the integral of VDS × ID over the edges, at 1 A and 10 A.
 
-Drawing: DUT; VDD; RL; gate pulse through RG; probe on the drain (resistive); inductor with a freewheeling diode to VDD (inductive). Differs from the netlist: the inductive deck's inductor is a current source with the diode across it, and a snubber.
+Drawing: DUT; VDD; RL; gate pulse through RG; ammeter in the drain and voltmeter on it; load current source with the freewheeling diode and its 20 mΩ to VDD and the snubber (inductive). Differs from the netlist: the inductor is the current source it is over the edges.
 
 **Conditions.** {vdd: 30, id_ladder: [0.1, 1, 10], rg: [10, 25], v_on: [10, 4.5], variants_id: 1, t_start_s: 1e-07, edge_s: 2e-09, t_on_s: 2e-06, t_after_s: 2e-06, max_step_s: 5e-10, curve_points: 80, inductive: {vdd: 30, id: [1, 10], rg: 10, t_on_s: 5e-06, gap_s: 5e-06, edge_s: 2e-08, r_fw: 0.02, r_snub: 10, c_snub: 1e-09, window_s: 3e-07, max_step_s: 1e-09}, temp_c: 25}
 

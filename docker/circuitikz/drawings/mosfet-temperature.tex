@@ -1,0 +1,78 @@
+% Temperature (mosfet-temperature): the set-up a person would wire, semantically the deck's.
+%   VT dt 0 15, MT dt g 0     copy A: the 15 V copy of the transfer deck                -> source V_DS (set) + ammeter I_D (measured)
+%   VTD dtd g 0, MTD dtd g 0  copy B: the diode-connected copy                           -> ammeter in the drain-gate loop
+%   VL dl 0 0.1, ML dl g 0    copy C: the 0.1 V copy, whose current gives RDS(on)        -> source 0.1 V + ammeter
+%   VGS g 0, .dc              the gate drive, shared                                     -> source V_GS (set)
+%   .temp -55 / 25 / 100 / 125 / 150 / 175                                               -> the thermometer (set)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Temperature}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[nmos] (QB) at (10.6,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[nmos] (QC) at (16.2,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QC.D)+(0.15,-0.55)$) {C};
+% source to ground
+\draw (QC.S) -- (QC.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QC.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$I_D$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{dt}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{g}
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$I_D$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{dtd}
+% copy B: the ammeter looped back to the gate
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgsrc) at ($(Bg)+(-1.4,0)$);
+\draw (Btop) -| (Bgsrc) -- (Bg);
+\draw[set] (Bgsrc) to[V, l_={$V_{GS}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{g}
+% the ammeter in the drain, up to the rail
+\coordinate (Ctop) at ($(QC.D)+(0,1.7)$);
+\ammeter{QC.D}{Ctop}{$I_D$}
+\nodename{anchor=west}{$(QC.D)+(0.1,0.25)$}{dl}
+% the drain supply at the right, + up, - to ground
+\coordinate (Cvtop) at ($(Ctop)+(2.2,0)$);
+\draw (Ctop) -- (Cvtop);
+\draw[set] (Cvtop) to[V, l={$0.1$ V}] (Cvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Cg) at (QC.G);
+\coordinate (Cgsrc) at ($(Cg)+(-1.2,0)$);
+\draw (Cg) -- (Cgsrc);
+\draw[set] (Cgsrc) to[V, l_={$V_{GS}$}] (Cgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Cg)+(-0.45,0.02)$}{g}
+% the thermometer: the temperature is a simulator setting
+\thermometer{$(Cvtop)+(1.6,-2.6)$}{$T$}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS}$ swept $-2$ V to $+15$ V in 10 mV steps, every gate on the one source;\quad $T = -55$, 25, 100, 125, 150 and 175 \textdegree C, one deck each\\[2pt]
+  A: $V_{DS} = 15$ V, $g_{fs}$ at 1 A and the zero-TC point (where the 25 and 150 \textdegree C curves cross);\quad B: $V_{th}$ at 1 mA, diode-connected\\[2pt]
+  C: $V_{DS} = 0.1$ V;\quad $R_{DS(on)} = 0.1\ \mathrm{V} / I_D$ at $V_{GS} = 10$ V and 4.5 V, each over its 25 \textdegree C value%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

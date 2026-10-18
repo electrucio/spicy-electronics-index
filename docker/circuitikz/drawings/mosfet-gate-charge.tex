@@ -1,0 +1,54 @@
+% Gate charge (mosfet-gate-charge): the set-up a person would wire, semantically the deck's.
+%   IG 0 g PULSE(…)        the gate current, 1 mA from 100 ns on                  -> current source I_G (set)
+%   RGL g 0 1e9            a path to ground for the operating point              -> not drawn
+%   IL vdd d 1, VDD vdd 0 30   the load current, pushed into the drain from the rail   -> current source I_L (set) + source V_DD (set)
+%   DCL d cl, VCL cl 0 30  the clamp: the drain caught at the rail until the transistor conducts -> diode to the rail
+%   DCLG g clG, VCLG       the gate caught at 15 V                               -> not drawn
+%   M1 d g 0 DUT           the transistor, source grounded                       -> nmos
+%   V(g), V(d) read                                                              -> voltmeters V_GS(t), V_DS(t) (measured)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Gate charge}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the gate: a current source from ground
+\coordinate (g) at (Q.G);
+\coordinate (gsrc) at ($(g)+(-1.4,0)$);
+\draw (g) -- (gsrc);
+\draw[set] (gsrc |- 0,\gnd) node[ground, black]{} to[I, l_={$I_G$}] (gsrc);
+\nodename{anchor=south}{$(g)+(-0.45,0.02)$}{g}
+% the voltmeter on the gate, at the far left
+\coordinate (gvm) at ($(g)+(-3.2,0)$);
+\draw (gsrc) -- (gvm);
+\voltmeter{gvm |- 0,\gnd}{gvm}{$V_{GS}(t)$}
+\draw (gvm |- 0,\gnd) node[ground]{};
+% the drain: the load current from the rail, the clamp diode to the rail, the voltmeter on the drain
+\coordinate (top) at ($(Q.D)+(0,2.0)$);
+\draw[set] (top) to[I, l={$I_L$}] (Q.D);
+\coordinate (vtop) at ($(top)+(4.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l=$V_{DD}$] (vtop |- 0,\gnd) node[ground, black]{};
+\coordinate (cj) at ($(Q.D)+(0,0.3)$);
+\coordinate (vm) at ($(cj)+(1.8,0)$);
+\coordinate (dj) at ($(cj)+(3.0,0)$);
+\draw (cj) -- (dj) to[D, l_=clamp] (dj |- top);
+\voltmeter{vm |- 0,\gnd}{vm}{$V_{DS}(t)$}
+\draw (vm |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(Q.D)+(-0.45,0.8)$}{d}
+\nodename{anchor=south}{$(top)+(3.6,0.05)$}{vdd}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_G = 1$ mA from $t_0 = 100$ ns on (10 mA for the 10 A point);\quad $Q = I_G\,(t - t_0)$\\[2pt]
+  $I_L = 100$ mA at $V_{DD} = 10$ V, 1 A at 30 V and 10 A at 100 V, one deck each;\quad the drain sits at $V_{DD}$ until the transistor takes $I_L$\\[2pt]
+  read $V_{GS}(t)$ and $V_{DS}(t)$: $Q_{gs}$ to the plateau's start (the drain fallen 10\,\%), $Q_{gd}$ to its end (90\,\%), $Q_g$ at 4.5 and 10 V\\[2pt]
+  the gate's own clamp at 15 V (a diode to a rail) and the 1 G\ohm{} to ground are not drawn%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

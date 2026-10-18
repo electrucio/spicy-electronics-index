@@ -1,0 +1,63 @@
+% Capacitances (mosfet-capacitance): the set-up a person would wire, semantically the deck's.
+%   VDI0 di0 0 0.1, VGI0 gi0 0 DC 0 AC 1, MI0   copy A: the drain held, the gate at 0 V with AC    -> Ciss from i_g, Crss from i_d
+%   VDO0 do0 0 DC 0.1 AC 1, MO0 do0 0 0          copy B: the drain driven with AC, gate grounded    -> Coss from i_d
+%   .ac, C = Im(i) / (2 pi f) at 1 MHz                                                            -> the AC ammeters (measured)
+%   Twelve voltages run as pairs of copies in one deck; the VGS deck (VDS = 0, the gate biased with AC) is copy A again.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Capacitances}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[nmos] (QB) at (11,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$i_d$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{di0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (QA.G);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$i_g$}
+\coordinate (Agsrc) at ($(Agam)+(-1.4,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$0 + v$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Agam)+(-0.4,0.02)$}{gi0}
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$i_d$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{do0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DS} + v$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgsrc) at ($(Bg)+(-1.4,0)$);
+\draw (Bg) -- (Bgsrc);
+\draw (Bgsrc) -- (Bgsrc |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{0}
+\node[font=\small] at ($(QA.D)+(-1.0,2.1)$) {$C_{iss}$, $C_{rss}$};
+\node[font=\small] at ($(QB.D)+(-1.0,2.1)$) {$C_{oss}$};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{DS} = 0.1$, 0.5, 1, 2, 5, 10, 15, 20, 25, 30, 50 and 100 V, one pair of copies each;\quad $v = 1$ V of AC\\[2pt]
+  $C = \mathrm{Im}(i) \,/\, (2\pi f)$ at $f = 1$ MHz:\quad A: $C_{iss}$ from $i_g$, $C_{rss}$ from $i_d$;\quad B: $C_{oss}$ from $i_d$\\[2pt]
+  the $V_{GS}$ view: copy A at $V_{DS} = 0$ with the gate at 0, 1, 2 $\dots$ 10 V and the AC, a second deck%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

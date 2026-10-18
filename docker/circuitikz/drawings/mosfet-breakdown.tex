@@ -1,0 +1,56 @@
+% Breakdown and leakage (mosfet-breakdown): the set-up a person would wire, semantically the deck's.
+%   VA sw da 0, MA da 0 0    copy A: the drain driven from the swept node, gate grounded   -> ammeter I (measured), source V_DS (set)
+%   VB sw gb 0, MB 0 gb 0    copy B: the gate driven, drain grounded                       -> ammeter I, source V_GS
+%   VSW sw 0, .dc            the swept node                                                -> the swept source
+%   Two decks drawn as one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Breakdown and leakage}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[nmos] (QB) at (12.5,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$I$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{da}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Atop)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw (Agsrc) -- (Agsrc |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{0}
+% the drain grounded
+\draw (QB.D) -- ++(0,0.5) node[ground, rotate=180]{};
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{0}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgam) at ($(Bg)+(-1.7,0)$);
+\ammeterh{Bgam}{Bg}{$I$}
+\coordinate (Bgsrc) at ($(Bgam)+(-1.4,0)$);
+\draw (Bgam) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{GS}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bgam)+(-0.4,0.02)$}{gb}
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_{DS}$ swept 0 to 1000 V in 1 V steps, the gate at the source;\quad B: $V_{GS}$ swept $-30$ to $+30$ V in 0.1 V steps, the drain at the source\\[2pt]
+  read $I$: $V_{(BR)DSS}$ and $V_{(BR)GSS}$ where $I$ passes 1 mA, else absent;\quad $I_{DSS}$ at 25, 100 and 300 V;\quad $I_{GSS}$ at $\pm 20$ V%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

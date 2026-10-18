@@ -1,0 +1,68 @@
+% Ohmic region (jfet-ohmic): the set-up a person would wire, semantically the deck's.
+%   VGR0 gr0 0 <vgs>         copy A's gate, held at a fraction of VGS(off)            -> source V_GS (set)
+%   VR0 sw dr0 0             a 0 V source from the swept node to its drain            -> ammeter I_D (measured)
+%   JR0 dr0 gr0 0 DUT        copy A, source grounded                                  -> njfet
+%   VGB0 gb0 0 <2 vgs>       copy B's bias at twice the fraction                      -> source 2 V_GS (set)
+%   RFD0 df0 gf0, RFB0 gb0 gf0   the two 1 MΩ resistors: the gate at VGS + VDS/2    -> resistors R_FD, R_FB
+%   JF0 df0 gf0 0 DUT        copy B                                                   -> njfet
+%   VSW sw 0, .dc            the swept drain supply of every copy                     -> source V_DS (set)
+%   Four pairs of copies run in the deck, one per fraction; the drawing shows one pair. The rDS-against-VGS
+%   deck (50 mV on the drain, the gate swept in units of VGS(off)) is copy A again, in the definitions.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Ohmic region}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[njfet] (QB) at (12.5,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$I_D$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{dr0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Atop)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{gr0}
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$I_D$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{df0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DS}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Btop)+(1.3,0.05)$}{sw}
+% copy B's gate: the bias through R_FB, and R_FD from the drain, meeting at the gate
+\coordinate (Bg) at (QB.G);
+\draw (Bg) -- ++(-0.4,0) coordinate (Bgj) to[R, l_=$R_{FB}$] ++(-1.8,0) coordinate (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$2\,V_{GS}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\draw (Bgj) to[R, l=$R_{FD}$] (Bgj |- Btop) -- (Btop);
+\nodename{anchor=south}{$(Bg)+(-0.2,0.02)$}{gf0}
+\nodename{anchor=south east}{$(Bgsrc)+(-0.05,0.05)$}{gb0}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS} = 0$, $V_{GS(off)}/4$, $V_{GS(off)}/2$ and $3\,V_{GS(off)}/4$ (the model's own), one pair of copies each;\quad $V_{DS}$ swept $-0.5$ to $+0.5$ V in 5 mV steps\\[2pt]
+  B: $R_{FD} = R_{FB} = 1$ M\ohm{} and the bias at $2\,V_{GS}$, so that the gate sits at $V_{GS} + V_{DS}/2$\\[2pt]
+  read $I_D(V_{DS})$: $r_{DS}$ is the chord over $\pm 50$ mV; a cubic fit gives the second- and third-order terms, plain and with feedback\\[2pt]
+  $r_{DS}$ against $V_{GS}$: copy A with $V_{DS} = 50$ mV and $V_{GS} = V_{GS(off)} \times 0$ to 1.2, a second deck%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

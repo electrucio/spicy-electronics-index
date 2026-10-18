@@ -15,7 +15,10 @@ def test_the_method_page_is_the_catalogue_plus_the_drawings_that_exist():
     doc = W.methods_payload()
     assert doc["version"] == C.version() and {m["id"] for m in doc["measurements"]} == set(C.ids())
     assert isinstance(doc["drawings"], list) and all(d.removesuffix("-pnp") in set(C.ids()) for d in doc["drawings"])
-    assert all(f"{d}-pnp" in doc["drawings"] for d in doc["drawings"] if not d.endswith("-pnp"))     # every drawing has its PNP twin
+    # every bipolar drawing has its PNP twin; a FET or an amplifier has none
+    assert all(f"{d}-pnp" in doc["drawings"] for d in doc["drawings"] if d.startswith("bjt-") and not d.endswith("-pnp"))
+    assert not any(d.endswith("-pnp") for d in doc["drawings"] if not d.startswith("bjt-"))
+    assert all(m["id"] in doc["drawings"] for m in doc["measurements"] if m["drawing"]["file"])      # every file named exists
     hfe = next(m for m in doc["measurements"] if m["id"] == "bjt-hfe-ic")
     assert "VH1 ch1 0 -5" in hfe["directives_pnp"] and len(hfe["directives_pnp"]) == len(hfe["directives"])
 

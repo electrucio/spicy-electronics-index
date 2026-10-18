@@ -1,0 +1,68 @@
+% Transconductance against frequency, and a stage's bandwidth (jfet-frequency): the set-up a person would wire, semantically the deck's.
+%   VD0 d0 0 10, VG0 g0 0 DC <vgs> AC 1, JY0   copy A: a gfs copy swept to 1 GHz          -> source V_DS (set), source V_GS + v_gs (set), ammeter i_d (measured)
+%   VDD vdd 0 18, RD vdd dc <rd>              the stage's supply and drain load            -> source V_DD (set), resistor R_D
+%   RS s 0 <rs>, CS s 0 1000u                 the source resistor, bypassed                -> resistor R_S, capacitor C_S
+%   RIN in g 1000, VIN in 0 AC 1              the drive through 1 kΩ                       -> resistor R_in, source v_in (set)
+%   JS dc g s DUT, V(dc) read                 the stage; its output                        -> voltmeter v_out (measured)
+%   Two decks drawn side by side: the yfs copy (one per ladder current) and the common-source stage.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transconductance against frequency, and a stage's bandwidth}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$I_D + i_d$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{d0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS} + v_{gs}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{g0}
+% the transistor
+\node[njfet] (QB) at (13,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% copy B: the drain load up to the rail
+\draw (QB.D) -- ++(0,0.4) coordinate (Bdj) to[R, l_={$R_D$}] ++(0,1.6) coordinate (Btop);
+\coordinate (Bvtop) at ($(Btop)+(4.2,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DD}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Btop)+(1.0,0.05)$}{vdd}
+\nodename{anchor=east}{$(QB.D)+(-0.15,0.2)$}{dc}
+% the gate: the source resistance and the signal source
+\coordinate (Bg) at (QB.G);
+\draw (Bg) -- ++(-0.3,0) coordinate (Bgj) to[R, l_={$R_{in}$}] ++(-1.8,0) coordinate (Bvin);
+\draw[set] (Bvin) to[V, l_=$v_{in}$] (Bvin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(Bvin)+(-0.05,0.05)$}{in}
+% the source resistor to ground
+\draw (QB.S) to[R, l={$R_S$}] (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(QB.S)+(-0.1,-0.2)$}{s}
+% the bypass
+\draw (QB.S) -- ++(-1.3,0) coordinate (Bcx) to[C, l_={$C_S$}] (Bcx |- 0,\gnd) node[ground]{};
+% the voltmeter on Bdj
+\coordinate (Bvo) at ($(Bdj)+(2.6,0)$);
+\draw (Bdj) -- (Bvo);
+\voltmeter{Bvo |- 0,\gnd}{Bvo}{$v_{out}$}
+\draw (Bvo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_{GS}$ the bias for $I_D = 100$ \textmu A, 1, 3 and 10 mA (from the transfer sweep), one copy each;\quad $V_{DS} = 10$ V;\quad $v_{gs} = 1$ V of AC\\[2pt]
+  read $|y_{fs}| = i_d / v_{gs}$, $f = 1$ kHz to 1 GHz, 20 points per decade\\[2pt]
+  B: $V_{DD} = 18$ V;\quad $R_S$ for $I_D = I_{DSS}/3$ (from the transfer sweep), bypassed by $C_S = 1000$ \textmu F;\quad $R_D$ for $V_{DS} = 9$ V;\quad $R_{in} = 1$ k\ohm\\[2pt]
+  read $v_{out} / v_{in}$, $f = 1$ Hz to 10 MHz%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

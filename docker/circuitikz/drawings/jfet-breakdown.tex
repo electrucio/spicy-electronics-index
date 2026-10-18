@@ -1,0 +1,79 @@
+% Breakdown and leakage (jfet-breakdown): the set-up a person would wire, semantically the deck's.
+%   VA sw ga 0, RDA da 0 1e9, JA    copy A: the gate driven from the swept node, drain open       -> ammeter I (measured), source V_GS (set)
+%   VB sw db 0, RSB sb 0 1e9, JB    copy B: the drain driven, gate grounded, source open          -> ammeter I, source V_DG
+%   VC sw dc 0, VGC gc 0 <2 vgs_off>, JC   copy C: the drain driven, the gate at twice VGS(off)   -> ammeter I, sources V_DS and V_GS
+%   VSW sw 0, .dc                   the swept node                                                -> the swept source
+%   Three decks drawn as one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Breakdown and leakage}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (QA) at (3.6,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% the transistor
+\node[njfet] (QB) at (10.0,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% the transistor
+\node[njfet] (QC) at (16.6,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QC.D)+(0.15,-0.55)$) {C};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the drain open (1 GΩ to ground in the deck)
+\draw (QA.D) -- ++(0,0.4) coordinate (Aopen);
+\node[anchor=west, font=\scriptsize] at ($(Aopen)+(0.08,0)$) {open};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (QA.G);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$I$}
+\coordinate (Agsrc) at ($(Agam)+(-1.0,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Agam)+(-0.4,0.02)$}{ga}
+% the source open (1 GΩ to ground in the deck)
+\draw (QB.S) -- ++(0,-0.4) coordinate (Bopen);
+\node[anchor=west, font=\scriptsize] at ($(Bopen)+(0.08,0)$) {open};
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$I$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{db}
+% the drain supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.2,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DG}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Btop)+(1.1,0.05)$}{sw}
+% the gate: a voltage source from ground
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgsrc) at ($(Bg)+(-1.0,0)$);
+\draw (Bg) -- (Bgsrc);
+\draw (Bgsrc) -- (Bgsrc |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{0}
+% source to ground
+\draw (QC.S) -- (QC.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QC.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Ctop) at ($(QC.D)+(0,1.7)$);
+\ammeter{QC.D}{Ctop}{$I$}
+\nodename{anchor=west}{$(QC.D)+(0.1,0.25)$}{dc}
+% the drain supply at the right, + up, - to ground
+\coordinate (Cvtop) at ($(Ctop)+(2.2,0)$);
+\draw (Ctop) -- (Cvtop);
+\draw[set] (Cvtop) to[V, l={$V_{DS}$}] (Cvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ctop)+(1.1,0.05)$}{sw}
+% the gate: a voltage source from ground
+\coordinate (Cg) at (QC.G);
+\coordinate (Cgsrc) at ($(Cg)+(-1.0,0)$);
+\draw (Cg) -- (Cgsrc);
+\draw[set] (Cgsrc) to[V, l_={$2\,V_{GS(off)}$}] (Cgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Cg)+(-0.45,0.02)$}{gc}
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_{GS}$ swept 0 to $-100$ V, drain open;\quad B: $V_{DG}$ swept 0 to 300 V, source open;\quad C: $V_{DS}$ swept 0 to 300 V with the gate at $2\,V_{GS(off)}$\\[2pt]
+  open = 1 G\ohm{} to ground;\quad read $I$: the breakdown voltage is where $I$ passes 1 mA, else absent\\[2pt]
+  $I_{GSS} = I$ at 20 V (A);\quad $I_{D(off)} = I$ at 15 V (C)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

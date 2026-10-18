@@ -1,0 +1,83 @@
+% Capacitances (jfet-capacitance): the set-up a person would wire, semantically the deck's.
+%   VDX0 dx0 0 0.1, VGX0 gx0 0 DC 0 AC 1, JX0   copy A: the drain held, the gate at 0 V with AC   -> Ciss from i_g, Crss from i_d
+%   VGS0 gs0 0 DC -0.1 AC 1, RDS0 ds0 0 1e9, JS0   copy B: the gate below the source with AC, the drain open   -> Cgs
+%   VDG0 dg0 0 0.1, VGG0 gg0 0 DC 0 AC 1, RSG0 sg0 0 1e9, JG0   copy C: the drain held, AC on the gate, the source open   -> Cgd
+%   .ac, C = Im(i) / (2 pi f) at 1 MHz                                                            -> the AC ammeters (measured)
+%   One set of three copies per ladder voltage in the deck; the drawing shows one set.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Capacitances}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (QA) at (3.4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% the transistor
+\node[njfet] (QB) at (10.8,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% the transistor
+\node[njfet] (QC) at (17.6,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QC.D)+(0.15,-0.55)$) {C};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.5)$);
+\ammeter{QA.D}{Atop}{$i_d$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{dx0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.0,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_R$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (QA.G);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$i_g$}
+\coordinate (Agsrc) at ($(Agam)+(-1.0,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$0 + v$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Agam)+(-0.4,0.02)$}{gx0}
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the drain open (1 GΩ to ground in the deck)
+\draw (QB.D) -- ++(0,0.4) coordinate (Bopen);
+\node[anchor=west, font=\scriptsize] at ($(Bopen)+(0.08,0)$) {open};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgam) at ($(Bg)+(-1.7,0)$);
+\ammeterh{Bgam}{Bg}{$i$}
+\coordinate (Bgsrc) at ($(Bgam)+(-1.0,0)$);
+\draw (Bgam) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$-V_R + v$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bgam)+(-0.4,0.02)$}{gs0}
+% the source open (1 GΩ to ground in the deck)
+\draw (QC.S) -- ++(0,-0.4) coordinate (Copen);
+\node[anchor=west, font=\scriptsize] at ($(Copen)+(0.08,0)$) {open};
+% copy C: the drain held
+\coordinate (Ctop) at ($(QC.D)+(0,1.5)$);
+\draw (QC.D) -- (Ctop);
+\nodename{anchor=west}{$(QC.D)+(0.1,0.25)$}{dg0}
+% the drain supply at the right, + up, - to ground
+\coordinate (Cvtop) at ($(Ctop)+(2.0,0)$);
+\draw (Ctop) -- (Cvtop);
+\draw[set] (Cvtop) to[V, l={$V_R$}] (Cvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Cg) at (QC.G);
+\coordinate (Cgam) at ($(Cg)+(-1.7,0)$);
+\ammeterh{Cgam}{Cg}{$i$}
+\coordinate (Cgsrc) at ($(Cgam)+(-1.0,0)$);
+\draw (Cgam) -- (Cgsrc);
+\draw[set] (Cgsrc) to[V, l_={$0 + v$}] (Cgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Cgam)+(-0.4,0.02)$}{gg0}
+\node[font=\small] at ($(QA.D)+(-1.0,1.9)$) {$C_{iss}$, $C_{rss}$};
+\node[font=\small] at ($(QB.D)+(-1.0,1.9)$) {$C_{gs}$};
+\node[font=\small] at ($(QC.D)+(-1.0,1.9)$) {$C_{gd}$};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_R = 0.1$, 0.5, 1, 2, 5, 10, 15 and 20 V, one set of copies each;\quad $v = 1$ V of AC;\quad open = 1 G\ohm{} to ground\\[2pt]
+  $C = \mathrm{Im}(i) \,/\, (2\pi f)$ at $f = 1$ MHz:\quad A: $C_{iss}$ from $i_g$, $C_{rss}$ from $i_d$;\quad B: $C_{gs}$ alone, the drain open;\quad C: $C_{gd}$ alone, the source open%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

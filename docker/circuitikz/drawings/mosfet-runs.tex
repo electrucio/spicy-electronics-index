@@ -1,0 +1,39 @@
+% Operating point (mosfet-runs): the set-up a person would wire, semantically the deck's.
+%   VT0 dt0 0 1      the 1 V copy's drain supply; its current is ID         -> source V_DS (set) + ammeter I_D (measured)
+%   MT0 dt0 g 0 DUT  the transistor, source grounded, gate on the swept node -> nmos
+%   VGS g 0, .dc     the gate drive                                           -> source V_GS (set)
+%   Read where the transfer sweep's gate passes through 10 V and 4.5 V; the body diode's point comes from
+%   the body-diode deck, not drawn here.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Operating point}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (top) at ($(Q.D)+(0,1.7)$);
+\ammeter{Q.D}{top}{$I_D$}
+\nodename{anchor=west}{$(Q.D)+(0.1,0.25)$}{dt0}
+% the drain supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_{DS}$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (g) at (Q.G);
+\coordinate (gsrc) at ($(g)+(-1.4,0)$);
+\draw (g) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{GS}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.45,0.02)$}{g}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{DS} = 1$ V;\quad $V_{GS} = 10$ V and 4.5 V: two points of the transfer sweep's 1 V copy\\[2pt]
+  read $I_D$: does the card load, and what does it pass when switched on;\quad the body diode at $V_{SD} = 1$ V from the body-diode deck%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -120,10 +120,10 @@ bench-character-fetch:  ## download and unpack the released characterisation rec
 bench-character-supplement:  ## copy published records into the tracked supplement (a machine that cannot release); HASH='<hash> ...'
 	$(RUN) sei bench character-supplement $(HASH)
 
-bench-drawings:  ## (maintainer) typeset one bench circuit (LaTeX + circuitikz) into data/bench/drawings/; NAME=bjt-tracer (image: make circuitikz-image)
+bench-drawings:  ## (maintainer) typeset one bench circuit (LaTeX + circuitikz) into data/bench/drawings/; NAME=bjt-tracer (image: make circuitikz-image; LOCAL=1 uses the machine's own TeX Live)
 	docker/circuitikz/draw.sh $(NAME)
 
-bench-drawings-all:  ## (maintainer) regenerate the .tex of every bench drawing from docker/circuitikz/benches.py and typeset them all
+bench-drawings-all:  ## (maintainer) regenerate the .tex of every bench drawing (benches.py, benches_fet.py, benches_opamp.py) and typeset them all
 	python3 docker/circuitikz/benches.py
 	for f in docker/circuitikz/drawings/*.tex; do docker/circuitikz/draw.sh $$(basename $$f .tex) || exit 1; done
 

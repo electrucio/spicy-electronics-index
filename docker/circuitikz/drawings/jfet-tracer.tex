@@ -1,0 +1,41 @@
+% Curve tracer (jfet-tracer): the set-up a person would wire, semantically the deck's.
+%   VGK1 gk1 0 -0.8   the gate of trace k, (5 - k) steps below ground     -> source V_GS (set)
+%   VK1 sw dk1 0      a 0 V source from the swept node to the drain       -> ammeter I_D (measured)
+%   JK1 dk1 gk1 0     the copy, source grounded                           -> njfet
+%   VSW sw 0, .dc     the swept drain supply, shared by every copy        -> source V_DS (set)
+%   The thirty copies (five per family) are drawn as one transistor with a stepped gate.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Curve tracer}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (top) at ($(Q.D)+(0,1.7)$);
+\ammeter{Q.D}{top}{$I_D$}
+\nodename{anchor=west}{$(Q.D)+(0.1,0.25)$}{dk}
+% the drain supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_{DS}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground
+\coordinate (g) at (Q.G);
+\coordinate (gsrc) at ($(g)+(-1.4,0)$);
+\draw (g) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{GS}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.45,0.02)$}{gk}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS} = -(5 - k)\,V_{step}$, $k = 1, \dots, 5$: the top trace at 0 V, the bottom one four steps down\\[2pt]
+  $V_{step} = 0.1$, 0.25, 0.5, 1 and 2 V, one family each;\quad or auto: $V_{GS(off)} / 5$, the model's own (from the transfer sweep)\\[2pt]
+  $V_{DS}$ swept 0 to 25 V in 50 mV steps;\quad read $I_D(V_{DS})$ for each $k$%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

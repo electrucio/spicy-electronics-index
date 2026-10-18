@@ -1,0 +1,44 @@
+% Noise (mosfet-noise): the set-up a person would wire, semantically the deck's.
+%   VSENSE d dd 0, VD dd 0 10   the sensing source and the drain supply       -> ammeter I_D + i_d (measured: the noise part) + source V_D (set)
+%   VGB gb 0 <vgs>              the gate bias for the step                    -> source V_GS (set)
+%   VIN in gb DC 0 AC 1         the noise input, riding on the bias           -> source v_in (set)
+%   RG in g                     the source resistance                         -> resistor R_G
+%   M1 d g 0                    the transistor, source grounded               -> nmos
+%   H1, RLOAD, .noise           the sensed current is the noise output, referred to v_in -> the ammeter's reading
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Noise}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (top) at ($(Q.D)+(0,1.7)$);
+\ammeter{Q.D}{top}{$I_D + i_d$}
+\nodename{anchor=west}{$(Q.D)+(0.1,0.25)$}{d}
+% the drain supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_D$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south west}{$(top)+(0.15,0.05)$}{dd}
+% the gate: the source resistance, the noise input and the bias in series, at the far left
+\coordinate (g) at (Q.G);
+\draw (g) -- ++(-0.3,0) coordinate (gj) to[R, l_=$R_G$] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_=$v_{in}$] ++(0,-1.3) coordinate (gb);
+\draw[set] (gb) to[V, l_=$V_{GS}$] (gb |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+\nodename{anchor=east}{$(gb)+(-0.05,0)$}{gb}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS}$: the bias for $I_D = 1$, 10, 100 mA and 1 A (from the transfer sweep), one deck each;\quad $V_D = 10$ V\\[2pt]
+  $f = 1$ Hz to 1 MHz, 20 points per decade;\quad $R_G = 0$ gives $e_n$ and its $1/f$ corner\\[2pt]
+  $R_G = 1$ k\ohm{} at 100 mA gives NF;\quad read $i_d$, the noise part of the drain current, referred to $v_{in}$%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

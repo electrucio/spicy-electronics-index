@@ -8,9 +8,8 @@ pins that often has no noise sources, no temperature terms and an idealised outp
 to report what a model *cannot* do as a finding, the way `bjt-breakdown` does.
 
 Status: this page is the specification and the evidence behind it. The entries of
-`data/bench/measurements.yaml` (kind `opamp`), the decks, the drawings and the runs are the next step; until
-then [model-characterisation.md](model-characterisation.md) lists op-amp macromodels under "What is not
-measured".
+`data/bench/measurements.yaml` (kind `opamp`), the decks, the drawings ([bench-drawings.md](bench-drawings.md))
+and the first runs exist; what is still pending is in [bench-roadmap.md](bench-roadmap.md).
 
 ## Principles
 
@@ -396,7 +395,7 @@ The quiescent current as a follower with no load, swept from 4 to 40 V total sup
 
 **Circuit.** A follower with no load, the positive rail swept by a source and the negative rail a controlled copy of it with the sign reversed; the bias deck at −55, 25 and 125 °C; a transient with both rails as piecewise-linear ramps.
 
-Drawing: DUT as a follower; swept split supply.
+Drawing: DUT as a follower; swept split supply with the negative rail mirroring the positive one; ammeter in the positive rail.
 
 **Conditions.** {vs_sweep: {from: 4, to: 40, step: 0.25, unit: V}, vs_points: [10, 18, 30, 36], turn_on: {v_start: 3, v_end: 15, ramp_s: 4e-05, rl: 2000, settle_v: 0.01, max_step_s: 5e-08, t_end_s: 0.0002}}
 
@@ -696,7 +695,7 @@ The large-signal gain the tables quote: ΔVOUT/ΔVIN with the output swept ±10 
 
 **Circuit.** Three open-loop copies, one per load, their non-inverting inputs on a source swept ±300 µV in 250 nV steps on top of the offset the runs deck found, inverting inputs grounded.
 
-Drawing: DUT open loop; fine input sweep; load. Differs from the netlist: three copies run in one deck.
+Drawing: DUT open loop; fine input sweep riding on the offset source; load. Differs from the netlist: three copies run in one deck.
 
 **Conditions.** {supply: [15, -15], rl: [2000, 600, 10000], vin_span: 0.0003, vin_step: 2.5e-07, swings: [10, 13]}
 

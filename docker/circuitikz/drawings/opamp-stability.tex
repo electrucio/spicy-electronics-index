@@ -1,0 +1,51 @@
+% Stability (opamp-stability): the set-up a person would wire, semantically the deck's.
+%   R1_0 inn0 0 1, R2_0 out0 inn0 99    the G = 100 copy with RT = R1 || R2 = 1 Ω; RT = 100 Ω, 1 kΩ, 10 kΩ follow   -> resistors R_1, R_2
+%   XT0 in inn0 vp vn out0 DUT, RL0, CL0   the amplifier and its load                                              -> op amp, R_L, C_L
+%   VIN in 0 PULSE(0 0.1 …), XS, CL     the overshoot deck: a 100 mV step into the follower with 100 pF, then 1 nF   -> the follower drawing
+%   The open-loop deck per capacitive load is the open-loop gain circuit; several decks drawn as one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Stability}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the feedback, around to the inverting input
+\coordinate (Afu) at ($(A.-)+(-0.5,0)$);
+\coordinate (Afl) at (Afu |- 0,2.3);
+\coordinate (Aol) at (Ao |- 0,2.3);
+\draw (Ao) -- (Aol) to[R, l_={$R_2$}] (Afl) -- (Afu) -- (A.-);
+\nodename{anchor=south}{$(Afu)+(0.25,0.03)$}{inn}
+% R1 from the inverting input's node to ground
+\draw (Afu) -- ++(-0.9,0) coordinate (r1) to[R, l_=$R_1$] (r1 |- 0,\gnd) node[ground]{};
+% the gate: a voltage source from ground
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-2.8,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$v_{in}$}] (Aisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{in}
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$v_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the load
+\draw (Ao) -- ++(2.7,0) coordinate (Arl) to[R, l={$R_L$}] (Arl |- 0,\gnd) node[ground]{};
+\draw (Arl) -- ++(1.0,0) coordinate (Acl) to[C, l={$C_L$}] (Acl |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $G = 100$: $R_2 = 99\,R_1$ with $R_1 = 1$ \ohm, 10 \ohm, 100 \ohm{} and 1 k\ohm, one copy each, so that $R_T = R_1 \| R_2 = 1$ \ohm{} to 1 k\ohm{} loads the inverting input\\[2pt]
+  $v_{in} = 1$ V of AC;\quad $R_L = 2$ k\ohm, $C_L = 100$ pF;\quad read $v_{out}(f) / v_{in}$, 10 Hz to 100 MHz: the peaking against $R_T$\\[2pt]
+  the open-loop circuit with $C_L = 10$ pF, 1 nF and 10 nF: the phase margin against capacitive load\\[2pt]
+  the follower with a 100 mV step into $C_L = 100$ pF and 1 nF: the overshoot%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

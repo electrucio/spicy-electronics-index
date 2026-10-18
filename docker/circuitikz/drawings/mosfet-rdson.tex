@@ -1,0 +1,49 @@
+% On-resistance (mosfet-rdson): the set-up a person would wire, semantically the deck's.
+%   BR0 0 dr0 I=exp(…V(x))   the drain current, forced by the dial, pushed into the drain   -> current source I_D (set)
+%   DCL0 dr0 cl0, VCL0       a clamp diode from the drain node to 30 V                      -> diode + source 30 V
+%   VGR0 gr0 0 2.5           the gate at its step                                          -> source V_GS (set)
+%   MR0 dr0 gr0 0 DUT        the copy, source grounded                                     -> nmos
+%   V(dr0) read: VDS                                                                       -> voltmeter V_DS (measured)
+%   Nine copies run in one deck, one per gate step; the gate-sweep deck (the current held) is in the definitions.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{On-resistance}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% source to ground
+\draw (Q.S) -- (Q.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(Q.S)+(0.1,-0.3)$}{0}
+% the gate: a voltage source from ground
+\coordinate (g) at (Q.G);
+\coordinate (gsrc) at ($(g)+(-1.4,0)$);
+\draw (g) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{GS}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.45,0.02)$}{gr0}
+% the drain drive: a current pushed in from a grounded rail
+\coordinate (top) at ($(Q.D)+(0,2.0)$);
+\draw[set] (top) to[I, l={$I_D$}] (Q.D);
+\coordinate (rail) at ($(top)+(5.2,0)$);
+\draw (top) -- (rail) -- (rail |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(Q.D)+(-0.45,0.8)$}{dr0}
+% the clamp: a diode from the terminal to a rail, and the voltmeter on the terminal
+\coordinate (cj) at ($(Q.D)+(0,0.3)$);
+\coordinate (vm) at ($(cj)+(1.8,0)$);
+\coordinate (dj) at ($(cj)+(2.8,0)$);
+\coordinate (cl) at ($(dj)+(1.6,0)$);
+\draw (cj) -- (dj) to[D, l=clamp] (cl);
+\draw[set] (cl) to[V, l=$30$ V] (cl |- 0,\gnd) node[ground, black]{};
+\voltmeter{vm |- 0,\gnd}{vm}{$V_{DS}$}
+\draw (vm |- 0,\gnd) node[ground]{};
+\nodename{anchor=south west}{$(cl)+(0.05,0.05)$}{cl}
+% the definitions
+\definitions{0,-0.1}{%
+  $I_D = 10^{k}\,\mathrm{A}$, $k = -3,\,-2.95,\,\dots,\,2$ \quad (20 points per decade, 1 mA to 100 A);\quad the clamp takes what the transistor cannot pass\\[2pt]
+  $V_{GS} = 2.5$, 3, 4, 4.5, 5, 6, 8, 10 and 15 V, one copy each;\quad read $V_{DS}$ where the clamp is off;\quad $R_{DS(on)} = V_{DS} / I_D$\\[2pt]
+  a second deck holds $I_D = 100$ mA, 1 A and 10 A (one copy each) and sweeps $V_{GS}$ 0 to 15 V in 50 mV steps%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

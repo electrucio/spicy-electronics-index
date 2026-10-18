@@ -826,8 +826,8 @@ Transients are not repeatable bit for bit across simulators (each chooses its ow
 - `data/bench/measurements.yaml` — the catalogue; `make bench-methods` checks it and rewrites the
   section above. Changing a measurement means bumping the catalogue version, which reruns every model.
 - `data/bench/drawings/<id>.svg` — the circuit drawings, typeset by `make bench-drawings NAME=<id>` from
-  `docker/circuitikz/drawings/<id>.tex` (`benches.py` writes the `.tex`; each header lists the deck lines
-  it stands for).
+  `docker/circuitikz/drawings/<id>.tex` (`benches.py`, `benches_fet.py` and `benches_opamp.py` write the
+  `.tex`; each header lists the deck lines it stands for; the style is in [bench-drawings.md](bench-drawings.md)).
 - `data/verification/models/<hh>/<hash>.json` — one record per model hash: values per measurement and
   simulator, codes, curves of the primary engine, and of a secondary engine only where it differs by more
   than 1 %. Not in git: each catalogue version travels as the release asset `character-<version>.tar.gz`

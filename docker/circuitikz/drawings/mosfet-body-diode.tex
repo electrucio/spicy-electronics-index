@@ -1,0 +1,72 @@
+% Body diode (mosfet-body-diode): the set-up a person would wire, semantically the deck's.
+%   BS0 0 s0 I=exp(…V(x))     copy A: the source current, forced by the dial, pushed into the source  -> current source I_S (set)
+%   DCLs0 s0 cls0, VCLs0      a clamp diode from the source node to 5 V                              -> diode + source 5 V
+%   VG0 g0 s0 0               the gate at the source: VGS = 0 (4.5 and 10 V in the next copies)      -> source V_GS (set)
+%   MD0 0 g0 s0 DUT           the transistor, drain grounded                                          -> nmos drawn upside down
+%   V(s0) read: VSD                                                                                   -> voltmeter V_SD (measured)
+%   IF 0 s PULSE(1 -1 …)      copy B, the recovery deck: IF, then -IF at 100 A/µs, into the source    -> current source I_F(t) (set)
+%   VDM d 0 0, MR d s s DUT   the drain read through a 0 V source; the gate tied to the source        -> ammeter I_D(t) (measured)
+%   DCLP 0 s DCLMP            a clamp from ground to the source node                                  -> diode
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Body diode}
+\def\gnd{1.0}
+% the transistor
+\node[nmos, yscale=-1] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.S)+(0.15,-0.55)$) {A\\upside down};
+% source to ground
+\draw (QA.D) -- (QA.D |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.D)+(0.1,-0.3)$}{0}
+% the transistor
+\node[nmos, yscale=-1] (QB) at (12.5,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.S)+(0.15,-0.55)$) {B\\upside down};
+% the source drive: a current pushed in from a grounded rail
+\coordinate (Atop) at ($(QA.S)+(0,2.0)$);
+\draw[set] (Atop) to[I, l={$I_S$}] (QA.S);
+\coordinate (Arail) at ($(Atop)+(5.2,0)$);
+\draw (Atop) -- (Arail) -- (Arail |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(QA.S)+(-0.45,0.8)$}{s0}
+% the clamp: a diode from the terminal to a rail, and the voltmeter on the terminal
+\coordinate (Acj) at ($(QA.S)+(0,0.3)$);
+\coordinate (Avm) at ($(Acj)+(1.8,0)$);
+\coordinate (Adj) at ($(Acj)+(2.8,0)$);
+\coordinate (Acl) at ($(Adj)+(1.6,0)$);
+\draw (Acj) -- (Adj) to[D, l=clamp] (Acl);
+\draw[set] (Acl) to[V, l=$5$ V] (Acl |- 0,\gnd) node[ground, black]{};
+\voltmeter{Avm |- 0,\gnd}{Avm}{$V_{SD}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+\nodename{anchor=south west}{$(Acl)+(0.05,0.05)$}{clA}
+% copy A's gate: a source from the gate up to the source node
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l={$V_{GS}$}] (Agsrc |- Acj) -- (Acj);
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{g0}
+% copy B: the drain read through an ammeter to ground, the gate tied to the source node
+\coordinate (Bbot) at ($(QB.D)+(0,-1.5)$);
+\ammeter{Bbot}{QB.D}{$I_D(t)$}
+\draw (Bbot) node[ground]{};
+\coordinate (Bg) at (QB.G);
+\coordinate (Bcj) at ($(QB.S)+(0,0.3)$);
+\draw (Bg) -- ++(-0.8,0) |- (Bcj);
+\coordinate (Btop) at ($(QB.S)+(0,2.0)$);
+\draw[set] (Btop) to[I, l={$I_F(t)$}] (QB.S);
+\coordinate (Brail) at ($(Btop)+(3.6,0)$);
+\draw (Btop) -- (Brail) -- (Brail |- 0,\gnd) node[ground]{};
+\coordinate (Bdj) at ($(Bcj)+(2.6,0)$);
+\draw (Bcj) -- (Bdj);
+\draw (Bdj |- 0,\gnd) node[ground]{} to[D, l_=clamp] (Bdj);
+\nodename{anchor=west}{$(QB.D)+(0.1,-0.3)$}{d}
+\nodename{anchor=east}{$(QB.S)+(-0.45,0.8)$}{s}
+\nodename{anchor=west}{$(Bbot)+(0.3,0.1)$}{0}
+% the definitions
+\definitions{0,-0.1}{%
+  A: $I_S = 10^{k}\,\mathrm{A}$, $k = -6,\,-5.95,\,\dots,\,2$ \quad (20 points per decade, 1 \textmu A to 100 A);\quad the clamp takes what a card without a diode cannot pass\\[2pt]
+  $V_{GS} = 0$, 4.5 and 10 V, one copy each;\quad read $V_{SD}$ at each ladder current;\quad the diode's $I_S$ and $n$ fitted between 1 mA and 100 mA at $V_{GS} = 0$\\[2pt]
+  B: $I_F = 1$ A and 10 A, held 2 \textmu s, then ramped to $-I_F$ at 100 A/\textmu s;\quad the clamp takes the current once the diode has recovered\\[2pt]
+  read $I_D(t)$: $I_{rrm}$, $t_{rr}$ (zero crossing to 10\,\% of $I_{rrm}$), $Q_{rr}$, softness%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

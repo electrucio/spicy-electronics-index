@@ -50,4 +50,38 @@
   \fill[meas] ($(m)+(0,0.2)$) circle (0.045) ($(m)-(0,0.2)$) circle (0.045);
   \node[meas, font=\scriptsize, inner sep=0pt] at (m) {V};
   \node[meas, anchor=east, inner sep=2pt] at ($(m)-(0.42,0)$) {#3};}
+% a horizontal ammeter from (left) to (right): the wire runs straight through the circle, A above the wire
+\newcommand{\ammeterh}[3]{%
+  \path (#1) -- (#2) coordinate[midway] (m);
+  \draw (#1) -- (#2);
+  \draw[meas, thick] (m) circle (0.34);
+  \fill[meas] ($(m)+(0.17,0)$) circle (0.045) ($(m)-(0.17,0)$) circle (0.045);
+  \node[meas, font=\scriptsize, anchor=south, inner sep=1pt] at ($(m)+(0,0.06)$) {A};
+  \node[meas, anchor=south, inner sep=2pt] at ($(m)+(0,0.42)$) {#3};}
+% a horizontal voltmeter from (left) to (right), the quantity above
+\newcommand{\voltmeterh}[3]{%
+  \path (#1) -- (#2) coordinate[midway] (m);
+  \draw (#1) -- ($(m)-(0.34,0)$) ($(m)+(0.34,0)$) -- (#2);
+  \draw[meas, thick] (m) circle (0.34);
+  \draw[meas] ($(m)-(0.34,0)$) -- ($(m)-(0.2,0)$) ($(m)+(0.34,0)$) -- ($(m)+(0.2,0)$);
+  \fill[meas] ($(m)+(0.2,0)$) circle (0.045) ($(m)-(0.2,0)$) circle (0.045);
+  \node[meas, font=\scriptsize, inner sep=0pt] at (m) {V};
+  \node[meas, anchor=south, inner sep=2pt] at ($(m)+(0,0.42)$) {#3};}
+% the thermometer: the temperature is a simulator setting, so it is blue; \thermometer{x,y}{label}
+\newcommand{\thermometer}[2]{%
+  \draw[set, thick] (#1) circle (0.18); \fill[set] (#1) circle (0.09);
+  \draw[set, thick] ($(#1)+(0,0.18)$) -- ++(0,1.4);
+  \draw[set] ($(#1)+(-0.12,0.6)$) -- ++(0.24,0) ($(#1)+(-0.12,1.0)$) -- ++(0.24,0);
+  \node[set, anchor=west] at ($(#1)+(0.3,0.8)$) {#2};}
+% an amplifier's supply pins: a short lead and an arrow up from (top) and down from (bottom), the rail voltages
+% beside them; the rails are what the bench sets, so they are blue
+\newcommand{\rails}[4]{%
+  \draw (#1) -- ++(0,0.25) coordinate (vpp);
+  \draw[set, thick] (vpp) -- ++(0,0.3) coordinate (vpa);
+  \fill[set] (vpa) -- ++(-0.09,-0.18) -- ++(0.18,0) -- cycle;
+  \node[set, anchor=west, inner sep=2pt] at ($(vpa)+(0.05,-0.12)$) {#3};
+  \draw (#2) -- ++(0,-0.25) coordinate (vnp);
+  \draw[set, thick] (vnp) -- ++(0,-0.3) coordinate (vna);
+  \fill[set] (vna) -- ++(-0.09,0.18) -- ++(0.18,0) -- cycle;
+  \node[set, anchor=west, inner sep=2pt] at ($(vna)+(0.05,0.12)$) {#4};}
 \usetikzlibrary{calc}

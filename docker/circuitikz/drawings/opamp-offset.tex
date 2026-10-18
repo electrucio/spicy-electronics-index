@@ -1,0 +1,47 @@
+% Offset against common mode (opamp-offset): the set-up a person would wire, semantically the deck's.
+%   VP vp 0 15, VN vn 0 -15     the rails                                          -> the supply pins (set)
+%   VIN in 0 …                  the source on the non-inverting input               -> source (set)
+%   X in out vp vn out DUT      the amplifier as a follower: in+, in-, V+, V-, out  -> op amp, output to the inverting input
+%   RL out 0 10000               the load                                           -> resistor R_L
+%   V(out) read                                                                    -> voltmeter v_out (measured)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Offset against common mode}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{out}
+% the feedback, around to the inverting input
+\coordinate (Afu) at ($(A.-)+(-0.5,0)$);
+\coordinate (Afl) at (Afu |- 0,2.3);
+\coordinate (Aol) at (Ao |- 0,2.3);
+\draw (Ao) -- (Aol) -- (Afl) -- (Afu) -- (A.-);
+% the gate: a voltage source from ground
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-1.5,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$V_{in}$}] (Aisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{in}
+% the voltmeter on Ao
+\coordinate (Avm) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$v_{out}$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% the load
+\draw (Ao) -- ++(2.7,0) coordinate (Arl) to[R, l={$R_L$}] (Arl |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{in}$ swept $-16$ to $+16$ V in 20 mV steps, 1 V beyond each rail;\quad $R_L = 10$ k\ohm\\[2pt]
+  read $v_{out}$: $V_{OS} = v_{out} - V_{in}$ against the common-mode voltage;\quad CMRR at DC from its slope;\quad the input range where the follower follows\\[2pt]
+  against supply and temperature: the supply-current and bias decks%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

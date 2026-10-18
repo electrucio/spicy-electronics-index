@@ -1,0 +1,58 @@
+% Transfer characteristic and threshold (mosfet-transfer): the set-up a person would wire, semantically the deck's.
+%   VT2 dt2 0 15      copy A's drain supply (one of four: 1, 6, 15, 25 V); its current is ID   -> source V_DS (set) + ammeter I_D (measured)
+%   MT2 dt2 g 0 DUT   copy A, source grounded                                                  -> nmos
+%   VTD dtd g 0       copy B: the drain tied to the gate through a 0 V source                  -> ammeter I_D (measured)
+%   MTD dtd g 0 DUT   copy B, diode-connected                                                  -> nmos
+%   VGS g 0, .dc      the gate drive, shared by every copy                                     -> source V_GS (set)
+%   Five copies run in one deck; the drawing shows two.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transfer characteristic and threshold}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% the transistor
+\node[nmos] (QB) at (11,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% the ammeter in the drain, up to the rail
+\coordinate (Atop) at ($(QA.D)+(0,1.7)$);
+\ammeter{QA.D}{Atop}{$I_D$}
+\nodename{anchor=west}{$(QA.D)+(0.1,0.25)$}{dt2}
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DS}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Ag) at (QA.G);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{GS}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{g}
+% the ammeter in the drain, up to the rail
+\coordinate (Btop) at ($(QB.D)+(0,1.7)$);
+\ammeter{QB.D}{Btop}{$I_D$}
+\nodename{anchor=west}{$(QB.D)+(0.1,0.25)$}{dtd}
+% copy B: the drain's ammeter looped back to the gate
+\coordinate (Bg) at (QB.G);
+\coordinate (Bgsrc) at ($(Bg)+(-1.4,0)$);
+\draw (Btop) -| (Bgsrc) -- (Bg);
+\draw[set] (Bgsrc) to[V, l_={$V_{GS}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{g}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{GS}$ swept $-2$ V to $+15$ V in 10 mV steps, every gate on the one source;\quad A: $V_{DS} = 1$, 6, 15 and 25 V, one copy each\\[2pt]
+  B: diode-connected, $V_{DS} = V_{GS}$, the way the sheets define $V_{th}$;\quad read $I_D(V_{GS})$ of every copy\\[2pt]
+  $V_{th}$: the $V_{GS}$ at $I_D = 20$ \textmu A, 250 \textmu A and 1 mA (B, and A at 15 V);\quad the subthreshold slope between 10 nA and 1 \textmu A\\[2pt]
+  $V_{GS}$ at $I_D = 1$ \textmu A $\dots$ 10 A on the 15 V curve, kept for the decks that bias the transistor there%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

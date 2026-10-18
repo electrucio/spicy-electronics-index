@@ -1,0 +1,41 @@
+% Short-circuit current (opamp-isc): the set-up a person would wire, semantically the deck's.
+%   VIsp isp 0 1, XIp isp 0 vp vn osp DUT   +1 V between the inputs: the amplifier saturated high   -> op amp
+%   VSCp osp 0 0                            the output to the reference through a 0 V source        -> ammeter I_SC (measured)
+%   VIsn, XIn, VSCn                         the same driven negative, sinking                      -> a second copy
+%   The swing deck's shorted copies.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Short-circuit current}
+\def\gnd{1.0}
+% the amplifier, non-inverting input up
+\node[op amp, noinv input up, font=\small] (A) at (4,4.4) {DUT};
+% the supply pins: the rails are what the bench sets
+\rails{A.up}{A.down}{$+15$ V}{$-15$ V}
+\nodename{anchor=east}{$(A.up)+(-0.08,0.3)$}{vp}
+\nodename{anchor=east}{$(A.down)+(-0.08,-0.3)$}{vn}
+% the output node
+\draw (A.out) -- ++(0.8,0) coordinate (Ao);
+\nodename{anchor=south}{$(Ao)+(-0.35,0.05)$}{osp}
+% the inverting input grounded
+\draw (A.-) -- ++(-0.6,0) coordinate (Apg) -- (Apg |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(A.-)+(-0.3,0.03)$}{0}
+% the gate: a voltage source from ground
+\coordinate (Ai) at (A.+);
+\coordinate (Aisrc) at ($(Ai)+(-1.5,0)$);
+\draw (Ai) -- (Aisrc);
+\draw[set] (Aisrc) to[V, l_={$V_{in}$}] (Aisrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ai)+(-0.45,0.02)$}{isp}
+% the output shorted to the reference through an ammeter
+\coordinate (Asc) at ($(Ao)+(1.5,0)$);
+\draw (Ao) -- (Asc);
+\ammeter{Asc |- 0,\gnd}{Asc}{$I_{SC}$}
+\draw (Asc |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{in} = +1$ V (sourcing) and $-1$ V (sinking) between the inputs, one copy each;\quad the output at the reference\\[2pt]
+  read $I_{SC}$%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

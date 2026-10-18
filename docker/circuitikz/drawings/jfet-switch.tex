@@ -1,0 +1,44 @@
+% Analogue switch (jfet-switch): the set-up a person would wire, semantically the deck's.
+%   VS s 0 1          the signal source, on the source terminal          -> source V_S (set)
+%   JW l g s DUT      the switch, drain to the load                      -> njfet
+%   RL l 0 1000       the load                                           -> resistor R_L
+%   RG in g 1000, VIN in 0 PWL(…)   the gate drive through 1 kΩ          -> resistor R_G + source V_in (set)
+%   V(l) read                       the load voltage                     -> voltmeter v_load (measured)
+%   The charge-injection deck replaces RL by a 1 nF hold capacitor and puts the signal at 0 V.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Analogue switch}
+\def\gnd{1.0}
+% the transistor
+\node[njfet] (Q) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(Q.D)+(0.15,-0.55)$) {DUT};
+% the source terminal on the signal source
+\draw (Q.S) -- ++(0,-0.3) coordinate (sj);
+\draw[set] (sj) to[V, l=$V_S$] (sj |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=east}{$(Q.S)+(-0.1,-0.2)$}{s}
+% the drain to the load node, the load down to ground, the voltmeter beside it
+\draw (Q.D) -- ++(0,0.8) coordinate (l) -- ++(2.2,0) coordinate (rl);
+\draw (rl) to[R, l_=$R_L$] (rl |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(l)+(1.0,0.05)$}{l}
+% the voltmeter on rl
+\coordinate (vm) at ($(rl)+(1.8,0)$);
+\draw (rl) -- (vm);
+\voltmeter{vm |- 0,\gnd}{vm}{$v_{load}$}
+\draw (vm |- 0,\gnd) node[ground]{};
+% the gate resistor and the pulse source
+\coordinate (g) at (Q.G);
+\draw (g) -- ++(-0.3,0) coordinate (gj) to[R, l_=$R_G$] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_=$V_{in}$] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_S = 1$ V;\quad $R_L = 1$ k\ohm{} and 10 k\ohm, one deck each;\quad $R_G = 1$ k\ohm\\[2pt]
+  $V_{in}$: $V_{off}$, then 0 V from 100 ns to 2.11 \textmu s, then $V_{off}$;\quad 10 ns edges;\quad $V_{off} = -10$ V, or twice the model's own $V_{GS(off)}$\\[2pt]
+  read $v_{load}(t)$: $t_{on}$ from the gate's rising edge to the 90\,\% crossing, $t_{off}$ from the falling edge to the 10\,\% crossing\\[2pt]
+  charge injection: $V_S = 0$, $R_L$ replaced by a 1 nF hold capacitor, the gate stepped from 0 V to $V_{off}$ once;\quad $Q = C$ times the step of $v_{load}$%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

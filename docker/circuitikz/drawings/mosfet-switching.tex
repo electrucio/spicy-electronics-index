@@ -1,0 +1,90 @@
+% Switching times and energies (mosfet-switching): the set-up a person would wire, semantically the deck's.
+%   VDD vdd 0 30, RL vdd dl 30   copy A: the supply and the resistive load             -> source V_DD (set) + resistor R_L
+%   VS dl d 0                     a 0 V source in the drain: reads ID                   -> ammeter I_D(t) (measured)
+%   VIN in 0 PULSE(…), RG in g 10   the gate drive through RG                           -> source V_in (set) + resistor R_G
+%   M1 d g 0 DUT, V(d) read       the transistor; the drain voltage                     -> nmos, voltmeter V_DS(t) (measured)
+%   IL vdd dl 1                   copy B, the inductive deck: the load current from the rail   -> current source I_L (set)
+%   DFW dl dfw, RFW dfw vdd 0.02  the freewheeling diode to the rail, through 20 mΩ    -> diode + resistor R_FW
+%   VIDM dl d 0, RSN d sn 10, CSN sn 0 1n   the drain ammeter and the snubber           -> ammeter I_D(t), R_SN + C_SN
+%   Two decks drawn side by side; the inductive one with two gate pulses.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.2}{Switching times and energies}
+\def\gnd{1.0}
+% the transistor
+\node[nmos] (QA) at (4,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QA.D)+(0.15,-0.55)$) {A};
+% source to ground
+\draw (QA.S) -- (QA.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QA.S)+(0.1,-0.3)$}{0}
+% copy A: the ammeter in the drain and the voltmeter on it
+\coordinate (Adl) at ($(QA.D)+(0,1.6)$);
+\ammeter{QA.D}{Adl}{$I_D(t)$}
+\coordinate (Acj) at ($(QA.D)+(0,0.3)$);
+\nodename{anchor=east}{$(QA.D)+(-0.1,0.3)$}{d}
+\nodename{anchor=west}{$(Adl)+(0.1,0.2)$}{dl}
+% copy A: the gate resistor and the pulse source
+\coordinate (Ag) at (QA.G);
+\draw (Ag) -- ++(-0.3,0) coordinate (Agj) to[R, l_=$R_G$] ++(-1.8,0) coordinate (Avin);
+\draw[set] (Avin) to[V, l_=$V_{in}$] (Avin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(Avin)+(-0.05,0.05)$}{in}
+% the transistor
+\node[nmos] (QB) at (12.5,3) {};
+\node[anchor=west, font=\small, align=left] at ($(QB.D)+(0.15,-0.55)$) {B};
+% source to ground
+\draw (QB.S) -- (QB.S |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(QB.S)+(0.1,-0.3)$}{0}
+% copy B: the ammeter in the drain and the voltmeter on it
+\coordinate (Bdl) at ($(QB.D)+(0,1.6)$);
+\ammeter{QB.D}{Bdl}{$I_D(t)$}
+\coordinate (Bcj) at ($(QB.D)+(0,0.3)$);
+\nodename{anchor=east}{$(QB.D)+(-0.1,0.3)$}{d}
+\nodename{anchor=west}{$(Bdl)+(0.1,0.2)$}{dl}
+% copy B: the gate resistor and the pulse source
+\coordinate (Bg) at (QB.G);
+\draw (Bg) -- ++(-0.3,0) coordinate (Bgj) to[R, l_=$R_G$] ++(-1.8,0) coordinate (Bvin);
+\draw[set] (Bvin) to[V, l_=$V_{in}$] (Bvin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.15,0.05)$}{g}
+\nodename{anchor=south east}{$(Bvin)+(-0.05,0.05)$}{in}
+% copy A: the load up to the rail, the supply at the right
+\draw (Adl) to[R, l_=$R_L$] ++(0,1.6) coordinate (Atop);
+% the drain supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_{DD}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Atop)+(1.3,0.05)$}{vdd}
+% the voltmeter on Acj
+\coordinate (Avm) at ($(Acj)+(1.6,0)$);
+\draw (Acj) -- (Avm);
+\voltmeter{Avm |- 0,\gnd}{Avm}{$V_{DS}(t)$}
+\draw (Avm |- 0,\gnd) node[ground]{};
+% copy B: the load current from the rail, the freewheeling diode and its resistor beside it
+\coordinate (Btop) at ($(Bdl)+(0,2.0)$);
+\draw[set] (Btop) to[I, l_={$I_L$}] (Bdl);
+\draw (Bdl) -- ++(1.6,0) coordinate (Bfw) to[D, l=$D_{FW}$] ++(0,1.0) to[R, l=$R_{FW}$] (Bfw |- Btop);
+% the drain supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(4.0,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_{DD}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Btop)+(2.0,0.05)$}{vdd}
+\nodename{anchor=west}{$(Bfw)+(0.1,1.1)$}{dfw}
+% copy B: the snubber on the drain
+\draw (Bcj) -- ++(1.4,0) coordinate (Bsn) to[R, l=$R_{SN}$] ++(0,-0.9) to[C, l=$C_{SN}$] (Bsn |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(Bsn)+(-0.1,-0.75)$}{sn}
+% the voltmeter on Bsn
+\coordinate (Bvm) at ($(Bsn)+(1.6,0)$);
+\draw (Bsn) -- (Bvm);
+\voltmeter{Bvm |- 0,\gnd}{Bvm}{$V_{DS}(t)$}
+\draw (Bvm |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_{DD} = 30$ V;\quad $R_L = V_{DD} / I_D$;\quad $I_D = 100$ mA, 1 A and 10 A, one deck each;\quad $R_G = 10$ \ohm{} (at 1 A also 25 \ohm)\\[2pt]
+  $V_{in}$: 0 V, then 10 V (at 1 A also 4.5 V) from 100 ns for 2 \textmu s, then 0 V;\quad 2 ns edges\\[2pt]
+  read $I_D(t)$ and $V_{DS}(t)$: $t_{d(on)}$, $t_r$, $t_{d(off)}$, $t_f$ between the 10\,\% and 90\,\% levels\\[2pt]
+  B: $I_L = 1$ A and 10 A;\quad $R_{FW} = 20$ m\ohm;\quad $R_{SN} = 10$ \ohm, $C_{SN} = 1$ nF;\quad two 5 \textmu s pulses, 20 ns edges;\quad $E_{on}$, $E_{off}$ as $\int V_{DS} I_D\,dt$ over 300 ns windows at the second pulse's edges%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

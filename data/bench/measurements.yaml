@@ -1720,7 +1720,7 @@ measurements:
     gate fed through a 0 V source (an ammeter), the drain held at 10 V.
   drawing:
     file: bench/drawings/jfet-runs.svg
-    elements: [DUT, VDS source 10 V, gate to ground through an ammeter, ammeter in the drain]
+    elements: [DUT, VDS source 10 V, VGS source at 0 V through an ammeter in the gate, ammeter in the drain]
     differs_from_netlist: the point is read from the transfer sweep rather than from a separate operating-point deck
   analysis: dc
   conditions: {vds: 10, vgs: 0, temp_c: 25}
@@ -2748,8 +2748,8 @@ measurements:
     body-diode sweep's VGS = 0 copy, read at VSD = 1 V.
   drawing:
     file: bench/drawings/mosfet-runs.svg
-    elements: [DUT, VDS source 1 V, VGS source 10 V (or 4.5 V), ammeter in the drain, a third copy reversed]
-    differs_from_netlist: the points are read from the transfer and body-diode sweeps rather than from a separate deck
+    elements: [DUT, VDS source 1 V, VGS source 10 V (or 4.5 V), ammeter in the drain]
+    differs_from_netlist: the points are read from the transfer and body-diode sweeps rather than from a separate deck; the body diode's copy is drawn in the body-diode measurement
   analysis: dc
   conditions: {vds: 1, vgs: [10, 4.5], diode_vsd: 1, temp_c: 25}
   extraction: Exit status and log give the error class; when it runs, the three currents, interpolated on their sweeps.
@@ -3196,8 +3196,8 @@ measurements:
     100 mA at 10 V, 1 A at 30 V, 10 A at 100 V.
   drawing:
     file: bench/drawings/mosfet-gate-charge.svg
-    elements: [DUT, gate current source, load current source with a clamp diode to VDD, probe on the gate and the drain]
-    differs_from_netlist: the gate's own clamp at 15 V is not drawn
+    elements: [DUT, gate current source, load current source with a clamp diode to VDD, voltmeters on the gate and on the drain]
+    differs_from_netlist: the gate's own clamp at 15 V and the 1 GΩ to ground are not drawn; the drain clamp's own 30 V source is drawn as the supply rail it equals
   analysis: tran
   conditions:
     points: [{id: 0.1, vdd: 10, ig: 1.0e-3}, {id: 1, vdd: 30, ig: 1.0e-3}, {id: 10, vdd: 100, ig: 1.0e-2}]
@@ -3277,8 +3277,8 @@ measurements:
     VDS × ID over the edges, at 1 A and 10 A.
   drawing:
     file: bench/drawings/mosfet-switching.svg
-    elements: [DUT, VDD, RL, gate pulse through RG, probe on the drain (resistive), inductor with a freewheeling diode to VDD (inductive)]
-    differs_from_netlist: the inductive deck's inductor is a current source with the diode across it, and a snubber
+    elements: [DUT, VDD, RL, gate pulse through RG, ammeter in the drain and voltmeter on it, load current source with the freewheeling diode and its 20 mΩ to VDD and the snubber (inductive)]
+    differs_from_netlist: the inductor is the current source it is over the edges
   analysis: tran
   conditions:
     vdd: 30
@@ -3731,7 +3731,7 @@ measurements:
   circuit: |
     Five followers, one per supply (±15, ±5, ±2.5, ±9, ±18 V), each loaded with 2 kΩ to the reference, the
     input at the reference; one operating point.
-  drawing: {file: "", elements: [DUT as a follower, split supply, 2 kΩ load, input at the reference], differs_from_netlist: five copies run in one deck}
+  drawing: {file: bench/drawings/opamp-runs.svg, elements: [DUT as a follower, split supply, 2 kΩ load, input at the reference], differs_from_netlist: five copies run in one deck}
   analysis: op
   conditions:
     supplies: [[15, -15], [5, -5], [2.5, -2.5], [9, -9], [18, -18]]
@@ -3780,7 +3780,7 @@ measurements:
     A follower with no load, the positive rail swept by a source and the negative rail a controlled copy
     of it with the sign reversed; the bias deck at −55, 25 and 125 °C; a transient with both rails as
     piecewise-linear ramps.
-  drawing: {file: "", elements: [DUT as a follower, swept split supply], differs_from_netlist: nothing}
+  drawing: {file: bench/drawings/opamp-iq.svg, elements: [DUT as a follower, swept split supply with the negative rail mirroring the positive one, ammeter in the positive rail], differs_from_netlist: nothing}
   analysis: dc
   conditions:
     vs_sweep: {from: 4, to: 40, step: 0.25, unit: V}
@@ -3837,7 +3837,7 @@ measurements:
     A follower with 10 kΩ to the reference, its input swept from 1 V below the negative rail to 1 V above
     the positive one; the offset read as the output less the input. The supply sweep and the bias decks at
     temperature and with the source resistance give the other views.
-  drawing: {file: "", elements: [DUT as a follower, swept input, 10 kΩ load], differs_from_netlist: the supply sweep and the bias decks are separate}
+  drawing: {file: bench/drawings/opamp-offset.svg, elements: [DUT as a follower, swept input, 10 kΩ load], differs_from_netlist: the supply sweep and the bias decks are separate}
   analysis: dc
   conditions:
     supply: [15, -15]
@@ -3895,7 +3895,7 @@ measurements:
     A follower with an ammeter in each input, the non-inverting input at the reference (or at ±13 V, or
     fed through 10 kΩ), 2 kΩ load. Impedances: both inputs driven together with 1 V of AC (common mode);
     one input driven with the other held by the open-loop servo (differential).
-  drawing: {file: "", elements: [DUT as a follower, ammeters in both inputs], differs_from_netlist: the impedance decks are separate}
+  drawing: {file: bench/drawings/opamp-bias.svg, elements: [DUT as a follower, ammeters in both inputs], differs_from_netlist: the impedance decks are separate}
   analysis: op
   conditions:
     supply: [15, -15]
@@ -3956,7 +3956,7 @@ measurements:
   circuit: |
     Three copies of the difference amplifier in one deck, each with four 10 kΩ resistors and a 2 kΩ load,
     the common-mode source at 0, −13 and +13 V DC with 1 V of AC.
-  drawing: {file: "", elements: [DUT as a difference amplifier, four 10 kΩ resistors, common-mode source], differs_from_netlist: three copies run in one deck}
+  drawing: {file: bench/drawings/opamp-cmrr-f.svg, elements: [DUT as a difference amplifier, four 10 kΩ resistors, common-mode source], differs_from_netlist: three copies run in one deck}
   analysis: ac
   conditions:
     supply: [15, -15]
@@ -4007,7 +4007,7 @@ measurements:
     100 kHz and 1 MHz; the corner. A model whose internal references are ideal reports a rejection beyond
     200 dB on one or both rails: absent.
   circuit: Three decks, the follower with the AC on the rail (or rails) named, 2 kΩ load, the input at the reference.
-  drawing: {file: "", elements: [DUT as a follower, AC on a rail], differs_from_netlist: three decks drawn as one}
+  drawing: {file: bench/drawings/opamp-psrr-f.svg, elements: [DUT as a follower, AC on a rail], differs_from_netlist: three decks drawn as one}
   analysis: ac
   conditions:
     supply: [15, -15]
@@ -4055,7 +4055,7 @@ measurements:
     it). Nearly every macromodel has no input filter and rectifies nothing: the shift is zero and the
     result absent, which is what a reader needs to know before trusting a model near a transmitter.
   circuit: The follower with 2 kΩ, the carrier on its input; two hundred cycles, the mean of the last hundred.
-  drawing: {file: "", elements: [DUT as a follower, RF source on the input], differs_from_netlist: one deck per carrier}
+  drawing: {file: bench/drawings/opamp-emirr.svg, elements: [DUT as a follower, RF source on the input], differs_from_netlist: one deck per carrier}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4099,7 +4099,7 @@ measurements:
   circuit: |
     The amplifier with the AC source on its non-inverting input, the inverting input tied to the output
     through 1 GH and to ground through 1 GF, 2 kΩ and 100 pF on the output.
-  drawing: {file: "", elements: [DUT, 1 GH feedback inductor, 1 GF capacitor to ground, AC source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per variant}
+  drawing: {file: bench/drawings/opamp-aol.svg, elements: [DUT, 1 GH feedback inductor, 1 GF capacitor to ground, AC source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per variant}
   analysis: ac
   conditions:
     supply: [15, -15]
@@ -4172,7 +4172,7 @@ measurements:
   circuit: |
     Three open-loop copies, one per load, their non-inverting inputs on a source swept ±300 µV in 250 nV
     steps on top of the offset the runs deck found, inverting inputs grounded.
-  drawing: {file: "", elements: [DUT open loop, fine input sweep, load], differs_from_netlist: three copies run in one deck}
+  drawing: {file: bench/drawings/opamp-aol-swing.svg, elements: [DUT open loop, fine input sweep riding on the offset source, load], differs_from_netlist: three copies run in one deck}
   analysis: dc
   conditions:
     supply: [15, -15]
@@ -4223,7 +4223,7 @@ measurements:
     for the gain) and the inverter at −1 (10 kΩ and 10 kΩ), 10 Hz to 100 MHz, 2 kΩ and 100 pF on the
     output. Read: the −3 dB bandwidth and the peaking at each gain, the family every sheet prints.
   circuit: Five copies in one deck sharing the AC source, each with its own feedback network and load.
-  drawing: {file: "", elements: [DUT with feedback network, AC source, 2 kΩ and 100 pF load], differs_from_netlist: five copies run in one deck}
+  drawing: {file: bench/drawings/opamp-closed-loop.svg, elements: [DUT with feedback network, AC source, 2 kΩ and 100 pF load], differs_from_netlist: five copies run in one deck}
   analysis: ac
   conditions:
     supply: [15, -15]
@@ -4279,7 +4279,7 @@ measurements:
   circuit: |
     The open-loop deck per capacitive load; the non-inverting amplifier at G = 100 with four feedback
     networks in one deck; the follower with a 100 mV step into each load.
-  drawing: {file: "", elements: [DUT open loop with CL, DUT at G = 100 with RT, DUT as a follower with a step], differs_from_netlist: several decks drawn as one}
+  drawing: {file: bench/drawings/opamp-stability.svg, elements: [DUT open loop with CL, DUT at G = 100 with RT, DUT as a follower with a step], differs_from_netlist: several decks drawn as one}
   analysis: ac
   conditions:
     supply: [15, -15]
@@ -4351,7 +4351,7 @@ measurements:
     Open-loop copies with +1 V and −1 V between the inputs, one pair per load, and two shorted to the
     reference through an ammeter for the short-circuit current; one operating point. For the current,
     the saturated amplifier into a swept current source.
-  drawing: {file: "", elements: [DUT open loop driven into saturation, load to the reference, ammeter on a shorted copy], differs_from_netlist: the copies run in one deck}
+  drawing: {file: bench/drawings/opamp-swing.svg, elements: [DUT open loop driven into saturation, load to the reference, ammeter on a shorted copy], differs_from_netlist: the copies run in one deck}
   analysis: op
   conditions:
     supply: [15, -15]
@@ -4409,7 +4409,7 @@ measurements:
     other supplies, at −55, 25 and 125 °C. Macromodels limit the current with a clamp or not at all; a
     current far above the sheet's is the load line, not a limit.
   circuit: The swing deck's shorted copies.
-  drawing: {file: "", elements: [DUT driven into saturation, ammeter to the reference], differs_from_netlist: nothing}
+  drawing: {file: bench/drawings/opamp-isc.svg, elements: [DUT driven into saturation, ammeter to the reference], differs_from_netlist: nothing}
   analysis: op
   conditions: {from: opamp-swing}
   extraction: The ammeter's current, sourcing and sinking, per supply and temperature; the ratio at 125 °C over 25 °C.
@@ -4446,7 +4446,7 @@ measurements:
     closed loop at G = +1, +10, +100 and +1000 (onsemi's family). TI's tables quote the open-loop value at
     1 MHz, onsemi's at 9 MHz.
   circuit: The open-loop servo with 1 A of AC injected into the output; four closed-loop copies in one deck, each with its own injection.
-  drawing: {file: "", elements: [DUT, AC current into the output, voltmeter], differs_from_netlist: the closed-loop copies run in one deck}
+  drawing: {file: bench/drawings/opamp-zout.svg, elements: [DUT, AC current into the output, voltmeter], differs_from_netlist: the closed-loop copies run in one deck}
   analysis: ac
   conditions:
     supply: [15, -15]
@@ -4491,7 +4491,7 @@ measurements:
     distortion, where the slew limit bites; and the full-power bandwidth from the slew rate over 2π
     times the swing, the figure the legacy sheets draw as the output voltage against frequency.
   circuit: The follower with 2 kΩ, twelve cycles, the last eight analysed.
-  drawing: {file: "", elements: [DUT as a follower, 10 V peak sine, 2 kΩ load], differs_from_netlist: one deck per frequency}
+  drawing: {file: bench/drawings/opamp-max-vo-f.svg, elements: [DUT as a follower, 10 V peak sine, 2 kΩ load], differs_from_netlist: one deck per frequency}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4534,7 +4534,7 @@ measurements:
     20 to 50 % of the figure), and the main waveform kept at 80 points as the sheets print their
     oscillograms.
   circuit: The follower (or the inverter with 10 kΩ and 10 kΩ) with a pulse source, 2 kΩ and the capacitive load; one deck per fixture.
-  drawing: {file: "", elements: [DUT as a follower, pulse source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per fixture}
+  drawing: {file: bench/drawings/opamp-slew.svg, elements: [DUT as a follower, pulse source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per fixture}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4588,7 +4588,7 @@ measurements:
   symbols: [ts]
   what: Time from the step's edge to the output staying within 0.1 % and 0.01 % of its final value, for 10 V and 2 V steps at G = +1 and a 10 V step at G = −1, 100 pF on the output.
   circuit: The slew fixtures with a finer time step, the error against time kept.
-  drawing: {file: "", elements: [DUT as a follower, pulse source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per fixture}
+  drawing: {file: bench/drawings/opamp-settling.svg, elements: [DUT as a follower, pulse source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per fixture}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4636,7 +4636,7 @@ measurements:
   symbols: [trec]
   what: The inverter at G = −10 driven to 1.2 times the supply each way, and the time from the input's return to the output's return within 100 mV of the reference (TI's figure), positive and negative.
   circuit: The inverter with 1 kΩ and 10 kΩ, a 1.8 V pulse on the input (18 V demanded of the output), 2 kΩ load.
-  drawing: {file: "", elements: [DUT as an inverter, pulse source, 2 kΩ load], differs_from_netlist: one deck per polarity}
+  drawing: {file: bench/drawings/opamp-overload.svg, elements: [DUT as an inverter, pulse source, 2 kΩ load], differs_from_netlist: one deck per polarity}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4689,7 +4689,7 @@ measurements:
     voltage, swept 2 V beyond each rail (the NE5534's and NE5532's figures), which says whether the model
     has the input protection diodes.
   circuit: The follower with its input swept 2 V beyond each rail through an ammeter, 10 kΩ load.
-  drawing: {file: "", elements: [DUT as a follower, swept input through an ammeter, 10 kΩ load], differs_from_netlist: the reversal flags come from the offset measurement's sweep}
+  drawing: {file: bench/drawings/opamp-phase-reversal.svg, elements: [DUT as a follower, swept input through an ammeter, 10 kΩ load], differs_from_netlist: the reversal flags come from the offset measurement's sweep}
   analysis: dc
   conditions:
     supply: [15, -15]
@@ -4732,7 +4732,7 @@ measurements:
   symbols: [tr, overshoot]
   what: A 10 mV step into the follower with 20 pF and 100 pF (TI's and the legacy fixtures), 2 kΩ load; the rise time 10 to 90 %, the overshoot, the waveforms kept at 80 points.
   circuit: The follower with a 10 mV pulse, 2 kΩ and the capacitive load.
-  drawing: {file: "", elements: [DUT as a follower, 10 mV pulse, 2 kΩ and CL], differs_from_netlist: one deck per load}
+  drawing: {file: bench/drawings/opamp-step.svg, elements: [DUT as a follower, 10 mV pulse, 2 kΩ and CL], differs_from_netlist: one deck per load}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4781,7 +4781,7 @@ measurements:
     6.6 times the rms; en at 1 kHz at ±5 V. A macromodel with no noise sources (most) gives its resistors'
     thermal noise only: the finding is absent.
   circuit: The follower with 2 kΩ, the noise source at its input, with or without the source resistance.
-  drawing: {file: "", elements: [DUT as a follower, noise source, RS], differs_from_netlist: one deck per source resistance}
+  drawing: {file: bench/drawings/opamp-noise.svg, elements: [DUT as a follower, noise source, RS], differs_from_netlist: one deck per source resistance}
   analysis: noise
   conditions:
     supply: [15, -15]
@@ -4836,7 +4836,7 @@ measurements:
     A-weighted (which stands for JIS-A) and RIAA-weighted through a 30 kHz low-pass, at RS = 300 Ω and
     2.2 kΩ: the Nisshinbo figures, the one test specific to the Japanese audio sheets.
   circuit: The follower with the source resistance in its input; one deck per resistance.
-  drawing: {file: "", elements: [DUT as a follower, noise source, RS], differs_from_netlist: one deck per source resistance}
+  drawing: {file: bench/drawings/opamp-noise-rs.svg, elements: [DUT as a follower, noise source, RS], differs_from_netlist: one deck per source resistance}
   analysis: noise
   conditions:
     rs_ladder: [1000, 10000, 100000, 1000000]
@@ -4876,7 +4876,7 @@ measurements:
     twelve cycles. Published for comparison between models: a macromodel's distortion is its slew, its
     clipping and whatever its output stage does, not the die's.
   circuit: The follower (or the non-inverting amplifier) with 2 kΩ, the sine on its input; one deck per point.
-  drawing: {file: "", elements: [DUT, sine source, 2 kΩ load], differs_from_netlist: "one deck per frequency, level and gain"}
+  drawing: {file: bench/drawings/opamp-thd-f.svg, elements: [DUT, sine source, 2 kΩ load], differs_from_netlist: "one deck per frequency, level and gain"}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4920,7 +4920,7 @@ measurements:
   symbols: [THD(level)]
   what: At 1 kHz through the follower into 2 kΩ, the level stepped from 100 mVrms to 10 Vrms, where the distortion turns up at the clipping end; the level at which it passes 1 %.
   circuit: The follower with 2 kΩ; one deck per level.
-  drawing: {file: "", elements: [DUT as a follower, sine source, 2 kΩ load], differs_from_netlist: one deck per level}
+  drawing: {file: bench/drawings/opamp-thd-level.svg, elements: [DUT as a follower, sine source, 2 kΩ load], differs_from_netlist: one deck per level}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4957,7 +4957,7 @@ measurements:
   symbols: [IMD]
   what: SMPTE (60 Hz + 7 kHz, 4:1) and CCIF (19 kHz + 20 kHz, 1:1) at 3 Vrms in all through the follower into 2 kΩ.
   circuit: Two sine sources in series on the follower's input, 2 kΩ load.
-  drawing: {file: "", elements: [DUT as a follower, two sine sources, 2 kΩ load], differs_from_netlist: one deck per method}
+  drawing: {file: bench/drawings/opamp-imd.svg, elements: [DUT as a follower, two sine sources, 2 kΩ load], differs_from_netlist: one deck per method}
   analysis: tran
   conditions:
     supply: [15, -15]
@@ -4989,7 +4989,7 @@ measurements:
   symbols: [THD(RL)]
   what: At 1 kHz, 3 Vrms through the follower, the load from 100 Ω to 10 kΩ, how a model's output stage behaves into a heavy load; the fundamental's amplitude says whether the swing holds.
   circuit: The follower with the load; one deck per load.
-  drawing: {file: "", elements: [DUT as a follower, sine source, load], differs_from_netlist: one deck per load}
+  drawing: {file: bench/drawings/opamp-thd-load.svg, elements: [DUT as a follower, sine source, load], differs_from_netlist: one deck per load}
   analysis: tran
   conditions:
     supply: [15, -15]
