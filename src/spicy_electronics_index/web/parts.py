@@ -65,6 +65,7 @@ from spicy_electronics_index.core.config import (
 )
 from spicy_electronics_index.core.parts import catalogue, polarity, schemes
 from spicy_electronics_index.core.parts.extractor import base_part, canonical, family_of
+from spicy_electronics_index.schematics.export import withdrawn
 from spicy_electronics_index.web import character as character_web
 
 REPO_CAP = 200        # GitHub projects listed for one part
@@ -347,12 +348,17 @@ def index() -> dict:
     unshown: dict[str, set] = defaultdict(set)
     kind = kinds()
     stats = repo_stats()
+    # A withdrawn document (`data/schematics/withdrawn.csv`) is off the site from the build after it is
+    # listed, whether or not the index has been exported again since: its row goes, and its uses with it.
+    pulled = withdrawn()
     for i, s in enumerate(sources()):
-        docs[s] = {r["id"]: r for r in rows(schematics_documents(s))}
+        docs[s] = {r["id"]: r for r in rows(schematics_documents(s)) if r.get("key") not in pulled}
         pages[s] = {(r["doc"], r["page"]): r for r in rows(schematics_pages(s))}
         lines[s] = {(r["doc"], r["page"], r["part"]): (r["kind"], r["line"])
                     for r in rows(schematics_lines(s))}
         for u in rows(schematics_uses(s)):
+            if u["doc"] not in docs[s]:
+                continue
             if lines[s].get((u["doc"], u["page"], u["part"]), ("",))[0] == NOT_THIS_PART:
                 continue
             url = (docs[s].get(u["doc"]) or {}).get("url", "")
@@ -1042,7 +1048,7 @@ def page_entry(page: dict | None, u: dict, doc_url: str, line: tuple[str, str] |
     url = (page or {}).get("url", "")
     if doc_url and url.startswith(doc_url):
         url = url[len(doc_url):]
-    out = [int(u["page"]), url, u["near"], int(u["times"] or 1)]
+    out = [int(u["page"]), url, u["near"], int(u.get("times") or 1)]
     if line:
         out += [line[1], line[0]]
     return out
@@ -1148,6 +1154,74 @@ def part_payload(part: str, idx: dict, recipe: dict | None) -> dict:
     return out
 
 
+# The filter above the parts list: where a part's usages come from, as the list can be narrowed by. A
+# facet is a source; a magazine is one facet per decade, because somebody after what the 1970s printed
+# does not want the 2000s; the books source is one facet per title, because each of its documents is a
+# book of its own; and GitHub is one facet whatever crawl found the repository, the way the part page
+# lists every repository together. Grouped as the part page groups them.
+GITHUB_FACET = "github"
+PAPER_KINDS = frozenset(("magazine", "book"))
+FACET_GROUPS = ("projects", "paper", GITHUB_FACET)
+# How a source of each kind divides into facets, when it does.
+FACET_BY = {"magazine": "decade", "book": "title"}
+
+
+def decade_of(doc: dict) -> str:
+    """`1980s` for a document dated anywhere in that decade; nothing for one without a year."""
+    year = doc.get("year", "")
+    return f"{year[:3]}0s" if year[:4].isdigit() else ""
+
+
+def facet_of(source: str, kind: str, doc: dict) -> tuple[str, str]:
+    """Which facet of the usage filter a document of this source counts under: (source, label), the
+    label being a magazine's decade, a book's title, or nothing."""
+    if doc.get("url", "").startswith(REPO_HOST):
+        return (GITHUB_FACET, "")
+    if kind == "book":
+        return (source, doc.get("title", ""))
+    return (source, decade_of(doc)) if kind == "magazine" else (source, "")
+
+
+def facet_group(source: str, kind: str) -> str:
+    return GITHUB_FACET if source == GITHUB_FACET else "paper" if kind in PAPER_KINDS else "projects"
+
+
+def usage_facets(idx: dict) -> tuple[list[dict], dict[str, list[list[int]]]]:
+    """The usage filter's menu, and each part's documents under every entry of it.
+
+    The menu: one entry per facet with its group, source, label (a decade or a title, and `by` says
+    which), how many times parts are written under it and in how many documents — the groups in the
+    page's order, inside a group the sources with the most written first, and a source's entries in
+    order: decades oldest first with the undated last, titles A to Z. A part's row is `[entry, times]`
+    pairs, by entry; the times add up to the part's usages in the search index, because both count the
+    same shown uses.
+    """
+    kinds = idx["kinds"]
+    times: Counter = Counter()
+    docs: dict[tuple[str, str], set] = defaultdict(set)
+    by_part: dict[str, Counter] = defaultdict(Counter)
+    for part, us in idx["uses"].items():
+        for si, u in us:
+            source = idx["sources"][si]
+            f = facet_of(source, kinds.get(source, ""), idx["documents"][source].get(u["doc"], {}))
+            n = int(u.get("times") or 1)
+            times[f] += n
+            docs[f].add((si, u["doc"]))
+            by_part[part][f] += n
+    per_source = Counter()
+    for (source, _), n in times.items():
+        per_source[source] += n
+    order = sorted(times, key=lambda f: (FACET_GROUPS.index(facet_group(f[0], kinds.get(f[0], ""))),
+                                         -per_source[f[0]], f[0], f[1] == "", f[1]))
+    at = {f: i for i, f in enumerate(order)}
+    menu = [{"key": f"{source}/{label}" if label else source, "group": facet_group(source, kinds.get(source, "")),
+             "source": source, "n": times[(source, label)], "docs": len(docs[(source, label)]),
+             **({"label": label, "by": FACET_BY[kinds[source]]} if label else {})}
+            for source, label in order]
+    rows = {part: sorted([at[f], n] for f, n in fs.items()) for part, fs in by_part.items()}
+    return menu, rows
+
+
 def narrowed(devices: tuple[str, ...], family: str) -> tuple[str, ...]:
     """The devices a part answers to, cut down to the ones its family can be.
 
@@ -1187,7 +1261,10 @@ def search_index(idx: dict, recipes: dict) -> tuple[list[list], list[dict]]:
     Tuples rather than objects, because the key names would be most of the file.
     """
     # Counted from the uses the site shows, not read from the export's table, which counts every source.
-    counts = {part: (len({(si, u["doc"]) for si, u in us}), len(us)) for part, us in idx["uses"].items()}
+    # Usages are how many times the part is written on those pages (`times`), which is what the list's
+    # column shows and sorts by; the documents it is in travel beside, for the tie-breaks and the family pages.
+    counts = {part: (sum(int(u.get("times") or 1) for _, u in us), len({(si, u["doc"]) for si, u in us}))
+              for part, us in idx["uses"].items()}
     dictionary = dictionary_kinds()
     listed_kind = idx.get("wanted_kind", {})
     cache: dict[tuple[str, ...], int] = {}
@@ -1195,7 +1272,7 @@ def search_index(idx: dict, recipes: dict) -> tuple[list[list], list[dict]]:
     out = []
     tally = Counter()
     for part in sorted(set(counts) | set(idx.get("unshown", {})) | set(recipes) | set(listed_kind)):
-        docs, uses = counts.get(part, (0, 0))
+        usages, docs = counts.get(part, (0, 0))
         kind = part_kind(part, recipes, dictionary, idx.get("catalogue_kind")) or listed_kind.get(part, "")
         devs = devices_of(part, kind, idx)
         named = schemes.decode(part, devs, idx.get("known"))
@@ -1208,7 +1285,7 @@ def search_index(idx: dict, recipes: dict) -> tuple[list[list], list[dict]]:
         for i, (key, _, _) in enumerate(MENU):
             if bits & (1 << i):
                 tally[key] += 1
-        out.append([part, docs, uses, len(recipes.get(part, {}).get("models") or []), bits,
+        out.append([part, usages, docs, len(recipes.get(part, {}).get("models") or []), bits,
                     fam_at.get(fid, -1)])
     # Every device ships, even the ones nothing answers to, because the bit a part carries is its
     # position here. Dropping the empty ones would renumber the rest, and a filter would quietly select

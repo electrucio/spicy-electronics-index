@@ -154,6 +154,13 @@ def build(out: Path | None = None) -> dict:
             "families": list(part_pages.catalogue.families()),
             "parts": search})
         sizes["catalogue.json"] = write_json(out, "catalogue.json", part_pages.catalogue_payload(idx))
+        # The usage filter's data, apart from the index because it is half as large again and only a reader who
+        # opens the filter needs it: its menu, and one row per part in the index's order. It names the
+        # index's sources, so it carries the same stamp and is read with the index it matches.
+        facets, by_part = part_pages.usage_facets(idx)
+        sizes["usages.json"] = write_json(out, "usages.json", {
+            "schema": SCHEMA, "sourcesStamp": stamp, "facets": facets,
+            "parts": [by_part.get(row[0], []) for row in search]})
 
     # The method page: the measurement catalogue as published, and the circuit drawings that exist.
     sizes["bench/methods.json"] = write_json(out / "bench", "methods.json", character_web.methods_payload())

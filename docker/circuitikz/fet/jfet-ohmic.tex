@@ -1,0 +1,28 @@
+% Drawing for measurement `jfet-ohmic`
+% Stands for the deck lines:
+%   VDR dr 0 0.05
+%   VGR gr 0 {vgs}
+%   JR dr gr 0 DUT
+%   RF1 dl gl 1e6
+%   RF2 gb gl 1e6
+\documentclass[border=8pt]{standalone}
+\usepackage[siunitx,RPvoltages,european]{circuitikz}
+\ctikzset{bipoles/length=0.9cm, label/align=straight, inductors/scale=0.8}
+\ctikzset{inductor=american}
+\usepackage{amsmath}
+\begin{document}
+\begin{circuitikz}[font=\footnotesize, line width=0.5pt]
+\draw (0,0) node[njfet](Q){};
+\node[anchor=west] at ($(Q.D)!0.5!(Q.S) + (0.55,0)$) {DUT};
+\draw (Q.S) to[short] ++(0,-0.5) node[ground]{};
+\draw (Q.D) to[short] ++(0,0.3) to[rmeter, t=A, l={$I_D$}] ++(0,1.4) to[short] ++(2,0) to[vsource, l={\shortstack[l]{$V_{DS}=\pm\SI{50}{mV}$\\ (or $\pm\SI{0.5}{V}$ swept)}}, invert] ++(0,-2.4) node[ground]{};
+\draw (Q.G) to[short] ++(-1.9,0) to[vsource, l_={\shortstack[r]{$V_{GS}$ stepped\\ $0\to V_{GS(\mathrm{off})}$}}, invert] ++(0,-1.9) node[ground]{};
+\draw (8,0) node[njfet](R){};
+\node[anchor=west] at ($(R.D)!0.5!(R.S) + (0.55,0)$) {DUT};
+\draw (R.S) to[short] ++(0,-0.5) node[ground]{};
+\draw (R.D) to[short] ++(0,0.3) coordinate(rd) to[rmeter, t=A, l={$I_D$}] ++(0,1.4) to[short] ++(2,0) to[vsource, l={$V_{DS}$ swept $\pm\SI{0.5}{V}$}, invert] ++(0,-2.4) node[ground]{};
+\draw (R.G) to[short] ++(-0.6,0) coordinate(rg) to[R, l_={\SI{1}{M\ohm}}] ++(-1.8,0) to[vsource, l_={$V_{GS}$ bias}, invert] ++(0,-1.9) node[ground]{};
+\draw (rg) to[R, l={\SI{1}{M\ohm}}] ++(0,1.3) -| (rd);
+\node[anchor=west, align=left] at (-4.6,-3.6) {left: $r_{DS}$ against $V_{GS}$ and linearity\\ right: the same with $V_{DS}/2$ fed back to the gate};
+\end{circuitikz}
+\end{document}

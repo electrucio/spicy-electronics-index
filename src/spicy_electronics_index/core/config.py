@@ -245,6 +245,25 @@ def datasheet_figures(doc: str) -> Path:
     return PUBLIC_DATA / "datasheets" / "figures" / f"{doc}.json"
 
 
+def datasheet_survey_registry(kind: str) -> Path:
+    """The data sheets a survey of one kind of part reads (`sei datasheets survey`): maker, part, the
+    maker's own address and how it is reached — direct, from the Internet Archive's capture of that
+    address, or not at all where robots.txt disallows the PDF."""
+    return PUBLIC_DATA / "datasheets" / "survey" / f"{kind}.yaml"
+
+
+def datasheet_survey(kind: str, name: str) -> Path:
+    """What the survey published: `sheets` (each sheet's link, checksum, document number, revision, page
+    and figure counts), `figures` (every figure's title, where it is, the test it draws and the bench
+    that draws the same graph), `matrix` (test by sheet) and `conditions` (the values each sheet names)."""
+    return PUBLIC_DATA / "datasheets" / "survey" / kind / f"{name}.csv"
+
+
+def datasheet_survey_state(kind: str) -> Path:
+    """The survey's ledger: one row per sheet, fetched and read."""
+    return PUBLIC_DATA / "datasheets" / "survey" / kind / "state.csv"
+
+
 def datasheet_figure_reference() -> Path:
     """The hand-read reference of data-sheet figures, the companion of `datasheet_reference`."""
     return REPO_ROOT / "docker" / "datasheets" / "figures.yaml"
@@ -645,6 +664,11 @@ def datasheet_store() -> Path:
     return datasheets("vendor")
 
 
+def datasheet_survey_store(kind: str) -> Path:
+    """The PDFs a survey read, named by their registry id (never committed: links and checksums are)."""
+    return datasheets("survey") / kind
+
+
 def simulators() -> Path:
     """The simulation stage's private side: the vendor store below, and the runs (docker/sim/README.md)."""
     return material_root() / "simulators"
@@ -796,6 +820,9 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("datasheet_reference", "public", ()),
     ("datasheet_figures", "public", ("2N3904_onsemi",)),
     ("datasheet_figure_reference", "public", ()),
+    ("datasheet_survey_registry", "public", ("opamp",)),
+    ("datasheet_survey", "public", ("opamp", "figures")),
+    ("datasheet_survey_state", "public", ("opamp",)),
     ("distributors_registry", "public", ()),
     ("distributors_table", "public", ("tme",)),
     ("distributors_files", "public", ("tme",)),
@@ -863,6 +890,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("spice_found", "private", ()),
     ("spice_recipe_locations", "private", ()),
     ("datasheets", "private", ()),
+    ("datasheet_survey_store", "private", ("opamp",)),
     ("datasheet_store", "private", ()),
     ("simulators", "private", ()),
     ("simulator_vendor", "private", ()),

@@ -118,7 +118,25 @@ dl.kv dd { margin: 0; overflow-wrap: anywhere; }
 .browser { display: grid; grid-template-columns: var(--side, 480px) 22px minmax(0, 1fr); gap: 0; align-items: start; }
 .browser > .evidence { padding-left: 6px; }
 .side { position: sticky; top: var(--below-header); display: flex; flex-direction: column; gap: 10px; max-height: calc(100vh - var(--below-header) - 20px); }
-.side input, .side select { width: 100%; font: inherit; font-size: 0.95rem; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); color: var(--ink); }
+.side input[type="search"], .side select { width: 100%; font: inherit; font-size: 0.95rem; padding: 7px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); color: var(--ink); }
+/* The usage filter: one line folded, the sources by group when open, scrolling inside its own box. */
+details.srcfilter > summary { cursor: pointer; list-style: none; display: flex; gap: 8px; align-items: baseline; font-size: 0.86rem; color: var(--muted); }
+details.srcfilter > summary::-webkit-details-marker { display: none; }
+details.srcfilter > summary:hover { color: var(--ink); }
+.srcbody { max-height: 42vh; overflow: auto; margin-top: 6px; padding: 8px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); font-size: 0.84rem; }
+.srchelp { margin: 0 0 6px; }
+.srcgroup { padding-top: 6px; }
+.srcgroup + .srcgroup { margin-top: 6px; border-top: 1px solid var(--rule); }
+.srchead { margin-bottom: 2px; }
+.srcbox { display: flex; gap: 7px; align-items: baseline; padding: 1px 0; cursor: pointer; min-width: 0; }
+.srcbox input { margin: 0; flex: none; accent-color: var(--accent); position: relative; top: 2px; }
+.srcbox .srcname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.srcbox .count { margin-left: auto; padding-left: 8px; }
+details.decades > summary { list-style: none; display: flex; gap: 8px; align-items: baseline; cursor: pointer; }
+details.decades > summary::-webkit-details-marker { display: none; }
+details.decades > summary > .srcbox { flex: 1; min-width: 0; }
+details.decades > summary > .count { flex: none; }
+.decadelist { padding: 2px 0 4px 26px; }
 .plist { overflow: auto; border: 1px solid var(--edge); border-radius: 4px; flex: 1; min-height: 200px; }
 .plist table { font-size: 0.86rem; }
 .plist thead th { position: sticky; top: 0; z-index: 1; background: var(--sunken); padding: 0; }

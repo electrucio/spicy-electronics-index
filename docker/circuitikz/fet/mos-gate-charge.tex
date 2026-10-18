@@ -1,0 +1,24 @@
+% Drawing for measurement `mos-gate-charge`
+% Stands for the deck lines:
+%   IG 0 g 0.001
+%   IL vdd d 1 / DCL d vdd DCLMP / VDD vdd 0 30
+%   M1 d g 0 0 DUT
+%   .tran 1e-9 ...
+\documentclass[border=8pt]{standalone}
+\usepackage[siunitx,RPvoltages,european]{circuitikz}
+\ctikzset{bipoles/length=0.9cm, label/align=straight, inductors/scale=0.8}
+\ctikzset{inductor=american}
+\usepackage{amsmath}
+\begin{document}
+\begin{circuitikz}[font=\footnotesize, line width=0.5pt]
+\draw (0,0) node[nmos](Q){};
+\node[anchor=west] at ($(Q.D)!0.5!(Q.S) + (0.55,0)$) {DUT};
+\draw (Q.S) to[short] ++(0,-0.5) node[ground]{};
+\draw (Q.D) to[short] ++(0,0.3) coordinate(qd) to[isource, l={$I_L$ 0.1, 1, 10, \SI{50}{A}}] ++(0,1.8) to[short] ++(0,0.2) node[vcc]{$V_{DD}$ 10, 30, 100, \SI{300}{V}};
+\draw (qd) to[short] ++(2.0,0) to[D, l={clamp}] ++(0,1.8) -| ($(qd)+(0,2.0)$);
+\draw (qd) to[short, -o] ++(-0.8,0.6) node[left]{$V_{DS}$};
+\draw (Q.G) to[short] ++(-1.1,0) coordinate(qg) to[short] ++(-0.7,0) to[isource, l_={$I_G$ 1 or \SI{10}{mA}}, invert] ++(0,-1.9) node[ground]{};
+\draw (qg) to[short, -o] ++(0,0.7) node[above left]{$V_{GS}(t)$};
+\node[anchor=west, align=left] at (-4.6,-3.6) {$Q = I_G\cdot t$; the drain sits at $V_{DD}$ until the transistor takes $I_L$\\ one deck per load current and supply};
+\end{circuitikz}
+\end{document}

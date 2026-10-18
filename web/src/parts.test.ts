@@ -54,12 +54,12 @@ describe('search', () => {
 
 describe('the order of the list', () => {
   it('puts the most used first by default, which is what the front page shows', () => {
-    expect(order(rows, 'documents').map((r) => r[0])[0]).toBe('12AX7')    // 2,478 documents
+    expect(order(rows, 'usages').map((r) => r[0])[0]).toBe('12AX7')    // written 2,478 times
   })
 
-  it('breaks a tie on documents by models, and then by name', () => {
+  it('breaks a tie on usages by documents, then models, and then by name', () => {
     const tied: PartRow[] = [['B', 10, 0, 1, BJT], ['A', 10, 0, 1, BJT], ['C', 10, 0, 5, BJT]]
-    expect(order(tied, 'documents').map((r) => r[0])).toEqual(['C', 'A', 'B'])
+    expect(order(tied, 'usages').map((r) => r[0])).toEqual(['C', 'A', 'B'])
   })
 
   it('can be asked for the parts with the most models instead', () => {
@@ -73,7 +73,7 @@ describe('the order of the list', () => {
   })
 
   it('turns round when a heading is clicked again, and a tie still reads most used first', () => {
-    expect(order(rows, 'documents', 'asc').map((r) => r[0])[0]).toBe('BC108B')     // 12 documents
+    expect(order(rows, 'usages', 'asc').map((r) => r[0])[0]).toBe('BC108B')     // written 12 times
     expect(order(rows, 'name', 'desc').map((r) => r[0])[0]).toBe('ECC83')
     const tied: PartRow[] = [['B', 10, 0, 1, BJT], ['A', 90, 0, 1, BJT]]
     expect(order(tied, 'models', 'asc').map((r) => r[0])).toEqual(['A', 'B'])
@@ -142,7 +142,7 @@ describe('the chosen order survives typing in the box', () => {
   ]
 
   it('orders the matches by uses when that is what was asked for', () => {
-    expect(search(rows, 'TL07', 'documents').map((r) => r[0])).toEqual(['TL07', 'TL072', 'TL071'])
+    expect(search(rows, 'TL07', 'usages').map((r) => r[0])).toEqual(['TL07', 'TL072', 'TL071'])
   })
 
   it('orders them by models when that is what was asked for', () => {

@@ -223,3 +223,12 @@ def test_the_lines_are_read_back_from_a_key_that_carries_the_parts_asked(corpus,
         == "preamp stage"
     E.export()
     assert read(corpus / "lines" / "wireless_world.csv")[0]["line"] == "preamp stage"
+
+
+def test_the_withdrawn_list_is_read_past_the_lines_that_say_what_it_is_for(corpus):
+    """The committed file opens with `#` lines. Read naively, the first of them is the header and no key
+    is ever matched — which is how a withdrawn copy stayed on the site."""
+    (corpus / "withdrawn.csv").write_text(
+        "# Documents never to publish.\n# More words.\nkey,why,when\nhttps://e.org/gone.pdf,taken down,2026-09-21\n",
+        encoding="utf-8")
+    assert E.withdrawn() == {"https://e.org/gone.pdf"}
