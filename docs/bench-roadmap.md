@@ -8,55 +8,55 @@ checklist; every session that touches the bench starts here and ticks what it fi
 ## Done (October 2026)
 
 - [x] **The op-amp survey.** `sei datasheets survey --kind opamp` reads what the makers' sheets measure: 73
-      sheets of eight makers, 2,149 figure titles mapped to tests and to the `opa-*` measurements
+      sheets of eight makers, 2,149 figure titles mapped to tests and to the `opamp-*` measurements
       ([opamp-characterisation.md](opamp-characterisation.md), `data/datasheets/survey/opamp/`). Sheets a
       person opened in a browser are handed in with `--deliver`.
-- [x] **The op-amp bench specified**: 28 `opa-*` measurements in the bipolar catalogue's format, the universal
-      ladders drawn from the survey, the absences a macromodel must declare.
-- [x] **The JFET and MOSFET benches specified**: 13 `jfet-*` and 15 `mos-*` measurements
-      ([fet-characterisation.md](fet-characterisation.md)), the assembly of each circuit
-      ([fet-bench-drawings.md](fet-bench-drawings.md)), 26 drawings in `docker/circuitikz/fet/` and
-      `data/bench/drawings/`.
-- [x] **Every measurement previewed on ngspice**, one model per part, nine parts (J201, 2N5457, 2N3819; 2N7000,
-      BS170, IRF510; TL072, NE5532, RC4558): 512 decks, 1,032 numbers, the models' absences found
-      ([bench-preview-2026-10.md](bench-preview-2026-10.md), `make bench-preview`). The decks of
-      `docker/sim/preview/bench_preview.py` are the draft of the pipeline's.
+- [x] **The three benches specified and previewed**: 13 `jfet-*`, 14 `mosfet-*` and 26 `opamp-*`
+      measurements, every one run once on ngspice as a preview
+      ([bench-preview-2026-10.md](bench-preview-2026-10.md), `make bench-preview`).
+- [x] **The catalogue entries** (`data/bench/measurements.yaml`, version `m-13`), rendered into
+      [fet-characterisation.md](fet-characterisation.md) and [opamp-characterisation.md](opamp-characterisation.md)
+      by `make bench-methods` as the bipolar ones are.
+- [x] **The decks in the simulator images**: `docker/sim/bench/decks_jfet.py` (40 decks per model),
+      `decks_mos.py` (39) and `decks_opamp.py` (98), in the shape of `decks_bjt.py`, quoted verbatim by the
+      catalogue and checked by `tests/bench/test_character_decks_kinds.py`. The image runner maps a
+      subcircuit's pins for every kind; a `.model` MOSFET gets its bulk tied to the source.
+- [x] **The job builder**: JFET and MOSFET cards and subcircuits (pins traced through gate resistors), op-amp
+      subcircuits (pins from the PSpice PARTS header or the pin names), and `sei bench character --here`,
+      which runs the image's script on a machine with ngspice on the PATH and no Docker.
+- [x] **Nine models characterised and published** on ngspice 42 here: J201, 2N5457, 2N3819 (Central
+      Semiconductor), 2N7000 (Zetex), BS170P (Diodes), IRF510 (level 3), TL072, RC4558 (TI PARTS), NE5532
+      (TI PARTS, via LTwiki). A cloud session cannot create a GitHub release, so their nine records sit in
+      the tracked supplement (`data/verification/models/supplement/`, `make bench-character-supplement`),
+      which the site build lays over the released asset's records; the next `make bench-character-release`
+      on the maintainer's machine packs them into the `character-m-13` asset, after which the folder is
+      emptied.
+- [x] **The site shows them**: the characterisation pane is on, the method page lists the four kinds, each
+      kind has its default curve and its groups' labels.
 
 ## Pending, in the order that unblocks the rest
 
-1. **Pins and absences of a macromodel** (`opamp-card`, in `models/cards.py`): the five pins of an op-amp
-   subcircuit mapped by role; the family (Boyle/PARTS, the ADI and TI PSpice generations, behavioural,
-   encrypted); whether the text carries noise sources, temperature terms, a supply-current model, input
-   protection, a current limit. The preview's `card_facts` is the sketch. A model whose pins cannot be
-   traced is not run. Estimate: one session.
-2. **Catalogue entries**: `data/bench/measurements.yaml` grows the kinds `jfet`, `mosfet` and `opamp`, one
-   entry per measurement with conditions, grid, outputs, curves and the `directives` a test checks against
-   the deck; `make bench-methods` copies them into the two documents (their `measurements:start` blocks).
-   Two sessions.
-3. **Decks in the images**: `docker/sim/bench/decks_jfet.py`, `decks_mos.py`, `decks_opamp.py` in the shape
-   of `decks_bjt.py` (body, saves, tail, measure, finalize), `PLANS` in `character.py`, `PLANNED` in
-   `bench/character.py`, the extraction shared through `num.py` (Goertzel, margins, slopes, weighted noise).
-   What the preview learnt: the forced drain current needs the dial with a clamp diode; the inductive
-   switching fixture is a current source with a freewheel diode and a snubber; a stage's drive scales with
-   gfs; `.noise` output is a density in V/√Hz; a macromodel's supply ramp needs a non-zero start. Three to
-   four sessions.
-4. **Runs on the maintainer's machine**: `make bench-character KIND=jfet|mosfet|opamp ENGINE=qspice`, then
-   ngspice and LTspice, for the priority-1 parts of `data/models/wanted.yaml` first; `character-publish`,
-   `character-release`, catalogue version `m-13`. Hours of simulation per engine for the transients and the
-   noise decks; the `*-agreement` measurements exist only then.
-5. **Drawings in one style**: the 26 FET drawings moved from their own preamble into `benches.py` and
-   `bench.sty`, and the 28 op-amp drawings made; `make bench-drawings-all`. Two sessions.
-6. **The survey for transistors**: `data/datasheets/survey/jfet.yaml` and `mosfet.yaml` with the makers'
-   sheets and a `TESTS` table per kind, so the figures of a JFET or MOSFET sheet map to `jfet-*` and `mos-*`
-   as the op-amps' do. One session.
-7. **Sheets beside the numbers**: the figure boxes located (`sei datasheets figures` over the survey's
+1. **QSPICE and LTspice runs on the maintainer's machine** (`make bench-character KIND=jfet|mosfet|amplifier
+   ENGINE=qspice`, then `ngspice` and `ltspice` in the pinned images) for every priority-1 part of
+   `data/models/wanted.yaml`; `character-publish`, `character-release`. The `*-agreement` measurements
+   exist only then; today's nine records are one engine, on the host's ngspice 42 rather than the image's.
+   Hours of simulation per engine for the transients.
+2. **The op-amp drawings**: 26 circuits for `docker/circuitikz/benches.py` and `bench.sty`, and the 26 FET
+   drawings moved from their own preamble into the same style; `make bench-drawings-all`. The op-amp entries
+   carry `drawing.file: ""` until then. Two sessions.
+3. **`opamp-card`** in `models/cards.py`: the family (Boyle/PARTS, the ADI and TI PSpice generations,
+   behavioural, encrypted), whether the text carries noise sources, temperature terms, a supply-current
+   model, input protection, a current limit; `sei models cards` over the amplifier group, so that every
+   `absent` names its cause. The bench already reads the pins. One session.
+4. **Dual and quad subcircuits**: `opamp-separation` measured (onsemi's fixture), the bench running each
+   amplifier of a package. One session.
+5. **The survey for transistors**: `data/datasheets/survey/jfet.yaml` and `mosfet.yaml` with the makers'
+   sheets and a `TESTS` table per kind. One session.
+6. **Sheets beside the numbers**: the figure boxes located (`sei datasheets figures` over the survey's
    `figures.csv`) and cropped (`make datasheets-crops`), for every kind. One session.
-8. **The site**: groups and uses per kind in `web/src/behaviours.ts` and `methods.tsx`. The characterisation
-   pane itself is shown since October 2026 (`CHARACTERIZATION` in `features.ts`), with the bipolar records.
-   One session.
-9. **The survey's missing sheets**: Analog Devices, ST, Rohm and Intersil from the Internet Archive when it
-   can be reached from the machine that runs it (it could not from the cloud session), and more sheets
-   opened by hand where robots.txt says no (Nisshinbo, Microchip). Renesas answered 403.
+7. **The survey's missing sheets**: Analog Devices, ST, Rohm and Intersil from the Internet Archive when it
+   can be reached from the machine that runs it, and more sheets opened by hand where robots.txt says no
+   (Nisshinbo, Microchip). Renesas answered 403.
 
 ## What the preview says the pipeline must handle
 

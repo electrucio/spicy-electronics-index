@@ -88,12 +88,15 @@ export function pickCurves(curves: Curve[], choice: Record<string, Choice>, unit
  * ------------------------------------------------------------------------------------------------- */
 
 /** The curve shown when the address names none: the one every data sheet of the kind draws. */
-export const DEFAULT_CURVE: Record<string, string> = { bjt: 'bjt-hfe-ic.hfe.ic' }
+export const DEFAULT_CURVE: Record<string, string> = {
+  bjt: 'bjt-hfe-ic.hfe.ic', jfet: 'jfet-transfer.id.vgs', mosfet: 'mosfet-transfer.id.vgs', opamp: 'opamp-aol.gain.f',
+}
 
 /** The headings of the list: the catalogue's groups, as a reader writes them. */
 export const GROUP_LABEL: Record<string, string> = {
   dc: 'DC', 'high-current': 'High current', capacitance: 'Capacitance', frequency: 'Frequency', switching: 'Switching',
-  noise: 'Noise', temperature: 'Temperature', breakdown: 'Breakdown', distortion: 'Distortion',
+  noise: 'Noise', temperature: 'Temperature', breakdown: 'Breakdown', distortion: 'Distortion', leakage: 'Leakage',
+  recovery: 'Body diode', slew: 'Large signal', supply: 'Supply', output: 'Output',
 }
 
 /** A row whose axis names do not say what it is (the on voltages are three quantities on one "V" axis). */
@@ -102,6 +105,9 @@ export const ROW_LABEL: Record<string, string> = { 'bjt-on-voltages': 'VBE(sat),
 /** What tells two rows of the same name apart: added to the later ones only, the first keeps the plain name. */
 export const QUALIFIER: Record<string, string> = {
   'bjt-hfe-ac': 'AC, 1 kHz', 'bjt-tracer': 'curve tracer', 'bjt-early': 'Early voltage', 'bjt-temperature': 'by temperature',
+  'jfet-tracer': 'curve tracer', 'jfet-temperature': 'by temperature', 'jfet-gm': '1 kHz', 'jfet-ohmic': 'ohmic region',
+  'mosfet-tracer': 'curve tracer', 'mosfet-temperature': 'by temperature', 'mosfet-gm': '1 kHz', 'mosfet-rdson': 'on-resistance',
+  'opamp-stability': 'stability', 'opamp-aol-swing': 'open loop, DC', 'opamp-zout': 'output impedance', 'opamp-noise-rs': 'against RS',
 }
 
 /** Other names of a quantity, by its y axis: what a reader may type instead of the printed name. */
@@ -118,6 +124,12 @@ export const SYNONYMS: Record<string, string> = {
 export const MEASUREMENT_WORDS: Record<string, string> = {
   'bjt-tracer': 'curve tracer output characteristics family', 'bjt-gummel': 'gummel plot', 'bjt-early': 'early voltage output resistance',
   'bjt-switching': 'waveform transient edges', 'bjt-ft': 'transition frequency',
+  'jfet-tracer': 'curve tracer output characteristics family', 'jfet-transfer': 'transfer idss pinch-off vgs off square law',
+  'jfet-gm': 'transconductance gfs yfs gos', 'jfet-ohmic': 'rds on resistor vcr', 'jfet-gate': 'gate diode leakage igss',
+  'mosfet-tracer': 'curve tracer output characteristics family', 'mosfet-transfer': 'transfer threshold vth subthreshold',
+  'mosfet-rdson': 'on resistance rds on', 'mosfet-gate-charge': 'gate charge qg qgd plateau miller', 'mosfet-body-diode': 'body diode vsd reverse recovery trr qrr',
+  'opamp-aol': 'open loop gain phase gbw margin bode', 'opamp-closed-loop': 'closed loop bandwidth', 'opamp-slew': 'slew rate step',
+  'opamp-cmrr-f': 'cmrr common mode rejection', 'opamp-psrr-f': 'psrr supply rejection', 'opamp-noise': 'noise en in density',
 }
 
 export type CurveRow = {

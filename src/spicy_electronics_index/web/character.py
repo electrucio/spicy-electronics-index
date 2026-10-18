@@ -14,7 +14,7 @@ from pathlib import Path
 
 from spicy_electronics_index.bench import catalogue, record
 from spicy_electronics_index.bench.catalogue import ENGINES
-from spicy_electronics_index.core.config import bench_drawings, character
+from spicy_electronics_index.core.config import bench_drawings, character, character_supplement
 from spicy_electronics_index.models import cards as C
 
 KEEP = ("hash", "polarity", "runs", "codes", "values", "derived", "curves", "other_curves", "agree", "decks", "changes", "errors")
@@ -156,6 +156,8 @@ def record_of(model_hash: str | None) -> dict | None:
     if not model_hash:
         return None
     p = character(model_hash)
+    if not p.exists():
+        p = character_supplement(model_hash)             # released by the next asset; in git until then
     if not p.exists():
         return None
     return json.loads(p.read_text(encoding="utf-8"))
