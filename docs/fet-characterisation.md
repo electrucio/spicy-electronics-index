@@ -788,7 +788,7 @@ and disagrees in capacitance, temperature or gate current. The disagreeing measu
 
 ### MOSFETs
 
-#### Does the card load? (`mos-runs`)
+#### Does the card load? (`mosfet-runs`)
 
 Group `dc` · analysis `op` · engines qspice, ngspice, ltspice.
 
@@ -824,7 +824,7 @@ Drawing: DUT; VDS source 1 V; VGS source 10 V (or 4.5 V); ammeter in the drain; 
 
 **Standard.** none
 
-#### Output characteristics, as a curve tracer draws them (`mos-tracer`)
+#### Output characteristics, as a curve tracer draws them (`mosfet-tracer`)
 
 Group `dc` · analysis `dc` · engines qspice, ngspice, ltspice · symbols ID(VDS), VGS.
 
@@ -845,7 +845,7 @@ drain from 0 to 10 V in 10 mV steps; a second deck repeats it to 30 V in 50 mV s
 
 Drawing: DUT; swept VDS source; gate voltage source at the step; ammeter in the drain. Differs from the netlist: the copies are drawn as one transistor with a stepped gate.
 
-**Conditions.** {vgs_ladder: [2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 15], auto: {from: mos-transfer, id_bottom: 0.01, id_top: 1, steps: 5, vds: 5}, vds_sweep: {from: 0, to: 10, step: 0.01, unit: V}, vds_sweep_wide: {from: 0, to: 30, step: 0.05, unit: V}, temp_c: 25}
+**Conditions.** {vgs_ladder: [2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 15], auto: {from: mosfet-transfer, id_bottom: 0.01, id_top: 1, steps: 5, vds: 5}, vds_sweep: {from: 0, to: 10, step: 0.01, unit: V}, vds_sweep_wide: {from: 0, to: 30, step: 0.05, unit: V}, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
@@ -882,7 +882,7 @@ model's, not a transistor's.
 
 **Standard.** resembles the output characteristics every MOSFET sheet prints; no test method
 
-#### Transfer characteristic — ID against VGS at fixed VDS, and the threshold (`mos-transfer`)
+#### Transfer characteristic — ID against VGS at fixed VDS, and the threshold (`mosfet-transfer`)
 
 Group `dc` · analysis `dc` · engines qspice, ngspice, ltspice · symbols Vth, gfs, ID(VGS).
 
@@ -916,7 +916,7 @@ Drawing: DUT; VDS source (1, 6, 15 or 25 V); swept VGS source; ammeter in the dr
 intercept of √ID against VGS fitted between 10 and 100 mA at 15 V (the square-law region); the subthreshold
 slope in mV/decade between 1 µA and 100 µA, "absent" where the card has no current below VTO; the exponent
 of ID against (VGS − Vth) between 100 mA and the top current. ID at each read gate voltage and VGS at each
-ladder current, at every VDS. gfs is the derivative, published in `mos-gm`.
+ladder current, at every VDS. gfs is the derivative, published in `mosfet-gm`.
 
 **Outputs.**
 
@@ -945,7 +945,7 @@ sheets); the card is one point.
 
 **Standard.** resembles the transfer characteristics and VGS(th) methods of every MOSFET sheet (JEDEC JESD24-x, MIL-STD-750-3)
 
-#### On-resistance against drain current, gate voltage and the drive floor (`mos-rdson`)
+#### On-resistance against drain current, gate voltage and the drive floor (`mosfet-rdson`)
 
 Group `high-current` · analysis `dc` · engines qspice, ngspice, ltspice · symbols RDS(on).
 
@@ -1003,11 +1003,11 @@ too small); a 4.5 V/10 V ratio above 2 is a threshold set high or a small KP.
 nothing. A slope of exactly 1 to 100 A is the same card.
 
 **What it cannot tell.** The temperature rise at the current, which doubles the real figure; see
-`mos-temperature`.
+`mosfet-temperature`.
 
 **Standard.** resembles the RDS(on) methods of JEDEC JESD24-x and MIL-STD-750-3, pulsed
 
-#### Transconductance and output conductance against drain current (`mos-gm`)
+#### Transconductance and output conductance against drain current (`mosfet-gm`)
 
 Group `dc` · analysis `ac` · engines qspice, ngspice, ltspice · symbols gfs, gos.
 
@@ -1055,7 +1055,7 @@ gain and the switching speed at rated current.
 
 **Standard.** resembles the forward transconductance method (JEDEC JESD24-x, MIL-STD-750-3) at 1 kHz
 
-#### Ciss, Coss, Crss against drain voltage, and against gate voltage (`mos-capacitance`)
+#### Ciss, Coss, Crss against drain voltage, and against gate voltage (`mosfet-capacitance`)
 
 Group `capacitance` · analysis `ac` · engines qspice, ngspice, ltspice · symbols Ciss, Coss, Crss.
 
@@ -1113,7 +1113,7 @@ the non-quasi-static effects at the switching edge.
 
 **Standard.** resembles the Ciss/Coss/Crss methods of JEDEC JESD24-x at 1 MHz, read as a meter reads a low-impedance capacitance
 
-#### Gate charge — VGS against Qg at constant gate current (`mos-gate-charge`)
+#### Gate charge — VGS against Qg at constant gate current (`mosfet-gate-charge`)
 
 Group `gate-charge` · analysis `tran` · engines qspice, ngspice, ltspice · symbols Qg, Qgs, Qgd, Vplateau.
 
@@ -1143,7 +1143,7 @@ Drawing: DUT; gate current source; load current source with clamp diode to VDD; 
 - `.tran 1e-9 {12/0.001*cgs_guess}` — long enough for the gate to reach 12 V
 - one deck per load current and supply
 
-**Extraction.** From VGS(t): Qgs(th) at Vth (from `mos-transfer`), Qgs where the slope first falls below
+**Extraction.** From VGS(t): Qgs(th) at Vth (from `mosfet-transfer`), Qgs where the slope first falls below
 half its initial value (plateau start), Qgd as the plateau's length, Qg at 4.5 and at 10 V, Vplateau as
 the plateau's mean voltage, Qsw = Qgs − Qgs(th) + Qgd. A deck whose drain never fell (the gate reached
 12 V with the clamp still conducting: the current is above what the card can pass) is "n/a".
@@ -1171,7 +1171,7 @@ and the Miller charge does not exist.
 
 **Standard.** resembles the gate charge method of JEDEC JESD24-2 at constant gate current
 
-#### td(on), tr, td(off) and tf in a resistive-load switch, and Eon/Eoff clamped-inductive (`mos-switching`)
+#### td(on), tr, td(off) and tf in a resistive-load switch, and Eon/Eoff clamped-inductive (`mosfet-switching`)
 
 Group `switching` · analysis `tran` · engines qspice, ngspice, ltspice · symbols td(on), tr, td(off), tf, Eon, Eoff.
 
@@ -1226,7 +1226,7 @@ impedance; transients differ by up to 1 % between simulators.
 
 **Standard.** resembles the resistive switching time method of JEDEC JESD24-x and the clamped inductive fixture of converter data sheets, simplified
 
-#### The body diode — forward drop, third-quadrant conduction and reverse recovery (`mos-body-diode`)
+#### The body diode — forward drop, third-quadrant conduction and reverse recovery (`mosfet-body-diode`)
 
 Group `body-diode` · analysis `dc` · engines qspice, ngspice, ltspice · symbols VSD, IS, trr, Qrr.
 
@@ -1282,7 +1282,7 @@ and the snappiness the real part shows, which depends on the doping profile no c
 
 **Standard.** resembles the source-drain diode forward voltage and reverse recovery methods of JEDEC JESD24-x
 
-#### Threshold, RDS(on), gfs and the body diode at −55 to 175 °C, and the zero-TC point (`mos-temperature`)
+#### Threshold, RDS(on), gfs and the body diode at −55 to 175 °C, and the zero-TC point (`mosfet-temperature`)
 
 Group `temperature` · analysis `dc` · engines qspice, ngspice, ltspice · symbols dVth/dT, RDS(on)(T), VGS(0TC).
 
@@ -1339,7 +1339,7 @@ a real switch at rated current is hotter than its case.
 
 **Standard.** resembles the VGS(th) vs Tj and normalised RDS(on) vs Tj charts of every power MOSFET sheet; IEC 60747-8
 
-#### Voltage noise, the 1/f corner and NF (`mos-noise`)
+#### Voltage noise, the 1/f corner and NF (`mosfet-noise`)
 
 Group `noise` · analysis `noise` · engines qspice, ngspice · symbols en, NF.
 
@@ -1380,7 +1380,7 @@ parts' sheets are silent.
 
 **Standard.** resembles the spot noise method (MIL-STD-750-3); few MOSFET sheets print it
 
-#### Is there any breakdown, and what leaks (`mos-breakdown`)
+#### Is there any breakdown, and what leaks (`mosfet-breakdown`)
 
 Group `breakdown` · analysis `dc` · engines qspice, ngspice, ltspice · symbols V(BR)DSS, IDSS, IGSS.
 
@@ -1412,13 +1412,13 @@ reached; IDSS at 25, 100 and 300 V; IGSS at ±20 V, with the gmin note below 10 
 **Card parameters that drive it:** BV, IBV, NBV (VDMOS), JS, IS, subcircuit zeners.
 
 **A low value.** A breakdown that appears is a VDMOS or subcircuit card; the figure is then worth
-comparing with the sheet, and `V(BR)DSS` against temperature belongs in `mos-temperature` for such cards.
+comparing with the sheet, and `V(BR)DSS` against temperature belongs in `mosfet-temperature` for such cards.
 
 **What it cannot tell.** The part's breakdown when absent; gate oxide rupture, never.
 
 **Standard.** resembles the V(BR)DSS, IDSS and IGSS methods of JEDEC JESD24-x and MIL-STD-750-3
 
-#### Two reference stages' harmonic distortion (model against model only) (`mos-distortion`)
+#### Two reference stages' harmonic distortion (model against model only) (`mosfet-distortion`)
 
 Group `distortion` · analysis `tran` · engines qspice, ngspice · symbols THD, HD2, HD3.
 
@@ -1463,7 +1463,7 @@ capacitance (level 1).
 
 **Standard.** none
 
-#### Do the three simulators agree? (`mos-agreement`)
+#### Do the three simulators agree? (`mosfet-agreement`)
 
 Group `dc` · analysis `derived` · engines qspice, ngspice, ltspice.
 

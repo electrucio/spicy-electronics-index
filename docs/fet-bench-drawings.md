@@ -145,19 +145,19 @@ y = −3.6.
 
 ## MOSFET
 
-### `mos-runs`
+### `mosfet-runs`
 - **Parts.** Copy 1: gate 10 V, drain 1 V through an ammeter. Copy 2: gate 4.5 V, same. Copy 3: gate
   grounded, drain −1 V through an ammeter (the body diode forward).
 - **Drawing.** Two basic layouts side by side: the on-state copy (gate source labelled "10 V (copy 2:
   4.5 V)") and the diode copy with the gate grounded and "VDS = −1 V".
 
-### `mos-tracer`
+### `mosfet-tracer`
 - **Parts.** One DUT per gate step (universal 2 … 15 V, plus five auto); shared swept drain source 0 → 10 V
   in 10 mV (second deck 0 → 30 V in 50 mV); ammeter in each drain.
 - **Drawing.** Basic layout; "0 → 10 / 30 V, swept" on the drain; "VGS step" on the gate; note: auto
-  steps are the gate voltages for 10 mA … 1 A at 5 V from `mos-transfer`.
+  steps are the gate voltages for 10 mA … 1 A at 5 V from `mosfet-transfer`.
 
-### `mos-transfer`
+### `mosfet-transfer`
 - **Parts.** Four DUTs with drains at 1, 6, 15, 25 V through ammeters, gates on one swept source −2 → 15 V
   in 10 mV. A fifth, diode-connected: drain tied to gate through the ammeter, the gate node driven by the
   swept source.
@@ -165,7 +165,7 @@ y = −3.6.
   drain lead going up through the ammeter and back down to the gate node with a `-|` corner, the swept
   source on the left of that node.
 
-### `mos-rdson`
+### `mosfet-rdson`
 - **Parts.** One DUT per gate step (2.5 … 15 V): gate DC source; drain current pulled by the behavioural
   current source (1 mA → 100 A); clamp diode from the drain node to a 30 V rail; voltmeter drain to source.
   Second deck: current held at 0.1, 1, 10 A, gate swept 0 → 15 V.
@@ -173,31 +173,31 @@ y = −3.6.
   clamp diode to the right of it, pointing up to the 30 V rail; the voltmeter further right, down to
   ground; the gate source on the left. Note explains the clamp.
 
-### `mos-gm`
+### `mosfet-gm`
 - As `jfet-gm` with VDS = 6 and 15 V; two layouts side by side.
 
-### `mos-capacitance`
+### `mosfet-capacitance`
 - **Parts.** Copy A (Ciss): drain held at VDS through a 1 H inductor from a DC source; gate 1 V AC through
   an ammeter; source grounded. Copy B (Coss): drain driven by VDS DC + 1 V AC through an ammeter; gate
   grounded. Copy C (Crss): drain held at VDS through a DC source with ammeter; gate 0 V DC + 1 V AC. One
   set per VDS 0.1 … 300 V; a second deck at VDS = 0 steps the gate 0 … 10 V.
 - **Drawing.** Three layouts at x = 0, 8, 16; the inductor vertical in A's drain lead.
 
-### `mos-gate-charge`
+### `mosfet-gate-charge`
 - **Parts.** DUT; gate fed by a constant current source IG (1 or 10 mA) from ground; drain: load current
   source IL (0.1, 1, 10, 50 A) from VDD (10, 30, 100, 300 V) into the drain node, with a clamp diode from
   the drain node up to VDD; probes on VGS(t) and VDS(t).
 - **Drawing.** Current source vertical above the drain node to the VDD rail; the clamp to its right, also
   to the rail; the gate current source on the left pointing into the gate; two probe terminals.
 
-### `mos-switching`
+### `mosfet-switching`
 - **Parts.** Resistive deck: VDD (10 or 30 V) → RL = VDD/ID → drain; gate ← RG (4.7, 10, 25 Ω) ← pulse
   0 → 10 V (or 4.5 V), 2 ns edges, 2 µs; probe on the drain. Inductive deck: VDD 30 V → L 1 mH → drain,
   ideal diode across L (cathode at VDD), RG 10 Ω, two pulses.
 - **Drawing.** Two stages side by side: RL vertical to the rail on the left one; L vertical with the
   freewheeling diode beside it on the right one.
 
-### `mos-body-diode`
+### `mosfet-body-diode`
 - **Parts.** Forward: DUT with its drain grounded; current forced into the source node by the behavioural
   source (1 µA → 100 A); gate source (0, 4.5, 10 V) referred to the source node; voltmeter source to drain.
   Recovery: DUT, gate tied to source; inductor from VR (30 V) to the source node; current source IF (1,
@@ -207,26 +207,26 @@ y = −3.6.
   the source node, the gate source on the left returning to the source node (not to ground). Recovery
   copy: inductor and VR below the source node, IF and the switch to its right.
 
-### `mos-temperature`
+### `mosfet-temperature`
 - The transfer copy (VDS = 15 V) with the thermometer box: −55, 25, 100, 125, 150, 175 °C; the RDS(on) and
   body-diode decks are rerun too, as the note says.
 
-### `mos-noise`
+### `mosfet-noise`
 - As `jfet-noise` with RG = 0 and 1 kΩ, bias for 1 mA … 1 A.
 
-### `mos-breakdown`
+### `mosfet-breakdown`
 - **Parts.** Copy A: drain ← swept 0 → 1000 V through an ammeter, gate grounded. Copy B: gate ← swept
   ±30 V through an ammeter, drain grounded (ground symbol pointing up on the drain lead).
 - **Drawing.** Two layouts side by side.
 
-### `mos-distortion`
+### `mosfet-distortion`
 - **Parts.** Left: common source, VDD 20 V, RL 1 kΩ, source → 100 Ω → node x, 10 mA current sink from x to
   −VSS, 1000 µF from x to ground, 1 kΩ from the sine source to the gate, output at the drain. Right:
   source follower, drain to VDD 25 V, 100 mA current sink under the source, output through 1000 µF into
   100 Ω, 100 Ω / 1 kΩ from the sine source to the gate.
 - **Drawing.** Two stages side by side; the current sinks drawn as current sources to a −VSS rail symbol.
 
-### `jfet-agreement`, `mos-agreement`
+### `jfet-agreement`, `mosfet-agreement`
 - No circuit, no drawing.
 
 ---

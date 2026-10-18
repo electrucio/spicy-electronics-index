@@ -24,7 +24,7 @@ checklist; every session that touches the bench starts here and ticks what it fi
 
 ## Pending, in the order that unblocks the rest
 
-1. **Pins and absences of a macromodel** (`opa-card`, in `models/cards.py`): the five pins of an op-amp
+1. **Pins and absences of a macromodel** (`opamp-card`, in `models/cards.py`): the five pins of an op-amp
    subcircuit mapped by role; the family (Boyle/PARTS, the ADI and TI PSpice generations, behavioural,
    encrypted); whether the text carries noise sources, temperature terms, a supply-current model, input
    protection, a current limit. The preview's `card_facts` is the sketch. A model whose pins cannot be
