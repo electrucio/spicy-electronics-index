@@ -374,7 +374,7 @@ function PartList({ rows, limit = 120 }: { rows: PartRow[]; limit?: number }) {
         {rows.slice(0, limit).map((r) => (
           <li key={r[0]}>
             <A href={partHref(r[0])}>{r[0]}</A>
-            <span class="muted small"> · {nf(r[1])} doc{r[1] === 1 ? '' : 's'}{r[3] ? ` · ${r[3]}m` : ''}</span>
+            <span class="muted small"> · {nf(r[2])} doc{r[2] === 1 ? '' : 's'}{r[3] ? ` · ${r[3]}m` : ''}</span>
           </li>
         ))}
       </ul>

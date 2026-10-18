@@ -29,7 +29,8 @@ export interface DeviceKind {
   parent?: string
 }
 
-/** One row of the search index: part, documents, uses, model candidates, devices, family, data sheets.
+/** One row of the search index: part, usages (how many times it is written on the pages that use it),
+ *  documents (how many it is in), model candidates, devices, family, data sheets.
  *  Devices is a bit per entry of `PartIndex.deviceKinds`, because a part can answer to several; family
  *  is a position in `PartIndex.families`, or -1 when nothing says which. */
 export type PartRow = [string, number, number, number, number, number?, number?]
@@ -49,18 +50,21 @@ export interface PartIndex {
   parts: PartRow[]
 }
 
-/** One entry of the usage filter above the list: a source, a magazine's or a book's decade, or GitHub.
- *  `n` is how many documents the site shows under it, for the label. */
+/** One entry of the usage filter above the list: a source, one of a magazine's decades or one of the
+ *  books source's titles (`label`, and `by` says which), or GitHub. `n` is how many times parts are
+ *  written under it, as the Usages column counts; `docs` in how many documents. */
 export interface UsageFacet {
   key: string
   group: 'projects' | 'paper' | 'github'
   source: string
-  decade?: string
+  label?: string
+  by?: 'decade' | 'title'
   n: number
+  docs?: number
 }
 
-/** `usages.json`: the filter's menu, and each part's documents by entry — one row per part of `PartIndex.parts`,
- *  in its order, as `[entry, documents]` pairs. Built with the index, so it carries the index's stamp. */
+/** `usages.json`: the filter's menu, and each part's usages by entry — one row per part of `PartIndex.parts`,
+ *  in its order, as `[entry, times]` pairs. Built with the index, so it carries the index's stamp. */
 export interface Usages {
   schema: number
   sourcesStamp?: string

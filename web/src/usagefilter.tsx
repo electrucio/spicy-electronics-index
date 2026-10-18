@@ -2,9 +2,10 @@
  * The filter above the parts list: which sources a part's usages are counted from.
  *
  * Folded to one line until asked for, because the list is what the column is for. Open, it is the page's
- * three groups — what somebody built, what a magazine or a book printed (each by decade, folded under its
- * name), and GitHub — each source with a box and how many documents the site shows from it. Its data is
- * fetched the first time it is opened (`usages.json`, 170 KB gzipped).
+ * three groups — what somebody built, what a magazine or a book printed (a magazine by decade and the
+ * books by title, folded under the name), and GitHub — each source with a box and how many times parts
+ * are written in it, which is what the Usages column counts. Its data is fetched the first time it is
+ * opened (`usages.json`, 170 KB gzipped).
  */
 import { useEffect, useRef, useState } from 'preact/hooks'
 
@@ -35,23 +36,31 @@ function Box({ keys, dropped, setDropped, label, title }: {
   )
 }
 
+/** The count beside an entry: how many times parts are written under it, as the column counts; hover for the documents. */
+function Count({ f }: { f: { n: number; docs?: number } }) {
+  return <span class="count" title={f.docs === undefined ? undefined : `written ${n(f.n)} times in ${n(f.docs)} ${f.docs === 1 ? 'document' : 'documents'}`}>{n(f.n)}</span>
+}
+
 function Source({ s, dropped, setDropped }: { s: SourceEntry; dropped: Set<string>; setDropped: (d: Set<string>) => void }) {
   const keys = s.facets.map((f) => f.key)
   const name = s.source === 'github' ? 'GitHub' : s.source
-  const dated = s.facets.length > 1 || !!s.facets[0]?.decade
-  const label = <><span class="srcname">{name}</span><span class="count">{n(s.n)}</span></>
-  if (!dated) return <Box keys={keys} dropped={dropped} setDropped={setDropped} label={label} />
+  // a source in parts: a magazine by decade, the books by title
+  const by = s.facets.find((f) => f.by)?.by
+  const docs = s.facets.some((f) => f.docs === undefined) ? undefined : s.facets.reduce((t, f) => t + (f.docs ?? 0), 0)
+  const label = <><span class="srcname">{name}</span><Count f={{ n: s.n, docs }} /></>
+  if (!by) return <Box keys={keys} dropped={dropped} setDropped={setDropped} label={label} />
   const kept = s.facets.filter((f) => !dropped.has(f.key)).length
+  const what = by === 'decade' ? 'decades' : 'titles'
   return (
     <details class="decades">
       <summary>
         <Box keys={keys} dropped={dropped} setDropped={setDropped} label={label} />
-        <span class="count" aria-hidden="true">{kept === s.facets.length ? 'by decade' : `${kept} of ${s.facets.length} decades`}</span>
+        <span class="count" aria-hidden="true">{kept === s.facets.length ? `by ${by}` : `${kept} of ${s.facets.length} ${what}`}</span>
       </summary>
       <div class="decadelist">
         {s.facets.map((f) => (
-          <Box key={f.key} keys={[f.key]} dropped={dropped} setDropped={setDropped}
-            label={<><span class="srcname">{f.decade ?? 'undated'}</span><span class="count">{n(f.n)}</span></>} />
+          <Box key={f.key} keys={[f.key]} dropped={dropped} setDropped={setDropped} title={f.label}
+            label={<><span class="srcname">{f.label ?? 'undated'}</span><Count f={f} /></>} />
         ))}
       </div>
     </details>

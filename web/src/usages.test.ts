@@ -6,9 +6,10 @@ import type { PartIndex, PartRow, UsageFacet, Usages } from './types'
 
 const FACETS: UsageFacet[] = [
   { key: 'esp', group: 'projects', source: 'esp', n: 1300 },
-  { key: 'elektor/1980s', group: 'paper', source: 'elektor', decade: '1980s', n: 110 },
-  { key: 'elektor/2000s', group: 'paper', source: 'elektor', decade: '2000s', n: 639 },
+  { key: 'elektor/1980s', group: 'paper', source: 'elektor', label: '1980s', by: 'decade', n: 110 },
+  { key: 'elektor/2000s', group: 'paper', source: 'elektor', label: '2000s', by: 'decade', n: 639 },
   { key: 'github', group: 'github', source: 'github', n: 900 },
+  { key: 'books/Pease', group: 'paper', source: 'books', label: 'Pease — Troubleshooting Analog Circuits', by: 'title', n: 12 },
 ]
 const rows: PartRow[] = [
   ['TL072', 30, 40, 3, 1],
@@ -38,10 +39,13 @@ describe('narrow', () => {
 })
 
 describe('the menu', () => {
-  it('groups the facets by source, a magazine with its decades under it', () => {
+  it('groups the facets by source, a magazine with its decades under it and the books with their titles', () => {
     const m = menu(FACETS)
     expect(m.projects.map((s) => s.source)).toEqual(['esp'])
-    expect(m.paper).toEqual([{ source: 'elektor', group: 'paper', n: 749, facets: [FACETS[1], FACETS[2]] }])
+    expect(m.paper).toEqual([
+      { source: 'elektor', group: 'paper', n: 749, facets: [FACETS[1], FACETS[2]] },
+      { source: 'books', group: 'paper', n: 12, facets: [FACETS[4]] },
+    ])
     expect(m.github[0]?.source).toBe('github')
   })
 

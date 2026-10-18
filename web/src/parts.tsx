@@ -30,17 +30,17 @@ import { narrow, usedBy } from './usages'
 export { partPath } from './data'
 export const n = (v: number) => v.toLocaleString('en-GB')
 
-export type Sort = 'documents' | 'models' | 'sheets' | 'name'
+export type Sort = 'usages' | 'models' | 'sheets' | 'name'
 export type Dir = 'asc' | 'desc'
 
 /** The list's columns, each a way of ordering it. A count starts from the most; a name from A. */
 const COLUMNS: { key: Sort; label: string; title: string; num: boolean }[] = [
   { key: 'name', label: 'Part', title: 'Part number', num: false },
-  { key: 'documents', label: 'Usages', title: 'Documents that use it', num: true },
+  { key: 'usages', label: 'Usages', title: 'How many times it is written on the pages that use it', num: true },
   { key: 'models', label: 'SPICE', title: 'SPICE models found for it', num: true },
   { key: 'sheets', label: 'Sheets', title: 'Data sheets and databook pages linked for it', num: true },
 ]
-export const NATURAL: Record<Sort, Dir> = { name: 'asc', documents: 'desc', models: 'desc', sheets: 'desc' }
+export const NATURAL: Record<Sort, Dir> = { name: 'asc', usages: 'desc', models: 'desc', sheets: 'desc' }
 const PAGE = 300
 
 /**
@@ -63,16 +63,16 @@ export function typeOf(r: PartRow, menu: DeviceKind[]): string {
 }
 
 const COUNT: Record<Exclude<Sort, 'name'>, (r: PartRow) => number> = {
-  documents: (r) => r[1],
+  usages: (r) => r[1],
   models: (r) => r[3],
   sheets: (r) => r[6] ?? 0,
 }
 
-/** The order asked for, and inside a tie the most used first, then the most models, then by name. */
+/** The order asked for, and inside a tie the most written first, then in the most documents, then the most models, then by name. */
 export function compare(by: Sort, dir: Dir = NATURAL[by]): (a: PartRow, b: PartRow) => number {
   const sign = dir === 'asc' ? 1 : -1
   return (a, b) => (by === 'name' ? sign * a[0].localeCompare(b[0]) : sign * (COUNT[by](a) - COUNT[by](b)))
-    || b[1] - a[1] || b[3] - a[3] || a[0].localeCompare(b[0])
+    || b[1] - a[1] || b[2] - a[2] || b[3] - a[3] || a[0].localeCompare(b[0])
 }
 
 /**
@@ -86,7 +86,7 @@ export function compare(by: Sort, dir: Dir = NATURAL[by]): (a: PartRow, b: PartR
  * characters or more to count as the head of a query, so BC does not answer for BC108B.
  */
 
-export function search(rows: PartRow[], q: string, by: Sort = 'documents', dir: Dir = NATURAL[by]): PartRow[] {
+export function search(rows: PartRow[], q: string, by: Sort = 'usages', dir: Dir = NATURAL[by]): PartRow[] {
   const needle = q.trim().toUpperCase().replace(/[^A-Z0-9]/g, '')
   if (needle.length < 2) return []
   const exact: PartRow[] = []
@@ -701,8 +701,8 @@ function Splitter({ host, width, setWidth }: {
 export function Browser({ part, onPick }: { part: string | null; onPick: (p: string | null) => void }) {
   const [index, setIndex] = useState<PartIndex | null>(null)
   const [q, setQ] = useState('')
-  const [by, setBy] = useState<Sort>('documents')
-  const [dir, setDir] = useState<Dir>(NATURAL.documents)
+  const [by, setBy] = useState<Sort>('usages')
+  const [dir, setDir] = useState<Dir>(NATURAL.usages)
   const [device, setDevice] = useState('')
   // The usage filter: the facets left out, by key (usages.ts); its data, once asked for; and whether the
   // data was asked for again because it came from another build than the index.
@@ -782,7 +782,7 @@ export function Browser({ part, onPick }: { part: string | null; onPick: (p: str
           <table>
             <thead>
               <tr>
-                {COLUMNS.map((c) => [c.key === 'documents' && <th key="type" class="type">Type</th>,
+                {COLUMNS.map((c) => [c.key === 'usages' && <th key="type" class="type">Type</th>,
                   <th
                     key={c.key}
                     class={c.num ? 'num' : undefined}

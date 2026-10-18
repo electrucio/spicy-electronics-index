@@ -8,7 +8,7 @@
  */
 import type { PartIndex, PartRow, UsageFacet, Usages } from './types'
 
-/** A part's documents by facet, as `usages.json` holds them. */
+/** A part's usages by facet, as `usages.json` holds them. */
 export type Used = [number, number][]
 
 /** Each part's row of the usages file, by part — when the file was built with this index. */
@@ -37,7 +37,7 @@ export function narrow(rows: PartRow[], used: Map<string, Used>, facets: UsageFa
   return out
 }
 
-/** One source of the menu: its facets, in order — a magazine's decades, or the one facet a site is. */
+/** One source of the menu: its facets, in order — a magazine's decades, the books' titles, or the one facet a site is. */
 export type SourceEntry = { source: string; group: UsageFacet['group']; facets: UsageFacet[]; n: number }
 
 /** The menu by group and source, in the file's order, which is the page's. */
