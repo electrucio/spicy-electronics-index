@@ -51,8 +51,9 @@ checklist; every session that touches the bench starts here and ticks what it fi
    as the op-amps' do. One session.
 7. **Sheets beside the numbers**: the figure boxes located (`sei datasheets figures` over the survey's
    `figures.csv`) and cropped (`make datasheets-crops`), for every kind. One session.
-8. **The site**: groups and uses per kind in `web/src/behaviours.ts` and `methods.tsx`; the characterisation
-   pane shown (`CHARACTERIZATION` in `features.ts`). One session.
+8. **The site**: groups and uses per kind in `web/src/behaviours.ts` and `methods.tsx`. The characterisation
+   pane itself is shown since October 2026 (`CHARACTERIZATION` in `features.ts`), with the bipolar records.
+   One session.
 9. **The survey's missing sheets**: Analog Devices, ST, Rohm and Intersil from the Internet Archive when it
    can be reached from the machine that runs it (it could not from the cloud session), and more sheets
    opened by hand where robots.txt says no (Nisshinbo, Microchip). Renesas answered 403.
