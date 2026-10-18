@@ -15,7 +15,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { AboutPart, Databooks } from './about'
 import { Heading } from './anchor'
 import { SellersSection } from './sellers'
-import { DATA, loadIndex, partPath, reloadIndex } from './data'
+import { DATA, loadIndex, loadUsages, partPath, reloadIndex } from './data'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
@@ -23,8 +23,10 @@ import { CHARACTERIZATION } from './features'
 import { ModelKey } from './key'
 import { Loading } from './loading'
 import { modelKey } from './sealed'
-import type { DeviceKind, PageUse, PartIndex, PartModel, PartPage, PartRow, UseKind } from './types'
+import type { DeviceKind, PageUse, PartIndex, PartModel, PartPage, PartRow, Usages, UseKind } from './types'
 import { CopyButton, usePartTexts } from './unlock'
+import { UsageFilter } from './usagefilter'
+import { narrow, usedBy } from './usages'
 export { partPath } from './data'
 export const n = (v: number) => v.toLocaleString('en-GB')
 
@@ -702,19 +704,34 @@ export function Browser({ part, onPick }: { part: string | null; onPick: (p: str
   const [by, setBy] = useState<Sort>('documents')
   const [dir, setDir] = useState<Dir>(NATURAL.documents)
   const [device, setDevice] = useState('')
+  // The usage filter: the facets left out, by key (usages.ts); its data, once asked for; and whether the
+  // data was asked for again because it came from another build than the index.
+  const [dropped, setDropped] = useState<Set<string>>(new Set())
+  const [usages, setUsages] = useState<Usages | null>(null)
+  const [retried, setRetried] = useState(false)
   const [shown, setShown] = useState(PAGE)
   const [width, setWidth] = useState(savedWidth)
   const host = useRef<HTMLDivElement>(null)
 
   useEffect(() => { loadIndex().then(setIndex) }, [])
+  const used = useMemo(() => (index && usages ? usedBy(index, usages) : null), [index, usages])
+  // The two files are cached apart: one from the last deploy beside one from this one is asked for again,
+  // once, past the cache; if what comes back still does not match, the filter says so (like Detail).
+  useEffect(() => {
+    if (!index || !usages || used || retried || !index.sourcesStamp) return
+    setRetried(true)
+    loadUsages(index.sourcesStamp).then(setUsages)
+  }, [index, usages, used, retried])
 
   const searching = q.trim().length >= 2
+  const narrowed = dropped.size > 0 && !!used && !!usages
   const list = useMemo(() => {
     if (!index) return []
-    const kept = ofDevice(index.parts, device, index.deviceKinds)
+    let kept = ofDevice(index.parts, device, index.deviceKinds)
+    if (narrowed) kept = narrow(kept, used!, usages!.facets, dropped)
     return searching ? search(kept, q, by, dir) : order(kept, by, dir)
-  }, [index, q, by, dir, device, searching])
-  useEffect(() => setShown(PAGE), [q, by, dir, device])
+  }, [index, q, by, dir, device, searching, narrowed, used, usages, dropped])
+  useEffect(() => setShown(PAGE), [q, by, dir, device, dropped])
   const kind = useMemo(() => {
     const r = index && part ? index.parts.find((p) => p[0] === part) : undefined
     return r && index ? typeOf(r, index.deviceKinds) : ''
@@ -751,10 +768,15 @@ export function Browser({ part, onPick }: { part: string | null; onPick: (p: str
             d.n > 0 ? <option key={d.key} value={d.key}>{d.parent ? '\u2003' : ''}{d.label} ({n(d.n)})</option> : null
           ))}
         </select>
+        <UsageFilter
+          usages={usages} stale={!!index && !!usages && !used && (retried || !index.sourcesStamp)} dropped={dropped} setDropped={setDropped}
+          onOpen={() => { if (!usages) loadUsages().then(setUsages) }}
+        />
         <p class="count">
           {!index ? <Loading what="the parts list" inline />
             : searching ? `${n(list.length)} match ${q} · closest first`
-              : `${n(list.length)} parts · click a heading to sort`}
+              : narrowed ? `${n(list.length)} parts used in the ticked sources`
+                : `${n(list.length)} parts · click a heading to sort`}
         </p>
         <div class="plist">
           <table>

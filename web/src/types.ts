@@ -49,6 +49,25 @@ export interface PartIndex {
   parts: PartRow[]
 }
 
+/** One entry of the usage filter above the list: a source, a magazine's or a book's decade, or GitHub.
+ *  `n` is how many documents the site shows under it, for the label. */
+export interface UsageFacet {
+  key: string
+  group: 'projects' | 'paper' | 'github'
+  source: string
+  decade?: string
+  n: number
+}
+
+/** `usages.json`: the filter's menu, and each part's documents by entry — one row per part of `PartIndex.parts`,
+ *  in its order, as `[entry, documents]` pairs. Built with the index, so it carries the index's stamp. */
+export interface Usages {
+  schema: number
+  sourcesStamp?: string
+  facets: UsageFacet[]
+  parts: [number, number][][]
+}
+
 export interface PartModel {
   source: string
   name: string

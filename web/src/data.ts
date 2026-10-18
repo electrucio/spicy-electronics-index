@@ -3,7 +3,7 @@
  * catalogue a few more; asking twice for either would be the only cost of opening a family page from a
  * part page, so neither is asked twice.
  */
-import type { Catalogue, PartIndex } from './types'
+import type { Catalogue, PartIndex, Usages } from './types'
 
 export const DATA = `${import.meta.env.BASE_URL}data`
 
@@ -49,6 +49,21 @@ export function reloadIndex(stamp: string): Promise<PartIndex> {
     .then((r) => (r.ok ? (r.json() as Promise<PartIndex>) : Promise.reject(r.status)))
     .catch(() => before ?? { schema: 0, sources: [], kinds: [], deviceKinds: [], parts: [] })
   return index
+}
+
+let usages: Promise<Usages> | null = null
+const NO_USAGES: Usages = { schema: 0, facets: [], parts: [] }
+
+/** The usage filter's data, fetched the first time the filter is opened: half the index's size again, and
+ *  only a reader who narrows the list by source needs it. With `stamp`, asked for again past every cache. */
+export function loadUsages(stamp?: string): Promise<Usages> {
+  if (stamp || !usages) {
+    const before = usages
+    usages = fetch(stamp ? `${DATA}/usages.json?ss=${encodeURIComponent(stamp)}` : `${DATA}/usages.json`, stamp ? { cache: 'reload' } : undefined)
+      .then((r) => (r.ok ? (r.json() as Promise<Usages>) : Promise.reject(r.status)))
+      .catch(() => before ?? NO_USAGES)
+  }
+  return usages
 }
 
 export function loadCatalogue(): Promise<Catalogue> {

@@ -562,3 +562,41 @@ def test_the_page_leaves_the_bench_columns_empty_for_exactly_the_passive_entries
     ts = (Path(__file__).parents[2] / "web" / "src" / "parts.tsx").read_text(encoding="utf-8")
     block = ts[ts.index("export const NOT_BENCHED"):ts.index("function PhysicsCell")]
     assert set(re.findall(r"'([a-z-]+)'", block)) == {"passive", *(k for k, _ in P.PASSIVE_DEVICES)}
+
+
+def test_the_usage_filter_counts_each_part_by_source_and_a_magazine_by_decade(data, monkeypatch):
+    """The list's filter needs, per part, how many documents each source shows — a magazine by decade, and
+    every GitHub repository under one entry — and the pieces add up to the part's count in the index."""
+    reg = config.schematics_registry()
+    reg.write_text(reg.read_text(encoding="utf-8") + "ww: {kind: magazine, title: WW, home_url: 'https://ww.example/', status: active}\n",
+                   encoding="utf-8")
+    fields = ("id", "key", "title", "url", "parent", "role", "year", "month", "pages", "sha")
+    rows = [["0", "a", "Oct 1975", "https://ww.example/1975-10.pdf", "", "issue", "1975", "10", "1", ""],
+            ["1", "b", "Jan 1983", "https://ww.example/1983-01.pdf", "", "issue", "1983", "1", "1", ""],
+            ["2", "c", "Undated", "https://ww.example/x.pdf", "", "issue", "", "", "1", ""],
+            ["3", "d", "A board", "https://github.com/o/r/blob/main/x.sch", "", "schematic", "2021", "", "1", ""]]
+    import csv
+    for path, head, body in [
+        (config.schematics_documents("ww"), fields, rows),
+        (config.schematics_pages("ww"), ("doc", "page", "url", "schematic", "parts"),
+         [[d[0], "1", d[3] + "#page=1", "1", "1"] for d in rows]),
+        (config.schematics_uses("ww"), ("part", "doc", "page", "times", "near"),
+         [["12AX7", "0", "1", "1", ""], ["12AX7", "1", "1", "1", ""], ["12AX7", "2", "1", "1", ""], ["TL072", "3", "1", "1", ""]]),
+    ]:
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(head)
+            w.writerows(body)
+    idx = P.index()
+    menu, by_part = P.usage_facets(idx)
+    keys = [f["key"] for f in menu]
+    # the groups in the page's order; the busiest source first; a magazine's decades oldest first, undated last
+    assert keys == ["esp", "el34world", "ww/1970s", "ww/1980s", "ww", "github"]
+    assert [f["group"] for f in menu] == ["projects", "projects", "paper", "paper", "paper", "github"]
+    assert menu[2] == {"key": "ww/1970s", "group": "paper", "source": "ww", "decade": "1970s", "n": 1}
+    assert "decade" not in menu[0] and menu[-1]["source"] == "github"
+    assert by_part["12AX7"] == [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1]]
+    assert by_part["TL072"] == [[0, 1], [5, 1]]
+    search, _ = P.search_index(idx, {})
+    for row in search:
+        assert sum(n for _, n in by_part.get(row[0], [])) == row[1]

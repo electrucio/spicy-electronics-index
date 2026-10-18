@@ -1088,6 +1088,63 @@ def part_payload(part: str, idx: dict, recipe: dict | None) -> dict:
     return out
 
 
+# The filter above the parts list: where a part's usages come from, as the list can be narrowed by. A
+# facet is a source; a magazine or a book is one facet per decade, because somebody after what the 1970s
+# printed does not want the 2000s; and GitHub is one facet whatever crawl found the repository, the way the
+# part page lists every repository together. Grouped as the part page groups them.
+GITHUB_FACET = "github"
+PAPER_KINDS = frozenset(("magazine", "book"))
+FACET_GROUPS = ("projects", "paper", GITHUB_FACET)
+
+
+def decade_of(doc: dict) -> str:
+    """`1980s` for a document dated anywhere in that decade; nothing for one without a year."""
+    year = doc.get("year", "")
+    return f"{year[:3]}0s" if year[:4].isdigit() else ""
+
+
+def facet_of(source: str, kind: str, doc: dict) -> tuple[str, str]:
+    """Which facet of the usage filter a document of this source counts under: (source, decade)."""
+    if doc.get("url", "").startswith(REPO_HOST):
+        return (GITHUB_FACET, "")
+    return (source, decade_of(doc)) if kind in PAPER_KINDS else (source, "")
+
+
+def facet_group(source: str, kind: str) -> str:
+    return GITHUB_FACET if source == GITHUB_FACET else "paper" if kind in PAPER_KINDS else "projects"
+
+
+def usage_facets(idx: dict) -> tuple[list[dict], dict[str, list[list[int]]]]:
+    """The usage filter's menu, and each part's documents under every entry of it.
+
+    The menu: one entry per facet with its group, source, decade and how many documents the site shows
+    under it — the groups in the page's order, inside a group the sources with the most documents first,
+    and a source's decades oldest first, the undated ones last. A part's row is `[entry, documents]`
+    pairs, by entry; the documents add up to the part's count in the search index, because both count
+    the same shown documents once.
+    """
+    kinds = idx["kinds"]
+    by_facet: dict[tuple[str, str], set] = defaultdict(set)
+    by_part: dict[str, dict[tuple[str, str], set]] = defaultdict(lambda: defaultdict(set))
+    for part, us in idx["uses"].items():
+        for si, u in us:
+            source = idx["sources"][si]
+            f = facet_of(source, kinds.get(source, ""), idx["documents"][source].get(u["doc"], {}))
+            by_facet[f].add((si, u["doc"]))
+            by_part[part][f].add((si, u["doc"]))
+    per_source = Counter()
+    for (source, _), docs in by_facet.items():
+        per_source[source] += len(docs)
+    order = sorted(by_facet, key=lambda f: (FACET_GROUPS.index(facet_group(f[0], kinds.get(f[0], ""))),
+                                            -per_source[f[0]], f[0], f[1] == "", f[1]))
+    at = {f: i for i, f in enumerate(order)}
+    menu = [{"key": f"{source}/{decade}" if decade else source, "group": facet_group(source, kinds.get(source, "")),
+             "source": source, **({"decade": decade} if decade else {}), "n": len(by_facet[(source, decade)])}
+            for source, decade in order]
+    rows = {part: sorted([at[f], len(docs)] for f, docs in fs.items()) for part, fs in by_part.items()}
+    return menu, rows
+
+
 def narrowed(devices: tuple[str, ...], family: str) -> tuple[str, ...]:
     """The devices a part answers to, cut down to the ones its family can be.
 
