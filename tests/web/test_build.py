@@ -51,3 +51,16 @@ def test_a_part_with_a_slash_in_its_name_gets_a_directory_not_a_crash(tmp_path):
     from spicy_electronics_index.web.build import write_json
     n = write_json(tmp_path / "part", "ADC121C027CIMK/NOPB.json", {"part": "ADC121C027CIMK/NOPB"})
     assert (tmp_path / "part" / "ADC121C027CIMK" / "NOPB.json").is_file() and n > 0
+
+
+def test_the_usage_filters_data_is_written_apart_from_the_index_and_in_its_order(tmp_path):
+    web_build.build(tmp_path)
+    if not (tmp_path / "parts.json").is_file():
+        pytest.skip("no search index in this checkout")
+    index = json.loads((tmp_path / "parts.json").read_text(encoding="utf-8"))
+    usages = json.loads((tmp_path / "usages.json").read_text(encoding="utf-8"))
+    assert usages["sourcesStamp"] == index["sourcesStamp"]
+    assert len(usages["parts"]) == len(index["parts"])
+    assert {f["group"] for f in usages["facets"]} <= {"projects", "paper", "github"}
+    for row, used in zip(index["parts"], usages["parts"]):
+        assert sum(n for _, n in used) == row[1]

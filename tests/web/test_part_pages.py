@@ -562,3 +562,68 @@ def test_the_page_leaves_the_bench_columns_empty_for_exactly_the_passive_entries
     ts = (Path(__file__).parents[2] / "web" / "src" / "parts.tsx").read_text(encoding="utf-8")
     block = ts[ts.index("export const NOT_BENCHED"):ts.index("function PhysicsCell")]
     assert set(re.findall(r"'([a-z-]+)'", block)) == {"passive", *(k for k, _ in P.PASSIVE_DEVICES)}
+
+
+def test_the_usage_filter_counts_each_part_by_source_a_magazine_by_decade_and_a_book_by_title(data):
+    """The list's filter needs, per part, how many times each source writes it — a magazine by decade,
+    the books source by title, and every GitHub repository under one entry — and the pieces add up to
+    the part's usages in the index."""
+    reg = config.schematics_registry()
+    reg.write_text(reg.read_text(encoding="utf-8")
+                   + "ww: {kind: magazine, title: WW, home_url: 'https://ww.example/', status: active}\n"
+                   + "books: {kind: book, title: Books, home_url: 'https://b.example/', status: active}\n",
+                   encoding="utf-8")
+    fields = ("id", "key", "title", "url", "parent", "role", "year", "month", "pages", "sha")
+    ww = [["0", "a", "Oct 1975", "https://ww.example/1975-10.pdf", "", "issue", "1975", "10", "1", ""],
+          ["1", "b", "Jan 1983", "https://ww.example/1983-01.pdf", "", "issue", "1983", "1", "1", ""],
+          ["2", "c", "Undated", "https://ww.example/x.pdf", "", "issue", "", "", "1", ""],
+          ["3", "d", "A board", "https://github.com/o/r/blob/main/x.sch", "", "schematic", "2021", "", "1", ""]]
+    books = [["0", "e", "Valley & Wallman — Vacuum Tube Amplifiers", "https://b.example/vw.pdf", "", "book", "", "", "1", ""],
+             ["1", "f", "Ben Duncan — High Performance Audio Power Amplifiers", "https://b.example/bd.pdf", "", "book", "", "", "1", ""]]
+    import csv
+    for path, head, body in [
+        (config.schematics_documents("ww"), fields, ww),
+        (config.schematics_pages("ww"), ("doc", "page", "url", "schematic", "parts"),
+         [[d[0], "1", d[3] + "#page=1", "1", "1"] for d in ww]),
+        (config.schematics_uses("ww"), ("part", "doc", "page", "times", "near"),
+         [["12AX7", "0", "1", "3", ""], ["12AX7", "1", "1", "1", ""], ["12AX7", "2", "1", "1", ""], ["TL072", "3", "1", "2", ""]]),
+        (config.schematics_documents("books"), fields, books),
+        (config.schematics_pages("books"), ("doc", "page", "url", "schematic", "parts"),
+         [[d[0], "1", d[3] + "#page=1", "1", "1"] for d in books]),
+        (config.schematics_uses("books"), ("part", "doc", "page", "times", "near"),
+         [["12AX7", "0", "1", "4", ""], ["12AX7", "1", "1", "1", ""], ["12AX7", "1", "2", "1", ""]]),
+    ]:
+        with open(path, "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f, lineterminator="\n")
+            w.writerow(head)
+            w.writerows(body)
+    idx = P.index()
+    menu, by_part = P.usage_facets(idx)
+    keys = [f["key"] for f in menu]
+    # the groups in the page's order; the most written source first; a magazine's decades oldest first,
+    # undated last; a book per title, A to Z
+    assert keys == ["esp", "el34world",
+                    "books/Ben Duncan — High Performance Audio Power Amplifiers", "books/Valley & Wallman — Vacuum Tube Amplifiers",
+                    "ww/1970s", "ww/1980s", "ww", "github"]
+    assert [f["group"] for f in menu] == ["projects", "projects", "paper", "paper", "paper", "paper", "paper", "github"]
+    assert menu[4] == {"key": "ww/1970s", "group": "paper", "source": "ww", "label": "1970s", "by": "decade", "n": 3, "docs": 1}
+    assert menu[3]["by"] == "title" and menu[3]["n"] == 4
+    assert "label" not in menu[0] and menu[-1]["source"] == "github"
+    assert by_part["12AX7"] == [[0, 2], [1, 1], [2, 2], [3, 4], [4, 3], [5, 1], [6, 1]]
+    assert by_part["TL072"] == [[0, 1], [7, 2]]
+    search, _ = P.search_index(idx, {})
+    for row in search:
+        assert sum(n for _, n in by_part.get(row[0], [])) == row[1]
+
+
+def test_a_withdrawn_document_is_off_the_site_before_the_next_export(data):
+    """`withdrawn.csv` is honoured by the site build too, so a copy indexed twice goes from the page and
+    from every count as soon as it is listed, not when the maintainer next exports the index."""
+    config.schematics_withdrawn().write_text(
+        "# Documents never to publish.\nkey,why,when\nk2,the same page as another,2026-10-18\n", encoding="utf-8")
+    idx = P.index()
+    assert "1" not in idx["documents"]["esp"]
+    assert P.part_payload("TL072", idx, None)["docs"] == []
+    rows, _ = P.search_index(idx, {})
+    assert {r[0]: (r[1], r[2]) for r in rows}.get("TL072", (0, 0)) == (0, 0)
+    assert P.part_payload("12AX7", idx, None)["n"]["documents"] == 1     # the others are untouched
