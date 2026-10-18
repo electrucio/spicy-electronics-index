@@ -1,7 +1,7 @@
 /** Filtering and ordering the parts list, which is the only logic the browser still does for itself. */
 import { describe, expect, it } from 'vitest'
 
-import { byDate, hasBit, ofDevice, order, pageHref, partPath, repoOf, sameSources, search, typeOf } from './parts'
+import { byDate, hasBit, ofDevice, order, pageHref, partPath, repoOf, sameSources, search, typeOf, usagesOf } from './parts'
 import type { DeviceKind, PartRow } from './types'
 
 /** The menu, in menu order; a part row carries one bit per entry, the way the built index does. */
@@ -229,5 +229,16 @@ describe("a magazine's issues", () => {
   it('are in date order, a month-dated issue inside its year, an undated one last', () => {
     const got = byDate([doc('', 'none'), doc('1985-08', 'aug'), doc('1979', 'y79'), doc('1985-02', 'feb')])
     expect(got.map((d) => d.t)).toEqual(['y79', 'feb', 'aug', 'none'])
+  })
+})
+
+describe('usagesOf', () => {
+  it('adds up how many times the part is written, which is what the list counts', () => {
+    const docs = [
+      { p: [[1, '#page=1', 'Q1', 3], [2, '#page=2', '', 1]] },
+      { p: [[1, '#page=1', 'V1 V2', 2]] },
+    ] as { p: import('./types').PageUse[] }[]
+    expect(usagesOf(docs)).toBe(6)
+    expect(usagesOf([{ p: [[4, '#page=4', '', 0]] }] as never)).toBe(1)    // a page without a count is written once
   })
 })
