@@ -245,6 +245,24 @@ export interface NameReading {
   use?: string
 }
 
+/** One package a part comes in, as an EDA library has it: the footprint's facts, and the values its
+ *  authors typed beside the part (`datasheets.libraries`). Sizes in mm; `names` are the package's other names. */
+export interface PackageInfo {
+  source: string
+  name: string
+  page: string
+  maker?: string
+  makerText?: string
+  mounting?: string
+  pads?: string
+  spacing?: string
+  drill?: string
+  body?: string
+  names?: string
+  reference?: string
+  values?: string
+}
+
 export interface About {
   name?: NameReading
   /** The family, and what says so: a maker's sheet, the letters of the name, or the part's kind. */
@@ -268,6 +286,8 @@ export interface About {
   sheets?: [string, string, string, string, string, string, string?][]
   /** Pages of databooks and device tables that print the part, in the same shape as `sheets`. */
   books?: [string, string, string, string, string, string, string?][]
+  /** The packages the open EDA libraries draw the part in, with what KiCad's footprint says of each. */
+  packages?: PackageInfo[]
   /** Catalogues that list the part today: census source, link. */
   listed?: [string, string][]
   /** The oldest dated document here that prints it: year, title, source position, link. */

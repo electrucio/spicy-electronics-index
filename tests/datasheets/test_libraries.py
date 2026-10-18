@@ -133,6 +133,18 @@ def test_librepcb_gives_one_row_per_maker_with_the_mpns_and_the_typed_values_in_
     assert on["name"] == "General-purpose rectifier diode." and on["keywords"] == "diode,rectifier"
 
 
+def test_a_maker_the_catalogue_does_not_know_is_not_replaced_by_the_sheets_host():
+    text = LIBREPCB.replace('(manufacturer "Vishay")', '(manufacturer "Comchip Technology")')
+    rows = list(lib.librepcb_rows(text, "dev/x/device.lp", {}, NAMES, "s", "r", PAGE))
+    assert [(r["maker"], r["maker_text"]) for r in rows] == [("onsemi", "onsemi"), ("", "Comchip Technology")]
+    assert lib.maker_of("", "https://www.onsemi.com/x.pdf") == "onsemi"        # nobody named: the host says
+
+
+def test_rows_cite_a_tag_when_the_clone_sits_on_it_and_link_a_commit_otherwise():
+    assert lib.revision("9.0.9.1", ["9.0.9.1"], "abc1234def", "2026-06-01") == ("9.0.9.1", "9.0.9.1")
+    assert lib.revision("master", [], "abc1234def", "2026-06-26") == ("2026-06-26 (abc1234)", "abc1234def")
+
+
 def test_librepcb_skips_a_device_nobody_in_the_index_knows():
     assert list(lib.librepcb_rows(LIBREPCB.replace("1N4006", "ZZ9"), "dev/x/device.lp", {}, NAMES, "s", "r", PAGE)) == []
 

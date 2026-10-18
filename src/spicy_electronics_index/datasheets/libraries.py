@@ -113,11 +113,11 @@ def host_maker(url: str) -> str:
 
 
 def maker_of(text: str, url: str = "") -> str:
-    """The maker named, by the catalogue's aliases, else the one whose site serves the sheet."""
+    """The maker named, by the catalogue's aliases; when nobody is named, the one whose site serves the
+    sheet. A maker the catalogue does not know is still the maker named: the sheet's host does not stand
+    in for it (Comchip's 1N4007 is not onsemi's because the device links onsemi's sheet)."""
     if text:
-        mid, _ = catalogue.maker_of(text)
-        if mid:
-            return mid
+        return catalogue.maker_of(text)[0]
     return host_maker(url) if url else ""
 
 
@@ -481,9 +481,18 @@ def checkout(source: str, entry: dict, refresh: bool) -> tuple[Path, str]:
         git(root, "fetch", "-q", "--depth", "1", "origin", entry["ref"])
         git(root, "checkout", "-q", "FETCH_HEAD")
     tags = git(root, "tag", "--points-at", "HEAD").split()
-    if entry["ref"] in tags:
-        return root, entry["ref"]
-    return root, f"{git(root, 'log', '-1', '--format=%cs')} ({git(root, 'rev-parse', '--short', 'HEAD')})"
+    sha = git(root, "rev-parse", "HEAD")
+    date = git(root, "log", "-1", "--format=%cs")
+    return root, revision(entry["ref"], tags, sha, date)
+
+
+def revision(ref: str, tags: list[str], sha: str, date: str) -> tuple[str, str]:
+    """What the rows cite and what their links use: the tag, when `ref` is one the clone sits on; else the
+    commit's date and short hash to read, and the full hash in the link, which a branch name would not
+    keep pointing at."""
+    if ref in tags:
+        return ref, ref
+    return f"{date} ({sha[:7]})", sha
 
 
 def write(source: str, rows: list[dict]) -> Path:
@@ -501,12 +510,13 @@ def write(source: str, rows: list[dict]) -> Path:
 
 
 def run(source: str, entry: dict, refresh: bool = False) -> list[dict]:
-    root, ref = checkout(source, entry, refresh)
+    root, (ref, link_ref) = checkout(source, entry, refresh)
     names = known_names()
     seen: set[tuple] = set()
     out = []
     _, fields = TABLES.get(source, (datasheet_catalogue, FIELDS))
-    for r in READERS[source](root, names, source, ref, entry["page"]):
+    page = entry["page"].replace("{ref}", link_ref)            # the readers fill in {path}
+    for r in READERS[source](root, names, source, ref, page):
         key = tuple(r.get(k, "") for k in fields)
         if key not in seen:
             seen.add(key)

@@ -47,6 +47,7 @@ from spicy_electronics_index.core.config import (
     datasheet_covers,
     datasheet_documents,
     datasheet_links,
+    datasheet_packages,
     datasheet_pages,
     datasheet_polarity,
     datasheets_table,
@@ -372,6 +373,8 @@ def index() -> dict:
     idx["catalogued"] = catalogued()
     idx["catalogue_kind"] = {p: k for p, rs in idx["catalogued"].items() if (k := catalogue_kind(rs))}
     idx["sheets"] = archive_sheets()
+    idx["library_packages"] = library_rows()
+    idx["footprints"] = footprints()
     idx["harvested"] = harvested_sheets()
     idx["databook"] = databook_pages()
     idx["books"] = {r[4] for rs in idx["databook"].values() for r in rs}
@@ -549,6 +552,58 @@ def catalogued() -> dict[str, list[list[str]]]:
     for f in [datasheets_table(), *(sorted(d.glob("*.csv")) if d.is_dir() else ())]:
         for r in rows(f):
             out[r["part"]].append([r.get(k, "") for k in CATALOGUE_FIELDS])
+    return out
+
+
+# What an EDA library's row carries beyond the catalogue columns (`datasheets.libraries.FIELDS`).
+LIBRARY_FIELDS = ("source", "maker", "maker_text", "package", "keywords", "parameters", "page", "revision")
+
+
+def library_rows() -> dict[str, list[dict]]:
+    """What the open EDA libraries say of each part's package and values: the catalogue rows that carry a
+    `package` or `parameters` column, by part."""
+    out: dict[str, list[dict]] = defaultdict(list)
+    d = datasheet_catalogue("x").parent
+    for f in sorted(d.glob("*.csv")) if d.is_dir() else ():
+        for r in rows(f):
+            if r.get("package") or r.get("parameters"):
+                out[r["part"]].append({k: r.get(k, "") for k in LIBRARY_FIELDS})
+    return out
+
+
+def footprints() -> dict[str, dict]:
+    """What KiCad's footprint says of each package, by the footprint's full name (`Package_TO_SOT_THT:TO-92_Inline`)."""
+    d = datasheet_packages("x").parent
+    return {r["footprint"]: r for f in (sorted(d.glob("*.csv")) if d.is_dir() else ()) for r in rows(f)}
+
+
+def packages(part: str, idx: dict) -> list[dict]:
+    """The packages a part is drawn in, one per library row that names one, with what the footprint says
+    of it: mounting, pins and their spacing, drill, body size, the package's other names and the drawing
+    it was measured from; and the values the library's authors typed beside the part."""
+    out, seen = [], set()
+    fps = idx.get("footprints", {})
+    for r in idx.get("library_packages", {}).get(part, []):
+        fp = fps.get(r["package"], {})
+        name = r["package"].split(":", 1)[-1] if ":" in r["package"] else r["package"]
+        key = (name, r["maker_text"], r["parameters"])
+        if key in seen:
+            continue
+        seen.add(key)
+        row = {"source": r["source"], "name": name, "page": fp.get("page") or r["page"]}
+        if r["maker"]:
+            row["maker"] = r["maker"]
+        if r["maker_text"]:
+            row["makerText"] = r["maker_text"]
+        if fp:
+            row.update({k: v for k, v in (("mounting", fp.get("mounting")), ("pads", fp.get("pads")),
+                                          ("spacing", fp.get("pad_spacing_mm")), ("drill", fp.get("drill_mm")),
+                                          ("names", fp.get("tags")), ("reference", fp.get("reference"))) if v})
+            if fp.get("body_x_mm") and fp.get("body_y_mm"):
+                row["body"] = f"{fp['body_x_mm']} × {fp['body_y_mm']} mm"
+        if r["parameters"]:
+            row["values"] = r["parameters"]
+        out.append(row)
     return out
 
 
@@ -858,6 +913,9 @@ def about(part: str, idx: dict, recipe: dict | None) -> dict:
         out["books"] = bound
     if kinship:
         out["kin"] = kinship
+    pk = packages(part, idx)
+    if pk:
+        out["packages"] = pk
     listed = idx.get("listed_by", {}).get(part)
     if listed:
         out["listed"] = listed
