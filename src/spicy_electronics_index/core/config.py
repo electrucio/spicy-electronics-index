@@ -205,6 +205,12 @@ def datasheet_catalogue(source: str) -> Path:
     return PUBLIC_DATA / "datasheets" / "catalogue" / f"{source}.csv"
 
 
+def datasheet_packages(source: str) -> Path:
+    """What an EDA library's footprint says about each package the indexed parts come in: mounting, pins,
+    pitch, body size, the drawing it was measured from."""
+    return PUBLIC_DATA / "datasheets" / "packages" / f"{source}.csv"
+
+
 def datasheet_polarity() -> Path:
     """Which way round each transistor is, read off a page found for it: the words that say so, and the
     page's link and checksum."""
@@ -781,6 +787,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("datasheet_documents", "public", ("onsemi_docs",)),
     ("datasheet_covers", "public", ("onsemi_docs",)),
     ("datasheet_catalogue", "public", ("diotec_products",)),
+    ("datasheet_packages", "public", ("kicad_footprints",)),
     ("datasheet_pages", "public", ("archive_databooks",)),
     ("datasheets_state", "public", ("ti_products",)),
     ("datasheet_polarity", "public", ()),

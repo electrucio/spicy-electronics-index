@@ -592,3 +592,18 @@ librepcb_base:
     sheet links. A device names the bare part (BC547) and lists each maker''s MPNs under it; the row is per
     device and maker, with every value an attribute takes across that maker''s MPNs. 64 parts this project
     knows.'
+kicad_footprints:
+  kind: eda library
+  repo: https://gitlab.com/kicad/libraries/kicad-footprints.git
+  ref: 9.0.9.1
+  page: 'https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/{ref}/{path}'
+  licence: CC-BY-SA-4.0, with the KiCad libraries exception for designs
+  status: active
+  notes: 'The official KiCad footprint library, the release the symbols above name their footprints
+    from. Only the footprints those symbols give the indexed parts are read, into
+    data/datasheets/packages/kicad_footprints.csv: mounting, pad count, smallest centre-to-centre pad
+    spacing (the pitch along a row; twice it on a SOT-23), drill,
+    body and courtyard size off the fabrication and courtyard outlines, the tags (the package''s other
+    names: to-92, sc-43, sot54), and the drawing the description says it was made from (a JEDEC outline,
+    a maker''s PDF). The 3D model is named, not fetched. 424 footprints named on 2026-10-17, 420 of them in
+    this release.'

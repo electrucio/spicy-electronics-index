@@ -37,7 +37,7 @@ def test_kicad_gives_each_indexed_symbol_its_sheet_package_and_description_and_s
     bc = rows[0]
     assert bc["url"] == "https://www.onsemi.com/pub/Collateral/BC550-D.pdf"
     assert bc["maker"] == "onsemi"                       # nobody named: the maker whose site serves the sheet
-    assert bc["package"] == "TO-92_Inline" and bc["keywords"] == "NPN Transistor"
+    assert bc["package"] == "Package_TO_SOT_THT:TO-92_Inline" and bc["keywords"] == "NPN Transistor"
     assert bc["name"] == "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92"
     assert bc["category"] == "Transistor_BJT" and bc["revision"] == "9.0.9.1"
     assert bc["page"] == "https://example.org/9.0.9.1/Transistor_BJT.kicad_sym"
@@ -135,3 +135,40 @@ def test_librepcb_gives_one_row_per_maker_with_the_mpns_and_the_typed_values_in_
 
 def test_librepcb_skips_a_device_nobody_in_the_index_knows():
     assert list(lib.librepcb_rows(LIBREPCB.replace("1N4006", "ZZ9"), "dev/x/device.lp", {}, NAMES, "s", "r", PAGE)) == []
+
+
+FOOTPRINT = """(footprint "TO-92_Inline"
+	(version 20241229)
+	(layer "F.Cu")
+	(descr "TO-92 leads in-line, narrow, oval pads, drill 0.75mm (see NXP sot054_po.pdf)")
+	(tags "to-92 sc-43 sc-43a sot54 PA33 transistor")
+	(property "Reference" "REF**" (at 1.27 -3.56 0) (layer "F.SilkS"))
+	(attr through_hole)
+	(fp_line (start -2.48 -2.6) (end 3.02 -2.6) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_arc (start -2.48 -2.6) (mid 0.27 -0.05) (end 3.02 -2.6) (stroke (width 0.1) (type solid)) (layer "F.Fab"))
+	(fp_text user "${REFERENCE}" (at 0 9 0) (layer "F.Fab"))
+	(fp_rect (start -2.73 -2.85) (end 3.27 2.0) (stroke (width 0.05) (type solid)) (layer "F.CrtYd"))
+	(pad "1" thru_hole rect (at 0 0) (size 1.05 1.5) (drill 0.75) (layers "*.Cu" "*.Mask"))
+	(pad "2" thru_hole oval (at 1.27 0) (size 1.05 1.5) (drill 0.75) (layers "*.Cu" "*.Mask"))
+	(pad "3" thru_hole oval (at 2.54 0) (size 1.05 1.5) (drill 0.75) (layers "*.Cu" "*.Mask"))
+	(model "${KICAD9_3DMODEL_DIR}/Package_TO_SOT_THT.3dshapes/TO-92_Inline.step" (offset (xyz 0 0 0)))
+)"""
+
+
+def test_a_footprint_gives_mounting_pads_pitch_drill_body_size_and_the_drawing_it_came_from():
+    r = lib.footprint_row(FOOTPRINT, "Package_TO_SOT_THT.pretty/TO-92_Inline.kicad_mod", "kicad_footprints", "9.0.9.1", PAGE)
+    assert r["footprint"] == "Package_TO_SOT_THT:TO-92_Inline" and r["mounting"] == "through hole"
+    assert (r["pads"], r["pad_spacing_mm"], r["drill_mm"]) == ("3", "1.27", "0.75")
+    assert (r["body_x_mm"], r["body_y_mm"]) == ("5.50", "2.55")        # the outline on F.Fab, its text left out
+    assert (r["courtyard_x_mm"], r["courtyard_y_mm"]) == ("6.00", "4.85")
+    assert r["tags"] == "to-92 sc-43 sc-43a sot54 PA33 transistor"
+    assert r["reference"] == "NXP sot054_po.pdf" and r["model_3d"] == "TO-92_Inline.step"
+    seen = lib.footprint_row(FOOTPRINT.replace("(see NXP sot054_po.pdf)", "see https://www.vishay.com/docs/66542/to-220-1.pdf, JEDEC TO-220"),
+                             "x.pretty/y.kicad_mod", "s", "r", PAGE)
+    assert seen["reference"] == "https://www.vishay.com/docs/66542/to-220-1.pdf; JEDEC TO-220"
+    assert r["page"] == "https://example.org/9.0.9.1/Package_TO_SOT_THT.pretty/TO-92_Inline.kicad_mod"
+
+
+def test_the_s_expression_reader_keeps_quoted_strings_whole():
+    assert lib.sexp('(a "b c" (d 1 "e)f"))') == ["a", "b c", ["d", "1", "e)f"]]
+    assert lib.footprint_row("(kicad_pcb)", "x.pretty/y.kicad_mod", "s", "r", PAGE) is None

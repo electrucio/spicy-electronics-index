@@ -18,6 +18,10 @@ symbol drawing, a footprint — stays where it is; the row links to it.
 
 A library's `maker` is who the library names, or, when it names nobody, the manufacturer whose own site
 serves the linked sheet. A sheet on a distributor's or an archive's host names no maker.
+
+KiCad's footprint library is read after its symbols, for the packages those symbols give the indexed
+parts: mounting, pins, pad spacing, body size and the drawing each was measured from, into
+`data/datasheets/packages/kicad_footprints.csv`.
 """
 from __future__ import annotations
 
@@ -31,7 +35,7 @@ from collections.abc import Iterator
 from pathlib import Path
 from urllib.parse import urlparse
 
-from spicy_electronics_index.core.config import datasheet_catalogue, datasheets_cache
+from spicy_electronics_index.core.config import datasheet_catalogue, datasheet_packages, datasheets_cache
 from spicy_electronics_index.core.ledger import today
 from spicy_electronics_index.core.parts import catalogue
 from spicy_electronics_index.datasheets.harvest import known, registry
@@ -159,8 +163,7 @@ def kicad_rows(lib: str, text: str, names: dict[str, str], source: str, ref: str
         p = kicad_properties(m.group(2))
         url = p.get("Datasheet", "").strip()
         url = url if url.lower().startswith("http") else ""
-        fp = p.get("Footprint", "").strip()
-        package = fp.split(":", 1)[-1] if fp else pkg
+        package = p.get("Footprint", "").strip() or pkg          # Package_TO_SOT_THT:TO-92_Inline, as KiCad names it
         maker_text = p.get("Manufacturer", "").strip()
         params = f"MPN {p['MPN'].strip()}" if p.get("MPN", "").strip() else ""
         name = p.get("Description", "").strip()
@@ -322,7 +325,142 @@ def read_librepcb(root: Path, names: dict[str, str], source: str, ref: str, page
                                  packages, names, source, ref, page)
 
 
-READERS = {"kicad_symbols": read_kicad, "horizon_pool": read_horizon, "librepcb_base": read_librepcb}
+# --- KiCad footprints ---------------------------------------------------------------------------------
+
+PACKAGE_FIELDS = ("footprint", "source", "description", "tags", "mounting", "pads", "pad_spacing_mm", "drill_mm",
+                  "body_x_mm", "body_y_mm", "courtyard_x_mm", "courtyard_y_mm", "reference", "model_3d", "page",
+                  "revision", "checked")
+TOKEN = re.compile(r'"(?:[^"\\]|\\.)*"|[()]|[^\s()"]+')
+GRAPHICS = {"fp_line", "fp_rect", "fp_circle", "fp_arc", "fp_poly"}
+
+
+def sexp(text: str) -> list:
+    """A KiCad file as nested lists: `(a "b" (c 1))` -> ['a', 'b', ['c', '1']]."""
+    stack: list[list] = [[]]
+    for tok in TOKEN.findall(text):
+        if tok == "(":
+            stack.append([])
+        elif tok == ")":
+            done = stack.pop()
+            stack[-1].append(done)
+        else:
+            stack[-1].append(tok[1:-1].replace('\\"', '"') if tok.startswith('"') else tok)
+    return stack[0][0] if stack[0] else []
+
+
+def children(node: list, name: str) -> Iterator[list]:
+    for c in node[1:]:
+        if isinstance(c, list) and c and c[0] == name:
+            yield c
+
+
+def first(node: list, name: str, default: str = "") -> str:
+    c = next(children(node, name), None)
+    return str(c[1]) if c and len(c) > 1 else default
+
+
+def layer_of(item: list) -> str:
+    return first(item, "layer")
+
+
+def points(item: list) -> list[tuple[float, float]]:
+    """Every coordinate a graphic item is drawn through; a circle by its centre and a point on it, an arc
+    by its three points, so a bounding box over them is the outline's within a line width."""
+    out = []
+    for c in item[1:]:
+        if not isinstance(c, list) or not c:
+            continue
+        if c[0] in ("start", "end", "mid", "center") and len(c) >= 3:
+            out.append((float(c[1]), float(c[2])))
+        elif c[0] == "pts":
+            out += [(float(p[1]), float(p[2])) for p in c[1:] if isinstance(p, list) and p[0] == "xy"]
+    if item[0] == "fp_circle" and len(out) == 2:          # centre and a point on the rim: the box is the disc
+        (cx, cy), (px, py) = out
+        r = ((px - cx) ** 2 + (py - cy) ** 2) ** 0.5
+        out = [(cx - r, cy - r), (cx + r, cy + r)]
+    return out
+
+
+def extent(fp: list, layer: str) -> tuple[str, str]:
+    """The width and height, in mm, of everything drawn on `layer` (text aside)."""
+    pts = [p for item in fp[1:] if isinstance(item, list) and item and item[0] in GRAPHICS and layer_of(item) == layer
+           for p in points(item)]
+    if not pts:
+        return "", ""
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    return f"{max(xs) - min(xs):.2f}", f"{max(ys) - min(ys):.2f}"
+
+
+def pad_facts(fp: list) -> tuple[int, str, str]:
+    """How many pads, the smallest centre-to-centre distance between two of them (the pitch along a row
+    of pins; on a SOT-23, whose middle pin is on the other side, twice the pitch), and the drill."""
+    pads = [p for p in children(fp, "pad") if len(p) > 1 and str(p[1]) != ""]
+    at = []
+    drills = set()
+    for p in pads:
+        a = next(children(p, "at"), None)
+        if a and len(a) >= 3:
+            at.append((float(a[1]), float(a[2])))
+        d = next(children(p, "drill"), None)
+        if d and len(d) > 1 and not isinstance(d[1], list):
+            drills.add(f"{float(d[1]):g}")
+    best = None
+    for i, (x1, y1) in enumerate(at):
+        for x2, y2 in at[i + 1:]:
+            dist = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+            if dist > 0.01 and (best is None or dist < best):
+                best = dist
+    return len(pads), f"{best:.2f}" if best else "", " / ".join(sorted(drills))
+
+
+REFERENCE = re.compile(r"https?://[^\s,)]+|(?:see|from|per|after)\s+([^,()]+?\.pdf)|JEDEC\s+[A-Z]{1,3}-?\d+[A-Z]*", re.I)
+
+
+def footprint_row(text: str, relpath: str, source: str, ref: str, page: str) -> dict | None:
+    """One `.kicad_mod` as a row: what the footprint says about the package, never the drawing itself."""
+    fp = sexp(text)
+    if not fp or fp[0] not in ("footprint", "module"):
+        return None
+    lib = relpath.split("/")[0].removesuffix(".pretty")
+    descr = first(fp, "descr")
+    refs = [re.sub(r"^(?:see|from|per|after)\s+", "", m.group(0), flags=re.I) for m in REFERENCE.finditer(descr)]
+    bx, by = extent(fp, "F.Fab")
+    cx, cy = extent(fp, "F.CrtYd")
+    n, pitch, drill = pad_facts(fp)
+    model = first(fp, "model").rsplit("/", 1)[-1]
+    return {"footprint": f"{lib}:{fp[1]}", "source": source, "description": descr, "tags": first(fp, "tags"),
+            "mounting": first(fp, "attr").replace("through_hole", "through hole"), "pads": str(n),
+            "pad_spacing_mm": pitch, "drill_mm": drill, "body_x_mm": bx, "body_y_mm": by, "courtyard_x_mm": cx,
+            "courtyard_y_mm": cy, "reference": "; ".join(refs), "model_3d": model,
+            "page": page.format(ref=ref, path=relpath), "revision": ref, "checked": today()}
+
+
+def footprints_wanted() -> set[str]:
+    """The footprints the indexed parts' KiCad symbols name, from the symbols' own table."""
+    p = datasheet_catalogue("kicad_symbols")
+    if not p.exists():
+        return set()
+    with open(p, encoding="utf-8") as f:
+        return {r["package"] for r in csv.DictReader(f) if ":" in r.get("package", "")}
+
+
+def read_footprints(root: Path, names: dict[str, str], source: str, ref: str, page: str) -> Iterator[dict]:
+    wanted = footprints_wanted()
+    for name in sorted(wanted):
+        lib, _, fp = name.partition(":")
+        f = root / f"{lib}.pretty" / f"{fp}.kicad_mod"
+        if not f.is_file():
+            continue
+        r = footprint_row(f.read_text(encoding="utf-8", errors="replace"), f.relative_to(root).as_posix(), source, ref,
+                          page)
+        if r:
+            yield r
+
+
+READERS = {"kicad_symbols": read_kicad, "horizon_pool": read_horizon, "librepcb_base": read_librepcb,
+           "kicad_footprints": read_footprints}
+# Where each source's rows go and what their columns are: parts into the catalogue, packages into their own table.
+TABLES = {"kicad_footprints": (datasheet_packages, PACKAGE_FIELDS)}
 
 
 # --- the clone, the run, the table --------------------------------------------------------------------
@@ -349,14 +487,15 @@ def checkout(source: str, entry: dict, refresh: bool) -> tuple[Path, str]:
 
 
 def write(source: str, rows: list[dict]) -> Path:
-    p = datasheet_catalogue(source)
+    table, fields = TABLES.get(source, (datasheet_catalogue, FIELDS))
+    p = table(source)
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_suffix(".tmp")
     with open(tmp, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
+        w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         w.writeheader()
-        for r in sorted(rows, key=lambda r: (r["part"], r["category"], r["maker_text"], r["url"])):
-            w.writerow({k: r.get(k, "") for k in FIELDS})
+        for r in sorted(rows, key=lambda r: tuple(r.get(k, "") for k in fields[:1] + fields[2:5])):
+            w.writerow({k: r.get(k, "") for k in fields})
     tmp.replace(p)
     return p
 
@@ -366,8 +505,9 @@ def run(source: str, entry: dict, refresh: bool = False) -> list[dict]:
     names = known_names()
     seen: set[tuple] = set()
     out = []
+    _, fields = TABLES.get(source, (datasheet_catalogue, FIELDS))
     for r in READERS[source](root, names, source, ref, entry["page"]):
-        key = (r["part"], r["category"], r["maker_text"], r["url"], r["parameters"])
+        key = tuple(r.get(k, "") for k in fields)
         if key not in seen:
             seen.add(key)
             out.append(r)
@@ -390,6 +530,11 @@ def main(argv: list[str] | None = None) -> int:
             continue
         rows = run(s, reg[s], a.refresh)
         p = write(s, rows)
+        if s in TABLES:
+            sized = sum(1 for r in rows if r["body_x_mm"])
+            print(f"{s} ({rows[0]['revision'] if rows else '-'}): {len(rows)} footprints the indexed parts come in, "
+                  f"{sized} with a body size, {sum(1 for r in rows if r['reference'])} naming their drawing -> {p}")
+            continue
         parts = {r["part"] for r in rows}
         with_url = {r["part"] for r in rows if r["url"]}
         with_values = {r["part"] for r in rows if r["parameters"]}

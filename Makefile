@@ -234,7 +234,7 @@ datasheets-harvest:  ## (maintainer) read the data sheets a maker's sitemap list
 datasheets-catalogue:  ## (maintainer) read a maker's whole product list: each known part, its status and its sheet; [SOURCE=diotec_products] [REFRESH=1]
 	uv run sei datasheets catalogue $(foreach s,$(SOURCE),--source $(s)) $(if $(REFRESH),--refresh)
 
-datasheets-libraries:  ## (maintainer) what the open EDA libraries say about each known part: sheet link, package, typed values; [SOURCE=kicad_symbols] [REFRESH=1]
+datasheets-libraries:  ## (maintainer) what the open EDA libraries say about each known part (sheet link, package, typed values) and its package (pins, pitch, body size); [SOURCE=kicad_symbols] [REFRESH=1]
 	uv run sei datasheets libraries $(foreach s,$(SOURCE),--source $(s)) $(if $(REFRESH),--refresh)
 
 datasheets-databooks:  ## (maintainer) the pages of old databooks on archive.org that head a known part; [LIMIT=N] [LIST=1] [REREAD=1]
