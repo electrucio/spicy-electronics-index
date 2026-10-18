@@ -1,0 +1,23 @@
+% Drawing for measurement `jfet-tracer`
+% Stands for the deck lines:
+%   VK1 sw dk1 0
+%   VGK1 gk1 0 {-k*step}
+%   JK1 dk1 gk1 0 DUT
+%   VSW sw 0 0
+%   .dc VSW 0 25 0.02
+\documentclass[border=8pt]{standalone}
+\usepackage[siunitx,RPvoltages,european]{circuitikz}
+\ctikzset{bipoles/length=0.9cm, label/align=straight, inductors/scale=0.8}
+\ctikzset{inductor=american}
+\usepackage{amsmath}
+\begin{document}
+\begin{circuitikz}[font=\footnotesize, line width=0.5pt]
+\draw (0,0) node[njfet](Q){};
+\node[anchor=west] at ($(Q.D)!0.5!(Q.S) + (0.55,0)$) {DUT};
+\draw (Q.S) to[short] ++(0,-0.5) node[ground]{};
+\draw (Q.D) to[short] ++(0,0.3) to[rmeter, t=A, l={$I_D$}] ++(0,1.4) to[short] ++(2.0,0) to[vsource, l={$V_{DS}$ $0\to\SI{25}{V}$}, invert] ++(0,-2.4) node[ground]{};
+\node[anchor=west, align=left] at (2.3,2.1) {$\rightarrow$ swept};
+\draw (Q.G) to[short] ++(-0.5,0) to[short] ++(-1.4,0) to[short] ++(-0.5,0) coordinate(gl) to[vsource, l_={\shortstack[r]{$V_{GS}=-k\cdot\text{step}$\\ $k=0\dots5$}}, invert] ++(0,-1.9) node[ground]{};
+\node[anchor=west, align=left] at (-4.6,-3.6) {one copy per step; drawn as one\\ step: auto ($V_{GS(\mathrm{off})}/5$) or 0.05\dots\SI{3}{V}};
+\end{circuitikz}
+\end{document}

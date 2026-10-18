@@ -1,0 +1,29 @@
+% Drawing for measurement `mos-switching`
+% Stands for the deck lines:
+%   VDD vdd 0 30 / RL vdd d {rl}
+%   VIN in 0 PULSE(0 10 1e-7 2e-9 2e-9 2e-6 1) / RG in g 10
+%   M1 d g 0 0 DUT
+%   L1 vdd d 1m / DFW d vdd DIDEAL (inductive deck)
+\documentclass[border=8pt]{standalone}
+\usepackage[siunitx,RPvoltages,european]{circuitikz}
+\ctikzset{bipoles/length=0.9cm, label/align=straight, inductors/scale=0.8}
+\ctikzset{inductor=american}
+\usepackage{amsmath}
+\begin{document}
+\begin{circuitikz}[font=\footnotesize, line width=0.5pt]
+\draw (0,0) node[nmos](Q){};
+\node[anchor=west] at ($(Q.D)!0.5!(Q.S) + (0.55,0)$) {DUT};
+\draw (Q.S) to[short] ++(0,-0.5) node[ground]{};
+\draw (Q.D) to[short] ++(0,0.3) coordinate(qd) to[R, l={$R_L=V_{DD}/I_D$}] ++(0,1.8) to[short] ++(0,0.2) node[vcc]{$V_{DD}$ 10 / \SI{30}{V}};
+\draw (qd) to[short, -o] ++(1.0,0) node[right]{$V_{DS}(t)$};
+\draw (Q.G) to[short] ++(-0.4,0) to[R, l_={$R_G$ 4.7, 10, \SI{25}{\ohm}}] ++(-1.6,0) to[short] ++(-0.4,0) to[vsourcesquare, l_={\shortstack[r]{$0\to10$ (or 4.5) V\\ \SI{2}{ns} edges, \SI{2}{\micro s}}}, invert] ++(0,-1.9) node[ground]{};
+\node[anchor=west, align=left] at (-4.6,3.9) {resistive load, one deck per $I_D$ (10 mA\dots\SI{10}{A}), $V_{DD}$, $R_G$, drive};
+\draw (9,0) node[nmos](R){};
+\node[anchor=west] at ($(R.D)!0.5!(R.S) + (0.55,0)$) {DUT};
+\draw (R.S) to[short] ++(0,-0.5) node[ground]{};
+\draw (R.D) to[short] ++(0,0.3) coordinate(rd) to[L, l={$L$ \SI{1}{mH}}] ++(0,1.8) to[short] ++(0,0.2) node[vcc]{$V_{DD}$ \SI{30}{V}};
+\draw (rd) to[short] ++(1.6,0) to[D, l={ideal}] ++(0,1.8) -| ($(rd)+(0,2.0)$);
+\draw (R.G) to[short] ++(-0.4,0) to[R, l_={$R_G$ \SI{10}{\ohm}}] ++(-1.6,0) to[short] ++(-0.4,0) to[vsourcesquare, l_={two pulses}, invert] ++(0,-1.9) node[ground]{};
+\node[anchor=west, align=left] at (6.5,3.9) {clamped inductive: $E_{on}$, $E_{off}$ on the second pulse};
+\end{circuitikz}
+\end{document}
