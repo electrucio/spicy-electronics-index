@@ -12,6 +12,14 @@ from spicy_electronics_index.models import cards as C
 from spicy_electronics_index.models import found as F
 
 POLARITY = {"NPN": "npn", "PNP": "pnp", "NJF": "n", "PJF": "p", "NMOS": "n", "PMOS": "p", "VDMOS": "n"}
+RX_PCHAN = re.compile(r"\bPCHAN\b", re.I)
+
+
+def polarity_of(kind_type: str, card: str = "") -> str | None:
+    """The sign a card is run with: a VDMOS card is a P-channel when its text says `pchan`."""
+    if kind_type == "VDMOS" and RX_PCHAN.search(card):
+        return "p"
+    return POLARITY.get(kind_type)
 CATALOGUE = re.compile(r"\b(?:" + "|".join(C.CATALOGUE) + r")\s*=\s*[^\s)]+", re.I)
 # Each change made to a card before it is simulated, published with the result so it can be repeated.
 CHANGES = {
@@ -96,7 +104,22 @@ def prepare(chain: list, engine: str) -> tuple[str, list[str]] | None:
 # A pin no terminal reaches (a ThermalTrak diode's anode) is left open; a second pin on the collector (a
 # SOT-223 tab) is tied to it. Whatever cannot be told for sure is not measured, with the reason.
 SUBCKT_PINS = (3, 4, 5)
+# the terminal letters of a device line, by its first letter: a MOSFET's bulk is not a terminal the bench drives
+DEVICE_ROLES = {"Q": "cbe", "J": "dgs", "M": "dgs"}
+GROUP_ROLES = {"bjt": set("cbe"), "jfet": set("dgs"), "mosfet": set("dgs")}
+GROUP_TYPES = {"bjt": {"NPN", "PNP"}, "jfet": {"NJF", "PJF"}, "mosfet": {"NMOS", "PMOS", "VDMOS"}}
 RX_TERMINALS = re.compile(r"TERMINALS?\s*[:=]?\s*([CBE])\s+([CBE])\s+([CBE])\b", re.I)
+RX_NODES_DGS = re.compile(r"NODES?\s*[:=]?\s*([DGS])\s+([DGS])\s+([DGS])\b", re.I)
+# an op-amp's five pins, by the words a PSpice PARTS header lists them in ("CONNECTIONS:" then one role per line)
+# or by the names a header gives them
+OPAMP_ROLES = ("inp", "inn", "vp", "vn", "out")
+OPAMP_WORDS = {"NON-INVERTING INPUT": "inp", "NONINVERTING INPUT": "inp", "INVERTING INPUT": "inn", "POSITIVE POWER SUPPLY": "vp",
+               "NEGATIVE POWER SUPPLY": "vn", "OUTPUT": "out"}
+OPAMP_NAMES = {"inp": {"IN+", "+IN", "INP", "NINV", "VINP", "VIN+", "IN_P", "INPOS", "PLUS", "+"},
+               "inn": {"IN-", "-IN", "INN", "INV", "VINN", "VIN-", "IN_N", "INNEG", "MINUS", "-"},
+               "vp": {"V+", "VCC", "VDD", "VP", "VS+", "+V", "+VS", "VPOS", "VCC+"},
+               "vn": {"V-", "VEE", "VSS", "VN", "VS-", "-V", "-VS", "VNEG", "VEE-"},
+               "out": {"OUT", "VOUT", "OUTPUT", "O", "VO"}}
 RX_NODE_ROLE = re.compile(r"NODE\s+(\S+)\s*-+>\s*(COLLECT|BASE|EMIT)", re.I)
 ROLE_WORD = {"COLLECT": "c", "BASE": "b", "EMIT": "e", "COLLECTOR": "c", "EMITTER": "e"}
 
@@ -143,9 +166,11 @@ def _wire(t: list[str]) -> bool:
     return False
 
 
-def subckt_roles(chain: list, name: str | None = None, depth: int = 0) -> tuple[list[str] | None, str]:
-    """The role of each pin of a subcircuit (c, b, e, or nc for one no transistor terminal reaches), traced
-    through its netlist and its nested subcircuits; (None, why) when it cannot be told for sure."""
+def subckt_roles(chain: list, name: str | None = None, depth: int = 0, group: str = "bjt") -> tuple[list[str] | None, str]:
+    """The role of each pin of a subcircuit (c, b, e for a bipolar, d, g, s for a FET, or nc for one no
+    terminal reaches), traced through its netlist and its nested subcircuits; (None, why) when it cannot be
+    told for sure."""
+    want = GROUP_ROLES[group]
     defs = {n.lower(): (k, b) for k, n, b in chain}
     key = (name or chain[-1][1]).lower()
     if key not in defs or defs[key][0] != "subckt" or depth > 4:
@@ -159,13 +184,13 @@ def subckt_roles(chain: list, name: str | None = None, depth: int = 0) -> tuple[
             continue
         if _wire(t):
             nodes.join(t[1], t[2])
-        elif t[0][0] == "Q" and len(t) >= 5:
-            terminals += list(zip(t[1:4], "cbe"))
+        elif t[0][0] in DEVICE_ROLES and len(t) >= 5 and DEVICE_ROLES[t[0][0]][0] in want:
+            terminals += list(zip(t[1:4], DEVICE_ROLES[t[0][0]]))
         elif t[0][0] == "X":
             sub = next((x for x in reversed(t[1:]) if "=" not in x and defs.get(x.lower(), ("",))[0] == "subckt"), None)
             if sub is None:
                 return None, "a nested subcircuit the file does not hold"
-            inner, why = subckt_roles(chain, sub, depth + 1)
+            inner, why = subckt_roles(chain, sub, depth + 1, group)
             if inner is None:
                 return None, why
             terminals += [(node, r) for node, r in zip(t[1:1 + len(inner)], inner) if r != "nc"]
@@ -175,23 +200,23 @@ def subckt_roles(chain: list, name: str | None = None, depth: int = 0) -> tuple[
         if len(got) > 1:
             return None, f"pin {p} reaches the transistor's {' and '.join(sorted(got))} at once"
         roles.append(got.pop() if got else "nc")
-    if not {"c", "b", "e"} <= set(roles):
-        return None, "no pin reaches one of the collector, base and emitter"
+    if not want <= set(roles):
+        return None, "no pin reaches one of the " + ("collector, base and emitter" if group == "bjt" else "drain, gate and source")
     if depth == 0:
-        said = comment_roles(defs[key][1], pins)
+        said = comment_roles(defs[key][1], pins, group)
         clash = [p for p, r in zip(pins, roles) if said.get(p) not in (None, r)]
         if clash:
             return None, "the author's comments and the circuit disagree on the pins"
     return roles, ""
 
 
-def comment_roles(body: str, pins: list[str]) -> dict[str, str]:
-    """What the author's comments say each pin is, where they say it: "TERMINALS: C B E", "Node 1 -> Collect",
-    or a row of names over a "node:" row of pin numbers."""
+def comment_roles(body: str, pins: list[str], group: str = "bjt") -> dict[str, str]:
+    """What the author's comments say each pin is, where they say it: "TERMINALS: C B E", "Nodes D G S",
+    "Node 1 -> Collect", or a row of names over a "node:" row of pin numbers."""
     comments = [line.lstrip("*").strip() for line in body.splitlines() if line.lstrip().startswith("*")]
     out: dict[str, str] = {}
     for c in comments:
-        m = RX_TERMINALS.search(c)
+        m = RX_TERMINALS.search(c) if group == "bjt" else RX_NODES_DGS.search(c)
         if m and len(pins) >= 3:
             out.update({pins[i]: m.group(i + 1).lower() for i in range(3)})
         for n, w in RX_NODE_ROLE.findall(c):
@@ -262,28 +287,72 @@ def subckt_parts(chain: list) -> tuple[list[tuple[str, str, str]], list[str]]:
         order.append(defs[name.lower()])
 
     visit(chain[-1][1])
-    return order, [t for t in types if t in ("NPN", "PNP", "D", "")] if types else []
+    return order, [t for t in types if t in ("NPN", "PNP", "NJF", "PJF", "NMOS", "PMOS", "VDMOS", "D", "")] if types else []
 
 
-def subckt_card(chain: list, engine: str) -> tuple[dict | None, str]:
+def opamp_pins(body: str, pins: list[str]) -> tuple[list[str] | None, str]:
+    """An op-amp subcircuit's five pins by role: the PSpice PARTS header ("CONNECTIONS:" and one role per
+    comment line, in pin order), else the names the header gives the pins; (None, why) when neither says."""
+    if len(pins) != 5:
+        return None, f"{len(pins)} pins: not a plain five-pin op-amp"
+    lines = [line.lstrip("*").strip().lstrip("| ").strip() for line in body.splitlines() if line.lstrip().startswith("*")]
+    roles: list[str] = []
+    started = False
+    for c in lines:
+        up = c.upper()
+        if "CONNECTIONS:" in up:
+            started = True
+            up = up.split("CONNECTIONS:", 1)[1].strip()
+        if not started:
+            continue
+        word = up.strip("| ").strip()
+        if not word:
+            if roles:
+                break
+            continue
+        if word in OPAMP_WORDS:
+            roles.append(OPAMP_WORDS[word])
+        elif roles:
+            break
+    if len(roles) == 5 and sorted(roles) == sorted(OPAMP_ROLES):
+        return roles, ""
+    by_name = []
+    for p in pins:
+        role = next((r for r, names in OPAMP_NAMES.items() if p.upper() in names), None)
+        by_name.append(role)
+    if all(by_name) and sorted(by_name) == sorted(OPAMP_ROLES):
+        return by_name, ""
+    return None, "the header does not say which pin is which (no PARTS connections block, no pin names)"
+
+
+def subckt_card(chain: list, engine: str, group: str = "bjt") -> tuple[dict | None, str]:
     """A subcircuit as the bench is given it: its text with the subcircuit renamed DUT and every name inside
     it suffixed _DUT (packed copies must not share an inner `QPWR`), the role of each pin, its polarity
-    and the changes made; (None, why) when it cannot be measured."""
+    and the changes made; (None, why) when it cannot be measured. `group` is the bench the subcircuit goes
+    to: a transistor's pins are traced to its terminals, an op-amp's read from its header."""
     if not chain or chain[-1][0] != "subckt":
         return None, "not a subcircuit, or a card of the same name hides it"
     pins = _pins(F.code_lines(chain[-1][2])[0])
-    if len(pins) not in SUBCKT_PINS:
-        return None, f"{len(pins)} pins"
-    roles, why = subckt_roles(chain)
-    if roles is None:
-        return None, why
-    parts, types = subckt_parts(chain)
-    bjt = {t for t in types if t in ("NPN", "PNP")}
-    if not bjt:
-        return None, "no transistor card inside"
-    if len(bjt) > 1:
-        return None, "transistors of both polarities inside"
-    polarity = POLARITY[bjt.pop()]
+    if group == "amplifier":
+        roles, why = opamp_pins(chain[-1][2], pins)
+        if roles is None:
+            return None, why
+        parts, _ = subckt_parts(chain)
+        polarity = "n"
+    else:
+        if len(pins) not in SUBCKT_PINS:
+            return None, f"{len(pins)} pins"
+        roles, why = subckt_roles(chain, group=group)
+        if roles is None:
+            return None, why
+        parts, types = subckt_parts(chain)
+        own = {t for t in types if t in GROUP_TYPES[group]}
+        if not own:
+            return None, "no transistor card inside"
+        pol = {polarity_of(t, "\n".join(b for _, _, b in parts)) for t in own}
+        if len(pol) > 1:
+            return None, "transistors of both polarities inside"
+        polarity = pol.pop()
     # every name the subcircuit uses becomes <name>_DUT, then its own header becomes DUT: a card inside it
     # may carry the subcircuit's own name (ltwiki's BC847BM holds `.MODEL BC847BM`), and must keep its own
     names = {n.lower(): f"{n}_DUT" for _, n, _ in parts}
@@ -316,5 +385,5 @@ def subckt_card(chain: list, engine: str) -> tuple[dict | None, str]:
     return {"card": card, "changes": changes, "pins": roles, "polarity": polarity}, ""
 
 
-def subckt_for(files: F.Files, file: str, name: str, engine: str) -> tuple[dict | None, str]:
-    return subckt_card(F.closure(files.get(file)[0], name), engine)
+def subckt_for(files: F.Files, file: str, name: str, engine: str, group: str = "bjt") -> tuple[dict | None, str]:
+    return subckt_card(F.closure(files.get(file)[0], name), engine, group)

@@ -36,7 +36,7 @@ throughout; one deck packs several copies of the transistor wherever the analysi
 transient is one deck per step.
 
 <!-- measurements:start -->
-Catalogue version `m-12`. Codes a number can be replaced by:
+Catalogue version `m-13`. Codes a number can be replaced by:
 
 - `ok` — measured
 - `absent` — the card has no parameter for this physics, so the number would be the simulator's default, not the model's
@@ -53,6 +53,8 @@ Which groups of measurements matter for which use:
 | Switch or driver | switching, high-current, breakdown, dc | td, tr, ts and tf at the switched current and the stored charge behind ts, VCE(sat) at that current, and whether breakdown is modelled at all (in most cards it is not). |
 | RF and video | frequency, capacitance, noise | fT against IC and where it peaks, Cob and Cib against voltage, NF. The 1 kHz h-parameters do not matter. |
 | Current sources, mirrors and differential pairs | dc, temperature | the Early voltage (output resistance), VBE and its slope with temperature, hFE at the operating current, and the reverse gain. |
+| Audio preamplifier, pedal or microphone input (JFET) | dc, noise, capacitance, distortion, leakage | IDSS and VGS(off) (the bias point depends on both), gfs between 100 µA and IDSS, en at 10 Hz and 1 kHz and the 1/f corner, Ciss and Crss at the working VDS, the square-law exponent (second-harmonic character), the gate diode in forward bias (asymmetric clipping). |
+| Analogue switch or voltage-controlled resistor (JFET) | dc, capacitance, switching | rDS(on) at VGS = 0 and how fast it rises towards VGS(off), the linearity of rDS with VDS, Crss (charge injection), ton and toff. |
 
 ### Bipolar transistors
 

@@ -91,6 +91,7 @@ def main(argv: list[str] | None = None) -> int:
     bch_c.add_argument("--pack", type=int, default=10)
     bch_c.add_argument("--limit", type=int, default=0)
     bch_c.add_argument("--force", action="store_true")
+    bch_c.add_argument("--here", action="store_true", help="run on this machine with the engine on the PATH (no Docker): ngspice")
     bch.add_parser("character-publish", help="publish the characterisation per model hash, with the deck digests to repeat it")
     bch.add_parser("character-release", help="(maintainer) pack the records and upload them as this catalogue version's release asset")
     bch.add_parser("character-fetch", help="download the released records the manifest names, check and unpack them")
@@ -393,7 +394,7 @@ def main(argv: list[str] | None = None) -> int:
             argv2 += ["--hash", h]
         if args.workers:
             argv2 += ["--workers", str(args.workers)]
-        return bench_character.main(argv2 + (["--force"] if args.force else []))
+        return bench_character.main(argv2 + (["--force"] if args.force else []) + (["--here"] if args.here else []))
 
     if args.cmd == "bench" and args.bench_cmd == "character-publish":
         from spicy_electronics_index.bench import character_publish

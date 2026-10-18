@@ -97,7 +97,7 @@ def test_every_rule_names_a_category_and_a_bench_and_ids_are_unique():
     assert len(ids) == len(set(ids))
     for tid, cat, bench, pats in SV.TESTS:
         assert cat in "ABCDEFGHIJKN" and len(cat) == 1
-        assert bench == "none" or bench.startswith("opa-")
+        assert bench == "none" or bench.startswith("opamp-")
         assert pats and all(re.compile(p) for p in pats)
 
 
