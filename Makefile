@@ -11,7 +11,7 @@ WEB_HOST ?= 0.0.0.0
 WEB_PORT ?= 8026
 
 .DEFAULT_GOAL := help
-.PHONY: schematics-dump-index schematics-restore-index models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register distributors-tme datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-survey datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
+.PHONY: schematics-dump-index schematics-restore-index models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register distributors-tme datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-survey datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-preview bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
 
 help:  ## show this list
 	@echo "Spicy Electronics Index — make <target>"
@@ -126,6 +126,9 @@ bench-drawings-all:  ## (maintainer) regenerate the .tex of every bench drawing 
 
 circuitikz-image:  ## build the TeX Live image the drawings are typeset with
 	docker build -t spicy-electronics-index-circuitikz docker/circuitikz
+
+bench-preview:  ## (maintainer) the whole FET and op-amp battery on ngspice, one model per part, as a report; MODELS=<dir> OUT=<dir> [REPORT=docs/bench-preview-2026-10.md]
+	python3 docker/sim/preview/bench_preview.py $(MODELS) $(OUT) && python3 docker/sim/preview/bench_report.py $(OUT)/results.json $(or $(REPORT),docs/bench-preview-2026-10.md) $(MODELS)
 
 bench-deck:  ## regenerate the deck behind a published number from your own card; ID=bjt-ft CARD=model.lib NAME=2N3904 [ENGINE=ngspice] [HASH=] [OUT=.]
 	$(RUN) sei bench deck $(ID) --card $(CARD) --name $(NAME) --engine $(or $(ENGINE),ngspice) --out $(or $(OUT),.) $(if $(HASH),--hash $(HASH))

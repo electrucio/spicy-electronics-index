@@ -1497,3 +1497,10 @@ breakdown), IG vs VDS and IGSS vs T (gate, temperature), Ciss/Coss/Crss vs VDS a
 (capacitance), VGS vs Qg (gate-charge), t vs ID / RG / T and E vs ID / RG / T (switching), IS vs VSD, VSD
 vs VGS, trr/Qrr/Irrm vs di/dt (body-diode), en vs f, en vs ID, NF vs RS (noise), ID(typ) vs T (temperature).
 Thermal charts (PD vs T, SOA, Zth vs tp, ID vs Tc, EAS, IAS vs tAV) have no measurement, by design.
+
+## Where this stands
+
+Every measurement above was run once on ngspice, one model per part, for J201, 2N5457, 2N3819, 2N7000,
+BS170 and IRF510 ([bench-preview-2026-10.md](bench-preview-2026-10.md)). The entries in
+`data/bench/measurements.yaml`, the decks in the simulator images, the records and the site's pages are
+pending: [bench-roadmap.md](bench-roadmap.md) is the checklist.

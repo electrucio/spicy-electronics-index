@@ -755,11 +755,8 @@ cannot be traced is not run.
 
 ## Next steps
 
-1. The entries of `data/bench/measurements.yaml` (kind `opamp`) in the format of the transistor ones:
-   conditions, grids, outputs, curves, the deck lines and the extraction; `make bench-methods` then copies
-   them into the methods page.
-2. The decks in `docker/sim/bench/` (the DC-servo loop for `opa-aol`, the Goertzel harmonics shared with
-   `bjt-distortion`), and `opa-card` in `models/cards.py`.
-3. The circuit drawings (`docker/circuitikz/benches.py`), one per measurement.
-4. The survey itself: the Analog Devices, ST, Rohm and Intersil sheets once the archive is reachable from the
-   machine that runs it, and more makers' sheets opened by hand where robots.txt says no.
+Every measurement above was run once on ngspice, one model per part, for TL072, NE5532 and RC4558
+([bench-preview-2026-10.md](bench-preview-2026-10.md)); the numbers say what a Boyle-family macromodel can
+and cannot do. What remains to carry the op-amps through the pipeline that the bipolar bench runs (catalogue
+entries, decks in the simulator images, records, the site) is the checklist of
+[bench-roadmap.md](bench-roadmap.md).
