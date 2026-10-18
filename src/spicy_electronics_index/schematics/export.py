@@ -128,12 +128,15 @@ class Ids:
 
 
 def withdrawn() -> set[str]:
-    """Documents never to publish, whatever the index says: a takedown, or a link found to be wrong."""
+    """Documents never to publish, whatever the index says: a takedown, a link found to be wrong, or a
+    copy of a document already indexed. The file opens with lines of `#` saying what it is for; without
+    skipping them the first one would be read as the header and every key missed. The site build reads
+    the same list (`web/parts.py: index`), so a withdrawal shows before the next export."""
     path = schematics_withdrawn()
     if not path.exists():
         return set()
     with open(path, encoding="utf-8") as f:
-        return {r["key"] for r in csv.DictReader(f) if r.get("key")}
+        return {r["key"] for r in csv.DictReader(line for line in f if not line.startswith("#")) if r.get("key")}
 
 
 def near_of(value: str | None) -> str:

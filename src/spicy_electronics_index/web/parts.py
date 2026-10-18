@@ -64,6 +64,7 @@ from spicy_electronics_index.core.config import (
 )
 from spicy_electronics_index.core.parts import catalogue, polarity, schemes
 from spicy_electronics_index.core.parts.extractor import base_part, canonical, family_of
+from spicy_electronics_index.schematics.export import withdrawn
 from spicy_electronics_index.web import character as character_web
 
 REPO_CAP = 200        # GitHub projects listed for one part
@@ -346,12 +347,17 @@ def index() -> dict:
     unshown: dict[str, set] = defaultdict(set)
     kind = kinds()
     stats = repo_stats()
+    # A withdrawn document (`data/schematics/withdrawn.csv`) is off the site from the build after it is
+    # listed, whether or not the index has been exported again since: its row goes, and its uses with it.
+    pulled = withdrawn()
     for i, s in enumerate(sources()):
-        docs[s] = {r["id"]: r for r in rows(schematics_documents(s))}
+        docs[s] = {r["id"]: r for r in rows(schematics_documents(s)) if r.get("key") not in pulled}
         pages[s] = {(r["doc"], r["page"]): r for r in rows(schematics_pages(s))}
         lines[s] = {(r["doc"], r["page"], r["part"]): (r["kind"], r["line"])
                     for r in rows(schematics_lines(s))}
         for u in rows(schematics_uses(s)):
+            if u["doc"] not in docs[s]:
+                continue
             if lines[s].get((u["doc"], u["page"], u["part"]), ("",))[0] == NOT_THIS_PART:
                 continue
             url = (docs[s].get(u["doc"]) or {}).get("url", "")

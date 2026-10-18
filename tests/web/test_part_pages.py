@@ -614,3 +614,16 @@ def test_the_usage_filter_counts_each_part_by_source_a_magazine_by_decade_and_a_
     search, _ = P.search_index(idx, {})
     for row in search:
         assert sum(n for _, n in by_part.get(row[0], [])) == row[1]
+
+
+def test_a_withdrawn_document_is_off_the_site_before_the_next_export(data):
+    """`withdrawn.csv` is honoured by the site build too, so a copy indexed twice goes from the page and
+    from every count as soon as it is listed, not when the maintainer next exports the index."""
+    config.schematics_withdrawn().write_text(
+        "# Documents never to publish.\nkey,why,when\nk2,the same page as another,2026-10-18\n", encoding="utf-8")
+    idx = P.index()
+    assert "1" not in idx["documents"]["esp"]
+    assert P.part_payload("TL072", idx, None)["docs"] == []
+    rows, _ = P.search_index(idx, {})
+    assert {r[0]: (r[1], r[2]) for r in rows}.get("TL072", (0, 0)) == (0, 0)
+    assert P.part_payload("12AX7", idx, None)["n"]["documents"] == 1     # the others are untouched
