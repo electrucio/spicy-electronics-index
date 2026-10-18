@@ -321,6 +321,12 @@ function Models({ page }: { page: PartPage }) {
  * was three quarters of the URL text on a part's page. One that is not a suffix is stored whole and
  * says so by starting with a scheme.
  */
+/** How many times the part is written across these documents' pages: the same count as the list's
+ *  Usages column, so a reader can see where the number comes from. */
+export function usagesOf(docs: { p: PageUse[] }[]): number {
+  return docs.reduce((t, d) => t + d.p.reduce((u, p) => u + (p[3] || 1), 0), 0)
+}
+
 export function pageHref(docUrl: string, suffix: string): string {
   return /^[a-z]+:/i.test(suffix) ? suffix : docUrl + suffix
 }
@@ -360,7 +366,7 @@ function Document({ d }: { d: PartPage['docs'][0] }) {
   const summary = (
     <>
       <strong>{d.t || d.u}</strong>
-      <span class="count">{n(d.p.length)} {d.p.length === 1 ? 'page' : 'pages'}</span>
+      <span class="count">{n(d.p.length)} {d.p.length === 1 ? 'page' : 'pages'} · {n(usagesOf([d]))} usages</span>
       {d.schematic ? <span class="pill acc">schematic</span> : null}
       {d.y ? <span class="small muted">{d.y}</span> : null}
       {d.aka ? <span class="small muted">also filed as {d.aka.join(', ')}</span> : null}
@@ -412,7 +418,7 @@ function Group({
   const summary = (
     <>
       <strong>{title}</strong>
-      <span class="count">{n(docs.length)} · {n(pages)} pages</span>
+      <span class="count">{n(docs.length)} · {n(pages)} pages · {n(usagesOf(docs))} usages</span>
       <span class="small muted">{note}</span>
     </>
   )
@@ -423,7 +429,7 @@ function Group({
           key={source}
           level={2}
           open={groups.length === 1}
-          summary={<><strong>{source}</strong> <span class="count">{n(ds.length)}</span></>}
+          summary={<><strong>{source}</strong> <span class="count">{n(ds.length)} · {n(usagesOf(ds))} usages</span></>}
         >
           {() => (dated ? byDate(ds) : ds).map((d, i) => <Document key={i} d={d} />)}
         </Fold>
