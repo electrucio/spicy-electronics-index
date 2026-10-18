@@ -105,8 +105,8 @@ models-kinship:  ## (maintainer) how each recipe model's card relates to the oth
 bench-methods:  ## check the measurement catalogue (data/bench/measurements.yaml) and rewrite its copy in the docs
 	$(RUN) sei bench methods --write
 
-bench-character:  ## (maintainer) characterise every recipe transistor model in one image; [ENGINE=qspice] [KIND=bjt] [PART=2N3904] [HASH=prefix] [WORKERS=] [PACK=10] [LIMIT=] [FORCE=1]
-	$(RUN) sei bench character --engine $(or $(ENGINE),qspice) --pack $(or $(PACK),10) $(foreach k,$(KIND),--kind $(k)) $(foreach p,$(PART),--part $(p)) $(foreach h,$(HASH),--hash $(h)) $(if $(WORKERS),--workers $(WORKERS)) $(if $(LIMIT),--limit $(LIMIT)) $(if $(FORCE),--force)
+bench-character:  ## (maintainer) characterise every recipe model in one image; [ENGINE=qspice] [KIND=bjt|jfet|mosfet|amplifier] [PART=2N3904] [HASH=prefix] [WORKERS=] [PACK=10] [LIMIT=] [FORCE=1] [HERE=1: ngspice on this machine, no Docker]
+	$(RUN) sei bench character --engine $(or $(ENGINE),qspice) --pack $(or $(PACK),10) $(foreach k,$(KIND),--kind $(k)) $(foreach p,$(PART),--part $(p)) $(foreach h,$(HASH),--hash $(h)) $(if $(WORKERS),--workers $(WORKERS)) $(if $(LIMIT),--limit $(LIMIT)) $(if $(FORCE),--force) $(if $(HERE),--here)
 
 bench-character-publish:  ## (maintainer) publish the characterisation per model hash into data/verification/models/
 	$(RUN) sei bench character-publish

@@ -114,6 +114,8 @@ def test_the_catalogue_quotes_its_decks_verbatim():
             texts.setdefault(mid, []).append(text)
     quoted = 0
     for mid, m in CAT.items():
+        if m["kind"] != "bjt":
+            continue                                 # the other kinds: test_character_decks_kinds.py
         for line in m.get("directives") or []:
             if line.startswith("*"):
                 continue
@@ -283,7 +285,7 @@ def test_every_quoted_line_has_its_pnp_twin_in_the_pnp_deck():
     from spicy_electronics_index.bench.deck import pnp_directives
     for mid, m in CAT.items():
         npn = [x for x in m.get("directives") or [] if not x.startswith("*")]
-        if not npn:
+        if not npn or m["kind"] != "bjt":
             continue
         pnp = [x for x in pnp_directives(m) if not x.startswith("*")]
         texts = [incar.deck_text(d, [("DUT", -1, "", DERIVED)], "model.lib", "qspice") for d in decks_bjt.plan(CAT, "qspice") if mid in d.ids]

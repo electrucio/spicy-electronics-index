@@ -23,8 +23,7 @@ import sys
 from pathlib import Path
 
 from spicy_electronics_index.bench import catalogue
-from spicy_electronics_index.bench.character import POLARITY
-from spicy_electronics_index.bench.jobs import prepare, subckt_card
+from spicy_electronics_index.bench.jobs import POLARITY, prepare, subckt_card
 from spicy_electronics_index.core.config import character, sim_bench
 from spicy_electronics_index.models import cards as C
 from spicy_electronics_index.models import found as F

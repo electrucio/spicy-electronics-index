@@ -141,7 +141,7 @@ Models: J201, 2N5457 and 2N3819 as Central Semiconductor publishes them (Shichma
 
 Models: 2N7000 as Zetex published it in 2000 (a level-1 subcircuit with its own body diode), BS170 as Diodes Incorporated publishes BS170P (subcircuit), IRF510 as International Rectifier's 1988 level-3 card.
 
-### Transfer and threshold (mos-transfer, mos-gm, mos-temperature)
+### Transfer and threshold (mosfet-transfer, mosfet-gm, mosfet-temperature)
 
 | | mosfet/2N7000 | mosfet/BS170 | mosfet/IRF510 |
 |---|---|---|---|
@@ -159,7 +159,7 @@ Models: 2N7000 as Zetex published it in 2000 (a level-1 subcircuit with its own 
 | ID at 10 V, −55 °C | n/a | n/a | n/a |
 | ID at 10 V, 125 °C | n/a | n/a | n/a |
 
-### On-resistance and body diode (mos-rdson, mos-body-diode)
+### On-resistance and body diode (mosfet-rdson, mosfet-body-diode)
 
 | | mosfet/2N7000 | mosfet/BS170 | mosfet/IRF510 |
 |---|---|---|---|
@@ -172,7 +172,7 @@ Models: 2N7000 as Zetex published it in 2000 (a level-1 subcircuit with its own 
 - BS170 ID at VDS = 10 V per VGS step: 2 V → 1.85 mA, 2.5 V → 25 mA, 3 V → 70 mA, 3.5 V → 133 mA, 4 V → 210 mA, 4.5 V → 300 mA, 5 V → 400 mA, 6 V → 627 mA, 8 V → 1.16 A, 10 V → 1.77 A
 - IRF510 ID at VDS = 10 V per VGS step: 2 V → 10.3 pA, 2.5 V → 10.3 pA, 3 V → 10.3 pA, 3.5 V → 10.3 pA, 4 V → 170 mA, 4.5 V → 735 mA, 5 V → 1.43 A, 6 V → 3 A, 8 V → 6.45 A, 10 V → 10.1 A
 
-### Gate charge, switching, reverse recovery, noise, distortion, breakdown (mos-gate-charge, mos-switching, mos-body-diode, mos-noise, mos-distortion, mos-breakdown)
+### Gate charge, switching, reverse recovery, noise, distortion, breakdown (mosfet-gate-charge, mosfet-switching, mosfet-body-diode, mosfet-noise, mosfet-distortion, mosfet-breakdown)
 
 | | mosfet/2N7000 | mosfet/BS170 | mosfet/IRF510 |
 |---|---|---|---|
@@ -220,7 +220,7 @@ Models: 2N7000 as Zetex published it in 2000 (a level-1 subcircuit with its own 
 - BS170: 0 V → 30.9 pF, 2 V → 30.9 pF, 4 V → 30.9 pF, 6 V → 30.9 pF, 8 V → 30.9 pF, 10 V → 30.9 pF
 - IRF510: 0 V → 866 pF, 2 V → 866 pF, 4 V → 866 pF, 6 V → 866 pF, 8 V → 866 pF, 10 V → 866 pF
 
-### RDS(on) against current and drive, third quadrant, inductive switching, follower (mos-rdson, mos-body-diode, mos-switching, mos-distortion)
+### RDS(on) against current and drive, third quadrant, inductive switching, follower (mosfet-rdson, mosfet-body-diode, mosfet-switching, mosfet-distortion)
 
 | | mosfet/2N7000 | mosfet/BS170 | mosfet/IRF510 |
 |---|---|---|---|
@@ -234,7 +234,7 @@ Models: 2N7000 as Zetex published it in 2000 (a level-1 subcircuit with its own 
 | Eoff | 81.9 nJ | 85.2 nJ | 586 nJ |
 | THD of a source follower, 1 Vpk, 10 mA | 618 µ | 936 µ | 137 µ |
 
-### Temperature (mos-temperature)
+### Temperature (mosfet-temperature)
 
 | | mosfet/2N7000 | mosfet/BS170 | mosfet/IRF510 |
 |---|---|---|---|
@@ -274,7 +274,7 @@ Models: 2N7000 as Zetex published it in 2000 (a level-1 subcircuit with its own 
 
 Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989, Boyle family), NE5532 TI's PARTS macromodel of the same year as the LTwiki collection carries it. One amplifier each, ±15 V unless said, RL = 2 kΩ, CL = 100 pF for the dynamic decks.
 
-### Supply, input and offset (opa-runs, opa-iq, opa-bias, opa-offset)
+### Supply, input and offset (opamp-runs, opamp-iq, opamp-bias, opamp-offset)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -293,7 +293,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | phase reversal within the rails | no | no | no |
 | phase reversal 1 V beyond the rails | yes | yes | yes |
 
-### Gain, bandwidth and rejection (opa-aol, opa-cmrr-f, opa-psrr-f)
+### Gain, bandwidth and rejection (opamp-aol, opamp-cmrr-f, opamp-psrr-f)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -311,7 +311,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | PSRR− at 100 Hz | 96.0 dB | 100.0 dB | 100.4 dB |
 | PSRR− at 10 kHz | 96.0 dB | 100.0 dB | 100.4 dB |
 
-### Output (opa-swing, opa-isc, opa-zout)
+### Output (opamp-swing, opamp-isc, opamp-zout)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -328,7 +328,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | ZO open-loop at 1 kHz | 150 Ω | 25.2 Ω | 125 Ω |
 | ZO open-loop at 1 MHz | 150 Ω | 25 Ω | 125 Ω |
 
-### Dynamics, noise and distortion (opa-slew, opa-step, opa-noise, opa-thd-f)
+### Dynamics, noise and distortion (opamp-slew, opamp-step, opamp-noise, opamp-thd-f)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -343,7 +343,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | H2/H1 | 1.66 µ | 637 n | 1.96 µ |
 | H3/H1 | 13.1 n | 6.67 n | 17.4 n |
 
-### Large signal and settling (opa-settling, opa-overload, opa-max-vo-f, opa-thd-level, opa-aol-swing)
+### Large signal and settling (opamp-settling, opamp-overload, opamp-max-vo-f, opamp-thd-level, opamp-aol-swing)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -365,7 +365,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | AOL over ±10 V (DC, 2 kΩ) | 199 kV/V | 97.9 kV/V | 294 kV/V |
 | AOL over ±13 V | 199 kV/V | n/a | n/a |
 
-### Closed loop, stability and the rest (opa-closed-loop, opa-stability, opa-noise-rs, opa-emirr, opa-separation)
+### Closed loop, stability and the rest (opamp-closed-loop, opamp-stability, opamp-noise-rs, opamp-emirr, opamp-separation)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -387,7 +387,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | EMIRR, 100 mVpk at 100 MHz | absent (no RF rectification in the model) | absent (no RF rectification in the model) | absent (no RF rectification in the model) |
 | channel separation | absent (the subcircuit is one amplifier) | absent (the subcircuit is one amplifier) | absent (the subcircuit is one amplifier) |
 
-### Against temperature, supply and common mode (opa-iq, opa-offset, opa-bias, opa-aol, opa-swing, opa-isc)
+### Against temperature, supply and common mode (opamp-iq, opamp-offset, opamp-bias, opamp-aol, opamp-swing, opamp-isc)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -440,7 +440,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | G = 1000 | 41.7 Ω | 2.67 Ω | 36 Ω |
 | at 100 kHz, G = 10 | 41.9 Ω | 2.68 Ω | 36.2 Ω |
 
-### Dynamics, the rest (opa-stability, opa-slew, opa-settling, opa-overload, opa-phase-reversal)
+### Dynamics, the rest (opamp-stability, opamp-slew, opamp-settling, opamp-overload, opamp-phase-reversal)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -461,7 +461,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | at −16 V | -374 µA | -33.3 pA | -160 µA |
 | at +14 V | 59.7 pA | 1.07 µA | 43.3 pA |
 
-### Noise, weighted and integrated (opa-noise, opa-noise-rs)
+### Noise, weighted and integrated (opamp-noise, opamp-noise-rs)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -475,7 +475,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | RIAA-weighted (30 kHz), RS = 2.2 kΩ | 1.3 µV | 835 nV | 1.28 µV |
 | A-weighted, RS = 2.2 kΩ | 1.55 µV | 999 nV | 1.54 µV |
 
-### Distortion against frequency, load, and intermodulation (opa-thd-f, opa-thd-load, opa-imd)
+### Distortion against frequency, load, and intermodulation (opamp-thd-f, opamp-thd-load, opamp-imd)
 
 | | opamp/TL072 | opamp/NE5532 | opamp/RC4558 |
 |---|---|---|---|
@@ -498,7 +498,7 @@ Models: TL072 and RC4558 as TI publishes them (PSpice PARTS macromodels of 1989,
 | IMD SMPTE (60 Hz + 7 kHz 4:1, 3 Vrms) | 13.1 µ | 4.97 µ | 15.5 µ |
 | IMD CCIF (19 + 20 kHz, 3 Vrms) | 747 n | 840 n | 21.1 µ |
 
-### What the model text says (opa-card)
+### What the model text says (opamp-card)
 
 | | TL072 | NE5532 | RC4558 |
 |---|---|---|---|

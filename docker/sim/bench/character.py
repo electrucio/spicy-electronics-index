@@ -30,12 +30,14 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from bench import decks_bjt, engines, raw  # noqa: E402
+from bench import decks_bjt, decks_jfet, decks_mos, engines, raw  # noqa: E402
 from bench.num import n  # noqa: E402
 
 ENGINE = engines.engine_name()
-PLANS = {"bjt": decks_bjt}
+PLANS = {"bjt": decks_bjt, "jfet": decks_jfet, "mosfet": decks_mos}
 POLARITY_SIGN = {"npn": 1, "pnp": -1, "n": 1, "p": -1}
+# the terminals a deck's device line names, by its first letter, in the order the line writes them
+TERMINALS = {"Q": "cbe", "J": "dgs", "M": "dgs", "X": ("inp", "inn", "vp", "vn", "out")}
 CARD_NAME = re.compile(r"^(\s*\.model\s+)(\S+)", re.I | re.M)
 SUBCKT_DUT = re.compile(r"^\s*\.subckt\s+DUT\s", re.I | re.M)
 DUT_WORD = re.compile(r"(?<![\w$#.\-+])DUT(?![\w$#.\-+])")
@@ -49,17 +51,24 @@ PLOT_KEYS = {"dc": ("dc",), "ac": ("ac",), "tran": ("tran",), "noise": ("spectra
 
 
 def as_device(lines, m, pins):
-    """A deck's transistor lines for a subcircuit: each `Q<name> c b e <m>` becomes `X<name>` with the nodes in
-    the subcircuit's own pin order (`pins`: c, b, e or nc per pin, from bench.jobs on the host). A pin no
-    terminal reaches gets a node of its own, held at ground through 1 GΩ so that no node floats; a second
-    pin on one terminal (a tab on the collector) shares that terminal's node. A card's lines pass as they are."""
+    """A deck's device lines for a subcircuit: each `Q<name> c b e <m>` (or `J d g s`, `M d g s`, an op-amp's
+    `X inp inn vp vn out`) becomes `X<name>` with the nodes in the subcircuit's own pin order (`pins`: a role per
+    pin, or nc, from bench.jobs on the host). A pin no terminal reaches gets a node of its own, held at ground
+    through 1 GΩ so that no node floats; a second pin on one terminal (a tab on the collector) shares that
+    terminal's node. A `.model` MOSFET card's lines get the bulk tied to the source (`pins` of d, g, s, b);
+    every other card's lines pass as they are."""
     if not pins:
         return lines
     out = []
     for line in lines:
         t = line.split()
-        if len(t) == 5 and t[0][:1] in "Qq" and t[4] == m:
-            node = dict(zip("cbe", t[1:4]))
+        kind = t[0][:1].upper() if t else ""
+        roles = TERMINALS.get(kind)
+        if roles and len(t) == len(roles) + 2 and t[-1] == m:
+            node = dict(zip(roles, t[1:-1]))
+            if kind == "M" and pins == ["d", "g", "s", "b"]:
+                out.append(" ".join([t[0], node["d"], node["g"], node["s"], node["s"], m]))
+                continue
             nodes, extra = [], []
             for i, role in enumerate(pins):
                 if role in node:
@@ -67,7 +76,7 @@ def as_device(lines, m, pins):
                 else:
                     nodes.append(f"nc{i}{t[0]}")
                     extra.append(f"RNC{i}{t[0]} nc{i}{t[0]} 0 1e9")
-            out += [" ".join(["X" + t[0][1:], *nodes, m])] + extra
+            out += [" ".join(["X" + t[0][1:] if kind != "X" else t[0], *nodes, m])] + extra
         else:
             out.append(line)
     return out
@@ -271,6 +280,7 @@ def main(argv=None):
     ap.add_argument("--shard", default="0/1")
     ap.add_argument("--pack", type=int, default=10)
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--work", default="/tmp/character", help="the scratch directory (the image's tmpfs; a host run names its own)")
     a = ap.parse_args(argv)
     cat_doc = json.loads(Path(a.catalogue).read_text())
     cat = cat_doc["measurements"]
@@ -289,7 +299,7 @@ def main(argv=None):
     out = Path(a.out)
     claims = out / "claims"
     claims.mkdir(parents=True, exist_ok=True)
-    work = Path("/tmp/character")
+    work = Path(a.work)
     version = engines.version()
     t0 = time.perf_counter()
     cg0 = engines._cgroup_cpu_s()

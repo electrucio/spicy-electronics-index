@@ -663,7 +663,7 @@ def mos_bench(part):
         toff = t2 + ton
         r["eoff (300 ns window)"] = energy(toff - 20e-9, toff + 300e-9)
         r["inductive conditions"] = f"VDD {vdd} V, I {i_sw} A (current source + freewheel diode), RG 25 Ω"
-    # a source follower too (mos-distortion's second stage): 1 Vpk in at ID = 10 mA
+    # a source follower too (mosfet-distortion's second stage): 1 Vpk in at ID = 10 mA
     if vg10:
         lines = head(part, kind) + [f"VG g 0 SIN({vg10 + 5} 1 1k)", "VDD vdd 0 20", "RS s 0 500", dev(part, kind, "SF", "vdd", "g", "s"), sine_tran(1e3)[0]]
         plots, log = run(f"{part}-follower", lines)
