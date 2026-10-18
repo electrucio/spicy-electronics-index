@@ -19,7 +19,7 @@ opinions, explained once per measurement, reproducible — with three additions:
 
 - **Absences are results.** Most macromodels give one offset voltage whatever the temperature, no noise,
   no input current change with common mode and no distortion beyond slew and clipping. Each measurement
-  says which of its numbers can come out `absent` and from what in the card (`opa-card` reads it), so a
+  says which of its numbers can come out `absent` and from what in the card (`opamp-card` reads it), so a
   reader sees "this model has no noise" and not a simulator default.
 - **Every maker's condition is run, not one chosen.** The sheets fix the same quantity at different
   supplies (±15 V, ±5 V, 36 V single), loads (600 Ω, 2 kΩ, 10 kΩ), capacitive loads (20 pF, 100 pF) and
@@ -157,112 +157,112 @@ Tests by category: how many of the 73 sheets draw each, in all and per maker (3p
 | test | bench | sheets | 3peak | adi | nisshinbo | onsemi | rohm | st | ti | umw |
 |---|---|---|---|---|---|---|---|---|---|---|
 | **A supply** | | |  |  |  |  |  |  |  |  |
-| `iq_vs_vs` | `opa-iq` | 44 | 7 | 1 | 1 | 11 | 1 |  | 15 | 8 |
-| `iq_vs_t` | `opa-iq` | 36 | 9 |  | 1 | 3 | 1 | 1 | 16 | 5 |
+| `iq_vs_vs` | `opamp-iq` | 44 | 7 | 1 | 1 | 11 | 1 |  | 15 | 8 |
+| `iq_vs_t` | `opamp-iq` | 36 | 9 |  | 1 | 3 | 1 | 1 | 16 | 5 |
 | `pd_vs_t` | `none` | 12 |  |  |  | 7 | 1 | 1 | 3 |  |
 | `pd_vs_vs` | `none` | 1 |  |  |  |  |  |  | 1 |  |
-| `vs_range` | `opa-runs` | 1 |  |  |  | 1 |  |  |  |  |
+| `vs_range` | `opamp-runs` | 1 |  |  |  | 1 |  |  |  |  |
 | **B input DC** | | |  |  |  |  |  |  |  |  |
-| `vos_distribution` | `opa-offset` | 19 | 4 |  |  | 2 |  |  | 7 | 6 |
-| `vos_drift_distribution` | `opa-offset` | 3 |  |  |  |  |  |  |  | 3 |
-| `vos_warmup` | `opa-offset` | 6 |  | 1 |  |  |  |  | 3 | 2 |
-| `vos_longterm` | `opa-offset` | 5 |  | 1 |  |  |  | 1 | 3 |  |
-| `vos_thermal_shock` | `opa-offset` | 1 |  | 1 |  |  |  |  |  |  |
-| `vos_vs_t` | `opa-offset` | 30 | 7 | 1 | 1 | 6 | 1 |  | 11 | 3 |
-| `vos_vs_vcm` | `opa-offset` | 21 | 10 |  |  | 1 | 1 |  | 6 | 3 |
-| `vos_vs_vs` | `opa-offset` | 10 |  |  |  | 1 | 1 |  | 6 | 2 |
+| `vos_distribution` | `opamp-offset` | 19 | 4 |  |  | 2 |  |  | 7 | 6 |
+| `vos_drift_distribution` | `opamp-offset` | 3 |  |  |  |  |  |  |  | 3 |
+| `vos_warmup` | `opamp-offset` | 6 |  | 1 |  |  |  |  | 3 | 2 |
+| `vos_longterm` | `opamp-offset` | 5 |  | 1 |  |  |  | 1 | 3 |  |
+| `vos_thermal_shock` | `opamp-offset` | 1 |  | 1 |  |  |  |  |  |  |
+| `vos_vs_t` | `opamp-offset` | 30 | 7 | 1 | 1 | 6 | 1 |  | 11 | 3 |
+| `vos_vs_vcm` | `opamp-offset` | 21 | 10 |  |  | 1 | 1 |  | 6 | 3 |
+| `vos_vs_vs` | `opamp-offset` | 10 |  |  |  | 1 | 1 |  | 6 | 2 |
 | `vos_adjust` | `none` | 11 |  | 1 |  | 3 |  |  | 7 |  |
-| `ib_vs_t` | `opa-bias` | 40 | 4 | 1 | 1 | 8 | 1 | 1 | 18 | 6 |
-| `ib_vs_vcm` | `opa-bias` | 23 | 1 |  |  | 7 |  |  | 13 | 2 |
-| `ib_vs_vs` | `opa-bias` | 11 |  |  |  | 5 | 1 |  | 4 | 1 |
-| `ios_vs_t` | `opa-bias` | 4 |  | 1 |  |  | 1 |  | 2 |  |
-| `ios_vs_vcm` | `opa-bias` | 1 |  |  |  |  |  |  | 1 |  |
-| `ios_vs_vs` | `opa-bias` | 1 |  |  |  |  | 1 |  |  |  |
+| `ib_vs_t` | `opamp-bias` | 40 | 4 | 1 | 1 | 8 | 1 | 1 | 18 | 6 |
+| `ib_vs_vcm` | `opamp-bias` | 23 | 1 |  |  | 7 |  |  | 13 | 2 |
+| `ib_vs_vs` | `opamp-bias` | 11 |  |  |  | 5 | 1 |  | 4 | 1 |
+| `ios_vs_t` | `opamp-bias` | 4 |  | 1 |  |  | 1 |  | 2 |  |
+| `ios_vs_vcm` | `opamp-bias` | 1 |  |  |  |  |  |  | 1 |  |
+| `ios_vs_vs` | `opamp-bias` | 1 |  |  |  |  | 1 |  |  |  |
 | **C range and rejection** | | |  |  |  |  |  |  |  |  |
-| `vicr_vs_t` | `opa-offset` | 7 |  |  |  | 6 |  |  |  | 1 |
-| `vicr_vs_vs` | `opa-offset` | 4 |  | 1 |  | 1 |  |  | 1 | 1 |
-| `cmrr_vs_f` | `opa-cmrr-f` | 47 | 12 | 1 |  | 9 |  |  | 18 | 7 |
-| `cmrr_vs_t` | `opa-offset` | 21 | 3 |  |  |  | 1 | 1 | 11 | 5 |
-| `cmrr_vs_vcm` | `opa-offset` | 1 |  |  |  |  |  |  | 1 |  |
-| `psrr_vs_f` | `opa-psrr-f` | 31 | 9 | 1 |  | 9 |  |  | 9 | 3 |
-| `psrr_vs_t` | `opa-offset` | 15 | 3 |  |  | 1 | 1 |  | 7 | 3 |
-| `psrr_vs_vs` | `opa-offset` | 1 |  |  |  |  |  |  | 1 |  |
-| `emirr_vs_f` | `opa-emirr` | 19 | 9 |  |  |  |  |  | 9 | 1 |
+| `vicr_vs_t` | `opamp-offset` | 7 |  |  |  | 6 |  |  |  | 1 |
+| `vicr_vs_vs` | `opamp-offset` | 4 |  | 1 |  | 1 |  |  | 1 | 1 |
+| `cmrr_vs_f` | `opamp-cmrr-f` | 47 | 12 | 1 |  | 9 |  |  | 18 | 7 |
+| `cmrr_vs_t` | `opamp-offset` | 21 | 3 |  |  |  | 1 | 1 | 11 | 5 |
+| `cmrr_vs_vcm` | `opamp-offset` | 1 |  |  |  |  |  |  | 1 |  |
+| `psrr_vs_f` | `opamp-psrr-f` | 31 | 9 | 1 |  | 9 |  |  | 9 | 3 |
+| `psrr_vs_t` | `opamp-offset` | 15 | 3 |  |  | 1 | 1 |  | 7 | 3 |
+| `psrr_vs_vs` | `opamp-offset` | 1 |  |  |  |  |  |  | 1 |  |
+| `emirr_vs_f` | `opamp-emirr` | 19 | 9 |  |  |  |  |  | 9 | 1 |
 | **D gain and frequency** | | |  |  |  |  |  |  |  |  |
-| `aol_phase_vs_f` | `opa-aol` | 61 | 10 | 1 |  | 17 | 1 | 1 | 23 | 8 |
-| `closed_loop_gain_vs_f` | `opa-closed-loop` | 21 |  |  | 1 | 6 |  |  | 11 | 3 |
-| `aol_vs_t` | `opa-aol` | 24 | 1 |  |  | 8 |  | 1 | 13 | 1 |
-| `aol_vs_vs` | `opa-aol-swing` | 13 |  | 1 |  | 6 |  |  | 5 | 1 |
-| `aol_vs_rl` | `opa-aol-swing` | 3 |  | 1 |  |  |  |  | 1 | 1 |
-| `aol_vs_vo` | `opa-aol-swing` | 1 |  |  |  |  |  |  |  | 1 |
-| `gbw_vs_vs` | `opa-aol` | 7 |  |  |  | 3 |  |  | 3 | 1 |
-| `gbw_vs_t` | `opa-aol` | 18 | 1 | 1 |  | 9 |  |  | 6 | 1 |
-| `phase_margin_vs_cl` | `opa-stability` | 11 |  |  |  | 3 |  |  | 6 | 2 |
-| `phase_margin_vs_rs` | `opa-stability` | 5 |  |  |  | 5 |  |  |  |  |
-| `phase_margin_vs_t` | `opa-aol` | 3 |  |  |  | 3 |  |  |  |  |
-| `gain_vs_f_comp` | `opa-aol` | 3 |  |  |  | 3 |  |  |  |  |
+| `aol_phase_vs_f` | `opamp-aol` | 61 | 10 | 1 |  | 17 | 1 | 1 | 23 | 8 |
+| `closed_loop_gain_vs_f` | `opamp-closed-loop` | 21 |  |  | 1 | 6 |  |  | 11 | 3 |
+| `aol_vs_t` | `opamp-aol` | 24 | 1 |  |  | 8 |  | 1 | 13 | 1 |
+| `aol_vs_vs` | `opamp-aol-swing` | 13 |  | 1 |  | 6 |  |  | 5 | 1 |
+| `aol_vs_rl` | `opamp-aol-swing` | 3 |  | 1 |  |  |  |  | 1 | 1 |
+| `aol_vs_vo` | `opamp-aol-swing` | 1 |  |  |  |  |  |  |  | 1 |
+| `gbw_vs_vs` | `opamp-aol` | 7 |  |  |  | 3 |  |  | 3 | 1 |
+| `gbw_vs_t` | `opamp-aol` | 18 | 1 | 1 |  | 9 |  |  | 6 | 1 |
+| `phase_margin_vs_cl` | `opamp-stability` | 11 |  |  |  | 3 |  |  | 6 | 2 |
+| `phase_margin_vs_rs` | `opamp-stability` | 5 |  |  |  | 5 |  |  |  |  |
+| `phase_margin_vs_t` | `opamp-aol` | 3 |  |  |  | 3 |  |  |  |  |
+| `gain_vs_f_comp` | `opamp-aol` | 3 |  |  |  | 3 |  |  |  |  |
 | **E output** | | |  |  |  |  |  |  |  |  |
-| `vout_vs_f` | `opa-max-vo-f` | 45 | 2 | 1 | 1 | 10 | 1 | 1 | 22 | 7 |
-| `vout_vs_iout` | `opa-swing` | 34 | 4 |  | 1 | 8 | 1 |  | 11 | 9 |
-| `vout_vs_rl` | `opa-swing` | 23 | 3 | 1 | 1 | 7 | 1 | 1 | 8 | 1 |
-| `vout_vs_vs` | `opa-swing` | 17 |  |  | 1 | 8 | 1 | 1 | 6 |  |
-| `vout_vs_t` | `opa-swing` | 8 |  |  | 1 | 1 | 1 | 1 | 3 | 1 |
-| `isc_vs_t` | `opa-isc` | 27 | 2 |  |  | 8 |  |  | 13 | 4 |
-| `isc_vs_time` | `opa-isc` | 1 |  | 1 |  |  |  |  |  |  |
-| `isc_vs_vs` | `opa-isc` | 4 |  |  |  |  |  |  | 1 | 3 |
-| `zout_vs_f` | `opa-zout` | 24 |  |  |  | 6 |  |  | 13 | 5 |
+| `vout_vs_f` | `opamp-max-vo-f` | 45 | 2 | 1 | 1 | 10 | 1 | 1 | 22 | 7 |
+| `vout_vs_iout` | `opamp-swing` | 34 | 4 |  | 1 | 8 | 1 |  | 11 | 9 |
+| `vout_vs_rl` | `opamp-swing` | 23 | 3 | 1 | 1 | 7 | 1 | 1 | 8 | 1 |
+| `vout_vs_vs` | `opamp-swing` | 17 |  |  | 1 | 8 | 1 | 1 | 6 |  |
+| `vout_vs_t` | `opamp-swing` | 8 |  |  | 1 | 1 | 1 | 1 | 3 | 1 |
+| `isc_vs_t` | `opamp-isc` | 27 | 2 |  |  | 8 |  |  | 13 | 4 |
+| `isc_vs_time` | `opamp-isc` | 1 |  | 1 |  |  |  |  |  |  |
+| `isc_vs_vs` | `opamp-isc` | 4 |  |  |  |  |  |  | 1 | 3 |
+| `zout_vs_f` | `opamp-zout` | 24 |  |  |  | 6 |  |  | 13 | 5 |
 | **F large signal** | | |  |  |  |  |  |  |  |  |
-| `slew_vs_t` | `opa-slew` | 16 |  |  |  | 9 |  |  | 5 | 2 |
-| `slew_vs_vs` | `opa-slew` | 7 |  |  |  | 3 | 1 |  | 2 | 1 |
-| `slew_vs_cl` | `opa-slew` | 1 |  |  |  |  |  |  |  | 1 |
-| `large_step` | `opa-slew` | 43 | 2 | 1 |  | 14 |  | 1 | 15 | 10 |
-| `settling` | `opa-settling` | 10 | 1 |  |  | 2 |  |  | 5 | 2 |
-| `overload_recovery` | `opa-overload` | 19 | 10 |  |  |  |  |  | 7 | 2 |
-| `phase_reversal` | `opa-phase-reversal` | 8 |  |  |  |  |  |  | 5 | 3 |
-| `input_overvoltage` | `opa-phase-reversal` | 4 |  |  |  |  |  |  | 3 | 1 |
+| `slew_vs_t` | `opamp-slew` | 16 |  |  |  | 9 |  |  | 5 | 2 |
+| `slew_vs_vs` | `opamp-slew` | 7 |  |  |  | 3 | 1 |  | 2 | 1 |
+| `slew_vs_cl` | `opamp-slew` | 1 |  |  |  |  |  |  |  | 1 |
+| `large_step` | `opamp-slew` | 43 | 2 | 1 |  | 14 |  | 1 | 15 | 10 |
+| `settling` | `opamp-settling` | 10 | 1 |  |  | 2 |  |  | 5 | 2 |
+| `overload_recovery` | `opamp-overload` | 19 | 10 |  |  |  |  |  | 7 | 2 |
+| `phase_reversal` | `opamp-phase-reversal` | 8 |  |  |  |  |  |  | 5 | 3 |
+| `input_overvoltage` | `opamp-phase-reversal` | 4 |  |  |  |  |  |  | 3 | 1 |
 | **G small signal** | | |  |  |  |  |  |  |  |  |
-| `small_step` | `opa-step` | 40 | 10 | 1 |  | 7 |  |  | 16 | 6 |
-| `overshoot_vs_cl` | `opa-stability` | 23 |  | 1 |  | 6 |  |  | 12 | 4 |
+| `small_step` | `opamp-step` | 40 | 10 | 1 |  | 7 |  |  | 16 | 6 |
+| `overshoot_vs_cl` | `opamp-stability` | 23 |  | 1 |  | 6 |  |  | 12 | 4 |
 | **I distortion** | | |  |  |  |  |  |  |  |  |
-| `thd_vs_f` | `opa-thd-f` | 31 | 3 |  |  | 9 |  | 1 | 16 | 2 |
-| `thd_vs_level` | `opa-thd-level` | 17 |  |  |  | 4 | 1 |  | 12 |  |
-| `imd` | `opa-imd` | 2 |  |  |  |  |  |  | 2 |  |
-| `spectrum` | `opa-thd-f` | 2 |  |  |  |  |  |  | 2 |  |
-| `thd_other` | `opa-thd-f` | 1 |  |  |  |  |  |  | 1 |  |
+| `thd_vs_f` | `opamp-thd-f` | 31 | 3 |  |  | 9 |  | 1 | 16 | 2 |
+| `thd_vs_level` | `opamp-thd-level` | 17 |  |  |  | 4 | 1 |  | 12 |  |
+| `imd` | `opamp-imd` | 2 |  |  |  |  |  |  | 2 |  |
+| `spectrum` | `opamp-thd-f` | 2 |  |  |  |  |  |  | 2 |  |
+| `thd_other` | `opamp-thd-f` | 1 |  |  |  |  |  |  | 1 |  |
 | **H noise** | | |  |  |  |  |  |  |  |  |
-| `noise_0p1_10` | `opa-noise` | 22 | 2 | 1 |  | 3 |  |  | 11 | 5 |
-| `en_vs_vs` | `opa-noise` | 2 |  | 1 |  |  |  |  | 1 |  |
-| `en_vs_t` | `opa-noise` | 3 |  | 1 |  |  |  |  | 1 | 1 |
-| `noise_vs_rs` | `opa-noise-rs` | 14 |  | 1 |  | 5 |  |  | 8 |  |
-| `noise_vs_bandwidth` | `opa-noise` | 4 |  | 1 |  |  |  |  | 2 | 1 |
-| `in_vs_f` | `opa-noise` | 15 |  | 1 |  | 5 |  |  | 8 | 1 |
-| `en_vs_f` | `opa-noise` | 47 | 12 | 1 |  | 12 | 1 | 1 | 14 | 6 |
+| `noise_0p1_10` | `opamp-noise` | 22 | 2 | 1 |  | 3 |  |  | 11 | 5 |
+| `en_vs_vs` | `opamp-noise` | 2 |  | 1 |  |  |  |  | 1 |  |
+| `en_vs_t` | `opamp-noise` | 3 |  | 1 |  |  |  |  | 1 | 1 |
+| `noise_vs_rs` | `opamp-noise-rs` | 14 |  | 1 |  | 5 |  |  | 8 |  |
+| `noise_vs_bandwidth` | `opamp-noise` | 4 |  | 1 |  |  |  |  | 2 | 1 |
+| `in_vs_f` | `opamp-noise` | 15 |  | 1 |  | 5 |  |  | 8 | 1 |
+| `en_vs_f` | `opamp-noise` | 47 | 12 | 1 |  | 12 | 1 | 1 | 14 | 6 |
 | **J multichannel** | | |  |  |  |  |  |  |  |  |
-| `channel_separation_vs_f` | `opa-separation` | 28 | 1 |  |  | 8 |  |  | 15 | 4 |
+| `channel_separation_vs_f` | `opamp-separation` | 28 | 1 |  |  | 8 |  |  | 15 | 4 |
 | **K test circuits** | | |  |  |  |  |  |  |  |  |
 | `test_circuit` | `none` | 36 | 2 | 1 |  | 9 |  | 1 | 21 | 2 |
 | **C range and rejection** | | |  |  |  |  |  |  |  |  |
-| `vicr_other` | `opa-offset` | 9 |  |  |  | 5 |  |  | 3 | 1 |
+| `vicr_other` | `opamp-offset` | 9 |  |  |  | 5 |  |  | 3 | 1 |
 | **E output** | | |  |  |  |  |  |  |  |  |
-| `vout_other` | `opa-swing` | 9 |  |  |  | 5 |  |  | 2 | 2 |
-| `isc_other` | `opa-isc` | 7 |  |  |  | 2 |  |  | 3 | 2 |
-| `zout_other` | `opa-zout` | 2 |  |  |  | 1 |  |  | 1 |  |
+| `vout_other` | `opamp-swing` | 9 |  |  |  | 5 |  |  | 2 | 2 |
+| `isc_other` | `opamp-isc` | 7 |  |  |  | 2 |  |  | 3 | 2 |
+| `zout_other` | `opamp-zout` | 2 |  |  |  | 1 |  |  | 1 |  |
 | **D gain and frequency** | | |  |  |  |  |  |  |  |  |
-| `aol_other` | `opa-aol` | 5 |  |  |  | 2 |  |  | 2 | 1 |
-| `gbw_other` | `opa-aol` | 1 |  |  |  |  |  |  | 1 |  |
+| `aol_other` | `opamp-aol` | 5 |  |  |  | 2 |  |  | 2 | 1 |
+| `gbw_other` | `opamp-aol` | 1 |  |  |  |  |  |  | 1 |  |
 | **F large signal** | | |  |  |  |  |  |  |  |  |
-| `slew_other` | `opa-slew` | 3 |  |  |  | 1 |  |  | 2 |  |
+| `slew_other` | `opamp-slew` | 3 |  |  |  | 1 |  |  | 2 |  |
 | **B input DC** | | |  |  |  |  |  |  |  |  |
-| `ib_other` | `opa-bias` | 7 |  |  |  | 2 |  |  | 1 | 4 |
-| `ios_other` | `opa-bias` | 2 | 2 |  |  |  |  |  |  |  |
-| `vos_other` | `opa-offset` | 2 |  |  |  |  |  |  |  | 2 |
+| `ib_other` | `opamp-bias` | 7 |  |  |  | 2 |  |  | 1 | 4 |
+| `ios_other` | `opamp-bias` | 2 | 2 |  |  |  |  |  |  |  |
+| `vos_other` | `opamp-offset` | 2 |  |  |  |  |  |  |  | 2 |
 | **A supply** | | |  |  |  |  |  |  |  |  |
-| `iq_other` | `opa-iq` | 7 | 2 |  |  | 3 |  |  | 1 | 1 |
+| `iq_other` | `opamp-iq` | 7 | 2 |  |  | 3 |  |  | 1 | 1 |
 | **C range and rejection** | | |  |  |  |  |  |  |  |  |
-| `cmrr_other` | `opa-cmrr-f` | 5 | 1 |  |  | 1 |  |  | 2 | 1 |
-| `psrr_other` | `opa-psrr-f` | 2 | 1 |  |  |  |  |  | 1 |  |
+| `cmrr_other` | `opamp-cmrr-f` | 5 | 1 |  |  | 1 |  |  | 2 | 1 |
+| `psrr_other` | `opamp-psrr-f` | 2 | 1 |  |  |  |  |  | 1 |  |
 | **H noise** | | |  |  |  |  |  |  |  |  |
-| `noise_other` | `opa-noise` | 9 |  | 1 |  | 2 |  |  | 6 |  |
+| `noise_other` | `opamp-noise` | 9 |  | 1 |  | 2 |  |  | 6 |  |
 | **N Norton amplifiers** | | |  |  |  |  |  |  |  |  |
 | `norton` | `none` | 11 | 5 |  |  | 2 |  |  | 2 | 2 |
 
@@ -354,21 +354,21 @@ how many sheets draw each).
 
 ### Supply
 
-#### Does the model load, and at what operating point (`opa-runs`)
+#### Does the model load, and at what operating point (`opamp-runs`)
 
 Group `dc` · analysis `op` · engines qspice, ngspice, ltspice · sheets `vs_range`.
 
 Whether each simulator reads the subcircuit and finds one operating point as a unity-gain follower with the
 input at the reference (ground at ±VS, VS/2 on a single supply), at every supply of the ladder: the first
 fact about a macromodel, and the error class when it fails (dialect, convergence, timeout). The pins are
-taken from `opa-card`; a model whose pins cannot be traced is not run. What is read: that it runs, the
+taken from `opamp-card`; a model whose pins cannot be traced is not run. What is read: that it runs, the
 supply current per amplifier, the output voltage (the offset, uncorrected), and the lowest supply at which
 the output still sits at the reference, which is the model's own idea of its supply range.
 
 Outputs: `runs@±15V` … `runs@5V` (code per supply), `iq@±15V` (A), `vout@±15V` (V), `vs_min` (V).
 Absent: nothing; `n/a` for a supply the model will not run at.
 
-#### Supply current against supply and temperature, and turn-on (`opa-iq`)
+#### Supply current against supply and temperature, and turn-on (`opamp-iq`)
 
 Group `supply` · analysis `dc`, `tran` · engines qspice, ngspice, ltspice · sheets `iq_vs_vs`, `iq_vs_t`,
 `turn_on`, `pd_vs_t` (not measured: a package figure).
@@ -384,7 +384,7 @@ Absent: `iq_ratio` when the model has no temperature terms (every current source
 
 ### Input
 
-#### Offset: its value, and how it moves with common mode, supply and temperature (`opa-offset`)
+#### Offset: its value, and how it moves with common mode, supply and temperature (`opamp-offset`)
 
 Group `input` · analysis `dc` · engines qspice, ngspice, ltspice · sheets `vos_vs_t`, `vos_vs_vcm`,
 `vos_vs_vs`, `vos_vs_rs`, `vos_distribution` (one number: a model has no distribution), `cmrr_vs_t`,
@@ -397,7 +397,7 @@ beyond the positive one, at −40, 25 and 125 °C; against the supply from the m
 temperature from −55 to 125 °C; and with the source resistances of the ladder, which folds IB·RS in as
 Nisshinbo's table does. From the VCM sweep: the DC CMRR as the slope, the input range as where VOS leaves
 its mid-range value by more than 1 mV, and whether the output's sign reverses beyond it (the flag
-`opa-phase-reversal` confirms in time domain). From the supply sweep: the DC PSRR.
+`opamp-phase-reversal` confirms in time domain). From the supply sweep: the DC PSRR.
 
 Outputs: `vos@±15V` (V), `vos@36V`, `dvos/dt` (V/°C, −40 to 125), `cmrr_dc@±15V` (dB), `psrr_dc` (dB),
 `vicr_low@±15V`, `vicr_high@±15V` (V, from the rail), `vos@rs=10k` (V). Curves: VOS against VCM at three
@@ -405,7 +405,7 @@ temperatures and each supply; VOS against VS; VOS against T; VICR against T.
 Absent: `dvos/dt` and `vicr` against T when the model has no temperature terms; `cmrr_dc` when the model's
 common-mode gain is zero by construction (reported as `> 200 dB`, which is the finding).
 
-#### Bias and offset currents, and the input impedance (`opa-bias`)
+#### Bias and offset currents, and the input impedance (`opamp-bias`)
 
 Group `input` · analysis `dc`, `ac` · engines qspice, ngspice, ltspice · sheets `ib_vs_t`, `ib_vs_vcm`,
 `ib_vs_vs`, `ios_vs_t`, `ios_vs_vcm`, `zin_vs_f`.
@@ -422,7 +422,7 @@ flagged, since no amplifier has it).
 
 ### Range and rejection
 
-#### CMRR against frequency (`opa-cmrr-f`)
+#### CMRR against frequency (`opamp-cmrr-f`)
 
 Group `rejection` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `cmrr_vs_f`, `cmrr_other`.
 
@@ -434,7 +434,7 @@ Outputs: `cmrr@1kHz,±15V`, `cmrr@100kHz,±15V` (dB), `cmrr_corner` (Hz). Curves
 supply.
 Absent: a model with no common-mode path reports infinity; the number is replaced by `absent`.
 
-#### PSRR against frequency, each rail alone and both together (`opa-psrr-f`)
+#### PSRR against frequency, each rail alone and both together (`opamp-psrr-f`)
 
 Group `rejection` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `psrr_vs_f`, `psrr_other`.
 
@@ -446,7 +446,7 @@ Outputs: `psrr+@1kHz`, `psrr−@1kHz`, `psrr+@100kHz`, `psrr−@100kHz` (dB), `p
 −PSRR, both against f.
 Absent: a model whose internal references are ideal reports infinity on one or both rails.
 
-#### Rejection of an RF carrier at the input (`opa-emirr`)
+#### Rejection of an RF carrier at the input (`opamp-emirr`)
 
 Group `rejection` · analysis `tran` · engines qspice, ngspice · sheets `emirr_vs_f` (TI's new format only,
 nine sheets).
@@ -460,7 +460,7 @@ Outputs: `emirr@1GHz` (dB) or `absent`. Curve: EMIRR against f.
 
 ### Gain and frequency
 
-#### Open-loop gain and phase, GBW and the margins (`opa-aol`)
+#### Open-loop gain and phase, GBW and the margins (`opamp-aol`)
 
 Group `gain` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `aol_phase_vs_f`, `aol_vs_t`,
 `gbw_vs_t`, `gbw_vs_rl`, `phase_margin_vs_t`, `phase_vs_vs`, `gain_vs_f_comp`, `aol_other`, `gbw_other`.
@@ -478,7 +478,7 @@ against f per RL, CL, T and supply.
 Absent: the temperature ratios without temperature terms; `f_p2` when the model is single-pole (reported,
 since no amplifier is).
 
-#### Open-loop gain against output swing, supply and load (`opa-aol-swing`)
+#### Open-loop gain against output swing, supply and load (`opamp-aol-swing`)
 
 Group `gain` · analysis `dc` · engines qspice, ngspice, ltspice · sheets `aol_vs_vs`, `aol_vs_rl`,
 `aol_vs_vo`.
@@ -490,7 +490,7 @@ supply and load; AOL against the supply at VO = 2/3 VS (onsemi).
 Outputs: `aol@±10V,2k` (V/V and dB), `aol@0.3V,10k`, `aol@1.2V,2k`, `aol@600Ω`. Curves: AOL against VO; AOL
 against VS; AOL against RL.
 
-#### Closed-loop gain against frequency (`opa-closed-loop`)
+#### Closed-loop gain against frequency (`opamp-closed-loop`)
 
 Group `gain` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `closed_loop_gain_vs_f`.
 
@@ -500,7 +500,7 @@ the ladder's gain, the feedback network's RT recorded), 1 Hz to 100 MHz, CL = 20
 
 Outputs: `bw@G=1`, `bw@G=10`, `bw@G=100`, `bw@G=1000` (Hz), `peak@G=1` (dB). Curves: gain against f per G.
 
-#### Stability against capacitive load and source resistance (`opa-stability`)
+#### Stability against capacitive load and source resistance (`opamp-stability`)
 
 Group `gain` · analysis `ac`, `tran` · engines qspice, ngspice, ltspice · sheets `phase_margin_vs_cl`,
 `phase_margin_vs_rs`, `overshoot_vs_cl`, `cl_drive`.
@@ -516,7 +516,7 @@ Curves: PM against CL per G and RISO; overshoot against CL per G; PM against RT.
 
 ### Output
 
-#### Output swing and headroom against load, current, supply and temperature (`opa-swing`)
+#### Output swing and headroom against load, current, supply and temperature (`opamp-swing`)
 
 Group `output` · analysis `dc` · engines qspice, ngspice, ltspice · sheets `vout_vs_rl`, `vout_vs_iout`,
 `vout_vs_vs`, `vout_vs_t`, `vout_other`.
@@ -533,7 +533,7 @@ parts' figure). Curves: VOUT against RL (sourcing, sinking, per T); VOUT against
 against T.
 Absent: the temperature family without temperature terms.
 
-#### Short-circuit current (`opa-isc`)
+#### Short-circuit current (`opamp-isc`)
 
 Group `output` · analysis `dc`, `tran` · engines qspice, ngspice, ltspice · sheets `isc_vs_t`, `isc_vs_time`,
 `isc_vs_vs`, `isc_other`.
@@ -545,7 +545,7 @@ current with a clamp or not at all.
 Outputs: `isc+@±15V,25C`, `isc−@±15V,25C` (A), `isc_ratio@125C/25C`. Curves: ISC against T; ISC against VS.
 Absent: a model with no current limit reports the load line's number and the flag `no limit`.
 
-#### Output impedance, open- and closed-loop (`opa-zout`)
+#### Output impedance, open- and closed-loop (`opamp-zout`)
 
 Group `output` · analysis `ac` · engines qspice, ngspice, ltspice · sheets `zout_vs_f`, `zout_other`.
 
@@ -555,7 +555,7 @@ at G = +1, +10, +100, +1000 (onsemi's family); at IOUT = 0 and 5 mA of DC load (
 Outputs: `zo_ol@1MHz` (Ω, TI's table), `zo_ol@9MHz` (onsemi's), `zo_cl@1kHz,G=1` (Ω). Curves: ZO against f
 open-loop and per G.
 
-#### Maximum output voltage against frequency (`opa-max-vo-f`)
+#### Maximum output voltage against frequency (`opamp-max-vo-f`)
 
 Group `output` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `vout_vs_f`.
 
@@ -567,7 +567,7 @@ Outputs: `fpbw@2k,±15V` (Hz), `vopp@20kHz,2k`, `vopp@100kHz,2k` (V). Curves: VO
 
 ### Large signal
 
-#### Slew rate, and the large-signal step (`opa-slew`)
+#### Slew rate, and the large-signal step (`opamp-slew`)
 
 Group `large-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `slew_vs_t`, `slew_vs_vs`,
 `slew_vs_cl`, `slew_vs_gain`, `large_step`, `slew_other`.
@@ -580,7 +580,7 @@ Outputs: `sr+@10V,100pF,G=1`, `sr−@10V,100pF,G=1`, `sr+@10V,20pF,G=1`, `sr+@G=
 Curves: SR against VS; SR against T; the step waveforms per fixture.
 Absent: the temperature ratio without temperature terms.
 
-#### Settling time (`opa-settling`)
+#### Settling time (`opamp-settling`)
 
 Group `large-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `settling`.
 
@@ -589,7 +589,7 @@ and 10 V steps at G = +1, −1 and −4 (NE5534's figure), CL = 20 pF and 100 pF
 
 Outputs: `ts@0.1%,10V,G=1`, `ts@0.01%,10V,G=1`, `ts@0.1%,2V,G=−1` (s). Curves: error against time per step.
 
-#### Overload recovery (`opa-overload`)
+#### Overload recovery (`opamp-overload`)
 
 Group `large-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `overload_recovery`.
 
@@ -598,7 +598,7 @@ output's return within 1 % of linear (TI's 300 ns), positive and negative.
 
 Outputs: `trec+@G=−10`, `trec−@G=−10` (s). Curves: the two oscillograms.
 
-#### Phase reversal, and the input driven beyond the rails (`opa-phase-reversal`)
+#### Phase reversal, and the input driven beyond the rails (`opamp-phase-reversal`)
 
 Group `large-signal` · analysis `tran`, `dc` · engines qspice, ngspice, ltspice · sheets `phase_reversal`,
 `input_overvoltage`.
@@ -612,7 +612,7 @@ Absent: `iin` when the input is ideal.
 
 ### Small signal
 
-#### Small-signal step response (`opa-step`)
+#### Small-signal step response (`opamp-step`)
 
 Group `small-signal` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `small_step`.
 
@@ -624,7 +624,7 @@ waveforms.
 
 ### Noise
 
-#### Voltage and current noise against frequency, the 1/f corner and 0.1–10 Hz (`opa-noise`)
+#### Voltage and current noise against frequency, the 1/f corner and 0.1–10 Hz (`opamp-noise`)
 
 Group `noise` · analysis `noise`, `tran` · engines qspice, ngspice · sheets `en_vs_f`, `in_vs_f`,
 `noise_0p1_10`, `en_vs_vs`, `en_vs_t`, `noise_vs_bandwidth`, `noise_other`.
@@ -634,13 +634,13 @@ spot values at 10 Hz, 100 Hz, 1 kHz and 10 kHz; the 1/f corner; the integrated r
 (legacy TL07x), 20 Hz–20 kHz and 0.1–10 Hz; the 0.1–10 Hz peak-to-peak from a 10 s transient through onsemi's
 band-pass (gain 50 000, 0.1 Hz high-pass, 10 Hz low-pass) when the model has noise sources, or from
 integration; en against the supply (OP27's figure). A macromodel with no noise sources (most) gives the
-resistors' thermal noise only: the result is `absent`, and `opa-card` says why.
+resistors' thermal noise only: the result is `absent`, and `opamp-card` says why.
 
 Outputs: `en@10Hz`, `en@1kHz`, `en@10kHz` (V/√Hz), `in@1kHz` (A/√Hz), `f_corner_en`, `f_corner_in` (Hz),
 `en_rms@20Hz-20kHz` (V), `en_pp@0.1-10Hz` (V). Curves: en and in against f; en against VS.
 Absent: all of them when the card has no noise sources beyond resistors.
 
-#### Total noise against source resistance, noise figure and the weighted figures (`opa-noise-rs`)
+#### Total noise against source resistance, noise figure and the weighted figures (`opamp-noise-rs`)
 
 Group `noise` · analysis `noise` · engines qspice, ngspice · sheets `noise_vs_rs`; and the NJM2068's
 weighted figures.
@@ -652,11 +652,11 @@ RS = 300 Ω and 2.2 kΩ — the Nisshinbo figures, the one test specific to the 
 
 Outputs: `vt@1kHz,rs=1k` (V/√Hz), `nf@rs=1k` (dB), `en_a@rs=300` (V), `en_riaa@rs=2.2k` (V). Curves: VT
 against RS at 1 kHz and 10 Hz; NF against RS; weighted noise against RS.
-Absent: as `opa-noise`.
+Absent: as `opamp-noise`.
 
 ### Distortion (model against model)
 
-#### THD against frequency (`opa-thd-f`)
+#### THD against frequency (`opamp-thd-f`)
 
 Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `thd_vs_f`, `thd_vs_gain`,
 `spectrum`, `thd_other`.
@@ -670,7 +670,7 @@ its clipping and whatever its output stage does, not the die's.
 Outputs: `thd@1kHz,3Vrms,2k,G=1`, `thd@20kHz,3Vrms,2k,G=1`, `thd@1kHz,3Vrms,600Ω,G=1`, `thd@1kHz,G=10`
 (ratio). Curves: THD against f per level, gain and load; the spectra.
 
-#### THD against output level (`opa-thd-level`)
+#### THD against output level (`opamp-thd-level`)
 
 Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `thd_vs_level`.
 
@@ -681,7 +681,7 @@ with noise.
 Outputs: `thd@1kHz,1Vrms`, `thd@1kHz,6Vrms` (ratio), `v_clip@1%` (V). Curves: THD against level per gain,
 load and supply.
 
-#### Intermodulation (`opa-imd`)
+#### Intermodulation (`opamp-imd`)
 
 Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `imd` (two sheets; the
 audio sheets' CCIF figure).
@@ -690,7 +690,7 @@ SMPTE (60 Hz + 7 kHz, 4:1) and CCIF (19 + 20 kHz, 1:1) at 3 Vrms into 2 kΩ and 
 
 Outputs: `imd_smpte@3Vrms`, `imd_ccif@3Vrms` (ratio).
 
-#### THD against load (`opa-thd-load`)
+#### THD against load (`opamp-thd-load`)
 
 Group `distortion` · analysis `tran` · engines qspice, ngspice, ltspice · sheets `thd_vs_rl` (OPA1656's figure).
 
@@ -700,7 +700,7 @@ Outputs: `thd@1kHz,3Vrms,100Ω`, `thd@1kHz,3Vrms,10k` (ratio). Curve: THD agains
 
 ### Multichannel
 
-#### Channel separation (`opa-separation`)
+#### Channel separation (`opamp-separation`)
 
 Group `multichannel` · analysis `ac`, `tran` · engines qspice, ngspice, ltspice · sheets
 `channel_separation_vs_f`.
@@ -717,7 +717,7 @@ Absent: a single-amplifier subcircuit, or one with no supply or substrate coupli
 
 ### Model facts
 
-#### What the card says it can do (`opa-card`)
+#### What the card says it can do (`opamp-card`)
 
 Group `facts` · no simulation · sheets none.
 
@@ -730,7 +730,7 @@ common-mode path, input protection, an output current limit, and what kind of ou
 Outputs: `family`, `pins`, `noise_sources`, `temperature_terms`, `supply_current_model`,
 `common_mode_path`, `input_protection`, `current_limit`, `output_stage` (codes).
 
-#### Do the three simulators agree? (`opa-agreement`)
+#### Do the three simulators agree? (`opamp-agreement`)
 
 Group `facts` · every analysis · engines qspice, ngspice, ltspice.
 

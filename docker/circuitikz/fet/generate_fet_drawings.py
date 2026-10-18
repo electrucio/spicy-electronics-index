@@ -246,9 +246,9 @@ mr += dut(M, "(8,0)", "R")
 mr += r"\draw (R.S) to[short] ++(0,-0.5) node[ground]{};" + "\n"
 mr += r"\draw (R.D) to[short] ++(0,0.3) to[rmeter, t=A, l=$I_S$] ++(0,1.4) to[short] ++(2,0) to[vsource, l=$V_{DS}=-\SI{1}{V}$\\ (body diode), invert] ++(0,-2.4) node[ground]{};" + "\n"
 mr += r"\draw (R.G) to[short] ++(-0.8,0) node[ground]{};" + "\n"
-write("mos-runs", ["VD d 0 1 / VG g 0 10 / M1 d g 0 0 DUT", "VD2 d2 0 1 / VG2 g2 0 4.5 / M2 d2 g2 0 0 DUT", "VD3 d3 0 -1 / M3 d3 0 0 0 DUT", ".op"], mr)
+write("mosfet-runs", ["VD d 0 1 / VG g 0 10 / M1 d g 0 0 DUT", "VD2 d2 0 1 / VG2 g2 0 4.5 / M2 d2 g2 0 0 DUT", "VD3 d3 0 -1 / M3 d3 0 0 0 DUT", ".op"], mr)
 
-write("mos-tracer", ["VK1 sw dk1 0", "VGK1 gk1 0 {vgs_k}", "MK1 dk1 gk1 0 0 DUT", "VSW sw 0 0 / .dc VSW 0 10 0.01 (and 0 30 0.05)"],
+write("mosfet-tracer", ["VK1 sw dk1 0", "VGK1 gk1 0 {vgs_k}", "MK1 dk1 gk1 0 0 DUT", "VSW sw 0 0 / .dc VSW 0 10 0.01 (and 0 30 0.05)"],
       topoA(M, r"$V_{GS}$ step\\ 2\dots\SI{15}{V} or auto", r"$V_{DS}$ $0\to10$ / \SI{30}{V}", swept_drain=True)
       + note(-4.6, -3.6, r"one copy per gate step; drawn as one\\ auto steps: $V_{GS}$ for 10, 30, 100, 300 mA, \SI{1}{A} at \SI{5}{V}", anchor="west"))
 
@@ -259,7 +259,7 @@ tr += r"\draw (R.D) to[short] ++(0,0.3) to[rmeter, t=A, l=$I_D$] ++(0,1.4) -| ($
 tr += r"\draw (rg) to[short] ++(-1.0,0) to[vsource, l_=$V_{GS}$ swept, invert] ++(0,-1.9) node[ground]{};" + "\n"
 tr += note(6.5, 3.3, r"diode-connected copy: $V_{th}$ at 20, 250 \si{\micro A}, \SI{1}{mA}", anchor="west")
 tr += note(-4.6, -3.6, r"four copies, one per $V_{DS}$; drawn as one", anchor="west")
-write("mos-transfer", ["VT1 dt1 0 15 / VGS g 0 0 / .dc VGS -2 15 0.01", "MT1 dt1 g 0 0 DUT", "VTD dtd g 0 / MTD dtd g 0 0 DUT"], tr)
+write("mosfet-transfer", ["VT1 dt1 0 15 / VGS g 0 0 / .dc VGS -2 15 0.01", "MT1 dt1 g 0 0 DUT", "VTD dtd g 0 / MTD dtd g 0 0 DUT"], tr)
 
 def forced_current(kind, at, name, gate_lbl, dial_lbl, clamp_v, reversed_=False, vm_lbl=r"$V_{DS}$"):
     x,y = at
@@ -273,12 +273,12 @@ def forced_current(kind, at, name, gate_lbl, dial_lbl, clamp_v, reversed_=False,
 
 rd = forced_current(M, (0,0), "Q", r"$V_{GS}$ step\\ 2.5\dots\SI{15}{V}", r"$I_D=10^{V(x)}$\\ \SI{1}{mA}\dots\SI{100}{A}", r"\SI{30}{V}")
 rd += note(-4.6, -3.6, r"the drain current is forced by the behavioural dial;\\ the clamp catches a copy that cannot pass it; $R_{DS(\mathrm{on})}=V_{DS}/I_D$\\ second deck: $I_D$ held at 0.1, 1, \SI{10}{A}, gate swept $0\to\SI{15}{V}$", anchor="west")
-write("mos-rdson", ["BR0 0 dr0 I=exp(2.302585092994046*V(x))", "DCL0 dr0 cl0 DCLMP / VCL0 cl0 0 30", "VGR0 gr0 0 10", "MR0 dr0 gr0 0 0 DUT", ".dc VX -3 2 0.05"], rd)
+write("mosfet-rdson", ["BR0 0 dr0 I=exp(2.302585092994046*V(x))", "DCL0 dr0 cl0 DCLMP / VCL0 cl0 0 30", "VGR0 gr0 0 10", "MR0 dr0 gr0 0 0 DUT", ".dc VX -3 2 0.05"], rd)
 
 gmm = topoA(M, r"$V_{GS}$ bias\\ $+\SI{1}{V}$ AC", r"$V_{DS}=\SI{15}{V}$", gate_kind="Vac", name="Q")
 gmm += topoA(M, r"$V_{GS}$ bias", r"$V_{DS}=\SI{15}{V}$\\ $+\SI{1}{V}$ AC", drain_kind="Vac", name="R", origin=(8,0))
 gmm += note(-4.6, -3.6, r"copy A ($g_{fs}$), copy B ($g_{os}$); one pair per ladder current;\\ $V_{DS}$ 6 and \SI{15}{V}; read at \SI{1}{kHz}", anchor="west")
-write("mos-gm", ["VD0 d0 0 15 / VG0 g0 0 DC {vgs} AC 1 / MG0 d0 g0 0 0 DUT", "VDO0 do0 0 DC 15 AC 1", ".ac dec 10 100 10000"], gmm)
+write("mosfet-gm", ["VD0 d0 0 15 / VG0 g0 0 DC {vgs} AC 1 / MG0 d0 g0 0 0 DUT", "VDO0 do0 0 DC 15 AC 1", ".ac dec 10 100 10000"], gmm)
 
 mc = dut(M, "(0,0)", "A")
 mc += r"\draw (A.S) to[short] ++(0,-0.5) node[ground]{};" + "\n"
@@ -290,7 +290,7 @@ mc += note(6.5, 3.3, r"$C_{oss}$: drain driven, gate grounded", anchor="west")
 mc += cap_copy(M, (16,0), "C", "G", {"D": r"$V_{DS}$"}, None, r"$V_{GS}=0$")
 mc += note(14.5, 3.3, r"$C_{rss}$: $i_d/\omega$ with the gate driven", anchor="west")
 mc += note(-4.6, -3.6, r"one set per drain voltage 0.1\dots\SI{300}{V}; a second deck at $V_{DS}=0$ steps $V_{GS}$ 0\dots\SI{10}{V}; read at \SI{1}{MHz}", anchor="west")
-write("mos-capacitance", ["VDI di 0 {v} / LDI di dio 1 / VGI gi 0 AC 1 / MI dio gi 0 0 DUT", "VDO do 0 DC {v} AC 1 / MO do 0 0 0 DUT", "VDR dr 0 {v} / VGR gr 0 AC 1 / MR dr gr 0 0 DUT", ".ac dec 10 100000 10000000"], mc)
+write("mosfet-capacitance", ["VDI di 0 {v} / LDI di dio 1 / VGI gi 0 AC 1 / MI dio gi 0 0 DUT", "VDO do 0 DC {v} AC 1 / MO do 0 0 0 DUT", "VDR dr 0 {v} / VGR gr 0 AC 1 / MR dr gr 0 0 DUT", ".ac dec 10 100000 10000000"], mc)
 
 gc = dut(M, "(0,0)", "Q")
 gc += r"\draw (Q.S) to[short] ++(0,-0.5) node[ground]{};" + "\n"
@@ -300,7 +300,7 @@ gc += r"\draw (qd) to[short, -o] ++(-0.8,0.6) node[left]{$V_{DS}$};" + "\n"
 gc += r"\draw (Q.G) to[short] ++(-1.1,0) coordinate(qg) to[short] ++(-0.7,0) to[isource, l_=$I_G$ 1 or \SI{10}{mA}, invert] ++(0,-1.9) node[ground]{};" + "\n"
 gc += r"\draw (qg) to[short, -o] ++(0,0.7) node[above left]{$V_{GS}(t)$};" + "\n"
 gc += note(-4.6, -3.6, r"$Q = I_G\cdot t$; the drain sits at $V_{DD}$ until the transistor takes $I_L$\\ one deck per load current and supply", anchor="west")
-write("mos-gate-charge", ["IG 0 g 0.001", "IL vdd d 1 / DCL d vdd DCLMP / VDD vdd 0 30", "M1 d g 0 0 DUT", ".tran 1e-9 ..."], gc)
+write("mosfet-gate-charge", ["IG 0 g 0.001", "IL vdd d 1 / DCL d vdd DCLMP / VDD vdd 0 30", "M1 d g 0 0 DUT", ".tran 1e-9 ..."], gc)
 
 ms = dut(M, "(0,0)", "Q")
 ms += r"\draw (Q.S) to[short] ++(0,-0.5) node[ground]{};" + "\n"
@@ -314,7 +314,7 @@ ms += r"\draw (R.D) to[short] ++(0,0.3) coordinate(rd) to[L, l=$L$ \SI{1}{mH}] +
 ms += r"\draw (rd) to[short] ++(1.6,0) to[D, l=ideal] ++(0,1.8) -| ($(rd)+(0,2.0)$);" + "\n"
 ms += r"\draw (R.G) to[short] ++(-0.4,0) to[R, l_=$R_G$ \SI{10}{\ohm}] ++(-1.6,0) to[short] ++(-0.4,0) to[vsourcesquare, l_=two pulses, invert] ++(0,-1.9) node[ground]{};" + "\n"
 ms += note(6.5, 3.9, r"clamped inductive: $E_{on}$, $E_{off}$ on the second pulse", anchor="west")
-write("mos-switching", ["VDD vdd 0 30 / RL vdd d {rl}", "VIN in 0 PULSE(0 10 1e-7 2e-9 2e-9 2e-6 1) / RG in g 10", "M1 d g 0 0 DUT", "L1 vdd d 1m / DFW d vdd DIDEAL (inductive deck)"], ms)
+write("mosfet-switching", ["VDD vdd 0 30 / RL vdd d {rl}", "VIN in 0 PULSE(0 10 1e-7 2e-9 2e-9 2e-6 1) / RG in g 10", "M1 d g 0 0 DUT", "L1 vdd d 1m / DFW d vdd DIDEAL (inductive deck)"], ms)
 
 bdd = r"\draw (0,0) node[nmos](Q){};" + "\n"
 bdd += r"\node[anchor=west] at ($(Q.D)!0.5!(Q.S) + (0.55,0)$) {DUT};" + "\n"
@@ -332,14 +332,14 @@ bdd += r"\draw (R.S) to[short] ++(0,-0.3) coordinate(rs) to[L, l_=$L_{di/dt}$] +
 bdd += r"\draw (rs) to[short] ++(1.6,0) to[isource, l=$I_F$ 1, \SI{10}{A}] ++(0,-1.9) node[ground]{};" + "\n"
 bdd += r"\draw (rs) to[short] ++(3.2,0) to[cute open switch, l=ideal switch] ++(0,-1.9) node[ground]{};" + "\n"
 bdd += note(6.5, 3.3, r"recovery: $I_F$ through the diode, commutated at $di/dt$ = 100, 200, \SI{400}{A/\micro s}", anchor="west")
-write("mos-body-diode", ["BS 0 s I=exp(2.302585092994046*V(x))", "MD 0 g s s DUT / VG g s 0", ".dc VX -6 2 0.05", "L1 vr s {l} / SW s 0 ctrl 0 SWIDEAL / VR vr 0 30"], bdd)
+write("mosfet-body-diode", ["BS 0 s I=exp(2.302585092994046*V(x))", "MD 0 g s s DUT / VG g s 0", ".dc VX -6 2 0.05", "L1 vr s {l} / SW s 0 ctrl 0 SWIDEAL / VR vr 0 30"], bdd)
 
 mt = topoA(M, r"$V_{GS}$ swept", r"$V_{DS}=\SI{15}{V}$", swept_gate=True)
 mt += thermo(3.4, -2.6, r"$-55$, 25, 100, 125, 150, \SI{175}{\celsius}")
 mt += note(-4.6, -3.6, r"the transfer, $R_{DS(\mathrm{on})}$ and body-diode decks\\ rerun at each temperature; drawn: the transfer copy", anchor="west")
-write("mos-temperature", [".temp -55 | 100 | 125 | 150 | 175", "the transfer, rdson and body-diode copies"], mt)
+write("mosfet-temperature", [".temp -55 | 100 | 125 | 150 | 175", "the transfer, rdson and body-diode copies"], mt)
 
-write("mos-noise", ["VSENSE d dd 0 / VD dd 0 10 / VGB gb 0 {vgs} / RG in g {0 | 1000}", "M1 d g 0 0 DUT / H1 out 0 VSENSE 1000 / RLOAD out 0 1meg", ".noise V(out) VIN dec 20 1 1000000"],
+write("mosfet-noise", ["VSENSE d dd 0 / VD dd 0 10 / VGB gb 0 {vgs} / RG in g {0 | 1000}", "M1 d g 0 0 DUT / H1 out 0 VSENSE 1000 / RLOAD out 0 1meg", ".noise V(out) VIN dec 20 1 1000000"],
       noise_body(M, r"$V_{DS}=\SI{10}{V}$", r"0, \SI{1}{k\ohm}", r"$V_{GS}$ bias\\ for $I_D$"))
 
 mb = dut(M, "(0,0)", "A")
@@ -352,11 +352,11 @@ mb += r"\draw (B.S) to[short] ++(0,-0.5) node[ground]{};" + "\n"
 mb += r"\draw (B.D) to[short] ++(0,0.3) to[short] ++(0,0.3) node[ground, rotate=180]{};" + "\n"
 mb += r"\draw (B.G) to[short] ++(-0.5,0) to[rmeter, t=A, l=$I_{GSS}$] ++(-1.4,0) to[short] ++(-0.5,0) to[vsource, l_=$V_{GS}$ $\pm\SI{30}{V}$, invert] ++(0,-1.9) node[ground]{};" + "\n"
 mb += note(6.5, 3.3, r"gate--source, drain to source", anchor="west")
-write("mos-breakdown", ["VA sw da 0 / MA da 0 0 0 DUT / .dc VSW 0 1000 1", "VB sw gb 0 / MB 0 gb 0 0 DUT / .dc VSW -30 30 0.1"], mb)
+write("mosfet-breakdown", ["VA sw da 0 / MA da 0 0 0 DUT / .dc VSW 0 1000 1", "VB sw gb 0 / MB 0 gb 0 0 DUT / .dc VSW -30 30 0.1"], mb)
 
 md = cs_stage(M, (0,0), "A", r"\SI{20}{V}", r"\SI{1}{k\ohm}", r"\SI{100}{\ohm}", r"\SI{1000}{\micro F}", r"\SI{1}{k\ohm}", sink=r"\SI{10}{mA}")
 md += note(-4.6, 3.3, r"common source: \SI{10}{mA}, \SI{100}{\ohm} bypassed, \SI{1}{V} peak out at \SI{1}{kHz}", anchor="west")
 md += cs_stage(M, (9,0), "B", r"\SI{25}{V}", None, None, None, r"100 / \SI{1}{k\ohm}", out="source", load=(r"\SI{1000}{\micro F}", r"\SI{100}{\ohm}"), sink=r"\SI{100}{mA}")
 md += note(6.5, 3.3, r"source follower: \SI{100}{mA}, \SI{1}{V} peak out at 1 and \SI{20}{kHz}", anchor="west")
-write("mos-distortion", ["VDD vdd 0 20 / RL vdd d 1000 / RS s x 100 / CS x 0 1000u / IS x vss 0.01", "RIN in g 1000 / VIN in 0 SIN(0 {amp} 1000) / M1 d g s s DUT", "follower: M1 vdd g s s DUT / IS s vss 0.1 / CL s l 1000u / RL l 0 100"], md)
+write("mosfet-distortion", ["VDD vdd 0 20 / RL vdd d 1000 / RS s x 100 / CS x 0 1000u / IS x vss 0.01", "RIN in g 1000 / VIN in 0 SIN(0 {amp} 1000) / M1 d g s s DUT", "follower: M1 vdd g s s DUT / IS s vss 0.1 / CL s l 1000u / RL l 0 100"], md)
 print("written", len(os.listdir(OUT)))

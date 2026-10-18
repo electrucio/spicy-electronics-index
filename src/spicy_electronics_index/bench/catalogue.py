@@ -25,14 +25,14 @@ import yaml
 from spicy_electronics_index.core.config import bench_measurements, docs_dir
 from spicy_electronics_index.models import behaviours
 
-KINDS = ("bjt", "jfet", "mosfet")
+KINDS = ("bjt", "jfet", "mosfet", "opamp")
 ENGINES = ("qspice", "ngspice", "ltspice")
 ANALYSES = ("op", "dc", "ac", "tran", "noise", "derived")
 CODES = ("ok", "absent", "n/a", "failed", "suspect")
 REQUIRED = ("id", "kind", "group", "name", "symbols", "what", "circuit", "drawing", "analysis", "conditions",
             "extraction", "outputs", "parameters", "reads_high", "reads_low", "cannot_tell", "standard", "pack",
             "engines")
-RX_ID = re.compile(r"^(bjt|jfet|mosfet)-[a-z0-9]+(-[a-z0-9]+)*$")
+RX_ID = re.compile(r"^(bjt|jfet|mosfet|opamp)-[a-z0-9]+(-[a-z0-9]+)*$")
 RX_VERSION = re.compile(r"^m-\d+$")
 RX_KEY = re.compile(r"^[a-z][a-z0-9_]*(@[^\s@]+)?$")
 RX_PARAM = re.compile(r"^[A-Z][A-Z0-9_]*$")
@@ -47,6 +47,9 @@ RX_NUMBER_TEXT = re.compile(r"^[-+]?[0-9.]+e[-+]?[0-9]+$", re.I)
 RX_MODEL_TEXT = re.compile(r"^\s*\.(model|subckt)\b", re.I | re.M)
 MARK_START, MARK_END = "<!-- measurements:start -->", "<!-- measurements:end -->"
 DOC = "model-characterisation.md"
+# the document each kind's entries are printed in; the first one also carries the codes and the uses
+DOCS = {"bjt": DOC, "jfet": "fet-characterisation.md", "mosfet": "fet-characterisation.md", "opamp": "opamp-characterisation.md"}
+KIND_NAMES = {"bjt": "Bipolar transistors", "jfet": "JFETs", "mosfet": "MOSFETs", "opamp": "Op-amps"}
 
 
 @lru_cache(maxsize=4)
@@ -249,19 +252,23 @@ def _para(s: str) -> str:
     return " ".join(str(s).split())
 
 
-def markdown(doc: dict | None = None) -> str:
-    """The catalogue as the docs print it: one subsection per measurement, under one heading per kind."""
+def markdown(doc: dict | None = None, kinds: tuple[str, ...] | None = None, head: bool = True) -> str:
+    """The catalogue as the docs print it: one subsection per measurement, under one heading per kind; with
+    `head`, the codes and the uses table first."""
     doc = doc or load()
-    kind_names = {"bjt": "Bipolar transistors", "jfet": "JFETs", "mosfet": "MOSFETs"}
-    out = [f"Catalogue version `{doc['version']}`. Codes a number can be replaced by:", ""]
-    out += [f"- `{k}` — {v}" for k, v in doc["codes"].items()]
-    out += ["", "Which groups of measurements matter for which use:", "", "| use | groups | look at |", "|---|---|---|"]
-    out += [f"| {u['use']} | {', '.join(u['groups'])} | {_para(u['look_at'])} |" for u in doc["uses"]]
-    for kind in KINDS:
+    out = []
+    if head:
+        out += [f"Catalogue version `{doc['version']}`. Codes a number can be replaced by:", ""]
+        out += [f"- `{k}` — {v}" for k, v in doc["codes"].items()]
+        out += ["", "Which groups of measurements matter for which use:", "", "| use | groups | look at |", "|---|---|---|"]
+        out += [f"| {u['use']} | {', '.join(u['groups'])} | {_para(u['look_at'])} |" for u in doc["uses"]]
+    else:
+        out += [f"Catalogue version `{doc['version']}`; the codes and the uses table are in [model-characterisation.md](model-characterisation.md)."]
+    for kind in kinds or KINDS:
         ms = measurements(kind, doc)
         if not ms:
             continue
-        out += ["", f"### {kind_names[kind]}", ""]
+        out += ["", f"### {KIND_NAMES[kind]}", ""]
         for m in ms:
             out += [f"#### {m['name']} (`{m['id']}`)", ""]
             head = f"Group `{m['group']}` · analysis `{m['analysis']}` · engines {', '.join(m['engines'])}"
@@ -320,15 +327,34 @@ def site(doc: dict | None = None) -> dict:
             "measurements": [{k: v for k, v in m.items()} for m in doc["measurements"]]}
 
 
+def doc_files() -> dict[str, tuple[str, ...]]:
+    """Each document and the kinds it prints, in the catalogue's order."""
+    out: dict[str, tuple[str, ...]] = {}
+    for kind in KINDS:
+        out[DOCS[kind]] = out.get(DOCS[kind], ()) + (kind,)
+    return out
+
+
+def markdown_for(name: str, doc: dict | None = None) -> str:
+    """What one document's generated section holds: its kinds, with the head in the first document only."""
+    return markdown(doc, kinds=doc_files()[name], head=(name == DOC))
+
+
 def write_doc(path: Path | None = None) -> bool:
-    """Rewrite the generated section of the specification between its markers; True when it changed."""
-    path = path or docs_dir() / DOC
-    old = path.read_text(encoding="utf-8")
-    a, b = old.index(MARK_START) + len(MARK_START), old.index(MARK_END)
-    new = old[:a] + "\n" + markdown() + old[b:]
-    if new != old:
-        path.write_text(new, encoding="utf-8")
-    return new != old
+    """Rewrite the generated section of each specification between its markers (a document without markers is
+    left alone); True when any changed. With `path`, that one document."""
+    changed = False
+    for name in ([path.name] if path else doc_files()):
+        p = path or docs_dir() / name
+        old = p.read_text(encoding="utf-8")
+        if MARK_START not in old:
+            continue
+        a, b = old.index(MARK_START) + len(MARK_START), old.index(MARK_END)
+        new = old[:a] + "\n" + markdown_for(name) + old[b:]
+        if new != old:
+            p.write_text(new, encoding="utf-8")
+            changed = True
+    return changed
 
 
 def generated_section(path: Path | None = None) -> str:
@@ -351,7 +377,7 @@ def main(argv=None) -> int:
         print(markdown(), end="")
         return 0
     if a.write:
-        print(f"docs/{DOC}: " + ("rewritten" if write_doc() else "unchanged"))
+        print(", ".join(f"docs/{name}" for name in doc_files()) + ": " + ("rewritten" if write_doc() else "unchanged"))
         return 0
     doc = load()
     for kind in KINDS:

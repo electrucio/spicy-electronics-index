@@ -16,6 +16,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import shutil
 import subprocess
 import sys
 import time
@@ -25,7 +27,7 @@ from datetime import date
 from pathlib import Path
 
 from spicy_electronics_index.bench import catalogue, record
-from spicy_electronics_index.bench.jobs import POLARITY, card_for, subckt_for
+from spicy_electronics_index.bench.jobs import card_for, polarity_of, subckt_for
 from spicy_electronics_index.core.config import (
     REPO_ROOT,
     character_runs,
@@ -48,8 +50,12 @@ from spicy_electronics_index.models.cards import card_params, family
 VERSION = "character-1"
 PRIMARY = "qspice"
 ENGINES = ("qspice", "ngspice", "ltspice")
-# kind → the card families the image's plan handles today (docker/sim/bench/decks_<kind>.py)
-PLANNED = {"bjt": ("gummel-poon",)}
+# kind → the card families the image's plan handles today (docker/sim/bench/decks_<kind>.py); an op-amp is always
+# a subcircuit, measured through its five pins
+PLANNED = {"bjt": ("gummel-poon",), "jfet": ("jfet",), "mosfet": ("vdmos", "mos-level-1", "mos-level-2", "mos-level-3"),
+           "amplifier": ()}
+# the recipe kinds of a group the bench runs: a comparator or an OTA shares the amplifier group and is not an op-amp
+PLANNED_KINDS = {"amplifier": ("opamp",)}
 WORKERS = {"qspice": 40, "ngspice": 40, "ltspice": 20}
 CPUS = {"qspice": 1, "ngspice": 1, "ltspice": 2}
 IN_IMAGE = ("python3", "/sim/bench/character.py", "--jobs", "/io/jobs.jsonl", "--catalogue", "/io/catalogue.json", "--out", "/io")
@@ -102,7 +108,8 @@ def build_jobs(engine: str, kinds: tuple[str, ...] | None = None, parts: set[str
     for key, models in sorted(locations.items()):
         kind, part = key.split("/", 1)
         grp = behaviours.group(kind)
-        if grp not in PLANNED or (kinds and grp not in kinds) or (parts and part not in parts):
+        if grp not in PLANNED or (kinds and grp not in kinds) or (parts and part not in parts) \
+                or (grp in PLANNED_KINDS and kind not in PLANNED_KINDS[grp]):
             continue
         cards = record.load(kind, part).get("cards", {})
         for m in models:
@@ -113,7 +120,7 @@ def build_jobs(engine: str, kinds: tuple[str, ...] | None = None, parts: set[str
                 jobs[h]["parts"].append(key)
                 continue
             info = cards.get(h, {})
-            fam = info.get("family")
+            fam = info.get("family") or ("subckt" if grp == "amplifier" else None)   # `models cards` reads transistors only
             # an AKO card is measured written out in full (`jobs.resolve_ako`), when it is a kind of a planned card;
             # a subcircuit through its pins (`jobs.subckt_card`), when they can be told for sure
             if fam not in PLANNED[grp] and fam not in ("ako", "subckt"):
@@ -123,7 +130,7 @@ def build_jobs(engine: str, kinds: tuple[str, ...] | None = None, parts: set[str
                 if not force and fresh_for(led, h, engine, dig):
                     c["fresh"] += 1
                     continue
-                sub, why = subckt_for(files, m["file"], m["name"], engine)
+                sub, why = subckt_for(files, m["file"], m["name"], engine, grp)
                 if not sub:
                     c[f"skipped: subckt, {why}"] += 1
                     continue
@@ -148,8 +155,14 @@ def build_jobs(engine: str, kinds: tuple[str, ...] | None = None, parts: set[str
                 if resolved not in PLANNED[grp]:
                     c[f"skipped: ako of {resolved}"] += 1
                     continue
-            jobs[h] = {"id": h, "kind": grp, "family": info["family"], "polarity": POLARITY[info["type"]], "card": card,
-                       "model": "DUT", "changes": changes, "measurements": None, "class": None, "parts": [key]}
+            pol = polarity_of(info["type"], card)
+            if not pol:
+                c[f"skipped: polarity of {info['type']}"] += 1
+                continue
+            # a `.model` MOSFET of the integrated levels has four terminals; the decks write three and the image ties the bulk to the source
+            pins = ["d", "g", "s", "b"] if info["family"].startswith("mos-level") else None
+            jobs[h] = {"id": h, "kind": grp, "family": info["family"], "polarity": pol, "card": card,
+                       "model": "DUT", "changes": changes, "measurements": None, "class": None, "parts": [key], **({"pins": pins} if pins else {})}
             c["jobs"] += 1
             if limit and len(jobs) >= limit:
                 return list(jobs.values()), c
@@ -164,6 +177,31 @@ def new_run_dir(engine: str) -> Path:
             d.mkdir(parents=True)
             return d
     raise RuntimeError("a hundred runs in one day")
+
+
+def launch_here(engine: str, run_dir: Path, workers: int, pack: int) -> None:
+    """The same jobs run on this machine, the bench's own script in-process (ngspice on the PATH): for a machine
+    without Docker, or to try a deck. The record says so in its `image`."""
+    env = {**os.environ, "SIM_ENGINE": engine, "SIM_NO_DISPLAY": "1"}
+    work = run_dir / "work"
+    procs = [subprocess.Popen([sys.executable, str(sim_bench() / "character.py"), "--jobs", str(run_dir / "jobs.jsonl"),
+                               "--catalogue", str(run_dir / "catalogue.json"), "--out", str(run_dir), "--shard", f"{i}/{workers}",
+                               "--pack", str(pack), "--work", str(work / f"w{i}")], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+             for i in range(workers)]
+    for i, pr in enumerate(procs):
+        out, _ = pr.communicate()
+        (run_dir / f"worker-{i}.log").write_text(out or "", encoding="utf-8")
+    shutil.rmtree(work, ignore_errors=True)
+
+
+def host_engine(engine: str) -> str:
+    """What runs the decks on this machine, for the record: the engine's own version string."""
+    exe = {"ngspice": ["ngspice", "-v"]}.get(engine)
+    if not exe or not shutil.which(exe[0]):
+        return f"host:{engine}:not found"
+    out = subprocess.run(exe, capture_output=True, text=True).stdout
+    line = next((ln.strip("* \t") for ln in out.splitlines() if engine in ln.lower() and any(ch.isdigit() for ch in ln)), engine)
+    return f"host:{line.strip()}"
 
 
 def launch(engine: str, run_dir: Path, workers: int, pack: int, cpus: float) -> None:
@@ -187,7 +225,7 @@ def launch(engine: str, run_dir: Path, workers: int, pack: int, cpus: float) -> 
 
 
 def run(engine: str, kinds: tuple[str, ...] | None, parts: set[str] | None, workers: int | None, pack: int,
-        force: bool, limit: int, hashes: tuple[str, ...] | None = None) -> dict:
+        force: bool, limit: int, hashes: tuple[str, ...] | None = None, here: bool = False) -> dict:
     jobs, c = build_jobs(engine, kinds, parts, force, limit, hashes)
     workers = workers or WORKERS[engine]
     workers = max(1, min(workers, (len(jobs) + pack - 1) // pack or 1))
@@ -195,11 +233,13 @@ def run(engine: str, kinds: tuple[str, ...] | None, parts: set[str] | None, work
     (run_dir / "jobs.jsonl").write_text("".join(json.dumps(j) + "\n" for j in jobs), encoding="utf-8")
     (run_dir / "catalogue.json").write_text(json.dumps(catalogue_json()), encoding="utf-8")
     t0 = time.perf_counter()
-    if jobs:
+    if jobs and here:
+        launch_here(engine, run_dir, workers, pack)
+    elif jobs:
         launch(engine, run_dir, workers, pack, CPUS[engine])
     summaries = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(run_dir.glob("worker-*.json"))]
     results = sum(1 for p in run_dir.glob("results-*.jsonl") for _ in p.read_text(encoding="utf-8").splitlines())
-    info = {"engine": engine, "version": VERSION, "on": date.today().isoformat(), "image": image_id(engine),
+    info = {"engine": engine, "version": VERSION, "on": date.today().isoformat(), "image": host_engine(engine) if here else image_id(engine),
             "bench": revision(sim_bench()), "catalogue": {"version": catalogue.version(), "sha256": catalogue.digest()},
             "workers": workers, "pack": pack, "cpus": CPUS[engine], "jobs": len(jobs), "results": results,
             "ok": sum(s["ok"] for s in summaries), "failed": sum(s["failed"] for s in summaries),
@@ -221,9 +261,10 @@ def main(argv=None) -> int:
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--force", action="store_true", help="run models already published at this version too")
     ap.add_argument("--hash", action="append", help="only the model whose hash starts so (repeatable)")
+    ap.add_argument("--here", action="store_true", help="run on this machine with the engine on the PATH, not in its image")
     a = ap.parse_args(argv)
     info = run(a.engine, tuple(a.kind) if a.kind else None, set(a.part) if a.part else None, a.workers, a.pack,
-               a.force, a.limit, tuple(a.hash) if a.hash else None)
+               a.force, a.limit, tuple(a.hash) if a.hash else None, here=a.here)
     print(f"{info['ok']:,} of {info['jobs']:,} models characterised with {a.engine} in {info['wall_s']} s "
           f"({info['workers']} workers; image {info['image'][:19]}, bench {info['bench']['commit'][:10]}"
           f"{'' if info['bench']['clean'] else ' + uncommitted changes'}); skipped {info['skipped']}")

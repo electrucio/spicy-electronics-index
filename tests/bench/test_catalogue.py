@@ -4,6 +4,7 @@ import copy
 import yaml
 
 from spicy_electronics_index.bench import catalogue as C
+from spicy_electronics_index.core import config
 from spicy_electronics_index.models import behaviours
 
 
@@ -49,14 +50,24 @@ def test_problems_are_found_one_by_one():
 
 
 def test_the_docs_print_the_current_catalogue():
-    """`sei bench methods --write` keeps the generated section of the specification current."""
-    assert C.generated_section() == C.markdown()
+    """`sei bench methods --write` keeps the generated section of each specification current."""
+    for name, kinds in C.doc_files().items():
+        path = config.docs_dir() / name
+        if C.MARK_START in path.read_text(encoding="utf-8"):
+            assert C.generated_section(path) == C.markdown_for(name), name
+        else:
+            assert not any(C.ids(k) for k in kinds), f"{name} has entries to print but no markers"
 
 
 def test_every_id_appears_in_the_docs_and_the_site_payload_carries_the_version():
-    section = C.generated_section()
-    for i in C.ids():
-        assert f"`{i}`" in section
+    for name, kinds in C.doc_files().items():
+        path = config.docs_dir() / name
+        if C.MARK_START not in path.read_text(encoding="utf-8"):
+            continue
+        section = C.generated_section(path)
+        for k in kinds:
+            for i in C.ids(k):
+                assert f"`{i}`" in section
     site = C.site()
     assert site["version"] == C.version() and set(site["codes"]) == set(C.CODES)
     assert {m["id"] for m in site["measurements"]} == set(C.ids())
