@@ -294,12 +294,27 @@ def subckt_parts(chain: list) -> tuple[list[tuple[str, str, str]], list[str]]:
     return order, [t for t in types if t in ("NPN", "PNP", "NJF", "PJF", "NMOS", "PMOS", "VDMOS", "D", "")] if types else []
 
 
-def opamp_pins(body: str, pins: list[str]) -> tuple[list[str] | None, str]:
+def header_comments(text: str, name: str) -> str:
+    """The comment lines just above a subcircuit's `.SUBCKT` line in its file: where a PSpice PARTS header
+    says which pin is which."""
+    lines = text.splitlines()
+    rx = re.compile(r"^\s*\.subckt\s+" + re.escape(name) + r"\b", re.I)
+    for i, line in enumerate(lines):
+        if rx.match(line):
+            j = i
+            while j > 0 and (lines[j - 1].lstrip().startswith("*") or not lines[j - 1].strip()):
+                j -= 1
+            return "\n".join(lines[j:i])
+    return ""
+
+
+def opamp_pins(body: str, pins: list[str], header: str = "") -> tuple[list[str] | None, str]:
     """An op-amp subcircuit's five pins by role: the PSpice PARTS header ("CONNECTIONS:" and one role per
-    comment line, in pin order), else the names the header gives the pins; (None, why) when neither says."""
+    comment line, in pin order, above or inside the subcircuit), else the names the header gives the pins;
+    (None, why) when neither says."""
     if len(pins) != 5:
         return None, f"{len(pins)} pins: not a plain five-pin op-amp"
-    lines = [line.lstrip("*").strip().lstrip("| ").strip() for line in body.splitlines() if line.lstrip().startswith("*")]
+    lines = [line.lstrip("*").strip().lstrip("| ").strip() for line in (header + "\n" + body).splitlines() if line.lstrip().startswith("*")]
     roles: list[str] = []
     started = False
     for c in lines:
@@ -329,7 +344,7 @@ def opamp_pins(body: str, pins: list[str]) -> tuple[list[str] | None, str]:
     return None, "the header does not say which pin is which (no PARTS connections block, no pin names)"
 
 
-def subckt_card(chain: list, engine: str, group: str = "bjt") -> tuple[dict | None, str]:
+def subckt_card(chain: list, engine: str, group: str = "bjt", header: str = "") -> tuple[dict | None, str]:
     """A subcircuit as the bench is given it: its text with the subcircuit renamed DUT and every name inside
     it suffixed _DUT (packed copies must not share an inner `QPWR`), the role of each pin, its polarity
     and the changes made; (None, why) when it cannot be measured. `group` is the bench the subcircuit goes
@@ -338,7 +353,7 @@ def subckt_card(chain: list, engine: str, group: str = "bjt") -> tuple[dict | No
         return None, "not a subcircuit, or a card of the same name hides it"
     pins = _pins(F.code_lines(chain[-1][2])[0])
     if group == "amplifier":
-        roles, why = opamp_pins(chain[-1][2], pins)
+        roles, why = opamp_pins(chain[-1][2], pins, header)
         if roles is None:
             return None, why
         parts, _ = subckt_parts(chain)
@@ -390,4 +405,7 @@ def subckt_card(chain: list, engine: str, group: str = "bjt") -> tuple[dict | No
 
 
 def subckt_for(files: F.Files, file: str, name: str, engine: str, group: str = "bjt") -> tuple[dict | None, str]:
-    return subckt_card(F.closure(files.get(file)[0], name), engine, group)
+    header = ""
+    if group == "amplifier":
+        header = header_comments(F.model_text((files.root / file).read_bytes(), file), name)
+    return subckt_card(F.closure(files.get(file)[0], name), engine, group, header)

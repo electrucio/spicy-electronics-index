@@ -50,6 +50,10 @@ selectors:
   RG: {unit: "Ω", what: "the gate drive resistance of a switching fixture"}
   VON: {unit: V, what: "the gate drive voltage of a switching fixture"}
   IF: {unit: A, what: "the forward current a diode carries before it is reversed"}
+  VCM: {unit: V, what: "the common-mode voltage at an op-amp's inputs"}
+  VS: {unit: V, what: "the total supply of an op-amp (±5 V is 10 V)"}
+  G: {unit: "", what: "the closed-loop gain of an op-amp stage"}
+  CL: {unit: F, what: "the capacitive load on an op-amp's output"}
 
 codes:
   ok: measured
@@ -88,6 +92,15 @@ uses:
 - use: Switch, driver or converter (MOSFET)
   groups: [switching, capacitance, high-current, recovery, breakdown]
   look_at: RDS(on) at the drive voltage and current used, Qg, Qgd and the plateau voltage, td/tr/tf at that current and RG, Qgd/Qgs(th) (parasitic turn-on), the body diode's VSD and whether trr exists in the card, whether breakdown exists at all.
+- use: Audio gain stage, preamplifier or filter (op-amp)
+  groups: [noise, distortion, frequency, dc, output]
+  look_at: whether the model has noise sources at all, then en at 1 kHz and 10 Hz; the open-loop gain and GBW, the phase margin into the capacitive load you use; the swing into 600 Ω and 2 kΩ; the slew rate; the offset and drift if DC-coupled. Distortion figures compare one model with another, never with the part.
+- use: Headphone or line driver (op-amp)
+  groups: [output, slew, distortion, supply]
+  look_at: the swing and the short-circuit current into the load, VOUT against IOUT, THD against load, the full-power bandwidth, the supply current.
+- use: Instrumentation, DC or servo (op-amp)
+  groups: [dc, supply, frequency]
+  look_at: the offset and its drift, the bias current and its drift, CMRR and PSRR at DC and against frequency, the input range, phase reversal, the settling time.
 
 measurements:
 
@@ -3685,6 +3698,1364 @@ measurements:
   drawing: {file: "", elements: [], differs_from_netlist: ""}
   analysis: derived
   conditions: {tolerances: [0.01, 0.05], floors: {F: 1.0e-16, s: 1.0e-12, A: 1.0e-14, C: 1.0e-15}}
+  extraction: |
+    For each published output, the spread (max − min over the mean) across the engines that produced it,
+    classed as within 1 %, within 5 % or beyond; values below the floors count as zero.
+  outputs:
+  - {key: agree_1pct, unit: "", what: "share of outputs on which every engine agrees within 1 %"}
+  - {key: agree_5pct, unit: "", what: "share within 5 %"}
+  - {key: odd_engine, unit: "", what: "the engine most often alone outside 5 %, or none"}
+  - {key: disagreeing, unit: "", what: "the measurement ids where the engines differ by more than 5 %"}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "Which engine is right."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+
+# -------------------------------------------------------------------------------------------- op-amps
+- id: opamp-runs
+  kind: opamp
+  group: supply
+  name: Does the model load, and at what operating point
+  symbols: [IQ, VOS]
+  what: |
+    Whether the simulator reads the subcircuit and finds an operating point as a unity-gain follower with
+    its input at the reference, at every supply of the ladder: the first fact about a macromodel, and the
+    error class when it fails (dialect, convergence, timeout). The pins are read from the author's header
+    (the PSpice PARTS connections block, or named pins); a model whose pins cannot be told is not run.
+    Read: that it runs, the supply current per amplifier, the output voltage (the offset, uncorrected), and
+    the lowest supply at which the output still sits at the reference, the model's own idea of its supply
+    range.
+  circuit: |
+    Five followers, one per supply (±15, ±5, ±2.5, ±9, ±18 V), each loaded with 2 kΩ to the reference, the
+    input at the reference; one operating point.
+  drawing: {file: "", elements: [DUT as a follower, split supply, 2 kΩ load, input at the reference], differs_from_netlist: five copies run in one deck}
+  analysis: op
+  conditions:
+    supplies: [[15, -15], [5, -5], [2.5, -2.5], [9, -9], [18, -18]]
+    rl: 2000
+  extraction: |
+    Exit status and log give the error class; when it runs, the positive rail's current and the output
+    voltage per supply; a supply at which the output sits within 0.1 V of the reference counts as run,
+    and the lowest total supply that did is published.
+  outputs:
+  - {key: runs, unit: "", what: "true when the simulator returned a solution"}
+  - {key: error_class, unit: "", what: "syntax, convergence, timeout or empty when it ran"}
+  - {key: "runs@{vs}", unit: "", what: "whether the follower sat at the reference at that supply"}
+  - {key: "iq@{vs}", unit: A, what: "the positive rail's current at each supply"}
+  - {key: "vos@{vs}", unit: V, what: "the follower's output less the reference: the uncorrected offset"}
+  - {key: vs_min, unit: V, what: "the lowest total supply of the ladder the model ran at"}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "That the model is right; agreement between engines is the stronger fact."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the first follower's rails, ±15 V; the next copies at ±5, ±2.5, ±9 and ±18 V"
+  - "VP0 vp0 0 15"
+  - "VN0 vn0 0 -15"
+  - "* its input at the reference"
+  - "VI0 in0 0 0"
+  - "* the amplifier as a follower: in+, in−, V+, V−, out (the model's own pin order is put in)"
+  - "XR0 in0 o0 vp0 vn0 o0 DUT"
+  - "RL0 o0 0 2000"
+  - ".op"
+
+- id: opamp-iq
+  kind: opamp
+  group: supply
+  name: Supply current against supply and temperature, and turn-on
+  symbols: [IQ, IQ(VS), IQ(T)]
+  what: |
+    The quiescent current as a follower with no load, swept from 4 to 40 V total supply (the negative rail
+    mirroring the positive), and at the temperatures of the ladder; and the output's time to settle at the
+    reference after both rails ramp from ±3 to ±15 V at 0.3 V/µs (TI's turn-on condition). Macromodels of
+    the Boyle family draw a current fixed by a resistor between the rails and ignore the temperature;
+    behavioural ones follow it.
+  circuit: |
+    A follower with no load, the positive rail swept by a source and the negative rail a controlled copy
+    of it with the sign reversed; the bias deck at −55, 25 and 125 °C; a transient with both rails as
+    piecewise-linear ramps.
+  drawing: {file: "", elements: [DUT as a follower, swept split supply], differs_from_netlist: nothing}
+  analysis: dc
+  conditions:
+    vs_sweep: {from: 4, to: 40, step: 0.25, unit: V}
+    vs_points: [10, 18, 30, 36]
+    turn_on: {v_start: 3, v_end: 15, ramp_s: 4.0e-5, rl: 2000, settle_v: 0.01, max_step_s: 5.0e-8, t_end_s: 2.0e-4}
+  grid: {x: vs, from: 4, to: 40, step: 1, unit: V}
+  extraction: |
+    The positive rail's current at the points of the supply ladder and its slope between 10 and 36 V; the
+    current at each temperature over 25 °C (absent when it does not move); the last time the follower's
+    output is more than 10 mV from the offset after the ramp.
+  outputs:
+  - {key: "iq@{vs}", unit: A, what: "supply current at the total supply"}
+  - {key: iq_slope, unit: "A/V", what: "the current's slope with the supply, 10 to 36 V"}
+  - {key: "iq@{T}", unit: A, what: "supply current at ±15 V at each temperature"}
+  - {key: "iq_ratio@125°C/25°C", unit: "", what: "supply current at 125 °C over 25 °C"}
+  - {key: iq_temperature_note, unit: "", what: "absent when the current does not move with temperature"}
+  - {key: "turn_on@15V", unit: s, what: "time to settle within 10 mV after the ramp to ±15 V"}
+  curves:
+  - {name: "IQ vs VS", x: vs, y: iq, scale: lin, unit: "A"}
+  - {name: "turn-on", x: t, y: vout, scale: lin, unit: "V"}
+  parameters: []
+  reads_high: ""
+  reads_low: "A current that is the same at every supply and temperature is the Boyle family's resistor between the rails, not the part's bias."
+  cannot_tell: "The current of a dual or quad package as a whole; this is one amplifier."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the positive rail, swept; the negative rail mirrors it"
+  - "VP vp 0 0"
+  - "EN vn 0 vp 0 -1"
+  - "VIN in 0 0"
+  - "XQ in out vp vn out DUT"
+  - "* 4 to 40 V of total supply in 250 mV steps"
+  - ".dc VP 2 20 0.125"
+  - "* the turn-on deck: both rails ramped from ±3 V to ±15 V over 40 µs"
+  - "VP vp 0 PWL(0 3 4e-05 15 1 15)"
+  - "VN vn 0 PWL(0 -3 4e-05 -15 1 -15)"
+  - "XU in out vp vn out DUT"
+
+- id: opamp-offset
+  kind: opamp
+  group: dc
+  name: Offset, and how it moves with common mode, supply and temperature
+  symbols: [VOS, CMRR(DC), VICR]
+  what: |
+    The offset at each supply of the ladder; against the common-mode voltage swept 1 V beyond each rail;
+    against the supply; at −55, 25 and 125 °C; and with 10 kΩ in the non-inverting input, which folds
+    IB × RS in as Nisshinbo's table does. From the common-mode sweep: the DC CMRR as the slope, the input
+    range as where the offset leaves its mid-range value by more than 1 mV, and whether the output's
+    sign reverses beyond it. A Boyle macromodel's offset is one number: the same at every supply, common
+    mode and temperature, which is the finding.
+  circuit: |
+    A follower with 10 kΩ to the reference, its input swept from 1 V below the negative rail to 1 V above
+    the positive one; the offset read as the output less the input. The supply sweep and the bias decks at
+    temperature and with the source resistance give the other views.
+  drawing: {file: "", elements: [DUT as a follower, swept input, 10 kΩ load], differs_from_netlist: the supply sweep and the bias decks are separate}
+  analysis: dc
+  conditions:
+    supply: [15, -15]
+    rl: 10000
+    vcm_beyond: 1
+    vcm_step: 0.02
+  grid: {x: vcm, from: -16, to: 16, step: 0.25, unit: V}
+  extraction: |
+    VOS(VCM) = VOUT − VIN. The common-mode range is the span over which VOS stays within 1 mV of its value
+    at 0 V, published as the distance from each rail; the DC CMRR is the span (2 V inside each end) over
+    the offset's change across it, absent when the offset does not move. The drift is the offset at 125 °C
+    less at −55 °C over 180 K, absent below a nanovolt per kelvin.
+  outputs:
+  - {key: "vos@{vs}", unit: V, what: "offset at each supply of the ladder, from the runs deck and the supply sweep"}
+  - {key: "vos@{T}", unit: V, what: "offset at ±15 V at each temperature"}
+  - {key: "vos@vcm={v}", unit: V, what: "offset with the inputs at −13 and +13 V"}
+  - {key: "vos@rs=10kΩ", unit: V, what: "offset with 10 kΩ in the non-inverting input: VOS + IB × RS"}
+  - {key: dvos_dt, unit: "V/K", what: "the drift, −55 to 125 °C"}
+  - {key: drift_note, unit: "", what: "absent when the offset does not move with temperature"}
+  - {key: vicr_low, unit: V, what: "the input range's distance from the negative rail"}
+  - {key: vicr_high, unit: V, what: "its distance from the positive rail"}
+  - {key: cmrr_dc, unit: dB, what: "the DC common-mode rejection, from the offset's slope with VCM"}
+  - {key: cmrr_dc_note, unit: "", what: "absent when the offset does not move with the common mode"}
+  curves:
+  - {name: "VOS vs VCM", x: vcm, y: vos, scale: lin, unit: "V"}
+  - {name: "VOS vs VS", x: vs, y: vos_vs, scale: lin, unit: "V", grid: {x: vs, from: 4, to: 40, step: 1, unit: V}}
+  parameters: []
+  reads_high: "A drift above 10 µV/K is a model with a deliberately mismatched input pair; an input range that reaches the rails is a rail-to-rail input, or a model that ignores the rails."
+  reads_low: "A CMRR above 200 dB and a drift of zero are the Boyle family's fixed offset: the sheet's figures are not in the model."
+  cannot_tell: "The part's distribution of offsets (a model is one sample), warm-up, long-term drift."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the follower's input, swept 1 V beyond each rail"
+  - "VIN in 0 0"
+  - "XV in out vp vn out DUT"
+  - "RL out 0 10000"
+  - ".dc VIN -16 16 0.02"
+
+- id: opamp-bias
+  kind: opamp
+  group: dc
+  name: Bias and offset currents, and the input impedance
+  symbols: [IB, IOS, ZIN]
+  what: |
+    The two input currents with the inputs at the reference, at −55, 25 and 125 °C (a JFET input's IB
+    doubling every 10 K is what the sheets draw) and at the ends of the common-mode range; the
+    differential and common-mode input impedances by AC injection at 1 kHz and 1 MHz, as a resistance
+    and a capacitance. A Boyle model's IB is the base current of its input pair and does move with
+    temperature; a behavioural model's is often a constant source, or nothing.
+  circuit: |
+    A follower with an ammeter in each input, the non-inverting input at the reference (or at ±13 V, or
+    fed through 10 kΩ), 2 kΩ load. Impedances: both inputs driven together with 1 V of AC (common mode);
+    one input driven with the other held by the open-loop servo (differential).
+  drawing: {file: "", elements: [DUT as a follower, ammeters in both inputs], differs_from_netlist: the impedance decks are separate}
+  analysis: op
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    temps_c: [-55, 25, 125]
+    vcm: [-13, 13]
+    rs: 10000
+    zin_sweep: {from: 1000, to: 1.0e+6, per_decade: 10, unit: Hz}
+  extraction: |
+    IB as the mean of the two input currents, IOS as their difference, at each temperature and common
+    mode; the ratio at 125 °C over 25 °C; the real part of the input admittance at 1 kHz as a resistance
+    and the quadrature part at 1 MHz as a capacitance.
+  outputs:
+  - {key: "ib@{T}", unit: A, what: "the mean input current at each temperature"}
+  - {key: "ibp@25°C", unit: A, what: "the non-inverting input's current"}
+  - {key: "ibn@25°C", unit: A, what: "the inverting input's current"}
+  - {key: "ios@{T}", unit: A, what: "the difference of the two"}
+  - {key: "ib@vcm={v}", unit: A, what: "the mean input current with the inputs at −13 and +13 V"}
+  - {key: "ib_ratio@125°C/25°C", unit: "", what: "IB at 125 °C over 25 °C"}
+  - {key: rid, unit: "Ω", what: "differential input resistance at 1 kHz"}
+  - {key: cid, unit: F, what: "differential input capacitance at 1 MHz"}
+  - {key: ricm, unit: "Ω", what: "common-mode input resistance at 1 kHz"}
+  - {key: cicm, unit: F, what: "common-mode input capacitance at 1 MHz"}
+  parameters: []
+  reads_high: ""
+  reads_low: "An IB of exactly zero is an ideal input: no amplifier has it. A ratio of exactly 1 is a current source with no temperature term."
+  cannot_tell: "The input current's noise, which is the noise measurement's."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the input at the reference, through an ammeter into the non-inverting input"
+  - "VI in 0 0"
+  - "VIP in inp 0"
+  - "* the feedback through an ammeter into the inverting input"
+  - "VNN out inn 0"
+  - "XB inp inn vp vn out DUT"
+  - "RL out 0 2000"
+  - ".op"
+  - "* the common-mode impedance deck: both inputs driven together"
+  - "VCM cm 0 DC 0 AC 1"
+  - "VA cm inp 0"
+  - "VB cm inn 0"
+  - ".ac dec 10 1000 1000000"
+
+- id: opamp-cmrr-f
+  kind: opamp
+  group: dc
+  name: CMRR against frequency
+  symbols: [CMRR(f)]
+  what: |
+    The G = 1 difference amplifier with matched 10 kΩ resistors, the common mode driven by the AC source,
+    1 Hz to 10 MHz, at VCM = 0 and 2 V from each rail (onsemi's curves). Read at 10 Hz, 1 kHz, 10 kHz,
+    100 kHz and 1 MHz, and the corner where it starts to fall. A model with no common-mode path reports
+    a rejection beyond 200 dB: absent.
+  circuit: |
+    Three copies of the difference amplifier in one deck, each with four 10 kΩ resistors and a 2 kΩ load,
+    the common-mode source at 0, −13 and +13 V DC with 1 V of AC.
+  drawing: {file: "", elements: [DUT as a difference amplifier, four 10 kΩ resistors, common-mode source], differs_from_netlist: three copies run in one deck}
+  analysis: ac
+  conditions:
+    supply: [15, -15]
+    vcm: [0, -13, 13]
+    r: 10000
+    rl: 2000
+    sweep: {from: 1, to: 1.0e+7, per_decade: 20, unit: Hz}
+    f_points: [10, 1000, 10000, 100000, 1000000]
+  grid: {x: f, from: 1, to: 1.0e+7, per_decade: 5, unit: Hz}
+  extraction: |
+    CMRR = −20 log |VOUT| for 1 V of common mode; the corner is where it has fallen 3 dB below its 1 Hz
+    value; absent above 200 dB.
+  outputs:
+  - {key: "cmrr@{f},vcm={v}", unit: dB, what: "common-mode rejection at the spot frequencies and common-mode voltages"}
+  - {key: cmrr_corner, unit: Hz, what: "where the rejection at VCM = 0 has fallen by 3 dB"}
+  - {key: cmrr_note, unit: "", what: "absent when the model has no common-mode path"}
+  curves:
+  - {name: "CMRR, VCM=0V", x: f, y: cmrr, scale: lin, unit: dB, at: {VCM: 0}}
+  - {name: "CMRR, VCM=-13V", x: f, y: cmrr, scale: lin, unit: dB, at: {VCM: -13}}
+  - {name: "CMRR, VCM=13V", x: f, y: cmrr, scale: lin, unit: dB, at: {VCM: 13}}
+  select: {VCM: 0}
+  parameters: []
+  reads_high: "Above 200 dB: no common-mode path in the model."
+  reads_low: ""
+  cannot_tell: "The resistors' mismatch, which limits the real measurement; these are exact."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the first copy, at VCM = 0: the common-mode source with 1 V of AC"
+  - "VCM0 vcm0 0 DC 0 AC 1"
+  - "R1_0 vcm0 inn0 10000"
+  - "R2_0 inn0 out0 10000"
+  - "R3_0 vcm0 inp0 10000"
+  - "R4_0 inp0 0 10000"
+  - "XC0 inp0 inn0 vp vn out0 DUT"
+  - "RL0 out0 0 2000"
+  - ".ac dec 20 1 10000000"
+
+- id: opamp-psrr-f
+  kind: opamp
+  group: supply
+  name: PSRR against frequency, each rail alone and both together
+  symbols: [PSRR(f)]
+  what: |
+    The follower with 1 V of AC on the positive rail, on the negative, and on both in antiphase (onsemi
+    varies them together, the audio sheets each alone), 1 Hz to 10 MHz. Read at 10 Hz, 1 kHz, 10 kHz,
+    100 kHz and 1 MHz; the corner. A model whose internal references are ideal reports a rejection beyond
+    200 dB on one or both rails: absent.
+  circuit: Three decks, the follower with the AC on the rail (or rails) named, 2 kΩ load, the input at the reference.
+  drawing: {file: "", elements: [DUT as a follower, AC on a rail], differs_from_netlist: three decks drawn as one}
+  analysis: ac
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    sweep: {from: 1, to: 1.0e+7, per_decade: 20, unit: Hz}
+    f_points: [10, 1000, 10000, 100000, 1000000]
+  grid: {x: f, from: 1, to: 1.0e+7, per_decade: 5, unit: Hz}
+  extraction: PSRR = −20 log |VOUT| for 1 V of ripple; the corner from the positive rail's curve.
+  outputs:
+  - {key: "psrr_pos@{f}", unit: dB, what: "rejection of ripple on the positive rail"}
+  - {key: "psrr_neg@{f}", unit: dB, what: "on the negative rail"}
+  - {key: "psrr_both@{f}", unit: dB, what: "on both in antiphase"}
+  - {key: psrr_corner, unit: Hz, what: "where the positive rail's rejection has fallen by 3 dB"}
+  - {key: psrr_pos_note, unit: "", what: "absent beyond 200 dB"}
+  - {key: psrr_neg_note, unit: "", what: "absent beyond 200 dB"}
+  - {key: psrr_both_note, unit: "", what: "absent beyond 200 dB"}
+  curves:
+  - {name: "PSRR pos", x: f, y: psrr, scale: lin, unit: dB}
+  - {name: "PSRR neg", x: f, y: psrr, scale: lin, unit: dB}
+  - {name: "PSRR both", x: f, y: psrr, scale: lin, unit: dB}
+  parameters: []
+  reads_high: "Beyond 200 dB on both rails together is a model whose two rails cancel by symmetry."
+  reads_low: ""
+  cannot_tell: "The rejection with the part's decoupling; this is the bare pin."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the positive rail with 1 V of AC; the next decks put it on the negative rail, and on both in antiphase"
+  - "VP vp 0 DC 15 AC 1"
+  - "VN vn 0 DC -15"
+  - "VIN in 0 0"
+  - "XP in out vp vn out DUT"
+  - "RL out 0 2000"
+  - ".ac dec 20 1 10000000"
+
+- id: opamp-emirr
+  kind: opamp
+  group: dc
+  name: Rejection of an RF carrier at the input
+  symbols: [EMIRR]
+  what: |
+    A 100 mV peak carrier at 10 MHz, 100 MHz, 400 MHz and 1 GHz on the non-inverting input of a follower,
+    the DC shift of the output read after it settles, EMIRR = 20 log (VRF / ΔVOS) (TI's new sheets print
+    it). Nearly every macromodel has no input filter and rectifies nothing: the shift is zero and the
+    result absent, which is what a reader needs to know before trusting a model near a transmitter.
+  circuit: The follower with 2 kΩ, the carrier on its input; two hundred cycles, the mean of the last hundred.
+  drawing: {file: "", elements: [DUT as a follower, RF source on the input], differs_from_netlist: one deck per carrier}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    amplitude: 0.1
+    carriers: [1.0e+7, 1.0e+8, 4.0e+8, 1.0e+9]
+    cycles: 200
+    steps_per_cycle: 20
+  extraction: The mean output over the last hundred cycles less the offset; a shift below 50 µV is the simulator's noise, and the rejection absent.
+  outputs:
+  - {key: "emirr@{f}", unit: dB, what: "the carrier over the offset shift it causes, or absent"}
+  - {key: "vos_shift@{f}", unit: V, what: "the shift itself"}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "The real part's rectification, which lives in the input stage's junctions and the package."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the carrier: 100 mV peak at 10 MHz; then 100 MHz, 400 MHz and 1 GHz"
+  - "VIN in 0 SIN(0 0.1 10000000)"
+  - "XE in out vp vn out DUT"
+  - "RL out 0 2000"
+
+- id: opamp-aol
+  kind: opamp
+  group: frequency
+  name: Open-loop gain and phase, GBW and the margins
+  symbols: [AOL, GBW, PM]
+  what: |
+    The open loop by the inductor/capacitor trick: a 1 GH inductor in the feedback and a 1 GF capacitor
+    to ground hold the DC operating point and open the loop above a microhertz. The output over the input
+    is the open-loop gain, 1 Hz to 100 MHz at 20 points per decade, with 2 kΩ and 100 pF on the output.
+    Read: AOL at DC, the gain-bandwidth product at 10 kHz and 100 kHz (Nisshinbo's two numbers), the
+    unity-gain frequency, the phase and gain margins, the dominant pole and the second pole (reported
+    absent when the model is single-pole, since no amplifier is). Variants at 600 Ω and 10 kΩ, at ±5 and
+    ±9 V, at −55 and 125 °C.
+  circuit: |
+    The amplifier with the AC source on its non-inverting input, the inverting input tied to the output
+    through 1 GH and to ground through 1 GF, 2 kΩ and 100 pF on the output.
+  drawing: {file: "", elements: [DUT, 1 GH feedback inductor, 1 GF capacitor to ground, AC source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per variant}
+  analysis: ac
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    cl: 1.0e-10
+    sweep: {from: 1, to: 1.0e+8, per_decade: 20, unit: Hz}
+    rl_variants: [600, 10000]
+    supply_variants: [[5, -5], [9, -9]]
+    temps_c: [-55, 125]
+  grid: {x: f, from: 1, to: 1.0e+8, per_decade: 5, unit: Hz}
+  extraction: |
+    |AOL| and its phase (unwrapped, the DC phase as zero); GBW as |AOL| × f at 10 kHz and 100 kHz; the
+    unity-gain frequency where |AOL| passes 1; the phase margin as 180° plus the phase there; the gain
+    margin as −|AOL| in dB where the phase passes −180°; f_p1 where the gain has fallen 3 dB; f_p2 where
+    the phase passes −135°. The ratios of the DC gain and the GBW at 125 °C over 25 °C.
+  outputs:
+  - {key: aol_dc, unit: dB, what: "open-loop gain at DC, 2 kΩ, ±15 V"}
+  - {key: "gbw@10kHz", unit: Hz, what: "gain × frequency at 10 kHz"}
+  - {key: "gbw@100kHz", unit: Hz, what: "gain × frequency at 100 kHz"}
+  - {key: f_unity, unit: Hz, what: "where the open-loop gain passes 1"}
+  - {key: pm, unit: "°", what: "phase margin at 2 kΩ and 100 pF"}
+  - {key: gain_margin, unit: dB, what: "gain margin, where the phase passes −180°"}
+  - {key: f_p1, unit: Hz, what: "the dominant pole"}
+  - {key: f_p2, unit: Hz, what: "the second pole, where the phase passes −135°"}
+  - {key: f_p2_note, unit: "", what: "absent when the model is single-pole"}
+  - {key: "aol_dc@{tag}", unit: dB, what: "the DC gain at the other loads, supplies and temperatures"}
+  - {key: "gbw@100kHz,{tag}", unit: Hz, what: "the GBW at the other loads, supplies and temperatures"}
+  - {key: "pm@{tag}", unit: "°", what: "the phase margin at the other loads, supplies and temperatures"}
+  - {key: "aol_ratio@125°C/25°C", unit: "", what: "DC gain at 125 °C over 25 °C"}
+  - {key: "gbw_ratio@125°C/25°C", unit: "", what: "GBW at 125 °C over 25 °C"}
+  curves:
+  - {name: "gain", x: f, y: gain, scale: log, unit: ""}
+  - {name: "phase", x: f, y: phase, scale: lin, unit: "°"}
+  - {name: "gain, 600Ω", x: f, y: gain, scale: log, unit: "", at: {RL: 600}}
+  - {name: "gain, 10kΩ", x: f, y: gain, scale: log, unit: "", at: {RL: 10000}}
+  - {name: "gain, ±5V", x: f, y: gain, scale: log, unit: "", at: {VS: 10}}
+  - {name: "gain, ±9V", x: f, y: gain, scale: log, unit: "", at: {VS: 18}}
+  - {name: "gain, -55°C", x: f, y: gain, scale: log, unit: "", at: {T: -55}}
+  - {name: "gain, 125°C", x: f, y: gain, scale: log, unit: "", at: {T: 125}}
+  parameters: []
+  reads_high: "A GBW that does not move with temperature or supply is a macromodel with fixed poles."
+  reads_low: "A second pole absent is a single-pole model: its phase margin is 90° whatever the load, and a stability figure means nothing."
+  cannot_tell: "The gain with an external compensation pin; a part with one is run as its model's own default."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the AC source on the non-inverting input"
+  - "VIN inp 0 DC 0 AC 1"
+  - "* the loop: closed at DC through 1 GH, open above a microhertz; 1 GF holds the inverting input"
+  - "L1 out inn 1G"
+  - "C1 inn 0 1G"
+  - "XA inp inn vp vn out DUT"
+  - "RL out 0 2000"
+  - "CL out 0 1e-10"
+  - "* 1 Hz to 100 MHz, twenty points per decade"
+  - ".ac dec 20 1 100000000"
+
+- id: opamp-aol-swing
+  kind: opamp
+  group: dc
+  name: Open-loop gain against output swing and load
+  symbols: [AVD]
+  what: |
+    The large-signal gain the tables quote: ΔVOUT/ΔVIN with the output swept ±10 V and ±13 V into 2 kΩ,
+    600 Ω and 10 kΩ (every legacy table's AVD), from a fine DC sweep of the input around the model's own
+    offset; and the output's range in open loop.
+  circuit: |
+    Three open-loop copies, one per load, their non-inverting inputs on a source swept ±300 µV in 250 nV
+    steps on top of the offset the runs deck found, inverting inputs grounded.
+  drawing: {file: "", elements: [DUT open loop, fine input sweep, load], differs_from_netlist: three copies run in one deck}
+  analysis: dc
+  conditions:
+    supply: [15, -15]
+    rl: [2000, 600, 10000]
+    vin_span: 3.0e-4
+    vin_step: 2.5e-7
+    swings: [10, 13]
+  grid: {x: vin, from: -3.0e-4, to: 3.0e-4, step: 5.0e-6, unit: V}
+  extraction: |
+    For each load, the input voltage where the output passes −10 V and +10 V (and ±13 V); the gain is the
+    output span over the input span between them; the output's extremes over the sweep.
+  outputs:
+  - {key: "aol@±10V,{rl}", unit: "V/V", what: "the large-signal gain over ±10 V of output"}
+  - {key: "aol@±13V,{rl}", unit: "V/V", what: "over ±13 V"}
+  - {key: "aol_db@±10V", unit: dB, what: "the ±10 V gain into 2 kΩ, in decibels"}
+  - {key: "vout_min@{rl}", unit: V, what: "the output's lowest value in open loop"}
+  - {key: "vout_max@{rl}", unit: V, what: "its highest"}
+  curves:
+  - {name: "VOUT vs VIN, RL=2kΩ", x: vin, y: vout, scale: lin, unit: "V", at: {RL: 2000}}
+  - {name: "VOUT vs VIN, RL=600Ω", x: vin, y: vout, scale: lin, unit: "V", at: {RL: 600}}
+  - {name: "VOUT vs VIN, RL=10kΩ", x: vin, y: vout, scale: lin, unit: "V", at: {RL: 10000}}
+  select: {RL: 2000}
+  parameters: []
+  reads_high: ""
+  reads_low: "A gain that does not fall into 600 Ω is an output stage with no resistance in the model."
+  cannot_tell: "The gain's dependence on the common mode, which the offset measurement reads."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the input sweep, riding on the model's own offset (VOFF, from the runs deck)"
+  - "VIN inb 0 0"
+  - "* the 2 kΩ copy, open loop; XL1 and XL2 into 600 Ω and 10 kΩ"
+  - "XL0 inp 0 vp vn out0 DUT"
+  - "RL0 out0 0 2000"
+  - "* ±300 µV in 250 nV steps"
+  - ".dc VIN -0.0003 0.0003 2.5e-07"
+
+- id: opamp-closed-loop
+  kind: opamp
+  group: frequency
+  name: Closed-loop gain against frequency
+  symbols: [BW(G)]
+  what: |
+    The non-inverting amplifier at G = +1, +10, +100 and +1000 (1 kΩ to ground, the feedback resistor
+    for the gain) and the inverter at −1 (10 kΩ and 10 kΩ), 10 Hz to 100 MHz, 2 kΩ and 100 pF on the
+    output. Read: the −3 dB bandwidth and the peaking at each gain, the family every sheet prints.
+  circuit: Five copies in one deck sharing the AC source, each with its own feedback network and load.
+  drawing: {file: "", elements: [DUT with feedback network, AC source, 2 kΩ and 100 pF load], differs_from_netlist: five copies run in one deck}
+  analysis: ac
+  conditions:
+    supply: [15, -15]
+    gains: [1, 10, 100, 1000, -1]
+    r1: 1000
+    r_inv: 10000
+    rl: 2000
+    cl: 1.0e-10
+    sweep: {from: 10, to: 1.0e+8, per_decade: 20, unit: Hz}
+  grid: {x: f, from: 10, to: 1.0e+8, per_decade: 5, unit: Hz}
+  extraction: The bandwidth where the gain has fallen to 1/√2 of its 10 Hz value; the peaking as the gain's maximum over its 10 Hz value, in dB; the curves normalised to the 10 Hz gain.
+  outputs:
+  - {key: "bw@G={g}", unit: Hz, what: "the −3 dB bandwidth at each gain"}
+  - {key: "peak@G={g}", unit: dB, what: "the peaking at each gain"}
+  curves:
+  - {name: "gain, G=1", x: f, y: gain_cl, scale: log, unit: "", at: {G: 1}}
+  - {name: "gain, G=10", x: f, y: gain_cl, scale: log, unit: "", at: {G: 10}}
+  - {name: "gain, G=100", x: f, y: gain_cl, scale: log, unit: "", at: {G: 100}}
+  - {name: "gain, G=1000", x: f, y: gain_cl, scale: log, unit: "", at: {G: 1000}}
+  - {name: "gain, G=-1", x: f, y: gain_cl, scale: log, unit: "", at: {G: -1}}
+  select: {G: all}
+  parameters: []
+  reads_high: "Peaking above 3 dB at G = 1 into 100 pF is a model near instability there, as some parts are."
+  reads_low: ""
+  cannot_tell: "The bandwidth with the real feedback network's stray capacitance."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the AC source, shared"
+  - "VIN in 0 DC 0 AC 1"
+  - "* the G = 1 copy; then G = 10, 100, 1000 with 1 kΩ to ground and the feedback for the gain, and the inverter at −1"
+  - "XG0 in out0 vp vn out0 DUT"
+  - "RL0 out0 0 2000"
+  - "CL0 out0 0 1e-10"
+  - "R1_1 inn1 0 1000"
+  - "R2_1 out1 inn1 9000"
+  - "XG1 in inn1 vp vn out1 DUT"
+  - ".ac dec 20 10 100000000"
+
+- id: opamp-stability
+  kind: opamp
+  group: frequency
+  name: Stability against capacitive load and source resistance
+  symbols: [PM(CL), overshoot]
+  what: |
+    The phase margin from the open-loop deck with 10 pF, 100 pF, 1 nF and 10 nF on the output; the peaking
+    at G = +100 with the feedback network's total resistance stepped from 100 Ω to 100 kΩ (onsemi's
+    figure); and in time domain the overshoot of a 100 mV step at G = +1 into 100 pF and 1 nF (the audio
+    sheets' figures). Read: the largest load of the ladder at which the margin stays above 45°.
+  circuit: |
+    The open-loop deck per capacitive load; the non-inverting amplifier at G = 100 with four feedback
+    networks in one deck; the follower with a 100 mV step into each load.
+  drawing: {file: "", elements: [DUT open loop with CL, DUT at G = 100 with RT, DUT as a follower with a step], differs_from_netlist: several decks drawn as one}
+  analysis: ac
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    cl: [1.0e-11, 1.0e-9, 1.0e-8]
+    cl_overshoot: [1.0e-10, 1.0e-9]
+    step_v: 0.1
+    rt: [100, 1000, 10000, 100000]
+    rt_gain: 100
+    cl_rt: 1.0e-10
+    sweep: {from: 10, to: 1.0e+8, per_decade: 20, unit: Hz}
+    r1: 1000
+    r_inv: 10000
+    t_start_s: 1.0e-7
+    edge_s: 1.0e-9
+    width_s: 2.0e-5
+    max_step_s: 1.0e-9
+    t_end_s: 2.0e-5
+    curve_points: 80
+  grid: {x: cl, values: [1.0e-11, 1.0e-10, 1.0e-9, 1.0e-8], unit: F}
+  extraction: |
+    The phase margin per load as in the open-loop measurement; the largest load with 45° or more (the
+    smallest load that falls below it, when one does); the peaking per RT as the closed-loop gain's
+    maximum over its 10 Hz value; the overshoot as the step response's maximum over the step.
+  outputs:
+  - {key: "pm@{cl}", unit: "°", what: "phase margin at each capacitive load (the 100 pF one from the open-loop measurement)"}
+  - {key: "cl_max@45deg", unit: F, what: "the largest load of the ladder with 45° of margin"}
+  - {key: "overshoot@{cl},G=1", unit: "%", what: "overshoot of a 100 mV step at G = 1"}
+  - {key: "peak@G=100,rt={rt}", unit: dB, what: "peaking at G = 100 with the feedback network's total resistance"}
+  curves:
+  - {name: "PM vs CL", x: cl, y: pm, scale: lin, unit: "°"}
+  - {name: "peaking vs RT, G=100", x: rt, y: peak, scale: lin, unit: dB, grid: {x: rt, values: [100, 1000, 10000, 100000], unit: "Ω"}}
+  - {name: "step, 100pF,G=1", x: t, y: vout, scale: lin, unit: "V", at: {CL: 1.0e-10}}
+  - {name: "step, 1nF,G=1", x: t, y: vout, scale: lin, unit: "V", at: {CL: 1.0e-9}}
+  parameters: []
+  reads_high: "No peaking at any RT is a model whose input capacitance is zero."
+  reads_low: "A margin that does not fall with 10 nF is a model with no output resistance or a single pole."
+  cannot_tell: "Stability with the real layout's strays."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the G = 100 deck: the first copy with RT = 100 Ω (1 Ω to ground, 99 Ω feedback); RT = 1 kΩ, 10 kΩ, 100 kΩ follow"
+  - "R1_0 inn0 0 1"
+  - "R2_0 out0 inn0 99"
+  - "XT0 in inn0 vp vn out0 DUT"
+  - "RL0 out0 0 2000"
+  - "CL0 out0 0 1e-10"
+  - ".ac dec 20 10 100000000"
+  - "* the overshoot deck: a 100 mV step into the follower with 100 pF, then 1 nF"
+  - "VIN in 0 PULSE(0 0.1 1e-07 1e-09 1e-09 2e-05 4e-05)"
+  - "XS in out vp vn out DUT"
+  - "RL out 0 2000"
+  - "CL out 0 1e-10"
+  - ".tran 1e-09 2e-05 0 1e-09"
+
+- id: opamp-swing
+  kind: opamp
+  group: output
+  name: Output swing and headroom against load, current, supply and temperature
+  symbols: [VOM, VOH, VOL]
+  what: |
+    The amplifier driven 1 V into saturation each way (onsemi's VID = 1 V), the output read into 2 kΩ,
+    600 Ω and 10 kΩ to the reference at ±15 V, into 2 kΩ at ±5 and ±9 V and at −55 and 125 °C; and against
+    the output current from 0 to 80 mA (Nisshinbo's axis), sourcing and sinking. Published as ±V (the
+    legacy tables) and as the distance from the rail (TI's new tables). A Boyle model's swing comes from
+    two clamp diodes and ignores the load, which is the finding.
+  circuit: |
+    Open-loop copies with +1 V and −1 V between the inputs, one pair per load, and two shorted to the
+    reference through an ammeter for the short-circuit current; one operating point. For the current,
+    the saturated amplifier into a swept current source.
+  drawing: {file: "", elements: [DUT open loop driven into saturation, load to the reference, ammeter on a shorted copy], differs_from_netlist: the copies run in one deck}
+  analysis: op
+  conditions:
+    supply: [15, -15]
+    rl: [2000, 600, 10000]
+    drive_v: 1
+    supply_variants: [[5, -5], [9, -9]]
+    temps_c: [-55, 125]
+    io_sweep: {to: 0.08, step: 0.001, unit: A}
+    io_points: [0.001, 0.005, 0.01, 0.02, 0.04, 0.08]
+  extraction: The saturated output per load; the headroom as the rail less the output; the output against the load current from the sweep.
+  outputs:
+  - {key: "vom_hi@{rl}", unit: V, what: "the positive swing into each load at ±15 V"}
+  - {key: "vom_lo@{rl}", unit: V, what: "the negative swing"}
+  - {key: "headroom_hi@{rl}", unit: V, what: "the positive rail less the positive swing"}
+  - {key: "headroom_lo@{rl}", unit: V, what: "the negative swing less the negative rail"}
+  - {key: "vom_hi@2kΩ,{tag}", unit: V, what: "the positive swing into 2 kΩ at the other supplies and temperatures"}
+  - {key: "vom_lo@2kΩ,{tag}", unit: V, what: "the negative swing there"}
+  - {key: "vout_hi@io={i}", unit: V, what: "the saturated output while sourcing the current"}
+  curves:
+  - {name: "VOUT vs IOUT, sourcing", x: io, y: vout, scale: lin, unit: "V", grid: {x: io, from: 0, to: 0.08, step: 0.002, unit: A}}
+  - {name: "VOUT vs IOUT, sinking", x: io, y: vout, scale: lin, unit: "V", grid: {x: io, from: 0, to: 0.08, step: 0.002, unit: A}}
+  parameters: []
+  reads_high: ""
+  reads_low: "A swing that is the same into 600 Ω and 10 kΩ is a clamp, not an output stage."
+  cannot_tell: "The swing with the part's own output stage heating."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the first copy driven positive, into 2 kΩ; a copy driven negative beside it; then 600 Ω and 10 kΩ"
+  - "VIp0 ip0 0 1"
+  - "XSp0 ip0 0 vp vn op0 DUT"
+  - "RLp0 op0 0 2000"
+  - "VIn0 in0 0 -1"
+  - "XSn0 in0 0 vp vn on0 DUT"
+  - "RLn0 on0 0 2000"
+  - "* the shorted copies: the output to the reference through an ammeter"
+  - "VIsp isp 0 1"
+  - "XIp isp 0 vp vn osp DUT"
+  - "VSCp osp 0 0"
+  - ".op"
+  - "* the current sweep: the saturated amplifier sourcing into a current sink, 0 to 80 mA"
+  - "IL op 0 0"
+  - ".dc IL 0 0.08 0.001"
+
+- id: opamp-isc
+  kind: opamp
+  group: output
+  name: Short-circuit current
+  symbols: [ISC]
+  what: |
+    The output shorted to the reference with the input 1 V into saturation each way, at ±15 V and at the
+    other supplies, at −55, 25 and 125 °C. Macromodels limit the current with a clamp or not at all; a
+    current far above the sheet's is the load line, not a limit.
+  circuit: The swing deck's shorted copies.
+  drawing: {file: "", elements: [DUT driven into saturation, ammeter to the reference], differs_from_netlist: nothing}
+  analysis: op
+  conditions: {from: opamp-swing}
+  extraction: The ammeter's current, sourcing and sinking, per supply and temperature; the ratio at 125 °C over 25 °C.
+  outputs:
+  - {key: isc_pos, unit: A, what: "short-circuit current, sourcing, at ±15 V"}
+  - {key: isc_neg, unit: A, what: "sinking"}
+  - {key: "isc_pos@{tag}", unit: A, what: "sourcing at the other supplies and temperatures"}
+  - {key: "isc_neg@{tag}", unit: A, what: "sinking there"}
+  - {key: "isc_ratio@125°C/25°C", unit: "", what: "sourcing current at 125 °C over 25 °C"}
+  parameters: []
+  reads_high: "A current of amperes is a model without a limit: the number is the clamp diode's load line."
+  reads_low: ""
+  cannot_tell: "The current's fall as the real part heats."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the swing deck's shorted copy, sourcing"
+  - "VIsp isp 0 1"
+  - "XIp isp 0 vp vn osp DUT"
+  - "VSCp osp 0 0"
+  - "* and sinking"
+  - "VIsn isn 0 -1"
+  - "XIn isn 0 vp vn osn DUT"
+  - "VSCn osn 0 0"
+
+- id: opamp-zout
+  kind: opamp
+  group: output
+  name: Output impedance, open- and closed-loop
+  symbols: [ZO]
+  what: |
+    Current injected into the output, the voltage read: open loop (the servo deck), 10 Hz to 100 MHz; and
+    closed loop at G = +1, +10, +100 and +1000 (onsemi's family). TI's tables quote the open-loop value at
+    1 MHz, onsemi's at 9 MHz.
+  circuit: The open-loop servo with 1 A of AC injected into the output; four closed-loop copies in one deck, each with its own injection.
+  drawing: {file: "", elements: [DUT, AC current into the output, voltmeter], differs_from_netlist: the closed-loop copies run in one deck}
+  analysis: ac
+  conditions:
+    supply: [15, -15]
+    gains: [1, 10, 100, 1000]
+    r1: 1000
+    sweep: {from: 10, to: 1.0e+8, per_decade: 20, unit: Hz}
+    f_points: [1000, 1.0e+6, 9.0e+6]
+    f_points_cl: [1000, 100000]
+  grid: {x: f, from: 10, to: 1.0e+8, per_decade: 5, unit: Hz}
+  extraction: "|VOUT| for 1 A injected, at the spot frequencies."
+  outputs:
+  - {key: "zo_ol@{f}", unit: "Ω", what: "open-loop output impedance"}
+  - {key: "zo_cl@{f},G={g}", unit: "Ω", what: "closed-loop output impedance at each gain"}
+  curves:
+  - {name: "ZO open loop", x: f, y: zo, scale: log, unit: "Ω"}
+  - {name: "ZO, G=1", x: f, y: zo, scale: log, unit: "Ω", at: {G: 1}}
+  - {name: "ZO, G=10", x: f, y: zo, scale: log, unit: "Ω", at: {G: 10}}
+  - {name: "ZO, G=100", x: f, y: zo, scale: log, unit: "Ω", at: {G: 100}}
+  - {name: "ZO, G=1000", x: f, y: zo, scale: log, unit: "Ω", at: {G: 1000}}
+  parameters: []
+  reads_high: ""
+  reads_low: "An open-loop impedance that is one resistor at every frequency is the Boyle output stage."
+  cannot_tell: "The impedance with a DC load current; the injection is around the operating point at zero current."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* open loop: the servo, 1 A of AC into the output"
+  - "L1 out inn 1G"
+  - "C1 inn 0 1G"
+  - "XZO inp inn vp vn out DUT"
+  - "IINJ 0 out AC 1"
+  - ".ac dec 20 10 100000000"
+
+- id: opamp-max-vo-f
+  kind: opamp
+  group: slew
+  name: Maximum output voltage against frequency
+  symbols: [FPBW, VO(f)]
+  what: |
+    A 10 V peak sine at 20, 50 and 100 kHz through the follower into 2 kΩ: the output's peak and its
+    distortion, where the slew limit bites; and the full-power bandwidth from the slew rate over 2π
+    times the swing, the figure the legacy sheets draw as the output voltage against frequency.
+  circuit: The follower with 2 kΩ, twelve cycles, the last eight analysed.
+  drawing: {file: "", elements: [DUT as a follower, 10 V peak sine, 2 kΩ load], differs_from_netlist: one deck per frequency}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    amplitude: 10
+    f: [20000, 50000, 100000]
+    rl: 2000
+    cycles: 12
+    analysed_cycles: 8
+    steps_per_cycle: 200
+  extraction: The fundamental's amplitude and the THD by Goertzel over the last eight cycles; FPBW = SR / (2π VOM).
+  outputs:
+  - {key: "vopk@{f}", unit: V, what: "the output's fundamental at each frequency for 10 V peak in"}
+  - {key: "thd@{f}", unit: "", what: "the distortion there"}
+  - {key: fpbw, unit: Hz, what: "the full-power bandwidth, SR over 2π VOM"}
+  curves:
+  - {name: "VO peak vs f", x: f, y: vopk, scale: lin, unit: "V", grid: {x: f, values: [20000, 50000, 100000], unit: Hz}}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "The swing at the frequencies between the three points; the full-power bandwidth is the figure for those."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* 10 V peak at 20 kHz; then 50 and 100 kHz"
+  - "VIN in 0 SIN(0 10 20000)"
+  - "XD in out vp vn out DUT"
+  - "RL out 0 2000"
+
+- id: opamp-slew
+  kind: opamp
+  group: slew
+  name: Slew rate, and the large-signal step
+  symbols: [SR]
+  what: |
+    Steps of 10 V at G = +1 and G = −1 into 2 kΩ and 100 pF (and 20 pF), of 2 V and 20 V, at ±5 V and at
+    125 °C: the rising and falling slopes between 10 % and 90 % (the two fixtures the sheets differ by:
+    20 to 50 % of the figure), and the main waveform kept at 80 points as the sheets print their
+    oscillograms.
+  circuit: The follower (or the inverter with 10 kΩ and 10 kΩ) with a pulse source, 2 kΩ and the capacitive load; one deck per fixture.
+  drawing: {file: "", elements: [DUT as a follower, pulse source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per fixture}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    cl: 1.0e-10
+    r1: 1000
+    r_inv: 10000
+    t_start_s: 1.0e-6
+    edge_s: 1.0e-8
+    width_s: 4.0e-5
+    max_step_s: 5.0e-9
+    t_end_s: 8.0e-5
+    curve_points: 80
+    main: "10V,100pF,G=1"
+    fixtures:
+    - {key: "10V,100pF,G=1", step: 10}
+    - {key: "10V,100pF,G=-1", step: 10, gain: -1}
+    - {key: "10V,20pF,G=1", step: 10, cl: 2.0e-11}
+    - {key: "2V,100pF,G=1", step: 2}
+    - {key: "20V,100pF,G=1", step: 20}
+    - {key: "4V,±5V", step: 4, supply: [5, -5]}
+    - {key: "10V,125°C", step: 10, temp: 125}
+  extraction: The slope between the 10 % and 90 % crossings of the rising edge (and of the falling edge in the main fixture); the ratio at 125 °C over 25 °C.
+  outputs:
+  - {key: "sr_pos@{fixture}", unit: "V/s", what: "the rising slew rate in each fixture"}
+  - {key: "sr_neg@10V,100pF,G=1", unit: "V/s", what: "the falling slew rate in the main fixture"}
+  - {key: "sr_ratio@125°C/25°C", unit: "", what: "the rising slew rate at 125 °C over 25 °C"}
+  curves:
+  - {name: "step, 10V,100pF,G=1", x: t, y: vout, scale: lin, unit: "V"}
+  parameters: []
+  reads_high: ""
+  reads_low: "A slew rate that is the same at 2 V and 20 V and at every temperature is a Boyle model's single current limit on its compensation capacitor."
+  cannot_tell: "The slew with the real part's input stage overdriven differently; this is a hard step."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the main fixture: a 10 V step into the follower"
+  - "VIN in 0 PULSE(-5 5 1e-06 1e-08 1e-08 4e-05 8e-05)"
+  - "XS in out vp vn out DUT"
+  - "RL out 0 2000"
+  - "CL out 0 1e-10"
+  - ".tran 5e-09 8e-05 0 5e-09"
+
+- id: opamp-settling
+  kind: opamp
+  group: slew
+  name: Settling time
+  symbols: [ts]
+  what: Time from the step's edge to the output staying within 0.1 % and 0.01 % of its final value, for 10 V and 2 V steps at G = +1 and a 10 V step at G = −1, 100 pF on the output.
+  circuit: The slew fixtures with a finer time step, the error against time kept.
+  drawing: {file: "", elements: [DUT as a follower, pulse source, 2 kΩ and 100 pF load], differs_from_netlist: one deck per fixture}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    cl: 1.0e-10
+    r1: 1000
+    r_inv: 10000
+    t_start_s: 1.0e-6
+    edge_s: 1.0e-8
+    width_s: 4.0e-5
+    max_step_s: 2.0e-9
+    t_end_s: 4.1e-5
+    bands: [0.001, 0.0001]
+    curve_points: 80
+    fixtures:
+    - {key: "10V,G=1", step: 10}
+    - {key: "2V,G=1", step: 2}
+    - {key: "10V,G=-1", step: 10, gain: -1}
+  extraction: The last time the output is outside the band around its final value, from the step's start.
+  outputs:
+  - {key: "ts@0.1%,{fixture}", unit: s, what: "settling to 0.1 %"}
+  - {key: "ts@0.01%,{fixture}", unit: s, what: "settling to 0.01 %"}
+  curves:
+  - {name: "error, 10V,G=1", x: t, y: error, scale: lin, unit: ""}
+  - {name: "error, 2V,G=1", x: t, y: error, scale: lin, unit: ""}
+  - {name: "error, 10V,G=-1", x: t, y: error, scale: lin, unit: ""}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "Thermal settling, which the real part shows in the first milliseconds."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the 10 V step at G = 1"
+  - "VIN in 0 PULSE(-5 5 1e-06 1e-08 1e-08 4e-05 8e-05)"
+  - "XS in out vp vn out DUT"
+  - "CL out 0 1e-10"
+  - ".tran 2e-09 4.1e-05 0 2e-09"
+
+- id: opamp-overload
+  kind: opamp
+  group: output
+  name: Overload recovery
+  symbols: [trec]
+  what: The inverter at G = −10 driven to 1.2 times the supply each way, and the time from the input's return to the output's return within 100 mV of the reference (TI's figure), positive and negative.
+  circuit: The inverter with 1 kΩ and 10 kΩ, a 1.8 V pulse on the input (18 V demanded of the output), 2 kΩ load.
+  drawing: {file: "", elements: [DUT as an inverter, pulse source, 2 kΩ load], differs_from_netlist: one deck per polarity}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    cl: 1.0e-12
+    gain: -10
+    drive_v: 1.8
+    r_inv: 1000
+    r1: 1000
+    t_start_s: 1.0e-6
+    edge_s: 1.0e-8
+    width_s: 2.0e-5
+    max_step_s: 2.0e-9
+    t_end_s: 4.0e-5
+    after_s: 1.0e-8
+    recovered_v: 0.1
+    curve_points: 80
+  extraction: The last time after the pulse's end at which the output is more than 100 mV from the reference.
+  outputs:
+  - {key: trec_pos, unit: s, what: "recovery from a positive overload"}
+  - {key: trec_neg, unit: s, what: "from a negative one"}
+  - {key: vout_overloaded_pos, unit: V, what: "the output while overloaded positive"}
+  - {key: vout_overloaded_neg, unit: V, what: "while overloaded negative"}
+  curves:
+  - {name: "recovery pos", x: t, y: vout, scale: lin, unit: "V"}
+  - {name: "recovery neg", x: t, y: vout, scale: lin, unit: "V"}
+  parameters: []
+  reads_high: "A recovery of microseconds is a model whose input stage saturates and holds charge, as a few do."
+  reads_low: ""
+  cannot_tell: ""
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* the inverter at G = −10, driven 1.8 V: 18 V demanded of the output"
+  - "VIN in 0 PULSE(0 1.8 1e-06 1e-08 1e-08 2e-05 4e-05)"
+  - "R1 in inn 1000"
+  - "R2 out inn 10000"
+  - "XS 0 inn vp vn out DUT"
+  - "RL out 0 2000"
+
+- id: opamp-phase-reversal
+  kind: opamp
+  group: dc
+  name: Phase reversal, and the input driven beyond the rails
+  symbols: [reversal, IIN]
+  what: |
+    From the follower's common-mode sweep: whether the output's polarity reverses within 2 V of a rail
+    or beyond it (TI's no-phase-reversal figure); and the current the input draws against the input
+    voltage, swept 2 V beyond each rail (the NE5534's and NE5532's figures), which says whether the model
+    has the input protection diodes.
+  circuit: The follower with its input swept 2 V beyond each rail through an ammeter, 10 kΩ load.
+  drawing: {file: "", elements: [DUT as a follower, swept input through an ammeter, 10 kΩ load], differs_from_netlist: the reversal flags come from the offset measurement's sweep}
+  analysis: dc
+  conditions:
+    supply: [15, -15]
+    rl: 10000
+    beyond: 2
+    step: 0.1
+    iin_points: [-16, 14, 16]
+  extraction: The flags from the offset sweep (an output of the opposite sign while the input is within 2 V of a rail, or beyond it); the input current at 14 V, +16 V and −16 V; protection present when the current a volt beyond either rail is above a microampere.
+  outputs:
+  - {key: reversal_within_rails, unit: "", what: "true when the output reverses with the input inside the rails"}
+  - {key: reversal_beyond_rails, unit: "", what: "true when it reverses beyond them"}
+  - {key: "iin@+14V", unit: A, what: "input current with the input at +14 V"}
+  - {key: "iin@+16V", unit: A, what: "at +16 V, a volt beyond the positive rail"}
+  - {key: "iin@-16V", unit: A, what: "at −16 V"}
+  - {key: input_protection, unit: "", what: "present when the input conducts a volt beyond either rail, else absent"}
+  curves:
+  - {name: "VOUT vs VIN", x: vin, y: vout, scale: lin, unit: "V", grid: {x: vin, from: -16, to: 16, step: 0.25, unit: V}}
+  - {name: "IIN vs VIN", x: vin, y: iin, scale: lin, unit: "A", grid: {x: vin, from: -17, to: 17, step: 0.5, unit: V}}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "Latch-up."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the input swept 2 V beyond each rail, through an ammeter"
+  - "VIN in 0 0"
+  - "VIM in inp 0"
+  - "XV inp out vp vn out DUT"
+  - "RL out 0 10000"
+  - ".dc VIN -17 17 0.1"
+
+- id: opamp-step
+  kind: opamp
+  group: frequency
+  name: Small-signal step response
+  symbols: [tr, overshoot]
+  what: A 10 mV step into the follower with 20 pF and 100 pF (TI's and the legacy fixtures), 2 kΩ load; the rise time 10 to 90 %, the overshoot, the waveforms kept at 80 points.
+  circuit: The follower with a 10 mV pulse, 2 kΩ and the capacitive load.
+  drawing: {file: "", elements: [DUT as a follower, 10 mV pulse, 2 kΩ and CL], differs_from_netlist: one deck per load}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    cl: [2.0e-11, 1.0e-10]
+    step_v: 0.01
+    r1: 1000
+    r_inv: 10000
+    t_start_s: 1.0e-7
+    edge_s: 1.0e-9
+    width_s: 2.0e-5
+    max_step_s: 1.0e-9
+    t_end_s: 2.0e-5
+    curve_points: 80
+  extraction: The 10 % and 90 % crossings of the rising edge; the overshoot as the maximum over the step.
+  outputs:
+  - {key: "tr@{cl},G=1", unit: s, what: "rise time 10 to 90 % into each load"}
+  - {key: "overshoot@{cl},G=1", unit: "%", what: "the overshoot"}
+  curves:
+  - {name: "step, 20pF,G=1", x: t, y: vout, scale: lin, unit: "V", at: {CL: 2.0e-11}}
+  - {name: "step, 100pF,G=1", x: t, y: vout, scale: lin, unit: "V", at: {CL: 1.0e-10}}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: ""
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* a 10 mV step into the follower with 20 pF; then 100 pF"
+  - "VIN in 0 PULSE(0 0.01 1e-07 1e-09 1e-09 2e-05 4e-05)"
+  - "XS in out vp vn out DUT"
+  - "RL out 0 2000"
+  - "CL out 0 2e-11"
+  - ".tran 1e-09 2e-05 0 1e-09"
+
+- id: opamp-noise
+  kind: opamp
+  group: noise
+  name: Voltage and current noise against frequency, the 1/f corner and 0.1–10 Hz
+  symbols: [en, in]
+  what: |
+    The follower's input-referred noise by .noise with RS = 0 (en) and with 100 kΩ (in, by subtraction),
+    0.1 Hz to 1 MHz; spot values at 10 Hz, 100 Hz, 1 kHz and 10 kHz; the 1/f corner; the integrated rms
+    over 0.1–10 Hz, 10 Hz–10 kHz (the legacy TL07x figure) and 20 Hz–20 kHz; the 0.1–10 Hz peak-to-peak as
+    6.6 times the rms; en at 1 kHz at ±5 V. A macromodel with no noise sources (most) gives its resistors'
+    thermal noise only: the finding is absent.
+  circuit: The follower with 2 kΩ, the noise source at its input, with or without the source resistance.
+  drawing: {file: "", elements: [DUT as a follower, noise source, RS], differs_from_netlist: one deck per source resistance}
+  analysis: noise
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    sweep: {from: 0.1, to: 1.0e+6, per_decade: 20, unit: Hz}
+    spot_sweep: {from: 1000, to: 1000, per_decade: 2, unit: Hz}
+    f_points: [10, 100, 1000, 10000]
+    bands: [[0.1, 10], [10, 10000], [20, 20000]]
+    rs_in: 100000
+    supply_variant: [5, -5]
+  grid: {x: f, from: 0.1, to: 1.0e+6, per_decade: 5, unit: Hz}
+  extraction: |
+    en from the RS = 0 run; in from the 100 kΩ run less en² and the resistor's 4kT·RS; the corner where
+    en is √2 times its 10 kHz value, absent when flat; the bands by trapezoids on the sweep's points.
+    Noise sources absent when en at 1 kHz is below 0.1 nV/√Hz.
+  outputs:
+  - {key: "en@{f}", unit: "V/√Hz", what: "voltage noise density at the spot frequencies"}
+  - {key: f_corner_en, unit: Hz, what: "the 1/f corner of en, or absent"}
+  - {key: "en_rms@{band}", unit: V, what: "the integrated noise over each band"}
+  - {key: "en_pp@0.1-10Hz", unit: V, what: "6.6 times the 0.1–10 Hz rms"}
+  - {key: "in@1kHz", unit: "A/√Hz", what: "current noise density at 1 kHz"}
+  - {key: in_note, unit: "", what: "absent when the current noise is below the floor"}
+  - {key: "en@1kHz,±5V", unit: "V/√Hz", what: "en at 1 kHz at ±5 V"}
+  - {key: noise_sources, unit: "", what: "present, or absent when the model carries none"}
+  curves:
+  - {name: "en", x: f, y: en, scale: log, unit: "V/√Hz"}
+  - {name: "in", x: f, y: in, scale: log, unit: "A/√Hz"}
+  parameters: []
+  reads_high: ""
+  reads_low: "An en of picovolts is the thermal noise of the model's resistors: no noise sources."
+  cannot_tell: "Burst noise, and the part's own noise, which makers measure on a few samples."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* the noise source at the follower's input, RS = 0; a second run with 100 kΩ"
+  - "VIN in 0 DC 0 AC 1"
+  - "XN in out vp vn out DUT"
+  - "RL out 0 2000"
+  - ".noise V(out) VIN dec 20 0.1 1000000"
+
+- id: opamp-noise-rs
+  kind: opamp
+  group: noise
+  name: Total noise against source resistance, noise figure and the weighted figures
+  symbols: [VT, NF]
+  what: |
+    The total input-referred noise at 1 kHz with 1 kΩ, 10 kΩ, 100 kΩ and 1 MΩ in the input (onsemi's and
+    Analog Devices' figures), the noise figure from it, and the integrated 20 Hz–20 kHz noise flat,
+    A-weighted (which stands for JIS-A) and RIAA-weighted through a 30 kHz low-pass, at RS = 300 Ω and
+    2.2 kΩ: the Nisshinbo figures, the one test specific to the Japanese audio sheets.
+  circuit: The follower with the source resistance in its input; one deck per resistance.
+  drawing: {file: "", elements: [DUT as a follower, noise source, RS], differs_from_netlist: one deck per source resistance}
+  analysis: noise
+  conditions:
+    rs_ladder: [1000, 10000, 100000, 1000000]
+    rs_weighted: [300, 2200]
+    spot_sweep: {from: 1000, to: 1000, per_decade: 2, unit: Hz}
+    weighted_sweep: {from: 10, to: 100000, per_decade: 20, unit: Hz}
+  extraction: The input-referred density at 1 kHz per resistance; NF = 10 log (VT² / 4kT RS); the weighted figures as trapezoids on the density times the weighting.
+  outputs:
+  - {key: "vt@1kHz,rs={r}", unit: "V/√Hz", what: "total input-referred noise at 1 kHz"}
+  - {key: "nf@rs={r}", unit: dB, what: "noise figure"}
+  - {key: "en_flat@rs={r}", unit: V, what: "20 Hz to 20 kHz rms, flat"}
+  - {key: "en_a@rs={r}", unit: V, what: "A-weighted"}
+  - {key: "en_riaa@rs={r}", unit: V, what: "RIAA-weighted, 30 kHz low-pass"}
+  curves:
+  - {name: "VT vs RS", x: rs, y: vt, scale: log, unit: "V/√Hz", grid: {x: rs, values: [1000, 10000, 100000, 1000000], unit: "Ω"}}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "As the noise measurement: nothing beyond the model's sources."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice]
+  directives:
+  - "* the follower with 1 kΩ in its input; then 10 kΩ, 100 kΩ, 1 MΩ, and 300 Ω and 2.2 kΩ for the weighted figures"
+  - "RS in inr 1000"
+  - "XN inr out vp vn out DUT"
+  - ".noise V(out) VIN dec 2 1000 1000"
+
+- id: opamp-thd-f
+  kind: opamp
+  group: distortion
+  name: THD against frequency (model against model)
+  symbols: [THD(f)]
+  what: |
+    A sine at 20 Hz, 100 Hz, 1 kHz, 10 kHz and 20 kHz at 1 Vrms and 3 Vrms through the follower and at
+    3 Vrms at G = +10 (1 kΩ and 9 kΩ), into 2 kΩ, harmonics 2 to 10 by Goertzel over the last eight of
+    twelve cycles. Published for comparison between models: a macromodel's distortion is its slew, its
+    clipping and whatever its output stage does, not the die's.
+  circuit: The follower (or the non-inverting amplifier) with 2 kΩ, the sine on its input; one deck per point.
+  drawing: {file: "", elements: [DUT, sine source, 2 kΩ load], differs_from_netlist: "one deck per frequency, level and gain"}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    r1: 1000
+    r_inv: 10000
+    f: [20, 100, 1000, 10000, 20000]
+    vrms: [1, 3]
+    gain2: 10
+    cycles: 12
+    analysed_cycles: 8
+    steps_per_cycle: 4096
+  extraction: THD as the root of the sum of the squares of harmonics 2 to 10 over the fundamental; the second and third harmonics at 1 kHz, 3 Vrms, G = 1.
+  outputs:
+  - {key: "thd@{f},{level},{gain}", unit: "", what: "THD at each frequency, level and gain"}
+  - {key: "hd2@1kHz,3Vrms,G=1", unit: "", what: "second harmonic over the fundamental"}
+  - {key: "hd3@1kHz,3Vrms,G=1", unit: "", what: "third harmonic over the fundamental"}
+  curves:
+  - {name: "THD vs f, 1Vrms, G=1", x: f, y: thd, scale: log, unit: "", at: {G: 1}, grid: {x: f, values: [20, 100, 1000, 10000, 20000], unit: Hz}}
+  - {name: "THD vs f, 3Vrms, G=1", x: f, y: thd, scale: log, unit: "", at: {G: 1}, grid: {x: f, values: [20, 100, 1000, 10000, 20000], unit: Hz}}
+  - {name: "THD vs f, 3Vrms, G=10", x: f, y: thd, scale: log, unit: "", at: {G: 10}, grid: {x: f, values: [20, 100, 1000, 10000, 20000], unit: Hz}}
+  parameters: []
+  reads_high: "Only against another model of the same part."
+  reads_low: "Parts per million at every frequency is a model with no non-linearity but its clamps."
+  cannot_tell: "The distortion of the part; the sheets' figures come from the die."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "VP vp 0 15"
+  - "VN vn 0 -15"
+  - "* 1 Vrms (1.414 V peak) at 20 Hz into the follower; the ladder follows"
+  - "VIN in 0 SIN(0 1.41421356 20)"
+  - "XD in out vp vn out DUT"
+  - "RL out 0 2000"
+
+- id: opamp-thd-level
+  kind: opamp
+  group: distortion
+  name: THD against output level (model against model)
+  symbols: [THD(level)]
+  what: At 1 kHz through the follower into 2 kΩ, the level stepped from 100 mVrms to 10 Vrms, where the distortion turns up at the clipping end; the level at which it passes 1 %.
+  circuit: The follower with 2 kΩ; one deck per level.
+  drawing: {file: "", elements: [DUT as a follower, sine source, 2 kΩ load], differs_from_netlist: one deck per level}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    f: 1000
+    vrms: [0.1, 1, 3, 6, 10]
+    cycles: 12
+    analysed_cycles: 8
+    steps_per_cycle: 4096
+  extraction: THD per level; the fundamental's amplitude; the level where THD passes 1 %, interpolated.
+  outputs:
+  - {key: "thd@1kHz,{level}", unit: "", what: "THD at each level"}
+  - {key: "vout@{level}", unit: V, what: "the fundamental's peak at each level"}
+  - {key: "v_clip@1%", unit: V, what: "the input level (rms) at which THD passes 1 %"}
+  curves:
+  - {name: "THD vs level", x: vrms, y: thd, scale: log, unit: "", grid: {x: vrms, values: [0.1, 1, 3, 6, 10], unit: V}}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "The noise floor at the low end for a model without noise."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* 100 mVrms at 1 kHz; then 1, 3, 6 and 10 Vrms"
+  - "VIN in 0 SIN(0 0.141421356 1000)"
+  - "XD in out vp vn out DUT"
+  - "RL out 0 2000"
+
+- id: opamp-imd
+  kind: opamp
+  group: distortion
+  name: Intermodulation (model against model)
+  symbols: [IMD]
+  what: SMPTE (60 Hz + 7 kHz, 4:1) and CCIF (19 kHz + 20 kHz, 1:1) at 3 Vrms in all through the follower into 2 kΩ.
+  circuit: Two sine sources in series on the follower's input, 2 kΩ load.
+  drawing: {file: "", elements: [DUT as a follower, two sine sources, 2 kΩ load], differs_from_netlist: one deck per method}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    rl: 2000
+    smpte: {f1: 60, f2: 7000, a1: 3.394, a2: 0.8485, step_s: 1.0e-6, t_end_s: 0.15, t_from_s: 0.1, samples: 16384}
+    ccif: {f1: 19000, f2: 20000, a1: 2.1213, a2: 2.1213, step_s: 1.0e-7, t_end_s: 0.014, t_from_s: 0.004, samples: 32768}
+  extraction: SMPTE as the 7 kHz sidebands at ±60 and ±120 Hz over the 7 kHz carrier; CCIF as the 1 kHz difference tone and the 18 and 21 kHz products over the two tones; Goertzel over the last 50 ms (10 ms).
+  outputs:
+  - {key: imd_smpte, unit: "", what: "SMPTE intermodulation, 60 Hz + 7 kHz 4:1, 3 Vrms"}
+  - {key: imd_ccif, unit: "", what: "CCIF intermodulation, 19 + 20 kHz, 3 Vrms"}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: ""
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* SMPTE: 60 Hz and 7 kHz in series, four to one"
+  - "VIN in mid SIN(0 3.394 60)"
+  - "VIN2 mid 0 SIN(0 0.8485 7000)"
+  - "XD in out vp vn out DUT"
+  - "RL out 0 2000"
+
+- id: opamp-thd-load
+  kind: opamp
+  group: distortion
+  name: THD against load (model against model)
+  symbols: [THD(RL)]
+  what: At 1 kHz, 3 Vrms through the follower, the load from 100 Ω to 10 kΩ, how a model's output stage behaves into a heavy load; the fundamental's amplitude says whether the swing holds.
+  circuit: The follower with the load; one deck per load.
+  drawing: {file: "", elements: [DUT as a follower, sine source, load], differs_from_netlist: one deck per load}
+  analysis: tran
+  conditions:
+    supply: [15, -15]
+    f: 1000
+    vrms: 3
+    rl: [100, 300, 600, 2000, 10000]
+    cycles: 12
+    analysed_cycles: 8
+    steps_per_cycle: 4096
+  extraction: THD and the fundamental per load.
+  outputs:
+  - {key: "thd@{rl}", unit: "", what: "THD into each load"}
+  - {key: "vout@{rl}", unit: V, what: "the fundamental's peak into each load"}
+  curves:
+  - {name: "THD vs RL", x: rl, y: thd, scale: log, unit: "", grid: {x: rl, values: [100, 300, 600, 2000, 10000], unit: "Ω"}}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: ""
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+  directives:
+  - "* 3 Vrms at 1 kHz into 100 Ω; then 300 Ω, 600 Ω, 2 kΩ and 10 kΩ"
+  - "VIN in 0 SIN(0 4.24264069 1000)"
+  - "XD in out vp vn out DUT"
+  - "RL out 0 100"
+
+- id: opamp-separation
+  kind: opamp
+  group: supply
+  name: Channel separation
+  symbols: [separation]
+  what: |
+    For a subcircuit with two or four amplifiers, the crosstalk from a driven channel to a quiet one. A
+    macromodel of one amplifier in a package of two shares nothing: the result is absent, which is the
+    finding. The fixture for dual subcircuits (onsemi's, the driven channel at G = +1 with 20 Vpp into
+    2 kΩ, the measured one at G = +100) is the next catalogue version's.
+  circuit: ""
+  drawing: {file: "", elements: [], differs_from_netlist: ""}
+  analysis: derived
+  conditions: {}
+  extraction: Absent for every single-amplifier subcircuit, which every model run today is.
+  outputs:
+  - {key: separation, unit: "", what: "absent: one amplifier in the subcircuit"}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "Anything, until dual subcircuits are run."
+  standard: none
+  pack: false
+  engines: [qspice, ngspice, ltspice]
+
+- id: opamp-agreement
+  kind: opamp
+  group: dc
+  name: Do the three simulators agree?
+  symbols: []
+  what: |
+    As the bipolar agreement, over every output above. Macromodels disagree between simulators on
+    behavioural sources (PSpice TABLE and VALUE expressions, LTspice's own functions), on the convergence
+    of their clamps, and on noise analysis; the disagreeing ids say which.
+  circuit: ""
+  drawing: {file: "", elements: [], differs_from_netlist: ""}
+  analysis: derived
+  conditions: {tolerances: [0.01, 0.05], floors: {F: 1.0e-16, s: 1.0e-12, A: 1.0e-14}}
   extraction: |
     For each published output, the spread (max − min over the mean) across the engines that produced it,
     classed as within 1 %, within 5 % or beyond; values below the floors count as zero.

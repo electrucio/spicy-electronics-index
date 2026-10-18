@@ -53,6 +53,10 @@ def card_from_file(path: Path, name: str, engine: str) -> tuple[str, list[str], 
         return got[0], got[1], parsed[0] if parsed else "", None
     sub, why = subckt_card(chain, engine)
     if not sub:
+        from spicy_electronics_index.bench.jobs import header_comments  # noqa: PLC0415
+        sub, why2 = subckt_card(chain, engine, "amplifier", header_comments(text, name))
+        why = why if not sub else ""
+    if not sub:
         raise SystemExit(f"{name} in {path} cannot be measured: {why or 'not a .model card or a subcircuit'}")
     return sub["card"], sub["changes"], sub["polarity"].upper(), sub["pins"]
 

@@ -57,6 +57,9 @@ Which groups of measurements matter for which use:
 | Analogue switch or voltage-controlled resistor (JFET) | dc, capacitance, switching | rDS(on) at VGS = 0 and how fast it rises towards VGS(off), the linearity of rDS with VDS, Crss (charge injection), ton and toff. |
 | Class-AB or follower output stage (MOSFET) | temperature, dc, high-current, capacitance, distortion | the zero-temperature-coefficient point and dVth/dT (bias stability), gfs between 10 mA and 1 A, RDS(on) and its slope with temperature, Crss against VDS (the distortion mechanism at 20 kHz), the body diode's VSD. |
 | Switch, driver or converter (MOSFET) | switching, capacitance, high-current, recovery, breakdown | RDS(on) at the drive voltage and current used, Qg, Qgd and the plateau voltage, td/tr/tf at that current and RG, Qgd/Qgs(th) (parasitic turn-on), the body diode's VSD and whether trr exists in the card, whether breakdown exists at all. |
+| Audio gain stage, preamplifier or filter (op-amp) | noise, distortion, frequency, dc, output | whether the model has noise sources at all, then en at 1 kHz and 10 Hz; the open-loop gain and GBW, the phase margin into the capacitive load you use; the swing into 600 Ω and 2 kΩ; the slew rate; the offset and drift if DC-coupled. Distortion figures compare one model with another, never with the part. |
+| Headphone or line driver (op-amp) | output, slew, distortion, supply | the swing and the short-circuit current into the load, VOUT against IOUT, THD against load, the full-power bandwidth, the supply current. |
+| Instrumentation, DC or servo (op-amp) | dc, supply, frequency | the offset and its drift, the bias current and its drift, CMRR and PSRR at DC and against frequency, the input range, phase reversal, the settling time. |
 
 ### Bipolar transistors
 
