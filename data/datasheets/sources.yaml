@@ -553,3 +553,57 @@ datasheet_live:
     use were found. Its PDFs are its own watermarked copies (apparently Datasheet Archive''s files), so the
     part page names them as copies held by datasheet.live, with the maker as the site files them;
     cross-reference books and "n/a" makers are left.'
+# --- open EDA libraries: a symbol per part, with the sheet its author linked and the values they typed.
+# `sei datasheets libraries` clones each once, shallow and at `ref`, into the private tree and publishes a
+# row per known part into data/datasheets/catalogue/<source>.csv, beside the makers' catalogues.
+kicad_symbols:
+  kind: eda library
+  repo: https://gitlab.com/kicad/libraries/kicad-symbols.git
+  ref: 9.0.9.1
+  page: 'https://gitlab.com/kicad/libraries/kicad-symbols/-/blob/{ref}/{path}'
+  licence: CC-BY-SA-4.0, with the KiCad libraries exception for designs
+  status: active
+  notes: 'The official KiCad symbol library, release 9.0.9.1 (read 2026-10-17): 223 libraries, 22,583
+    symbols, 19,655 of them with a data sheet URL, each with a description that names the key limits
+    ("0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92"), a footprint and keywords; a few libraries
+    also give Manufacturer and MPN. A symbol named with its package (LM317_TO-220) is the head part. The
+    maker on a row is the one the symbol names, else the one whose own site serves the sheet. 2,373 parts
+    this project knows are named, 2,241 with a sheet.'
+horizon_pool:
+  kind: eda library
+  repo: https://github.com/horizon-eda/horizon-pool.git
+  ref: master
+  page: 'https://github.com/horizon-eda/horizon-pool/blob/{ref}/{path}'
+  licence: CC-BY-SA-4.0, with the Horizon pool exception for designs
+  status: active
+  notes: 'Horizon EDA''s parts pool (commit of 2026-06-26, read 2026-10-17): 646 parts, each with MPN and
+    manufacturer, 369 with a data sheet URL, 130 with parametric values; 105 of them imported from
+    JLCPCB''s CPL list and credited to "CPL", which is not a maker. Only an MPN that is itself a part
+    number the project knows is taken (NE5532D is not NE5532 here): 68 parts, 66 with a sheet.'
+librepcb_base:
+  kind: eda library
+  repo: https://github.com/LibrePCB-Libraries/LibrePCB_Base.lplib.git
+  ref: master
+  page: 'https://github.com/LibrePCB-Libraries/LibrePCB_Base.lplib/blob/{ref}/{path}'
+  licence: CC0-1.0
+  status: active
+  notes: 'LibrePCB''s base library (commit of 2026-06-30, read 2026-10-17): 129 devices, 368 orderable
+    parts from 13 manufacturers, 1,217 typed attributes with units (V_CEO, I_C, Pd, status), 14 data
+    sheet links. A device names the bare part (BC547) and lists each maker''s MPNs under it; the row is per
+    device and maker, with every value an attribute takes across that maker''s MPNs. 64 parts this project
+    knows.'
+kicad_footprints:
+  kind: eda library
+  repo: https://gitlab.com/kicad/libraries/kicad-footprints.git
+  ref: 9.0.9.1
+  page: 'https://gitlab.com/kicad/libraries/kicad-footprints/-/blob/{ref}/{path}'
+  licence: CC-BY-SA-4.0, with the KiCad libraries exception for designs
+  status: active
+  notes: 'The official KiCad footprint library, the release the symbols above name their footprints
+    from. Only the footprints those symbols give the indexed parts are read, into
+    data/datasheets/packages/kicad_footprints.csv: mounting, pad count, smallest centre-to-centre pad
+    spacing (the pitch along a row; twice it on a SOT-23), drill,
+    body and courtyard size off the fabrication and courtyard outlines, the tags (the package''s other
+    names: to-92, sc-43, sot54), and the drawing the description says it was made from (a JEDEC outline,
+    a maker''s PDF). The 3D model is named, not fetched. 424 footprints named on 2026-10-17, 420 of them in
+    this release.'

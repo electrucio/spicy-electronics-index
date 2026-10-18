@@ -11,7 +11,7 @@ WEB_HOST ?= 0.0.0.0
 WEB_PORT ?= 8026
 
 .DEFAULT_GOAL := help
-.PHONY: schematics-dump-index schematics-restore-index models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register distributors-tme datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-survey datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-preview bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve
+.PHONY: schematics-dump-index schematics-restore-index models-deliver vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register distributors-tme datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-survey datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-drawings bench-drawings-all circuitikz-image bench-preview bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve datasheets-libraries
 
 help:  ## show this list
 	@echo "Spicy Electronics Index — make <target>"
@@ -236,6 +236,9 @@ datasheets-harvest:  ## (maintainer) read the data sheets a maker's sitemap list
 
 datasheets-catalogue:  ## (maintainer) read a maker's whole product list: each known part, its status and its sheet; [SOURCE=diotec_products] [REFRESH=1]
 	uv run sei datasheets catalogue $(foreach s,$(SOURCE),--source $(s)) $(if $(REFRESH),--refresh)
+
+datasheets-libraries:  ## (maintainer) what the open EDA libraries say about each known part (sheet link, package, typed values) and its package (pins, pitch, body size); [SOURCE=kicad_symbols] [REFRESH=1]
+	uv run sei datasheets libraries $(foreach s,$(SOURCE),--source $(s)) $(if $(REFRESH),--refresh)
 
 datasheets-databooks:  ## (maintainer) the pages of old databooks on archive.org that head a known part; [LIMIT=N] [LIST=1] [REREAD=1]
 	uv run sei datasheets databooks $(if $(LIMIT),--limit $(LIMIT)) $(if $(LIST),--list-only) $(if $(REREAD),--reread)

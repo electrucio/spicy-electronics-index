@@ -530,6 +530,48 @@ def test_a_transistor_is_filed_by_polarity_only_when_every_source_agrees(data):
     assert sorted(c[:3] for c in claims) == [["NPN", "catalogue", "sanken"], ["PNP", "name", "jis-c7012"]]
 
 
+def test_a_catalogue_row_without_a_sheet_title_lends_its_description_to_the_link(data):
+    """KiCad's library links BC547's sheet and describes the part; the link reads that line, not the PDF's
+    file name. A catalogue that titles the sheet keeps its title."""
+    idx = P.index()
+    cat = dict.fromkeys(P.CATALOGUE_FIELDS, "")
+    idx["catalogued"]["BC547"] = [
+        [{**cat, "source": "kicad_symbols", "maker": "onsemi", "url": "https://x.example/BC550-D.pdf",
+          "name": "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92"}[k] for k in P.CATALOGUE_FIELDS],
+        [{**cat, "source": "diotec_products", "maker": "diotec", "url": "https://x.example/bc547.pdf",
+          "title": "BC546 ... BC550", "revision": "3", "name": "BC547B"}[k] for k in P.CATALOGUE_FIELDS]]
+    rows = P.datasheets("BC547", idx, None)
+    assert [(r[0], r[3], r[4]) for r in rows] == [
+        ("https://x.example/BC550-D.pdf", "0.1A Ic, 45V Vce, Small Signal NPN Transistor, TO-92", "kicad_symbols"),
+        ("https://x.example/bc547.pdf", "BC546 ... BC550, revision 3", "diotec_products")]
+
+
+def test_a_part_page_names_its_packages_with_what_the_footprint_says_and_the_values_typed_beside_it(data):
+    """KiCad draws BC547 in a TO-92 whose footprint gives pins, spacing, body and the drawing it came
+    from; LibrePCB types onsemi's limits for it. One line per package and maker, nothing invented."""
+    idx = P.index()
+    idx["library_packages"]["BC547"] = [
+        {"source": "kicad_symbols", "maker": "onsemi", "maker_text": "", "package": "Package_TO_SOT_THT:TO-92_Inline",
+         "keywords": "NPN Transistor", "parameters": "", "page": "https://x.example/Transistor_BJT.kicad_sym",
+         "revision": "9.0.9.1"},
+        {"source": "librepcb_base", "maker": "onsemi", "maker_text": "onsemi", "package": "TO92", "keywords": "npn",
+         "parameters": "MPN BC547ARL; V_CEO 45 V; I_C 100 mA", "page": "https://x.example/device.lp", "revision": "r"},
+        {"source": "librepcb_base", "maker": "onsemi", "maker_text": "onsemi", "package": "TO92", "keywords": "npn",
+         "parameters": "MPN BC547ARL; V_CEO 45 V; I_C 100 mA", "page": "https://x.example/device.lp", "revision": "r"}]
+    idx["footprints"]["Package_TO_SOT_THT:TO-92_Inline"] = {
+        "footprint": "Package_TO_SOT_THT:TO-92_Inline", "mounting": "through hole", "pads": "3", "pad_spacing_mm": "1.27",
+        "drill_mm": "0.75", "body_x_mm": "5.46", "body_y_mm": "4.74", "tags": "to-92 sc-43 sot54",
+        "reference": "NXP sot054_po.pdf", "page": "https://x.example/TO-92_Inline.kicad_mod"}
+    pk = P.packages("BC547", idx)
+    assert pk == [
+        {"source": "kicad_symbols", "name": "TO-92_Inline", "page": "https://x.example/TO-92_Inline.kicad_mod",
+         "maker": "onsemi", "mounting": "through hole", "pads": "3", "spacing": "1.27", "drill": "0.75",
+         "names": "to-92 sc-43 sot54", "reference": "NXP sot054_po.pdf", "body": "5.46 × 4.74 mm"},
+        {"source": "librepcb_base", "name": "TO92", "page": "https://x.example/device.lp", "maker": "onsemi",
+         "makerText": "onsemi", "values": "MPN BC547ARL; V_CEO 45 V; I_C 100 mA"}]
+    assert P.packages("BC548", idx) == []
+
+
 def test_a_grade_of_a_type_is_what_its_type_is_and_a_pair_is_not(data):
     """BC547B is a grade of BC547, which the libraries define as NPN. BC847BPN folds back to BC847 too,
     but it is an NPN and a PNP in one package. 2SC1815G's G is no rank JIS knows, and its C still says NPN."""

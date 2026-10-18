@@ -156,6 +156,9 @@ const VIA: Record<string, string> = {
   wrh_books: "a data book World Radio History holds",
   archive_manuallib: "a single sheet the Internet Archive holds",
   datasheet_live: "a copy held by datasheet.live (not the maker's file)",
+  kicad_symbols: "KiCad's symbol library, the sheet its symbol links",
+  horizon_pool: "Horizon EDA's parts pool",
+  librepcb_base: "LibrePCB's base library",
 }
 
 function fileName(url: string): string {
@@ -243,6 +246,56 @@ function Datasheets({ page, cat }: { page: PartPage; cat: Catalogue }) {
         <a href={`https://www.datasheetarchive.com/?q=${encodeURIComponent(page.part.toLowerCase())}`} target="_blank" rel="noopener">Datasheet Archive</a>
         {' '}for more — searches, not checked links.
       </p>
+    </Section>
+  )
+}
+
+/** The drawing a footprint was measured from: a link when it is one, the document's name otherwise. */
+function Drawing({ reference }: { reference: string }) {
+  const parts = reference.split('; ')
+  return (
+    <>
+      {parts.map((p, i) => (
+        <span key={i}>{i > 0 && ', '}{/^https?:\/\//.test(p)
+          ? <a href={p} target="_blank" rel="noopener">{fileName(p)}</a> : p}</span>
+      ))}
+    </>
+  )
+}
+
+/**
+ * The packages the open EDA libraries draw the part in, with what KiCad's footprint says of each: how it
+ * mounts, how many pins at what spacing, the body's size, what else the package is called, and the drawing
+ * those were measured from. Under it, the values the library's authors typed beside the part — a maker's
+ * MPNs and limits, from LibrePCB — each line saying whose. Libraries, not sheets: the sheet is linked above.
+ */
+function Packages({ page, cat }: { page: PartPage; cat: Catalogue }) {
+  const pk = page.about?.packages
+  if (!pk?.length) return null
+  return (
+    <Section title="Package" anchor="package">
+      <ul class="uselist">
+        {pk.map((p, i) => {
+          const facts = [
+            p.mounting,
+            p.pads && (p.spacing ? `${p.pads} pins at ${p.spacing} mm` : `${p.pads} pins`),
+            p.drill && `drill ${p.drill} mm`,
+            p.body && `body ${p.body}`,
+          ].filter(Boolean)
+          const who = p.maker && cat.makers[p.maker] ? <MakerName id={p.maker} cat={cat} /> : p.makerText
+          return (
+            <li key={i}>
+              <strong><a href={p.page} target="_blank" rel="noopener">{p.name}</a></strong>
+              {facts.length > 0 && <span class="muted"> · {facts.join(' · ')}</span>}
+              {p.names && <span class="muted small"> · also {p.names}</span>}
+              {p.reference && <span class="muted small"> · measured from <Drawing reference={p.reference} /></span>}
+              <span class="muted small"> · via {VIA[p.source] ?? p.source}</span>
+              {p.values && <div class="small">{who && <>{who}: </>}{p.values}</div>}
+            </li>
+          )
+        })}
+      </ul>
+      <p class="muted small">What the libraries' authors drew and typed, with the drawing each footprint cites; the maker's sheet, linked above, is the source to check.</p>
     </Section>
   )
 }
@@ -344,6 +397,7 @@ export function AboutPart({ page, kind }: { page: PartPage; kind: string }) {
       <PartInfo page={page} kind={kind} />
       {cat && <Related page={page} cat={cat} />}
       {cat && page.about && <Datasheets page={page} cat={cat} />}
+      {cat && page.about && <Packages page={page} cat={cat} />}
     </>
   )
 }
