@@ -151,8 +151,12 @@ def _pins(head: str) -> list[str]:
     return out
 
 
-def _wire(t: list[str]) -> bool:
-    """A two-terminal element the bench reads as a wire: an inductance, a source of 0 V, an ohm or less."""
+WIRE_OHMS = {"bjt": 1.0, "jfet": 1000.0, "mosfet": 1000.0}    # a FET's gate resistor (a few hundred ohms) is in series with nothing
+
+
+def _wire(t: list[str], group: str = "bjt") -> bool:
+    """A two-terminal element the bench reads as a wire: an inductance, a source of 0 V, a resistance of an ohm
+    or less (a kilohm for a FET, whose gate resistor carries no current)."""
     if len(t) < 3:
         return False
     if t[0][0] == "L":
@@ -162,7 +166,7 @@ def _wire(t: list[str]) -> bool:
         return not vals or (C.number(vals[0]) == 0)
     if t[0][0] == "R" and len(t) >= 4:
         v = C.number(t[3].split("=")[-1])
-        return v is not None and abs(v) <= 1.0
+        return v is not None and abs(v) <= WIRE_OHMS.get(group, 1.0)
     return False
 
 
@@ -182,7 +186,7 @@ def subckt_roles(chain: list, name: str | None = None, depth: int = 0, group: st
         t = line.split()
         if not t or t[0].startswith("."):
             continue
-        if _wire(t):
+        if _wire(t, group):
             nodes.join(t[1], t[2])
         elif t[0][0] in DEVICE_ROLES and len(t) >= 5 and DEVICE_ROLES[t[0][0]][0] in want:
             terminals += list(zip(t[1:4], DEVICE_ROLES[t[0][0]]))

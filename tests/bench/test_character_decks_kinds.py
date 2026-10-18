@@ -19,6 +19,8 @@ DERIVED = {
     "jfet": {"_vgs_off": -1.0, "_idss": 3e-3, "_vgs_third": -0.42, "_id_third": 1e-3, "_rs_stage": 420.0, "_rd_stage": 8580.0,
              "_vgs@100µA": -1.5, "_vgs@1mA": -0.9, "_vgs@3mA": 0.0, "_cgs@10V": 3e-12, "_cgd@10V": 1.5e-12,
              "thd_gain_cs": 4.0, "thd_gain_sf": 0.9},
+    "mosfet": {"_vth": 2.0, "_vgs@1mA": 2.0, "_vgs@3mA": 2.1, "_vgs@10mA": 2.2, "_vgs@30mA": 2.4, "_vgs@100mA": 2.7, "_vgs@300mA": 3.2,
+               "_vgs@1A": 4.0, "_vgs@3A": 5.5, "thd_gain_cs": 3.0, "thd_gain_sf": 0.95},
 }
 # the catalogue's kind of each plan the image runs (an op-amp's group is "amplifier", its catalogue kind "opamp")
 KIND_OF_PLAN = {"jfet": "jfet", "mosfet": "mosfet", "amplifier": "opamp"}

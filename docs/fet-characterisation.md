@@ -658,388 +658,328 @@ As the bipolar agreement, over every output above. JFET cards are where dialects
 **What it cannot tell.** Which engine is right.
 
 **Standard.** none
-<!-- measurements:end -->
+
 
 ### MOSFETs
 
-#### Does the card load? (`mosfet-runs`)
+#### Does the card load, and what does it do when switched on (`mosfet-runs`)
 
-Group `dc` · analysis `op` · engines qspice, ngspice, ltspice.
+Group `dc` · analysis `dc` · engines qspice, ngspice, ltspice · symbols ID(on), IS.
 
-Whether each simulator reads the card and finds an operating point, and the first sanity figures: the
-drain current with the gate fully on at a low drain voltage (what a switch does) and with the gate at a
-logic level. A card can fail for the three bipolar reasons and a fourth of its own: a subcircuit whose body
-diode or resistors use a dialect the engine lacks (a `VDMOS` card in an old ngspice, an `AKO` in LTspice).
+Whether the simulator reads the card and finds an operating point, and the first sanity figures: the drain current with the gate fully on at a low drain voltage (what a switch does), with the gate at a logic level, and the body diode's current at 1 V, the quickest sign that the card carries a diode at all. A card can fail for the three bipolar reasons and a fourth of its own: a subcircuit whose body diode or resistors use a dialect the engine lacks.
 
-**Circuit.** The transistor with its source grounded, the drain at 1 V, the gate at 10 V; a second copy
-with the gate at 4.5 V; a third with the gate grounded and the drain at −1 V (the body diode forward).
+**Circuit.** The 1 V copy of the transfer sweep, read where the gate passes through 10 V and through 4.5 V; the body-diode sweep's VGS = 0 copy, read at VSD = 1 V.
 
-Drawing: DUT; VDS source 1 V; VGS source 10 V (or 4.5 V); ammeter in the drain; a third copy reversed.
+Drawing: DUT; VDS source 1 V; VGS source 10 V (or 4.5 V); ammeter in the drain; a third copy reversed. Differs from the netlist: the points are read from the transfer and body-diode sweeps rather than from a separate deck.
 
 **Conditions.** {vds: 1, vgs: [10, 4.5], diode_vsd: 1, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `VD d 0 1` / `VG g 0 10` / `M1 d g 0 0 DUT` — the on-state copy (a four-terminal card has its body tied to the source; a subcircuit its three pins)
-- `VD2 d2 0 1` / `VG2 g2 0 4.5` / `M2 d2 g2 0 0 DUT` — the logic-level copy
-- `VD3 d3 0 -1` / `M3 d3 0 0 0 DUT` — the diode copy
-- `.op`
+- `VT0 dt0 0 1` — the 1 V copy of the transfer deck: its drain supply, whose current is ID
+- `MT0 dt0 g 0 DUT` — the transistor, source grounded, the gate on the swept node
+- `.dc VGS -2 15 0.01` — read where the gate passes through 10 V and 4.5 V
 
-**Extraction.** Exit status and log give the error class; when it runs, the three currents.
+**Extraction.** Exit status and log give the error class; when it runs, the three currents, interpolated on their sweeps.
 
 **Outputs.**
 
-- `runs`, `error_class`
-- `id_on@10V` (A): drain current at VGS = 10 V, VDS = 1 V (≈ 1 V / RDS(on))
-- `id_on@4.5V` (A): at VGS = 4.5 V
+- `runs`: true when the simulator returned a solution
+- `error_class`: syntax, convergence, timeout or empty when it ran
+- `id_on@10V` (A): drain current at VGS = 10 V, VDS = 1 V (about 1 V / RDS(on))
+- `id_on@4.5V` (A): drain current at VGS = 4.5 V, VDS = 1 V
 - `is_diode@1V` (A): body-diode current at VSD = 1 V, or absent (no diode in the card)
 
-**What it cannot tell.** That the model is right; agreement is the stronger fact.
+**Card parameters that drive it:** VTO, KP, RD, RS, IS.
+
+**A low value.** An on-state current of zero at 10 V is a card the simulator read as something else: the code is suspect.
+
+**What it cannot tell.** That the model is right; agreement between engines is the stronger fact.
 
 **Standard.** none
+
+#### Transfer characteristic, ID against VGS at fixed VDS, and the threshold (`mosfet-transfer`)
+
+Group `dc` · analysis `dc` · engines qspice, ngspice, ltspice · symbols Vth, gfs, ID(VGS).
+
+The curve a MOSFET model is fitted on: drain current against gate voltage with the drain held. On a log current axis it has two parts: below threshold the current rises exponentially (60 to 100 mV per decade at 25 °C), above it as a power of (VGS − Vth), square in a long-channel device, nearer linear in a short or velocity-saturated one, which is the difference between a lateral audio MOSFET and a trench switch. Three definitions of the threshold are in use on the sheets (ID = 20 µA at Infineon, 250 µA at ST and Vishay, 1 mA at Nexperia) and a fourth in the card (VTO, the extrapolated one); all four are read. The drain voltage is fixed at the values the sheets use (6 V Infineon, 15 V most, 25 V onsemi) plus 1 V for the linear region. A level 1 card has no subthreshold current at all and simply stops at VTO; level 3 and VDMOS (Ksubthres) carry a tail.
+
+**Circuit.** Four copies, sources grounded, drains at 1, 6, 15 and 25 V. One source sweeps every gate from −2 to +15 V in 10 mV steps; each drain current is read through its supply. A fifth copy is diode-connected (drain tied to gate through an ammeter) and swept the same way, because that is how the sheets define Vth.
+
+Drawing: DUT; VDS source (1, 6, 15 or 25 V); swept VGS source; ammeter in the drain; a fifth copy with the drain tied to the gate. Differs from the netlist: the five copies run in one deck; the drawing shows two.
+
+**Conditions.** {vgs_sweep: {from: -2, to: 15, step: 0.01, unit: V}, vds: [1, 6, 15, 25], vds_main: 15, vth_currents: [2e-05, 0.00025, 0.001], id_ladder: [1e-06, 1e-05, 0.0001, 0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10], vgs_read: [2, 2.5, 3, 4, 4.5, 5, 6, 10], sub_window: [1e-08, 1e-06], temp_c: 25}
+
+**The deck (QSPICE), line by line.**
+
+- `VT2 dt2 0 15` — the 15 V copy, the one the summary values come from; VT0, VT1, VT3 at 1, 6 and 25 V
+- `MT2 dt2 g 0 DUT`
+- `VTD dtd g 0` — the diode-connected copy: its drain tied to the gate through an ammeter
+- `MTD dtd g 0 DUT`
+- `VGS g 0 0` — the gate drive, shared by every copy, swept −2 to +15 V in 10 mV steps
+- `.dc VGS -2 15 0.01`
+
+**Extraction.** Vth at the three currents, diode-connected and at 15 V; the extrapolated Vth as the intercept of √ID against VGS fitted between 10 and 100 mA at 15 V (the square-law region); the subthreshold slope in volts per decade between 10 nA and 1 µA, absent where the card has no current below VTO or the slope is not a junction's (under 40 mV or over 500 mV per decade: a leakage resistor, or the square law's foot); the exponent of ID against (VGS − Vth) from 100 mA to the top current. ID at each read gate voltage and VGS at each ladder current, at every VDS; the 15 V values are kept for the decks that bias the transistor at those currents.
+
+**Outputs.**
+
+- `vth@{current},diode` (V): threshold at 20 µA, 250 µA and 1 mA, diode-connected
+- `vth@{current},15V` (V): the same at VDS = 15 V
+- `vth_extrapolated` (V): the intercept of √ID against VGS between 10 and 100 mA
+- `sub_slope` (V/decade): the subthreshold slope between 10 nA and 1 µA, or absent
+- `n_fit`: exponent of the power law above threshold
+- `id@{vgs},{vds}` (A): drain current at each read gate voltage
+- `vgs@{id},{vds}` (V): gate voltage at each ladder current
+- `id_25v_over_6v@1A`: ID at 25 V over ID at 6 V at the gate voltage for 1 A (LAMBDA read another way)
+
+Curves: ID, VDS=1V (id against vgs, lin, at VDS = 1); ID, VDS=6V (id against vgs, lin, at VDS = 6); ID, VDS=15V (id against vgs, lin, at VDS = 15); ID, VDS=25V (id against vgs, lin, at VDS = 25); ID log, VDS=1V (id_log against vgs, log, at VDS = 1); ID log, VDS=6V (id_log against vgs, log, at VDS = 6); ID log, VDS=15V (id_log against vgs, log, at VDS = 15); ID log, VDS=25V (id_log against vgs, log, at VDS = 25); ID diode-connected (id_diode against vgs, log). Shown first: VDS = 15.
+
+Beside the point under the cursor: gfs (S), transconductance, the local slope dID/dVGS; P (W), power dissipated in the transistor, VDS × ID.
+
+**Card parameters that drive it:** VTO, KP, GAMMA, PHI, THETA, KSUBTHRES, LAMBDA, RS, RD, NFS.
+
+**A high value.** An exponent near 2 in a model of a trench power MOSFET is a long-channel fit: its gfs at high current will be too high. A subthreshold slope above 120 mV per decade is a card fitted for a soft turn-on.
+
+**A low value.** No subthreshold current at all is a level 1 card: a switch that turns off exactly at VTO, and a class-AB stage whose crossover region does not exist.
+
+**What it cannot tell.** Where the part's threshold sits in its production spread (1 to 3 V on most sheets); the card is one point.
+
+**Standard.** resembles the transfer characteristics and VGS(th) methods of every MOSFET sheet (JEDEC JESD24, MIL-STD-750-3)
 
 #### Output characteristics, as a curve tracer draws them (`mosfet-tracer`)
 
 Group `dc` · analysis `dc` · engines qspice, ngspice, ltspice · symbols ID(VDS), VGS.
 
-Drain current against drain-source voltage, one trace per gate voltage. For a power MOSFET the traces
-are nearly vertical at the origin (the on-resistance) and bend into saturation at VDS = VGS − Vth; the
-sheets of every maker print this family to 5 or 10 V with gate steps of half a volt near threshold and of
-volts above. Read at a glance: the slope at the origin, which is RDS(on) at that gate voltage; where the
-knee sits; the spacing, which is the transconductance and its rise with gate drive; and the slope of the
-flat part, which is the channel-length modulation `LAMBDA` (small in a power device, large in a short
-small-signal one). A `VDMOS` card has a separate parameter for the triode region's shape (`mtriode`)
-and the knee is where cards fitted from headline numbers go wrong.
+Drain current against drain-source voltage, one trace per gate voltage. For a power MOSFET the traces are nearly vertical at the origin (the on-resistance) and bend into saturation at VDS = VGS − Vth; every maker prints this family to 5 or 10 V with gate steps of half a volt near threshold and of volts above. Read at a glance: the slope at the origin, which is RDS(on) at that gate voltage; where the knee sits; the spacing, which is the transconductance and its rise with gate drive; and the slope of the flat part, the channel-length modulation LAMBDA. A VDMOS card has a separate parameter for the triode region's shape (mtriode), and the knee is where cards fitted from headline numbers go wrong.
 
-**Circuit.** Copies of the transistor at the universal gate ladder (2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10,
-15 V) and at five "auto" steps: the gate voltages that gave 10 mA, 30 mA, 100 mA, 300 mA and 1 A at
-VDS = 5 V in the transfer sweep, so that the family spans two decades of current whatever the model's
-threshold and transconductance. One source sweeps every
-drain from 0 to 10 V in 10 mV steps; a second deck repeats it to 30 V in 50 mV steps.
+**Circuit.** Copies of the transistor at the universal gate ladder (2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 15 V) and at five "auto" gate voltages, the ones that gave 10 mA, 30 mA, 100 mA, 300 mA and 1 A at 15 V in the transfer sweep, so that the family spans two decades of current whatever the model's threshold. One source sweeps every drain from 0 to 10 V in 20 mV steps.
 
-Drawing: DUT; swept VDS source; gate voltage source at the step; ammeter in the drain. Differs from the netlist: the copies are drawn as one transistor with a stepped gate.
+Drawing: DUT; swept VDS source; gate voltage source at the step; ammeter in the drain. Differs from the netlist: the sixteen copies are drawn as one transistor with a stepped gate.
 
-**Conditions.** {vgs_ladder: [2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 15], auto: {from: mosfet-transfer, id_bottom: 0.01, id_top: 1, steps: 5, vds: 5}, vds_sweep: {from: 0, to: 10, step: 0.01, unit: V}, vds_sweep_wide: {from: 0, to: 30, step: 0.05, unit: V}, temp_c: 25}
+**Conditions.** {vgs_ladder: [2, 2.5, 3, 3.5, 4, 4.5, 5, 6, 8, 10, 15], auto: {from: mosfet-transfer, id: [0.01, 0.03, 0.1, 0.3, 1], vds: 15}, vds_sweep: {from: 0, to: 10, step: 0.02, unit: V}, rds_chord_vds: 0.1, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `VK1 sw dk1 0` — reads the first copy's ID
-- `VGK1 gk1 0 {vgs_k}` — its gate at the step
-- `MK1 dk1 gk1 0 0 DUT` — the copy, source and body grounded
-- `VSW sw 0 0` / `.dc VSW 0 10 0.01` — the sweep
-- the auto steps are the gate voltages that gave 10 mA, 30 mA, 100 mA, 300 mA and 1 A at VDS = 5 V in the transfer sweep
+- `VGK1 gk1 0 2.2` — the first auto copy: its gate at the voltage that gave 10 mA at 15 V in the transfer sweep
+- `VK1 sw dk1 0` — a 0 V source from the swept node to its drain: reads its ID
+- `MK1 dk1 gk1 0 DUT`
+- `VGU1 gu1 0 2` — the first universal copy, its gate at 2 V; VGU2 to VGU11 at 2.5 to 15 V
+- `VU1 sw du1 0`
+- `MU1 du1 gu1 0 DUT`
+- `VSW sw 0 0` — the drain supply of every copy, swept 0 to 10 V in 20 mV steps
+- `.dc VSW 0 10 0.02`
 
-**Extraction.** Each trace on the grid, both sweeps. The chord resistance at VDS = 0.1 V of each universal
-trace (an RDS(on) reading at low current), the knee of each auto trace (90 % of its 10 V value), the slope
-of the flat part between 5 and 10 V as output conductance.
+**Extraction.** Each trace on the grid. The chord resistance at VDS = 0.1 V of each universal trace (an RDS(on) reading at low current), the knee of each auto trace (where it reaches 90 % of its 10 V value), the slope of the flat part between 5 and 10 V as output conductance.
 
 **Outputs.**
 
 - `vgs_auto@{k}` (V): the five auto gate voltages
-- `rds_chord@0.1V,{vgs}` (Ω): VDS/ID at 0.1 V for each universal step, or n/a below threshold
-- `vds_knee@auto{k}` (V)
+- `rds_chord@100mV,{vgs}` (Ω): VDS/ID at 0.1 V for each universal step, or n/a below threshold
+- `vds_knee@auto{k}` (V): drain voltage where the auto trace reaches 90 % of its 10 V current
 - `gos_flat@auto{k}` (S): dID/dVDS between 5 and 10 V
 
-Curves: `ID, VGS={vgs}` (id against vds, lin, to 10 V); `ID wide, VGS={vgs}` (to 30 V); `ID, auto k`. Drawn together, as a family. Shown first: auto, 0–10 V.
+Curves: ID, auto 1 (id against vds, lin, at VGS = auto); ID, auto 2 (id against vds, lin, at VGS = auto); ID, auto 3 (id against vds, lin, at VGS = auto); ID, auto 4 (id against vds, lin, at VGS = auto); ID, auto 5 (id against vds, lin, at VGS = auto); ID, VGS=2V (id against vds, lin, at VGS = 2); ID, VGS=2.5V (id against vds, lin, at VGS = 2.5); ID, VGS=3V (id against vds, lin, at VGS = 3); ID, VGS=3.5V (id against vds, lin, at VGS = 3.5); ID, VGS=4V (id against vds, lin, at VGS = 4); ID, VGS=4.5V (id against vds, lin, at VGS = 4.5); ID, VGS=5V (id against vds, lin, at VGS = 5); ID, VGS=6V (id against vds, lin, at VGS = 6); ID, VGS=8V (id against vds, lin, at VGS = 8); ID, VGS=10V (id against vds, lin, at VGS = 10); ID, VGS=15V (id against vds, lin, at VGS = 15). Shown first: VGS = auto.
 
-Beside the point under the cursor: P (W), VDS × ID; rDS (Ω), the chord VDS/ID; ro (Ω), the local slope.
+Beside the point under the cursor: P (W), power dissipated in the transistor, VDS × ID; rDS (Ω), the chord VDS/ID; ro (Ω), output resistance, the local slope of the trace.
 
-**Card parameters that drive it:** VTO, KP (or BETA), LAMBDA, RD, RS, mtriode, Ksubthres, THETA (level 3), GAMMA.
+**Card parameters that drive it:** VTO, KP, LAMBDA, RD, RS, MTRIODE, KSUBTHRES, THETA, GAMMA.
 
-**A high value.** A flat part that climbs steeply is a large LAMBDA — normal in a small-signal part,
-wrong in a model of a 100 A switch. A knee that sits at several volts at modest current is a large RD.
+**A high value.** A flat part that climbs steeply is a large LAMBDA: normal in a small-signal part, wrong in a model of a 100 A switch. A knee that sits at several volts at modest current is a large RD.
 
 **A low value.** Perfectly flat traces are LAMBDA = 0 and an infinite output resistance.
 
-**What it cannot tell.** Thermal droop and breakdown; the traces beyond the part's VDS rating are the
-model's, not a transistor's.
+**What it cannot tell.** Thermal droop and breakdown; the traces beyond the part's rating are the model's, not a transistor's.
 
 **Standard.** resembles the output characteristics every MOSFET sheet prints; no test method
-
-#### Transfer characteristic — ID against VGS at fixed VDS, and the threshold (`mosfet-transfer`)
-
-Group `dc` · analysis `dc` · engines qspice, ngspice, ltspice · symbols Vth, gfs, ID(VGS).
-
-The curve a MOSFET model is fitted on: drain current against gate voltage with the drain held. On a log
-current axis it has two parts: below threshold the current rises exponentially (60 to 100 mV per decade
-at 25 °C), above it as a power of (VGS − Vth) — square in a long-channel device, nearer linear in a short
-or velocity-saturated one, which is the difference between a lateral audio MOSFET and a trench switch.
-Three definitions of the threshold are in use on the sheets (ID = 20 µA at Infineon, 250 µA at ST and
-Vishay, 1 mA at Nexperia) and a fourth in the card (`VTO`, the extrapolated one); all four are read. The
-drain voltage is fixed at the three values the sheets use (6 V Infineon, 15 V most, 25 V onsemi/Fairchild)
-plus 1 V for the linear region. A level 1 card has no subthreshold current at all and simply stops at
-VTO; level 3 and `VDMOS` (`Ksubthres`) carry a tail.
-
-**Circuit.** Four copies, sources and bodies grounded, drains at 1, 6, 15 and 25 V. One source sweeps every
-gate from −2 to +15 V in 10 mV steps; each drain current is read through its supply. A fifth copy is
-diode-connected (drain tied to gate) and swept the same way, because that is how the sheets define Vth.
-
-Drawing: DUT; VDS source (1, 6, 15 or 25 V); swept VGS source; ammeter in the drain; a fifth copy with drain tied to gate.
-
-**Conditions.** {vgs_sweep: {from: -2, to: 15, step: 0.01, unit: V}, vds: [1, 6, 15, 25], vth_currents: [2e-05, 0.00025, 0.001], id_ladder: [1e-06, 1e-05, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100], vgs_read: [2, 2.5, 3, 4, 4.5, 5, 6, 10], temp_c: 25}
-
-**The deck (QSPICE), line by line.**
-
-- `VT1 dt1 0 15` — the 15 V copy, the one the summary values come from; VT0, VT2, VT3 at 1, 6, 25 V
-- `VGS g 0 0` / `.dc VGS -2 15 0.01` — the gate drive, swept
-- `MT1 dt1 g 0 0 DUT` — the 15 V copy
-- `VTD dtd g 0` / `MTD dtd g 0 0 DUT` — the diode-connected copy: its drain tied to the gate through an ammeter
-- read: ID per copy; Vth where ID crosses 20 µA, 250 µA, 1 mA on the diode-connected copy and on the 15 V copy
-
-**Extraction.** Vth at the three currents, diode-connected and at 15 V; the extrapolated Vth as the
-intercept of √ID against VGS fitted between 10 and 100 mA at 15 V (the square-law region); the subthreshold
-slope in mV/decade between 1 µA and 100 µA, "absent" where the card has no current below VTO; the exponent
-of ID against (VGS − Vth) between 100 mA and the top current. ID at each read gate voltage and VGS at each
-ladder current, at every VDS. gfs is the derivative, published in `mosfet-gm`.
-
-**Outputs.**
-
-- `vth@{current},diode` (V), `vth@{current},15V` (V)
-- `vth_extrapolated` (V)
-- `sub_slope` (V/decade): the subthreshold slope, or absent
-- `n_fit`: exponent of the power law above threshold
-- `id@{vgs},{vds}` (A), `vgs@{id},{vds}` (V)
-- `id_25v_over_6v@1A`: ID at 25 V over ID at 6 V, VGS for 1 A (LAMBDA read another way)
-
-Curves: `ID, VDS={vds}` (id against vgs, lin); `ID log, VDS={vds}` (id against vgs, log); `ID diode-connected` (log). Shown first: VDS = 15, lin.
-
-Beside the point under the cursor: gfs (S), dID/dVGS; P (W), VDS × ID.
-
-**Card parameters that drive it:** VTO, KP, GAMMA, PHI, THETA, Ksubthres, LAMBDA, RS, RD, NFS.
-
-**A high value.** An exponent near 2 in a model of a trench power MOSFET is a long-channel fit: its
-gfs at high current will be too high. A subthreshold slope above 120 mV/decade is a card fitted for a
-soft turn-on.
-
-**A low value.** No subthreshold current at all is a level 1 card: a switch that turns off exactly at
-VTO, and a class-AB stage whose crossover region does not exist.
-
-**What it cannot tell.** Where the part's threshold sits in its production spread (1 to 3 V on most
-sheets); the card is one point.
-
-**Standard.** resembles the transfer characteristics and VGS(th) methods of every MOSFET sheet (JEDEC JESD24-x, MIL-STD-750-3)
 
 #### On-resistance against drain current, gate voltage and the drive floor (`mosfet-rdson`)
 
 Group `high-current` · analysis `dc` · engines qspice, ngspice, ltspice · symbols RDS(on).
 
-The headline number of a power MOSFET, and the one a card is most often fitted to at exactly one point.
-It is not one number: it rises with current (the channel leaves the linear region as ID approaches the
-saturation current for that VGS), falls as the gate is driven harder towards a floor set by the ohmic
-parts (`RD` + `RS` + the fully open channel), and nearly doubles between 25 and 150 °C. The sheets draw it
-against ID at two or three gate voltages (Infineon, Nexperia) and against VGS at one current (Nexperia,
-Fairchild). Here the drain current is forced and the drain voltage read, so that the curve reaches the
-rated current and beyond.
+The headline number of a power MOSFET, and the one a card is most often fitted to at exactly one point. It is not one number: it rises with current (the channel leaves the linear region as ID approaches the saturation current for that VGS), falls as the gate is driven harder towards a floor set by the ohmic parts (RD + RS + the fully open channel), and nearly doubles between 25 and 150 °C. The sheets draw it against ID at two or three gate voltages (Infineon, Nexperia) and against VGS at one current (Nexperia, Fairchild). Here the drain current is forced and the drain voltage read, so that the curve reaches the rated current and beyond.
 
-**Circuit.** One copy per gate voltage of the ladder (2.5, 3, 4, 4.5, 5, 6, 8, 10, 15 V), the gate held;
-the drain current forced by the behavioural dial from 1 mA to 100 A with a clamp diode to a 30 V rail,
-so that a copy that cannot pass the current is caught; VDS read. A second deck holds the current at
-100 mA, 1 A and 10 A and sweeps the gate 0 to 15 V.
+**Circuit.** One copy per gate voltage of the ladder (2.5, 3, 4, 4.5, 5, 6, 8, 10, 15 V), the gate held; the drain current forced by the behavioural dial from 1 mA to 100 A with a clamp diode to a 30 V rail, so that a copy that cannot pass the current is caught; VDS read. A second deck holds the current at 100 mA, 1 A and 10 A in three copies and sweeps their gates 0 to 15 V.
 
-Drawing: DUT; forced drain current with clamp to 30 V; gate source at the step; voltmeter drain to source.
-Differs from the netlist: the nine gate steps run as copies in one deck.
+Drawing: DUT; forced drain current with a clamp to 30 V; gate source at the step; voltmeter drain to source. Differs from the netlist: the nine gate steps run as copies in one deck; the gate sweep is a second deck.
 
-**Conditions.** {vgs_ladder: [2.5, 3, 4, 4.5, 5, 6, 8, 10, 15], id_sweep: {from: 0.001, to: 100, per_decade: 20, unit: A}, id_ladder: [0.001, 0.01, 0.1, 1, 2, 5, 10, 20, 50, 100], clamp_v: 30, vgs_sweep_at_id: [0.1, 1, 10], temp_c: 25}
+**Conditions.** {vgs_ladder: [2.5, 3, 4, 4.5, 5, 6, 8, 10, 15], id_sweep: {from: 0.001, to: 100, per_decade: 20, unit: A}, id_ladder: [0.001, 0.01, 0.1, 1, 2, 5, 10, 20, 50, 100], clamp_v: 30, linear_fraction: 0.3, vgs_sweep_at_id: [0.1, 1, 10], vgs_sweep: {from: 0, to: 15, step: 0.05, unit: V}, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `BR0 0 dr0 I=exp(2.302585092994046*V(x))` — the drain drive: 10 to the power of the dial, pulled out of the drain
-- `DCL0 dr0 cl0 DCLMP` / `VCL0 cl0 0 30` — the clamp: what the transistor cannot pass goes to 30 V
-- `VGR0 gr0 0 10` — the gate at the step
-- `MR0 dr0 gr0 0 0 DUT` — the copy
+- `BR0 0 dr0 I=exp(2.302585092994046*V(x))` — the drain drive of the first copy: 10 to the power of the dial, pushed into the drain
+- `DCL0 dr0 cl0 DCLMP` — the clamp: what the transistor cannot pass goes to 30 V
+- `VCL0 cl0 0 30`
+- `VGR0 gr0 0 2.5` — the gate at the first step, 2.5 V; one copy per step
+- `MR0 dr0 gr0 0 DUT`
 - `.dc VX -3 2 0.05` — the dial: 1 mA to 100 A at twenty points per decade
-- read: RDS(on) = V(dr0)/ID where the clamp is off and VDS < VGS − Vth (linear region)
+- `IH0 0 dh0 0.1` — the gate sweep deck: the current held at 100 mA in the first copy, 1 A and 10 A in the others
+- `MH0 dh0 gsw 0 DUT`
+- `VGSW gsw 0 0`
+- `.dc VGSW 0 15 0.05`
 
-**Extraction.** RDS(on) at each ladder current and gate voltage where the copy sat below the clamp and
-in its linear region; "n/a" where it saturated (the current exceeds what the gate allows). The floor is
-RDS(on) at 10 V and the lowest current; the slope with current is RDS(on) at the rated-current proxy (the
-highest ladder step that still conducts) over the floor. From the gate sweep, RDS(on) against VGS at
-three currents and the gate voltage at which it is within 10 % of its 15 V value.
+**Extraction.** RDS(on) at each ladder current and gate voltage where the copy sat below the clamp and in its linear region (VDS below 0.3 × (VGS − Vth)); n/a where it saturated. The floor is RDS(on) at 10 V and 1 mA; the slope with current is RDS(on) at the highest ladder current that still conducts at 10 V over the floor. From the gate sweep, RDS(on) against VGS at three currents and the gate voltage at which it is within 10 % of its 15 V value.
 
 **Outputs.**
 
-- `rdson@{id},{vgs}` (Ω)
-- `rdson_floor@10V` (Ω): at 10 V and 1 mA, essentially RD + RS + channel
+- `rdson@{id},{vgs}` (Ω): on-resistance at the ladder current and gate voltage
+- `rdson_floor@10V` (Ω): at 10 V and 1 mA: RD + RS + the open channel
 - `rdson_slope@10V`: RDS(on) at the top conducting current over the floor
+- `id_top_conducting@10V` (A): the highest ladder current the copy at 10 V passed in its linear region
 - `rdson_4v5_over_10v@1A`: the logic-level penalty
 - `vgs_rdson_110pct@{id}` (V): gate voltage where RDS(on) is 1.1 × its 15 V value
 
-Curves: `RDS(on), VGS={vgs}` (rdson against id, log); `RDS(on) vs VGS, ID={id}` (rdson against vgs, lin). Shown first: RDS(on), VGS = 10.
+Curves: RDS(on), VGS=2.5V (rdson against id, log, at VGS = 2.5); RDS(on), VGS=3V (rdson against id, log, at VGS = 3); RDS(on), VGS=4V (rdson against id, log, at VGS = 4); RDS(on), VGS=4.5V (rdson against id, log, at VGS = 4.5); RDS(on), VGS=5V (rdson against id, log, at VGS = 5); RDS(on), VGS=6V (rdson against id, log, at VGS = 6); RDS(on), VGS=8V (rdson against id, log, at VGS = 8); RDS(on), VGS=10V (rdson against id, log, at VGS = 10); RDS(on), VGS=15V (rdson against id, log, at VGS = 15); RDS(on) vs VGS, ID=100mA (rdson_vgs against vgs, log, at ID = 0.1); RDS(on) vs VGS, ID=1A (rdson_vgs against vgs, log, at ID = 1); RDS(on) vs VGS, ID=10A (rdson_vgs against vgs, log, at ID = 10). Shown first: VGS = 10, ID = 1.
 
-Beside the point under the cursor: P (W), RDS(on) × ID²; VDS (V), the on-state drop.
+Beside the point under the cursor: VDS (V), the on-state drop, RDS(on) × ID.
 
-**Card parameters that drive it:** RD, RS, KP, VTO, THETA, Rds (VDMOS), mtriode.
+**Card parameters that drive it:** RD, RS, KP, VTO, THETA, RDS, MTRIODE.
 
-**A high value.** A slope above 1.5 at 10 V is a card whose channel saturates near the rated current (KP
-too small); a 4.5 V/10 V ratio above 2 is a threshold set high or a small KP.
+**A high value.** A slope above 1.5 at 10 V is a card whose channel saturates near the rated current (KP too small); a 4.5 V/10 V ratio above 2 is a threshold set high or a small KP.
 
-**A low value.** A floor of zero is a card with RD = RS = 0 and a very large KP: its switch dissipates
-nothing. A slope of exactly 1 to 100 A is the same card.
+**A low value.** A floor of zero is a card with RD = RS = 0 and a very large KP: its switch dissipates nothing. A slope of exactly 1 to 100 A is the same card.
 
-**What it cannot tell.** The temperature rise at the current, which doubles the real figure; see
-`mosfet-temperature`.
+**What it cannot tell.** The temperature rise at the current, which doubles the real figure; see the temperature measurement.
 
-**Standard.** resembles the RDS(on) methods of JEDEC JESD24-x and MIL-STD-750-3, pulsed
+**Standard.** resembles the RDS(on) methods of JEDEC JESD24 and MIL-STD-750-3, pulsed
 
 #### Transconductance and output conductance against drain current (`mosfet-gm`)
 
 Group `dc` · analysis `ac` · engines qspice, ngspice, ltspice · symbols gfs, gos.
 
-gfs sets the gain of a stage and, in a switch, how fast the current follows the gate during a
-transition; the sheets draw it against ID at VDS = 15 V (ST, Vishay) and quote one value at the rated
-current. For a square-law device it rises with √ID; in a real power MOSFET it goes nearly linear with ID
-at low current (subthreshold) and saturates at high current (mobility degradation, `THETA`), which is
-where a model fitted at one point misleads. gos is the output conductance, read as for the JFET, and is
-what a MOSFET current source or cascode is limited by.
+gfs sets the gain of a stage and, in a switch, how fast the current follows the gate during a transition; the sheets draw it against ID at VDS = 15 V (ST, Vishay) and quote one value at the rated current. For a square-law device it rises with √ID; in a real power MOSFET it goes nearly linear with ID at low current (subthreshold) and saturates at high current (mobility degradation, THETA), which is where a model fitted at one point misleads. gos is the output conductance, read as for the JFET, and is what a MOSFET current source or cascode is limited by.
 
-**Circuit.** As `jfet-gm`: copies at the ladder currents with the gate biased from the transfer sweep and
-1 V of AC, VDS = 6 and 15 V, read at 1 kHz; gos from drain-driven copies and from a swept-VDS family at
-four fixed currents.
+**Circuit.** As the JFET measurement: copies at the ladder currents with the gate biased from the transfer sweep and 1 V of AC, VDS = 15 V, read at 1 kHz; gos from drain-driven copies beside them. A ladder current the model never reaches keeps its copy with the gate at 0 V, and is not read.
 
-Drawing: DUT; VDS source; gate bias with AC; AC ammeter in the drain; gos copies.
+Drawing: DUT; VDS source; gate bias with AC; AC ammeter in the drain; gos copies. Differs from the netlist: one pair of copies per ladder current; the drawing shows one of each.
 
-**Conditions.** {vds: [6, 15], id_ladder: [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10, 30, 100], gos_vds_sweep: {from: 0, to: 30, step: 0.05, unit: V}, gos_id: [0.01, 0.1, 1, 10], f: 1000}
+**Conditions.** {vds: 15, id_ladder: [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3, 10], f: 1000}
 
 **The deck (QSPICE), line by line.**
 
-- `VD0 d0 0 15` / `VG0 g0 0 DC {vgs} AC 1` / `MG0 d0 g0 0 0 DUT` — a gfs copy per ladder current
+- `VD0 d0 0 15` — the drain supply of the first gfs copy, 15 V; its AC current is gfs × 1 V
+- `MG0 d0 g0 0 DUT`
+- `VDO0 do0 0 DC 15 AC 1` — a gos copy: the drain driven with 1 V of AC, the gate held
+- `MO0 do0 go0 0 DUT`
 - `.ac dec 10 100 10000` — read at 1 kHz
-- `VDO0 do0 0 DC 15 AC 1` — a gos copy, the gate held
 
-**Extraction.** gfs and gos at each ladder current and VDS; gfs/√ID at 100 mA and at 10 A (its fall is
-THETA at work); the intrinsic gain gfs/gos at 100 mA; the equivalent Early voltage ID/gos − VDS at 15 V,
-"absent" above 10 000 V.
+**Extraction.** gfs and gos at each ladder current; gfs/√ID at every current (its fall is THETA at work); the intrinsic gain gfs/gos at 100 mA; the equivalent Early voltage ID/gos − VDS at 100 mA, absent above 10 000 V.
 
 **Outputs.**
 
-- `gfs@{id},{vds}` (S), `gos@{id},{vds}` (S)
-- `gfs_over_sqrt_id@{id}` (S/√A)
-- `av_intrinsic@100mA`, `va_equiv@{id}` (V)
+- `gfs@{id},{vds}` (S): transconductance at 1 kHz
+- `gos@{id},{vds}` (S): output conductance at 1 kHz
+- `gfs_over_sqrt_id@{id}` (S/√A): the square-law figure
+- `av_intrinsic@100mA`: gfs/gos at 100 mA
+- `va_equiv@100mA` (V): ID/gos − 15 V, or absent
+- `gos_note`: absent when gos is zero at every current (LAMBDA = 0)
 
-Curves: `gfs, VDS={vds}` (gfs against id, log); `gos, VDS={vds}`; `gos vs VDS, ID={id}`. Shown first: gfs, VDS = 15.
+Curves: gfs, VDS=15V (gfs against id, log, at VDS = 15); gos, VDS=15V (gos against id, log, at VDS = 15).
 
-**Card parameters that drive it:** KP, VTO, THETA, LAMBDA, RS, Ksubthres.
+**Card parameters that drive it:** KP, VTO, THETA, LAMBDA, RS, KSUBTHRES.
 
-**A high value.** gfs still rising as √ID at 100 A is a card without THETA (level 1): it overstates the
-gain and the switching speed at rated current.
+**A high value.** gfs still rising as √ID at 10 A is a card without THETA (level 1): it overstates the gain and the switching speed at rated current.
 
-**A low value.** gos of zero is LAMBDA = 0 (code "absent" for VA).
+**A low value.** gos of zero is LAMBDA = 0.
 
 **What it cannot tell.** gfs at the sheet's pulsed, self-heated condition; and the 1 MHz value.
 
-**Standard.** resembles the forward transconductance method (JEDEC JESD24-x, MIL-STD-750-3) at 1 kHz
+**Standard.** resembles the forward transconductance method (JEDEC JESD24, MIL-STD-750-3) at 1 kHz
 
 #### Ciss, Coss, Crss against drain voltage, and against gate voltage (`mosfet-capacitance`)
 
 Group `capacitance` · analysis `ac` · engines qspice, ngspice, ltspice · symbols Ciss, Coss, Crss.
 
-The three capacitances every MOSFET sheet draws against VDS at VGS = 0, 1 MHz, on a log axis from
-0.1 V to the rating. Ciss = Cgs + Cgd is nearly flat (the oxide); Coss = Cds + Cgd and Crss = Cgd fall by
-one to two decades as the drain depletes, and the shape of that fall decides switching loss, the Miller
-plateau and, in a follower output stage, the distortion at 20 kHz. Nexperia also draws Ciss and Crss
-against VGS at low VDS, where the gate oxide capacitance takes over as the channel forms. A level 1 or 3
-card has only the overlap terms (`CGSO`, `CGDO`, `CGBO`) and the body-diode junction (`CBD`): its Crss is
-constant with voltage, which is wrong by a decade; a `VDMOS` card has the `Cgdmax/Cgdmin/a` law for Crss
-and gets it right; subcircuit models add a voltage-dependent capacitor.
+The three capacitances every MOSFET sheet draws against VDS at VGS = 0, 1 MHz, on a log axis from 0.1 V to the rating. Ciss = Cgs + Cgd is nearly flat (the oxide); Coss = Cds + Cgd and Crss = Cgd fall by one to two decades as the drain depletes, and the shape of that fall decides switching loss, the Miller plateau and, in a follower output stage, the distortion at 20 kHz. Nexperia also draws Ciss and Crss against VGS at low VDS, where the gate oxide takes over as the channel forms. A level 1 or 3 card has only the overlap terms (CGSO, CGDO, CGBO) and the body-diode junction (CBD): its Crss is constant with voltage, which is wrong by a decade; a VDMOS card has the Cgdmax/Cgdmin/a law for Crss and gets it right; subcircuit models add a voltage-dependent capacitor.
 
-**Circuit.** Ciss: the gate driven with 1 V of AC at VGS = 0, the drain held at the bias through a large
-inductor (AC open), source grounded. Coss: the drain driven with AC, gate and source grounded. Crss: AC on
-the gate, the AC drain current read with the drain held. Copies at thirteen drain voltages from 0.1 to
-300 V share one run. For the VGS view, copies at VDS = 0 with the gate biased 0 to 10 V.
+**Circuit.** Per drain voltage, two copies. Ciss and Crss: the drain held at the voltage, the gate at 0 V with 1 V of AC, source grounded; the gate's AC current is Ciss, the drain's Crss. Coss: the drain driven with AC at the voltage, gate and source grounded. Twelve voltages share one run. For the VGS view, a second deck's copies sit at VDS = 0 with the gate biased 0 to 10 V and driven with AC.
 
-Drawing: DUT; bias and AC sources; AC ammeters; three copies per voltage. Differs from the netlist: the copies run in one deck.
+Drawing: DUT; bias and AC sources; AC ammeters; two copies per voltage. Differs from the netlist: the copies run in one deck; the VGS view is a second deck.
 
-**Conditions.** {vds_ladder: [0.1, 0.5, 1, 2, 5, 10, 15, 20, 25, 30, 50, 100, 200, 300], vgs_ladder_at_vds0: [0, 1, 2, 3, 4, 5, 6, 8, 10], f: 1e+06, ac_sweep: {from: 100000, to: 1e+07, per_decade: 10, unit: Hz}, temp_c: 25}
+**Conditions.** {vds_ladder: [0.1, 0.5, 1, 2, 5, 10, 15, 20, 25, 30, 50, 100], vgs_ladder_at_vds0: [0, 1, 2, 3, 4, 5, 6, 8, 10], f: 1e+06, qoss_at: [25, 100], temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `VDI di 0 {v}` / `LDI di dio 1` / `VGI gi 0 AC 1` / `MI dio gi 0 0 DUT` — the Ciss copy: the drain fed through 1 H, the gate driven
-- `VDO do 0 DC {v} AC 1` / `MO do 0 0 0 DUT` — the Coss copy: the drain driven, gate grounded
-- `VDR dr 0 {v}` / `VGR gr 0 AC 1` / `MR dr gr 0 0 DUT` — the Crss copy: the AC drain current through VDR over the gate drive
-- `.ac dec 10 100000 10000000` — read at 1 MHz, series-equivalent
-- one set per drain voltage; a second deck at VDS = 0 steps the gate for the VGS view
+- `VDI0 di0 0 0.1` — the Ciss/Crss copy at the first ladder voltage: the drain held at 0.1 V, the gate at 0 V with 1 V of AC
+- `VGI0 gi0 0 DC 0 AC 1`
+- `MI0 di0 gi0 0 DUT`
+- `VDO0 do0 0 DC 0.1 AC 1` — the Coss copy: the drain driven, gate grounded
+- `MO0 do0 0 0 DUT`
+- `.ac dec 10 100000 10000000` — 100 kHz to 10 MHz; C = Im(I)/(2πf) read at 1 MHz
+- `VDG0 dg0 0 0` — the VGS deck: VDS = 0, the gate at each ladder voltage with AC
+- `VGG0 gg0 0 DC 0 AC 1`
+- `MG0 dg0 gg0 0 DUT`
 
-**Extraction.** The three capacitances at each voltage; Crss(1 V)/Crss(25 V) and Coss(1 V)/Coss(25 V) as
-the shape figures; Qoss and Eoss at 25 V and at 100 V by integrating Coss over voltage (the sheets of
-superjunction and GaN parts print both); the Miller ratio Crss/Ciss at 25 V. From the VGS view, Ciss at
-VGS = 10 V over Ciss at 0 V (the oxide step).
+**Extraction.** The quadrature part of each copy's 1 MHz current over 2πf at each voltage (the in-phase part is the transconductance, left out as a guarded meter leaves it). Crss(1 V)/Crss(25 V) and Coss(1 V)/Coss(25 V) as the shape figures; Qoss and Eoss at 25 V and at 100 V by integrating Coss over voltage on the ladder (the sheets of superjunction and GaN parts print both); the Miller ratio Crss/Ciss at 25 V. From the VGS view, Ciss at VGS = 10 V over Ciss at 0 V (the oxide step).
 
 **Outputs.**
 
-- `ciss@{v}` (F), `coss@{v}` (F), `crss@{v}` (F)
-- `crss_1v_over_25v`, `coss_1v_over_25v`
-- `qoss@{v}` (C), `eoss@{v}` (J): at 25 and 100 V
-- `miller_ratio@25V`: Crss/Ciss
-- `ciss_10v_over_0v@vds0`: the gate-voltage dependence
+- `ciss@{v}` (F): input capacitance at VDS = v, VGS = 0
+- `coss@{v}` (F): output capacitance
+- `crss@{v}` (F): reverse transfer capacitance
+- `crss_1v_over_25v`: the shape of the Crss fall
+- `coss_1v_over_25v`: the shape of the Coss fall
+- `qoss@{v}` (C): Coss integrated over voltage, at 25 and 100 V
+- `eoss@{v}` (J): the energy stored in Coss, at 25 and 100 V
+- `miller_ratio@25V`: Crss/Ciss at 25 V
+- `ciss_10v_over_0v@vds0`: the gate-voltage dependence of Ciss at VDS = 0
 
-Curves: `Ciss` (ciss against vds, log); `Coss`; `Crss`; `Ciss vs VGS` (ciss against vgs, lin, at VDS = 0); `Crss vs VGS`; `Eoss` (eoss against vds, log). Drawn together, as a family: Ciss, Coss, Crss against VDS. Shown first: the family.
+Curves: Ciss (ciss against vds, log); Coss (coss against vds, log); Crss (crss against vds, log); Eoss (eoss against vds, log); Ciss vs VGS (ciss_vgs against vgs, lin); Crss vs VGS (crss_vgs against vgs, lin).
 
-**Card parameters that drive it:** CGSO, CGDO, CGBO, CBD, CBS, PB, MJ, Cgdmax, Cgdmin, a, Cgs, Cjo, m, Vj (VDMOS), TOX.
+**Card parameters that drive it:** CGSO, CGDO, CGBO, CBD, CBS, PB, MJ, CGDMAX, CGDMIN, A, CGS, CJO, M, VJ, TOX.
 
-**A high value.** Crss(1 V)/Crss(25 V) near 1 is a constant Miller capacitance: a level 1 card, whose
-switching waveforms and plateau will be wrong.
+**A high value.** Crss(1 V)/Crss(25 V) near 1 is a constant Miller capacitance: a level 1 card, whose switching waveforms and plateau will be wrong.
 
-**A low value.** Zero everywhere is a card with no capacitance (code "absent"); a Coss that does not fall
-is a missing CBD.
+**A low value.** Zero everywhere is a card with no capacitance (absent); a Coss that does not fall is a missing CBD.
 
-**What it cannot tell.** Capacitances with the channel conducting (the sheets take them at VGS = 0), and
-the non-quasi-static effects at the switching edge.
+**What it cannot tell.** Capacitances with the channel conducting (the sheets take them at VGS = 0), and the non-quasi-static effects at the switching edge.
 
-**Standard.** resembles the Ciss/Coss/Crss methods of JEDEC JESD24-x at 1 MHz, read as a meter reads a low-impedance capacitance
+**Standard.** resembles the Ciss/Coss/Crss methods of JEDEC JESD24 at 1 MHz, read as a meter reads a low-impedance capacitance
 
-#### Gate charge — VGS against Qg at constant gate current (`mosfet-gate-charge`)
+#### Gate charge, VGS against Qg at constant gate current (`mosfet-gate-charge`)
 
-Group `gate-charge` · analysis `tran` · engines qspice, ngspice, ltspice · symbols Qg, Qgs, Qgd, Vplateau.
+Group `capacitance` · analysis `tran` · engines qspice, ngspice, ltspice · symbols Qg, Qgs, Qgd, Vplateau.
 
-The curve a gate driver is sized from. A constant current into the gate makes the gate voltage climb;
-it climbs to the threshold (Qgs(th)), on to the plateau (Qgs) where the drain starts to fall, holds there
-while Cgd is discharged by the whole drain swing (Qgd, the Miller charge), and climbs again to the drive
-voltage (Qg total). The plateau voltage is Vth plus what the transconductance needs for the load current.
-The sheets fix the load current near the rating and the supply at a fraction of the rating that differs
-by maker (Nexperia 40 and 63 %, Infineon 20 and 80 %, ST 80 %, Vishay 20 and 80 %); here three universal
-supplies and three currents are run so that any sheet's point is bracketed. Qgd/Qgs(th) is kept as the
-parasitic-turn-on figure of a half-bridge.
+The curve a gate driver is sized from. A constant current into the gate makes the gate voltage climb; it climbs to the threshold (Qgs(th)), on to the plateau (Qgs) where the drain starts to fall, holds there while Cgd is discharged by the whole drain swing (Qgd, the Miller charge), and climbs again to the drive voltage (Qg total). The plateau voltage is Vth plus what the transconductance needs for the load current. The sheets fix the load current near the rating and the supply at a fraction of the rating that differs by maker; here three universal points are run so that any sheet's point is bracketed. Qgd/Qgs(th) is kept as the parasitic-turn-on figure of a half-bridge.
 
-**Circuit.** A constant current of 1 mA into the gate (10 mA for the two highest load currents); the drain
-fed from the supply through an ideal current source of the load current with a clamp diode to the supply,
-so that the drain sits at the rail until the transistor takes the current and then falls; source grounded.
-The gate voltage against time is the charge curve (Q = IG × t).
+**Circuit.** A constant current into the gate (1 mA; 10 mA for the 10 A point), the gate caught at 15 V by a diode to a rail; the drain fed the load current by an ideal source with a clamp diode to the supply, so that the drain sits at the rail until the transistor takes the current and then falls; source grounded. The gate voltage against time is the charge curve (Q = IG × t from the current's start). Three points: 100 mA at 10 V, 1 A at 30 V, 10 A at 100 V.
 
-Drawing: DUT; gate current source; load current source with clamp diode to VDD; probe on the gate and the drain.
+Drawing: DUT; gate current source; load current source with a clamp diode to VDD; probe on the gate and the drain. Differs from the netlist: the gate's own clamp at 15 V is not drawn.
 
-**Conditions.** {ig: [0.001, 0.01], id_ladder: [0.1, 1, 10, 50], vdd_ladder: [10, 30, 100, 300], vgs_end: 12, vgs_read: [4.5, 10], max_step_s: 1e-09, temp_c: 25}
+**Conditions.** {points: [{id: 0.1, vdd: 10, ig: 0.001}, {id: 1, vdd: 30, ig: 0.001}, {id: 10, vdd: 100, ig: 0.01}], vgs_clamp: 15, vgs_read: [4.5, 10], t_start_s: 1e-07, t_end_s: 5e-05, max_step_s: 1e-08, curve_points: 80, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `IG 0 g 0.001` — the gate current, 1 mA
-- `IL vdd d 1` / `DCL d vdd DCLMP` / `VDD vdd 0 30` — the load: 1 A pulled from the drain, caught at 30 V until the transistor conducts
-- `M1 d g 0 0 DUT` — the transistor
-- `.tran 1e-9 {12/0.001*cgs_guess}` — long enough for the gate to reach 12 V
-- one deck per load current and supply
+- `IG 0 g PULSE(0 0.001 1e-07 1e-09 1e-09 1 2)` — the gate current, 1 mA from 100 ns on
+- `RGL g 0 1e9` — a path to ground for the operating point, 1 GΩ
+- `IL vdd d 1` — the load: 1 A pushed into the drain, caught at 30 V until the transistor conducts
+- `DCL d cl DCLMP`
+- `VCL cl 0 30`
+- `VDD vdd 0 30`
+- `DCLG g clG DCLMP` — the gate caught at 15 V
+- `VCLG clG 0 15`
+- `M1 d g 0 DUT`
+- `.tran 1e-08 5e-05 0 1e-08` — 50 µs, long enough for the gate to reach its clamp
 
-**Extraction.** From VGS(t): Qgs(th) at Vth (from `mosfet-transfer`), Qgs where the slope first falls below
-half its initial value (plateau start), Qgd as the plateau's length, Qg at 4.5 and at 10 V, Vplateau as
-the plateau's mean voltage, Qsw = Qgs − Qgs(th) + Qgd. A deck whose drain never fell (the gate reached
-12 V with the clamp still conducting: the current is above what the card can pass) is "n/a".
+**Extraction.** From VGS(t) and VDS(t): Qgs(th) at the threshold (1 mA, diode-connected, from the transfer sweep), Qgs where the drain has fallen by 10 % (the plateau's start), Qgd to where it has fallen by 90 % (the plateau's length), Qg at 4.5 and at 10 V, Vplateau as the gate voltage at the plateau's middle, Qsw = Qgs − Qgs(th) + Qgd. A deck whose drain never fell (the current is above what the card can pass) is n/a.
 
 **Outputs.**
 
-- `qgs_th@{id},{vdd}` (C), `qgs@{id},{vdd}` (C), `qgd@{id},{vdd}` (C)
-- `qg@4.5V,{id},{vdd}` (C), `qg@10V,{id},{vdd}` (C)
-- `vplateau@{id},{vdd}` (V)
-- `qgd_over_qgsth@1A,30V`: the parasitic-turn-on ratio
+- `qgs_th@{id},{vdd}` (C): gate charge to the threshold
+- `qgs@{id},{vdd}` (C): gate charge to the plateau
+- `qgd@{id},{vdd}` (C): the Miller charge, the plateau's length
+- `qg@4.5V,{id},{vdd}` (C): total gate charge to 4.5 V
+- `qg@10V,{id},{vdd}` (C): total gate charge to 10 V
+- `vplateau@{id},{vdd}` (V): the plateau voltage
+- `qsw@{id},{vdd}` (C): Qgs − Qgs(th) + Qgd, the switching charge
+- `qgd_over_qgsth@{id},{vdd}`: the parasitic-turn-on ratio
 
-Curves: `VGS vs Qg, ID={id}, VDD={vdd}` (vgs against q, lin). Shown first: ID = 1 A, VDD = 30 V.
+Curves: VGS vs Qg, ID=100mA, VDD=10V (vgs against q, lin, at ID = 0.1, VDD = 10); VGS vs Qg, ID=1A, VDD=30V (vgs against q, lin, at ID = 1, VDD = 30); VGS vs Qg, ID=10A, VDD=100V (vgs against q, lin, at ID = 10, VDD = 100). Shown first: ID = 1, VDD = 30.
 
-Beside the point under the cursor: VDS (V), the drain voltage at that charge; t (s).
+**Card parameters that drive it:** CGSO, CGDO, CGDMAX, CGDMIN, A, CGS, VTO, KP, RG.
 
-**Card parameters that drive it:** CGSO, CGDO, Cgdmax, Cgdmin, a, Cgs, VTO, KP, RG.
+**A high value.** A Qgd/Qgs(th) above 1.5 is a part prone to parasitic turn-on in a half-bridge; a plateau of 7 V is a high threshold or a low gfs.
 
-**A high value.** A Qgd/Qgs(th) above 1.5 is a part prone to parasitic turn-on in a half-bridge; a
-plateau of 7 V is a high threshold or a low gfs.
-
-**A low value.** No plateau at all is a card with constant Cgd (level 1): the curve is a straight line
-and the Miller charge does not exist.
+**A low value.** No plateau at all is a card with constant Cgd (level 1): the curve is a straight line and the Miller charge does not exist.
 
 **What it cannot tell.** The gate charge with the real driver's impedance and loop inductance.
 
@@ -1049,167 +989,149 @@ and the Miller charge does not exist.
 
 Group `switching` · analysis `tran` · engines qspice, ngspice, ltspice · symbols td(on), tr, td(off), tf, Eon, Eoff.
 
-The four times every MOSFET sheet quotes at one point (VDD, ID, RG, VGS) and draws against ID or RG. In
-a MOSFET there is no stored charge, so the times are the gate charging through RG: td(on) to threshold, tr
-across the plateau (the Miller charge against RG), td(off) back to the plateau, tf across it again. A
-model with the wrong Crss shape gets tr and tf wrong by the same factor. A second fixture, the clamped
-inductive load that converter sheets use, gives the switching energies Eon and Eoff, which are what a
-designer actually loses; SiC and GaN sheets draw them against ID, RG and T.
+The four times every MOSFET sheet quotes at one point (VDD, ID, RG, VGS) and draws against ID or RG. In a MOSFET there is no stored charge, so the times are the gate charging through RG: td(on) to threshold, tr across the plateau (the Miller charge against RG), td(off) back to the plateau, tf across it again. A model with the wrong Crss shape gets tr and tf wrong by the same factor. A second fixture, the clamped inductive load that converter sheets use, gives the switching energies Eon and Eoff, which are what a designer actually loses.
 
-**Circuit.** Resistive: VDD of 10 and 30 V through RL = VDD/ID, the gate driven 0 to 10 V (and 0 to
-4.5 V) through RG of 4.7, 10 and 25 Ω, edges of 2 ns, 2 µs on, scaled to ten currents from 10 mA to 10 A.
-Clamped inductive: an inductor from VDD to the drain large enough to hold the current flat over the pulse,
-an ideal diode across it, the current established by a first pulse and the switching read on the second;
-Eon and Eoff as the integral of VDS × ID over the edges.
+**Circuit.** Resistive: 30 V through RL = VDD/ID, the gate driven 0 to 10 V through RG = 10 Ω with 2 ns edges, 2 µs on, at 100 mA, 1 A and 10 A; at 1 A also through 25 Ω, and with a 4.5 V drive. Clamped inductive: the load current from an ideal source with a freewheeling diode to the supply (the inductor as the current source it is over the edges), a 10 Ω / 1 nF snubber on the drain, two gate pulses; the current is established by the first and the switching read on the second; Eon and Eoff as the integral of VDS × ID over the edges, at 1 A and 10 A.
 
-Drawing: DUT; VDD; RL; gate pulse through RG; probe on the drain (resistive). Inductor with freewheeling diode to VDD (inductive).
+Drawing: DUT; VDD; RL; gate pulse through RG; probe on the drain (resistive); inductor with a freewheeling diode to VDD (inductive). Differs from the netlist: the inductive deck's inductor is a current source with the diode across it, and a snubber.
 
-**Conditions.** {vdd: [10, 30], id_ladder: [0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10], rg: [4.7, 10, 25], v_on: [10, 4.5], edge_s: 2e-09, t_on_s: 2e-06, t_after_s: 2e-06, max_step_s: 1e-10, inductive: {vdd: 30, id: [1, 10], rg: 10, l_h: 0.001}, temp_c: 25}
+**Conditions.** {vdd: 30, id_ladder: [0.1, 1, 10], rg: [10, 25], v_on: [10, 4.5], variants_id: 1, t_start_s: 1e-07, edge_s: 2e-09, t_on_s: 2e-06, t_after_s: 2e-06, max_step_s: 5e-10, curve_points: 80, inductive: {vdd: 30, id: [1, 10], rg: 10, t_on_s: 5e-06, gap_s: 5e-06, edge_s: 2e-08, r_fw: 0.02, r_snub: 10, c_snub: 1e-09, window_s: 3e-07, max_step_s: 1e-09}, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `VDD vdd 0 30` / `RL vdd d 30` — the supply and the load (30 Ω in the 1 A deck)
-- `VIN in 0 PULSE(0 10 1e-7 2e-9 2e-9 2e-6 1)` / `RG in g 10` — the gate drive through RG
-- `M1 d g 0 0 DUT` — the transistor
-- `.tran 1e-10 4.2e-6` — the transient
-- inductive deck: `L1 vdd d 1m` / `DFW d vdd DIDEAL` in place of RL, two pulses
+- `VDD vdd 0 30` — the supply and the load, 30 Ω in the 1 A deck; an ammeter in the drain
+- `RL vdd dl 30`
+- `VS dl d 0`
+- `VIN in 0 PULSE(0 10 1e-07 2e-09 2e-09 2e-06 1)` — the gate drive through RG: 0 to 10 V, 2 ns edges, 2 µs on
+- `RG in g 10`
+- `M1 d g 0 DUT`
+- `.tran 5e-10 4.104e-06 0 5e-10`
+- `IL vdd dl 1` — the inductive deck: the load current from a source with the freewheeling diode, the snubber, two pulses
+- `DFW dl dfw DFW`
+- `RFW dfw vdd 0.02`
+- `VIDM dl d 0`
+- `RSN d sn 10`
+- `CSN sn 0 1e-09`
 
-**Extraction.** td(on) from the gate's 10 % to ID at 10 %; tr 10 to 90 % of ID (the sheets use VDS 90 to
-10 %, published too); td(off) from the gate's fall to ID at 90 %; tf 90 to 10 %. Eon and Eoff from the
-inductive deck. A step whose drain never fell below 10 % of VDD did not switch, and is reported by how far
-it got.
+**Extraction.** td(on) from the gate's 10 % to ID at 10 %; tr 10 to 90 % of ID; td(off) from the gate's fall (90 %) to ID at 90 %; tf 90 to 10 %. Eon over a 300 ns window around the second pulse's turn-on, Eoff around its turn-off. A step whose drain never fell below 10 % of VDD did not switch, and is reported by how far it got.
 
 **Outputs.**
 
-- `td_on@{id},{vdd},{rg},{von}` (s), `tr@…` (s), `td_off@…` (s), `tf@…` (s)
-- `on@…`: how far the drain fell, 1.0 = fully on
-- `eon@{id},{rg}` (J), `eoff@{id},{rg}` (J): clamped inductive at 30 V
+- `td_on@{id},{vdd},{rg},{von}` (s): turn-on delay
+- `tr@{id},{vdd},{rg},{von}` (s): rise time of the drain current, 10 to 90 %
+- `td_off@{id},{vdd},{rg},{von}` (s): turn-off delay
+- `tf@{id},{vdd},{rg},{von}` (s): fall time, 90 to 10 %
+- `on@{id},{vdd},{rg},{von}`: how far the drain fell, 1.0 = fully on
+- `eon@{id},{rg}` (J): turn-on energy, clamped inductive at 30 V
+- `eoff@{id},{rg}` (J): turn-off energy
 
-Curves: `VDS(t), ID={id}, VDD={vdd}, RG={rg}` (vds against t, lin); `td(on), tr, td(off), tf vs ID` (t against id, log, at each VDD, RG); `t vs RG, ID=1A`; `Eon, Eoff vs ID`. Shown first: VDS(t), ID = 1 A, VDD = 30 V, RG = 10 Ω.
+Curves: VDS(t), ID=100mA, VDD=30V, RG=10Ω, VON=10V (vds against t, lin, at ID = 0.1, VDD = 30, RG = 10, VON = 10); VDS(t), ID=1A, VDD=30V, RG=10Ω, VON=10V (vds against t, lin, at ID = 1, VDD = 30, RG = 10, VON = 10); VDS(t), ID=10A, VDD=30V, RG=10Ω, VON=10V (vds against t, lin, at ID = 10, VDD = 30, RG = 10, VON = 10); VDS(t), ID=1A, VDD=30V, RG=25Ω, VON=10V (vds against t, lin, at ID = 1, VDD = 30, RG = 25, VON = 10); VDS(t), ID=1A, VDD=30V, RG=10Ω, VON=4.5V (vds against t, lin, at ID = 1, VDD = 30, RG = 10, VON = 4.5). Shown first: ID = 1, RG = 10, VON = 10.
 
-**Card parameters that drive it:** CGSO, CGDO, Cgdmax, Cgdmin, a, RG, VTO, KP, RD.
+**Card parameters that drive it:** CGSO, CGDO, CGDMAX, CGDMIN, A, RG, VTO, KP, RD.
 
-**A high value.** tr that does not shrink when RG falls from 25 to 4.7 Ω is a card with a large internal RG
-or a drain-side time constant.
+**A high value.** tr that does not shrink when RG falls from 25 to 10 Ω is a card with a large internal RG or a drain-side time constant.
 
-**A low value.** tr and tf of nanoseconds at 10 A with RG = 25 Ω is a card with no Crss: its switching
-loss will be understated by an order of magnitude.
+**A low value.** tr and tf of nanoseconds at 10 A with RG = 25 Ω is a card with no Crss: its switching loss will be understated by an order of magnitude.
 
-**What it cannot tell.** The times with the sheet's own fixture, package inductance, the driver's own
-impedance; transients differ by up to 1 % between simulators.
+**What it cannot tell.** The times with the sheet's own fixture, package inductance, the driver's own impedance; transients differ by up to 1 % between simulators.
 
-**Standard.** resembles the resistive switching time method of JEDEC JESD24-x and the clamped inductive fixture of converter data sheets, simplified
+**Standard.** resembles the resistive switching time method of JEDEC JESD24 and the clamped inductive fixture of converter data sheets, simplified
 
-#### The body diode — forward drop, third-quadrant conduction and reverse recovery (`mosfet-body-diode`)
+#### The body diode, forward drop, third-quadrant conduction and reverse recovery (`mosfet-body-diode`)
 
-Group `body-diode` · analysis `dc` · engines qspice, ngspice, ltspice · symbols VSD, IS, trr, Qrr.
+Group `recovery` · analysis `dc` · engines qspice, ngspice, ltspice · symbols VSD, IS, trr, Qrr.
 
-Every vertical MOSFET carries a diode from source to drain. Its forward drop (0.7 to 1.2 V) is the
-voltage the freewheeling current costs in a bridge, and with the channel also on (VGS = 10 V) the
-current splits between channel and diode — the third quadrant, which the sheets of modern parts draw as
-IS against VSD at several VGS and which is where a class-AB output stage's idle current crosses over.
-Its reverse recovery, trr and Qrr, is the loss and the ringing of every hard-switched bridge; the sheets
-quote them at IF = IS and di/dt = 100 A/µs and draw them against di/dt. In a card the diode is the
-`IS`/`N`/`RS` of the MOS body junction (level 1/3), or a separate diode with `TT` in a `VDMOS` card or a
-subcircuit; a card without `TT` has a diode that recovers in zero time, which no silicon diode does.
+Every vertical MOSFET carries a diode from source to drain. Its forward drop (0.7 to 1.2 V) is the voltage the freewheeling current costs in a bridge, and with the channel also on (VGS = 10 V) the current splits between channel and diode, the third quadrant, which the sheets of modern parts draw as IS against VSD at several VGS and which is where a class-AB output stage's idle current crosses over. Its reverse recovery, trr and Qrr, is the loss and the ringing of every hard-switched bridge; the sheets quote them at IF = IS and di/dt = 100 A/µs. In a card the diode is the IS/N/RS of the MOS body junction (level 1/3), or a separate diode with TT in a VDMOS card or a subcircuit; a card without TT has a diode that recovers in zero time, which no silicon diode does.
 
-**Circuit.** Forward: the drain current forced negative (source to drain) by the behavioural dial from
-1 µA to 100 A at VGS = 0, VSD read; copies at VGS = 4.5 and 10 V for the third quadrant. Recovery: a
-transient with the diode carrying IF from an inductor, then commutated by an ideal switch at a di/dt set
-by a series inductor and a 30 V supply; three di/dt values.
+**Circuit.** Forward: the source current forced by the behavioural dial from 1 µA to 100 A with the drain grounded, a clamp at 5 V for a card without a diode, VSD read; copies at VGS = 0, 4.5 and 10 V. Recovery: a current source holds IF through the diode, then ramps to −IF at 100 A/µs; a clamp diode to ground takes the current once the body diode has recovered; the drain current is read through its ammeter.
 
-Drawing: DUT reversed; forced source current; voltmeter source to drain (forward). Inductor, 30 V, ideal switch (recovery).
+Drawing: DUT reversed; forced source current; voltmeter source to drain (forward); current ramp and clamp (recovery). Differs from the netlist: the recovery fixture is a ramped current source, not an inductor and a switch.
 
-**Conditions.** {is_sweep: {from: 1e-06, to: 100, per_decade: 20, unit: A}, vgs: [0, 4.5, 10], is_ladder: [0.001, 0.01, 0.1, 1, 10, 50, 100], recovery: {if: [1, 10], didt_a_per_us: [100, 200, 400], vr: 30}, temp_c: 25}
+**Conditions.** {is_sweep: {from: 1e-06, to: 100, per_decade: 20, unit: A}, vgs: [0, 4.5, 10], is_ladder: [0.001, 0.01, 0.1, 1, 10, 50, 100], recovery: {if: [1, 10], didt_a_per_us: [100], t_forward_s: 2e-06, t_after_s: 2e-06, present_fraction: 0.05, present_trr_s: 2e-09}, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `BS 0 s I=exp(2.302585092994046*V(x))` — the source current forced
-- `MD 0 g s s DUT` / `VG g s 0` — the transistor with its drain grounded, the gate at the source
+- `BS0 0 s0 I=exp(2.302585092994046*V(x))` — the source current forced, 10 to the power of the dial, pushed into the source of the first copy
+- `DCLs0 s0 cls0 DCLMP` — the clamp at 5 V, for a card without a diode
+- `VCLs0 cls0 0 5`
+- `VG0 g0 s0 0` — the gate at the source (VGS = 0); the next copies at 4.5 and 10 V
+- `MD0 0 g0 s0 DUT` — the transistor with its drain grounded
 - `.dc VX -6 2 0.05` — 1 µA to 100 A
-- recovery deck: `L1 vr s {l}` / `SW s 0 ctrl 0 SWIDEAL` / `VR vr 0 30` — the current steered through the diode and commutated
+- `IF 0 s PULSE(1 -1 2e-06 2e-08 1 1 2)` — the recovery deck: IF then −IF at 100 A/µs into the source, the drain read, a clamp to ground
+- `VDM d 0 0`
+- `MR d s s DUT`
+- `DCLP 0 s DCLMP`
 
-**Extraction.** VSD at each ladder current and VGS; the diode's IS and n fitted between 1 mA and 100 mA at
-VGS = 0; the current at which the channel carries half the total at VGS = 10 V (the crossover). From the
-recovery deck: trr (from the zero crossing to 10 % of Irrm on the recovery), Qrr (the integral), Irrm, and
-the softness factor; "absent" when the recovery current never exceeds 1 % of IF (no TT).
+**Extraction.** VSD at each ladder current and VGS; the diode's IS and n fitted between 1 mA and 100 mA at VGS = 0. From the recovery deck: Irrm, trr from the zero crossing to 10 % of Irrm on the recovery, Qrr as the integral, and the softness factor; absent when the recovery current never exceeds 5 % of IF or lasts under 2 ns (a junction capacitance's spike, not stored charge: no TT).
 
 **Outputs.**
 
-- `vsd@{is},{vgs}` (V)
-- `is_diode` (A), `n_diode`
-- `is_crossover@10V` (A): the current where channel and diode share equally
-- `trr@{if},{didt}` (s), `qrr@…` (C), `irrm@…` (A), `softness@…`
+- `vsd@{is},{vgs}` (V): source-drain voltage at the ladder current and gate voltage
+- `is_diode` (A): saturation current of the body diode from the forward fit
+- `n_diode`: its ideality factor
+- `irrm@{if},{didt}` (A): peak reverse recovery current
+- `trr@{if},{didt}` (s): reverse recovery time, or absent
+- `qrr@{if},{didt}` (C): reverse recovery charge
+- `softness@{if},{didt}`: the recovery's tail over its rise
+- `recovery@{if},{didt}`: present, or absent when the reverse current is a capacitive spike only
 
-Curves: `IS vs VSD, VGS={vgs}` (is against vsd, log); `trr, Qrr, Irrm vs di/dt, IF={if}`; `I(t) recovery, IF={if}, di/dt={didt}`. Shown first: IS vs VSD, VGS = 0.
+Curves: IS vs VSD, VGS=0V (is against vsd, log, at VGS = 0); IS vs VSD, VGS=4.5V (is against vsd, log, at VGS = 4.5); IS vs VSD, VGS=10V (is against vsd, log, at VGS = 10); I(t) recovery, IF=1A, di/dt=100A/µs (i_rec against t, lin, at IF = 1); I(t) recovery, IF=10A, di/dt=100A/µs (i_rec against t, lin, at IF = 10). Shown first: VGS = 0, IF = 1.
 
-**Card parameters that drive it:** IS, N, RS, Rb, Cjo, TT (VDMOS/diode), JS, PB.
+**Card parameters that drive it:** IS, N, RS, RB, CJO, TT, JS, PB.
 
-**A high value.** VSD above 1.3 V at 10 A is a large Rb; Qrr in microcoulombs is a TT set for a
-standard-recovery diode.
+**A high value.** VSD above 1.3 V at 10 A is a large RB; Qrr in microcoulombs is a TT set for a standard-recovery diode.
 
-**A low value.** A recovery that is absent is TT = 0, the usual case in level 1/3 cards; VSD of a plain
-junction at 100 A with no series resistance is Rb = 0.
+**A low value.** A recovery that is absent is TT = 0, the usual case in level 1/3 cards; VSD of a plain junction at 100 A with no series resistance is RB = 0.
 
-**What it cannot tell.** The recovery's temperature dependence (the diode's TT does not scale in SPICE),
-and the snappiness the real part shows, which depends on the doping profile no card carries.
+**What it cannot tell.** The recovery's temperature dependence, and the snappiness the real part shows, which depends on a doping profile no card carries.
 
-**Standard.** resembles the source-drain diode forward voltage and reverse recovery methods of JEDEC JESD24-x
+**Standard.** resembles the source-drain diode forward voltage and reverse recovery methods of JEDEC JESD24
 
-#### Threshold, RDS(on), gfs and the body diode at −55 to 175 °C, and the zero-TC point (`mosfet-temperature`)
+#### Threshold, RDS(on), gfs at −55 to 175 °C, and the zero-TC point (`mosfet-temperature`)
 
 Group `temperature` · analysis `dc` · engines qspice, ngspice, ltspice · symbols dVth/dT, RDS(on)(T), VGS(0TC).
 
-Three drifts. The threshold falls by 4 to 7 mV/K, which raises the current at a fixed gate voltage; the
-mobility falls, which lowers it and nearly doubles RDS(on) between 25 and 150 °C (the positive temperature
-coefficient that lets MOSFETs share current when paralleled as switches); the body diode's drop falls by
-about 2 mV/K. The first two cancel at one current, the zero-temperature-coefficient point, below which a
-MOSFET's current rises with heat (thermal runaway in linear mode, the reason class-AB stages biased below
-it need compensation) and above which it falls. The sheets draw Vth against T and RDS(on) against T
-normalised; none draws the zero-TC point, though every output-stage designer bisects it from the
-transfer family. In a card the threshold drift is `TCV`/`VTOTC` or the physics of level 3; the mobility
-drift is `BEX`/`KPTC` or absent, in which case the model has no positive RDS(on) coefficient and no
-zero-TC point.
+Three drifts. The threshold falls by 4 to 7 mV/K, which raises the current at a fixed gate voltage; the mobility falls, which lowers it and nearly doubles RDS(on) between 25 and 150 °C (the positive temperature coefficient that lets MOSFETs share current when paralleled as switches); the body diode's drop falls by about 2 mV/K. The first two cancel at one current, the zero-temperature- coefficient point, below which a MOSFET's current rises with heat (thermal runaway in linear mode, the reason class-AB stages biased below it need compensation) and above which it falls. In a card the threshold drift is TCV/VTOTC or the physics of level 3; the mobility drift is BEX/KPTC or absent, in which case the model has no positive RDS(on) coefficient and no zero-TC point.
 
-**Circuit.** The transfer deck (VDS = 15 V and the diode-connected copy), the RDS(on) deck at VGS = 10
-and 4.5 V, and the body-diode deck at VGS = 0, run at −55, 25, 100, 125, 150 and 175 °C.
+**Circuit.** A transfer deck per temperature (−55, 25, 100, 125, 150, 175 °C): the 15 V copy, the diode-connected copy, and a 0.1 V copy whose current at 10 V and 4.5 V on the gate gives RDS(on).
 
-Drawing: DUT; the three fixtures; a thermometer symbol.
+Drawing: DUT; the three copies; a thermometer symbol.
 
-**Conditions.** {temps_c: [-55, 25, 100, 125, 150, 175], vds: 15, vth_currents: [2e-05, 0.00025, 0.001], rdson_vgs: [4.5, 10], rdson_id: [1, 10], vsd_is: [1, 10]}
+**Conditions.** {temps_c: [-55, 25, 100, 125, 150, 175], vds: 15, vds_linear: 0.1, vgs_sweep: {from: -2, to: 15, step: 0.01, unit: V}, rdson_vgs: [10, 4.5], gfs_id: 1, ztc_hot: 150, ztc_min_id: 0.0001}
 
 **The deck (QSPICE), line by line.**
 
-- `.temp -55` — the first deck; then 100, 125, 150, 175; 25 °C from the base decks
-- the transfer, RDS(on) and body-diode copies as above
+- `.temp -55` — the first deck, at −55 °C; then 25, 100, 125, 150 and 175 °C
+- `VT dt 0 15` — the 15 V copy, the diode-connected copy and the 0.1 V copy
+- `MT dt g 0 DUT`
+- `VTD dtd g 0`
+- `MTD dtd g 0 DUT`
+- `VL dl 0 0.1`
+- `ML dl g 0 DUT`
+- `VGS g 0 0`
+- `.dc VGS -2 15 0.01`
 
-**Extraction.** Vth (1 mA, diode-connected) at each temperature and its slope between −55 and 175 °C;
-RDS(on) at 10 V and 1 A at each temperature over 25 °C, and the exponent of its power-law fit against
-absolute temperature; gfs at 1 A at each temperature over 25 °C; VSD at 1 A and its slope. The zero-TC
-point is where the 25 and 150 °C transfer curves cross, as gate voltage and drain current; "absent" when
-they do not cross (no mobility drift in the card).
+**Extraction.** Vth (1 mA, diode-connected) at each temperature and its slope between −55 and 175 °C; RDS(on) at 10 V (and 4.5 V) at each temperature over 25 °C, and the exponent of its power-law fit against absolute temperature; gfs at 1 A at each temperature over 25 °C. The zero-TC point is where the 25 and 150 °C transfer curves cross on the grid above 100 µA, as gate voltage and drain current; absent when they do not cross (no mobility drift in the card).
 
 **Outputs.**
 
-- `vth@1mA,{T}` (V), `dvth_dt` (V/K)
-- `rdson_{T}_over_25@10V,1A`, `rdson_t_exponent`
-- `gfs_{T}_over_25@1A`
-- `vsd@1A,{T}` (V), `dvsd_dt` (V/K)
-- `vgs_0tc` (V), `id_0tc` (A): the zero-temperature-coefficient point, or absent
+- `vth@1mA,{T}` (V): threshold at each temperature, diode-connected
+- `dvth_dt` (V/K): slope of the threshold between −55 and 175 °C
+- `rdson_t_over_25@{vgs}`: RDS(on) at each temperature t over 25 °C (rdson_m55_over_25, rdson_150_over_25), at 10 V and 4.5 V
+- `rdson_t_exponent`: exponent of RDS(on) against absolute temperature, at 10 V
+- `gfs_t_over_25@1A`: gfs at each temperature t over 25 °C
+- `vgs_0tc` (V): gate voltage of the zero-temperature-coefficient point, or absent
+- `id_0tc` (A): drain current at that point
 
-Curves: `ID, {T}°C` (id against vgs, lin and log); `RDS(on) normalised` (ratio against T, lin); `Vth` (vth against T, lin); `IS vs VSD, {T}°C`. Shown first: ID, T = all.
+Curves: ID, −55°C (id against vgs, lin, at T = -55); ID, 25°C (id against vgs, lin, at T = 25); ID, 100°C (id against vgs, lin, at T = 100); ID, 125°C (id against vgs, lin, at T = 125); ID, 150°C (id against vgs, lin, at T = 150); ID, 175°C (id against vgs, lin, at T = 175); Vth (vth against T, lin); RDS(on) normalised (rdson_ratio against T, lin). Shown first: T = all.
 
-**Card parameters that drive it:** TCV, VTOTC, BEX, KPTC, UO, XTI, EG, IS (diode), level-3 physics (TOX, NSUB, UO).
+**Card parameters that drive it:** TCV, VTOTC, BEX, KPTC, UO, XTI, EG, TOX, NSUB.
 
-**A high value.** RDS(on) at 150 °C more than 2.2 times its 25 °C value is a BEX set too negative; a Vth
-slope above 8 mV/K is a TCV copied from a different process.
+**A high value.** RDS(on) at 150 °C more than 2.2 times its 25 °C value is a BEX set too negative; a Vth slope above 8 mV/K is a TCV copied from a different process.
 
-**A low value.** RDS(on) ratio of exactly 1.000 is a card without mobility drift: paralleled switches
-will share perfectly in simulation and a linear-mode stage will not run away. Code "absent" for the
-zero-TC point.
+**A low value.** An RDS(on) ratio of exactly 1.000 is a card without mobility drift: paralleled switches will share perfectly in simulation and a linear-mode stage will not run away; absent for the zero-TC point.
 
-**What it cannot tell.** Self-heating; the sheets' RDS(on) at 150 °C is a pulsed junction temperature, and
-a real switch at rated current is hotter than its case.
+**What it cannot tell.** Self-heating; the sheets' RDS(on) at 150 °C is a pulsed junction temperature, and a real switch at rated current is hotter than its case.
 
 **Standard.** resembles the VGS(th) vs Tj and normalised RDS(on) vs Tj charts of every power MOSFET sheet; IEC 60747-8
 
@@ -1217,40 +1139,44 @@ a real switch at rated current is hotter than its case.
 
 Group `noise` · analysis `noise` · engines qspice, ngspice · symbols en, NF.
 
-A MOSFET's noise is the channel's thermal noise through gfs, as a JFET's is, plus a 1/f part that in an
-oxide-gated device is larger and reaches further up (corners of kilohertz to tens of kilohertz are
-normal), which is why MOSFETs are rarely first stages and why the few audio MOSFET sheets (lateral
-2SK1058, the small-signal 2N7000 family) do not print noise. The current noise is negligible (no gate
-current). The measurement exists for the small-signal and lateral parts, and in a card depends on KF and
-AF, which nearly every power MOSFET card leaves at zero.
+A MOSFET's noise is the channel's thermal noise through gfs, as a JFET's is, plus a 1/f part that in an oxide-gated device is larger and reaches further up (corners of kilohertz to tens of kilohertz are normal), which is why MOSFETs are rarely first stages and why the few audio MOSFET sheets (lateral 2SK1058, the small-signal 2N7000 family) do not print noise. The current noise is negligible (no gate current). In a card it depends on KF and AF, which nearly every power MOSFET card leaves at zero.
 
-**Circuit.** As `jfet-noise`, at VDS = 10 V, the gate biased for 1, 10, 100 mA and 1 A; RG = 0 for en;
-a run at 100 mA with RG = 1 kΩ for NF.
+**Circuit.** As the JFET measurement, at VDS = 10 V, the gate biased for 1, 10, 100 mA and 1 A, RG = 0 for en; a run at 100 mA with RG = 1 kΩ for NF.
 
-**Conditions.** {vds: 10, id_ladder: [0.001, 0.01, 0.1, 1], rg: [0], nf: {id: 0.1, rg: 1000, f: 1000}, f_points: [10, 100, 1000, 10000, 100000], noise_sweep: {from: 1, to: 1e+06, per_decade: 20, unit: Hz}, audio_band: [20, 20000], temp_c: 25}
+Drawing: DUT; VDS source 10 V; gate bias; noise source with RG; sensing in the drain. Differs from the netlist: the output is a current-controlled voltage source into 1 MΩ, as in the bipolar bench.
+
+**Conditions.** {vds: 10, id_ladder: [0.001, 0.01, 0.1, 1], nf: {id: 0.1, rg: 1000, f: 1000}, f_points: [10, 100, 1000, 10000, 100000], noise_sweep: {from: 1, to: 1e+06, per_decade: 20, unit: Hz}, audio_band: [20, 20000], temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `VSENSE d dd 0` / `VD dd 0 10` / `VGB gb 0 {vgs}` / `RG in g 0.001` / `M1 d g 0 0 DUT` / `H1 out 0 VSENSE 1000` / `RLOAD out 0 1meg`
+- `VSENSE d dd 0`
+- `VD dd 0 10`
+- `RG in g 0.001` — the gate bias for the step (from the transfer sweep); VIN rides on it
+- `M1 d g 0 DUT`
+- `H1 out 0 VSENSE 1000`
+- `RLOAD out 0 1meg`
 - `.noise V(out) VIN dec 20 1 1000000`
 
-**Extraction.** en at each frequency and current; the corner; NF at 1 kHz, 100 mA, 1 kΩ; the 20 Hz to
-20 kHz integrated noise, flat and A-weighted.
+**Extraction.** en at each frequency and current; the corner where en is √2 times its 10 kHz value, absent when flat; NF at 1 kHz, 100 mA, 1 kΩ; the 20 Hz to 20 kHz integrated noise, flat and A-weighted.
 
 **Outputs.**
 
-- `en@{f},{id}` (V/√Hz), `en_corner@{id}` (Hz), `nf@1kHz,100mA,1k` (dB), `vn_20_20k@{id}` (V), `vn_a_weighted@{id}` (V)
+- `en@{f},{id}` (V/√Hz): voltage noise density
+- `en_corner@{id}` (Hz): the 1/f corner, or absent
+- `nf@1kHz,100mA,1kΩ` (dB): noise figure at RG = 1 kΩ
+- `vn_20_20k@{id}` (V): input-referred noise, 20 Hz to 20 kHz rms
+- `vn_a_weighted@{id}` (V): the same, A-weighted
+- `one_over_f`: present when any current shows a 1/f corner, else absent (KF = 0)
 
-Curves: `en, ID={id}` (en against f, log); `en at {f}` (en against id, log). Shown first: en, ID = 100 mA.
+Curves: en, 1mA (en against f, log, at ID = 0.001); en, 10mA (en against f, log, at ID = 0.01); en, 100mA (en against f, log, at ID = 0.1); en, 1A (en against f, log, at ID = 1); en at 10Hz (en_id against id, log, at f = 10); en at 1kHz (en_id against id, log, at f = 1000); en at 10kHz (en_id against id, log, at f = 10000). Shown first: ID = 0.1.
 
 **Card parameters that drive it:** KF, AF, KP, RS, RG, NLEV.
 
 **A high value.** A corner above 100 kHz is a KF set for a submicron CMOS process in a discrete card.
 
-**A low value.** A flat spectrum is KF = 0: code "absent" for the corner.
+**A low value.** A flat spectrum is KF = 0: absent for the corner.
 
-**What it cannot tell.** The part's noise: makers do not measure it on power parts, and the lateral audio
-parts' sheets are silent.
+**What it cannot tell.** The part's noise: makers do not measure it on power parts, and the lateral audio parts' sheets are silent.
 
 **Standard.** resembles the spot noise method (MIL-STD-750-3); few MOSFET sheets print it
 
@@ -1258,80 +1184,87 @@ parts' sheets are silent.
 
 Group `breakdown` · analysis `dc` · engines qspice, ngspice, ltspice · symbols V(BR)DSS, IDSS, IGSS.
 
-A level 1 or 3 card has no drain breakdown; a `VDMOS` card has `BV`/`IBV`/`NBV` and a subcircuit often a
-zener across the body diode, so the absence is less universal than in bipolar cards. The gate oxide's
-breakdown and leakage are in no card at all. IDSS, the off-state leakage the sheets quote at the rated
-voltage (1 µA, 10 µA at 125 °C), is the body diode's reverse current in the card and far below the part's.
+A level 1 or 3 card has no drain breakdown; a VDMOS card has BV/IBV/NBV and a subcircuit often a zener across the body diode, so the absence is less universal than in bipolar cards. The gate oxide's breakdown and leakage are in no card at all. IDSS, the off-state leakage the sheets quote at the rated voltage, is the body diode's reverse current in the card and far below the part's.
 
-**Circuit.** Drain to source 0 to 1000 V (power MOSFETs are rated to 900 V) with the gate tied to the
-source; the current read. Gate to source ±30 V with the drain tied to the source; the gate current read.
+**Circuit.** Drain to source 0 to 1000 V with the gate tied to the source; the current read. Gate to source −30 to +30 V with the drain tied to the source; the gate current read.
 
-Drawing: DUT; swept source; ammeter.
+Drawing: DUT; swept source; ammeter. Differs from the netlist: two decks drawn as one.
 
 **Conditions.** {vds_sweep: {from: 0, to: 1000, step: 1, unit: V}, vgs_sweep: {from: -30, to: 30, step: 0.1, unit: V}, breakdown_current: 0.001, leakage_points: {idss: [25, 100, 300], igss: 20}, temp_c: 25}
 
 **The deck (QSPICE), line by line.**
 
-- `VA sw da 0` / `MA da 0 0 0 DUT` / `.dc VSW 0 1000 1` — drain-source, gate grounded
-- `VB sw gb 0` / `MB 0 gb 0 0 DUT` / `.dc VSW -30 30 0.1` — gate-source, drain grounded
+- `VA sw da 0` — drain-source, the gate grounded: the swept node drives the drain through a 0 V source
+- `MA da 0 0 DUT`
+- `VSW sw 0 0`
+- `.dc VSW 0 1000 1`
+- `VB sw gb 0` — gate-source, the drain grounded
+- `MB 0 gb 0 DUT`
+- `.dc VSW -30 30 0.1`
 
-**Extraction.** V(BR)DSS as the first voltage at which ID passes 1 mA, else "absent" with the voltage
-reached; IDSS at 25, 100 and 300 V; IGSS at ±20 V, with the gmin note below 10 pA.
+**Extraction.** V(BR)DSS as the first voltage at which ID passes 1 mA, else absent; IDSS at 25, 100 and 300 V; IGSS at ±20 V (below 10 pA they are the simulators' gmin floor).
 
 **Outputs.**
 
-- `vbr_dss` (V), or absent
-- `idss@{v}` (A), `igss@20V` (A), `igss@-20V` (A)
+- `vbr_dss` (V): drain-source breakdown with the gate grounded, or absent
+- `idss@{v}` (A): off-state drain leakage at 25, 100 and 300 V
+- `igss@20V` (A): gate leakage at +20 V
+- `igss@-20V` (A): gate leakage at −20 V
 
-**Card parameters that drive it:** BV, IBV, NBV (VDMOS), JS, IS, subcircuit zeners.
+**Card parameters that drive it:** BV, IBV, NBV, JS, IS.
 
-**A low value.** A breakdown that appears is a VDMOS or subcircuit card; the figure is then worth
-comparing with the sheet, and `V(BR)DSS` against temperature belongs in `mosfet-temperature` for such cards.
+**A low value.** A breakdown that appears is a VDMOS or subcircuit card; the figure is then worth comparing with the sheet.
 
 **What it cannot tell.** The part's breakdown when absent; gate oxide rupture, never.
 
-**Standard.** resembles the V(BR)DSS, IDSS and IGSS methods of JEDEC JESD24-x and MIL-STD-750-3
+**Standard.** resembles the V(BR)DSS, IDSS and IGSS methods of JEDEC JESD24 and MIL-STD-750-3
 
 #### Two reference stages' harmonic distortion (model against model only) (`mosfet-distortion`)
 
 Group `distortion` · analysis `tran` · engines qspice, ngspice · symbols THD, HD2, HD3.
 
-What the audio user wants and no sheet gives. Two fixed stages, because a MOSFET is used two ways in
-audio: as a common-source gain stage (small-signal and lateral parts) and as a source follower in an
-output stage (lateral and vertical power parts). In the follower the distortion comes from the
-transconductance's curvature against the load current, from the Crss(VDS) modulation at high frequency,
-and in class-AB from the crossover; here a single-ended follower into a resistive load at a fixed bias
-shows the first two. The common-source stage shows the power law directly.
+What the audio user wants and no sheet gives. Two fixed stages, because a MOSFET is used two ways in audio: as a common-source gain stage (small-signal and lateral parts) and as a source follower in an output stage (lateral and vertical power parts). In the follower the distortion comes from the transconductance's curvature against the load current and from the Crss(VDS) modulation at high frequency; a single-ended follower into a resistive load at a fixed bias shows both. The common-source stage shows the power law directly.
 
-**Circuit.** Common source: VDD = 20 V, ID = 10 mA from an ideal source under a 100 Ω source resistor
-bypassed to ground, drain load 1 kΩ, driven from 1 kΩ; 1 V peak out at 1 kHz. Follower: VDD = 25 V, ID =
-100 mA from an ideal sink, load 100 Ω AC-coupled, driven from 100 Ω and from 1 kΩ (the Crss figure); 1 V
-peak out at 1 kHz and at 20 kHz.
+**Circuit.** Common source: VDD = 20 V, ID = 10 mA from an ideal sink to −10 V under a 100 Ω source resistor bypassed to ground, drain load 1 kΩ, driven from 1 kΩ with the gate at 0 V DC; 1 V peak out at 1 kHz. Follower: VDD = 25 V, ID = 100 mA from an ideal sink to −10 V, load 100 Ω AC-coupled, driven from 100 Ω at 1 kHz and 20 kHz and from 1 kΩ at 20 kHz (the Crss figure); 1 V peak out. A probe run at 20 mV sets each stage's input; ten cycles simulated, the last four analysed.
 
-Drawing: DUT; current source; RS bypassed; RL; VDD; sine source through RS_in; probe.
+Drawing: DUT; current sink; RS bypassed; RL; VDD; sine source through RS_in; probe. Differs from the netlist: the follower is a second deck.
 
-**Conditions.** {cs: {vdd: 20, id: 0.01, rs: 100, rl: 1000, rs_in: 1000, f: 1000}, sf: {vdd: 25, id: 0.1, rl: 100, rs_in: [100, 1000], f: [1000, 20000]}, vout_peak: 1, cycles: 10, analysed_cycles: 4, steps_per_cycle: 4096}
+**Conditions.** {cs: {vdd: 20, vss: 10, id: 0.01, rs: 100, rl: 1000, rs_in: 1000, f: 1000}, sf: {vdd: 25, vss: 10, id: 0.1, rl: 100, rs_in: [100, 1000], f: [1000, 20000]}, vout_peak: 1, cycles: 10, analysed_cycles: 4, steps_per_cycle: 4096}
 
 **The deck (QSPICE), line by line.**
 
-- `VDD vdd 0 20` / `RL vdd d 1000` / `RS s x 100` / `CS x 0 1000u` / `IS x vss 0.01` / `VSS vss 0 -5` / `RIN in g 1000` / `VIN in 0 SIN(0 {amp} 1000)` / `M1 d g s s DUT` — the common-source stage
-- follower deck: `M1 vdd g s s DUT` / `IS s vss 0.1` / `CL s l 1000u` / `RL l 0 100`
-- `.tran 2.44140625e-07 0.01 0 2.44140625e-07` — ten cycles of 1 kHz (0.5 ms at 20 kHz)
+- `VSS vss 0 -10` — the common-source stage: the sink's rail, the supply, the drive through 1 kΩ (20 mV for the probe run)
+- `VDD vdd 0 20`
+- `RIN in g 1000`
+- `VIN in 0 SIN(0 0.02 1000)`
+- `RL vdd d 1000`
+- `RS s sx 100`
+- `CS sx 0 1000u`
+- `IS sx vss 0.01`
+- `M1 d g s DUT`
+- `.tran 2.44140625e-07 0.003 0 2.44140625e-07` — three cycles for the probe, ten for the measurement, 4096 steps per cycle
+- `IS s vss 0.1` — the follower deck: the drain at VDD, the sink on the source, the load AC-coupled
+- `CL s l 1000u`
+- `RL l 0 100`
+- `M1 vdd g s DUT`
 
-**Extraction.** As in the bipolar bench: harmonics 2 to 10 by Goertzel; THD, HD2, HD3 per stage, drive
-impedance and frequency; the ratio of follower THD at 20 kHz with 1 kΩ drive over 100 Ω drive, which is
-the Crss modulation figure.
+**Extraction.** As in the bipolar bench: harmonics 2 to 10 by Goertzel over the last four cycles; THD, HD2, HD3 per stage, drive impedance and frequency; the ratio of follower THD at 20 kHz with 1 kΩ drive over 100 Ω drive, which is the Crss modulation figure.
 
 **Outputs.**
 
-- `thd_cs`, `hd2_cs`, `hd3_cs`
-- `thd_sf@{rs_in},{f}`, `hd2_sf@…`, `hd3_sf@…`
+- `thd_cs`: THD of the common-source stage at 1 V peak out, 1 kHz
+- `hd2_cs`: its second harmonic over the fundamental
+- `hd3_cs`: its third harmonic
+- `gain_cs`: the stage's gain at 20 mV
+- `thd_sf@{rs_in},{f}`: THD of the follower at 1 V peak out
+- `hd2_sf@{rs_in},{f}`: its second harmonic
+- `hd3_sf@{rs_in},{f}`: its third harmonic
+- `gain_sf`: the follower's gain at 20 mV
 - `crss_distortion_ratio`: follower THD at 20 kHz, 1 kΩ drive over 100 Ω drive
 
-**Card parameters that drive it:** KP, VTO, THETA, LAMBDA, RS, Cgdmax/Cgdmin/a (or CGDO), CGSO.
+**Card parameters that drive it:** KP, VTO, THETA, LAMBDA, RS, CGDMAX, CGDMIN, A, CGDO, CGSO.
 
-**A high value.** Only against another model of the same part. A Crss ratio near 1 is a constant Miller
-capacitance (level 1).
+**A high value.** Only against another model of the same part. A Crss ratio near 1 is a constant Miller capacitance (level 1).
 
 **What it cannot tell.** The distortion of any real circuit; it is a comparison between models.
 
@@ -1341,16 +1274,23 @@ capacitance (level 1).
 
 Group `dc` · analysis `derived` · engines qspice, ngspice, ltspice.
 
-As `bjt-agreement`. MOSFET cards disagree most on the `VDMOS` extensions (ngspice's reading of
-`Cgdmax/a`, `mtriode`, `Ksubthres` lags LTspice's), on level 3 parameters QSPICE treats differently
-(`THETA`, `KAPPA`), and on subcircuit elements with vendor-specific syntax (PSpice `TABLE`, `VALUE` and
-`IF` expressions in behavioural capacitors). The disagreeing ids say which group.
+As the bipolar agreement. MOSFET cards disagree most on the VDMOS extensions (ngspice's reading of Cgdmax/a, mtriode, Ksubthres lags LTspice's), on level 3 parameters QSPICE treats differently (THETA, KAPPA), and on subcircuit elements with vendor-specific syntax (PSpice TABLE, VALUE and IF expressions in behavioural capacitors). The disagreeing ids say which group.
 
 **Conditions.** {tolerances: [0.01, 0.05], floors: {F: 1e-16, s: 1e-12, A: 1e-14, C: 1e-15}}
 
-**Outputs.** `agree_1pct`, `agree_5pct`, `odd_engine`, `disagreeing`.
+**Extraction.** For each published output, the spread (max − min over the mean) across the engines that produced it, classed as within 1 %, within 5 % or beyond; values below the floors count as zero.
+
+**Outputs.**
+
+- `agree_1pct`: share of outputs on which every engine agrees within 1 %
+- `agree_5pct`: share within 5 %
+- `odd_engine`: the engine most often alone outside 5 %, or none
+- `disagreeing`: the measurement ids where the engines differ by more than 5 %
+
+**What it cannot tell.** Which engine is right.
 
 **Standard.** none
+<!-- measurements:end -->
 
 ## What the field-effect benches do not measure
 

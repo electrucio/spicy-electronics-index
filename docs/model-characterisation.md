@@ -55,6 +55,8 @@ Which groups of measurements matter for which use:
 | Current sources, mirrors and differential pairs | dc, temperature | the Early voltage (output resistance), VBE and its slope with temperature, hFE at the operating current, and the reverse gain. |
 | Audio preamplifier, pedal or microphone input (JFET) | dc, noise, capacitance, distortion, leakage | IDSS and VGS(off) (the bias point depends on both), gfs between 100 µA and IDSS, en at 10 Hz and 1 kHz and the 1/f corner, Ciss and Crss at the working VDS, the square-law exponent (second-harmonic character), the gate diode in forward bias (asymmetric clipping). |
 | Analogue switch or voltage-controlled resistor (JFET) | dc, capacitance, switching | rDS(on) at VGS = 0 and how fast it rises towards VGS(off), the linearity of rDS with VDS, Crss (charge injection), ton and toff. |
+| Class-AB or follower output stage (MOSFET) | temperature, dc, high-current, capacitance, distortion | the zero-temperature-coefficient point and dVth/dT (bias stability), gfs between 10 mA and 1 A, RDS(on) and its slope with temperature, Crss against VDS (the distortion mechanism at 20 kHz), the body diode's VSD. |
+| Switch, driver or converter (MOSFET) | switching, capacitance, high-current, recovery, breakdown | RDS(on) at the drive voltage and current used, Qg, Qgd and the plateau voltage, td/tr/tf at that current and RG, Qgd/Qgs(th) (parasitic turn-on), the body diode's VSD and whether trr exists in the card, whether breakdown exists at all. |
 
 ### Bipolar transistors
 
