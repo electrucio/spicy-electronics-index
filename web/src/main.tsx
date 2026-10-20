@@ -12,6 +12,7 @@ import { MethodsPage } from './methods'
 import { Browser } from './parts'
 import { Unlock } from './unlock'
 import logo from './logo.svg'
+import wordmark from './wordmark.svg'
 import './style.css'
 import type { Manifest } from './types'
 
@@ -78,7 +79,7 @@ function App() {
             href="?"
             onClick={(e) => { e.preventDefault(); go() }}
           >
-            <span class="pepper"><img class="logo" src={logo} alt="" /></span><span class="name">Spicy <span>Electronics Index</span></span>
+            <span class="pepper"><img class="logo" src={logo} alt="" /></span><img class="wordmark" src={wordmark} alt="Spicy Electronics Index" />
           </a>
           {/* The build's date, the licence and the way to send feedback, from any page, on one line. */}
           <div class="hright">

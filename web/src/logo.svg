@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1110" height="735" viewBox="60 10 740 490" role="img" aria-labelledby="title">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="25 10 765 560" role="img" aria-labelledby="title">
   <title id="title">Spicy Electronics Index</title>
   <defs>
-    <linearGradient id="body-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
-      <stop offset="0" stop-color="#D64A2C"/>
-      <stop offset="0.28" stop-color="#CC3D24"/>
-      <stop offset="0.58" stop-color="#C3331E"/>
-      <stop offset="0.84" stop-color="#B32C1A"/>
-      <stop offset="1" stop-color="#9F2718"/>
-    </linearGradient>
-    <linearGradient id="yellow-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
-      <stop offset="0" stop-color="#E7D257"/>
-      <stop offset="0.35" stop-color="#DDC341"/>
-      <stop offset="0.65" stop-color="#CFB22D"/>
-      <stop offset="1" stop-color="#B29221"/>
-    </linearGradient>
-    <linearGradient id="edge-shade" gradientUnits="userSpaceOnUse" x1="325" y1="145" x2="462" y2="353">
-      <stop offset="0" stop-color="#E85D3D"/>
-      <stop offset="0.55" stop-color="#DD4F32"/>
-      <stop offset="1" stop-color="#D3472D"/>
-    </linearGradient>
-    <radialGradient id="soft-light" gradientUnits="userSpaceOnUse" cx="350" cy="210" r="270" gradientTransform="translate(350 210) rotate(-32) scale(1 0.38) translate(-350 -210)">
-      <stop offset="0" stop-color="#E65A35" stop-opacity="0.08"/>
-      <stop offset="0.45" stop-color="#E65A35" stop-opacity="0.035"/>
-      <stop offset="1" stop-color="#E65A35" stop-opacity="0"/>
-    </radialGradient>
-
     <path id="outline" d="M 87.805,465.703
       C 87.291,457.921 94.796,445.167 97.961,429.897
       C 104.658,404.914 108.651,386.382 106.354,367.408
@@ -48,11 +24,65 @@
       C 107.889,453.831 101.432,466.658 91.243,470.37
       C 88.172,471.262 86.002,470.003 87.805,465.703 Z"/>
     <clipPath id="outline-clip"><use href="#outline"/></clipPath>
+    <!-- Base skin: paprika red, a touch lighter toward the shoulder. -->
+    <linearGradient id="skin" gradientUnits="userSpaceOnUse" x1="100" y1="460" x2="760" y2="60">
+      <stop offset="0" stop-color="#B8271A"/>
+      <stop offset="0.45" stop-color="#D23A22"/>
+      <stop offset="1" stop-color="#DE4A2A"/>
+    </linearGradient>
+    <linearGradient id="mark" gradientUnits="userSpaceOnUse" x1="100" y1="460" x2="760" y2="60">
+      <stop offset="0" stop-color="#C9A332"/>
+      <stop offset="1" stop-color="#E6CB57"/>
+    </linearGradient>
+    <!-- Volume: a deep shadow along the belly and a warm rim of light along the back, from the outline itself. -->
+    <filter id="volume" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+      <feOffset in="SourceAlpha" dx="10" dy="-34" result="up"/>
+      <feGaussianBlur in="up" stdDeviation="20" result="upb"/>
+      <feComposite in="SourceAlpha" in2="upb" operator="out" result="belly"/>
+      <feFlood flood-color="#3D0806" flood-opacity="0.85"/>
+      <feComposite in2="belly" operator="in" result="shade"/>
+      <feOffset in="SourceAlpha" dx="-4" dy="12" result="down"/>
+      <feGaussianBlur in="down" stdDeviation="6" result="downb"/>
+      <feComposite in="SourceAlpha" in2="downb" operator="out" result="back"/>
+      <feFlood flood-color="#FFB08A" flood-opacity="0.55"/>
+      <feComposite in2="back" operator="in" result="rim"/>
+      <feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="shade"/><feMergeNode in="rim"/></feMerge>
+    </filter>
+    <filter id="soft" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="3.2"/></filter>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="130%"><feGaussianBlur stdDeviation="7"/></filter>
+    <linearGradient id="gloss" gradientUnits="userSpaceOnUse" x1="150" y1="0" x2="720" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.25" stop-color="#fff" stop-opacity="0.6"/>
+      <stop offset="0.7" stop-color="#fff" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="leaf" gradientUnits="userSpaceOnUse" x1="700" y1="20" x2="780" y2="160">
+      <stop offset="0" stop-color="#8DB24A"/>
+      <stop offset="0.45" stop-color="#557F2B"/>
+      <stop offset="1" stop-color="#2C4C17"/>
+    </linearGradient>
+    <linearGradient id="leaf-l" gradientUnits="userSpaceOnUse" x1="0" y1="-45" x2="40" y2="45">
+      <stop offset="0" stop-color="#8DB24A"/>
+      <stop offset="0.45" stop-color="#557F2B"/>
+      <stop offset="1" stop-color="#2C4C17"/>
+    </linearGradient>
+    <linearGradient id="stalk-l" gradientUnits="userSpaceOnUse" x1="0" y1="-12" x2="0" y2="14">
+      <stop offset="0" stop-color="#9DBF5A"/>
+      <stop offset="0.6" stop-color="#5E8A30"/>
+      <stop offset="1" stop-color="#36591B"/>
+    </linearGradient>
+    <linearGradient id="stalk" gradientUnits="userSpaceOnUse" x1="750" y1="0" x2="790" y2="0">
+      <stop offset="0" stop-color="#9DBF5A"/>
+      <stop offset="0.6" stop-color="#5E8A30"/>
+      <stop offset="1" stop-color="#36591B"/>
+    </linearGradient>
   </defs>
-  <use id="body" href="#outline" fill="url(#body-shade)"/>
-  <use id="light" href="#outline" fill="url(#soft-light)"/>
-  <g id="pattern" clip-path="url(#outline-clip)" fill="url(#yellow-shade)" stroke="url(#yellow-shade)" stroke-width="5" stroke-linejoin="round">
-    <path id="x-1" stroke-width="10" d="M 212.951,164.622
+  <!-- A soft shadow the pepper casts, so it sits on the page rather than floating flat on it. -->
+  <use href="#outline" transform="translate(6 14)" fill="#000" opacity="0.45" filter="url(#drop)"/>
+  <g filter="url(#volume)">
+    <use href="#outline" fill="url(#skin)"/>
+    <g clip-path="url(#outline-clip)" fill="url(#mark)" stroke="url(#mark)" stroke-width="5" stroke-linejoin="round" opacity="0.9">
+      <path id="x-1" stroke-width="10" d="M 212.951,164.622
       C 206.842,198.498 202.755,231.41 204.444,256.98
       C 183.719,243.356 164.043,229.805 144.587,219.589
       L 120.804,254.441
@@ -100,6 +130,28 @@
       L 650.066,258.319
       C 654.667,233.189 666.773,195.306 671.961,179.07
       C 657.232,161.44 642.723,147.144 623.047,133.593 Z"/>
+  
+    </g>
   </g>
-  <use id="edge" href="#outline" fill="none" stroke="url(#edge-shade)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Gloss: one long streak along the back and a short glint near the tip. -->
+  <g clip-path="url(#outline-clip)" fill="none" stroke-linecap="round">
+    <path filter="url(#soft)" stroke="url(#gloss)" stroke-width="15" d="M 160,265 C 215,212 290,178 370,160 C 445,144 520,156 590,158 C 640,159 678,150 706,124"/>
+    <path filter="url(#soft)" stroke="#fff" stroke-opacity="0.5" stroke-width="7" d="M 118,352 C 121,330 128,310 138,293"/>
+  </g>
+  <use href="#outline" fill="none" stroke="#5A120C" stroke-opacity="0.7" stroke-width="3" stroke-linejoin="round"/>
+  <!-- The calyx and stalk, green, on the shoulder at the lower left; drawn along the pepper's axis there
+       (x into the body, y across it), from the point where the outline ends. -->
+  <g transform="translate(93 465) rotate(-49) scale(1.35)" stroke="#1E3510" stroke-width="3" stroke-linejoin="round">
+    <path fill="url(#stalk-l)" d="M -2,-10 C -20,-12 -38,-6 -50,8 C -57,16 -60,26 -57,34
+      C -51,26 -42,17 -31,12 C -20,8 -10,9 -2,10 Z"/>
+    <path fill="none" stroke="#D6EA9A" stroke-opacity="0.55" stroke-width="3.5" stroke-linecap="round" d="M -8,-6 C -22,-7 -36,-2 -46,9"/>
+    <path fill="#1E3510" stroke="none" opacity="0.5" filter="url(#soft)" d="M 10,-38 C 40,-40 70,-20 82,4 C 66,30 40,44 10,40 Z"/>
+    <path fill="url(#leaf-l)" d="M -6,0
+      C -6,-24 8,-40 24,-44
+      C 40,-48 56,-46 70,-38 C 56,-32 46,-26 38,-18
+      C 52,-16 68,-10 82,-2 C 66,4 52,8 38,10
+      C 48,18 58,28 66,40 C 50,40 36,38 24,40
+      C 8,38 -6,24 -6,0 Z"/>
+    <path fill="none" stroke="#C4DD82" stroke-opacity="0.6" stroke-width="6" stroke-linecap="round" filter="url(#soft)" d="M 4,-22 C 10,-32 20,-38 32,-40"/>
+  </g>
 </svg>

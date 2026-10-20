@@ -37,9 +37,12 @@ h3 { font-size: 1.25rem; line-height: 1.2; }
 .wrap { padding-inline: 20px; }
 header.top { position: sticky; top: 0; z-index: 5; background: rgb(8 6 6 / 0.88); backdrop-filter: blur(6px); border-bottom: 1px solid var(--edge); }
 header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; padding-block: 10px; }
-.brand { font-family: var(--display); font-weight: 700; font-size: 1.45rem; letter-spacing: 0.02em; color: var(--ink); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 0.3em; }
-.brand .logo { height: 1.55em; width: auto; display: block; transform-origin: 50% 50%; }
+/* The pepper and the name, both drawings: the name is Krinkes Decor turned into outlines (wordmark.svg), in the
+   page's ink. The em sets their size, smaller on a phone so the two still fit on one line. */
+.brand { font-size: 1.45rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.3em; }
+.brand .logo { height: 1.8em; width: auto; display: block; transform-origin: 50% 50%; }
+.brand .wordmark { height: 1.55em; width: auto; display: block; }
+@media (max-width: 480px) { .brand { font-size: 1.15rem; } }
 /* The pepper rattles once about its centre, its two ends swinging opposite ways, when the pointer comes
    onto it: most of a second of swings that die away, played again only after the pointer has left. The box around it stays still, so the shaking
    cannot move the pepper out from under the pointer and start it over. */
@@ -65,8 +68,6 @@ header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wr
   95% { transform: rotate(0.3deg); }
 }
 @media (prefers-reduced-motion: reduce) { .brand .pepper:hover .logo { animation: none; } }
-.brand .name { color: var(--ink); min-width: 0; }
-.brand span { color: var(--accent); }
 .hright { margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
 .stamp { color: var(--faint); font: 0.78rem var(--mono); }
 /* The licence (licence.tsx): a button in the stamp's own type beside it, and its text in the method dialog. */
