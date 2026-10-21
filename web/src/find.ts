@@ -354,10 +354,12 @@ export interface Context {
 }
 
 /**
- * The answer to a question. Candidates come from what narrows most: the units every part asked for is on,
- * else the units a part the reader has is on, else those of a family asked for, else every unit (for words
- * alone). Each candidate then passes the filters — sources, type of document, era, the parts and families
- * left out — and is scored: missing parts (fewest first, with "missing at most"), parts had, words found.
+ * The answer to a question. Candidates come from what narrows most: the units every part asked for is on and
+ * that have a part of every family asked for; else the units that use a part the reader has; else every unit
+ * (for words alone). Each candidate then passes the filters — sources, type of document, era, the parts and
+ * families left out — and is scored: missing parts (fewest first, with "missing at most"), parts had, words.
+ * A part a page only names is not one the reader needs: it counts as missing, unless they discount it, and
+ * never as had.
  */
 export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>): Answer {
   const { index, finder: f, row } = c
@@ -384,9 +386,10 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
     fam.forEach((st, p) => { if (st === IS) for (const u of unitsOf(f, p)) s.add(u) })
     narrow(s)
   }
-  if (cand === null && cover) {
+  const fromHave = cand === null && cover !== null
+  if (fromHave) {
     const s = new Set<number>()
-    cover.level.forEach((l, p) => { if (l !== NONE) for (const u of unitsOf(f, p)) s.add(u) })
+    cover!.level.forEach((l, p) => { if (l !== NONE) for (const u of unitsOf(f, p)) s.add(u) })
     narrow(s)
   }
   if (cand === null) {
@@ -416,14 +419,14 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
     if (words.length && (q.require ? found < words.length : found === 0 && !byPartsToo)) continue
     const hit: Hit = { u, missing: 0, have: 0, grade: 0, words: score, found }
     if (cover) {
-      const count = (p: number, named: boolean) => {
+      for (const p of usedParts) {
         const l = cover.level[p]!
         if (l === EXACT || l === SAME || l === SUBST) hit.have++
         else if (l === GRADE) hit.grade++
-        else if (!named || !q.discount) hit.missing++
+        else hit.missing++
       }
-      for (const p of usedParts) count(p, false)
-      for (const p of namedParts) count(p, true)
+      if (!q.discount) for (const p of namedParts) if (cover.level[p] === NONE) hit.missing++
+      if (fromHave && hit.have + hit.grade === 0) continue        // it only names a part the reader has
     }
     if (nofam) {
       // A part that is one rules the unit out; one that might be, or that nothing classifies, or that the
