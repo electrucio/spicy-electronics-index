@@ -535,10 +535,8 @@ function Uses({ page, sources, kinds }: { page: PartPage; sources: string[]; kin
   const built = others.filter((d) => SITE_KINDS.has(kindOf(d)))
   const paper = others.filter((d) => PAPER_KINDS.has(kindOf(d)))
   if (built.length + paper.length + repos.length === 0 && !page.repos?.length && !page.about?.books?.length) return null
-  const find = `?find&need=${encodeURIComponent(page.part)}`
   return (
     <Section title="Usages" anchor="where-used">
-      <p class="small"><a href={find} onClick={(e) => follow(e as unknown as MouseEvent, find)}>Projects that use {page.part} together with other parts →</a></p>
       <Group
         title="Projects and factory schematics" anchor="projects" open
         note="project sites, factory archives and reference works"
@@ -623,6 +621,11 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
       <div class="ptitle">
         <h1>{part}</h1>
         {page?.models?.kind && <span class="chip">{page.models.kind}</span>}
+        {page && page.docs.length > 0 && (
+          <a class="small" href={`?find&need=${encodeURIComponent(part)}`}
+            onClick={(e) => follow(e as unknown as MouseEvent, `?find&need=${encodeURIComponent(part)}`)}>
+            Projects that use it with other parts →</a>
+        )}
       </div>
       {error && <p class="muted">Nothing is published for {part} yet.</p>}
       {!error && !page && <Loading what={`the page of ${part}`} />}

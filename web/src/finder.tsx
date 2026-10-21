@@ -288,7 +288,8 @@ export function FinderPage() {
   const [shown, setShown] = useState(PAGE)
   const [pasting, setPasting] = useState(false)
   const [paste, setPaste] = useState('')
-  const [open, setOpen] = useState(true)
+  // On a phone the question folds into one line when the address already asks one, so the answers show.
+  const [open, setOpen] = useState(() => !(asked(initial) && matchMedia('(max-width: 860px)').matches))
   const [copied, setCopied] = useState(false)
   const [width, setWidth] = useState(savedWidth)
   const host = useRef<HTMLDivElement>(null)
