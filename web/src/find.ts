@@ -43,7 +43,13 @@ export interface Finder {
   /** The same two read backwards: the variants of a type, the bare numbers a maker's name answers for. */
   down: Map<string, string[]>
   aliasOf: Map<string, string[]>
+  /** What documents say one part is to another, and what each relation is worth (`catalogue.COVERAGE`). */
+  relations: Relation[]
+  policy: Record<string, [string, string]>
 }
+
+/** [part, relation, other, refs, note, status], as `data/parts/relations.csv` has it. */
+export type Relation = [string, string, string, string[], string, string]
 
 function runs(lengths: number[], steps: number[]): [Int32Array, Int32Array] {
   const at = new Int32Array(lengths.length + 1)
@@ -91,6 +97,7 @@ export function decode(f: FinderUnits, partCount: number): Finder {
     usedAt, used, namedAt, named, unitsAt, units,
     up: new Map(Object.entries(f.up)), alias: new Map(Object.entries(f.alias)),
     down: backwards(f.up), aliasOf: backwards(f.alias),
+    relations: f.relations ?? [], policy: f.coverage ?? {},
   }
 }
 
@@ -177,37 +184,72 @@ export function familyStates(index: PartIndex, families: Family[], targets: stri
 /* --- what the reader has -------------------------------------------------------------------------- */
 
 /** How a part a document asks for is covered by what the reader has, strongest first. */
-export const NONE = 0, GRADE = 1, SAME = 2, EXACT = 3
-export type Cover = typeof NONE | typeof GRADE | typeof SAME | typeof EXACT
-export type Tier = 'exact' | 'same'
+export const NONE = 0, GRADE = 1, SUBST = 2, SAME = 3, EXACT = 4
+export type Cover = typeof NONE | typeof GRADE | typeof SUBST | typeof SAME | typeof EXACT
+/** How much the reader counts as theirs, each taking in the one before: the same number; its grades, packages
+ *  and makers' names; a substitute a document names; a part like it by the data sheets. */
+export const TIERS = ['exact', 'same', 'substitute', 'similar'] as const
+export type Tier = typeof TIERS[number]
+
+/** Why a part counts as had: the part the reader has, and the relation that says so when one does. */
+export interface Because { from: string; rel?: Relation }
 
 /**
  * Each row of `parts.json` covered by the parts the reader has, and by which of them. EXACT: the part itself.
  * SAME: a grade, package or packing of it the reader has (BC547B covers a sheet asking for BC547), or a
- * maker's name for it (MC7812 for 7812, and the other way). GRADE: the reader has the type, and the sheet
- * asks for one grade of it (BC547 against BC547C): it may do, and the result says so. A sibling grade
- * (BC547A against BC547C) covers nothing. `tier` 'exact' counts only the first.
+ * maker's name for it (MC7812 for 7812, and the other way). SUBST: a part a document names as standing for
+ * it, the way the relation counts (`catalogue.COVERAGE`): LSK170 for 2SK170 and not back, ECC83 and 12AX7
+ * either way. GRADE: the reader has the type, and the sheet asks for one grade of it (BC547 against BC547C):
+ * it may do, and the result says so. A sibling grade, or a part in the same data sheet, covers nothing; the
+ * second is said as a hint. Nothing is chained: a replacement for a replacement is not one.
  */
 export function coverage(index: PartIndex, f: Finder, have: string[], tier: Tier):
-  { level: Uint8Array; by: Map<number, string> } {
+  { level: Uint8Array; by: Map<number, Because>; hints: Map<number, string[]> } {
   const row = new Map(index.parts.map((r, i) => [r[0], i]))
   const level = new Uint8Array(index.parts.length)
-  const by = new Map<number, string>()
-  const mark = (name: string, l: Cover, from: string) => {
+  const by = new Map<number, Because>()
+  const hints = new Map<number, string[]>()
+  const mark = (name: string, l: Cover, because: Because) => {
     const i = row.get(name)
     if (i === undefined || level[i]! >= l) return
     level[i] = l
-    by.set(i, from)
+    by.set(i, because)
   }
+  const rank = TIERS.indexOf(tier)
+  const owned = new Set(have)
   for (const x of have) {
-    mark(x, EXACT, x)
-    if (tier === 'exact') continue
-    for (const t of f.up.get(x) ?? []) mark(t, SAME, x)
-    for (const t of f.alias.get(x) ?? []) mark(t, SAME, x)
-    for (const t of f.aliasOf.get(x) ?? []) mark(t, SAME, x)
-    for (const t of f.down.get(x) ?? []) mark(t, GRADE, x)
+    mark(x, EXACT, { from: x })
+    if (rank < 1) continue
+    for (const t of f.up.get(x) ?? []) mark(t, SAME, { from: x })
+    for (const t of f.alias.get(x) ?? []) mark(t, SAME, { from: x })
+    for (const t of f.aliasOf.get(x) ?? []) mark(t, SAME, { from: x })
+    for (const t of f.down.get(x) ?? []) mark(t, GRADE, { from: x })
   }
-  return { level, by }
+  // A hint names a group: one data sheet for several parts, whose rows all name the sheet's first part with
+  // the same reference. Every member the reader has is said beside the others. Linear in the relations,
+  // which a comparison of data sheets will make many.
+  const groups = new Map<string, Set<string>>()
+  for (const rel of f.relations) {
+    const [part, relation, other, refs] = rel
+    const [way, from] = f.policy[relation] ?? ['', 'hint']
+    if (from === 'hint') {
+      const key = `${relation}|${other}|${refs.join(' ')}`
+      groups.set(key, (groups.get(key) ?? new Set([other])).add(part))
+      continue
+    }
+    if (TIERS.indexOf(from as Tier) < 0 || rank < TIERS.indexOf(from as Tier)) continue
+    if (owned.has(part)) mark(other, SUBST, { from: part, rel })
+    if (way === 'both' && owned.has(other)) mark(part, SUBST, { from: other, rel })
+  }
+  for (const members of groups.values()) {
+    const mine = [...members].filter((m) => owned.has(m))
+    if (!mine.length) continue
+    for (const m of members) {
+      const i = row.get(m)
+      if (i !== undefined && !owned.has(m)) hints.set(i, [...new Set([...(hints.get(i) ?? []), ...mine])])
+    }
+  }
+  return { level, by, hints }
 }
 
 /* --- the question ------------------------------------------------------------------------------------ */
@@ -376,7 +418,7 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
     if (cover) {
       const count = (p: number, named: boolean) => {
         const l = cover.level[p]!
-        if (l === EXACT || l === SAME) hit.have++
+        if (l === EXACT || l === SAME || l === SUBST) hit.have++
         else if (l === GRADE) hit.grade++
         else if (!named || !q.discount) hit.missing++
       }
@@ -448,7 +490,7 @@ export function readQuery(search: string): Query & { shared: string[] } {
     dropped: new Set(list(p.get('nosrc'))),
     roles: p.get('role') ? new Set(list(p.get('role'))) : null,
     eras: p.get('era') ? new Set(list(p.get('era'))) : null,
-    tier: p.get('tier') === 'exact' ? 'exact' : 'same',
+    tier: (TIERS as readonly string[]).includes(p.get('tier') ?? '') ? p.get('tier') as Tier : 'same',
     miss: p.has('miss') && Number.isInteger(miss) && miss >= 0 ? miss : Infinity,
     discount: p.get('all') === '0',
     sort: sort && ['best', 'missing', 'newest', 'oldest'].includes(sort) ? sort : 'best',

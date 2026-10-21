@@ -30,6 +30,7 @@ from collections import defaultdict
 import yaml
 
 from spicy_electronics_index.core.config import schematics_registry
+from spicy_electronics_index.core.parts import catalogue
 from spicy_electronics_index.core.words import shard_of, words
 from spicy_electronics_index.web.parts import (
     REPO_HOST,
@@ -272,6 +273,11 @@ def payloads(idx: dict, names: list[str], facets: list[dict], sources_stamp: str
         "facets": menu, "moreFacets": more_facets,
         "eras": [era.get(s, "") for s in idx["sources"]],
         "units": col, "up": up, "alias": alias,
+        # What a document says one part is to another, by name — a part the reader has may be in no document
+        # here (TL072H) and still do for one that is — and what each relation is worth (catalogue.COVERAGE).
+        "relations": [[r["part"], r["relation"], r["other"], r["refs"].split(), r["note"], r["status"]]
+                      for r in catalogue.relations()],
+        "coverage": {k: list(v) for k, v in catalogue.COVERAGE.items()},
         "shards": sorted(shards), "common": common,
     }
     docs_payload = {"schema": SCHEMA, "findStamp": find_stamp, **docs, "also": also, "aka": aka, "sheets": sheets}

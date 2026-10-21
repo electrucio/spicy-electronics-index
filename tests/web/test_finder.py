@@ -195,3 +195,13 @@ def test_a_split_too_big_is_split_again_by_three_letters(data, monkeypatch):
     names = sorted(idx["uses"])
     units, _, shards = F.payloads(idx, names, P.usage_facets(idx)[0], "ss", F.stamp_of(*names))
     assert "jfe" in units["shards"] and "jf" not in units["shards"] and set(shards) == set(units["shards"])
+
+
+def test_the_relations_travel_by_name_with_what_each_is_worth(data):
+    (data / "parts").mkdir(exist_ok=True)
+    (data / "parts" / "relations.csv").write_text(
+        "part,relation,other,refs,note,status\n"
+        "LSK170,replacement_for,2SK170,S32,\"Linear Systems: a direct replacement\",draft\n", encoding="utf-8")
+    units = build(data)[3]
+    assert units["relations"] == [["LSK170", "replacement_for", "2SK170", ["S32"], "Linear Systems: a direct replacement", "draft"]]
+    assert units["coverage"]["replacement_for"] == ["out", "substitute"]

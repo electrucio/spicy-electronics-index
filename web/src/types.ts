@@ -101,6 +101,10 @@ export interface FinderUnits {
   /** the splits of the word index the build wrote (`find/w/<key>.json.gz`), and the words left out of it */
   shards: string[]
   common: string[]
+  /** what a document says one part is to another, by name: [part, relation, other, refs, note, status] */
+  relations?: [string, string, string, string[], string, string][]
+  /** what each relation is worth to a reader who has one of the parts: [which way, from what strictness] */
+  coverage?: Record<string, [string, string]>
 }
 
 /** `find/docs.json.gz`: what a unit's result shows, by the same position. */

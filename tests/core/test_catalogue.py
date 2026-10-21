@@ -64,3 +64,13 @@ def test_the_vfets_are_static_induction_transistors():
         assert catalogue.family_of(part, KIND_MAP["sit"]) == ("sit", "documented"), part
     assert catalogue.family_for(KIND_MAP["sit"]) == "sit"
     assert "fet" in catalogue.lineage("sit")
+
+
+def test_every_relation_says_what_it_is_worth_to_a_reader_who_has_one_of_the_parts(monkeypatch):
+    """A new kind of relation — one a comparison of data sheets will bring — is not counted until it says
+    which way it counts and from what strictness."""
+    assert set(catalogue.COVERAGE) == set(catalogue.RELATIONS)
+    assert catalogue.COVERAGE["same_product_as"][0] == "both" and catalogue.COVERAGE["replacement_for"][0] == "out"
+    assert catalogue.COVERAGE["same_datasheet"][1] == "hint"
+    monkeypatch.setattr(catalogue, "RELATIONS", (*catalogue.RELATIONS, "similar_to"))
+    assert any("similar_to" in line and "COVERAGE" in line for line in catalogue.check())

@@ -10,11 +10,11 @@
  */
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 
-import { useCatalogue } from './about'
+import { relationWords, useCatalogue } from './about'
 import { follow, loadFinder, loadIndex, reloadIndex } from './data'
 import {
-  AFTER, EXACT, GRADE, SAME, SCHEMATIC, answer, asked, coverage, decode, fold, holds, lineage, pasted, readQuery, resolver,
-  sameBuild, termOf, writeQuery, type Context, type Hit, type Query, type Sort,
+  AFTER, EXACT, GRADE, SAME, SCHEMATIC, SUBST, answer, asked, coverage, decode, fold, holds, lineage, pasted, readQuery,
+  resolver, sameBuild, termOf, writeQuery, type Context, type Hit, type Query, type Sort, type Tier,
 } from './find'
 import { forViewer } from './links'
 import { Loading } from './loading'
@@ -48,6 +48,14 @@ function saveHave(have: string[]) {
 
 const add = (xs: string[], x: string) => (xs.includes(x) ? xs : [...xs, x])
 const drop = (xs: string[], x: string) => xs.filter((y) => y !== x)
+
+/** The strictness a reader can choose: the four, the last only when some relation is a comparison of data sheets. */
+function tiers(units: FinderUnits): [Tier, string][] {
+  const out: [Tier, string][] = [['exact', 'the same number only'], ['same', 'also its grades, packages and makers’ names'],
+    ['substitute', 'also a substitute a document names']]
+  if (Object.values(units.coverage ?? {}).some(([, from]) => from === 'similar')) out.push(['similar', 'also a part like it by the data sheets'])
+  return out
+}
 
 /** A condition: what it says, and a button that takes it away. */
 function Chip({ label, from, onRemove, warn }: { label: string; from: string; onRemove: () => void; warn?: string }) {
@@ -168,10 +176,17 @@ function markOf(p: number, named: boolean, cover: ReturnType<typeof coverage> | 
   if (cover) {
     const l = cover.level[p] ?? 0
     const by = cover.by.get(p)
+    const name = index.parts[p]?.[0] ?? ''
     if (l === EXACT) return { cls: 'have', sign: '✓', why: `you have it · ${said}` }
-    if (l === SAME) return { cls: 'have', sign: '✓', why: `you have ${by}, the same part · ${said}` }
-    if (l === GRADE) return { cls: 'grade', sign: '?', why: `you have ${by}; this asks for one grade of it · ${said}` }
-    if (!named) return { cls: 'miss', sign: '✗', why: `you do not have it · ${said}` }
+    if (l === SAME) return { cls: 'have', sign: '✓', why: `you have ${by?.from}, the same part · ${said}` }
+    if (l === SUBST && by?.rel) {
+      const [part, relation, , refs, note, status] = by.rel
+      const words = relationWords(relation, part === by.from ? 'out' : 'in')
+      return { cls: 'have subst', sign: '≈', why: `you have ${by.from}, ${words} ${name}: ${note || relation} (${refs.join(' ')}${status === 'draft' ? ', not yet reviewed' : ''}) · ${said}` }
+    }
+    if (l === GRADE) return { cls: 'grade', sign: '?', why: `you have ${by?.from}; this asks for one grade of it · ${said}` }
+    const hint = cover.hints.get(p)
+    if (!named) return { cls: 'miss', sign: '✗', why: `you do not have it${hint ? ` — you have ${hint.join(', ')}, documented in one data sheet with it, which is not the same part` : ''} · ${said}` }
   }
   return named ? { cls: 'named', sign: '', why: `only named on this page, not used · ${said}` } : { cls: '', sign: '', why: said }
 }
@@ -408,7 +423,7 @@ export function FinderPage() {
               </div>
             )}
             <Radios name="tier" legend="Count as mine" value={q.tier} onChange={(tier) => set((o) => ({ ...o, tier }))}
-              options={[['exact', 'the same number only'], ['same', 'also its grades, packages and makers’ names']]} />
+              options={tiers(files.units)} />
             <label class="srcbox small">
               <input type="checkbox" checked={q.discount} onChange={() => set((o) => ({ ...o, discount: !o.discount }))} />
               <span>Do not count a part a page only names as missing</span>

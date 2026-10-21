@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest'
 
 import {
-  AFTER, EMPTY, EXACT, GRADE, IS, MIGHT, NONE, NOT, SAME, UNKNOWN, answer, asked, coverage, decode, familyStates, fold,
+  AFTER, EMPTY, EXACT, GRADE, IS, MIGHT, NONE, NOT, SAME, SUBST, UNKNOWN, answer, asked, coverage, decode, familyStates, fold,
   holds, pasted, readQuery, resolver, sameBuild, termOf, writeQuery,
   type Context, type Query,
 } from './find'
@@ -34,6 +34,10 @@ const ROWS: PartRow[] = [
   ['BC547C', 9, 3, 1, 0, at('bjt')],      // 7
   ['TL072', 9, 3, 1, 0, at('opamp')],     // 8
   ['TL072CP', 9, 3, 0, 0, at('opamp')],   // 9
+  ['2SK170', 2, 1, 1, 0, at('jfet')],     // 10
+  ['LSK170', 2, 1, 1, 0, at('jfet')],     // 11
+  ['TL071', 2, 1, 1, 0, at('opamp')],     // 12
+  ['ECC83', 2, 1, 1, 0, at('tube')],      // 13
 ]
 const INDEX: PartIndex = { schema: 1, sources: ['esp', 'mag'], kinds: ['site', 'magazine'], deviceKinds: [],
   families: FAM, parts: ROWS, partsStamp: 'p1', sourcesStamp: 's1' }
@@ -53,6 +57,14 @@ const UNITS: FinderUnits = {
   },
   up: { BC547B: ['BC547'], BC547C: ['BC547'], TL072CP: ['TL072'] },
   alias: {}, shards: [], common: [],
+  relations: [
+    ['LSK170', 'replacement_for', '2SK170', ['S32'], 'Linear Systems: a direct replacement', 'draft'],
+    ['ECC83', 'same_product_as', '12AX7', ['S18'], 'JJ sells one valve as ECC83S, 12AX7 and 7025', 'draft'],
+    ['TL071', 'same_datasheet', 'TL071', ['S27'], 'one sheet', 'draft'],
+    ['TL072', 'same_datasheet', 'TL071', ['S27'], 'one sheet', 'draft'],
+  ],
+  coverage: { same_product_as: ['both', 'substitute'], replacement_for: ['out', 'substitute'], next_generation_of: ['out', 'substitute'],
+    same_datasheet: ['both', 'hint'] },
 }
 const DOCS: FinderDocs = {
   schema: 1, findStamp: 'f1',
@@ -101,6 +113,20 @@ describe('coverage', () => {
     expect(level[8]).toBe(SAME)       // TL072CP covers TL072
     expect(coverage(INDEX, finder, ['BC547'], 'same').level[7]).toBe(GRADE)
     expect(coverage(INDEX, finder, ['BC547B'], 'exact').level[5]).toBe(NONE)
+  })
+  it('counts a substitute a document names only from that strictness, only the way the relation runs', () => {
+    expect(coverage(INDEX, finder, ['LSK170'], 'same').level[10]).toBe(NONE)
+    const sub = coverage(INDEX, finder, ['LSK170'], 'substitute')
+    expect(sub.level[10]).toBe(SUBST)                                    // LSK170 does for a 2SK170
+    expect(sub.by.get(10)?.rel?.[1]).toBe('replacement_for')
+    expect(coverage(INDEX, finder, ['2SK170'], 'substitute').level[11]).toBe(NONE)   // and not back
+    expect(coverage(INDEX, finder, ['ECC83'], 'substitute').level[0]).toBe(SUBST)    // the same product, either way
+    expect(coverage(INDEX, finder, ['12AX7'], 'substitute').level[13]).toBe(SUBST)
+  })
+  it('says a part in the same data sheet beside the one asked for, and never counts it', () => {
+    const c = coverage(INDEX, finder, ['TL072'], 'similar')
+    expect(c.level[12]).toBe(NONE)
+    expect(c.hints.get(12)).toEqual(['TL072'])
   })
 })
 
