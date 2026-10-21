@@ -11,7 +11,7 @@
  * family at all. Only a unit with no part that is or might be one is listed as without it; the others are
  * set apart with the reason, since a wrong answer here is a circuit the reader cannot build.
  */
-import type { Family, FinderDocs, FinderUnits, PartIndex } from './types'
+import type { Family, FinderDocs, FinderUnits, PartIndex, UsageFacet } from './types'
 import { foldText, words as wordsOf } from './words'
 
 /** Flags of a unit (`finder.py`). */
@@ -255,6 +255,9 @@ export function coverage(index: PartIndex, f: Finder, have: string[], tier: Tier
 /* --- the question ------------------------------------------------------------------------------------ */
 
 export type Sort = 'best' | 'missing' | 'newest' | 'oldest'
+/** How the results are laid out: by source, the way a part's page lists its usages; by how many parts are
+ *  missing; or as one ranked list. */
+export type Group = 'source' | 'missing' | 'none'
 
 export interface Query {
   have: string[]
@@ -273,11 +276,12 @@ export interface Query {
   miss: number
   discount: boolean
   sort: Sort
+  group: Group
 }
 
 export const EMPTY: Query = {
   have: [], need: [], out: [], fam: [], nofam: [], words: [], require: false, summaries: true, dropped: new Set(),
-  roles: null, eras: null, tier: 'same', miss: Infinity, discount: false, sort: 'best',
+  roles: null, eras: null, tier: 'same', miss: Infinity, discount: false, sort: 'best', group: 'source',
 }
 
 export function asked(q: Query): boolean {
@@ -304,8 +308,6 @@ export interface Answer {
   hits: Hit[]
   /** units set apart because a part on them is or might be of a family left out, with the reason */
   maybe: Hit[]
-  /** how many units passed every filter before "missing at most" */
-  total: number
 }
 
 /** The words of a title, folded the way a reader types: lower case, no accents. */
@@ -345,9 +347,12 @@ export interface Context {
   row: Map<string, number>
   facetKeys: string[]
   roles: string[]
-  /** each source's era, by position in `parts.json` sources, and each unit's source */
+  /** each source's era, by position in `parts.json` sources, and each unit's source and address */
   eras: string[]
   source: number[]
+  url: string[]
+  /** the usage filter's menu the units name their facets by */
+  facets: UsageFacet[]
   families: Family[]
   /** the words of each unit's title and of its other titles (`words.ts`) */
   titleWords: Set<string>[]
@@ -356,8 +361,9 @@ export interface Context {
 /**
  * The answer to a question. Candidates come from what narrows most: the units every part asked for is on and
  * that have a part of every family asked for; else the units that use a part the reader has; else every unit
- * (for words alone). Each candidate then passes the filters — sources, type of document, era, the parts and
- * families left out — and is scored: missing parts (fewest first, with "missing at most"), parts had, words.
+ * (for words alone). Each candidate then passes the parts and families left out and is scored: missing parts
+ * (fewest first, with "missing at most"), parts had, words. Sources, type of document and era are left to
+ * `where`, which counts what each of them would keep.
  * A part a page only names is not one the reader needs: it counts as missing, unless they discount it, and
  * never as had.
  */
@@ -378,7 +384,7 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
   }
   for (const p of q.need) {
     const i = row.get(p)
-    if (i === undefined) return { hits: [], maybe: [], total: 0 }
+    if (i === undefined) return { hits: [], maybe: [] }
     narrow(unitsOf(f, i))
   }
   if (fam) {
@@ -393,19 +399,14 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
     narrow(s)
   }
   if (cand === null) {
-    if (!words.length) return { hits: [], maybe: [], total: 0 }
+    if (!words.length) return { hits: [], maybe: [] }
     cand = Array.from({ length: f.n }, (_, i) => i)
   }
   const byPartsToo = cover !== null || q.need.length > 0 || fam !== null
 
   const hits: Hit[] = []
   const maybe: Hit[] = []
-  let total = 0
   for (const u of cand as number[]) {
-    // sources, type of document, era
-    if (q.dropped.size && [f.facet[u]!, ...(f.more.get(u) ?? [])].every((i) => q.dropped.has(c.facetKeys[i] ?? ''))) continue
-    if (q.roles && !q.roles.has(c.roles[f.role[u]!] ?? '')) continue
-    if (q.eras && !q.eras.has(c.eras[c.source[u]!] ?? '')) continue
     if (f.kinds[u]! && (f.kinds[u]! & ~NAMED_ONLY_MASK) === 0) continue          // every use only names or sells it
     const usedParts = f.used.subarray(f.usedAt[u]!, f.usedAt[u + 1]!)
     const namedParts = f.named.subarray(f.namedAt[u]!, f.namedAt[u + 1]!)
@@ -439,18 +440,95 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
       if (doubt.length || next.length) {
         hit.doubt = [...new Set([...doubt, ...next])]
         if (next.length) hit.nextDoor = [...new Set(next)]
-        total++
         if (hit.missing <= q.miss) maybe.push(hit)
         continue
       }
     }
-    total++
     if (hit.missing <= q.miss) hits.push(hit)
   }
   const order = sorter(q, f, cover !== null)
   hits.sort(order)
   maybe.sort(order)
-  return { hits, maybe, total }
+  return { hits, maybe }
+}
+
+/** What the sources, types of document and eras keep of an answer, and what each of them holds of it. */
+export interface Kept {
+  hits: Hit[]
+  maybe: Hit[]
+  /** results by facet (a source, a magazine's decade, a book), by type of document and by era. Each is counted
+   *  with the other two filters and not its own, so a source left out still says how many it would add. */
+  facets: Map<number, number>
+  roles: Map<string, number>
+  eras: Map<string, number>
+  /** for each word of the search: results with it in the title, and results with it only in a summary */
+  words: { term: string; titles: number; summaries: number }[]
+}
+
+/** The facets a unit counts under: its own source's, and the other copies'. */
+export function facetsOf(f: Finder, u: number): number[] {
+  return [f.facet[u]!, ...(f.more.get(u) ?? [])]
+}
+
+/** An answer kept to the sources, types of document and eras asked for, with what each would keep. */
+export function where(a: Answer, q: Query, c: Context, summary?: Map<string, Set<number>>): Kept {
+  const f = c.finder
+  const inSources = (u: number) => !q.dropped.size || facetsOf(f, u).some((i) => !q.dropped.has(c.facetKeys[i] ?? ''))
+  const inRoles = (u: number) => !q.roles || q.roles.has(c.roles[f.role[u]!] ?? '')
+  const inEras = (u: number) => !q.eras || q.eras.has(c.eras[c.source[u]!] ?? '')
+  const facets = new Map<number, number>()
+  const roles = new Map<string, number>()
+  const eras = new Map<string, number>()
+  const bump = <K>(m: Map<K, number>, k: K) => m.set(k, (m.get(k) ?? 0) + 1)
+  const hits: Hit[] = []
+  for (const h of a.hits) {
+    const s = inSources(h.u), r = inRoles(h.u), e = inEras(h.u)
+    if (r && e) for (const i of facetsOf(f, h.u)) bump(facets, i)
+    if (s && e) bump(roles, c.roles[f.role[h.u]!] ?? '')
+    if (s && r) bump(eras, c.eras[c.source[h.u]!] ?? '')
+    if (s && r && e) hits.push(h)
+  }
+  const said = q.summaries ? summary : undefined
+  const words = q.words.map(termOf).filter(Boolean).map((term) => {
+    let titles = 0, summaries = 0
+    for (const h of hits) {
+      if (holds(c.titleWords[h.u] ?? new Set(), term)) titles++
+      else if (said?.get(term)?.has(h.u)) summaries++
+    }
+    return { term, titles, summaries }
+  })
+  return { hits, maybe: a.maybe.filter((h) => inSources(h.u) && inRoles(h.u) && inEras(h.u)), facets, roles, eras, words }
+}
+
+/** `owner/repo` of a GitHub address, or null. */
+export function repoOf(url: string): string | null {
+  const m = /^https:\/\/github\.com\/([^/]+)\/([^/]+)/.exec(url)
+  return m ? `${m[1]}/${m[2]}` : null
+}
+
+export interface SourceGroup { key: string; label: string; hits: Hit[] }
+export interface KindGroup { group: UsageFacet['group']; sources: SourceGroup[] }
+
+/**
+ * Results laid out as a part's page lays out its usages: by kind of source (what somebody built, what a
+ * magazine or a book printed, the boards on GitHub), then by source — a book by its title, a board by its
+ * repository. The order is the results': a source comes where its best result does, and keeps its results in
+ * the order they were ranked.
+ */
+export function bySource(hits: Hit[], facetOf: (u: number) => UsageFacet | undefined, urlOf: (u: number) => string): KindGroup[] {
+  const out = new Map<UsageFacet['group'], Map<string, SourceGroup>>([['projects', new Map()], ['paper', new Map()], ['github', new Map()]])
+  for (const h of hits) {
+    const facet = facetOf(h.u)
+    const group = facet?.group ?? 'projects'
+    const repo = group === 'github' ? repoOf(urlOf(h.u)) : null
+    const [key, label] = repo ? [`gh:${repo}`, repo]
+      : facet?.by === 'title' ? [facet.key, facet.label ?? facet.source] : [facet?.source ?? '?', facet?.source ?? '?']
+    const sources = out.get(group)!
+    const at = sources.get(key)
+    if (at) at.hits.push(h)
+    else sources.set(key, { key, label, hits: [h] })
+  }
+  return [...out.entries()].filter(([, m]) => m.size).map(([group, m]) => ({ group, sources: [...m.values()] }))
 }
 
 /** The pages before and after a page of an issue, when the index holds them. */
@@ -476,7 +554,7 @@ export function sorter(q: Query, f: Finder, owned: boolean): (a: Hit, b: Hit) =>
 
 /* --- the address ---------------------------------------------------------------------------------- */
 
-const OURS = ['find', 'need', 'out', 'fam', 'nofam', 'q', 'req', 'sum', 'nosrc', 'role', 'era', 'tier', 'miss', 'sort', 'have', 'all']
+const OURS = ['find', 'need', 'out', 'fam', 'nofam', 'q', 'req', 'sum', 'nosrc', 'role', 'era', 'tier', 'miss', 'sort', 'group', 'have', 'all']
 
 const list = (v: string | null) => (v ?? '').split(',').map((s) => s.trim()).filter(Boolean)
 
@@ -497,6 +575,7 @@ export function readQuery(search: string): Query & { shared: string[] } {
     miss: p.has('miss') && Number.isInteger(miss) && miss >= 0 ? miss : Infinity,
     discount: p.get('all') === '0',
     sort: sort && ['best', 'missing', 'newest', 'oldest'].includes(sort) ? sort : 'best',
+    group: p.get('group') === 'missing' ? 'missing' : p.get('group') === 'none' ? 'none' : 'source',
     shared: list(p.get('have')),
   }
 }
@@ -525,6 +604,7 @@ export function writeQuery(search: string, q: Query, share = false): string {
   if (Number.isFinite(q.miss)) keep.push(`miss=${q.miss}`)
   if (q.discount) keep.push('all=0')
   if (q.sort !== 'best') keep.push(`sort=${q.sort}`)
+  if (q.group !== 'source') keep.push(`group=${q.group}`)
   if (share && q.have.length) keep.push(`have=${enc(q.have)}`)
   return `?${keep.join('&')}`
 }

@@ -625,6 +625,9 @@ details.fblock > summary .count { margin-left: auto; font-weight: 400; overflow:
 .fchip button { all: unset; cursor: pointer; padding: 0 6px; border-radius: 999px; color: var(--faint); font: 1rem var(--body); line-height: 1; }
 .fchip button:hover, .fchip button:focus-visible { color: var(--ink); background: var(--accent-soft); }
 .fadd { position: relative; }
+.faddrow { display: flex; gap: 6px; }
+.faddrow button { flex: none; font: inherit; font-size: 0.86rem; padding: 4px 12px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sunken); color: var(--ink); cursor: pointer; }
+.faddrow button:disabled { color: var(--faint); cursor: default; }
 .fadd input { width: 100%; font: inherit; font-size: 0.92rem; padding: 6px 9px; border: 1px solid var(--rule); border-radius: 4px; background: var(--ground); color: var(--ink); }
 .fsugg { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
 .fsugg button { font: 0.82rem var(--mono); padding: 2px 8px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sunken); color: var(--link); cursor: pointer; }
@@ -634,6 +637,14 @@ fieldset.fticks { display: grid; gap: 1px; }
 fieldset.fradios legend, fieldset.fticks legend { font: 600 0.74rem var(--body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); padding: 0; margin-bottom: 2px; }
 fieldset.fradios label { display: inline-flex; gap: 5px; align-items: baseline; cursor: pointer; }
 fieldset.fradios input, fieldset.fticks input { accent-color: var(--accent); }
+.fwords { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+/* The source menu, whole in the Projects tab: sources with no result of the search folded at the end. */
+details.srcempty > summary { cursor: pointer; padding: 2px 0; }
+details.srcempty[open] > summary { margin-bottom: 2px; }
+.fquery .srcgroup:first-of-type { padding-top: 0; }
+/* A book's title or a repository keeps its case in the results, as a part's page keeps a repository's. */
+details.uses.lv2.keep > summary strong { font: 600 0.92rem var(--body); text-transform: none; letter-spacing: 0; color: var(--ink); }
+.fsource { padding: 4px 0 6px; }
 .fpaste { display: grid; gap: 6px; }
 .fpaste textarea { font: 0.88rem var(--mono); padding: 6px 8px; border: 1px solid var(--rule); border-radius: 4px; background: var(--ground); color: var(--ink); resize: vertical; }
 .fpaste button, .fresults .more { justify-self: start; }
