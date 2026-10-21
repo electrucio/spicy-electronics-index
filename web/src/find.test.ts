@@ -76,7 +76,7 @@ const DOCS: FinderDocs = {
 const finder = decode(UNITS, ROWS.length)
 const ctx: Context = {
   index: INDEX, finder, row: new Map(ROWS.map((r, i) => [r[0], i])), facetKeys: UNITS.facets.map((f) => f.key),
-  roles: UNITS.roles, eras: UNITS.eras, source: DOCS.source, url: DOCS.url, facets: UNITS.facets, families: FAMILIES,
+  url: DOCS.url, facets: UNITS.facets, families: FAMILIES,
   titleWords: DOCS.title.map((t) => new Set(words(t))),
 }
 /** The answer as the page shows it: what the parts and words find, kept to the sources, types and eras. */
@@ -181,19 +181,13 @@ describe('answer', () => {
     expect(titles(ask({ have: ['12AX7', '2N3904'], words: ['bassman'] }).hits)[0]).toBe('Bassman preamp')
     expect(titles(ask({ have: ['12AX7', '2N3904'], words: ['bassman'], require: true }).hits)).toEqual(['Bassman preamp'])
   })
-  it('keeps to the sources, types of document and eras asked for', () => {
+  it('keeps to the sources asked for', () => {
     expect(titles(ask({ fam: ['bjt'], dropped: new Set(['esp']) }).hits)).toEqual(['Mag 1975-02'])
-    expect(titles(ask({ fam: ['bjt'], roles: new Set(['issue']) }).hits)).toEqual(['Mag 1975-02'])
-    expect(titles(ask({ fam: ['bjt'], eras: new Set(['mixed']) }).hits)).toEqual(['Fuzz Face clone', 'Mystery box'])
   })
-  it('counts what each source, type and era holds, each without its own filter', () => {
-    // bjt: the fuzz and the mystery box on esp (mixed), the issue's page 1 on mag (vintage)
+  it('counts what each source holds, ticked or not', () => {
+    // bjt: the fuzz and the mystery box on esp, the issue's page 1 on mag
     const k = ask({ fam: ['bjt'], dropped: new Set(['esp']) })
     expect([k.facets.get(0), k.facets.get(1)]).toEqual([2, 1])         // esp, left out, says what it would add
-    expect([...k.roles.entries()].sort()).toEqual([['issue', 1]])       // the other two filters still apply
-    const r = ask({ fam: ['bjt'], roles: new Set(['issue']) })
-    expect([...r.roles.entries()].sort()).toEqual([['issue', 1], ['project_page', 1], ['schematic', 1]])
-    expect([...ask({ fam: ['bjt'], eras: new Set(['mixed']) }).eras.entries()].sort()).toEqual([['mixed', 2], ['vintage', 1]])
   })
   it('says how many results hold each word, in a title or only in a summary', () => {
     const said = new Map([['buffer', new Set([2, 5])]])
@@ -247,19 +241,22 @@ describe('parts as typed', () => {
 describe('the address', () => {
   it('writes the question and reads it back, leaving other parameters alone', () => {
     const q: Query = { ...EMPTY, need: ['TL072', 'ADC121C027CIMK/NOPB'], nofam: ['jfet'], words: ['wah', 'fender'], require: true, summaries: false,
-      dropped: new Set(['mag/1970s']), roles: new Set(['issue']), eras: new Set(['modern']), tier: 'exact', miss: 1, sort: 'newest',
+      dropped: new Set(['mag/1970s']), tier: 'exact', miss: 1, sort: 'newest',
       group: 'missing', have: ['BC547B'] }
     const s = writeQuery('?x=1', q)
     expect(s.startsWith('?x=1&find')).toBe(true)
     expect(s).not.toContain('have=')                                           // what the reader has stays theirs
     const back = readQuery(s)
     expect(back.need).toEqual(['TL072', 'ADC121C027CIMK/NOPB'])
-    expect([back.nofam, back.words, back.require, back.summaries, [...back.dropped], [...back.roles!], back.tier, back.miss, back.sort])
-      .toEqual([['jfet'], ['wah', 'fender'], true, false, ['mag/1970s'], ['issue'], 'exact', 1, 'newest'])
+    expect([back.nofam, back.words, back.require, back.summaries, [...back.dropped], back.tier, back.miss, back.sort])
+      .toEqual([['jfet'], ['wah', 'fender'], true, false, ['mag/1970s'], 'exact', 1, 'newest'])
     expect(back.group).toBe('missing')
     expect(readQuery(writeQuery('', { ...q, group: 'source' })).group).toBe('source')
     expect(writeQuery('', { ...q, group: 'source' })).not.toContain('group=')
     expect(readQuery(writeQuery('', q, true)).shared).toEqual(['BC547B'])
     expect(readQuery('?find').miss).toBe(Infinity)
+  })
+  it('drops the type and era filters an older address asks for', () => {
+    expect(writeQuery('?find&role=issue&era=modern&x=1', { ...EMPTY, need: ['TL072'] })).toBe('?x=1&find&need=TL072')
   })
 })

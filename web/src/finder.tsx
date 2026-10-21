@@ -30,11 +30,6 @@ const HAVE_KEY = 'sei.find.have'
 /** The last question asked here, for the tab to come back to it from a part's page. */
 export const LAST_KEY = 'sei.find.last'
 
-const ROLE_LABEL: Record<string, string> = {
-  schematic: 'Schematics', project_page: 'Project pages', article: 'Articles', figure: 'Figures',
-  service_manual: 'Service manuals', issue: 'Magazine pages', book: 'Book pages',
-}
-const ERA_LABEL: Record<string, string> = { modern: 'Modern', mixed: 'Mixed', vintage: 'Vintage', '': 'Not said' }
 const SORT_LABEL: Record<Sort, string> = { best: 'Best match', missing: 'Fewest missing', newest: 'Newest first', oldest: 'Oldest first' }
 
 /** The parts the reader keeps here: a convenience of this browser, never sent anywhere. */
@@ -127,32 +122,6 @@ function Radios<T extends string>({ name, legend, value, options, onChange }: {
       <legend>{legend}</legend>
       {options.map(([v, label]) => (
         <label key={v}><input type="radio" name={name} checked={value === v} onChange={() => onChange(v)} /> {label}</label>
-      ))}
-    </fieldset>
-  )
-}
-
-/** Boxes over a set where everything ticked is written as no filter at all (null). */
-function Ticks({ legend, all, kept, label, count, onChange }: {
-  legend: string; all: string[]; kept: Set<string> | null; label: (k: string) => string; count?: (k: string) => number
-  onChange: (kept: Set<string> | null) => void
-}) {
-  const on = (k: string) => !kept || kept.has(k)
-  const toggle = (k: string) => {
-    const next = new Set(kept ?? all)
-    if (next.has(k)) next.delete(k)
-    else next.add(k)
-    onChange(next.size === all.length ? null : next)
-  }
-  return (
-    <fieldset class="fticks">
-      <legend>{legend}</legend>
-      {all.map((k) => (
-        <label key={k} class="srcbox">
-          <input type="checkbox" checked={on(k)} onChange={() => toggle(k)} />
-          <span class="srcname">{label(k)}</span>
-          {count && <span class="count">{n(count(k))}</span>}
-        </label>
       ))}
     </fieldset>
   )
@@ -351,8 +320,7 @@ export function FinderPage() {
   const finder = useMemo(() => (files && index && fresh ? decode(files.units, index.parts.length) : null), [files, index, fresh])
   const ctx = useMemo((): Context | null => (finder && files && index && cat ? {
     index, finder, row: new Map(index.parts.map((r, i) => [r[0], i])), facetKeys: files.units.facets.map((f) => f.key),
-    roles: files.units.roles, eras: files.units.eras, source: files.docs.source, url: files.docs.url,
-    facets: files.units.facets, families: cat.families,
+    url: files.docs.url, facets: files.units.facets, families: cat.families,
     titleWords: files.docs.title.map((t, i) => new Set(wordsOf([t, ...(files.docs.aka[String(i)] ?? [])].join(' · ')))),
   } : null), [finder, files, index, cat])
   // The splits of the word index the search's words fall in, fetched once each, read into each word's units.
@@ -377,8 +345,8 @@ export function FinderPage() {
   const leaveOutOk = (fid: string) => lineage(fid, byId).some((x) => negative.includes(x))
   // A family the finder cannot be trusted to rule out is shown and not used.
   const effective = useMemo(() => ({ ...q, nofam: q.nofam.filter(leaveOutOk) }), [q, byId, negative])
-  // What the parts, families and words answer; then what the sources, types and eras keep of it, with what each
-  // of them holds — two steps, so the source menu can count the results it would add back.
+  // What the parts, families and words answer; then what the sources keep of it, with what each of them holds
+  // — two steps, so the source menu can count the results a source left out would add back.
   const result = useMemo(() => (ctx && asked(effective) ? answer(effective, ctx, said) : null), [ctx, effective, said])
   const kept = useMemo(() => (result && ctx ? where(result, effective, ctx, said) : null), [result, ctx, effective, said])
   const cover = useMemo(() => (ctx && q.have.length ? coverage(ctx.index, ctx.finder, q.have, q.tier) : null), [ctx, q.have, q.tier])
@@ -408,16 +376,8 @@ export function FinderPage() {
   const buildable = owned ? hits.filter((h) => h.missing === 0).length : 0
   const withWords = terms.length ? hits.filter((h) => h.found > 0).length : 0
   const grouping: Group = q.group === 'missing' && !owned ? 'source' : q.group
-  const unitCount = (pick: (u: number) => string) => {
-    const out = new Map<string, number>()
-    for (let u = 0; u < finder!.n; u++) out.set(pick(u), (out.get(pick(u)) ?? 0) + 1)
-    return out
-  }
   const summary = [q.have.length && `${q.have.length} have`, q.need.length + q.fam.length && `${q.need.length + q.fam.length} must`,
     q.out.length + q.nofam.length && `${q.out.length + q.nofam.length} out`, q.words.length && q.words.join(' ')].filter(Boolean).join(' · ')
-  const roleCount = kept?.roles ?? unitCount((u) => files.units.roles[finder!.role[u]!] ?? '')
-  const eraCount = kept?.eras ?? unitCount((u) => files.units.eras[files.docs.source[u]!] ?? '')
-  const eraList = [...new Set(files.units.eras)].sort((a, b) => Object.keys(ERA_LABEL).indexOf(a) - Object.keys(ERA_LABEL).indexOf(b))
   const copyLink = () => {
     const url = `${location.origin}${location.pathname}${writeQuery(location.search, q, true)}`
     navigator.clipboard?.writeText(url).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500) }, () => {})
@@ -531,14 +491,6 @@ export function FinderPage() {
               help={kept ? 'Each says how many results of this search it holds; untick one to leave it out.' : 'Look in the documents of the ticked sources only.'} />
           </Block>
 
-          <Block title="Type and era" open={false}
-            summary={[q.roles && `${q.roles.size} types`, q.eras && [...q.eras].map((e) => ERA_LABEL[e] ?? e).join(', ')].filter(Boolean).join(' · ') || 'all'}>
-            <Ticks legend="Type of document" all={files.units.roles} kept={q.roles} label={(r) => ROLE_LABEL[r] ?? r}
-              count={(r) => roleCount.get(r) ?? 0} onChange={(roles) => set((o) => ({ ...o, roles }))} />
-            <Ticks legend="Era of the source" all={eraList} kept={q.eras} label={(e) => ERA_LABEL[e] ?? e}
-              count={(e) => eraCount.get(e) ?? 0} onChange={(eras) => set((o) => ({ ...o, eras }))} />
-            <p class="small muted">Modern sources print parts still made; the registry says each source’s era.</p>
-          </Block>
         </div>
       </aside>
 
