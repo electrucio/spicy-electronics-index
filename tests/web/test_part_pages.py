@@ -121,6 +121,55 @@ def test_a_makers_catalogue_category_gives_a_kind_when_nothing_nearer_does():
     assert P.kind_of("RN2903", None, {"dictionary": {"RN2903": "mosfet"}, "catalogue_kind": {"RN2903": "bjt"}}) == "mosfet"
 
 
+def test_an_integrated_circuit_is_filed_by_its_function_not_by_the_transistor_it_names():
+    """TI files OPA828 under JFET-input op amps and OPA1664 under bipolar-input ones: both are op-amps, and
+    a reader who asks for no JFET must not lose them, nor keep a JFET Fairchild calls an "N-Channel Switch"."""
+    row = lambda category, title="": [  # noqa: E731
+        "ti_datasheets", "ti", category, "ACTIVE", title, "", "https://t.example/x", "", "2026-10-12", ""]
+    assert P.catalogue_kind([row("Op amps > JFET-input op amps")]) == "opamp"
+    assert P.catalogue_kind([row("Audio", "OPA1664 Bipolar-Input Audio Operational Amplifiers")]) == "opamp"
+    assert P.catalogue_kind([row("Junction FETs", "N-Channel JFET")]) == "jfet"
+    assert P.catalogue_kind([row("", "J105/J106/J107 N-Channel Switch")]) == "jfet/mosfet"
+    assert P.catalogue_kind([row("Timers", "NE555 General-Purpose Single Bipolar Timers")]) == ""
+    assert P.catalogue_kind([row("Precision ADCs", "Single-Supply SAR ADCs with Bipolar Input Ranges")]) == ""
+    # a row that names no device of the menu passes the question to the next one
+    assert P.catalogue_kind([row("Low-side drivers", "Dual high-speed MOSFET driver"), row("MOSFETs")]) == "mosfet"
+
+
+def test_a_source_that_answers_among_what_the_shape_leaves_open_is_taken_over_the_shape():
+    """2N5457 is JEDEC, which the shape cannot tell from a 2N3904; a maker that files it under JFETs, or a
+    library that models it as one, has said which. A source that contradicts the shape changes nothing."""
+    assert P.part_kind("2N5457", {}, {}, {}) == "bjt/jfet/mosfet"
+    assert P.part_kind("2N5457", {}, {}, {"2N5457": "jfet"}) == "jfet"
+    assert P.part_kind("LM393X", {}, {}, {"LM393X": "comparator"}) == "comparator"      # some analogue IC → a comparator
+    assert P.part_kind("2SC1815", {}, {}, {"2SC1815": "mosfet"}) == "bjt"                 # JIS says bipolar; a clash narrows nothing
+    assert P.part_kind("2N5457", {}, {}, {"2N5457": "transistor"}) == "bjt/jfet/mosfet"  # "transistors" says no more
+    assert P.devices_of("2N5457", "bjt/jfet/mosfet", {"modelled": {"2N5457": ("jfet",)}}) == ("jfet",)
+    assert P.devices_of("2N3904", "bjt/jfet/mosfet", {"modelled": {"2N3904": ("bjt", "bjt-ge")}}) == ("bjt",)
+    assert P.devices_of("TL072", "opamp", {"modelled": {"TL072": ("bjt",)}}) == ("opamp",)
+
+
+def test_a_grade_package_or_packing_of_a_decided_type_is_what_its_type_is():
+    """TL072CP is a TL072 in a plastic DIP and BC547BTA a BC547B on tape; LM317L and 6L6GC are parts of their
+    own, so they take nothing from LM317 and 6L6."""
+    recipes = {"TL072": {"kind": "opamp"}, "LM317": {"kind": "regulator"}}
+    typed = P.type_kinds(["TL072CP", "BC547BTA", "LM317L", "6L6GC", "TL072"], recipes, {"BC547": "bjt", "6L6": "tube"})
+    assert typed == {"TL072CP": "opamp", "BC547BTA": "bjt"}
+    assert P.part_kind("TL072CP", recipes, {}, {}, typed) == "opamp"
+    assert P.kind_of("TL072CP", None, {"type_kind": typed}) == "opamp"
+    assert P.part_kind("LM317L", recipes, {}, {}, typed) == "opamp/ic"      # its own shape, as before
+
+
+def test_a_pro_electron_transistor_letter_does_not_say_which_transistor():
+    """The letters say what a device was designed for: BF245 is a JFET and BC548 a bipolar transistor, both
+    "transistor, low power" (pro-electron.yaml). Only a source says which."""
+    assert P.shape_kind("BF245") == "bjt/jfet/mosfet"
+    assert P.part_kind("BF861", {}, {}, {}) == "bjt/jfet/mosfet"
+    assert P.part_kind("BF245", {}, {}, {"BF245": "jfet"}) == "jfet"
+    assert P.part_kind("BC548", {}, {"BC548": "bjt"}, {}) == "bjt"
+    assert P.shape_kind("BZX55C5V6") == "diode/zener"                      # the diode letters are untouched
+
+
 def test_a_part_page_says_its_kind_and_the_devices_it_answers_to(data):
     """The sellers section picks the sellers for the part's kind from the page, not from the menu's words."""
     idx = P.index()
