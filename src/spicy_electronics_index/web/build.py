@@ -33,6 +33,7 @@ from spicy_electronics_index.core.config import (
 )
 from spicy_electronics_index.core.partfile import part_file
 from spicy_electronics_index.web import character as character_web
+from spicy_electronics_index.web import finder
 from spicy_electronics_index.web import parts as part_pages
 
 SCHEMA = 1
@@ -147,8 +148,11 @@ def build(out: Path | None = None) -> dict:
                 page["models"]["char"] = character_web.summary(ch)
                 total += write_json(out / "part", f"{part_file(row[0])}.json", {**page, "ss": stamp})
         sizes["part/"] = total
+        # usages.json and the finder name parts by their row here; a build that adds one part and drops
+        # another keeps the length and moves every row after them, so the list carries a stamp of its own.
+        parts_stamp = finder.stamp_of(*names)
         sizes["parts.json"] = write_json(out, "parts.json", {
-            "schema": SCHEMA, "sources": idx["sources"], "sourcesStamp": stamp,
+            "schema": SCHEMA, "sources": idx["sources"], "sourcesStamp": stamp, "partsStamp": parts_stamp,
             # what each source is, so a part page can group its uses by the kind of thing they are
             "kinds": kinds_list,
             # the vocabulary of device kinds; a part row names one by position
@@ -162,8 +166,15 @@ def build(out: Path | None = None) -> dict:
         # index's sources, so it carries the same stamp and is read with the index it matches.
         facets, by_part = part_pages.usage_facets(idx)
         sizes["usages.json"] = write_json(out, "usages.json", {
-            "schema": SCHEMA, "sourcesStamp": stamp, "facets": facets,
+            "schema": SCHEMA, "sourcesStamp": stamp, "partsStamp": parts_stamp, "facets": facets,
             "parts": [by_part.get(row[0], []) for row in search]})
+        # The Projects tab: every document as the parts it holds, and what its results show.
+        units, docs, shards = finder.payloads(idx, names, facets, stamp, parts_stamp)
+        sizes["find/units.json.gz"] = write_json_gz(out / "find", "units.json.gz", units)
+        sizes["find/docs.json.gz"] = write_json_gz(out / "find", "docs.json.gz", docs)
+        # the words of the summaries, a split per first letters, fetched as a search needs them
+        shutil.rmtree(out / "find" / "w", ignore_errors=True)
+        sizes["find/w/"] = sum(write_json_gz(out / "find" / "w", f"{key}.json.gz", shard) for key, shard in shards.items())
 
     # The method page: the measurement catalogue as published, and the circuit drawings that exist.
     sizes["bench/methods.json"] = write_json(out / "bench", "methods.json", character_web.methods_payload())
@@ -183,6 +194,7 @@ def build(out: Path | None = None) -> dict:
             "models": model_part("bjt", "any").parent.parent.is_dir(),
             "datasheets": datasheets_table().exists(),
             "character": "character/" in sizes,
+            "finder": "find/units.json.gz" in sizes,
         },
         "parts": len(search),
         "partsFiledTwice": sorted(set(clashes)),
