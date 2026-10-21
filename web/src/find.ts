@@ -270,8 +270,6 @@ export interface Query {
   /** look for the words in the summaries too, not only in the titles */
   summaries: boolean
   dropped: Set<string>
-  roles: Set<string> | null
-  eras: Set<string> | null
   tier: Tier
   miss: number
   discount: boolean
@@ -281,7 +279,7 @@ export interface Query {
 
 export const EMPTY: Query = {
   have: [], need: [], out: [], fam: [], nofam: [], words: [], require: false, summaries: true, dropped: new Set(),
-  roles: null, eras: null, tier: 'same', miss: Infinity, discount: false, sort: 'best', group: 'source',
+  tier: 'same', miss: Infinity, discount: false, sort: 'best', group: 'source',
 }
 
 export function asked(q: Query): boolean {
@@ -346,10 +344,7 @@ export interface Context {
   /** each part's row in `parts.json`, by name */
   row: Map<string, number>
   facetKeys: string[]
-  roles: string[]
-  /** each source's era, by position in `parts.json` sources, and each unit's source and address */
-  eras: string[]
-  source: number[]
+  /** each unit's address */
   url: string[]
   /** the usage filter's menu the units name their facets by */
   facets: UsageFacet[]
@@ -452,15 +447,13 @@ export function answer(q: Query, c: Context, summary?: Map<string, Set<number>>)
   return { hits, maybe }
 }
 
-/** What the sources, types of document and eras keep of an answer, and what each of them holds of it. */
+/** What the sources keep of an answer, and what each of them holds of it. */
 export interface Kept {
   hits: Hit[]
   maybe: Hit[]
-  /** results by facet (a source, a magazine's decade, a book), by type of document and by era. Each is counted
-   *  with the other two filters and not its own, so a source left out still says how many it would add. */
+  /** results by facet (a source, a magazine's decade, a book), counted whether the facet is ticked or not, so
+   *  a source left out still says how many it would add */
   facets: Map<number, number>
-  roles: Map<string, number>
-  eras: Map<string, number>
   /** for each word of the search: results with it in the title, and results with it only in a summary */
   words: { term: string; titles: number; summaries: number }[]
 }
@@ -470,23 +463,19 @@ export function facetsOf(f: Finder, u: number): number[] {
   return [f.facet[u]!, ...(f.more.get(u) ?? [])]
 }
 
-/** An answer kept to the sources, types of document and eras asked for, with what each would keep. */
+/**
+ * An answer kept to the sources asked for, with what each source holds of it. The type of a document and the
+ * era of its source were filters here too, until it is known that what files a document as one or a source
+ * as the other can be trusted; the index still carries both.
+ */
 export function where(a: Answer, q: Query, c: Context, summary?: Map<string, Set<number>>): Kept {
   const f = c.finder
   const inSources = (u: number) => !q.dropped.size || facetsOf(f, u).some((i) => !q.dropped.has(c.facetKeys[i] ?? ''))
-  const inRoles = (u: number) => !q.roles || q.roles.has(c.roles[f.role[u]!] ?? '')
-  const inEras = (u: number) => !q.eras || q.eras.has(c.eras[c.source[u]!] ?? '')
   const facets = new Map<number, number>()
-  const roles = new Map<string, number>()
-  const eras = new Map<string, number>()
-  const bump = <K>(m: Map<K, number>, k: K) => m.set(k, (m.get(k) ?? 0) + 1)
   const hits: Hit[] = []
   for (const h of a.hits) {
-    const s = inSources(h.u), r = inRoles(h.u), e = inEras(h.u)
-    if (r && e) for (const i of facetsOf(f, h.u)) bump(facets, i)
-    if (s && e) bump(roles, c.roles[f.role[h.u]!] ?? '')
-    if (s && r) bump(eras, c.eras[c.source[h.u]!] ?? '')
-    if (s && r && e) hits.push(h)
+    for (const i of facetsOf(f, h.u)) facets.set(i, (facets.get(i) ?? 0) + 1)
+    if (inSources(h.u)) hits.push(h)
   }
   const said = q.summaries ? summary : undefined
   const words = q.words.map(termOf).filter(Boolean).map((term) => {
@@ -497,7 +486,7 @@ export function where(a: Answer, q: Query, c: Context, summary?: Map<string, Set
     }
     return { term, titles, summaries }
   })
-  return { hits, maybe: a.maybe.filter((h) => inSources(h.u) && inRoles(h.u) && inEras(h.u)), facets, roles, eras, words }
+  return { hits, maybe: a.maybe.filter((h) => inSources(h.u)), facets, words }
 }
 
 /** `owner/repo` of a GitHub address, or null. */
@@ -554,6 +543,7 @@ export function sorter(q: Query, f: Finder, owned: boolean): (a: Hit, b: Hit) =>
 
 /* --- the address ---------------------------------------------------------------------------------- */
 
+// `role` and `era` were filters once: an address that still asks for them has them dropped, not kept.
 const OURS = ['find', 'need', 'out', 'fam', 'nofam', 'q', 'req', 'sum', 'nosrc', 'role', 'era', 'tier', 'miss', 'sort', 'group', 'have', 'all']
 
 const list = (v: string | null) => (v ?? '').split(',').map((s) => s.trim()).filter(Boolean)
@@ -569,8 +559,6 @@ export function readQuery(search: string): Query & { shared: string[] } {
     words: list(p.get('q')).flatMap((w) => w.split(/\s+/)).filter(Boolean), require: p.get('req') === '1',
     summaries: p.get('sum') !== '0',
     dropped: new Set(list(p.get('nosrc'))),
-    roles: p.get('role') ? new Set(list(p.get('role'))) : null,
-    eras: p.get('era') ? new Set(list(p.get('era'))) : null,
     tier: (TIERS as readonly string[]).includes(p.get('tier') ?? '') ? p.get('tier') as Tier : 'same',
     miss: p.has('miss') && Number.isInteger(miss) && miss >= 0 ? miss : Infinity,
     discount: p.get('all') === '0',
@@ -598,8 +586,6 @@ export function writeQuery(search: string, q: Query, share = false): string {
   if (q.require) keep.push('req=1')
   if (!q.summaries) keep.push('sum=0')
   if (q.dropped.size) keep.push(`nosrc=${enc([...q.dropped].sort())}`)
-  if (q.roles) keep.push(`role=${enc([...q.roles].sort())}`)
-  if (q.eras) keep.push(`era=${enc([...q.eras].sort())}`)
   if (q.tier !== 'same') keep.push(`tier=${q.tier}`)
   if (Number.isFinite(q.miss)) keep.push(`miss=${q.miss}`)
   if (q.discount) keep.push('all=0')
