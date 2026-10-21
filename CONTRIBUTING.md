@@ -37,7 +37,9 @@ you opened. A family, a relation, a date or a country without one is left out ra
 memory, and a relation is never an equivalence — "sold as one product with", "offered by its maker as a
 replacement for", "documented in one datasheet with" — only what the source says. Write it in your own
 words: a fact and a link, never a manufacturer's sentence. `make test` checks that every id you cite
-exists.
+exists. A new kind of relation also needs a row in `COVERAGE` (`src/spicy_electronics_index/core/parts/catalogue.py`):
+which way it counts, and from what strictness, for a reader of the Projects tab who has one of the two parts;
+`make test` refuses a kind without one.
 
 ## Licensing of contributions
 
