@@ -3,10 +3,10 @@ import { describe, expect, it } from 'vitest'
 
 import {
   AFTER, EMPTY, EXACT, GRADE, IS, MIGHT, NONE, NOT, SAME, SUBST, UNKNOWN, answer, asked, coverage, decode, familyStates, fold,
-  holds, pasted, readQuery, resolver, sameBuild, termOf, writeQuery,
+  bySource, holds, pasted, readQuery, repoOf, resolver, sameBuild, termOf, where, writeQuery,
   type Context, type Query,
 } from './find'
-import type { Family, FinderDocs, FinderUnits, PartIndex, PartRow } from './types'
+import type { Family, FinderDocs, FinderUnits, PartIndex, PartRow, UsageFacet } from './types'
 import { words } from './words'
 
 // families: ic > opamp; discrete > transistor > (bjt, fet > jfet)
@@ -76,9 +76,14 @@ const DOCS: FinderDocs = {
 const finder = decode(UNITS, ROWS.length)
 const ctx: Context = {
   index: INDEX, finder, row: new Map(ROWS.map((r, i) => [r[0], i])), facetKeys: UNITS.facets.map((f) => f.key),
-  roles: UNITS.roles, eras: UNITS.eras, source: DOCS.source, families: FAMILIES, titleWords: DOCS.title.map((t) => new Set(words(t))),
+  roles: UNITS.roles, eras: UNITS.eras, source: DOCS.source, url: DOCS.url, facets: UNITS.facets, families: FAMILIES,
+  titleWords: DOCS.title.map((t) => new Set(words(t))),
 }
-const ask = (q: Partial<Query>, summary?: Map<string, Set<number>>) => answer({ ...EMPTY, ...q }, ctx, summary)
+/** The answer as the page shows it: what the parts and words find, kept to the sources, types and eras. */
+const ask = (q: Partial<Query>, summary?: Map<string, Set<number>>) => {
+  const full = { ...EMPTY, ...q }
+  return where(answer(full, ctx, summary), full, ctx, summary)
+}
 const titles = (hs: { u: number }[]) => hs.map((h) => DOCS.title[h.u])
 
 describe('decode', () => {
@@ -181,11 +186,49 @@ describe('answer', () => {
     expect(titles(ask({ fam: ['bjt'], roles: new Set(['issue']) }).hits)).toEqual(['Mag 1975-02'])
     expect(titles(ask({ fam: ['bjt'], eras: new Set(['mixed']) }).hits)).toEqual(['Fuzz Face clone', 'Mystery box'])
   })
+  it('counts what each source, type and era holds, each without its own filter', () => {
+    // bjt: the fuzz and the mystery box on esp (mixed), the issue's page 1 on mag (vintage)
+    const k = ask({ fam: ['bjt'], dropped: new Set(['esp']) })
+    expect([k.facets.get(0), k.facets.get(1)]).toEqual([2, 1])         // esp, left out, says what it would add
+    expect([...k.roles.entries()].sort()).toEqual([['issue', 1]])       // the other two filters still apply
+    const r = ask({ fam: ['bjt'], roles: new Set(['issue']) })
+    expect([...r.roles.entries()].sort()).toEqual([['issue', 1], ['project_page', 1], ['schematic', 1]])
+    expect([...ask({ fam: ['bjt'], eras: new Set(['mixed']) }).eras.entries()].sort()).toEqual([['mixed', 2], ['vintage', 1]])
+  })
+  it('says how many results hold each word, in a title or only in a summary', () => {
+    const said = new Map([['buffer', new Set([2, 5])]])
+    expect(ask({ words: ['buffer'] }, said).words).toEqual([{ term: 'buffer', titles: 1, summaries: 1 }])
+    expect(ask({ need: ['2N3904'], words: ['fuzz', 'wah'] }).words)
+      .toEqual([{ term: 'fuzz', titles: 1, summaries: 0 }, { term: 'wah', titles: 0, summaries: 0 }])
+  })
   it('passes over a unit that only names or advertises the parts', () => {
     expect(titles(ask({ need: ['TL072'] }).hits)).toEqual(['Bassman preamp'])
   })
   it('leaves out a unit that uses a part left out', () => {
     expect(titles(ask({ need: ['2N3904'], out: ['4580M'] }).hits)).toEqual(['Fuzz Face clone'])
+  })
+})
+
+describe('bySource', () => {
+  const FACETS: UsageFacet[] = [
+    { key: 'esp', group: 'projects', source: 'esp', n: 3 },
+    { key: 'mag/1970s', group: 'paper', source: 'mag', label: '1970s', by: 'decade', n: 2 },
+    { key: 'books/Pease', group: 'paper', source: 'books', label: 'Pease — Troubleshooting', by: 'title', n: 1 },
+    { key: 'github', group: 'github', source: 'github', n: 2 },
+  ]
+  const facet = [0, 1, 0, 2, 3, 3, 1]
+  const url = ['', '', '', '', 'https://github.com/a/synth/blob/HEAD/vcf.sch', 'https://github.com/b/fx/blob/HEAD/x.sch', '']
+  const hit = (u: number) => ({ u, missing: 0, have: 0, grade: 0, words: 0, found: 0 })
+  it('lays results out by kind of source then source, a book by its title and a board by its repository', () => {
+    const g = bySource([5, 1, 0, 3, 6, 2, 4].map(hit), (u) => FACETS[facet[u]!], (u) => url[u]!)
+    expect(g.map((x) => x.group)).toEqual(['projects', 'paper', 'github'])
+    expect(g[0]!.sources.map((s) => [s.label, s.hits.map((h) => h.u)])).toEqual([['esp', [0, 2]]])
+    expect(g[1]!.sources.map((s) => [s.label, s.hits.map((h) => h.u)])).toEqual([['mag', [1, 6]], ['Pease — Troubleshooting', [3]]])
+    expect(g[2]!.sources.map((s) => s.label)).toEqual(['b/fx', 'a/synth'])   // where its best result is
+  })
+  it('reads the repository of a GitHub address', () => {
+    expect(repoOf('https://github.com/eppidelic/Moire/blob/HEAD/moire.sch')).toBe('eppidelic/Moire')
+    expect(repoOf('https://example.com/x')).toBeNull()
   })
 })
 
@@ -205,7 +248,7 @@ describe('the address', () => {
   it('writes the question and reads it back, leaving other parameters alone', () => {
     const q: Query = { ...EMPTY, need: ['TL072', 'ADC121C027CIMK/NOPB'], nofam: ['jfet'], words: ['wah', 'fender'], require: true, summaries: false,
       dropped: new Set(['mag/1970s']), roles: new Set(['issue']), eras: new Set(['modern']), tier: 'exact', miss: 1, sort: 'newest',
-      have: ['BC547B'] }
+      group: 'missing', have: ['BC547B'] }
     const s = writeQuery('?x=1', q)
     expect(s.startsWith('?x=1&find')).toBe(true)
     expect(s).not.toContain('have=')                                           // what the reader has stays theirs
@@ -213,6 +256,9 @@ describe('the address', () => {
     expect(back.need).toEqual(['TL072', 'ADC121C027CIMK/NOPB'])
     expect([back.nofam, back.words, back.require, back.summaries, [...back.dropped], [...back.roles!], back.tier, back.miss, back.sort])
       .toEqual([['jfet'], ['wah', 'fender'], true, false, ['mag/1970s'], ['issue'], 'exact', 1, 'newest'])
+    expect(back.group).toBe('missing')
+    expect(readQuery(writeQuery('', { ...q, group: 'source' })).group).toBe('source')
+    expect(writeQuery('', { ...q, group: 'source' })).not.toContain('group=')
     expect(readQuery(writeQuery('', q, true)).shared).toEqual(['BC547B'])
     expect(readQuery('?find').miss).toBe(Infinity)
   })

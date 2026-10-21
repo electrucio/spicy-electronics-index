@@ -14,7 +14,7 @@ import { n } from './parts'
 import { menu, toggled, type SourceEntry } from './usages'
 import type { UsageFacet, Usages } from './types'
 
-const GROUPS: { key: UsageFacet['group']; title: string }[] = [
+export const GROUPS: { key: UsageFacet['group']; title: string }[] = [
   { key: 'projects', title: 'Projects and factory schematics' },
   { key: 'paper', title: 'Magazines and books' },
   { key: 'github', title: 'Open-source projects' },
@@ -67,27 +67,67 @@ function Source({ s, dropped, setDropped }: { s: SourceEntry; dropped: Set<strin
   )
 }
 
-export function UsageFilter({ usages, stale, dropped, setDropped, onOpen, title = 'Usage sources',
-  help = 'Count usages from the ticked sources only; a part with none left leaves the list.' }: {
+/**
+ * The menu itself: the help line with all and none, then each group with its sources, a magazine by decade and
+ * the books by title. The parts list folds it into one line; the Projects tab shows it whole, with each entry
+ * counting the results of the search in hand (`counts`, by facet position), the sources with the most first and
+ * the ones with none folded at the end of their group.
+ */
+export function SourceMenu({ facets, dropped, setDropped, help, counts }: {
+  facets: UsageFacet[]; dropped: Set<string>; setDropped: (d: Set<string>) => void; help: string
+  counts?: Map<number, number>
+}) {
+  const shown = counts ? facets.map((f, i) => ({ ...f, n: counts.get(i) ?? 0, docs: undefined })) : facets
+  const groups = menu(shown)
+  const every = facets.map((f) => f.key)
+  return (
+    <>
+      <p class="small muted srchelp">
+        {help}
+        {' '}<button type="button" class="linkish" onClick={() => setDropped(new Set())}>all</button>
+        {' · '}<button type="button" class="linkish" onClick={() => setDropped(new Set(every))}>none</button>
+      </p>
+      {GROUPS.map((g) => {
+        const all = groups[g.key]
+        if (!all.length) return null
+        const live = counts ? [...all].filter((s) => s.n > 0).sort((a, b) => b.n - a.n) : all
+        const none = counts ? all.filter((s) => s.n === 0) : []
+        return (
+          <div class="srcgroup" key={g.key}>
+            <div class="srchead">
+              <Box keys={all.flatMap((s) => s.facets.map((f) => f.key))} dropped={dropped} setDropped={setDropped}
+                label={<><strong>{g.title}</strong>{counts && <span class="count">{n(live.reduce((t, s) => t + s.n, 0))}</span>}</>}
+                title="every source of the group" />
+            </div>
+            {live.map((s) => <Source key={s.source} s={s} dropped={dropped} setDropped={setDropped} />)}
+            {none.length > 0 && (
+              <details class="srcempty">
+                <summary class="small muted">{n(none.length)} {none.length === 1 ? 'source' : 'sources'} with none</summary>
+                {none.map((s) => <Source key={s.source} s={s} dropped={dropped} setDropped={setDropped} />)}
+              </details>
+            )}
+          </div>
+        )
+      })}
+    </>
+  )
+}
+
+export function UsageFilter({ usages, stale, dropped, setDropped, onOpen }: {
   /** The filter's data, once fetched; `stale` when what came is from another build than the index. */
   usages: Usages | null; stale: boolean
   dropped: Set<string>; setDropped: (d: Set<string>) => void
   /** Called the first time the filter is opened, to fetch its data. */
   onOpen: () => void
-  /** What the folded line says, and the sentence above the boxes: the Projects tab counts documents. */
-  title?: string
-  help?: string
 }) {
   const [open, setOpen] = useState(false)
   const facets = usages?.facets ?? []
-  const groups = menu(facets)
   const kept = facets.length - facets.filter((f) => dropped.has(f.key)).length
-  const every = facets.map((f) => f.key)
   return (
     <details class="srcfilter" open={open}
       onToggle={(e) => { const o = (e.target as HTMLDetailsElement).open; setOpen(o); if (o) onOpen() }}>
       <summary>
-        <span>{title}</span>
+        <span>Usage sources</span>
         <span class="count">
           {dropped.size === 0 ? 'all' : usages ? `${n(kept)} of ${n(facets.length)}` : `${n(dropped.size)} left out`}
         </span>
@@ -102,22 +142,8 @@ export function UsageFilter({ usages, stale, dropped, setDropped, onOpen, title 
         )}
         {usages && !stale && facets.length === 0 && <p class="muted small">No usage is published yet.</p>}
         {usages && !stale && facets.length > 0 && (
-          <>
-            <p class="small muted srchelp">
-              {help}
-              {' '}<button type="button" class="linkish" onClick={() => setDropped(new Set())}>all</button>
-              {' · '}<button type="button" class="linkish" onClick={() => setDropped(new Set(every))}>none</button>
-            </p>
-            {GROUPS.map((g) => groups[g.key].length > 0 && (
-              <div class="srcgroup" key={g.key}>
-                <div class="srchead">
-                  <Box keys={groups[g.key].flatMap((s) => s.facets.map((f) => f.key))} dropped={dropped} setDropped={setDropped}
-                    label={<strong>{g.title}</strong>} title="every source of the group" />
-                </div>
-                {groups[g.key].map((s) => <Source key={s.source} s={s} dropped={dropped} setDropped={setDropped} />)}
-              </div>
-            ))}
-          </>
+          <SourceMenu facets={facets} dropped={dropped} setDropped={setDropped}
+            help="Count usages from the ticked sources only; a part with none left leaves the list." />
         )}
       </div>
     </details>

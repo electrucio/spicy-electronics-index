@@ -13,14 +13,16 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { relationWords, useCatalogue } from './about'
 import { follow, loadFinder, loadIndex, reloadIndex } from './data'
 import {
-  AFTER, EXACT, GRADE, SAME, SCHEMATIC, SUBST, answer, asked, coverage, decode, fold, holds, lineage, pasted, readQuery,
-  resolver, sameBuild, termOf, writeQuery, type Context, type Hit, type Query, type Sort, type Tier,
+  AFTER, EXACT, GRADE, SAME, SCHEMATIC, SUBST, answer, asked, bySource, coverage, decode, fold, holds, lineage, pasted,
+  readQuery, resolver, sameBuild, termOf, where, writeQuery,
+  type Context, type Group, type Hit, type Query, type Sort, type SourceGroup, type Tier,
 } from './find'
+import { Fold } from './fold'
 import { forViewer } from './links'
 import { Loading } from './loading'
 import { Splitter, n, savedWidth, search } from './parts'
 import type { Catalogue, Family, FinderDocs, FinderUnits, PartIndex } from './types'
-import { UsageFilter } from './usagefilter'
+import { GROUPS, SourceMenu } from './usagefilter'
 import { keysFor, loadShard, unitsOfWord, words as wordsOf } from './words'
 
 const PAGE = 40
@@ -97,11 +99,14 @@ function Adder({ index, families, placeholder, label, onPick, words = false }: {
   }
   return (
     <div class="fadd">
-      <input
-        type="search" value={text} placeholder={placeholder} aria-label={label}
-        onInput={(e) => setText((e.target as HTMLInputElement).value)}
-        onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); enter() } }}
-      />
+      <div class="faddrow">
+        <input
+          type="search" value={text} placeholder={placeholder} aria-label={label}
+          onInput={(e) => setText((e.target as HTMLInputElement).value)}
+          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); enter() } }}
+        />
+        {words && <button type="button" onClick={enter} disabled={!t}>Add</button>}
+      </div>
       {options.length > 0 && (
         <ul class="fsugg">
           {options.map((o) => (
@@ -253,6 +258,25 @@ function groups(hits: Hit[], owned: boolean): [string, Hit[]][] {
     .map(([m, hs]) => [m === 0 ? 'Buildable with what you have' : `${m} ${m === 1 ? 'part' : 'parts'} missing`, hs])
 }
 
+const GROUP_LABEL: Record<Group, string> = { source: 'source', missing: 'parts missing', none: 'nothing' }
+const OPEN_SOURCES = 5
+const PER_SOURCE = 10
+
+/** One source's results: the first ten, and the rest a click away. */
+function SourceCards({ group, render }: { group: SourceGroup; render: (h: Hit) => preact.ComponentChildren }) {
+  const [shown, setShown] = useState(PER_SOURCE)
+  return (
+    <div class="stack-s fsource">
+      {group.hits.slice(0, shown).map(render)}
+      {group.hits.length > shown && (
+        <button class="more" onClick={() => setShown((v) => v + PER_SOURCE * 3)}>
+          {n(group.hits.length - shown)} more from {group.label}
+        </button>
+      )}
+    </div>
+  )
+}
+
 function Examples({ setQ, have, left }: { setQ: (f: (q: Query) => Query) => void; have: number; left: number }) {
   const go = (e: MouseEvent, f: (q: Query) => Query) => { e.preventDefault(); setQ(f) }
   return (
@@ -327,22 +351,25 @@ export function FinderPage() {
   const finder = useMemo(() => (files && index && fresh ? decode(files.units, index.parts.length) : null), [files, index, fresh])
   const ctx = useMemo((): Context | null => (finder && files && index && cat ? {
     index, finder, row: new Map(index.parts.map((r, i) => [r[0], i])), facetKeys: files.units.facets.map((f) => f.key),
-    roles: files.units.roles, eras: files.units.eras, source: files.docs.source, families: cat.families,
+    roles: files.units.roles, eras: files.units.eras, source: files.docs.source, url: files.docs.url,
+    facets: files.units.facets, families: cat.families,
     titleWords: files.docs.title.map((t, i) => new Set(wordsOf([t, ...(files.docs.aka[String(i)] ?? [])].join(' · ')))),
   } : null), [finder, files, index, cat])
   // The splits of the word index the search's words fall in, fetched once each, read into each word's units.
   const terms = useMemo(() => q.words.map(termOf).filter(Boolean), [q.words])
   const [said, setSaid] = useState<Map<string, Set<number>> | undefined>(undefined)
+  const [looking, setLooking] = useState(false)
   useEffect(() => {
-    if (!files || !fresh || !q.summaries || !terms.length) { setSaid(undefined); return }
+    if (!files || !fresh || !q.summaries || !terms.length) { setSaid(undefined); setLooking(false); return }
     const stamp = files.units.findStamp
     let alive = true
+    setLooking(true)
     Promise.all(terms.map(async (t) => {
       const shards = await Promise.all(keysFor(t, files.units.shards).map((k) => loadShard(k, stamp)))
       const units = new Set<number>()
       for (const sh of shards) if (sh && sh.findStamp === stamp) for (const u of unitsOfWord(sh, t)) units.add(u)
       return [t, units] as const
-    })).then((pairs) => { if (alive) setSaid(new Map(pairs)) })
+    })).then((pairs) => { if (alive) { setSaid(new Map(pairs)); setLooking(false) } })
     return () => { alive = false }
   }, [terms.join(' '), files, fresh, q.summaries])
   const byId = useMemo(() => new Map((cat?.families ?? []).map((f) => [f.id, f])), [cat])
@@ -350,7 +377,10 @@ export function FinderPage() {
   const leaveOutOk = (fid: string) => lineage(fid, byId).some((x) => negative.includes(x))
   // A family the finder cannot be trusted to rule out is shown and not used.
   const effective = useMemo(() => ({ ...q, nofam: q.nofam.filter(leaveOutOk) }), [q, byId, negative])
+  // What the parts, families and words answer; then what the sources, types and eras keep of it, with what each
+  // of them holds — two steps, so the source menu can count the results it would add back.
   const result = useMemo(() => (ctx && asked(effective) ? answer(effective, ctx, said) : null), [ctx, effective, said])
+  const kept = useMemo(() => (result && ctx ? where(result, effective, ctx, said) : null), [result, ctx, effective, said])
   const cover = useMemo(() => (ctx && q.have.length ? coverage(ctx.index, ctx.finder, q.have, q.tier) : null), [ctx, q.have, q.tier])
   const resolve = useMemo(() => (index ? resolver(index) : null), [index])
   const unknown = useMemo(() => new Set(q.have.filter((p) => resolve && !resolve(p).known)), [q.have, resolve])
@@ -373,11 +403,20 @@ export function FinderPage() {
 
   const common = terms.filter((t) => files.units.common.includes(t.replace(/\*$/, '')))
   const owned = q.have.length > 0
-  const hits = result?.hits ?? []
+  const hits = kept?.hits ?? []
+  const maybe = kept?.maybe ?? []
   const buildable = owned ? hits.filter((h) => h.missing === 0).length : 0
+  const withWords = terms.length ? hits.filter((h) => h.found > 0).length : 0
+  const grouping: Group = q.group === 'missing' && !owned ? 'source' : q.group
+  const unitCount = (pick: (u: number) => string) => {
+    const out = new Map<string, number>()
+    for (let u = 0; u < finder!.n; u++) out.set(pick(u), (out.get(pick(u)) ?? 0) + 1)
+    return out
+  }
   const summary = [q.have.length && `${q.have.length} have`, q.need.length + q.fam.length && `${q.need.length + q.fam.length} must`,
     q.out.length + q.nofam.length && `${q.out.length + q.nofam.length} out`, q.words.length && q.words.join(' ')].filter(Boolean).join(' · ')
-  const roleCount = (r: string) => { const i = files.units.roles.indexOf(r); return finder!.role.reduce((t, x) => t + (x === i ? 1 : 0), 0) }
+  const roleCount = kept?.roles ?? unitCount((u) => files.units.roles[finder!.role[u]!] ?? '')
+  const eraCount = kept?.eras ?? unitCount((u) => files.units.eras[files.docs.source[u]!] ?? '')
   const eraList = [...new Set(files.units.eras)].sort((a, b) => Object.keys(ERA_LABEL).indexOf(a) - Object.keys(ERA_LABEL).indexOf(b))
   const copyLink = () => {
     const url = `${location.origin}${location.pathname}${writeQuery(location.search, q, true)}`
@@ -467,23 +506,37 @@ export function FinderPage() {
               <input type="checkbox" checked={q.summaries} onChange={() => set((o) => ({ ...o, summaries: !o.summaries }))} />
               <span>Also in the summaries: the line a language model wrote of what each part does on a page</span>
             </label>
+            {kept && kept.words.length > 0 && (
+              <ul class="fwords small">
+                {kept.words.map((w) => (
+                  <li key={w.term}>
+                    <strong>{w.term}</strong>{' — '}
+                    {w.titles + w.summaries === 0 ? <span class="muted">no result has it</span>
+                      : <>{n(w.titles)} in titles{q.summaries && <>, {n(w.summaries)} more in summaries</>}</>}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {looking && <Loading what="the summaries" small />}
             <p class="small muted">A word is found as written or in the plural; end it with * for every word it starts (wah* finds wahwah). A title counts for more than a summary.</p>
             {common.length > 0 && q.summaries && (
               <p class="small muted">“{common.join('”, “')}” {common.length === 1 ? 'is' : 'are'} on too many pages to tell them apart, so the summaries are not searched for {common.length === 1 ? 'it' : 'them'}; titles still are.</p>
             )}
           </Block>
 
-          <Block title="Where from" open={false}
-            summary={[q.dropped.size && `${files.units.facets.length - q.dropped.size} sources`, q.roles && `${q.roles.size} types`, q.eras && [...q.eras].map((e) => ERA_LABEL[e] ?? e).join(', ')].filter(Boolean).join(' · ') || 'everywhere'}>
-            <UsageFilter
-              usages={{ schema: 1, facets: files.units.facets, parts: [] }} stale={false} dropped={q.dropped}
-              setDropped={(dropped) => set((o) => ({ ...o, dropped }))} onOpen={() => {}}
-              title="Sources" help="Look in the documents of the ticked sources only."
-            />
-            <Ticks legend="Type of document" all={files.units.roles} kept={q.roles} label={(r) => ROLE_LABEL[r] ?? r} count={roleCount}
-              onChange={(roles) => set((o) => ({ ...o, roles }))} />
+          <Block title="Sources" open={!!kept}
+            summary={q.dropped.size ? `${n(files.units.facets.length - q.dropped.size)} of ${n(files.units.facets.length)}` : 'all'}>
+            <SourceMenu facets={files.units.facets} dropped={q.dropped} setDropped={(dropped) => set((o) => ({ ...o, dropped }))}
+              counts={kept?.facets}
+              help={kept ? 'Each says how many results of this search it holds; untick one to leave it out.' : 'Look in the documents of the ticked sources only.'} />
+          </Block>
+
+          <Block title="Type and era" open={false}
+            summary={[q.roles && `${q.roles.size} types`, q.eras && [...q.eras].map((e) => ERA_LABEL[e] ?? e).join(', ')].filter(Boolean).join(' · ') || 'all'}>
+            <Ticks legend="Type of document" all={files.units.roles} kept={q.roles} label={(r) => ROLE_LABEL[r] ?? r}
+              count={(r) => roleCount.get(r) ?? 0} onChange={(roles) => set((o) => ({ ...o, roles }))} />
             <Ticks legend="Era of the source" all={eraList} kept={q.eras} label={(e) => ERA_LABEL[e] ?? e}
-              onChange={(eras) => set((o) => ({ ...o, eras }))} />
+              count={(e) => eraCount.get(e) ?? 0} onChange={(eras) => set((o) => ({ ...o, eras }))} />
             <p class="small muted">Modern sources print parts still made; the registry says each source’s era.</p>
           </Block>
         </div>
@@ -491,14 +544,21 @@ export function FinderPage() {
 
       <Splitter host={host} width={width} setWidth={setWidth} />
 
-      {!result ? <Examples setQ={set} have={q.have.length} left={q.out.length + q.nofam.length} /> : (
+      {!kept ? <Examples setQ={set} have={q.have.length} left={q.out.length + q.nofam.length} /> : (
         <section class="evidence stack-s fresults">
           <div class="fbar">
             <p class="count" aria-live="polite">
               {n(hits.length)} {hits.length === 1 ? 'result' : 'results'}
               {owned && ` · ${n(buildable)} buildable with what you have`}
-              {result.maybe.length > 0 && ` · ${n(result.maybe.length)} set apart`}
+              {terms.length > 0 && ` · ${n(withWords)} with ${terms.length === 1 ? `“${terms[0]}”` : 'your words'}`}
+              {maybe.length > 0 && ` · ${n(maybe.length)} set apart`}
             </p>
+            <label class="small">Group by{' '}
+              <select value={grouping} onChange={(e) => set((o) => ({ ...o, group: (e.target as HTMLSelectElement).value as Group }))}>
+                {(Object.keys(GROUP_LABEL) as Group[]).filter((g) => g !== 'missing' || owned)
+                  .map((g) => <option key={g} value={g}>{GROUP_LABEL[g]}</option>)}
+              </select>
+            </label>
             <label class="small">Sort{' '}
               <select value={q.sort} onChange={(e) => set((o) => ({ ...o, sort: (e.target as HTMLSelectElement).value as Sort }))}>
                 {(Object.keys(SORT_LABEL) as Sort[]).map((s) => <option key={s} value={s}>{SORT_LABEL[s]}</option>)}
@@ -521,9 +581,30 @@ export function FinderPage() {
               {q.need.length + q.fam.length > 1 && <>Ask for fewer parts at once. </>}
             </p>
           )}
-          {(() => {
+          {grouping === 'source' ? (() => {
+            const card = (h: Hit) => <Card key={h.u} h={h} ctx={ctx!} docs={files.docs} cover={cover} cat={cat} terms={terms} said={said} />
+            let rank = 0
+            return bySource(hits, (u) => files.units.facets[finder!.facet[u]!], (u) => files.docs.url[u] ?? '').map((g) => (
+              <Fold key={g.group} level={1} open
+                summary={<><strong>{GROUPS.find((x) => x.key === g.group)?.title}</strong>
+                  <span class="count">{n(g.sources.reduce((t, x) => t + x.hits.length, 0))} results · {n(g.sources.length)} {g.sources.length === 1 ? 'source' : 'sources'}</span></>}>
+                {() => g.sources.map((src) => {
+                  const first = rank++ < OPEN_SOURCES
+                  const ok = src.hits.filter((h) => h.missing === 0).length
+                  const worded = src.hits.filter((h) => h.found > 0).length
+                  return (
+                    <Fold key={src.key} level={2} open={first} cls={g.group === 'github' ? 'repo' : src.key.includes('/') ? 'keep' : undefined}
+                      summary={<><strong>{src.label}</strong>
+                        <span class="count">{n(src.hits.length)}{owned ? ` · ${n(ok)} buildable` : ''}{worded > 0 && worded < src.hits.length ? ` · ${n(worded)} with your words` : ''}</span></>}>
+                      {() => <SourceCards group={src} render={card} />}
+                    </Fold>
+                  )
+                })}
+              </Fold>
+            ))
+          })() : (() => {
             let left = shown
-            return groups(hits, owned && (q.sort === 'best' || q.sort === 'missing')).map(([title, hs]) => {
+            return groups(hits, grouping === 'missing').map(([title, hs]) => {
               if (left <= 0) return null
               const show = hs.slice(0, left)
               left -= show.length
@@ -535,15 +616,15 @@ export function FinderPage() {
               )
             })
           })()}
-          {hits.length > shown && <button class="more" onClick={() => setShown((v) => v + PAGE * 2)}>{n(hits.length - shown)} more</button>}
-          {result.maybe.length > 0 && (
+          {grouping !== 'source' && hits.length > shown && <button class="more" onClick={() => setShown((v) => v + PAGE * 2)}>{n(hits.length - shown)} more</button>}
+          {maybe.length > 0 && (
             <details class="fmaybe">
               <summary>
-                Might have {effective.nofam.map((f) => famLabel(f).toLowerCase()).join(' or ')}: {n(result.maybe.length)}
+                Might have {effective.nofam.map((f) => famLabel(f).toLowerCase()).join(' or ')}: {n(maybe.length)}
                 <span class="small muted"> — a part on the page is or might be one, or nothing here says what it is</span>
               </summary>
-              {result.maybe.slice(0, 200).map((h) => <Card key={h.u} h={h} ctx={ctx!} docs={files.docs} cover={cover} cat={cat} terms={terms} said={said} />)}
-              {result.maybe.length > 200 && <p class="muted small">and {n(result.maybe.length - 200)} more.</p>}
+              {maybe.slice(0, 200).map((h) => <Card key={h.u} h={h} ctx={ctx!} docs={files.docs} cover={cover} cat={cat} terms={terms} said={said} />)}
+              {maybe.length > 200 && <p class="muted small">and {n(maybe.length - 200)} more.</p>}
             </details>
           )}
           <p class="small muted">
