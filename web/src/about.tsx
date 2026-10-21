@@ -513,6 +513,10 @@ export function FamilyPage({ id }: { id: string }) {
       )}
       <section class="stack-s">
         <h3>Parts filed here</h3>
+        <p class="small">
+          <A href={`?find&fam=${encodeURIComponent(id)}`}>Projects that use one</A>
+          {' · '}<A href={`?find&nofam=${encodeURIComponent(id)}`}>Projects without one</A>
+        </p>
         {idx
           ? <p class="muted small">{nf(list.length)} parts, by the family their maker's sheet gives or, failing that, the kind they are filed as.</p>
           : <Loading what="the parts list" small />}

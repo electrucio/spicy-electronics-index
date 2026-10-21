@@ -20,7 +20,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { leadsTo, parentOf, target, useAnchor } from './anchor'
 import type { Axis } from './chart'
 import { place, tickFigures, ticks } from './chart'
-import { DATA, follow, partPath } from './data'
+import { DATA, follow, jsonMaybeGzip, partPath } from './data'
 import type { Choice, CurveRow, Selection } from './charpick'
 import { atTokens, axisName, chosenOf, copyHits, curveRows, curveStatus, defaultCurve, filterGroups, findRow, fmtChoice, groupModels, matchCurve, pickCurves, quantities, readSelection, resolveAt, resolveModels, sameValue, selectorsOf, writeSelection } from './charpick'
 import { Fold, SubSection } from './fold'
@@ -95,17 +95,6 @@ export function ModelCharacter({ page }: { page: PartPage }) {
       </SubSection>
     </section>
   )
-}
-
-/** A JSON file that may be gzipped: the bytes are looked at, not the headers, because a static server may or
- *  may not have undone the compression already. */
-export async function jsonMaybeGzip(buf: ArrayBuffer): Promise<unknown> {
-  const b = new Uint8Array(buf)
-  if (b.length > 2 && b[0] === 0x1f && b[1] === 0x8b) {
-    const text = await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).text()
-    return JSON.parse(text)
-  }
-  return JSON.parse(new TextDecoder().decode(b))
 }
 
 /** The part's index, then each model's record (one gzipped file per model, shared by every part that lists it). */

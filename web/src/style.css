@@ -596,3 +596,72 @@ details.cfilter[open] > summary { color: var(--accent-ink); }
 .cfilter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 2px 12px; }
 .cfilter-grid label { display: block; padding: 1px 0; font-size: 0.84rem; cursor: pointer; white-space: nowrap; }
 .cfilter-box button { font: inherit; font-size: 0.8rem; padding: 2px 9px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sunken); color: var(--ink); cursor: pointer; }
+
+/* The two sections of the site, beside the name: the parts, and the projects found by their parts. */
+nav.tabs { display: flex; gap: 4px; align-self: center; }
+nav.tabs a { font: 600 1.05rem var(--display); letter-spacing: 0.03em; color: var(--muted); text-decoration: none;
+  padding: 3px 12px; border-radius: 999px; border: 1px solid transparent; }
+nav.tabs a:hover { color: var(--ink); border-color: var(--rule); }
+nav.tabs a[aria-current="page"] { color: var(--accent-ink); background: var(--accent-soft); }
+
+/* The Projects tab: the question on the left, a block at a time; the answers on the right, a card each. */
+.fquery { overflow: auto; padding-right: 4px; }
+.fqtoggle { display: none; }
+.fqbody { display: flex; flex-direction: column; gap: 10px; }
+details.fblock { border: 1px solid var(--rule); border-radius: 4px; background: var(--surface); }
+details.fblock > summary { cursor: pointer; list-style: none; display: flex; gap: 8px; align-items: baseline; padding: 7px 10px;
+  font: 600 1.02rem var(--display); letter-spacing: 0.02em; }
+details.fblock > summary::-webkit-details-marker { display: none; }
+details.fblock > summary::before { content: "+"; width: 0.8em; color: var(--faint); font-weight: 400; }
+details.fblock[open] > summary::before { content: "−"; }
+details.fblock > summary .count { margin-left: auto; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60%; }
+.fbody { display: flex; flex-direction: column; gap: 8px; padding: 0 10px 10px; font-size: 0.9rem; }
+.fbody p { margin: 0; }
+.fchips { display: flex; flex-wrap: wrap; gap: 5px; }
+.fchips:empty { display: none; }
+.fchip { display: inline-flex; align-items: center; gap: 2px; font: 0.82rem var(--mono); padding: 1px 2px 1px 8px; border: 1px solid var(--edge);
+  border-radius: 999px; background: var(--sunken); color: var(--ink); }
+.fchip.warn { border-color: var(--off); color: var(--off); }
+.fchip button { all: unset; cursor: pointer; padding: 0 6px; border-radius: 999px; color: var(--faint); font: 1rem var(--body); line-height: 1; }
+.fchip button:hover, .fchip button:focus-visible { color: var(--ink); background: var(--accent-soft); }
+.fadd { position: relative; }
+.fadd input { width: 100%; font: inherit; font-size: 0.92rem; padding: 6px 9px; border: 1px solid var(--rule); border-radius: 4px; background: var(--ground); color: var(--ink); }
+.fsugg { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.fsugg button { font: 0.82rem var(--mono); padding: 2px 8px; border: 1px solid var(--rule); border-radius: 4px; background: var(--sunken); color: var(--link); cursor: pointer; }
+.fsugg button:hover { border-color: var(--accent); }
+fieldset.fradios, fieldset.fticks { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: baseline; }
+fieldset.fticks { display: grid; gap: 1px; }
+fieldset.fradios legend, fieldset.fticks legend { font: 600 0.74rem var(--body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); padding: 0; margin-bottom: 2px; }
+fieldset.fradios label { display: inline-flex; gap: 5px; align-items: baseline; cursor: pointer; }
+fieldset.fradios input, fieldset.fticks input { accent-color: var(--accent); }
+.fpaste { display: grid; gap: 6px; }
+.fpaste textarea { font: 0.88rem var(--mono); padding: 6px 8px; border: 1px solid var(--rule); border-radius: 4px; background: var(--ground); color: var(--ink); resize: vertical; }
+.fpaste button, .fresults .more { justify-self: start; }
+.fresults { padding-left: 6px; }
+.fbar { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+.fbar .count { margin: 0; font-size: 0.86rem; color: var(--muted); }
+.fbar select { font: inherit; padding: 2px 6px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 4px; }
+h3.fgroup { font-size: 1.15rem; color: var(--accent-ink); padding-top: 8px; }
+.fcard { display: grid; gap: 6px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+.fhead { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; }
+.ftitle { font: 600 1.08rem var(--display); letter-spacing: 0.01em; }
+.fparts { display: flex; flex-wrap: wrap; gap: 4px; }
+a.pc { font: 0.8rem var(--mono); padding: 1px 7px; border-radius: 4px; border: 1px solid var(--rule); color: var(--muted); text-decoration: none; background: var(--sunken); }
+a.pc:hover { border-color: var(--accent); color: var(--ink); }
+a.pc.have { color: var(--pass); border-color: var(--pass-bg); background: var(--pass-bg); }
+a.pc.grade { color: var(--off); border-color: var(--off-bg); background: var(--off-bg); }
+a.pc.miss { color: var(--fail); border-color: var(--fail); background: transparent; }
+a.pc.named { font-style: italic; color: var(--faint); border-style: dashed; }
+a.pc.doubt { color: var(--off); border-color: var(--off); }
+.fnote { display: flex; flex-wrap: wrap; gap: 2px 14px; margin: 0; }
+details.fmaybe { border-top: 1px solid var(--edge); padding-top: 10px; }
+details.fmaybe > summary { cursor: pointer; font: 600 1.05rem var(--display); color: var(--muted); }
+details.fmaybe[open] > summary { margin-bottom: 8px; }
+details.fmaybe .fcard + .fcard { margin-top: 8px; }
+@media (max-width: 860px) {
+  .fquery { overflow: visible; padding-right: 0; }
+  .fqtoggle { display: block; width: 100%; text-align: left; font: 600 1rem var(--display); padding: 8px 10px; border: 1px solid var(--edge);
+    border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; position: sticky; top: var(--header-h); z-index: 3; }
+  .fquery.shut .fqbody { display: none; }
+  .fresults { padding-left: 0; }
+}

@@ -67,12 +67,16 @@ function Source({ s, dropped, setDropped }: { s: SourceEntry; dropped: Set<strin
   )
 }
 
-export function UsageFilter({ usages, stale, dropped, setDropped, onOpen }: {
+export function UsageFilter({ usages, stale, dropped, setDropped, onOpen, title = 'Usage sources',
+  help = 'Count usages from the ticked sources only; a part with none left leaves the list.' }: {
   /** The filter's data, once fetched; `stale` when what came is from another build than the index. */
   usages: Usages | null; stale: boolean
   dropped: Set<string>; setDropped: (d: Set<string>) => void
   /** Called the first time the filter is opened, to fetch its data. */
   onOpen: () => void
+  /** What the folded line says, and the sentence above the boxes: the Projects tab counts documents. */
+  title?: string
+  help?: string
 }) {
   const [open, setOpen] = useState(false)
   const facets = usages?.facets ?? []
@@ -83,7 +87,7 @@ export function UsageFilter({ usages, stale, dropped, setDropped, onOpen }: {
     <details class="srcfilter" open={open}
       onToggle={(e) => { const o = (e.target as HTMLDetailsElement).open; setOpen(o); if (o) onOpen() }}>
       <summary>
-        <span>Usage sources</span>
+        <span>{title}</span>
         <span class="count">
           {dropped.size === 0 ? 'all' : usages ? `${n(kept)} of ${n(facets.length)}` : `${n(dropped.size)} left out`}
         </span>
@@ -100,7 +104,7 @@ export function UsageFilter({ usages, stale, dropped, setDropped, onOpen }: {
         {usages && !stale && facets.length > 0 && (
           <>
             <p class="small muted srchelp">
-              Count usages from the ticked sources only; a part with none left leaves the list.
+              {help}
               {' '}<button type="button" class="linkish" onClick={() => setDropped(new Set())}>all</button>
               {' · '}<button type="button" class="linkish" onClick={() => setDropped(new Set(every))}>none</button>
             </p>

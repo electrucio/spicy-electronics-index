@@ -15,7 +15,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { AboutPart, Databooks } from './about'
 import { Heading } from './anchor'
 import { SellersSection } from './sellers'
-import { DATA, loadIndex, loadUsages, partPath, reloadIndex } from './data'
+import { DATA, follow, loadIndex, loadUsages, partPath, reloadIndex } from './data'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
@@ -535,8 +535,10 @@ function Uses({ page, sources, kinds }: { page: PartPage; sources: string[]; kin
   const built = others.filter((d) => SITE_KINDS.has(kindOf(d)))
   const paper = others.filter((d) => PAPER_KINDS.has(kindOf(d)))
   if (built.length + paper.length + repos.length === 0 && !page.repos?.length && !page.about?.books?.length) return null
+  const find = `?find&need=${encodeURIComponent(page.part)}`
   return (
     <Section title="Usages" anchor="where-used">
+      <p class="small"><a href={find} onClick={(e) => follow(e as unknown as MouseEvent, find)}>Projects that use {page.part} together with other parts →</a></p>
       <Group
         title="Projects and factory schematics" anchor="projects" open
         note="project sites, factory archives and reference works"
@@ -653,7 +655,7 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
 const SIDE = { min: 260, fallback: 480, key: 'sei.side' }
 
 /** The list's width, as the reader last left it. Kept in this browser only, and only as a convenience. */
-function savedWidth(): number {
+export function savedWidth(): number {
   try { return Number(localStorage.getItem(SIDE.key)) || SIDE.fallback } catch { return SIDE.fallback }
 }
 
@@ -663,7 +665,7 @@ function savedWidth(): number {
  * The width is a CSS variable on the browser, so the grid does the layout and nothing re-renders the
  * fifty thousand rows while it moves.
  */
-function Splitter({ host, width, setWidth }: {
+export function Splitter({ host, width, setWidth }: {
   host: { current: HTMLDivElement | null }; width: number; setWidth: (w: number) => void
 }) {
   const clamp = (w: number) => Math.round(Math.min(Math.max(w, SIDE.min), innerWidth * 0.7))

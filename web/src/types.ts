@@ -16,7 +16,7 @@ export interface Manifest {
     definitions: number
   }
   /** Which exports exist yet. The site renders what is present and says what is not. */
-  have: { sources: boolean; index: boolean; parts: boolean; models: boolean; datasheets: boolean }
+  have: { sources: boolean; index: boolean; parts: boolean; models: boolean; datasheets: boolean; finder?: boolean }
   sizes: Record<string, number>
 }
 
@@ -41,6 +41,8 @@ export interface PartIndex {
   sources: string[]
   /** A stamp of `sources` and `kinds`; a part page built against another list carries another stamp. */
   sourcesStamp?: string
+  /** A stamp of the parts, in their order: `usages.json` and the finder name parts by row. */
+  partsStamp?: string
   /** What each of those sources is — site, factory, magazine, book — by the same position. */
   kinds: string[]
   /** The device filter's menu, in menu order. A part row carries one bit per entry. */
@@ -68,8 +70,51 @@ export interface UsageFacet {
 export interface Usages {
   schema: number
   sourcesStamp?: string
+  partsStamp?: string
   facets: UsageFacet[]
   parts: [number, number][][]
+}
+
+/** `find/units.json.gz` (`web/finder.py`): every document the site shows as a unit — a document, or one
+ *  page of a magazine issue or a book — with the parts read on it as rows of `PartIndex.parts`, each unit's
+ *  list as its length and the steps between sorted rows. A unit's facets are positions in `facets`, the
+ *  usage filter's menu counted in units; `eras` is by source position. */
+export interface FinderUnits {
+  schema: number
+  findStamp: string
+  partsStamp: string
+  sourcesStamp: string
+  roles: string[]
+  kinds: string[]
+  /** the families a reader may leave out */
+  negative: string[]
+  facets: UsageFacet[]
+  moreFacets: Record<string, number[]>
+  eras: string[]
+  units: {
+    role: number[]; flags: number[]; kinds: number[]; year: number[]; page: number[]; facet: number[]
+    used: number[]; usedIds: number[]; named: number[]; namedIds: number[]
+  }
+  /** the types each part is a grade, package or packing of; the makers' names that are the same part */
+  up: Record<string, string[]>
+  alias: Record<string, string[]>
+  /** the splits of the word index the build wrote (`find/w/<key>.json.gz`), and the words left out of it */
+  shards: string[]
+  common: string[]
+}
+
+/** `find/docs.json.gz`: what a unit's result shows, by the same position. */
+export interface FinderDocs {
+  schema: number
+  findStamp: string
+  title: string[]
+  url: string[]
+  source: number[]
+  date: string[]
+  also: Record<string, string[]>
+  aka: Record<string, string[]>
+  /** for a design on GitHub, how many designs its folder holds */
+  sheets: Record<string, number>
 }
 
 export interface PartModel {
