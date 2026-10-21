@@ -1,7 +1,8 @@
 /** The character pane's arithmetic: names a reader can tell apart, keys in the catalogue's order, cells that say why there is no number. */
 import { describe, expect, it } from 'vitest'
 
-import { between, beyondRatings, cellOf, chartTitle, ease, fitList, fitRange, jsonMaybeGzip, gridX, hoverExtras, memberFacts, nearestLine, orderKeys, panned, ratingOn, readAt, traceConditions, zoomed } from './character'
+import { jsonMaybeGzip } from './data'
+import { between, beyondRatings, cellOf, chartTitle, ease, fitList, fitRange, gridX, hoverExtras, memberFacts, nearestLine, orderKeys, panned, ratingOn, readAt, traceConditions, zoomed } from './character'
 import { axisName, firstChoice, fmtChoice, pickCurves, quantities, sameValue, selectorsOf } from './charpick'
 import { colourOf, dashOf, modelLabels } from './key'
 import type { Curve, HoverExtra, Measurement, ModelCharacter, PartModel } from './types'

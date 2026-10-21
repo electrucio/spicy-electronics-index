@@ -217,19 +217,27 @@ def rows(path):
 # transistor with bias resistors a bipolar transistor). A category that says only "transistors" gives
 # `transistor`, which the menu reads as a bipolar transistor the way it reads a bare JEDEC number. Words
 # the menu has no device for (ADCs, load switches, LED drivers) give nothing, and the page says "not known".
+#
+# An integrated circuit is filed by what it does, and its words often name a transistor it is built from or
+# drives: a "JFET-input op amp" (OPA828) is an op-amp, a "bipolar-input audio op amp" (OPA1664) too, a
+# "MOSFET driver" is a driver and "bipolar timers" are timers. So the integrated functions come first, and an
+# IC whose function the menu has no device for stops the row with nothing. A channel alone says a field-effect
+# transistor and not which: Fairchild's J105 to J107 are "N-Channel Switch", and they are JFETs.
 CATALOGUE_KINDS: tuple[tuple[str, str], ...] = (
     (r"photocoupler|optocoupler|opto-?isolator|photorelay", "opto"),
-    (r"bias resistor|digital transistor|bipolar|\bbjt\b", "bjt"),
-    (r"\bmosfets?\b|\bn-channel\b|\bp-channel\b", "mosfet"),
-    (r"\bjfets?\b|junction fet", "jfet"),
-    (r"\bzener", "zener"),
-    (r"schottky|rectifier|\bdiodes?\b|\btvs\b|\bbridge\b", "diode"),
     (r"\bop[ -]?amps?\b|operational amplifier", "opamp"),
     (r"comparator", "comparator"),
-    (r"\bldo\b|linear regulator|voltage regulator|low-dropout", "regulator"),
     (r"dc/dc|ac/dc|switching regulator|switching controller", "smps"),
+    (r"\bldo\b|linear regulator|voltage regulator|low-dropout", "regulator"),
     (r"audio (power )?amplifier", "ic-audio"),
     (r"audio (dac|adc|codec)", "digital-audio"),
+    (r"\bdrivers?\b|\bcontrollers?\b|\bchargers?\b|\badcs?\b|\bdacs?\b|\btimers?\b", ""),
+    (r"bias resistor|digital transistor|bipolar (?:junction |power |small[- ]signal |rf )?transistor|\bbjts?\b", "bjt"),
+    (r"\bjfets?\b|junction fet", "jfet"),
+    (r"\bmosfets?\b", "mosfet"),
+    (r"\bn-channel\b|\bp-channel\b", "jfet/mosfet"),
+    (r"\bzener", "zener"),
+    (r"schottky|rectifier|\bdiodes?\b|\btvs\b|\bbridge\b", "diode"),
     (r"\btransistors?\b", "transistor"),
 )
 
@@ -240,26 +248,57 @@ def catalogue_kind(catalogued: list[list[str]]) -> str:
     for r in catalogued:
         c = dict(zip(CATALOGUE_FIELDS, r))
         text = f"{c.get('category', '')} {c.get('title', '')}".lower()
-        for pattern, kind in CATALOGUE_KINDS:
-            if re.search(pattern, text):
-                return kind
+        kind = next((k for pattern, k in CATALOGUE_KINDS if re.search(pattern, text)), "")
+        if kind:
+            return kind
     return ""
 
 
-def part_kind(part: str, recipes: dict, dictionary: dict[str, str], catalogue: dict[str, str] | None = None) -> str:
+# What the shape of a number says, where the project's own sourced scheme says less than the extractor
+# guesses. The extractor reads a Pro Electron transistor letter as a bipolar transistor, but the code says only
+# what the device was designed for: BF245 is a JFET and BC548 a bipolar transistor, both "transistor, low
+# power" (`data/parts/schemes/pro-electron.yaml`). The extractor keeps its guess for what it counts; the site
+# says what the letter says, and a maker's category, a model library or the curation says the rest.
+SHAPE_KINDS = {"Pro Electron transistor": "bjt/jfet/mosfet"}
+
+
+def shape_kind(part: str) -> str:
+    """What sort of device the shape of the number says, as the site reads it (`SHAPE_KINDS`)."""
+    fam = family_of(canonical(part) or part)
+    return SHAPE_KINDS.get(fam[0], fam[1]) if fam else ""
+
+
+def narrows(said: str, guess: str) -> bool:
+    """Whether a kind a source gives answers among what a guess leaves open: its family sits inside the
+    guess's. A maker files 2N5457 under JFETs, which the JEDEC number could not tell from a bipolar
+    transistor, and an op-amp-shaped number under comparators. A source that contradicts the guess narrows
+    nothing, and neither does a bare "transistors", which says no more than the number."""
+    if not said or not guess or said == guess or said == "transistor":
+        return False
+    outer = catalogue.family_for(KIND_MAP.get(guess, ()))
+    inner = catalogue.family_for(KIND_MAP.get(said, ()))
+    return bool(outer and inner and inner != outer and outer in catalogue.lineage(inner))
+
+
+def part_kind(part: str, recipes: dict, dictionary: dict[str, str], catalogue: dict[str, str] | None = None,
+              typed: dict[str, str] | None = None) -> str:
     """What sort of device this part is, from the surest source that knows.
 
-    Four of them, in order: the curation, which decided; the part dictionary, which was judged; the
-    extractor's family patterns, which recognise the shape of a number; and the maker's own catalogue,
-    whose category names the device (`catalogue_kind`). The third is a guess and says so — `2N3904` and
-    `2N5457` are both JEDEC, one a transistor and one a JFET, and the family cannot tell them apart.
+    In order: the curation, which decided; the part dictionary, which was judged; the type this number is a
+    grade, package or packing of, when one of those two decided it (`type_kinds`); the extractor's family
+    patterns, which recognise the shape of a number; and the maker's own catalogue, whose category names the
+    device (`catalogue_kind`). The fourth is a guess and says so — `2N3904` and `2N5457` are both JEDEC, one
+    a transistor and one a JFET, and the family cannot tell them apart — so a maker's category that answers
+    among what the guess leaves open is taken over it (`narrows`).
     """
     if part in recipes:
         return recipes[part].get("kind", "")
     if part in dictionary:
         return dictionary[part]
-    fam = family_of(canonical(part) or part)
-    return fam[1] if fam else (catalogue or {}).get(part, "")
+    if typed and part in typed:
+        return typed[part]
+    guess, said = shape_kind(part), (catalogue or {}).get(part, "")
+    return said if narrows(said, guess) else guess or said
 
 
 def wanted() -> dict[str, list[dict]]:
@@ -477,8 +516,17 @@ def modelled_devices() -> dict[str, tuple[str, ...]]:
 
 
 def devices_of(part: str, kind: str, idx: dict) -> tuple[str, ...]:
-    """The devices a part answers to: from its kind, or failing that from what a model library says."""
-    return KIND_MAP.get(kind, ()) or idx.get("modelled", {}).get(part, ())
+    """The devices a part answers to: from its kind, or failing that from what a model library says. When
+    the kind leaves several open — a JEDEC number is a bipolar transistor, a JFET or a MOSFET — a model
+    library's device type that settles among them settles it: a library that defines 2N5457 as an NJF
+    model has said which."""
+    devs = KIND_MAP.get(kind, ())
+    modelled = idx.get("modelled", {}).get(part, ())
+    if len(devs) > 1 and modelled:
+        both = tuple(d for d in devs if d in modelled)
+        if both and len(both) < len(devs):
+            return both
+    return devs or modelled
 
 
 def modelled_polarity() -> dict[str, list[list[str]]]:
@@ -774,7 +822,8 @@ def known_kinds(idx: dict, recipes: dict, names) -> dict[str, tuple[str, ...]]:
             out.setdefault(r["part"], KIND_MAP.get(r.get("kind", ""), ()))
     dictionary = idx.get("dictionary", {})
     for p in names:
-        devs = devices_of(p, part_kind(p, recipes, dictionary, idx.get("catalogue_kind")) or idx.get("wanted_kind", {}).get(p, ""), idx)
+        kind = part_kind(p, recipes, dictionary, idx.get("catalogue_kind"), idx.get("type_kind"))
+        devs = devices_of(p, kind or idx.get("wanted_kind", {}).get(p, ""), idx)
         if devs or p not in out:             # a kind the index cannot tell does not erase the catalogue's
             out[p] = devs
     return out
@@ -784,11 +833,28 @@ def kind_of(part: str, recipe: dict | None, idx: dict) -> str:
     """The same answer `part_kind` gives the search index, from what one part's page already has."""
     if recipe:
         return recipe.get("kind", "")
-    k = idx.get("dictionary", {}).get(part)
+    k = idx.get("dictionary", {}).get(part) or idx.get("type_kind", {}).get(part)
     if k:
         return k
-    fam = family_of(canonical(part) or part)
-    return fam[1] if fam else idx.get("catalogue_kind", {}).get(part) or idx.get("wanted_kind", {}).get(part, "")
+    guess, said = shape_kind(part), idx.get("catalogue_kind", {}).get(part, "")
+    return (said if narrows(said, guess) else guess or said) or idx.get("wanted_kind", {}).get(part, "")
+
+
+def type_kinds(names, recipes: dict, dictionary: dict[str, str]) -> dict[str, str]:
+    """The kind each number nothing decided takes from its type: TL072CP is a TL072 in a plastic DIP, and
+    the curation decided what a TL072 is. The steps are `kin_names_steps` — a grade, a packing, a package,
+    a brand — narrow on purpose, so LM317L and 6L6GC stay parts of their own; the first type the curation
+    or the dictionary decided gives its kind."""
+    out: dict[str, str] = {}
+    for p in names:
+        if p in recipes or p in dictionary:
+            continue
+        for _, t in kin_names_steps(p):
+            k = (recipes.get(t) or {}).get("kind") or dictionary.get(t, "")
+            if k:
+                out[p] = k
+                break
+    return out
 
 
 # The suffixes that change a part's package, its packing or its selection and leave the part itself: a
@@ -1273,7 +1339,7 @@ def search_index(idx: dict, recipes: dict) -> tuple[list[list], list[dict]]:
     tally = Counter()
     for part in sorted(set(counts) | set(idx.get("unshown", {})) | set(recipes) | set(listed_kind)):
         usages, docs = counts.get(part, (0, 0))
-        kind = part_kind(part, recipes, dictionary, idx.get("catalogue_kind")) or listed_kind.get(part, "")
+        kind = part_kind(part, recipes, dictionary, idx.get("catalogue_kind"), idx.get("type_kind")) or listed_kind.get(part, "")
         devs = devices_of(part, kind, idx)
         named = schemes.decode(part, devs, idx.get("known"))
         fid, _ = catalogue.family_of(part, devs, named.families if named else None)

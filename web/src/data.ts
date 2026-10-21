@@ -3,7 +3,7 @@
  * catalogue a few more; asking twice for either would be the only cost of opening a family page from a
  * part page, so neither is asked twice.
  */
-import type { Catalogue, PartIndex, Usages } from './types'
+import type { Catalogue, FinderDocs, FinderUnits, PartIndex, Usages } from './types'
 
 export const DATA = `${import.meta.env.BASE_URL}data`
 
@@ -64,6 +64,38 @@ export function loadUsages(stamp?: string): Promise<Usages> {
       .catch(() => before ?? NO_USAGES)
   }
   return usages
+}
+
+/** A JSON file that may be gzipped: the bytes are looked at, not the headers, because a static server may or
+ *  may not have undone the compression already. */
+export async function jsonMaybeGzip(buf: ArrayBuffer): Promise<unknown> {
+  const b = new Uint8Array(buf)
+  if (b.length > 2 && b[0] === 0x1f && b[1] === 0x8b) {
+    const text = await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'))).text()
+    return JSON.parse(text)
+  }
+  return JSON.parse(new TextDecoder().decode(b))
+}
+
+let finder: Promise<{ units: FinderUnits; docs: FinderDocs } | null> | null = null
+
+/**
+ * The Projects tab's two files (`find/`), fetched the first time the tab opens: about 3 MB gzipped, which only
+ * a reader who searches by several parts needs. With `stamp`, asked for again past every cache, because the
+ * index they name parts of came from another build.
+ */
+export function loadFinder(stamp?: string): Promise<{ units: FinderUnits; docs: FinderDocs } | null> {
+  if (stamp || !finder) {
+    const before = finder
+    const get = (name: string) => fetch(stamp ? `${DATA}/find/${name}?ss=${encodeURIComponent(stamp)}` : `${DATA}/find/${name}`,
+      stamp ? { cache: 'reload' } : undefined)
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then(jsonMaybeGzip)
+    finder = Promise.all([get('units.json.gz'), get('docs.json.gz')])
+      .then(([units, docs]) => ({ units: units as FinderUnits, docs: docs as FinderDocs }))
+      .catch(() => before ?? null)
+  }
+  return finder
 }
 
 export function loadCatalogue(): Promise<Catalogue> {

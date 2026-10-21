@@ -15,6 +15,8 @@ export type Used = [number, number][]
 export function usedBy(index: PartIndex, usages: Usages): Map<string, Used> | null {
   if (usages.parts.length !== index.parts.length) return null
   if (index.sourcesStamp && usages.sourcesStamp && index.sourcesStamp !== usages.sourcesStamp) return null
+  // one part added and another dropped keeps the length and moves every row between them
+  if (index.partsStamp && usages.partsStamp && index.partsStamp !== usages.partsStamp) return null
   return new Map(index.parts.map((r, i) => [r[0], usages.parts[i] ?? []]))
 }
 

@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from 'preact/hooks'
 
 import { FamilyPage, MakerPage, SchemePage } from './about'
 import { SellersPage } from './sellers'
-import { DATA } from './data'
+import { DATA, follow } from './data'
 import { Feedback } from './feedback'
+import { FinderPage, LAST_KEY } from './finder'
 import { LICENCE_URL, Licence } from './licence'
 import { Loading } from './loading'
 import { CHARACTERIZATION } from './features'
@@ -16,8 +17,8 @@ import wordmark from './wordmark.svg'
 import './style.css'
 import type { Manifest } from './types'
 
-/** A page of the catalogue, when one is open: a family, a naming scheme or an organisation. */
-type Topic = { family?: string; scheme?: string; maker?: string; bench?: string; sellers?: string }
+/** A page of the catalogue, when one is open: a family, a naming scheme or an organisation; or the Projects tab. */
+type Topic = { family?: string; scheme?: string; maker?: string; bench?: string; sellers?: string; find?: boolean }
 
 /**
  * Which part is open, kept in the URL, or which catalogue page a part linked to.
@@ -31,6 +32,7 @@ function useRoute(): [string | null, Topic, (p?: string | null) => void] {
     const topic: Topic = {
       family: q.get('family') ?? undefined, scheme: q.get('scheme') ?? undefined, maker: q.get('maker') ?? undefined,
       bench: CHARACTERIZATION ? q.get('bench') ?? undefined : undefined, sellers: q.get('sellers') ?? undefined,
+      find: q.has('find') || undefined,
     }
     return [q.get('part'), topic] as const
   }
@@ -52,7 +54,9 @@ function App() {
   const [data, setData] = useState<{ m: Manifest } | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [part, topic, go] = useRoute()
-  const onTopic = Boolean(topic.family || topic.scheme || topic.maker || topic.bench || topic.sellers)
+  const onTopic = Boolean(topic.family || topic.scheme || topic.maker || topic.bench || topic.sellers || topic.find)
+  // The Projects tab opens on the last question asked there, so a reader who went to a part comes back to it.
+  const lastFind = () => { try { return sessionStorage.getItem(LAST_KEY) || '?find' } catch { return '?find' } }
   // The header's height, for CSS: what stays in view under it (the list, the part's name) starts there.
   const head = useRef<HTMLElement>(null)
   useEffect(() => {
@@ -81,6 +85,13 @@ function App() {
           >
             <span class="pepper"><img class="logo" src={logo} alt="" /></span><img class="wordmark" src={wordmark} alt="Spicy Electronics Index" />
           </a>
+          {data?.m.have.finder && (
+            <nav class="tabs" aria-label="Sections">
+              <a href="?" aria-current={topic.find ? undefined : 'page'} onClick={(e) => { e.preventDefault(); go() }}>Parts</a>
+              <a href={lastFind()} aria-current={topic.find ? 'page' : undefined}
+                onClick={(e) => follow(e as unknown as MouseEvent, lastFind())}>Projects</a>
+            </nav>
+          )}
           {/* The build's date, the licence and the way to send feedback, from any page, on one line. */}
           <div class="hright">
             <div class="hline">
@@ -101,6 +112,7 @@ function App() {
         {data && topic.maker && <MakerPage id={topic.maker} />}
         {data && topic.bench && <MethodsPage id={topic.bench} />}
         {data && topic.sellers && <SellersPage />}
+        {data && topic.find && <FinderPage />}
         {data && !onTopic && <Browser part={part} onPick={go} />}
       </main>
 

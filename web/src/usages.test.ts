@@ -66,4 +66,9 @@ describe('usedBy', () => {
     expect(usedBy(index, { schema: 1, sourcesStamp: 'b2', facets: FACETS, parts: [[], [], []] })).toBeNull()
     expect(usedBy(index, { schema: 1, sourcesStamp: 'a1', facets: FACETS, parts: [[]] })).toBeNull()
   })
+  it('refuses rows of another list of parts of the same length', () => {
+    const stamped: PartIndex = { ...index, partsStamp: 'p1' }
+    expect(usedBy(stamped, { schema: 1, sourcesStamp: 'a1', partsStamp: 'p2', facets: FACETS, parts: [[], [], []] })).toBeNull()
+    expect(usedBy(stamped, { schema: 1, sourcesStamp: 'a1', partsStamp: 'p1', facets: FACETS, parts: [[], [], []] })).not.toBeNull()
+  })
 })

@@ -63,10 +63,23 @@ def documented() -> dict[str, dict]:
     return {r["part"]: r for r in _csv(stamp(documented_families()))}
 
 
-# What each relation says, read from the part in the first column. They are directional and never
-# transitive: a replacement for a replacement is not a replacement, and "in one datasheet with" is the only
-# one that holds both ways.
+# What each relation says, read from the part in the first column. They are never transitive: a replacement
+# for a replacement is not a replacement. "In one datasheet with" and "the same product as" hold both ways;
+# the other two only as written.
 RELATIONS = ("next_generation_of", "replacement_for", "same_product_as", "same_datasheet")
+
+# What each relation is worth to a reader who has one of the two parts and wants to know whether it does for
+# the other (the Projects tab): (which way it counts, from what strictness). "both": either part does for the
+# other; "out": the part in the first column does for the other one and not back; "hint": never counted, said
+# beside the part. The strictness is the reader's choice, from "substitute" (a document names it so) to
+# "similar" (a comparison of data sheets, which a relation of its own will carry, citing both). Every relation
+# needs a row here before the catalogue holds together (`check`).
+COVERAGE: dict[str, tuple[str, str]] = {
+    "same_product_as": ("both", "substitute"),     # JJ sells one valve as ECC83S, 12AX7 and 7025
+    "replacement_for": ("out", "substitute"),      # LSK170 does for a 2SK170; nothing says the reverse
+    "next_generation_of": ("out", "substitute"),   # a TL072H for a TL072
+    "same_datasheet": ("both", "hint"),            # TL071 and TL072 share a sheet and not a pinout
+}
 
 
 def relations() -> tuple[dict, ...]:
@@ -224,6 +237,9 @@ def check(devices: list[str] | None = None) -> list[str]:
     for rid, r in refs.items():
         if not r.get("url", "").startswith(("https://", "http://")):
             out.append(f"reference {rid}: no usable URL")
+    for rel in RELATIONS:
+        if rel not in COVERAGE:
+            out.append(f"relation {rel}: COVERAGE does not say what it is worth to a reader who has one of the parts")
     for r in relations():
         if r["relation"] not in RELATIONS:
             out.append(f"relation {r['part']} -> {r['other']}: {r['relation']} is not one of {', '.join(RELATIONS)}")

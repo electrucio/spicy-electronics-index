@@ -15,7 +15,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { AboutPart, Databooks } from './about'
 import { Heading } from './anchor'
 import { SellersSection } from './sellers'
-import { DATA, loadIndex, loadUsages, partPath, reloadIndex } from './data'
+import { DATA, follow, loadIndex, loadUsages, partPath, reloadIndex } from './data'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
@@ -621,6 +621,11 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
       <div class="ptitle">
         <h1>{part}</h1>
         {page?.models?.kind && <span class="chip">{page.models.kind}</span>}
+        {page && page.docs.length > 0 && (
+          <a class="small" href={`?find&need=${encodeURIComponent(part)}`}
+            onClick={(e) => follow(e as unknown as MouseEvent, `?find&need=${encodeURIComponent(part)}`)}>
+            Projects that use it with other parts →</a>
+        )}
       </div>
       {error && <p class="muted">Nothing is published for {part} yet.</p>}
       {!error && !page && <Loading what={`the page of ${part}`} />}
@@ -653,7 +658,7 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
 const SIDE = { min: 260, fallback: 480, key: 'sei.side' }
 
 /** The list's width, as the reader last left it. Kept in this browser only, and only as a convenience. */
-function savedWidth(): number {
+export function savedWidth(): number {
   try { return Number(localStorage.getItem(SIDE.key)) || SIDE.fallback } catch { return SIDE.fallback }
 }
 
@@ -663,7 +668,7 @@ function savedWidth(): number {
  * The width is a CSS variable on the browser, so the grid does the layout and nothing re-renders the
  * fifty thousand rows while it moves.
  */
-function Splitter({ host, width, setWidth }: {
+export function Splitter({ host, width, setWidth }: {
   host: { current: HTMLDivElement | null }; width: number; setWidth: (w: number) => void
 }) {
   const clamp = (w: number) => Math.round(Math.min(Math.max(w, SIDE.min), innerWidth * 0.7))
