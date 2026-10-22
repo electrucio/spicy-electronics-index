@@ -153,6 +153,12 @@ RULES: list[tuple[frozenset, str, str, int]] = [
     (frozenset({"diyaudio"}), r"_immler\.", "immler", MODELLER),
     (frozenset({"diyaudio"}), r"_koonw\.", "koonw", FORUM),
     (frozenset({"diyaudio"}), r"Mooly", "mooly", FORUM),
+    # attachments of the "Vacuum Tube SPICE Models" thread whose own header says whose models they are
+    (frozenset({"diyaudio"}), r"(^|/)Cordell-Models\.txt$", "cordell", MODELLER),        # "copyright Cordell Audio"
+    (frozenset({"diyaudio"}), r"(^|/)dmtriodep\.inc$", "duncanamps", MODELLER),        # "Copyright Duncan Amplification"
+    (frozenset({"diyaudio"}), r"^att389560_tube_lib/", "kevinkr", COLLECTION),       # "from Duncan Monroe, Marshall Leach, Ayumi…"
+    (frozenset({"diyaudio"}), r"^att496755_tube_models/", "ingenieus", COLLECTION),  # "all the models in the thread"
+    (frozenset({"diyaudio"}), r"^att1079297_[^/]+/z\.lib$", "zung", COLLECTION),     # a project's library of Ayumi's and others' models
     (frozenset({"diystompboxes"}), r"gert_willmann", "gert-willmann", FORUM),
     (frozenset({"groupsio-ltspice"}), r"hiromasa", "hiromasa", FORUM),
     (frozenset({"groupsio-ltspice"}), r".", "ltspice-group", COMPILATION),
