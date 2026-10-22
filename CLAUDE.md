@@ -81,5 +81,9 @@ commit. Python ≥ 3.11, run through `uv`.
   then `make models-match models-found models-promote`.
 - **A hand-gathered delivery** (a browser round): `make models-ingest FROM=<zip> DRY=1`, then without `DRY`.
 - **A collection gathered in a browser** (a folder of vendor archives with a `MANIFEST.tsv`): `make models-deliver COLLECTION=<folder> DRY=1` turns it into one delivery per source, with each file's address worked out from the vendor's own URL pattern (`models/deliver.py: SPECS`); then `models-ingest` per source. `CITED=1` delivers only the files and archive members the published recipes cite, which is how the private tree is kept to what the index can point a reader at.
+- **A forum thread of models gathered in a browser** (its attachments, `attachments_manifest.csv`, and a
+  catalogue of the models under `modelos_spice/`): `make models-deliver-thread COLLECTION=<folder> DRY=1`
+  makes one delivery, the attachments at their own addresses and each post's models as their text alone
+  (`models/thread.py`); then `models-ingest`, and `models-index` over every source.
 
 Effort is estimated as "Claude sessions + waiting time", never person-days.

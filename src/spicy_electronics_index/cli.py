@@ -47,6 +47,12 @@ def main(argv: list[str] | None = None) -> int:
     mdl.add_argument("--dry", action="store_true", help="count what would be delivered and write nothing")
     mdl.add_argument("--list", action="store_true", help="name the sources this knows and stop")
     mdl.add_argument("--cited", action="store_true", help="only the files and archive members the recipes cite")
+    mdt = mod.add_parser("deliver-thread", help="turn a forum thread of models gathered in a browser into a delivery for `ingest`")
+    mdt.add_argument("collection", help="the folder the round left: attachments_manifest.csv, attachments/, modelos_spice/")
+    mdt.add_argument("--source", default="diyaudio", help="the model source the thread belongs to (default: diyaudio)")
+    mdt.add_argument("--into", help="where to write the delivery (default: the private deliveries folder, dated)")
+    mdt.add_argument("--fetched", help="the day the round read the thread (default: the day of its attachment list)")
+    mdt.add_argument("--dry", action="store_true", help="count what would be delivered and write nothing")
     mv = mod.add_parser("verify", help="whether this tree still holds every model file it was given")
     mv.add_argument("--source", action="append", help="only these sources (repeatable)")
     mv.add_argument("--repair", action="store_true", help="fetch back what is lost or no longer matches")
@@ -367,6 +373,12 @@ def main(argv: list[str] | None = None) -> int:
         argv2 += ["--list"] if args.list else []
         argv2 += ["--cited"] if args.cited else []
         return model_deliver.main(argv2)
+
+    if args.cmd == "models" and args.mod_cmd == "deliver-thread":
+        from spicy_electronics_index.models import thread as model_thread
+        argv2 = [args.collection, "--source", args.source] + (["--into", args.into] if args.into else [])
+        argv2 += (["--fetched", args.fetched] if args.fetched else []) + (["--dry"] if args.dry else [])
+        return model_thread.main(argv2)
 
     if args.cmd == "models" and args.mod_cmd == "match":
         from spicy_electronics_index.models import match as model_match
