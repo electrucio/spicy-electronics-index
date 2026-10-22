@@ -1,6 +1,8 @@
 """The symbol a model was published with: same place, same name, as many pins, the model's own file."""
 from __future__ import annotations
 
+import json
+
 from spicy_electronics_index.models import symbols as S
 
 ASY = """Version 4
@@ -54,3 +56,23 @@ def test_a_symbol_that_names_no_model_or_a_file_is_named_by_its_file():
     by = {S.norm("XFMR2"): [sym("sources/b/extracted/lib/sym/xfmr2.asy", "", ("1", "2"), "Trafos.lib")]}
     assert S.symbol_for("XFMR2", 2, "sources/b/extracted/lib/sub/Trafos.lib", by)["file"].endswith("xfmr2.asy")
     assert S.symbol_for("XFMR2", 2, "sources/b/extracted/lib/sub/Other.lib", by) is None
+
+
+def test_an_x_symbol_that_puts_its_library_where_the_model_goes_answers_to_its_values_too(tmp_path):
+    s = S.read(ASY.replace("SYMATTR ModelFile Relay_2A2B.sub\n", "SYMATTR SpiceModel tube.lib\nSYMATTR Value2 R2A2B\n"))
+    assert (s["model"], s["model_file"], s["names"]) == ("", "tube.lib", ["Relay_2A2B", "R2A2B"])
+    listed = tmp_path / "symbols.jsonl"
+    listed.write_text(json.dumps({"file": "sources/b/extracted/x/Philips EZ81.asy", **s}) + "\n")
+    by = S.load(listed)
+    assert {"PHILIPSEZ81", "RELAY2A2B", "R2A2B"} <= set(by)            # its file's name stays one of them
+
+
+def test_what_one_post_of_a_thread_brought_is_one_place(monkeypatch):
+    post = "sources/diyaudio/raw/thread-243950/3751418"
+    monkeypatch.setattr(S, "posts", lambda: {"sources/diyaudio/extracted/att389559_Tubes_sym": post,
+                                             "sources/diyaudio/extracted/att389560_tube_lib": post})
+    by = {S.norm("EZ81"): [sym("sources/diyaudio/extracted/att389559_Tubes_sym/Tubes/Diodes/Philips EZ81.asy",
+                               "EZ81", ("A1", "A2", "K"), "tube.lib")]}
+    got = S.symbol_for("EZ81", 3, "sources/diyaudio/extracted/att389560_tube_lib/tube.lib", by)
+    assert got["file"].endswith("Philips EZ81.asy")
+    assert S.symbol_for("EZ81", 3, "sources/diyaudio/extracted/att496755_tube_models/tube.lib", by) is None

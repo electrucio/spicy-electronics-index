@@ -8,8 +8,9 @@ party's file (rule 1).
 
 A symbol is the model's when it names it (`SpiceModel`, or `Value` on a symbol whose prefix is X, as
 LTspice reads them; a symbol that names nothing, or puts a file name there, is named by its own file
-name) and has as many pins as the model, and when it comes from the model's own copy: the
-same archive, or the same folder of separate downloads; a symbol that names the file LTspice is to load
+name, and in the second case by its Value and Value2 too) and has as many pins as the model, and when it comes from the model's own copy: the
+same archive, or the same folder of separate downloads, which for a forum thread is the post that
+brought them (a library and the zip of its symbols); a symbol that names the file LTspice is to load
 (`ModelFile`) must name the model's. A symbol of that name from another collection is not taken, because
 collections renumber pins and rename models; a wrong symbol is worse than none.
 
@@ -23,6 +24,7 @@ import json
 import re
 import sys
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 from spicy_electronics_index.core.config import spice_models_root, spice_symbols
@@ -55,9 +57,14 @@ def read(text: str) -> dict:
     prefix = attrs.get("Prefix", "")
     model = attrs.get("SpiceModel") or (attrs.get("Value", "") if prefix.upper() == "X" else "")
     model_file = attrs.get("ModelFile", "")
+    out = {"prefix": prefix, "model": model, "model_file": model_file, "pins": [n for _, n in sorted(pins)]}
     if FILE_NAME.search(model):              # Trafos.lib written where the model's name goes
-        model_file, model = model_file or model, ""
-    return {"prefix": prefix, "model": model, "model_file": model_file, "pins": [n for _, n in sorted(pins)]}
+        out["model_file"], out["model"] = model_file or model, ""
+        # Such a symbol is named by its file, and by what its Value and Value2 say: the collections that
+        # write it so put the subcircuit's name in either (tube.lib's EZ81, LF353.mod's LF353/NS).
+        if prefix.upper() == "X" and (names := [attrs[k] for k in ("Value", "Value2") if attrs.get(k)]):
+            out["names"] = names
+    return out
 
 
 def scan(root: Path) -> list[dict]:
@@ -81,15 +88,33 @@ def load(path: Path | None = None) -> dict[str, list[dict]]:
     if path.exists():
         for line in path.read_text(encoding="utf-8").splitlines():
             s = json.loads(line)
-            out[norm(s["model"] or Path(s["file"]).stem)].append(s)
+            for key in dict.fromkeys(norm(n) for n in [s["model"] or Path(s["file"]).stem, *s.get("names", [])]):
+                out[key].append(s)
+    return out
+
+
+@lru_cache(maxsize=1)
+def posts() -> dict[str, str]:
+    """`sources/<source>/extracted/<archive>` -> the post folder the archive was delivered in.
+
+    A forum thread is delivered one folder per post (`models/thread.py`), and what one post brought is one
+    place, as a folder of separate downloads is: kevinkr's #117 gives `tube_lib.zip` and `Tubes_sym.zip`.
+    """
+    root = spice_models_root() / "sources"
+    out: dict[str, str] = {}
+    for p in root.glob("*/raw/thread-*/*/*") if root.is_dir() else []:
+        rel = p.relative_to(root)
+        out[f"sources/{rel.parts[0]}/extracted/{p.stem}"] = f"sources/{rel.parent.as_posix()}"
     return out
 
 
 def folder(file: str) -> str:
-    """The place a file shares with its neighbours: the archive it was unpacked from, or its folder."""
+    """The place a file shares with its neighbours: the archive it was unpacked from, or its folder; for
+    an archive a post brought, the post's folder."""
     parts = Path(file).parts
     if len(parts) > 3 and parts[2] == "extracted":
-        return "/".join(parts[:4])                 # sources/<source>/extracted/<archive>
+        place = "/".join(parts[:4])                # sources/<source>/extracted/<archive>
+        return posts().get(place, place)
     return str(Path(file).parent)
 
 
