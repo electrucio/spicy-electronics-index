@@ -42,6 +42,12 @@ models:
       TriodeK: [2345, 2357]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: 6CG7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: ayumi
   name: 6CG7
   def: subckt
@@ -63,6 +69,13 @@ models:
       6CG7: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6CG7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6CG7.inc
+      sha256: 7b8490ca1fbb7f7edb16bb4534226a2e68884983e7d8067cab3069dc2488401a
 - source: ayumi
   name: 6FQ7
   def: subckt
@@ -84,6 +97,13 @@ models:
       6FQ7: [9, 22]
     fetched: '2026-09-14'
   note: found under the alias 6FQ7; pins from names
+  copies:
+  - source: diyaudio
+    name: 6FQ7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6FQ7.inc
+      sha256: 5c7a63ed6887d136f7eb52b1af3e6d8428da08c61c5d4ca074477af7116d5c90
 - source: suusi-tubes
   name: 6CG7
   def: subckt
@@ -182,6 +202,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6CG7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6CG7
     get:
@@ -356,12 +381,30 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6CG7
+    get:
+      url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+      member: z.lib
+      sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+  - source: diyaudio
+    name: 6CG7
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6CG7.inc
+      sha256: 4279d24a4a48de6ea15be0f5d92415d0a999b9ac38cf7aa8f3f553b595c7a29d
   - source: ltwiki
     name: 6CG7
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Triode_Ayumi.lib
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6CG7_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+      member: triode-w1_dd.txt
+      sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
 - source: bordodynov
   name: 6FQ7
   def: subckt
@@ -384,12 +427,30 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6FQ7
+    get:
+      url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+      member: z.lib
+      sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+  - source: diyaudio
+    name: 6FQ7
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6FQ7.inc
+      sha256: 2d899b76dac9828d0a4c97aed5832bd128765afb0d2a161f679b7f425cc209ad
   - source: ltwiki
     name: 6FQ7
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Triode_Ayumi.lib
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6FQ7_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+      member: triode-w1_dd.txt
+      sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
 - source: bordodynov
   name: 6CG7
   def: subckt
@@ -449,6 +510,87 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/triodes.sub
       sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: diyaudio
+  name: 6CG7_GE
+  def: subckt
+  hash: 9a7c489c2cb8d4f3b160774ff740b75cb07e5baf
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+    member: 6CG7.lib
+    archive_sha256: 7a6eb2d82fb2be6b8f103a66815954a77313c0056bdd0c217d17eae4c37b208f
+    sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+    lines:
+      6CG7_GE: [178, 189]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
+  - source: diyaudio
+    name: 6CG7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6CG7.lib
+      sha256: 3274e15928206e60d6da13bcaad387a4ddd6135a2d3dfea5a07e7b4376e39e86
 - source: groups-io
   name: V6CG7
   def: subckt
@@ -474,6 +616,27 @@ models:
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
       sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+- source: diyaudio
+  name: 6CG7_GE
+  def: subckt
+  hash: f310bcf9043bad4a113faf750189861cb96097d8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6CG7_GE: [841, 852]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 6FQ7_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+      member: triode-w1_dd.txt
+      sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
 - source: groups-io
   name: 6CG7
   def: subckt
@@ -531,6 +694,36 @@ models:
     lines:
       6FQ7: [744, 755]
     fetched: '2026-10-09'
+  note: found under the alias 6FQ7
+- source: diyaudio
+  name: 6FQ7_EI
+  def: subckt
+  hash: fa59c340f82e1dad6fcf87755251950aff333846
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6FQ7_EI: [1334, 1345]
+    fetched: '2026-10-22'
+  note: found under the alias 6FQ7
+- source: diyaudio
+  name: 6FQ7-j
+  def: subckt
+  hash: ccd1df4907b3f48b792c4adfd2ccc75696f4fb56
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6FQ7-j: [1370, 1381]
+    fetched: '2026-10-22'
   note: found under the alias 6FQ7
 - source: bordodynov
   name: 6CG7

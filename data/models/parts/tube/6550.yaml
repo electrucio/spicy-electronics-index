@@ -76,6 +76,13 @@ models:
       6550A: [10, 30]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6550A
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6550A.inc
+      sha256: 2d79c9ef12fa2348828ed3323303037eead778ef5d784db5d0b18fb90f1e3b0a
 - source: ayumi
   name: 6550AT
   def: subckt
@@ -97,6 +104,13 @@ models:
       6550AT: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6550AT
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6550AT.inc
+      sha256: b8587c3a562990fb93858ba3ae21afd2c967c83977a8ed26cd0b2dee2e8c5fb2
 - source: koren
   name: '6550'
   def: subckt
@@ -118,6 +132,18 @@ models:
     fetched: '2026-09-14'
   note: pins from inline comment
   copies:
+  - source: diyaudio
+    name: '6550'
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-amp-003-zip.451956/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: diyaudio
+    name: '6550'
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-zip.451955/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: groups-io
     name: '6550'
     get:
@@ -344,6 +370,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6550A
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6550A
     get:
@@ -417,6 +448,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: '6550'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: '6550'
     get:
@@ -490,6 +526,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6550_OLD
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6550_OLD
     get:
@@ -714,6 +755,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Pentode_Ayumi.txt
       sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: 6550A
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6550A.inc
+      sha256: 06370f549d2ded7ae8a431af626f18e8b0626c0ea2300d8da717331df2b3a762
   - source: ltwiki
     name: 6550A
     get:
@@ -741,6 +788,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6550AT
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6550AT.inc
+      sha256: 2dfb9526e3ccd78c7409b88cd2a4a2fa52cce64d3e0d371a1fb2e36324897bb1
   - source: ltwiki
     name: 6550AT
     get:
@@ -919,6 +972,41 @@ models:
       member: lib/sub/Valves.Lib
       sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
 - source: bordodynov
+  name: '6550'
+  def: subckt
+  hash: 368320cb4cf5354925c5c8094ce4e6be3037aa38
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      '6550': [1270, 1286]
+      DX: [210, 210]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Tetrodes/6550.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 5a3b8b1649f0f506edbfbfcef3a777d40a1679bbb661d59df96bd7aa8245b321
+  copies:
+  - source: diyaudio
+    name: '6550'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: '6550'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: bordodynov
   name: 6550A
   def: subckt
   hash: 19fc841ad769bb13545cfd812bff2d7a4d0cb456
@@ -942,30 +1030,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/new_tetrodes.txt
       sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
-- source: bordodynov
-  name: '6550'
-  def: subckt
-  hash: 368320cb4cf5354925c5c8094ce4e6be3037aa38
-  type: SUBCKT
-  deps:
-  - DX
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sym/ValVol/Tubes/tube.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
-    lines:
-      '6550': [1270, 1286]
-      DX: [210, 210]
-    fetched: '2026-09-21'
-  copies:
-  - source: ltwiki
-    name: '6550'
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/Tubes/tube.lib
-      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 - source: bordodynov
   name: '6550'
   def: subckt

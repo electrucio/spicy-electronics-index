@@ -24,6 +24,13 @@ models:
       ECC33: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: ECC33
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: ECC33.inc
+      sha256: a79676ce877ba6b22a0b06babb61c23fe7ab9e22e2a5591e79d69a6cef4f011a
 - source: suusi-tubes
   name: ECC33
   def: subckt
@@ -72,9 +79,35 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: ECC33
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: ecc33.sub
+      sha256: 90b4d9049fecb338a2b0cf2f024f9fc1146c270229dfb416738ba922e488b288
+  - source: diyaudio
+    name: ECC33
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: ECC33.inc
+      sha256: cae6a45cf4a970249758b859bb82abe31a8cdc4d5345633eb52cf4bccba4a6b2
   - source: ltwiki
     name: ECC33
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Triode_Ayumi.lib
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: diyaudio
+  name: ECC33
+  def: subckt
+  hash: fb4884b286dadfc91b0e7a8b1bb35b490b66212b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      ECC33: [4552, 4563]
+    fetched: '2026-10-22'

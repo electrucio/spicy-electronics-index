@@ -1,0 +1,230 @@
+part: '5965'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: '5965'
+  def: subckt
+  hash: e158cfaddfd29d2fbdb8b30d44f605f99d302f72
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 5965.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 1ef5af2ec5ab1f17bfb99d47e0702c2ac31bce66d36acc8912465f63b0cb1407
+    lines:
+      '5965': [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '5965'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 5965.inc
+      sha256: 1ef5af2ec5ab1f17bfb99d47e0702c2ac31bce66d36acc8912465f63b0cb1407
+- source: suusi-tubes
+  name: '5965'
+  def: subckt
+  hash: 61170f28474e3842da3e39d9a0b648e8b18355d5
+  type: SUBCKT
+  deps:
+  - TRIODE
+  - 12AV7
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      12AV7: [505, 509]
+      '5965': [392, 396]
+      TRIODE: [1980, 1991]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: '5965'
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: '5965'
+  def: subckt
+  hash: 0757495c30ca3bd43d4294f71118364965a81faf
+  type: SUBCKT
+  deps:
+  - TRIODE
+  - 12AV7
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      12AV7: [779, 783]
+      '5965': [606, 610]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: '5965'
+  def: subckt
+  hash: d7ab92118a470d683bcc23bf4dc6786ea7a1fa52
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      '5965': [735, 748]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: '5965'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: '5965'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 5965.inc
+      sha256: 09beb0ec0cbdb738beb6b28fe59ad4fec241bdab1def3440ffabcdb2d80db0f5
+  - source: ltwiki
+    name: '5965'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 5965_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+      member: triode-w1_dd.txt
+      sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+- source: bordodynov
+  name: '5965'
+  def: subckt
+  hash: b007ec84d14c3db378bbc4384ee0ee4f9aba0ab5
+  type: SUBCKT
+  deps:
+  - TRIODE
+  - 12AV7
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      12AV7: [534, 538]
+      '5965': [414, 418]
+      TRIODE: [2016, 2027]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: '5965'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: 5965_Syl
+  def: subckt
+  hash: 8e874300dfb297af1903e03c3cdc36a84a7e933f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+    member: 5965_Syl.lib
+    archive_sha256: 7a6eb2d82fb2be6b8f103a66815954a77313c0056bdd0c217d17eae4c37b208f
+    sha256: f46cf98237e1f8f396df7124d2b63a91815b0047f99193f38bd2d9959cb822d9
+    lines:
+      5965_Syl: [84, 95]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 5965_Syl
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 5965_Syl.lib
+      sha256: f46cf98237e1f8f396df7124d2b63a91815b0047f99193f38bd2d9959cb822d9
+  - source: diyaudio
+    name: 5965_Syl
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 5965_Syl.lib
+      sha256: f46cf98237e1f8f396df7124d2b63a91815b0047f99193f38bd2d9959cb822d9
+  - source: diyaudio
+    name: 5965_Syl
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 5965_Syl.lib
+      sha256: f46cf98237e1f8f396df7124d2b63a91815b0047f99193f38bd2d9959cb822d9
+  - source: diyaudio
+    name: 5965_Syl
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 5965_Syl.lib
+      sha256: f46cf98237e1f8f396df7124d2b63a91815b0047f99193f38bd2d9959cb822d9
+  - source: diyaudio
+    name: 5965_Syl
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 5965_Syl.lib
+      sha256: f46cf98237e1f8f396df7124d2b63a91815b0047f99193f38bd2d9959cb822d9
+- source: diyaudio
+  name: 5965_RM
+  def: subckt
+  hash: f1aa858d45de727a770c3fa5e702f2b198481b5e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      5965_RM: [3997, 4007]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 5965_Syl
+  def: subckt
+  hash: 1bebcf82a5f91b2b805a8ae09366002393faff2d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      5965_Syl: [4015, 4026]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 5965-brm
+  def: subckt
+  hash: fa9fad11a686427516c1f45a3d992eed833ca29c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6312506
+    sha256: bec75aa631ed410f9c71d57e98a93f6336a424b48e73108237ed12c5da7f6e7b
+    lines:
+      5965-brm: [4, 14]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 5965-brm
+  def: subckt
+  hash: 017b8a6a6e32920ac72a8e124d27b8b88e4c17ed
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5189869
+    sha256: b55e7c48cebc08087dddfe593e9b4c2758d0bbdde30cac5cdb26f3a98823780a
+    lines:
+      5965-brm: [5, 15]
+    fetched: '2026-10-22'

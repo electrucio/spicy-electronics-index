@@ -27,6 +27,38 @@ models:
       TriodeK: [2345, 2357]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: PCC88
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: diyaudio
+  name: PCC88
+  def: subckt
+  hash: 9d1c9608556779f51b5bef339b081c96e16c0f6c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-8160832
+    sha256: 516bd4f0d49f2ecda31a7685b39d87ff2c2f267947a0f6eaa92ec8d74434145e
+    lines:
+      PCC88: [509, 553]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: PCC88_AF
+  def: subckt
+  hash: fb6e71ecdaf7d30728e6726c5fa74f3bcbaa5f69
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      PCC88_AF: [5056, 5068]
+    fetched: '2026-10-22'
 - source: bordodynov
   name: PCC88
   def: subckt
@@ -47,6 +79,12 @@ models:
     fetched: '2026-09-14'
   note: pins from names
   copies:
+  - source: diyaudio
+    name: PCC88
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
   - source: ltwiki
     name: PCC88
     get:

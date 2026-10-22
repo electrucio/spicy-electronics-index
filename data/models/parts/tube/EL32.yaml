@@ -1,0 +1,130 @@
+part: EL32
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: EL32T
+  def: subckt
+  hash: 816655c792ca41a78495f9d00a3948cd17c2c9ca
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EL32T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 5218c14de5faea76b16804c06e6df922112ae6f63b0f88fa87a8346a1a6259da
+    lines:
+      EL32T: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EL32T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EL32T.inc
+      sha256: 5218c14de5faea76b16804c06e6df922112ae6f63b0f88fa87a8346a1a6259da
+- source: ayumi
+  name: EL32
+  def: subckt
+  hash: e2fd0df5646d24588376de8eab0a29e156b1657a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EL32.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: cddf16475f8ac0d42908b6b3e14eb0250aaf9648de37f3845155862f1ab20c75
+    lines:
+      EL32: [10, 30]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EL32
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EL32.inc
+      sha256: cddf16475f8ac0d42908b6b3e14eb0250aaf9648de37f3845155862f1ab20c75
+- source: suusi-tubes
+  name: EL32
+  def: subckt
+  hash: bc95dbfe227f5cc0d5662043a94fc70eeb97443f
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL32: [1941, 1945]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: EL32T
+  def: subckt
+  hash: 47278e15b7d76516c94d0ca896e10149cb76f75a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      EL32T: [3419, 3432]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EL32T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: EL32T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EL32T.inc
+      sha256: ac056375a809b6200269f3df789afd3b6780cf2458b8153fbd626f4f6adb4ab1
+  - source: ltwiki
+    name: EL32T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: EL32
+  def: subckt
+  hash: 296d3cdbabc628b4a0c7f3154cd371ba016f49ce
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      EL32: [2050, 2070]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EL32
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: EL32
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EL32.inc
+      sha256: b41fcb3567d212f6d26faee2570749e54840b854faf7261e9f84894f2da17fed
+  - source: ltwiki
+    name: EL32
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3

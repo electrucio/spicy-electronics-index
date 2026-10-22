@@ -1,0 +1,131 @@
+part: ECC35
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: ECC35
+  def: subckt
+  hash: fc4bae6a3e9123a16a2e1875a09c304edab68b34
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: ECC35.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 2d395f06ffc4da8316f294bc312e19af91f51ce85aa6254235e2e116d45198ae
+    lines:
+      ECC35: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: ECC35
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: ECC35.inc
+      sha256: 2d395f06ffc4da8316f294bc312e19af91f51ce85aa6254235e2e116d45198ae
+- source: suusi-tubes
+  name: ECC35
+  def: subckt
+  hash: ad838c04fa505b644d2d8919d47cef1bb2ad4c37
+  type: SUBCKT
+  deps:
+  - TRIODE
+  - 6SL7GT
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6SL7GT: [730, 734]
+      ECC35: [1015, 1019]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: ECC35
+  def: subckt
+  hash: 2bdf837de44774e9177d38ab14a74c7da2e40711
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      ECC35: [3221, 3234]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: ECC35
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: ECC35
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: ECC35.inc
+      sha256: d772bf1ef4aa345678468d7cb25db15f66de967f0938a04555a089b82fa4bae4
+  - source: ltwiki
+    name: ECC35
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: ltwiki
+  name: ECC35
+  def: subckt
+  hash: 5294a2e3504ff37f3e3bb95a68649d9577985522
+  type: SUBCKT
+  deps:
+  - 6SL7GT
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+    lines:
+      6SL7GT: [779, 786]
+      ECC35: [787, 789]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: ECC35
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: ECC35
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: ECC35
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: ECC35
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: ECC35
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: ECC35
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9

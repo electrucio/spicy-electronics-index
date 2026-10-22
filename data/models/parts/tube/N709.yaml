@@ -1,0 +1,172 @@
+part: N709
+kind: tube
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: N709
+  def: subckt
+  hash: 5056f7455b25fe82fca3cb6e237b8ec3d545a14d
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  - EL84
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Koren.LIB
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 0c69ea15d1c7539b17e0271b45fba9b77b61a281422e62f61fc0300235c56af2
+    lines:
+      EL84: [896, 900]
+      N709: [903, 907]
+      PENTODE1: [1159, 1171]
+    fetched: '2026-09-21'
+- source: suusi-tubes
+  name: N709
+  def: subckt
+  hash: 4a5aecb35e2c4b4599f13f5c3c10e2702d9d7b2a
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  - EL84
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      EL84: [1465, 1469]
+      N709: [1514, 1518]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: N709
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: N709
+  def: subckt
+  hash: 8060789d0c0eb586b12952b1244e68441173ee44
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  - EL84
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL84: [2074, 2078]
+      N709: [2186, 2190]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: N709
+  def: subckt
+  hash: 6f5e03db203200b3bb97b7719c0ec91be73212a0
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  - EL84
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+    lines:
+      DX: [1206, 1206]
+      EL84: [896, 900]
+      N709: [903, 907]
+      PENTODE1: [1159, 1171]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: N709
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: N709
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
+  - source: groups-io
+    name: N709
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: groups-io
+    name: N709
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_2.cir
+      sha256: 63e98b61f486bf6adf4ae5a1a40b9cbb3d1dc959da5d859e48aa13bce77ee1bc
+  - source: groups-io
+    name: N709
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes.cir
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: groups-io
+    name: N709
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+  - source: kicad-spice-library
+    name: N709
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: ltwiki
+    name: N709
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: robrobinette
+    name: N709
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+  - source: robrobinette
+    name: N709
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+- source: bordodynov
+  name: N709
+  def: subckt
+  hash: fd0ebcd18a969a009a77fc47605a2c9730ec1b64
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  - EL84
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      EL84: [1494, 1498]
+      N709: [1543, 1547]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: N709
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7

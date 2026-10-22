@@ -1,0 +1,34 @@
+part: EL82
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: EL82
+  def: subckt
+  hash: 422bcd7a0b464cc8131a0851eb756fe686207c7f
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL82: [2060, 2064]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: EL82
+  def: subckt
+  hash: c2dd1e85dadc95dc25c1f1ca5360f530e99754b6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/el82-inc-txt.662170/
+    sha256: d193094ebc598efbae1d6c38f4d2562ab5f73bb790687c5f8fb3398c599daa9f
+    lines:
+      EL82: [6, 31]
+    fetched: '2026-10-22'

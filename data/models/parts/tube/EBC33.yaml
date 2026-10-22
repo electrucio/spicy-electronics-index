@@ -1,0 +1,53 @@
+part: EBC33
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: EBC33D
+  def: subckt
+  hash: ace739582c6b5a4fadd429944863119b2c99bd6c
+  type: SUBCKT
+  deps:
+  - RECP2
+  - EAA91
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EAA91: [315, 318]
+      EBC33D: [425, 428]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+- source: suusi-tubes
+  name: EBC33T
+  def: subckt
+  hash: 72c1adee12e11bbdddeeff22144ba2115ac0ef50
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EBC33T: [431, 435]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: EBC33
+  def: subckt
+  hash: 7e103034bd584b40ded2253a06d9485f217a98e2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7291720
+    sha256: 519cf0bdcb65ce4efdc1be3d682b30815d5769867a56ec66feb69b739a36eeb7
+    lines:
+      EBC33: [9, 30]
+    fetched: '2026-10-22'

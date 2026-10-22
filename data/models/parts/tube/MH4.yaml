@@ -1,0 +1,59 @@
+part: MH4
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: MH4
+  def: subckt
+  hash: 57a415ea02b24bf6a804039f538581a637d254f6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: MH4.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 4fab7cabdd86834df3cc7a2e65d595da09583ecdf37e70ca6f6ab4638bd33049
+    lines:
+      MH4: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: MH4
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: MH4.inc
+      sha256: 4fab7cabdd86834df3cc7a2e65d595da09583ecdf37e70ca6f6ab4638bd33049
+- source: bordodynov
+  name: MH4
+  def: subckt
+  hash: 6960293c148b40ee12d3b8661838eecf87816bf0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      MH4: [3551, 3564]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: MH4
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: MH4
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: MH4.inc
+      sha256: 5ac07424c176055826207ab2ed2c53e2554516b7016b2a8e1d28858b04db6702
+  - source: ltwiki
+    name: MH4
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97

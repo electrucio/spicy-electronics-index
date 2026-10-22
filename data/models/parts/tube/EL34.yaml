@@ -95,6 +95,13 @@ models:
       EL34T: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: EL34T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EL34T.inc
+      sha256: 00eaaae0c77c8e519eda5faef4f9af79bb5ef8eece5f5022871983286b85028f
 - source: ayumi
   name: EL34
   def: subckt
@@ -117,6 +124,13 @@ models:
       EL34: [10, 30]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: EL34
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EL34.inc
+      sha256: 665d1c05ec6f142bfc28d77efefea77c96fca864698a571d6dbda81e9f33f194
 - source: koren
   name: EL34
   def: subckt
@@ -165,6 +179,18 @@ models:
     fetched: '2026-09-14'
   note: pins from inline comment
   copies:
+  - source: diyaudio
+    name: EL34
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-amp-003-zip.451956/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: diyaudio
+    name: EL34
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-zip.451955/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: groups-io
     name: EL34
     get:
@@ -305,6 +331,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: EL34
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: EL34
     get:
@@ -395,6 +426,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: EL34_OLD
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: EL34_OLD
     get:
@@ -599,33 +635,6 @@ models:
       member: lib/sub/Rydel_tubes.lib
       sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
 - source: bordodynov
-  name: EL34T
-  def: subckt
-  hash: d33490df4013931d4b44f58c8e88de37e7f68504
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/Triode_Ayumi.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
-    lines:
-      EL34T: [3441, 3454]
-    fetched: '2026-09-21'
-  copies:
-  - source: bordodynov-qspice
-    name: EL34T
-    get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Triode_Ayumi.txt
-      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
-  - source: ltwiki
-    name: EL34T
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Triode_Ayumi.lib
-      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
-- source: bordodynov
   name: EL34
   def: subckt
   hash: d1563f42721085431feebcc84afd669f19132952
@@ -646,12 +655,57 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Pentode_Ayumi.txt
       sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: EL34
+    get:
+      url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+      member: z.lib
+      sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+  - source: diyaudio
+    name: EL34
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EL34.inc
+      sha256: 154ebb6e492107427fc9cb551324de03b6b687d75cd6bf3d2e2f3293b809086a
   - source: ltwiki
     name: EL34
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Pentode_Ayumi.lib
       sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: bordodynov
+  name: EL34T
+  def: subckt
+  hash: d33490df4013931d4b44f58c8e88de37e7f68504
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      EL34T: [3441, 3454]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EL34T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: EL34T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EL34T.inc
+      sha256: b2687a84a5709f035afb282d72e49ebde8da531a16df74cfd2cc90d8de8635ee
+  - source: ltwiki
+    name: EL34T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
 - source: bordodynov
   name: EL34
   def: subckt
@@ -782,6 +836,45 @@ models:
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
       sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+- source: diyaudio
+  name: EL34
+  def: subckt
+  hash: 167a113b82c22d75d19588515fa1c34599053a29
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4930551
+    sha256: 4a3d4d4d78161cfa2fdb4f8e628a40c8954f6b47efed255e0acfc34f6fd78b46
+    lines:
+      EL34: [4, 10]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL34
+  def: subckt
+  hash: cd58111ab077f2e73452fd4a0f01684e61b8f32a
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeD: [1973, 1990]
+      EL34: [616, 623]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL34
+  def: subckt
+  hash: 82f7308ba4a8a8e0112a44e542c55872fed038d7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6527502
+    sha256: 4f3447053f0d3fdc6c0f67acd15a4aefb247aaeb8db1802125389b8062c7b622
+    lines:
+      EL34: [9, 43]
+    fetched: '2026-10-22'
 - source: groups-io
   name: XEL34
   def: subckt

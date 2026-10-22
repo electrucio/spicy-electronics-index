@@ -1,0 +1,130 @@
+part: EF39
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: EF39T
+  def: subckt
+  hash: 5dd16306d42c7e4aafa59f0b40274acf20469a1f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EF39T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: fe3688cbc37926d611f9308a96f41ba57697e81c78310d5f116c8cfb465d8406
+    lines:
+      EF39T: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EF39T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EF39T.inc
+      sha256: fe3688cbc37926d611f9308a96f41ba57697e81c78310d5f116c8cfb465d8406
+- source: ayumi
+  name: EF39
+  def: subckt
+  hash: 774ee190595f55280d0a2de3f77cb03a5f5954d7
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EF39.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 3305e01810cbfa047b83fb4a68ad6d49188a54f27deefbb88d65f96f40c34fb2
+    lines:
+      EF39: [10, 30]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EF39
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EF39.inc
+      sha256: 3305e01810cbfa047b83fb4a68ad6d49188a54f27deefbb88d65f96f40c34fb2
+- source: suusi-tubes
+  name: EF39
+  def: subckt
+  hash: c9c19a2d8658ea03c3301f366e5a4d68e345bf89
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EF39: [1703, 1707]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: EF39T
+  def: subckt
+  hash: ae6e47e0c71469f0d12ec3f140c0c2d8d7f93023
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      EF39T: [3353, 3366]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EF39T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: EF39T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EF39T.inc
+      sha256: 9347cb602a12664c69ff12fd2467984c96a8a43416806e05446ce84fa92937ca
+  - source: ltwiki
+    name: EF39T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: EF39
+  def: subckt
+  hash: 8a6903fccae4f0fc635e7b29ba41fdf3ccc862ef
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      EF39: [1960, 1980]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EF39
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: EF39
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EF39.inc
+      sha256: 0b8d6811aeb8b71f3d486aa6c570e1aaf0f8c31f794d33b971454f702f12e676
+  - source: ltwiki
+    name: EF39
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3

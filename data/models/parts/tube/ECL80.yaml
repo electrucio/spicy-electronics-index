@@ -1,0 +1,362 @@
+part: ECL80
+kind: tube
+priority: 3
+group: listed
+models:
+- source: microcap12
+  name: ECL80P
+  def: subckt
+  hash: 40f681f837187fada6d7245911e7844326b82e8b
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Koren.LIB
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 0c69ea15d1c7539b17e0271b45fba9b77b61a281422e62f61fc0300235c56af2
+    lines:
+      ECL80P: [549, 553]
+      PENTODE1: [1159, 1171]
+    fetched: '2026-09-21'
+- source: microcap12
+  name: ECL80T
+  def: subckt
+  hash: fae4b398aabaa8917053c12019e8fedbe1080d59
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://www.spectrum-soft.com/download/mc12cd.zip
+    member: LIBRARY/Koren.LIB
+    archive_sha256: 9810886f0b900e25131285c332be341629c6fafe460ef4371ecf3c24e6688c80
+    sha256: 0c69ea15d1c7539b17e0271b45fba9b77b61a281422e62f61fc0300235c56af2
+    lines:
+      ECL80T: [556, 560]
+      TRIODE: [1131, 1141]
+    fetched: '2026-09-21'
+- source: reefman
+  name: ECL80_C
+  def: subckt
+  hash: f67c06f2d7d2e0d6c1c1114a17df658aeab77584
+  type: SUBCKT
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      ECL80_C: [466, 472]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: ECL80_C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: reefman
+  name: ECL80_L
+  def: subckt
+  hash: 164cc228f92f31324dbabc996ab7b3274c249e41
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      BTetrodeD: [2211, 2228]
+      ECL80_L: [448, 456]
+    fetched: '2026-09-14'
+- source: suusi-tubes
+  name: ECL80P
+  def: subckt
+  hash: 94567aa2d3aeec09dd9187687532c56cd48474bc
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      ECL80P: [983, 987]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: ECL80P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: ECL80T
+  def: subckt
+  hash: 96565bfb1b6f1f19541d8a969d23226edf4b9faf
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      ECL80T: [990, 994]
+      TRIODE: [1980, 1991]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: ECL80T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: ECL80P
+  def: subckt
+  hash: fafb3cce2a7afd11318ac157087d4b2a2523dc91
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      ECL80P: [2592, 2596]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: suusi-tubes
+  name: ECL80T
+  def: subckt
+  hash: 1ffa23a4cdc2665f9190738163c51db2e29bdca9
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      ECL80T: [2585, 2589]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: ECL80P
+  def: subckt
+  hash: f6645ff30f944a49e7bbcf377702e962fcb82dfa
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+    lines:
+      DX: [1206, 1206]
+      ECL80P: [549, 553]
+      PENTODE1: [1159, 1171]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: ECL80P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: ECL80P
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
+  - source: groups-io
+    name: ECL80P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: groups-io
+    name: ECL80P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes.cir
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: groups-io
+    name: ECL80P
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+  - source: kicad-spice-library
+    name: ECL80P
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: ltwiki
+    name: ECL80P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: robrobinette
+    name: ECL80P
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+  - source: robrobinette
+    name: ECL80P
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+- source: ltwiki
+  name: ECL80T
+  def: subckt
+  hash: 9d43e8e172d820ac7a90777e3f7da4be46a4c2fb
+  type: SUBCKT
+  deps:
+  - DX
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/Tubes_Koren.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+    lines:
+      DX: [1206, 1206]
+      ECL80T: [556, 560]
+      TRIODE: [1131, 1141]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: ECL80T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: ECL80T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
+  - source: groups-io
+    name: ECL80T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_inc.txt
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: groups-io
+    name: ECL80T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes.cir
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: groups-io
+    name: ECL80T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Koren_Tubes_.cir
+      sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+  - source: kicad-spice-library
+    name: ECL80T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: ltwiki
+    name: ECL80T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Tubes_Koren.lib
+      sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: robrobinette
+    name: ECL80T
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Deluxe_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+  - source: robrobinette
+    name: ECL80T
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
+      member: Koren_Tubes.INC
+      sha256: 9e27abd35e5f4c28d8e5197292a14af264bfe4d2d8a2747b8bddccb7c1a3a949
+- source: bordodynov
+  name: ECL80P
+  def: subckt
+  hash: 2b41f3cf1520f4d84731a795984e9c4e220833d4
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      ECL80P: [1012, 1016]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: ECL80P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: bordodynov
+  name: ECL80T
+  def: subckt
+  hash: 0f1ce24f02d1af7e23980b02f1e81b416b20f4a0
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      ECL80T: [1019, 1023]
+      TRIODE: [2016, 2027]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: ECL80T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: ECL80_L
+  def: subckt
+  hash: 5bb747b58b13434f9fb8d2917fca1293245c7c61
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeD: [1973, 1990]
+      ECL80_L: [380, 388]
+    fetched: '2026-10-22'

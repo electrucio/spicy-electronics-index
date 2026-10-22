@@ -1,0 +1,535 @@
+part: GU50
+kind: tube
+priority: 3
+group: listed
+models:
+- source: bordodynov
+  name: GU50TT
+  def: subckt
+  hash: 5376029bb836cc45c5eaea70a21b0b103089a9ee
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      GU50TT: [4160, 4172]
+    fetched: '2026-09-21'
+  copies:
+  - source: diyaudio
+    name: GU50T
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4142457
+      sha256: 7b6afb20de0d11989803dbb9fca8cf372d1023fda706f31453242cea62cd3e9b
+  - source: bordodynov-qspice
+    name: GU50TT
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: GU50TT
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: GU50TT.sub
+      sha256: d9cbea2dfada4c9e0d8b5cf54c94d98a907b69f45937cc2347b83f0bfb823528
+  - source: ltwiki
+    name: GU50TT
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: GU50PP
+  def: subckt
+  hash: e1e2341999fb0dc5bd76c89ffd8bdd00379071a5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      GU50PP: [2425, 2442]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: GU50PP
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: ltwiki
+    name: GU50PP
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: diyaudio
+  name: GU50_T
+  def: subckt
+  hash: 4003d0cfcbe512b2b789952b79bd49440ef32e94
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/gu50-amp-003-zip.451956/
+    member: Tube_IM.lib
+    archive_sha256: e959b079ba2b102c3baf0d22ff0718678084dafbe25cb73efdb984eada8d3896
+    sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+    lines:
+      GU50_T: [480, 495]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: GU50_T
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-zip.451955/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: groups-io
+    name: GU50_T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: groups-io
+    name: GU50_T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM_.lib
+      sha256: c566b67be9fb11d115442fa420fb3718e61cbd01bd84f11bb118d78e8b9ba1e5
+  - source: groups-io
+    name: GU50_T
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: groups-io
+    name: GU50
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/triodes.sub
+      sha256: 4c16ec2433d437b1f515598927e42172d6c65f599b4f6b85bf335e71a4cd0489
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: f031538ba3c49776ccec7d09ce98261b1fdc8013
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/gu50-amp-003-zip.451956/
+    member: Tube_IM.lib
+    archive_sha256: e959b079ba2b102c3baf0d22ff0718678084dafbe25cb73efdb984eada8d3896
+    sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+    lines:
+      GU50: [549, 565]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: GU50
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-zip.451955/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: groups-io
+    name: GU50
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: groups-io
+    name: GU50
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Tube_IM_.lib
+      sha256: c566b67be9fb11d115442fa420fb3718e61cbd01bd84f11bb118d78e8b9ba1e5
+  - source: groups-io
+    name: GU50
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+- source: groups-io
+  name: GU50_T
+  def: subckt
+  hash: cc7a0592f66b20b404464d8e3ef0588b486aed7f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/Tube_IM.lib
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+    lines:
+      GU50_T: [570, 585]
+    fetched: '2026-10-09'
+  copies:
+  - source: bordodynov
+    name: GU50_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+  - source: bordodynov-qspice
+    name: GU50_T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Tube_Rus.txt
+      sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+  - source: ltwiki
+    name: GU50_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: groups-io
+  name: GU50
+  def: subckt
+  hash: bf4ef462209df175649a15bbd06a99da311ebc8c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+    member: Tubes/Tube_IM.lib
+    archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+    sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+    lines:
+      GU50: [643, 659]
+    fetched: '2026-10-09'
+    symbol:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/gu50.asy
+      archive_sha256: f8b63e6096dd84702c5702a701eaca47ef08f1568a5527871c48d20d0c7a8d9e
+      sha256: 481646e7077f7ffa76f2da846727f0421ce9aa19e6a4d27211fa92bf5a4d3d50
+  copies:
+  - source: bordodynov
+    name: GU50
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+  - source: ltwiki
+    name: GU50
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/Tube_IM.lib
+      sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: 31d6f3acd01d3c5bedbee4f258b68ca7efbd6a66
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4142211
+    sha256: 9cb58487deff30a2eb3f4025a6f40c7dc7ddd57de20911319278d027bfc9b450
+    lines:
+      GU50: [52, 70]
+    fetched: '2026-10-22'
+  copies:
+  - source: bordodynov-qspice
+    name: GU50
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Tube_Rus.txt
+      sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+  - source: diyaudio
+    name: GU50
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: GU50.sub
+      sha256: 3c916d82837fbaca9d2ae4ff7602861878485588e38ae220ee12380ad7c47978
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: 7de3d57a660f01e7f8ad3d37882759856c099e69
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/gu50-amp-014-zip.454945/
+    member: gu50-pen.cir
+    archive_sha256: 39c6b1f5b22820ac3e471061b9c27ae2c740b4f1ba9e61035482d916372a01fa
+    sha256: 63199840f0c8d3d36823d317bbf0eb5d82337539fdfcc525b64dfc684e3747b2
+    lines:
+      GU50: [1, 19]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: GU50
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4142457
+      sha256: 7b6afb20de0d11989803dbb9fca8cf372d1023fda706f31453242cea62cd3e9b
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: 5a944fb9e95ff90f685cd1fc8bd9be40bca3e546
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/gu50-amp-003-zip.451956/
+    member: gu50-pentode.cir
+    archive_sha256: e959b079ba2b102c3baf0d22ff0718678084dafbe25cb73efdb984eada8d3896
+    sha256: d39e63d028a3c0991ad4a33614a363195607468969470ac5211823bcc93f8e3c
+    lines:
+      GU50: [1, 17]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: GU50
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-zip.451955/
+      member: gu50-pentode.cir
+      sha256: d39e63d028a3c0991ad4a33614a363195607468969470ac5211823bcc93f8e3c
+- source: diyaudio
+  name: GU50P
+  def: subckt
+  hash: ad7a63c32b6bfc4cdc908ef4786feca2689d19d3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4142457
+    sha256: 7b6afb20de0d11989803dbb9fca8cf372d1023fda706f31453242cea62cd3e9b
+    lines:
+      GU50P: [68, 85]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: GU50PP
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: GU50PP.sub
+      sha256: edd23477e8cb61b57e02f102f42b6b0dcd0d8217ee81f70c2311468671759edf
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: 877599356ec353e433845b4548cdb99505740fcb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4142251
+    sha256: c3a622a642f1209a6d5b91556f49b7e71f5b28dc9978ab67d953ab1b370985ff
+    lines:
+      GU50: [2, 5]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: 505be10137bba954bfb60e5af0fc066ba5331cb7
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+    sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
+    lines:
+      DX: [1248, 1248]
+      GU50: [522, 540]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50
+  def: subckt
+  hash: 02bd6b0313c9e889cab1a683fba0143142a82c94
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6939149
+    sha256: 970fdb3b19e7b62cb900dc4415104e25d87db823c83116543ac72f6fd9f8db0b
+    lines:
+      GU50: [9, 43]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50TT
+  def: subckt
+  hash: e2c42921bb649801e7d72f0dd1a303bf0de8f2a5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube-models-ja2dhc-zip.376215/
+    member: tube-modelsJA2DHC.txt
+    archive_sha256: 6735a8e047b2d40c18ec3aa3ce61b7652906db7b083883c661f5d086d71653bb
+    sha256: 611da7ad6740782440ee6f9991f05b94746e2904f06f0d62adabde5a07ae58ab
+    lines:
+      GU50TT: [398, 410]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50PP
+  def: subckt
+  hash: f3b90009f388042ef59bc4cb0fdbfac2761b5777
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube-models-ja2dhc-zip.376215/
+    member: tube-modelsJA2DHC.txt
+    archive_sha256: 6735a8e047b2d40c18ec3aa3ce61b7652906db7b083883c661f5d086d71653bb
+    sha256: 611da7ad6740782440ee6f9991f05b94746e2904f06f0d62adabde5a07ae58ab
+    lines:
+      GU50PP: [420, 437]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50T_AN
+  def: subckt
+  hash: c2fbd9d61ad464bdb951d87610b141a95f38eb1d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4161249
+    sha256: f4d92c286b2cf60548f8702e35fe21aa22905d20ed26f6a0a2b99436e79b363b
+    lines:
+      GU50T_AN: [11, 24]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50_AN
+  def: subckt
+  hash: 6e9fa6c6cc07e9b4435342498b5c503c52336c11
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4141023
+    sha256: c02735a855ed8c66abc79d5dd7b40525e4b1da5b4e0710a24ee392a6c3ed93db
+    lines:
+      GU50_AN: [12, 32]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50_AN
+  def: subckt
+  hash: 2d2e8cfbb59645aca24a83393fb8f249de2d9e7b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4158345
+    sha256: e77b1e71afca39d91a98d779461afe80da61e15c6b719f0dfc380b290f32082b
+    lines:
+      GU50_AN: [12, 32]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50_AN
+  def: subckt
+  hash: 75d7568cd8d29adca23699eca1adf708d28d4661
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4161656
+    sha256: 7d0e8f83cd8dd013fccee7af69c2d3195d0c83222633442eaae605681d82147b
+    lines:
+      GU50_AN: [13, 33]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: GU50_P
+  def: subckt
+  hash: 521227dbd4b20ec85794fdae4d44669673857fa9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4142457
+    sha256: 7b6afb20de0d11989803dbb9fca8cf372d1023fda706f31453242cea62cd3e9b
+    lines:
+      GU50_P: [12, 32]
+    fetched: '2026-10-22'
+- source: ltwiki
+  name: GU50_T
+  def: subckt
+  hash: cbb021dc5566d3a19191c72b966aa8931395abaf
+  type: SUBCKT
+  deps:
+  - Triodo
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+    lines:
+      GU50_T: [1164, 1167]
+      Triodo: [3164, 3176]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: GU50_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: GU50_T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: GU50_T
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: GU50_T
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: GU50_T
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: GU50_T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+- source: ltwiki
+  name: GU50
+  def: subckt
+  hash: 9a93c02ad08643f05ea9302d9ed4e8b209258205
+  type: SUBCKT
+  deps:
+  - Tetro
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+    lines:
+      GU50: [2200, 2203]
+      Tetro: [3178, 3191]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: GU50
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: GU50
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: GU50
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: GU50
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: GU50
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: GU50
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9

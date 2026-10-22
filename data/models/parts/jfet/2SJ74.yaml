@@ -3,33 +3,20 @@ kind: jfet
 priority: 2
 group: p_channel
 models:
-- source: spiceypedals
-  name: 2SJ74
-  def: model
-  hash: b403321cb86d3aa9e2e44f5f3523d2574e586727
-  type: PJF
-  verbatim: true
-  get:
-    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PartModels/basic_models/JFet/2SJ74.mod
-    sha256: eaf575c738a0c9eb2899be15c3f9019b50059a1d3aaaa0cb2f9daa36578b644c
-    lines:
-      2SJ74: [4, 7]
-    fetched: '2026-09-14'
-    note: git clone --depth 1, commit 60f67a6 (MicroCap-LIBRARY-for-ngspice/ and modelos_subckt/ not kept)
-- source: groupsio-ltspice
-  name: 2SJ74
+- source: diyaudio
+  name: 2sj74
   def: model
   hash: d15756ef4a6927319ebeaaa6f89a3b529d81913b
   type: PJF
   verbatim: true
   get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
-    member: standard.jft
-    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
-    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+    url: https://www.diyaudio.com/community/attachments/models-zip.427587/
+    member: Cordell-Models.txt
+    archive_sha256: 3a2c403943ff249a337c10c8367e365addd0bbe5d746fe3c83a56d82bebb1a7c
+    sha256: f43db7b1c564c5a4bcdc0dce10b9bb03d0abe1b4a73fa259e81f0c44452000b8
     lines:
-      2SJ74: [515, 515]
-    fetched: '2026-09-21'
+      2sj74: [665, 665]
+    fetched: '2026-10-22'
   copies:
   - source: bordodynov
     name: 2SJ74
@@ -43,6 +30,18 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.jft
       sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: groupsio-ltspice
+    name: 2SJ74
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: groupsio-ltspice
+    name: J2sj74
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
   - source: kicad-spice-library
     name: 2SJ74
     get:
@@ -82,6 +81,19 @@ models:
     get:
       url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jjfet.lib
       sha256: aff5269588b1aafb975da8202f5cb734dedbbf19dd49cab3a5495d8623300ca6
+- source: spiceypedals
+  name: 2SJ74
+  def: model
+  hash: b403321cb86d3aa9e2e44f5f3523d2574e586727
+  type: PJF
+  verbatim: true
+  get:
+    url: https://raw.githubusercontent.com/thecowgoesmoo/SPICEyPedals/60f67a6fdb14b9d7c83630b1cade358bfdd4e638/PartModels/basic_models/JFet/2SJ74.mod
+    sha256: eaf575c738a0c9eb2899be15c3f9019b50059a1d3aaaa0cb2f9daa36578b644c
+    lines:
+      2SJ74: [4, 7]
+    fetched: '2026-09-14'
+    note: git clone --depth 1, commit 60f67a6 (MicroCap-LIBRARY-for-ngspice/ and modelos_subckt/ not kept)
 - source: groupsio-ltspice
   name: J2SJ74X
   def: model
@@ -135,6 +147,20 @@ models:
       J2sj74: [768, 768]
     fetched: '2026-09-14'
   note: 'same code also in: kicad-spice-library, ltwiki'
+- source: diyaudio
+  name: 2SJ74
+  def: model
+  hash: 57084a51d0e8fd652aa386f5397be38c0d525cff
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      2SJ74: [445, 448]
+    fetched: '2026-10-22'
 - source: kicad-spice-library
   name: J2SJ74
   def: model

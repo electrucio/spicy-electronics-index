@@ -1,0 +1,180 @@
+part: EL509
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: EL509
+  def: subckt
+  hash: ae75923092adfba7b32454d625daa779463140bf
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL509: [2025, 2029]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: ltwiki
+  name: EL509
+  def: subckt
+  hash: a2dd15ae0d056afb0cafd42d2b326489b9cc554b
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/nk_pentode.sub
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 30dab0642311a44aecf57b1808913f74d9a62c35429bee059f900d69dd009932
+    lines:
+      DX: [161, 161]
+      EL509: [108, 112]
+      PENTODE1: [130, 142]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: EL509
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: kicad-spice-library
+    name: EL509
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: ltwiki
+    name: EL509
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+- source: diyaudio
+  name: EL509_T
+  def: subckt
+  hash: c17548a42b80b35a4882e81b427a171308b5fbd2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      EL509_T: [5198, 5218]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: EL509_T
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7008034
+      sha256: 306829cb67f5b3aa20ec88ce79290327ce9ee88178c95e6f4f7c8837e8fb90e3
+- source: diyaudio
+  name: EL509
+  def: subckt
+  hash: a253405aaccae9d9f25422bd277d82fc3e70dd2d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6530835
+    sha256: 750bc60e8c6389af39fc47783f3d21c435e917b650a7ebe1e95f9fba6fa97e12
+    lines:
+      EL509: [9, 43]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL509_T
+  def: subckt
+  hash: 58d2394555b8751ce38b06ba3eb863156d2ac994
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/el509t-txt.1048622/
+    sha256: 51254fc916e551947c1d8bf3a06a8dba17946dd817b71b3c140658d6d65cfff1
+    lines:
+      EL509_T: [6, 39]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL509_T
+  def: subckt
+  hash: 2b975dab339f52a7e957002afd56c18734b0a06c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7007086
+    sha256: d193fdb7e5970a0b2761a2816b95b8203cf3f7b20e39ae59faf1c44aa444f53e
+    lines:
+      EL509_T: [4, 24]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL509_JJ
+  def: subckt
+  hash: ccccbb700f35b749d884b1663f64752aee2b1c2b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7050259
+    sha256: 8854633423435a5d5d8fa87f8d438ddd847d1214fa7d8ef2d47f4290b772274b
+    lines:
+      EL509_JJ: [7, 41]
+    fetched: '2026-10-22'
+- source: ltwiki
+  name: EL509
+  def: subckt
+  hash: 0d37b717249e800e7e6eac6a695113afd7e4a626
+  type: SUBCKT
+  deps:
+  - 6KG6
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+    lines:
+      6KG6: [2501, 2532]
+      EL509: [2536, 2538]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: EL509
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: EL509
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: EL509
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: EL509
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: EL509
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: EL509
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9

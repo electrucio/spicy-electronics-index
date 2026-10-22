@@ -1,0 +1,50 @@
+part: '5902'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: 5902_AN
+  def: subckt
+  hash: 3e13fc6cd294c1ac0ee0d4de461216a1093f255b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3897324
+    sha256: fbbfee837f6d6d7235acbb690420fe6bbcc497f5b8a8960d63b8f4f1fd3bb5ac
+    lines:
+      5902_AN: [12, 32]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 5902_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 5902_AN.sub
+      sha256: 8efc318797b5f60d678fef94ead9ff763cb962aa79404137db39e7e46c128f47
+- source: diyaudio
+  name: X5902
+  def: subckt
+  hash: ae7fae312f6ba72459e77f717c5a16df536c3366
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3892024
+    sha256: 3191ff94ba36c9c352144300704ae8a19898bc8899c7e807000a763df13ab8d3
+    lines:
+      X5902: [2, 14]
+    fetched: '2026-10-22'
+- source: groups-io
+  name: X5902
+  def: subckt
+  hash: 65a2a56b4b2f01d37ce2d27893125f0d507fe1be
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
+    lines:
+      X5902: [441, 474]
+    fetched: '2026-10-09'

@@ -1,0 +1,64 @@
+part: 217C
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: 217C
+  def: subckt
+  hash: 221178e259802c6670624f39644eec5451532be9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 217C.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 05e0b2b5dfd34b7a734c2a063b8bd852f724508d4ec2de4a7c32031fce0f8520
+    lines:
+      217C: [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 217C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 217C.inc
+      sha256: 05e0b2b5dfd34b7a734c2a063b8bd852f724508d4ec2de4a7c32031fce0f8520
+- source: bordodynov
+  name: 217C
+  def: subckt
+  hash: ec6795fe7213b5c29b97eacc49ea898c896061bc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      217C: [5, 7]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ZZZ/Tubes_Ayumi/vdiode_Ayumi.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 3ecd844b2136ee2521fd8d55b258749e5b9f6f91827751b90e692508e0d8bc50
+  copies:
+  - source: bordodynov-qspice
+    name: 217C
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 217C
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 217C.inc
+      sha256: 9b2745daf27372c667a36158ad1c77b153a2120e10128cd4b25dad204eb8dd80
+  - source: ltwiki
+    name: 217C
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f

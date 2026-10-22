@@ -1,0 +1,59 @@
+part: 2X2
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: 2X2
+  def: subckt
+  hash: dda63d80976853591aaed6332d437557a25ffc30
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 2X2.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 6c052d1525c6953923b2d4f9464b0abde5b2f41bf16015747e79ad4659bf9d64
+    lines:
+      2X2: [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 2X2
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 2X2.inc
+      sha256: 6c052d1525c6953923b2d4f9464b0abde5b2f41bf16015747e79ad4659bf9d64
+- source: bordodynov
+  name: 2X2
+  def: subckt
+  hash: ab9fb209f0cdab2991e11c6214963153e676ff4b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      2X2: [19, 21]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 2X2
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 2X2
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 2X2.inc
+      sha256: d00cd5ea461b83fe22ec115bfb6e5b66119326f9d0925b9a4aae8c60511c938a
+  - source: ltwiki
+    name: 2X2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f

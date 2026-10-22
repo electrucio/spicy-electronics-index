@@ -1,0 +1,185 @@
+part: D3A
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: D3A_PT_AN
+  def: subckt
+  hash: 15708a665b6821a1b5e17384a3614d6ce75cd27f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4134400
+    sha256: 9e3c73ecae3e01990b92ebac84d9650c03e17b7ec0255de611aa6a4150bfd4c7
+    lines:
+      D3A_PT_AN: [11, 24]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: D3A_PT_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: D3A_PT_AN.sub
+      sha256: a8456912e17e8645f41bbe916251f98cdd16d5c210bc242b5f09ef667d4c1001
+- source: diyaudio
+  name: D3a
+  def: subckt
+  hash: 16db46184c5421e35a7e6f4ea21ecc1ef88949f3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3868651
+    sha256: e6d94ee66457a6668540c89aeda41d34ad3b07b4a9d3f5d4cc2bae67808742f0
+    lines:
+      D3a: [8, 22]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: D3a
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: d3a.sub
+      sha256: ba6691882767f68a3f7140b6aa25e0518ab2af456586af9288c92cb536730675
+- source: diyaudio
+  name: D3A_P
+  def: subckt
+  hash: 340f434654bb6d79c0444fa91b75364cc731fed2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4134400
+    sha256: 9e3c73ecae3e01990b92ebac84d9650c03e17b7ec0255de611aa6a4150bfd4c7
+    lines:
+      D3A_P: [36, 56]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: D3AT
+  def: subckt
+  hash: f0c0788f7e983b531cc65fd26e850655a1b3f240
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      D3AT: [5019, 5031]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: D3a-t
+  def: subckt
+  hash: 84f363295b524fb6872d95d13c227eface49029f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5754575
+    sha256: 123c11ee8875ad373bca1df00901c0c7e1e00f36eb941ea3c10af25de2b1b6a5
+    lines:
+      D3a-t: [7, 16]
+    fetched: '2026-10-22'
+- source: bordodynov
+  name: D3AP
+  def: subckt
+  hash: 1bf18834e17551a26ebc3d2241bcd13007a07add
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      D3AP: [1383, 1401]
+      DX: [210, 210]
+    fetched: '2026-09-21'
+  copies:
+  - source: diyaudio
+    name: D3AP
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: D3AP
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: bordodynov
+  name: D3A-TRI
+  def: subckt
+  hash: b8ba9a7e67015419af6373ac8f5b1d134ffeba3b
+  type: SUBCKT
+  deps:
+  - DX
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      D3A-TRI: [1489, 1491]
+      DX: [210, 210]
+      TRIODE: [70, 80]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/D3A_TRIODE.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 0888e263ae230dc0ebc15ff8b5a579bb66860fd3e01e267eac199302ab3d32de
+  copies:
+  - source: diyaudio
+    name: D3A-TRI
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: D3A-TRI
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: bordodynov
+  name: D3A-PEN
+  def: subckt
+  hash: 088c5d501b5ab9bf76feeb704d84dd2a8f3efd91
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      D3A-PEN: [1496, 1499]
+      DX: [210, 210]
+      PENTODE1: [87, 102]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Pentodes/D3A-PEN.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: c299418dc64731665f8d369e2d967062097af47eba153fd95347367952392f91
+  copies:
+  - source: diyaudio
+    name: D3A-PEN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: D3A-PEN
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f

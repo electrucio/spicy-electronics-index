@@ -67,6 +67,12 @@ models:
       Penthodeg3DE: [2164, 2183]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: EF80_g3
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: suusi-tubes
   name: EF80
   def: subckt
@@ -180,6 +186,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: EF80
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: EF80
     get:
@@ -295,6 +306,51 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/Tube_IM.lib
       sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: diyaudio
+  name: EF80
+  def: subckt
+  hash: 62c22300eabfd82dfd494aa3edefea5f8561d0af
+  type: SUBCKT
+  deps:
+  - PenthodeDE
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      EF80: [476, 482]
+      PenthodeDE: [2069, 2085]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: EF80
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3990150
+      sha256: 4af8889521128d0cce5c91f2cdc06274c7b6117987236e65260b8d234786ea85
+- source: diyaudio
+  name: EF80
+  def: subckt
+  hash: 8d7f250326039f1903f9eadfd10f1e8987621756
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7032827
+    sha256: c6c8b6b327abf57125289f54f8d09531c97ca3f495106577bf3b812d1619bdd0
+    lines:
+      EF80: [9, 50]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EF80
+  def: subckt
+  hash: 139018d23d103f8895560980fca76df5809f6e8f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5120243
+    sha256: 2a02b4da38527bf8ddf131bede787c223ebd4931b4fa2306ee572a2f218e1eff
+    lines:
+      EF80: [9, 34]
+    fetched: '2026-10-22'
 - source: groups-io
   name: EF80
   def: subckt
@@ -415,3 +471,17 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/pentodes.lib
       sha256: d6266b406c88cab6fe4b2a526c77d345fa252c884b28b29826199c9b33cc3c87
+- source: diyaudio
+  name: EF80
+  def: subckt
+  hash: 6e253a2ff6321286e066f0f0f0ed5eb953351a25
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+    member: EF80.sub
+    archive_sha256: 21bd23c332adcb1bb33b8733b1b9484368bc1747a8d5f5f87b221e7263745591
+    sha256: c1d2ce749a124c8485c4e73cb06dce8dc5084ecd31da95ec3bbc33d4700977ab
+    lines:
+      EF80: [2, 8]
+    fetched: '2026-10-22'

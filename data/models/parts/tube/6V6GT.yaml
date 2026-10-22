@@ -70,6 +70,13 @@ models:
       6V6: [10, 30]
     fetched: '2026-09-14'
   note: found under the alias 6V6; pins from names
+  copies:
+  - source: diyaudio
+    name: 6V6
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6V6.inc
+      sha256: 34132ffe3d3e2b2cff9aaf7ff81881a76f4611e51d6a99064b8bef8a5a84ed98
 - source: ayumi
   name: 6V6T
   def: subckt
@@ -91,6 +98,13 @@ models:
       6V6T: [9, 22]
     fetched: '2026-09-14'
   note: found under the alias 6V6; pins from names
+  copies:
+  - source: diyaudio
+    name: 6V6T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6V6T.inc
+      sha256: 988f2efcadc6db77df2d73673bccf1dbc2a9a8bf446700d6dac5b91d46c23dcf
 - source: duncanamps
   name: 6V6GTA
   def: subckt
@@ -524,6 +538,86 @@ models:
       member: lib/sub/Rydel_tubes.lib
       sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
 - source: bordodynov
+  name: 6V6
+  def: subckt
+  hash: fbf3615e1330362ff1759d9ef153bed97f9cc42a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      6V6: [1720, 1740]
+    fetched: '2026-09-21'
+  note: found under the alias 6V6
+  copies:
+  - source: bordodynov-qspice
+    name: 6V6
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: 6V6
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6V6.inc
+      sha256: 6337716f6a77003fe4d67b8b00ddcc3fe24c51843000c7bffff9fc403da0ce0e
+  - source: ltwiki
+    name: 6V6
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: robrobinette
+    name: 6V6
+    get:
+      url: https://robrobinette.com/images/Guitar/Spice_Analysis/5E3_Spice_Model_by_Carl_Gigun.zip
+      member: 5E3.txt
+      sha256: 2a9499b011c74994e61275ad3ee8eca55a40d420c45e3b01a65688c180b059c8
+- source: bordodynov
+  name: 6V6T
+  def: subckt
+  hash: e3ba28544f15ad9b37ba4b682ff43d1c8cc4ac46
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      6V6T: [2781, 2794]
+    fetched: '2026-09-21'
+  note: found under the alias 6V6
+  copies:
+  - source: bordodynov-qspice
+    name: 6V6T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6V6T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6V6T.inc
+      sha256: 6a3e657a78e8541e4738b497d35e8681b26d726f11e8269db37e9239f3b9cb89
+  - source: ltwiki
+    name: 6V6T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6V6T_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+      member: triode-w1_dd.txt
+      sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+- source: bordodynov
   name: 6V6-GT
   def: subckt
   hash: 9d3baa406ce0810047dfb7451b52d49ebcdbe4dd
@@ -561,68 +655,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Koren_Tubes.lib
       sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
-- source: bordodynov
-  name: 6V6
-  def: subckt
-  hash: fbf3615e1330362ff1759d9ef153bed97f9cc42a
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/Pentode_Ayumi.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
-    lines:
-      6V6: [1720, 1740]
-    fetched: '2026-09-21'
-  note: found under the alias 6V6
-  copies:
-  - source: bordodynov-qspice
-    name: 6V6
-    get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Pentode_Ayumi.txt
-      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
-  - source: ltwiki
-    name: 6V6
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Pentode_Ayumi.lib
-      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
-  - source: robrobinette
-    name: 6V6
-    get:
-      url: https://robrobinette.com/images/Guitar/Spice_Analysis/5E3_Spice_Model_by_Carl_Gigun.zip
-      member: 5E3.txt
-      sha256: 2a9499b011c74994e61275ad3ee8eca55a40d420c45e3b01a65688c180b059c8
-- source: bordodynov
-  name: 6V6T
-  def: subckt
-  hash: e3ba28544f15ad9b37ba4b682ff43d1c8cc4ac46
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sub/Triode_Ayumi.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
-    lines:
-      6V6T: [2781, 2794]
-    fetched: '2026-09-21'
-  note: found under the alias 6V6
-  copies:
-  - source: bordodynov-qspice
-    name: 6V6T
-    get:
-      url: https://disk.yandex.ru/d/71M79VuY5sOWew
-      member: QSPICE/Triode_Ayumi.txt
-      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
-  - source: ltwiki
-    name: 6V6T
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sub/Triode_Ayumi.lib
-      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
 - source: bordodynov
   name: 6V6-GTA
   def: subckt
@@ -827,6 +859,66 @@ models:
     lines:
       6V6GTA: [451, 463]
     fetched: '2026-10-09'
+- source: diyaudio
+  name: 6V6GT
+  def: subckt
+  hash: 5ac2311a0f9008269b2d869a98a3fcfd25c64449
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6759446
+    sha256: bc8a9a8efb8d62cdb56566ac8ec0bcf7d6167218ee3602f9484f2afe4619f7c6
+    lines:
+      6V6GT: [9, 50]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6V6GT
+  def: subckt
+  hash: 05a4fe28ddbd114b87617e9997aa536d32bdab9c
+  type: SUBCKT
+  deps:
+  - BTetrodeDE
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      6V6GT: [1663, 1672]
+      BTetrodeDE: [1994, 2011]
+    fetched: '2026-10-22'
+- source: bordodynov
+  name: 6V6
+  def: subckt
+  hash: 7c5bbeadf1e7c69597f4316859fcb5faf52ba241
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      6V6: [1236, 1265]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Tetrodes/6V6.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: b8cf4396a76fbdbf31951c263b8f2beb201759d0755c69a83b6b492a655eff10
+  note: found under the alias 6V6
+  copies:
+  - source: diyaudio
+    name: 6V6
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: 6V6
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 - source: bordodynov
   name: 6V6GT
   def: subckt
@@ -851,28 +943,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/new_tetrodes.txt
       sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
-- source: bordodynov
-  name: 6V6
-  def: subckt
-  hash: 7c5bbeadf1e7c69597f4316859fcb5faf52ba241
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sym/ValVol/Tubes/tube.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
-    lines:
-      6V6: [1236, 1265]
-    fetched: '2026-09-21'
-  note: found under the alias 6V6
-  copies:
-  - source: ltwiki
-    name: 6V6
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/Tubes/tube.lib
-      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 - source: bordodynov
   name: 6V6
   def: subckt

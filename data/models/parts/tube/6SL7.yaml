@@ -42,6 +42,12 @@ models:
       TriodeK: [2345, 2357]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: 6SL7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: reefman
   name: 6SL7_TS
   def: subckt
@@ -64,6 +70,12 @@ models:
       TriodeK: [2345, 2357]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: 6SL7_TS
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: ayumi
   name: 6SL7
   def: subckt
@@ -85,6 +97,13 @@ models:
       6SL7: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6SL7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6SL7.inc
+      sha256: 305c3d3f56cb3da2442ca2a696d450b0b37f65d2d578cf143f230bc8af3e30ef
 - source: duncanamps
   name: 6SL7GT
   def: subckt
@@ -250,6 +269,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6SL7GT
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6SL7GT
     get:
@@ -417,6 +441,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6SL7
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6SL7.inc
+      sha256: c7a2fe17f90d4b772809bb03e27babf52ebcfcefb43b06762c60265311ee283e
   - source: ltwiki
     name: 6SL7
     get:
@@ -527,6 +557,48 @@ models:
       DX: [308, 308]
       TRIODE: [168, 178]
     fetched: '2026-10-09'
+- source: diyaudio
+  name: 6SL7GT
+  def: subckt
+  hash: 84786bc4d676adce18061970cba7737f8be8aee2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/push-and-pull-el12-amp-class-ab-005-zip.427657/
+    member: 6SL7GT-Tube.cir
+    archive_sha256: 1652c7e250e4493d0f5cad92009885dc9582b80cd82f63c8e2df4a51f2949821
+    sha256: 10a1d91d4351c99fc81164251e0dc6596b4e075da3dea2dd23c49d56f25a346d
+    lines:
+      6SL7GT: [1, 15]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6SL7GT_AF
+  def: subckt
+  hash: 88cabf36c0bba2e3f98e6dc025975b0019d639fb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6SL7GT_AF: [2280, 2289]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6SL7WGT
+  def: subckt
+  hash: 5aa98e5a980dd6de906a15afb8c163e0cabdd19d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6SL7WGT: [2360, 2370]
+    fetched: '2026-10-22'
 - source: ltwiki
   name: 6sl7
   def: subckt
@@ -582,6 +654,38 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Valves.Lib
       sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+- source: bordodynov
+  name: 6SL7
+  def: subckt
+  hash: a6d46c53e7c3bdeb2641d08d4e16b704e78af99d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      6SL7: [865, 871]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/6SL7.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: f03a62bb8509031becd861364085415b34b58c320c4bd3ea16b85cb28c87cfe2
+  copies:
+  - source: diyaudio
+    name: 6SL7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: 6SL7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 - source: bordodynov
   name: 6SL7
   def: subckt
@@ -642,27 +746,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/new_triodes.txt
       sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
-- source: bordodynov
-  name: 6SL7
-  def: subckt
-  hash: a6d46c53e7c3bdeb2641d08d4e16b704e78af99d
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sym/ValVol/Tubes/tube.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
-    lines:
-      6SL7: [865, 871]
-    fetched: '2026-09-21'
-  copies:
-  - source: ltwiki
-    name: 6SL7
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/Tubes/tube.lib
-      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 datasheet:
   url: https://frank.pocnet.net/sheets/093/6/6SL7GT.pdf
   maker: General Electric

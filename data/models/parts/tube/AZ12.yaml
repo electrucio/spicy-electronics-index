@@ -1,0 +1,64 @@
+part: AZ12
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: AZ12
+  def: subckt
+  hash: 92055d55d95aee3005cb5d0a12d3e81bf73d9255
+  type: SUBCKT
+  deps:
+  - DiodeK
+  - AZ4
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      AZ12: [96, 98]
+      AZ4: [77, 88]
+      DiodeK: [2360, 2363]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: AZ12
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: suusi-tubes
+  name: AZ12
+  def: subckt
+  hash: f0345d5e8debe932cb98d62c1f8f9f37dfda2ef3
+  type: SUBCKT
+  deps:
+  - RECP2
+  - DULERECP2
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      AZ12: [137, 140]
+      DULERECP2: [3013, 3016]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+- source: groups-io
+  name: AZ12
+  def: subckt
+  hash: 80f4463289e20b485f721af49921abd3721701ef
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      AZ12: [222, 225]
+      DULERECP2: [2530, 2540]
+    fetched: '2026-10-09'

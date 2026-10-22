@@ -1,0 +1,136 @@
+part: 6K7
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: 6K7
+  def: subckt
+  hash: 5e2eb304334f6566a888ab1f93180dff3b5567e2
+  type: SUBCKT
+  deps:
+  - PenthodeVD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      6K7: [1746, 1754]
+      PenthodeVD: [2280, 2303]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 6K7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: ayumi
+  name: 6K7
+  def: subckt
+  hash: 34333c05ed06a127410b6b0a3c40a74eb04cadd5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6K7.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: be270405404475b962fe155dcec97936ea14b8357126d77918a41eac0d3a1863
+    lines:
+      6K7: [10, 30]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 6K7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6K7.inc
+      sha256: be270405404475b962fe155dcec97936ea14b8357126d77918a41eac0d3a1863
+- source: ayumi
+  name: 6K7T
+  def: subckt
+  hash: 02467805246772a1a6369944405da29321048080
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6K7T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 80e4aa779a87a1f51799bb6cb237ea0982da7c3e92b97e3966c6c7fc95b9026a
+    lines:
+      6K7T: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 6K7T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6K7T.inc
+      sha256: 80e4aa779a87a1f51799bb6cb237ea0982da7c3e92b97e3966c6c7fc95b9026a
+- source: bordodynov
+  name: 6K7
+  def: subckt
+  hash: 45faff8a176e9966c23521650f4d55e7e940f741
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      6K7: [1300, 1320]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 6K7
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: 6K7
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6K7.inc
+      sha256: cb5f9a38919c7c4d4f6c3221feec75f052b3b41027131b9fd47a5e8cd17cd2f7
+  - source: ltwiki
+    name: 6K7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: bordodynov
+  name: 6K7T
+  def: subckt
+  hash: 62d8361a4a14ab9ecb3a3659b72e9f73df1d047b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      6K7T: [2275, 2288]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 6K7T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6K7T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6K7T.inc
+      sha256: 1cfc4f9b3f39372d3e8e5e0da0b9dbbae4bf54c9bf43a3cbf44e8d71b1035839
+  - source: ltwiki
+    name: 6K7T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97

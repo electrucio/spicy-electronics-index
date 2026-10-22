@@ -331,6 +331,23 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Library/OPAMP_R/TL071-R.qsym
       sha256: ae8d68630f58d7163d1aece99f83052ba9f7cf7dffdea8d58785e77300415149
+- source: diyaudio
+  name: TL071
+  def: subckt
+  hash: 27ffb1453ba1642b3e3f9419ddbe7688195a7792
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      DX: [338, 338]
+      TL071: [2397, 2429]
+    fetched: '2026-10-22'
 - source: kicad-spice-library
   name: TL071T
   def: subckt

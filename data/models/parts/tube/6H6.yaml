@@ -1,0 +1,127 @@
+part: 6H6
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: 6H6
+  def: subckt
+  hash: 2227f1876e18d39cba4bc628ced050c66a347baa
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6H6.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: d7ba5c4b1ac94e678774270785a9d0f42704ea2c2a128f9ae94c8aa13a307498
+    lines:
+      6H6: [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 6H6
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6H6.inc
+      sha256: d7ba5c4b1ac94e678774270785a9d0f42704ea2c2a128f9ae94c8aa13a307498
+- source: suusi-tubes
+  name: 6H6
+  def: subckt
+  hash: daeb69afce3377d7bd703d13547bdea01cf564c8
+  type: SUBCKT
+  deps:
+  - RECP2
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6H6: [93, 96]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+- source: suusi-tubes
+  name: 6H6S
+  def: subckt
+  hash: 9cc6ea716a1d1be51b9ad505334853f899acb81a
+  type: SUBCKT
+  deps:
+  - RECP2
+  - 6H6
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6H6: [93, 96]
+      6H6S: [99, 102]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: 6H6
+  def: subckt
+  hash: 3a9a1d8946c514f88fc626163447c51f047639de
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      6H6: [117, 119]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 6H6
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 6H6
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6H6.inc
+      sha256: 6a0bfbcad61e8f7d38c1b527ee369877820bc1dfdfb88383e84f55ccdf684c7c
+  - source: ltwiki
+    name: 6H6
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+- source: groups-io
+  name: 6H6
+  def: subckt
+  hash: 8c94b7bcfee9287dc0208e94985b86f7e14af9a4
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      6H6: [174, 177]
+      DULERECP2: [2530, 2540]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: 6H6S
+  def: subckt
+  hash: 5c0b9dcc123afe623bcc0f4eb85a52038e629eab
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  - 6H6
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      6H6: [174, 177]
+      6H6S: [180, 183]
+      DULERECP2: [2530, 2540]
+    fetched: '2026-10-09'

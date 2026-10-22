@@ -216,6 +216,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: ECF80P
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: ECF80P
     get:
@@ -294,6 +299,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: ECF80T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: ECF80T
     get:
@@ -389,6 +399,40 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Koren_Tubes.lib
       sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: ECF80_F
+  def: subckt
+  hash: 81cf2708e98a0baa338fd4e9a12f6c93febc69b2
+  type: SUBCKT
+  deps:
+  - PenthodeD
+  - PCF80_F
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      ECF80_F: [280, 282]
+      PCF80_F: [770, 776]
+      PenthodeD: [2088, 2104]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: ECF80_C
+  def: subckt
+  hash: 9f0cd4d84c9f7b37d1deebd376507b2e3dc638eb
+  type: SUBCKT
+  deps:
+  - TriodeK
+  - PCF80_C
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      ECF80_C: [284, 286]
+      PCF80_C: [785, 790]
+      TriodeK: [2107, 2119]
+    fetched: '2026-10-22'
 - source: ltwiki
   name: ECF80p
   def: subckt

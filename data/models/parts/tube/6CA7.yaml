@@ -80,6 +80,17 @@ models:
     note: subckt 6CA7 (A S G K)
   note: pins from names
   copies:
+  - source: diyaudio
+    name: 6CA7
+    get:
+      url: https://www.diyaudio.com/community/attachments/jolida_el34_3-zip.498804/
+      member: 6ca7.inc
+      sha256: eae28f9487696b926f2beba40910ad39316282d45d1e96cd69a976d59f1b2dfd
+  - source: diyaudio
+    name: 6CA7
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3984401
+      sha256: 90b6e23efa97fb81167ad494cc69883ab7e3d1da63336840d5eae685a19894e0
   - source: groups-io
     name: 6CA7
     get:
@@ -256,6 +267,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6CA7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6CA7
     get:
@@ -352,6 +368,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6CA7_OLD
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6CA7_OLD
     get:
@@ -537,6 +558,18 @@ models:
     lines:
       X6CA7: [115, 143]
     fetched: '2026-10-09'
+- source: diyaudio
+  name: 6CA7_EL34
+  def: subckt
+  hash: 81542201c10d464221ab93e6269e901e8b0c61ce
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6488310
+    sha256: 43c8b691e832e1c1cad3bb617d9d1618c7726dec1a4768d4c37fcfc00f0ba464
+    lines:
+      6CA7_EL34: [5, 17]
+    fetched: '2026-10-22'
 - source: ltwiki
   name: 6CA7TR_RY
   def: subckt
@@ -732,7 +765,18 @@ models:
     lines:
       6CA7: [1107, 1135]
     fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Pentodes/EL34.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 55661616fc663bc82d190e3565a1f4d691a64bf5b43f3210ef34238abdde9e54
   copies:
+  - source: diyaudio
+    name: 6CA7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
   - source: ltwiki
     name: 6CA7
     get:

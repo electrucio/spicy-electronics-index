@@ -1,0 +1,34 @@
+part: EL33
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: EL33
+  def: subckt
+  hash: 7ae6234350890893be4860446cbb07208f0c7973
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL33: [1948, 1952]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: EL33
+  def: subckt
+  hash: 9710a0e21cd319e42c36e884cc0402a23a4db8b5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6160105
+    sha256: 31be11916de47c3bce8db641bb71ebe44922630981b20db2607c941454a20606
+    lines:
+      EL33: [14, 44]
+    fetched: '2026-10-22'

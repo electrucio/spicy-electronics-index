@@ -1,0 +1,94 @@
+part: '6111'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: 6111_i2
+  def: subckt
+  hash: 1b4e963fe0b21f9a8bbadc64e1f72f7981dde276
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/6111_i2-txt.825956/
+    sha256: a1c74e2019cb95b9e2eb4dd67bb261fe023da4a45659128c3541cf0ceb9d75e9
+    lines:
+      6111_i2: [15, 78]
+    fetched: '2026-10-22'
+  copies:
+  - source: groups-io
+    name: 6111_i2
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/ImmlerTubeSpiceModelsV4.zip
+      member: 6111_i2.txt
+      sha256: a1c74e2019cb95b9e2eb4dd67bb261fe023da4a45659128c3541cf0ceb9d75e9
+- source: diyaudio
+  name: '6111'
+  def: subckt
+  hash: 3fd9fe9c826e12c75434f9a665ebb44c87198fb2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4318115
+    sha256: 8e7c684035527b8e1f689a21804d2cc5dd34826100318335b94a9e431aae0ae0
+    lines:
+      '6111': [20, 26]
+    fetched: '2026-10-22'
+- source: groups-io
+  name: X6111
+  def: subckt
+  hash: a7527164b241e4aaae428cf35bb30b66a8d04aac
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 960b88a01bcd7e9837faf96870517598b4563162f3559fe664d57b67be39846e
+    lines:
+      X6111: [629, 640]
+    fetched: '2026-10-09'
+- source: diyaudio
+  name: 6111_i2
+  def: subckt
+  hash: 907267f588df232ba864de826969cd94fce3ff20
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6123505
+    sha256: fe20e6a34f9d270004d93723227fba4185c4803fe4c5e7fd4b7c6cf36b18fdb2
+    lines:
+      6111_i2: [43, 101]
+    fetched: '2026-10-22'
+- source: bordodynov
+  name: '6111'
+  def: subckt
+  hash: 2f265cdd99e9fd86302c37c6a5a52e1fb972bee4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      '6111': [985, 991]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/6111.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 91b2cb22a5e9aed3d6d7af88c113cd24b889b5a117e69e7778af69f4f63baadc
+  copies:
+  - source: diyaudio
+    name: '6111'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: '6111'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f

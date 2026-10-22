@@ -1,0 +1,59 @@
+part: RE604
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: RE604
+  def: subckt
+  hash: 24c0bf82ab7db14e0a1cc24843eb300645140304
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: RE604.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 9e5b19075a4f8d5175d47caf07c59bbde3478d9f2b459ef78146b835e4b51e79
+    lines:
+      RE604: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: RE604
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: RE604.inc
+      sha256: 9e5b19075a4f8d5175d47caf07c59bbde3478d9f2b459ef78146b835e4b51e79
+- source: bordodynov
+  name: RE604
+  def: subckt
+  hash: c1e1208313bb3fa01759abce8b65ce954b00161c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      RE604: [3749, 3762]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: RE604
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: RE604
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: RE604.inc
+      sha256: 80b235ea09bb2580cb4c9ac74388add322bd205125d532ac3404d4d3a7111862
+  - source: ltwiki
+    name: RE604
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97

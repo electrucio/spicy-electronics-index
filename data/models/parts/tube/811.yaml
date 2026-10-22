@@ -1,0 +1,101 @@
+part: '811'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: gist-chanmix51
+  name: 811a
+  def: subckt
+  hash: 77b94e6982e31c3f3ec745f01ca97d8afbc11df8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
+    sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
+    lines:
+      811a: [647, 670]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: 811a
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: groups-io
+    name: 811a
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: ltwiki
+    name: 811a
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: diyaudio
+  name: 811a-i
+  def: subckt
+  hash: 5d24c89ce37422143bda026b0c238b1b7da1c662
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      811a-i: [5167, 5190]
+    fetched: '2026-10-22'
+  copies:
+  - source: groups-io
+    name: 811a-i
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Pspice and Spice Models Archive @ PAEng.txt
+      sha256: ade502eb165a28fdd2d41236efd7f46b98d13d7f8572059241953358a4acc707
+- source: groups-io
+  name: 811a
+  def: subckt
+  hash: 2f779808890cd2a93abcb164beeaa4e2d2b329c5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/Pspice and Spice Models Archive @ PAEng.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: ade502eb165a28fdd2d41236efd7f46b98d13d7f8572059241953358a4acc707
+    lines:
+      811a: [874, 884]
+    fetched: '2026-10-09'
+- source: bordodynov
+  name: 811A
+  def: subckt
+  hash: ad4583861299ea56d3dff666fb6fc1cf65f94f03
+  type: SUBCKT
+  deps:
+  - Triode
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/new_triodes.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+    lines:
+      811A: [282, 285]
+      Triode: [31, 49]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 811A
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/new_triodes.txt
+      sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+  - source: ltwiki
+    name: 811A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/new_triodes.txt
+      sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2

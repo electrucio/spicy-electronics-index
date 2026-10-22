@@ -85,6 +85,36 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/Tube_IM.lib
       sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: diyaudio
+  name: 6N2P-EV
+  def: subckt
+  hash: 13b11f7ddb706ac627431675fa60f8568f2cded0
+  type: SUBCKT
+  deps:
+  - DX
+  - TRIODE
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/ecl82-single-end-project-005-zip.456019/
+    member: 6n2p-ev.inc
+    archive_sha256: e3d8c7628a745c66e79cc653556aa7e5ed7a03a79dad5d75c0ecb833f4e69294
+    sha256: ff686f16c23cbdf4e901cc88e83cb0ad3e6a51c75a2941cceecb04191b068d87
+    lines:
+      6N2P-EV: [1, 6]
+      DX: [20, 20]
+      TRIODE: [8, 18]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 6N2P-EV
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
+  - source: diyaudio
+    name: 6N2P-EV
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4165448
+      sha256: 0394194f3f1e88385b69af54a5624a648771ade5b91b7cccb911a0213c956276
 - source: groups-io
   name: 6N2P
   def: subckt
@@ -99,6 +129,77 @@ models:
     lines:
       6N2P: [187, 202]
     fetched: '2026-10-09'
+  copies:
+  - source: diyaudio
+    name: 6N2P_EK
+    get:
+      url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+      member: triode-w1_dd.txt
+      sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+- source: diyaudio
+  name: 6N2P
+  def: subckt
+  hash: 17687e4a699fe0150a7fa704b29609f464664fd3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6N2P: [1865, 1876]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6N2P
+  def: subckt
+  hash: 18ebc5373f868becdae2722cf0d3145848fc49a9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4274437
+    sha256: d6b556e658e42e683313e07639ad94b1080c0657db4d7beb02020b2ad96d8d98
+    lines:
+      6N2P: [6, 13]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6N2P
+  def: subckt
+  hash: 682d3bea6022e0c18c334719b35c1c76f7ed3830
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6221956
+    sha256: 6e65e3d677347c7842e9aa57cff14ba9a0894f52a0455a684e730b0a6b268f8c
+    lines:
+      6N2P: [9, 30]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6N2P_J8
+  def: subckt
+  hash: d195c30577221707f8f7849ce829417a545eb9e6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6N2P_J8: [1904, 1913]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6N2P.i4
+  def: subckt
+  hash: a67279a45152c0741f4a5fbe57a303f39428873d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6518890
+    sha256: a591641d034f6614699c2218db45f656dbd962b06895839ed8567dcf492375bc
+    lines:
+      6N2P.i4: [18, 84]
+    fetched: '2026-10-22'
 - source: ltwiki
   name: 6N2P
   def: subckt

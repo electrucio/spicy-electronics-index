@@ -1,0 +1,98 @@
+part: EF92
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: EF92
+  def: subckt
+  hash: c23b1cf08768a6d6f593d0444a1960c322b683cf
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      EF92: [1377, 1381]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: EF92
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: EF92
+  def: subckt
+  hash: 5dad1a4862611eef92a38d07d4843003f6440ed3
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EF92: [1836, 1840]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: EF92
+  def: subckt
+  hash: c6d9d70f978c7bd537d53f71d147e605404f284f
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      EF92: [1406, 1410]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: EF92
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: EF92
+  def: subckt
+  hash: 84a9cc716f8c3a7e0937da1257574cf66df911e4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-8015632
+    sha256: d929a847451b8a67785ea5d6c21853ef48618e7a4ee574672af67dfa590598a1
+    lines:
+      EF92: [9, 39]
+    fetched: '2026-10-22'
+- source: groups-io
+  name: EF92
+  def: subckt
+  hash: df44c5bacc3315e9e16550b7ec4f07eba9f8b167
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/Koren_Tubes_.cir
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+    lines:
+      DX: [1472, 1472]
+      EF92: [1028, 1032]
+      PENTODE1: [1425, 1437]
+    fetched: '2026-10-09'

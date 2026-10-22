@@ -1,0 +1,73 @@
+part: 5W4
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: 5W4
+  def: subckt
+  hash: 09223632b183398854874be235ce5b1f70ba86f1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 5W4.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 8b1d69045e6f0e51b36481749b82a4cba9e9ba9ff28c62818292334d3ae9ffa5
+    lines:
+      5W4: [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 5W4
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 5W4.inc
+      sha256: 8b1d69045e6f0e51b36481749b82a4cba9e9ba9ff28c62818292334d3ae9ffa5
+- source: bordodynov
+  name: 5W4
+  def: subckt
+  hash: 8d8f67ca6c6383613013cab8f16789071bf793a3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      5W4: [68, 70]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 5W4
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 5W4
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 5W4.inc
+      sha256: 0609c9a0452bb7f42dbe652b31f4f6a0c116e85d55404ab527d56d887c5d9df0
+  - source: ltwiki
+    name: 5W4
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+- source: groups-io
+  name: X5W4
+  def: subckt
+  hash: a1dc282b8377843de18952815fc06276f156f318
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      X5W4: [961, 967]
+    fetched: '2026-10-09'

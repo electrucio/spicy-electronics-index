@@ -1,0 +1,59 @@
+part: 833A
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: 833A_SOV
+  def: subckt
+  hash: ad50f9e8ce6636c1e811f08b90d2ec7eb8678a1f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6494860
+    sha256: b5d833e99307c3fe559b6df45cc03ca24d856b8e8a31dda2819373426b9893d5
+    lines:
+      833A_SOV: [9, 30]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 833A_SOV
+  def: subckt
+  hash: 61ed699b538423284f1038f36b32480d59749666
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6408620
+    sha256: 8ef2f8f37dabbd07e966152741209c6a2afbb6ce9c54c8d6b1e1aa7897df3dad
+    lines:
+      833A_SOV: [9, 30]
+    fetched: '2026-10-22'
+- source: bordodynov
+  name: 833A
+  def: subckt
+  hash: b60376a6f10d5514a8c012c55330b5429fb89bbd
+  type: SUBCKT
+  deps:
+  - Triode
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/new_triodes.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+    lines:
+      833A: [599, 602]
+      Triode: [31, 49]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 833A
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/new_triodes.txt
+      sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
+  - source: ltwiki
+    name: 833A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/new_triodes.txt
+      sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2

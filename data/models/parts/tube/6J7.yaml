@@ -25,6 +25,13 @@ models:
       6J7: [10, 30]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6J7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6J7.inc
+      sha256: 8244fda9f30a0dc4b12d5dc720a01215cba16d0573740f69887b97fbf9192ad3
 - source: ayumi
   name: 6J7T
   def: subckt
@@ -46,6 +53,13 @@ models:
       6J7T: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6J7T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6J7T.inc
+      sha256: 70b7d121d90da44b37f85e60b4474b750cfcf517cb9a925665b0d2f660ddb2da
 - source: bordodynov
   name: 6J7
   def: subckt
@@ -65,6 +79,11 @@ models:
     lines:
       6J7: [1090, 1110]
     fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Pentodes/6J7.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 1e3878bd6df384a394fac54f4c68b345a16b5400e1884fce265c625aba50d77b
   note: pins from names
   copies:
   - source: bordodynov
@@ -85,6 +104,18 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Tube_Rus.txt
       sha256: b7af640e5dd145164f5410eefeb0cf61af8bc0131abcc348bdbed4d70c791785
+  - source: diyaudio
+    name: 6J7
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: diyaudio
+    name: 6J7
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6J7.inc
+      sha256: 2b11e2d108544b4a50f3ec59cd229586581c9878a8e3cc67a59df8af84c04da5
   - source: ltwiki
     name: 6J7
     get:
@@ -123,6 +154,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6J7T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6J7T.inc
+      sha256: b936f37db31eef7340c97c160861c9463f9ff637420d24ceb0fc816978796aa7
   - source: ltwiki
     name: 6J7T
     get:
@@ -161,6 +198,58 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/Tube_IM.lib
       sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: diyaudio
+  name: 6J7T
+  def: subckt
+  hash: a796243d895e2f4352a39d7ca24a1d94b50c230a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6J7T: [1730, 1745]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6J7G-ra
+  def: subckt
+  hash: 272c8ce63633a4a12436ca9aa6ef5296e19dbe2e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6J7G-ra: [1714, 1723]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6J7_RAD
+  def: subckt
+  hash: 07dfc4c42d7a6c288294216d23c30ece25977e18
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5653057
+    sha256: 07bc89c599d7480487a46b10da1bdd57a501038a6502936ae2747c1cf74539d5
+    lines:
+      6J7_RAD: [9, 43]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6J7MG
+  def: subckt
+  hash: 0639d8fd08ec597f04e692af0f4ece21771c2ee9
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5723640
+    sha256: 09de0faf281cb10ddf1dd8a460297e3c6a526909390f26995c544af80acb53b4
+    lines:
+      6J7MG: [4, 12]
+    fetched: '2026-10-22'
 - source: bordodynov-qspice
   name: 6J7_T
   def: subckt

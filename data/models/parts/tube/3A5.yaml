@@ -1,0 +1,71 @@
+part: 3A5
+kind: tube
+priority: 3
+group: listed
+models:
+- source: gist-chanmix51
+  name: 3A5
+  def: subckt
+  hash: 55dbac3e276e2a8bdc62ce23dec461980e556f67
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
+    sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
+    lines:
+      3A5: [172, 186]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: 3A5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: groups-io
+    name: 3A5
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: ltwiki
+    name: 3A5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: bordodynov
+  name: 3A5
+  def: subckt
+  hash: 65d76c214a1b9d6f0fd79b639ef7be993c0edddd
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      3A5: [1470, 1484]
+      DX: [210, 210]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/3A5.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 048769347b4e33930e68fed4e76b391c6381864fe709ba123842c1a72502e44c
+  copies:
+  - source: diyaudio
+    name: 3A5
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: 3A5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f

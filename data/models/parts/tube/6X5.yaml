@@ -1,0 +1,220 @@
+part: 6X5
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: 6X5
+  def: subckt
+  hash: 0b39720590e7bb9f966f8534469759c1dca31806
+  type: SUBCKT
+  deps:
+  - DiodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      6X5: [1920, 1928]
+      DiodeK: [2360, 2363]
+    fetched: '2026-09-14'
+- source: ayumi
+  name: 6X5
+  def: subckt
+  hash: e50fc03669a470fd694bbd44995999de989b6ac8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6X5.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 670f5f896449e8134ec7794d8c44cdf6a7d6e95d6725cbada12a1d7253d00dd9
+    lines:
+      6X5: [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 6X5
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6X5.inc
+      sha256: 670f5f896449e8134ec7794d8c44cdf6a7d6e95d6725cbada12a1d7253d00dd9
+- source: suusi-tubes
+  name: 6X5
+  def: subckt
+  hash: e9f6280c72c14102fb95fc562b04b8c572379f87
+  type: SUBCKT
+  deps:
+  - DULEREC
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      6X5: [161, 164]
+      DULEREC: [2089, 2092]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: 6X5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+  - source: ltwiki
+    name: 6X5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: suusi-tubes
+  name: 6X5
+  def: subckt
+  hash: da037d89c95af575143cfd2b117e1160e6ab32ae
+  type: SUBCKT
+  deps:
+  - RECP2
+  - DULERECP2
+  - 12X5
+  - 12X4
+  - 6X4
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      12X4: [125, 128]
+      12X5: [131, 134]
+      6X4: [111, 115]
+      6X5: [118, 122]
+      DULERECP2: [3013, 3016]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: 6X5
+  def: subckt
+  hash: ea1722280447ae832a2a424226f46b65306114dd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      6X5: [138, 140]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 6X5
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 6X5
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6X5.inc
+      sha256: 2a76155a5e2f5cfd7f97c226efd170612bf7d1fb409654d5843ea906b6a74ff1
+  - source: ltwiki
+    name: 6X5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+- source: groups-io
+  name: X6X5
+  def: subckt
+  hash: 3a5acc1a46dab5078847d61274acccacea88f8b5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      X6X5: [994, 1000]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: 6X5
+  def: subckt
+  hash: 6c8a2d062cb45c990bd1035240dc0657988dbbf7
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  - 12X5
+  - 12X4
+  - 6X4
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      12X4: [206, 209]
+      12X5: [212, 215]
+      6X4: [192, 196]
+      6X5: [199, 203]
+      DULERECP2: [2530, 2540]
+    fetched: '2026-10-09'
+- source: bordodynov
+  name: 6X5
+  def: subckt
+  hash: 5e7894892004732320455c6bda2718d4478bd465
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      6X5: [587, 594]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Diodes/6X5.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 3e5b6559747a89509407c88fe61170527d6155e4dcebf7b94fb2d4df51b971a5
+  copies:
+  - source: diyaudio
+    name: 6X5
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: 6X5
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: bordodynov
+  name: 6X5GT
+  def: subckt
+  hash: 52520b507f04126d54f70b8e842647277ef7077e
+  type: SUBCKT
+  deps:
+  - VRECTIFIER
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/vrectifier.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 6f39b4729541ad16b04e62a45667127a910029cc5c095d49dc8622ca11a85443
+    lines:
+      6X5GT: [65, 70]
+      VRECTIFIER: [19, 35]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 6X5GT
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/vrectifier.txt
+      sha256: 6f39b4729541ad16b04e62a45667127a910029cc5c095d49dc8622ca11a85443

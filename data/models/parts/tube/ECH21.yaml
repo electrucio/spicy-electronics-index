@@ -1,0 +1,75 @@
+part: ECH21
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: ECH21_H
+  def: subckt
+  hash: bb7af885e147c3066a9e8f5eb61006038e2ca759
+  type: SUBCKT
+  deps:
+  - HepthodeD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      ECH21_H: [387, 396]
+      HepthodeD: [2187, 2207]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: ECH21_H
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: reefman
+  name: ECH21_C
+  def: subckt
+  hash: 8e0d0876175f5d58e0574791f675d65f6e3c7bac
+  type: SUBCKT
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      ECH21_C: [398, 405]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: ECH21_C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: diyaudio
+  name: ECH21_T
+  def: subckt
+  hash: 6212eb3cba48658c96f30e93e3249dd5b06aa515
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-8047396
+    sha256: dff3f1cbf807f0f554aac9b13c237a03638f1b02b13eec800029bd2cd044d577
+    lines:
+      ECH21_T: [9, 29]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: ECH21_P
+  def: subckt
+  hash: e144c28a33491eb0197061671f784bc8047b069d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-8047379
+    sha256: 35b319ae49d4fcdd1cbe9bd1959d1d057ff47bc07270e0dc9364584b7692840d
+    lines:
+      ECH21_P: [9, 43]
+    fetched: '2026-10-22'

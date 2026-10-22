@@ -1,0 +1,156 @@
+part: '6080'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: '6080'
+  def: subckt
+  hash: 2d0ba881700bcf4fcf60f794e40a69b6097e07ca
+  type: SUBCKT
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      '6080': [1343, 1355]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '6080'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: ayumi
+  name: '6080'
+  def: subckt
+  hash: 4c8cf0f981fe361f5e0e093c7c12631927a2a1ba
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6080.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: ce42a65ab2e6a71a300a930eaef2c77539a1dd2d8d816afd1711f3e9b60fa206
+    lines:
+      '6080': [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '6080'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6080.inc
+      sha256: ce42a65ab2e6a71a300a930eaef2c77539a1dd2d8d816afd1711f3e9b60fa206
+- source: bordodynov
+  name: '6080'
+  def: subckt
+  hash: bf47bd3e0dd34d3ac59e769955c57e9e963788bd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      '6080': [823, 836]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: '6080'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: '6080'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6080.inc
+      sha256: 15a816ca698b6fbd96436ede5194ef9939b204318e15c8154daf66d75927bf52
+  - source: ltwiki
+    name: '6080'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: diyaudio
+  name: '6080'
+  def: subckt
+  hash: fe6375f85460d488ab7f01a6878dcdbd8bdee835
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/6n13s_6080_6as7-zip.1549928/
+    member: 6n13s_6080_6AS7.inc
+    archive_sha256: 503ad826905e7d808691187c03fb1d09284bef24ff7641e57d6ec833c7eeba30
+    sha256: b2c726834d29b37db247f24133419b4ddc05b45dff4da155665d458dad791dea
+    lines:
+      '6080': [28, 43]
+    fetched: '2026-10-22'
+- source: groups-io
+  name: X6080
+  def: subckt
+  hash: 76ce21c179d03aec6e1bc2c3bbaffcddfad12c6d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      X6080: [612, 623]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: '6080'
+  def: subckt
+  hash: 858142f4b11a18941fb3b9cc650c392396373a4e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/Pspice and Spice Models Archive @ PAEng.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: ade502eb165a28fdd2d41236efd7f46b98d13d7f8572059241953358a4acc707
+    lines:
+      '6080': [849, 860]
+    fetched: '2026-10-09'
+- source: bordodynov
+  name: '6080'
+  def: subckt
+  hash: 2aa7c570d3998a3e03617c812b0392c071e20e4f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      '6080': [898, 904]
+    fetched: '2026-09-21'
+    symbol:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/6080.asy
+      archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+      sha256: 5deb56ddb71b1c5e50ebfd69d8695d422f625936581f9fc193e7338e05ede16b
+  copies:
+  - source: diyaudio
+    name: '6080'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: '6080'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f

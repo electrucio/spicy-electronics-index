@@ -1,0 +1,111 @@
+part: '30'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: '30'
+  def: subckt
+  hash: 1b3eb46940661c4cb8d874ae450f2d7d257b5edc
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      '30': [342, 346]
+      TRIODE: [1980, 1991]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: '30'
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: '30'
+  def: subckt
+  hash: 1e34edf54e9007555ee1987bf5513990c1c999b7
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      '30': [550, 554]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: '30'
+  def: subckt
+  hash: 7cce4187c0c9234f60b87257d3817e1baad2100f
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      '30': [364, 368]
+      TRIODE: [2016, 2027]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: '30'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: '30'
+  def: subckt
+  hash: 7f1382841c69dfb01659c3206f0be0309830e3d5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6781034
+    sha256: 5a4c7dc626d16751034a53389555754a224c003bdd0fc2a0166fd140295e1bff
+    lines:
+      '30': [9, 30]
+    fetched: '2026-10-22'
+- source: bordodynov
+  name: '30'
+  def: subckt
+  hash: 04fe402aa316b6b5966071fc51446a6a8851a00e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      '30': [675, 694]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/30.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 534b91b316ae661b63c4e67608e0690935665c575c7f6f2ae9eb9ca8dfdd47bf
+  copies:
+  - source: diyaudio
+    name: '30'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: '30'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f

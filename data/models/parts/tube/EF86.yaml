@@ -84,6 +84,12 @@ models:
       PenthodeD: [2326, 2342]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: EF86
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: ayumi
   name: 6267T
   def: subckt
@@ -105,6 +111,13 @@ models:
       6267T: [9, 22]
     fetched: '2026-09-14'
   note: found under the alias 6267; pins from names
+  copies:
+  - source: diyaudio
+    name: 6267T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6267T.inc
+      sha256: 11c01cc0b13c58e0fdd062df5064b10976d97fc16fc72db26225f022efc12045
 - source: ayumi
   name: '6267'
   def: subckt
@@ -127,6 +140,13 @@ models:
       '6267': [10, 30]
     fetched: '2026-09-14'
   note: found under the alias 6267; pins from names
+  copies:
+  - source: diyaudio
+    name: '6267'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6267.inc
+      sha256: c73539778193345305df8d0274fbaa2e515c1f63026701971b0e2485f2428568
 - source: duncanamps
   name: EF86
   def: subckt
@@ -393,6 +413,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: EF86
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: EF86
     get:
@@ -486,6 +511,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: '6267'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: '6267'
     get:
@@ -638,6 +668,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6267T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6267T.inc
+      sha256: 1631bf33ffaff528c2f38f87b2292d213822549de4d60c80ad4dcd34d6c30757
   - source: ltwiki
     name: 6267T
     get:
@@ -666,6 +702,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Pentode_Ayumi.txt
       sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: '6267'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6267.inc
+      sha256: d0a00aa3d74bf892e0480bf6b05a1ac6313ffa0ba8864726c6bc6e5d5e41953a
   - source: ltwiki
     name: '6267'
     get:
@@ -748,6 +790,26 @@ models:
     get:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
       sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+- source: diyaudio
+  name: 6267_AN
+  def: subckt
+  hash: 4f03597af7d5f668dcfc5c9915b0215119298dd3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3799725
+    sha256: 4148aeb3005d0aaa4d3e239d8d43e91260f95b7fecfcb020b971e50a326549de
+    lines:
+      6267_AN: [12, 32]
+    fetched: '2026-10-22'
+  note: found under the alias 6267
+  copies:
+  - source: diyaudio
+    name: 6267_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 6267_AN.sub
+      sha256: 2ffc6ecaa19f66d3ab9b0d472fa88d89df7ab0067deed38b0ba863bcee248389
 - source: groups-io
   name: XEF86
   def: subckt
@@ -795,6 +857,42 @@ models:
     lines:
       EF86: [106, 121]
     fetched: '2026-10-09'
+- source: diyaudio
+  name: EF86_PL
+  def: subckt
+  hash: 95b55ce9419e920e843ad66c1e6fe04989f72250
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5621815
+    sha256: 462cf2822b23caf8a6873d3bd036feb44a4f20b6740e5dfca9ad5aa30754a90d
+    lines:
+      EF86_PL: [7, 41]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EF86_PL
+  def: subckt
+  hash: 019ca5033153aa438d4e80a2bebc32ec9237f909
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6953761
+    sha256: 7396aee9f425a225bc9ee6f3cbfed19b66d029e00c746d807786a3c672565f21
+    lines:
+      EF86_PL: [9, 43]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EF86P
+  def: subckt
+  hash: 574faeaacb88ade596c367bb5bd6d4574b1e8568
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5623289
+    sha256: 2ef356d570af9a61a121d6c363f510827ab4e2d8c5724389073892e062dbb2be
+    lines:
+      EF86P: [9, 43]
+    fetched: '2026-10-22'
 - source: groups-io
   name: ef86t
   def: subckt
@@ -809,6 +907,19 @@ models:
     lines:
       ef86t: [171, 191]
     fetched: '2026-10-09'
+- source: diyaudio
+  name: '6267'
+  def: subckt
+  hash: 058871cc0942547cd1c5e296da1c8d9b1c91ebd3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3809552
+    sha256: 41997294634fc05dbca8f49788ceb8087cb33fad54e1863854063601f015e3d3
+    lines:
+      '6267': [7, 30]
+    fetched: '2026-10-22'
+  note: found under the alias 6267
 - source: groups-io
   name: '6267'
   def: subckt
@@ -831,6 +942,51 @@ models:
       PENTODE1: [1425, 1437]
     fetched: '2026-10-09'
   note: found under the alias 6267
+- source: diyaudio
+  name: 6267_AN2
+  def: subckt
+  hash: cea5d4fb10c50b59e9f4e7b1ed16ee2562224778
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3809630
+    sha256: 5b20e3855528dfe4d15bc19f92895312dc02b6b02992f5eb7ee06f47405cb792
+    lines:
+      6267_AN2: [12, 32]
+    fetched: '2026-10-22'
+  note: found under the alias 6267
+- source: bordodynov
+  name: EF86
+  def: subckt
+  hash: 2c79c0e0bffb8d49bd7030de7eab0e045d9c97c6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sym/ValVol/Tubes/tube.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    lines:
+      EF86: [1318, 1347]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Pentodes/EF86.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 0ce41559252a06339de4cd2b5cb51603b1ffaeec65b563d145f7db563011701e
+  copies:
+  - source: diyaudio
+    name: EF86
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: EF86
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 - source: bordodynov
   name: EF86
   def: subckt
@@ -861,27 +1017,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/new_triodes.txt
       sha256: 4c621c85eb3b9d3dd97622ff9d25c1c1dcf93bc76e9dc887a946205326f08da2
-- source: bordodynov
-  name: EF86
-  def: subckt
-  hash: 2c79c0e0bffb8d49bd7030de7eab0e045d9c97c6
-  type: SUBCKT
-  verbatim: true
-  get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: lib/sym/ValVol/Tubes/tube.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
-    lines:
-      EF86: [1318, 1347]
-    fetched: '2026-09-21'
-  copies:
-  - source: ltwiki
-    name: EF86
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/sym/ValVol/Tubes/tube.lib
-      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
 - source: bordodynov
   name: EF86
   def: subckt
@@ -954,6 +1089,40 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/pentodes.lib
       sha256: d6266b406c88cab6fe4b2a526c77d345fa252c884b28b29826199c9b33cc3c87
+- source: diyaudio
+  name: EF86
+  def: subckt
+  hash: 735ea6db4bfaecdcfe02af68770358e7956df113
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      DX: [338, 338]
+      EF86: [366, 370]
+      PENTODE1: [374, 387]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6267_AN
+  def: subckt
+  hash: 6d31f8a8c336a42fbeaa24f721ca973f9c2f3ddb
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+    member: 1J6G.sub
+    archive_sha256: 21bd23c332adcb1bb33b8733b1b9484368bc1747a8d5f5f87b221e7263745591
+    sha256: 1547cff04ea924a29c40bf08c01b9e1e701facfe4138e346f169c8080206757c
+    lines:
+      6267_AN: [10, 30]
+    fetched: '2026-10-22'
+  note: found under the alias 6267
 datasheet:
   url: https://frank.pocnet.net/sheets/030/e/EF86.pdf
   maker: Philips

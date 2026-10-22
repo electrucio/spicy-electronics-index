@@ -31,6 +31,25 @@ models:
     get:
       url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3924684
       sha256: 46848a098afac30b11fdbb08f49acaf681d6f028f6cdfc32c280980c49cd2608
+- source: diyaudio
+  name: 50C5
+  def: subckt
+  hash: 36e48235c7a724ef88308514ad549210f81f8b74
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3924527
+    sha256: 29a16eba3d7fef52eabe3a98952e0e592a99ac00290635d507cf3a5b1359ee0e
+    lines:
+      50C5: [6, 37]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 50C5
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 50C5.sub
+      sha256: e131582df537cfa815aa13c3964063cfe1644eb69fac6a3815020108ef8c06a0
 - source: groups-io
   name: X50C5
   def: subckt
@@ -45,3 +64,17 @@ models:
     lines:
       X50C5: [329, 362]
     fetched: '2026-10-09'
+- source: diyaudio
+  name: 50C5_AN
+  def: subckt
+  hash: 9bf6fc6ef3f3eb08a4b2b76e6d4ca452423db470
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+    member: 50C5_AN.sub
+    archive_sha256: 21bd23c332adcb1bb33b8733b1b9484368bc1747a8d5f5f87b221e7263745591
+    sha256: bbb5abaf2dca365aa909815d85c132a214abd69c393046c2ba7885b39b67a117
+    lines:
+      50C5_AN: [10, 30]
+    fetched: '2026-10-22'

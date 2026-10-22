@@ -144,6 +144,18 @@ models:
     fetched: '2026-09-14'
   note: pins from inline comment
   copies:
+  - source: diyaudio
+    name: 6L6GC
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-amp-003-zip.451956/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
+  - source: diyaudio
+    name: 6L6GC
+    get:
+      url: https://www.diyaudio.com/community/attachments/gu50-zip.451955/
+      member: Tube_IM.lib
+      sha256: ece4d16703f090184f29462d882e05ed49088b7b87bb6531a14890846cded336
   - source: groups-io
     name: 6L6GC
     get:
@@ -343,6 +355,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6L6GC
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6L6GC
     get:
@@ -445,6 +462,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6L6GB
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6L6GB
     get:
@@ -535,6 +557,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: 6L6GC_OLD
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: 6L6GC_OLD
     get:
@@ -686,6 +713,45 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/Tube_IM.lib
       sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: diyaudio
+  name: 6L6GC
+  def: subckt
+  hash: 80ccc48f7eccf123684cdff670b2398fddfc22cd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6743267
+    sha256: 3944cc15a3d64b08eb1895e0d7ae699b3fd1b4dce29b8a399dc0ab0179586e83
+    lines:
+      6L6GC: [10, 44]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6L6GC
+  def: subckt
+  hash: 2e4daa3df7458cb6720214cfe27a026469c27eab
+  type: SUBCKT
+  deps:
+  - BTetrodeDE
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      6L6GC: [1553, 1560]
+      BTetrodeDE: [1994, 2011]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6L6GC
+  def: subckt
+  hash: 3b9bb6623e8dccb346e75c916c2b199ed5b8986b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6528292
+    sha256: fff35ed6c65d636ea16c5c257e4a9ee4bd5b36a0d45e82f63295beed470ed5d4
+    lines:
+      6L6GC: [9, 50]
+    fetched: '2026-10-22'
 - source: groups-io
   name: 6L6GC
   def: subckt
@@ -1016,3 +1082,39 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/new_tetrodes.txt
       sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
+- source: diyaudio
+  name: 6L6GC
+  def: subckt
+  hash: b4f45bc12d8644d8be74c69a2f2590865348da1b
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      6L6GC: [84, 88]
+      DX: [338, 338]
+      PENTODE1: [374, 387]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6L6GC_kk
+  def: subckt
+  hash: 0a4cff1a98524aa4b3edb287f39374339260a4c9
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      6L6GC_kk: [92, 107]
+      DX: [338, 338]
+    fetched: '2026-10-22'

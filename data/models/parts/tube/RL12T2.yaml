@@ -1,0 +1,79 @@
+part: RL12T2
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: RL12T2
+  def: subckt
+  hash: 67f5220e563aff599d7702cd76446d268b80f1f1
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      RL12T2: [1900, 1904]
+      TRIODE: [1980, 1991]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: RL12T2
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: RL12T2
+  def: subckt
+  hash: 5227c4bce74a1f1c9888fbd6b17bf786148526f6
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      RL12T2: [1169, 1173]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: RL12T2
+  def: subckt
+  hash: bc75a7c28e5ba84307a28bfb4569ae3b2f07b41a
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      RL12T2: [1929, 1933]
+      TRIODE: [2016, 2027]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: RL12T2
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: RL12T2
+  def: subckt
+  hash: 709f145749788fed2767d71bda5f7f59ac47088a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-8168172
+    sha256: 31744c6f494c98ec99bb402b2c4f38ba74249369f0d2d41ae23cec0ad7e24f08
+    lines:
+      RL12T2: [9, 29]
+    fetched: '2026-10-22'

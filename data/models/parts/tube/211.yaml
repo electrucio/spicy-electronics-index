@@ -1,0 +1,124 @@
+part: '211'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: '211'
+  def: subckt
+  hash: aba78a1e5874a6dd0caeb8aca72620bb251643b8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 211.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 8535ccf1588b70c1c2684f2313bfcff72af3e156c23e66dd0b3b7fecf54d2dcf
+    lines:
+      '211': [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '211'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 211.inc
+      sha256: 8535ccf1588b70c1c2684f2313bfcff72af3e156c23e66dd0b3b7fecf54d2dcf
+- source: suusi-tubes
+  name: '211'
+  def: subckt
+  hash: f556e5ba36c9051aafa73b73b9979dbfa357c055
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      '211': [571, 575]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: '211'
+  def: subckt
+  hash: 001aaf3d4bbd977a9a91fe963022c07cd83bf0cf
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      '211': [295, 308]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: '211'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: '211'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 211.inc
+      sha256: d1db068c588ca7b1c007e4b7eb214304b4ac14d745044adb930731be273958fe
+  - source: ltwiki
+    name: '211'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: diyaudio
+  name: 211_FM
+  def: subckt
+  hash: e19d1679a9606c7a97da60ace6659e60a69b70e3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6779258
+    sha256: 072313c81c8c9b30de02daedb6d256dfcea4c2cd4d215d6edbce1063037f2e56
+    lines:
+      211_FM: [9, 30]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 211_RCA
+  def: subckt
+  hash: 70b0829ee9284e7624c1f0a226fa1e4e4e9759c8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6770787
+    sha256: 41c114e459604d9704617be287b80d703d85f645c49f26b86a68abc5c9d7c195
+    lines:
+      211_RCA: [8, 29]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 211_GE
+  def: subckt
+  hash: 00e86fbdb6d1982f5328ba5f6673eecd6290c7c0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6770401
+    sha256: 366b7c18802465f10fc1a7943568db014924004fcf9163cb1be52d65607cfa2d
+    lines:
+      211_GE: [7, 28]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 211_TII
+  def: subckt
+  hash: 4fa44bf05b259bdbb4922c580a897291a3da57fe
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6770784
+    sha256: d59a850f3e8c2a0a653189c0cbc9c9908a78a6bb07341737f348ca926d495946
+    lines:
+      211_TII: [9, 30]
+    fetched: '2026-10-22'

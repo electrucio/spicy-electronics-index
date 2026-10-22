@@ -1,0 +1,248 @@
+part: EL12
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: EL12T
+  def: subckt
+  hash: 8f0ad4487b2ea7d8d59e842ec7365b3e88c05450
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EL12T.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 1b69c4ea14f44afdc59c5e707dbc19a1285c6611a9090b3b81012dcf89f00435
+    lines:
+      EL12T: [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EL12T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EL12T.inc
+      sha256: 1b69c4ea14f44afdc59c5e707dbc19a1285c6611a9090b3b81012dcf89f00435
+- source: ayumi
+  name: EL12
+  def: subckt
+  hash: 3778f5d162ed7c6926bb9955dd61351e8d02138c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: EL12.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 9b91222e8e683d16f01f3d8469a952fd22d49096ced0dc24ab201a0b08b16e0d
+    lines:
+      EL12: [10, 30]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EL12
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: EL12.inc
+      sha256: 9b91222e8e683d16f01f3d8469a952fd22d49096ced0dc24ab201a0b08b16e0d
+- source: suusi-tubes
+  name: EL12
+  def: subckt
+  hash: b9096483f9f5979b65346f64e10e2534fee7266d
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL12: [1920, 1924]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: EL12T
+  def: subckt
+  hash: 37367c992141c321fe713e940b9d96f4e989ca24
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      EL12T: [3375, 3388]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EL12T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: EL12T
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EL12T.inc
+      sha256: 07908b6a0a98e32bad0a3adf1016ef2a31a9f3ecf1c7b1871121b33a54510753
+  - source: ltwiki
+    name: EL12T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: EL12
+  def: subckt
+  hash: a55056e7beeb975a806c89ee905c41366e8c4749
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      EL12: [1990, 2010]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: EL12
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: EL12
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: EL12.inc
+      sha256: ca0a9bf7728025d7d370d56a8b190842df072d7bf72c2253673eda7c33349159
+  - source: ltwiki
+    name: EL12
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: diyaudio
+  name: EL12
+  def: subckt
+  hash: 0842d2d2d4fe6c12eb2de83b09df9ccbfa228bf3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/push-and-pull-el12-amp-cass-ab-002-zip.426365/
+    member: tube-EL12.cir
+    archive_sha256: 1bfec7959d25360b26975a0f2ab17da53a14c2d8768a0584221802a254e3aa50
+    sha256: 1ae5eb77f60c78e9e6f6eaa40a46feac2ce53425c079276651f4c74d576ff689
+    lines:
+      EL12: [4, 20]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: EL12
+    get:
+      url: https://www.diyaudio.com/community/attachments/push-and-pull-el12-amp-class-ab-005-zip.427657/
+      member: tube-EL12.cir
+      sha256: 1ae5eb77f60c78e9e6f6eaa40a46feac2ce53425c079276651f4c74d576ff689
+  - source: diyaudio
+    name: EL12
+    get:
+      url: https://www.diyaudio.com/community/attachments/el12-test-norman-ayumi-004-zip.428346/
+      member: tube-EL12.cir
+      sha256: 1ae5eb77f60c78e9e6f6eaa40a46feac2ce53425c079276651f4c74d576ff689
+  - source: diyaudio
+    name: EL12
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3977202
+      sha256: 2bb5ec32d23011f3094eab0c937ae6cdcdabee2db00835d494d2e2e80cbb7e41
+- source: diyaudio
+  name: EL12
+  def: subckt
+  hash: 5d2e635705b60db70e7b7344793f6e8de5df3373
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube-el12-norman-update-zip.428238/
+    member: tube-EL12-001.cir
+    archive_sha256: 385a41878b8a862beda77b7da1ed3069b744bd779a45ae2acf48c1c0923183b3
+    sha256: 112a4a8852bb4dd07250daba907c297932957a1919c5e8845f0f6b3ffd3ab690
+    lines:
+      EL12: [5, 20]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: EL12
+    get:
+      url: https://www.diyaudio.com/community/attachments/el12-test-norman-ayumi-004-zip.428346/
+      member: tube-EL12-001.cir
+      sha256: 112a4a8852bb4dd07250daba907c297932957a1919c5e8845f0f6b3ffd3ab690
+- source: diyaudio
+  name: EL12T
+  def: subckt
+  hash: 48cc2a9faf4edcd2f5660a9a8caf19eb50dc4502
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7304696
+    sha256: e2ca71f3c6be591eda6194d5b63fb55ad2e14ea783dfa1249f9663474f156062
+    lines:
+      EL12T: [9, 30]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL12
+  def: subckt
+  hash: 71aa1478288fe40fb1dec6d3735a0a3c4460c327
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/el12-test-norman-ayumi-004-zip.428346/
+    member: tube-EL12-002.cir
+    archive_sha256: 6e9ba1f6bc72a926e9a048ee337fe1d41cbb38632dc9226ce4cb7f25d381467c
+    sha256: 96441de701d58f2cbe5520e3de66db737a8c46c667a08c81d5414cc618b60df7
+    lines:
+      EL12: [5, 21]
+    fetched: '2026-10-22'
+- source: groups-io
+  name: EL12
+  def: subckt
+  hash: d84784b838dd85dd16d0225541f50afc44fbd013
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      EL12: [1946, 1950]
+      PENTODE1: [2373, 2386]
+    fetched: '2026-10-09'
+- source: diyaudio
+  name: EL12P
+  def: subckt
+  hash: 1374621eb17e1c19d4a8484f1cf5a07351bf952a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7304848
+    sha256: efc426bff59a60e1773eee25639d3d513b371eec60713124acbc440e8113324f
+    lines:
+      EL12P: [9, 43]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL12P
+  def: subckt
+  hash: 307ee877cc2d4d0ffb29e2fa38106afdf489172b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7304839
+    sha256: 3da60474c0e4d6806b22958686a02a5cf454439cf67c8b948c25371f5e26f7c6
+    lines:
+      EL12P: [9, 43]
+    fetched: '2026-10-22'

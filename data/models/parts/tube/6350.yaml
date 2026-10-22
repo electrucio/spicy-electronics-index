@@ -1,0 +1,59 @@
+part: '6350'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: '6350'
+  def: subckt
+  hash: fe17bed40cc51a55f7198965ff887f1a63b5dc11
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 6350.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 2392512cd02257fd5de8e31d7c14fdfd422845079e105289cac80cd47f7550b0
+    lines:
+      '6350': [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '6350'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6350.inc
+      sha256: 2392512cd02257fd5de8e31d7c14fdfd422845079e105289cac80cd47f7550b0
+- source: bordodynov
+  name: '6350'
+  def: subckt
+  hash: a29716d378a83946e4bd2299572a212bf36adaad
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      '6350': [977, 990]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: '6350'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: '6350'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6350.inc
+      sha256: 43bce53898e43c1fcaceae38a13ab01b759398044bab0d2d0370fd7f2f28c558
+  - source: ltwiki
+    name: '6350'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97

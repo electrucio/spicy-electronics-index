@@ -44,6 +44,12 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6H30
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 6H30_AN.sub
+      sha256: ff9584386482b95ec81426a74153aed93a96a7dbcf472de469a6209182920da2
   - source: ltwiki
     name: 6H30
     get:
@@ -86,8 +92,8 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/triodes.sub
       sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
-- source: bordodynov
-  name: 6H30
+- source: diyaudio
+  name: 6H30_AN
   def: subckt
   hash: 2569803d6a354d5e0a9dd91572a9efcbf0b9a585
   type: SUBCKT
@@ -97,18 +103,89 @@ models:
   - K
   verbatim: true
   get:
-    url: http://bordodynov.ltwiki.org/lib.zip
-    member: sym/ValVol/Tubes/tube.lib
-    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
-    sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
     lines:
-      6H30: [1563, 1575]
-    fetched: '2026-09-14'
+      6H30_AN: [1521, 1533]
+    fetched: '2026-10-22'
   note: pins from names
   copies:
+  - source: bordodynov
+    name: 6H30
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: diyaudio
+    name: 6H30
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
   - source: ltwiki
     name: 6H30
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/tube.lib
       sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+- source: diyaudio
+  name: 6H30_SP
+  def: subckt
+  hash: 1ed1105010c73572159b2828b3701ea7bbb8667a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3775786
+    sha256: c16910d2a9a98cd67ee0828828c523a82f82a5200e60f76e53f8cf16266331fd
+    lines:
+      6H30_SP: [2, 19]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 6H30_SP
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 6H30_SP.sub
+      sha256: dbe7e26c304b918ea21d27c92d9a57ede356344f8e09c5a2aa4e236a867408ab
+- source: diyaudio
+  name: 6H30
+  def: subckt
+  hash: 6c67234a7ecf0028f54207559bfa0a4764e653fc
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube-models-ja2dhc-zip.376215/
+    member: tube-modelsJA2DHC.txt
+    archive_sha256: 6735a8e047b2d40c18ec3aa3ce61b7652906db7b083883c661f5d086d71653bb
+    sha256: 611da7ad6740782440ee6f9991f05b94746e2904f06f0d62adabde5a07ae58ab
+    lines:
+      6H30: [120, 130]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6H30_SP
+  def: subckt
+  hash: b0e113b2539e2f02945c7caa0b436cfd959855c6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3775108
+    sha256: 0e7dea4e371fde6a3acbb35c37e857ea8d5b18b55ef6999e135d999971ee6b53
+    lines:
+      6H30_SP: [2, 18]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6H30
+  def: subckt
+  hash: af1f8421d024fa8b30cb3ec5f0be4c8f116c2aaf
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+    member: 6H30.sub
+    archive_sha256: 21bd23c332adcb1bb33b8733b1b9484368bc1747a8d5f5f87b221e7263745591
+    sha256: 9848b6994ea6be008818509534f2635acdf2f871ee2be9282ba32c064f6a3162
+    lines:
+      6H30: [8, 20]
+    fetched: '2026-10-22'

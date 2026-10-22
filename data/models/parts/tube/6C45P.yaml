@@ -3,7 +3,7 @@ kind: tube
 priority: 3
 group: triode
 models:
-- source: gist-chanmix51
+- source: diyaudio
   name: 6C45-PE
   def: subckt
   hash: cbe3800d7d89372c853413e6bc22f921717e15fc
@@ -14,11 +14,13 @@ models:
   - CATHODE
   verbatim: true
   get:
-    url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
-    sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
+    url: https://www.diyaudio.com/community/attachments/jolida_el34_3-zip.498804/
+    member: dmtriodep.inc
+    archive_sha256: d5871c4edea210f2d678720c0f55a7e4ccc7eb9aa5401ae1f01f9a6d0094dbd0
+    sha256: ad8d29d96f6886d01ac0d03eb9cd8c842f6f92784a0795669397fd973875c298
     lines:
-      6C45-PE: [983, 996]
-    fetched: '2026-09-14'
+      6C45-PE: [496, 509]
+    fetched: '2026-10-22'
   note: pins from inline comment
   copies:
   - source: bordodynov
@@ -33,6 +35,16 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/triodes.sub
       sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: gist-chanmix51
+    name: 6C45-PE
+    get:
+      url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
+      sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
+  - source: gist-chanmix51
+    name: 6C45-PE
+    get:
+      url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
+      sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
   - source: groups-io
     name: 6C45-PE
     get:
@@ -57,6 +69,26 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/triodes.sub
       sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: diyaudio
+  name: 6C45Pi-j
+  def: subckt
+  hash: c6a95628f6d5728344e875285de45d78b92d51fd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      6C45Pi-j: [797, 808]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 6C45Pi-j
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5974273
+      sha256: 3ce7581e6592c55feadea34580da24c14866eae37ede0b9a8bc69fbfaca5a255
 - source: bordodynov
   name: 6C45-PE
   def: subckt

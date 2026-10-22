@@ -24,6 +24,13 @@ models:
       6S4A: [9, 22]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6S4A
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6S4A.inc
+      sha256: 09d67d784858503c5827ad56f6a5cf34f590703129bab06e459c09a1e2d8d330
 - source: bordodynov
   name: 6S4A
   def: subckt
@@ -50,9 +57,77 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Triode_Ayumi.txt
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 6S4A
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6S4A.inc
+      sha256: 05454f0416e7adb158ee281aafa453318269b0b8942bea6f97b40363f9b1d40d
   - source: ltwiki
     name: 6S4A
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Triode_Ayumi.lib
       sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: diyaudio
+  name: 6S4A_GE
+  def: subckt
+  hash: 5c8156ee1c710297ac84960348895eb4b38ee671
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+    member: 6S4A_GE.lib
+    archive_sha256: 7a6eb2d82fb2be6b8f103a66815954a77313c0056bdd0c217d17eae4c37b208f
+    sha256: 7ec1e54ffe610b687b2a8758cb3edada41665fec3db1ceee05b3d566b84fcd62
+    lines:
+      6S4A_GE: [74, 82]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: 6S4A_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6S4A_GE.lib
+      sha256: 7ec1e54ffe610b687b2a8758cb3edada41665fec3db1ceee05b3d566b84fcd62
+  - source: diyaudio
+    name: 6S4A_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6S4A_GE.lib
+      sha256: 7ec1e54ffe610b687b2a8758cb3edada41665fec3db1ceee05b3d566b84fcd62
+  - source: diyaudio
+    name: 6S4A_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6S4A_GE.lib
+      sha256: 7ec1e54ffe610b687b2a8758cb3edada41665fec3db1ceee05b3d566b84fcd62
+  - source: diyaudio
+    name: 6S4A_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6S4A_GE.lib
+      sha256: 7ec1e54ffe610b687b2a8758cb3edada41665fec3db1ceee05b3d566b84fcd62
+  - source: diyaudio
+    name: 6S4A_GE
+    get:
+      url: https://www.diyaudio.com/community/attachments/cogs_curvecaptor02-zip.472345/
+      member: 6S4A_GE.lib
+      sha256: 7ec1e54ffe610b687b2a8758cb3edada41665fec3db1ceee05b3d566b84fcd62
+- source: diyaudio
+  name: 6S4A
+  def: subckt
+  hash: 571314a9acf683ba300cce3c477c95fdacb7305f
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      6S4A: [208, 243]
+      DX: [338, 338]
+    fetched: '2026-10-22'

@@ -1,0 +1,59 @@
+part: '80'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: '80'
+  def: subckt
+  hash: 4a2ef2baade21dc213c964e4f961a41b0db9f2ce
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 80.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: 6e8d680c5b7e0962ceab11c026d21dd438ce1ef3104fff0830d1648d6e103fd8
+    lines:
+      '80': [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '80'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 80.inc
+      sha256: 6e8d680c5b7e0962ceab11c026d21dd438ce1ef3104fff0830d1648d6e103fd8
+- source: bordodynov
+  name: '80'
+  def: subckt
+  hash: ebdcde3f3f19e3c0d0b6b0f7350b81dcdfc19452
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      '80': [145, 147]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: '80'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: '80'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 80.inc
+      sha256: 6cec83273cb6863bd13323dc237f7f8af239d2fef0178e2bce5088324b3c8d7d
+  - source: ltwiki
+    name: '80'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f

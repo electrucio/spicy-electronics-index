@@ -3,6 +3,90 @@ kind: jfet
 priority: 2
 group: p_channel
 models:
+- source: diyaudio
+  name: 2sj103
+  def: model
+  hash: df84b8bf55f503ddd147f4cb17c5e3e971be65ab
+  type: PJF
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/models-zip.427587/
+    member: Cordell-Models.txt
+    archive_sha256: 3a2c403943ff249a337c10c8367e365addd0bbe5d746fe3c83a56d82bebb1a7c
+    sha256: f43db7b1c564c5a4bcdc0dce10b9bb03d0abe1b4a73fa259e81f0c44452000b8
+    lines:
+      2sj103: [666, 666]
+    fetched: '2026-10-22'
+  copies:
+  - source: bordodynov
+    name: J2sj103
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: bordodynov
+    name: 2SJ103
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: diyaudio
+    name: 2SJ103
+    get:
+      url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+      member: z.lib
+      sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+  - source: groupsio-ltspice
+    name: J2sj103
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: groupsio-ltspice
+    name: 2SJ103
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
+      member: standard.jft
+      sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
+  - source: kicad-spice-library
+    name: J2sj103
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: kicad-spice-library
+    name: 2SJ103
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
+      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
+  - source: ltwiki
+    name: J2sj103
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2SJ103
+    get:
+      url: http://bordodynov.ltwiki.org/cmp.zip
+      member: cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2sj103
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: 2SJ103
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/cmp/standard.jft
+      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
+  - source: ltwiki
+    name: J2sj103
+    get:
+      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jjfet.lib
+      sha256: aff5269588b1aafb975da8202f5cb734dedbbf19dd49cab3a5495d8623300ca6
 - source: groupsio-ltspice
   name: 2SJ103BL
   def: model
@@ -58,72 +142,6 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/cmp/standard.jft
       sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-- source: groupsio-ltspice
-  name: J2sj103
-  def: model
-  hash: df84b8bf55f503ddd147f4cb17c5e3e971be65ab
-  type: PJF
-  verbatim: true
-  get:
-    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/cmp/Standard.zip
-    member: standard.jft
-    archive_sha256: 07f1f7a6ca2baff83c890ea5f4773dab91734b0a38a521bb012461b20cd9e5a9
-    sha256: c9d062724cecafbda9b92eb52f5d3705362d1f7d2854234e755052c1b110e75b
-    lines:
-      J2sj103: [736, 736]
-    fetched: '2026-09-21'
-  copies:
-  - source: bordodynov
-    name: J2sj103
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.jft
-      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-  - source: bordodynov
-    name: 2SJ103
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.jft
-      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-  - source: kicad-spice-library
-    name: J2sj103
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
-      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
-  - source: kicad-spice-library
-    name: 2SJ103
-    get:
-      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/cmp/standard.jft
-      sha256: 818a99dfe7a395e2b42662a223e2d2259401d97ce60ba4532cc4b56b93fd2c3b
-  - source: ltwiki
-    name: J2sj103
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.jft
-      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-  - source: ltwiki
-    name: 2SJ103
-    get:
-      url: http://bordodynov.ltwiki.org/cmp.zip
-      member: cmp/standard.jft
-      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-  - source: ltwiki
-    name: J2sj103
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.jft
-      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-  - source: ltwiki
-    name: 2SJ103
-    get:
-      url: http://bordodynov.ltwiki.org/lib.zip
-      member: lib/cmp/standard.jft
-      sha256: 31210a0eaf3deaf9973f440c43e5e8dcec09704be2ecd8f750e3e9caa4c1348a
-  - source: ltwiki
-    name: J2sj103
-    get:
-      url: https://ltwiki.org/files/LTspiceIV/Vendor%20List/Spice-Models-collection/jjfet.lib
-      sha256: aff5269588b1aafb975da8202f5cb734dedbbf19dd49cab3a5495d8623300ca6
 - source: groupsio-ltspice
   name: J2SJ103X
   def: model

@@ -1,0 +1,50 @@
+part: '813'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: 813_AN
+  def: subckt
+  hash: cadb5243e074f3af9cd728542d9347f5c3d8cef1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4536166
+    sha256: 6e3e432ca978a8c5d3a1da4d341314d6628498a5c6573ffa59821136574412e9
+    lines:
+      813_AN: [12, 32]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 813_T_AN
+  def: subckt
+  hash: 7cb26b7a1ee6f8007155351b2cf452de855eafa6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4536166
+    sha256: 6e3e432ca978a8c5d3a1da4d341314d6628498a5c6573ffa59821136574412e9
+    lines:
+      813_T_AN: [43, 56]
+    fetched: '2026-10-22'
+- source: bordodynov
+  name: '813'
+  def: subckt
+  hash: d2f37afb9e68ee4321120821ae3ba8306e153f28
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/new_tetrodes.txt
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6
+    lines:
+      '813': [534, 551]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: '813'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/new_tetrodes.txt
+      sha256: 7d30fcbe19ab6ecdcce055525f4bb4c1d60f885a3f876f1549e245ed6f47b6e6

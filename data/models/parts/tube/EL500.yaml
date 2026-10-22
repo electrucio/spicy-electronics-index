@@ -1,0 +1,49 @@
+part: EL500
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: EL500
+  def: subckt
+  hash: b475e660e7054cbe509f0c2bbfe95504cd49c2d4
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      BTetrodeD: [2211, 2228]
+      EL500: [804, 811]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: EL500
+  def: subckt
+  hash: 2814c36ca88dd13256f0a99a2b084a590f4b7d7a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7994444
+    sha256: c7329047219beff27e55e54d2e7d839f3d097cbb11eb5f7f50c585d1892ca09d
+    lines:
+      EL500: [9, 46]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EL500
+  def: subckt
+  hash: 5491e98d6ba3706c1c33f333de5bc0addd913497
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeD: [1973, 1990]
+      EL500: [684, 691]
+    fetched: '2026-10-22'

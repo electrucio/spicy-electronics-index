@@ -56,6 +56,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/triodes.sub
       sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: diyaudio
+    name: EL36_T
+    get:
+      url: https://www.diyaudio.com/community/attachments/el36t-txt.575174/
+      sha256: b6639eb4dcccbcb004ea6c25b5db894981a7982ca22cb8b9fa1acc0341392e35
   - source: groups-io
     name: EL36_T
     get:
@@ -80,3 +85,53 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/triodes.sub
       sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: diyaudio
+  name: EL36
+  def: subckt
+  hash: dd72b71aaa2702b75f59d736d494932bf1b8c554
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/e235l_el36-zip.1582424/
+    member: EL36.inc
+    archive_sha256: 3ca1f802b0e5f66591423587f579cdaccff9966ee08eed3fa5d7bc84b8b98ac4
+    sha256: 180ef94c4b69ff68cdf04e11b28cd4a8494bc21e3e27a0fd8f5d5b12bc13758a
+    lines:
+      EL36: [10, 30]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: EL36
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3777306
+      sha256: 08199fb15c3c702c9f6b458733af557aba65b79bf962a01b894b1c52a342afa7
+  - source: diyaudio
+    name: EL36_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: EL36_AN.sub
+      sha256: 97435306beb694cd08fa6e2aaf65af3603d8fafcf545371020f130b0fcde2304
+- source: diyaudio
+  name: EL36_AN
+  def: subckt
+  hash: b6b57450e4393b620b735961f3a9b7990390735d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3778229
+    sha256: 0234a0e1db9cc720e8078919ff4ddb2a3bc447b11be5e2e6fd5faa71f7880c7c
+    lines:
+      EL36_AN: [59, 79]
+    fetched: '2026-10-22'
+  copies:
+  - source: diyaudio
+    name: EL36_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: EL36_AN2.sub
+      sha256: f8eec34d1805144958366efc970f45d2a1787581458500134c5e0bc03fb16dcd
+  - source: diyaudio
+    name: EL36_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407

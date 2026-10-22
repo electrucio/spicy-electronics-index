@@ -1,0 +1,36 @@
+part: KT61
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: KT61
+  def: subckt
+  hash: f662ba54b3ab8f4f5b15ef5c673981de31d6b937
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  - EL33
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EL33: [1948, 1952]
+      KT61: [2116, 2120]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: KT61
+  def: subckt
+  hash: 3a9218fb918bc673b48485641cbd581ace730cb1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-8045843
+    sha256: a6909338e4fd3afe13451d07f6960479a1f25dde01e3ff228f26a6584a865c47
+    lines:
+      KT61: [2, 32]
+    fetched: '2026-10-22'

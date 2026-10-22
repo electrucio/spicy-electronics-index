@@ -1,0 +1,64 @@
+part: F2A
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: F2A_P
+  def: subckt
+  hash: f1cf9ef970af46e47962724b56193efcbc2806fd
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7584213
+    sha256: bdf3e7550b91112b846237cd1c8c3a5358949e22be1879109fc110fab32f50fa
+    lines:
+      F2A_P: [2, 6]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: F2a_t
+  def: subckt
+  hash: 2a76b08ce0ec2cbe8794a4dc8e7b2eafab29ff21
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7288487
+    sha256: 2870c5ef91f70d59adfccbd3916d8cb22a91dce73a3afceb775082726a974385
+    lines:
+      F2a_t: [2, 5]
+    fetched: '2026-10-22'
+- source: ltwiki
+  name: F2A
+  def: subckt
+  hash: f1d95343f0dd9ef394b6dd772a643e7fc4ff3e7b
+  type: SUBCKT
+  deps:
+  - Fuse
+  verbatim: true
+  get:
+    url: http://ltwiki.org/files/LargeCollection.zip
+    member: LargeCollection/LTspiceIV/lib/sub/fuse2.lib
+    archive_sha256: a234147c655490f93241fa0b7eba8b9bb0b018a414ff7184136a244da19aa1d9
+    sha256: 99c78c059dac886319fd8f959f10f5a48f56bd65af91918048f5eaa5cd02d61c
+    lines:
+      F2A: [111, 114]
+      Fuse: [18, 34]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: F2A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/fuse2.lib
+      sha256: 90ee60f75bb2075b0b07d6e42f8312468c8b65332a06e4d46cf609ae47e3a8e4
+  - source: kicad-spice-library
+    name: F2A
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/fuse2.lib
+      sha256: 99c78c059dac886319fd8f959f10f5a48f56bd65af91918048f5eaa5cd02d61c
+  - source: ltwiki
+    name: F2A
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/fuse2.lib
+      sha256: 90ee60f75bb2075b0b07d6e42f8312468c8b65332a06e4d46cf609ae47e3a8e4

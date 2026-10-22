@@ -69,26 +69,32 @@ models:
       url: https://robrobinette.com/images/Guitar/Spice_Analysis/Bassman_LTSpice.zip
       member: switches.sub
       sha256: 33721934633f3b8bad09f56227ffa27766200fd9d6326936439a41e3f2804f4b
-- source: bordodynov
+- source: diyaudio
   name: spdt
   def: subckt
   hash: d6eadae804d000b8a502dcd640cbcbc7cd9fc7f3
   type: SUBCKT
   verbatim: true
   get:
-    url: http://bordodynov.ltwiki.org/example.zip
-    member: examples/control/control.lib
-    archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
-    sha256: 842db720da3aa627d1b64c571cf6ade9e8afc659b69c693680de9af8c2a29722
+    url: https://www.diyaudio.com/community/attachments/control_lib-zip.498860/
+    member: control.lib
+    archive_sha256: 78f60c865f96fc87ec08a618c7e3dfe8963ecd3c96afc47ee0151e874929e6fc
+    sha256: 1b700039c63bea94ffb6d7ad88575d283625f97fa4757693581157a37217ba83
     lines:
-      spdt: [186, 191]
-    fetched: '2026-09-29'
+      spdt: [187, 192]
+    fetched: '2026-10-22'
     symbol:
-      url: http://bordodynov.ltwiki.org/example.zip
-      member: examples/control/spdt.asy
-      archive_sha256: 5c1b664d91d3fda58c3febe17a38c4be7d4bd77094ba847653519063ca49b68b
+      url: https://www.diyaudio.com/community/attachments/control-zip.498861/
+      member: Control/spdt.asy
+      archive_sha256: 89f7c0b4263df726b9eae9f0cebeea63e4f671fbc89ed468fbdc5f6184e9dfdd
       sha256: 24452c7a118574102dc45049e0c47f6442224b482683df4d6a44d756d1d25a76
   copies:
+  - source: bordodynov
+    name: spdt
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/control/control.lib
+      sha256: 842db720da3aa627d1b64c571cf6ade9e8afc659b69c693680de9af8c2a29722
   - source: bordodynov
     name: spdt
     get:

@@ -1,0 +1,204 @@
+part: '814'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: '814'
+  def: subckt
+  hash: 04f9a53180366cf55ed03cc424eb0db738123b99
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      '814': [662, 666]
+      PENTODE1: [2010, 2023]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: '814'
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: '814'
+  def: subckt
+  hash: 009cdb856d05dbba52db6c8cc9f58a0e8cd7db3b
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      '814': [1424, 1428]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: 814T
+  def: subckt
+  hash: 88435a0fa6e16ee25b5d988f18f6315e46a98d3b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      814T: [4138, 4150]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 814T
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: 814T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 814T.sub
+      sha256: 52035c2d30ddced233719df028f9743b94f9e65ea300b0ec1072b3ba9e6b7dc4
+  - source: ltwiki
+    name: 814T
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: bordodynov
+  name: 814P
+  def: subckt
+  hash: 7ba185ac2f64f896e75433a4c7d9f79200b2cfe0
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Pentode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+    lines:
+      814P: [2395, 2416]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 814P
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Pentode_Ayumi.txt
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+  - source: diyaudio
+    name: 814P
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: 814P.sub
+      sha256: ca3be43834baa006a3ad783a18644e5df9a0b643f1d3c3d407a70995bbf7c556
+  - source: ltwiki
+    name: 814P
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Pentode_Ayumi.lib
+      sha256: 8acef6e1165504fd0c6c30c1838524db64ad274cb74053f3ed9c78e408c8acd3
+- source: bordodynov
+  name: '814'
+  def: subckt
+  hash: 93db727112f62e41ca2254bccc4b7ebba79dd56c
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/nk_pentode.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+    lines:
+      '814': [80, 84]
+      DX: [303, 303]
+      PENTODE1: [272, 284]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: '814'
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: ltwiki
+    name: '814'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+- source: bordodynov
+  name: '814'
+  def: subckt
+  hash: 8d42b5ec303c14abbe1da9544209cbb25144b240
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      '814': [691, 695]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: '814'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: 814T
+  def: subckt
+  hash: 06e2985809b0c86a74d33b5094f7ebe2661b2bc4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube-models-ja2dhc-zip.376215/
+    member: tube-modelsJA2DHC.txt
+    archive_sha256: 6735a8e047b2d40c18ec3aa3ce61b7652906db7b083883c661f5d086d71653bb
+    sha256: 611da7ad6740782440ee6f9991f05b94746e2904f06f0d62adabde5a07ae58ab
+    lines:
+      814T: [377, 389]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 814P
+  def: subckt
+  hash: 5e2af7678e09a7eb22f5debd3d905f8fae90e7b6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube-models-ja2dhc-zip.376215/
+    member: tube-modelsJA2DHC.txt
+    archive_sha256: 6735a8e047b2d40c18ec3aa3ce61b7652906db7b083883c661f5d086d71653bb
+    sha256: 611da7ad6740782440ee6f9991f05b94746e2904f06f0d62adabde5a07ae58ab
+    lines:
+      814P: [352, 368]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 814_AN
+  def: subckt
+  hash: 9a9f8a4c4ef41176457d941353058533073cf941
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5488136
+    sha256: b992ea9888aa0cd9448b66c65b0d13739ff7da30660869e7d2650c15ad333d4f
+    lines:
+      814_AN: [12, 32]
+    fetched: '2026-10-22'

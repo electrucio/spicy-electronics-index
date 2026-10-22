@@ -1,0 +1,60 @@
+part: PCL85
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: PCL85_C
+  def: subckt
+  hash: fc650ef69128e81f49f157a2fe4b19c3c77c9ef5
+  type: SUBCKT
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      PCL85_C: [992, 999]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: PCL85_C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: reefman
+  name: PCL85_L
+  def: subckt
+  hash: a9c94363272a56e3f1ae7020ba9488738c065dd3
+  type: SUBCKT
+  deps:
+  - BTetrodeDE
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      BTetrodeDE: [2232, 2249]
+      PCL85_L: [1001, 1010]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: PCL85_L
+  def: subckt
+  hash: dbd14c4ae0e4851c25e79bc971ea580602b13b89
+  type: SUBCKT
+  deps:
+  - BTetrodeDE
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeDE: [1994, 2011]
+      PCL85_L: [851, 860]
+    fetched: '2026-10-22'

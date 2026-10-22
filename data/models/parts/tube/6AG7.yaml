@@ -1,0 +1,152 @@
+part: 6AG7
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: 6AG7
+  def: subckt
+  hash: 6333d6f22d87ae2ec1fe9b6c6c1897ae4a52bdad
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      6AG7: [1264, 1268]
+      PENTODE1: [3073, 3092]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: 6AG7
+  def: subckt
+  hash: c5771a165b40a4c3631db5c96ebcbc1b9987363f
+  type: SUBCKT
+  deps:
+  - DX
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/nk_pentode.sub
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+    lines:
+      6AG7: [14, 18]
+      DX: [303, 303]
+      PENTODE1: [272, 284]
+    fetched: '2026-09-21'
+  copies:
+  - source: kicad-spice-library
+    name: 6AG7
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+  - source: ltwiki
+    name: 6AG7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/nk_pentode.sub
+      sha256: c559485a397b0b4be28e593e9cd6dd23228a07fbce5ca4e240d2421fb98a3f40
+- source: bordodynov
+  name: 6AG7
+  def: subckt
+  hash: 674252d910cee19e74e388b8fea39db5efaf006f
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      6AG7: [189, 193]
+      PENTODE1: [2046, 2059]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: 6AG7
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: groups-io
+  name: 6AG7
+  def: subckt
+  hash: 1794c87ad658d940ab084a568282751c6ebc27d0
+  type: SUBCKT
+  deps:
+  - PENTODE1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      6AG7: [1504, 1508]
+      PENTODE1: [2373, 2386]
+    fetched: '2026-10-09'
+- source: diyaudio
+  name: 6AG7_RCA
+  def: subckt
+  hash: 96a4a986adda1e4bb670685dd60e28ae65e2ca40
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6451998
+    sha256: f2af641dc91e74fef57263c23e63594096da1a5316040949c3e9484d23ba0f0c
+    lines:
+      6AG7_RCA: [9, 50]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6AG7_GE
+  def: subckt
+  hash: 012bfa73ac62131d887c5ea70ddc121109096090
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6296005
+    sha256: fc988928c766b16ad17b7bc1bfeccf37ea035b23745493be8c48fe48528850f2
+    lines:
+      6AG7_GE: [9, 50]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6AG7_GE
+  def: subckt
+  hash: 0e2e3b1bf5e8a8bb9c5161babea17196ddf8d18c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6452098
+    sha256: 118fbbbce994ef24ce5c35aab7b1a58bda23c796ac3c834c76ae10f7cbf54a48
+    lines:
+      6AG7_GE: [9, 50]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6AG7_GE
+  def: subckt
+  hash: 49be88f8d8d16fcabddd0610e2cf063f5aac2a59
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6461615
+    sha256: 9b13ad82d9b318de4286f07934d9e13dc83ebd724d999b27e81bcfeff7be8e44
+    lines:
+      6AG7_GE: [15, 56]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6AG7.GEi4
+  def: subckt
+  hash: 7fbd89b9b09fe66898637fe151f90b4a9d8f317a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6460512
+    sha256: e198837093e5cb7ec389cd7241747ed09c5dce9a601b7ceb7a54f854bff5d19b
+    lines:
+      6AG7.GEi4: [17, 113]
+    fetched: '2026-10-22'

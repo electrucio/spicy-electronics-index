@@ -1,0 +1,63 @@
+part: PCF80
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: PCF80_F
+  def: subckt
+  hash: 77aec00b7d798d37e1a7664e64b6e20752805d6e
+  type: SUBCKT
+  deps:
+  - PenthodeD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      PCF80_F: [890, 896]
+      PenthodeD: [2326, 2342]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: PCF80_F
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: reefman
+  name: PCF80_C
+  def: subckt
+  hash: 48739a2d1c84fdf8ce234702517570b00cef0d55
+  type: SUBCKT
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      PCF80_C: [905, 910]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: PCF80_C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: diyaudio
+  name: PCF80
+  def: subckt
+  hash: af341a036c9936882c57e4d8505240bd1239f971
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7994342
+    sha256: 4aee3fc16b441738f12897ec241ee03d63549b286f3a5414eaa44532e6910826
+    lines:
+      PCF80: [9, 39]
+    fetched: '2026-10-22'

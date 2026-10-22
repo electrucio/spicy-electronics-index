@@ -1,0 +1,93 @@
+part: GZ30
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: GZ30
+  def: subckt
+  hash: 7186f18ddd07a3be8b7354f0814d85f3f2981a44
+  type: SUBCKT
+  deps:
+  - DULEREC
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      DULEREC: [2089, 2092]
+      GZ30: [891, 894]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: GZ30
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+  - source: ltwiki
+    name: GZ30
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: suusi-tubes
+  name: GZ30
+  def: subckt
+  hash: bb08007c758e5f200468065be2d866196e8f5200
+  type: SUBCKT
+  deps:
+  - RECP2
+  - DULERECP2
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      DULERECP2: [3013, 3016]
+      GZ30: [209, 212]
+      RECP2: [2999, 3004]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: GZ30
+  def: subckt
+  hash: 4f20a5a5e09382e9d152639e8c40b45ebc89468c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6230005
+    sha256: f9973845e33c5bae99365600d5ce6f3f50b8f460313593623710f056c9d2dcac
+    lines:
+      GZ30: [9, 12]
+    fetched: '2026-10-22'
+- source: groups-io
+  name: XGZ30
+  def: subckt
+  hash: c11e1476247632e852ada351f83c66b80320817f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/spice2.txt
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 7f7c81b40c0fe0b3c29e37d34cc84896f6c2eb3043e81ed2faa67d6eb0d3c763
+    lines:
+      XGZ30: [911, 917]
+    fetched: '2026-10-09'
+- source: groups-io
+  name: GZ30
+  def: subckt
+  hash: c5f9dfbeea333b57ebf0340d3674b0ea6da37374
+  type: SUBCKT
+  deps:
+  - DULERECP2
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      DULERECP2: [2530, 2540]
+      GZ30: [276, 279]
+    fetched: '2026-10-09'

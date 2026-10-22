@@ -1,0 +1,59 @@
+part: '53'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: '53'
+  def: subckt
+  hash: 8672cf5e3b12e77a23e2dbbc13cc4c7dc412a5a4
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 53.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: d310aebbf01868e0cd13e8529b4cd25e957dc9e556828d84d8d7fc92023d907e
+    lines:
+      '53': [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '53'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 53.inc
+      sha256: d310aebbf01868e0cd13e8529b4cd25e957dc9e556828d84d8d7fc92023d907e
+- source: bordodynov
+  name: '53'
+  def: subckt
+  hash: a1d0334e12ad6b3ffe0ccd9208e24a6657efadf6
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      '53': [647, 660]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: '53'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: '53'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 53.inc
+      sha256: 242420cacfcc8909ca54f7ca12f57ad3e0334fa8c0c7e30546e182baf4980f68
+  - source: ltwiki
+    name: '53'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97

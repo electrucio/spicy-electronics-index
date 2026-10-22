@@ -1,0 +1,102 @@
+part: EC91
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: EC91
+  def: subckt
+  hash: 51151850e9be1cc4de9ba637fdeddfe94347d831
+  type: SUBCKT
+  deps:
+  - TriodeK
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      EC91: [255, 260]
+      TriodeK: [2345, 2357]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: EC91
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+- source: suusi-tubes
+  name: EC91
+  def: subckt
+  hash: ebd85b8d7c14d8a0a37ef50e8d143ead1fb46ef7
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      EC91: [1294, 1298]
+      TRIODE: [1980, 1991]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: EC91
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: EC91
+  def: subckt
+  hash: 4e7b521007bd011ab20d1c200f6c1b0ef8778697
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EC91: [973, 977]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: EC91
+  def: subckt
+  hash: d19d7b2ba38b2731bf2ce14049204cb798064670
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      EC91: [1323, 1327]
+      TRIODE: [2016, 2027]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: EC91
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: EC91.i6
+  def: subckt
+  hash: 39821d15584ca87a9c7a005880659babe01b8ff5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7719925
+    sha256: 722c081b778644457e7c347fe4f48d2845df68d9a54f710e7521d4b70c68f510
+    lines:
+      EC91.i6: [22, 105]
+    fetched: '2026-10-22'

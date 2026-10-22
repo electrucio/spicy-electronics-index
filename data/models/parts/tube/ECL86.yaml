@@ -61,6 +61,12 @@ models:
       TriodeK: [2345, 2357]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: ECL86_C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: reefman
   name: ECL86_L
   def: subckt
@@ -218,6 +224,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: ECL86P
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: ECL86P
     get:
@@ -290,6 +301,11 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Tubes_Koren.lib
       sha256: 510f4c10247ba46358ff5a6b3f15189bec5cf207507ccc70922184385a66c360
+  - source: diyaudio
+    name: ECL86T
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelibrary-txt.455973/
+      sha256: dd94298407b573d1cf8e72b4f5e797fde89b9d1a83df2580511fd42d37a33407
   - source: groups-io
     name: ECL86T
     get:
@@ -390,3 +406,34 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Koren_Tubes.lib
       sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: ECL86T_AN
+  def: subckt
+  hash: 72fe203f954cb63c67f035a5ad86ee09bd27fe52
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/pcl86-amp-003-zip.455701/
+    member: ECL86T-AN.cir
+    archive_sha256: f1b2086f878a7e9ed64e4ad1f91dcc10f0a967b5017271470483feba78534f15
+    sha256: 766fd8c5b863a6ff5f6b53f6cc20ea4e7d0026a84184dfae526b30992e1b7d6f
+    lines:
+      ECL86T_AN: [9, 22]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: ECL86_L
+  def: subckt
+  hash: a00b2823340a8f4c72a55734c627952d3fe0fe56
+  type: SUBCKT
+  deps:
+  - BTetrodeDE
+  - PCL86_L
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeDE: [1994, 2011]
+      ECL86_L: [448, 450]
+      PCL86_L: [881, 890]
+    fetched: '2026-10-22'

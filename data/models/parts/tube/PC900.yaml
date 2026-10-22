@@ -1,0 +1,72 @@
+part: PC900
+kind: tube
+priority: 3
+group: listed
+models:
+- source: gist-chanmix51
+  name: PC900
+  def: subckt
+  hash: 9b6683142eb12dfbe54449f572e95af2d5f3db80
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://gist.github.com/chanmix51/6947361/raw/57aa4f0baec33aaaecdfa64d99f4e0a2434be1a4/triodes.sub
+    sha256: 5a946644246b6dfa6b961fecd642dcefe0205f2db65392fda8cf7f502e0fa797
+    lines:
+      PC900: [979, 981]
+    fetched: '2026-09-14'
+  copies:
+  - source: bordodynov
+    name: PC900
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: groups-io
+    name: PC900
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/valvol/ValVol.zip
+      member: Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+  - source: ltwiki
+    name: PC900
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/triodes.sub
+      sha256: 1e31c73aba86877020a0740d279066992ad7c2cd57aed56223b59706e68a7f44
+- source: diyaudio
+  name: PC900
+  def: subckt
+  hash: 8e7482f2a77f895662fcce154e7f831f7612e29f
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7392138
+    sha256: b0cee31d098fb3a3aaa2283e38ae03a2d1e40b35097eaf7ee5e1f1948a9e61df
+    lines:
+      PC900: [9, 30]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: PC900.i5
+  def: subckt
+  hash: 25b64de78513cadd52417880d92dbdf66095205b
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6854641
+    sha256: a526637117fbf91b1bdf791c0f60686e079cd2fa8217846f8b3f94f325bdf90f
+    lines:
+      PC900.i5: [19, 102]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: PC900.i6
+  def: subckt
+  hash: ee4f30b72de39fee661107a7dcfae2ddc94a1a06
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7396451
+    sha256: 6848f2d7411d9e6a9e1cfd6ff3e205a1b8e6882b71eb7cc6940ba7f3e8555913
+    lines:
+      PC900.i6: [19, 102]
+    fetched: '2026-10-22'

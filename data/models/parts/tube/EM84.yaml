@@ -1,0 +1,32 @@
+part: EM84
+kind: tube
+priority: 3
+group: listed
+models:
+- source: diyaudio
+  name: EM84
+  def: subckt
+  hash: 8cbe68f324c43205a9d66a6f0134815a09831be7
+  type: SUBCKT
+  deps:
+  - EM84x
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7637044
+    sha256: 7cbdcc972bdda3855749af422ce9b0ab8ed474dc07c52b7d3fdf79eb06086186
+    lines:
+      EM84: [2, 13]
+      EM84x: [17, 25]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: EM84x
+  def: subckt
+  hash: 40dc56b1efd18399d92e576e4be1b7033c72de22
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7637044
+    sha256: 7cbdcc972bdda3855749af422ce9b0ab8ed474dc07c52b7d3fdf79eb06086186
+    lines:
+      EM84x: [17, 25]
+    fetched: '2026-10-22'

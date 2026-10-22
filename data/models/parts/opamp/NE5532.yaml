@@ -113,6 +113,23 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/NE553x.lib
       sha256: 0b90f4ac73ed328341114e02953781ab5106be95fb2e65cc4ff6535bd0e08564
+- source: diyaudio
+  name: NE5532
+  def: subckt
+  hash: db695e258b1e23448c47164aba1a780a265eecbb
+  type: SUBCKT
+  deps:
+  - DX
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/leak-stereo60-03d-zip.1079297/
+    member: z.lib
+    archive_sha256: 314846c9f63eb3f9359ce05607638460ac5de2af127a83b02675cb83f37443b7
+    sha256: b0aa00bf39f34ce4b46a027a27ec81c14e4a03f6b18623d8a62a341b3416a151
+    lines:
+      DX: [338, 338]
+      NE5532: [1570, 1604]
+    fetched: '2026-10-22'
 datasheet:
   url: https://www.ti.com/lit/ds/symlink/ne5532.pdf
   maker: Texas Instruments

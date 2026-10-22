@@ -1,0 +1,37 @@
+part: PL83
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: PL83
+  def: subckt
+  hash: 12d12c4ec5c7a9df823604a89b067a8141ca4f0f
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      BTetrodeD: [2211, 2228]
+      PL83: [1112, 1121]
+    fetched: '2026-09-14'
+- source: diyaudio
+  name: PL83
+  def: subckt
+  hash: dc2cfda903afee5343a0b71b6aec69f1728e454b
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeD: [1973, 1990]
+      PL83: [962, 971]
+    fetched: '2026-10-22'

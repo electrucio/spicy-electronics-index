@@ -1,0 +1,99 @@
+part: EH90
+kind: tube
+priority: 3
+group: listed
+models:
+- source: reefman
+  name: EH90
+  def: subckt
+  hash: 578fbd18a1acccd6749dcebd65b49a8e8fb490ed
+  type: SUBCKT
+  deps:
+  - HepthodeD
+  verbatim: true
+  get:
+    url: https://www.dos4ever.com/uTracer3/ExtractModel4.msi
+    member: TubeLib.inc
+    archive_sha256: a381d1cf91b3e07fd7f16bce501915a8ba29597344d0fd32f6c34cfd6f87b1ae
+    sha256: 3f03b9795e2299d7215c32dd0b0f47a55887da56168d96d715aba506590b374e
+    lines:
+      EH90: [714, 722]
+      HepthodeD: [2187, 2207]
+    fetched: '2026-09-14'
+- source: suusi-tubes
+  name: EH90
+  def: subckt
+  hash: 8e1ba80f260cb7cc39f71a02666765ba3c8d9596
+  type: SUBCKT
+  deps:
+  - HEXODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/Koren_Tubes.cir
+    sha256: de683ef82e04a208d04a3bbab30f7a37346048923e98aa32c380e0295bb40e90
+    lines:
+      EH90: [1941, 1945]
+      HEXODE: [2060, 2077]
+    fetched: '2026-09-14'
+  copies:
+  - source: groups-io
+    name: EH90
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+      sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+- source: suusi-tubes
+  name: EH90
+  def: subckt
+  hash: c5bdf8419de968a51ef7179a6662c8666e937b9f
+  type: SUBCKT
+  deps:
+  - HEXODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      EH90: [2858, 2862]
+      HEXODE: [3139, 3161]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: EH90
+  def: subckt
+  hash: 1096343ee2f6e2ce135c327cf8e37dec874289f7
+  type: SUBCKT
+  deps:
+  - HEXODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      EH90: [1977, 1981]
+      HEXODE: [2096, 2113]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: EH90
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: diyaudio
+  name: EH90
+  def: subckt
+  hash: 3dda40ba44afbe64dd6267530b4be5b2e3b147f2
+  type: SUBCKT
+  deps:
+  - HepthodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      EH90: [586, 598]
+      HepthodeD: [1949, 1969]
+    fetched: '2026-10-22'

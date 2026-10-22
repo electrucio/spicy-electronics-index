@@ -51,6 +51,11 @@ models:
     note: Suusi Malcolm-Brown extended Koren library, 285 subckts, 20-Apr-2014 (LTspice)
   note: pins from inline comment
   copies:
+  - source: diyaudio
+    name: EL41
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6516492
+      sha256: 83fcd4f88342e87bf0567447da8fc246e193da9d5d0688c82d8889eea415e7a8
   - source: groups-io
     name: EL41
     get:
@@ -153,3 +158,18 @@ models:
       url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
       member: TUBE/Koren_Tubes_.cir
       sha256: 11caa9e2c40eeed08b5b4e44fdd0d1c2e68a85b40df80f2fdbd8d26e610282e1
+- source: diyaudio
+  name: EL41
+  def: subckt
+  hash: b775b3cf54d2a20efd3dc28ad0e26f127ceb8497
+  type: SUBCKT
+  deps:
+  - BTetrodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      BTetrodeD: [1973, 1990]
+      EL41: [633, 640]
+    fetched: '2026-10-22'

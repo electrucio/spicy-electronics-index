@@ -1,0 +1,73 @@
+part: '6386'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: suusi-tubes
+  name: '6386'
+  def: subckt
+  hash: 7e5be1e4a82d18b4e7905b2466ff66624cb9b478
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://tubes.tubeampdesign.com/other/docs/SuusiTubes_V1.zip
+    member: SuusiTubes_V1.net
+    archive_sha256: 31163c3e81addb4a81a8b156d90a72b62c5c0fa93cd262a832b49d3e064f6f21
+    sha256: f3d8f666f1dfe515a010e4383dcd86edf26a090c11d01e6e0ebf4f0f0bce6148
+    lines:
+      '6386': [620, 624]
+      TRIODE: [3019, 3033]
+    fetched: '2026-09-14'
+- source: bordodynov
+  name: '6386'
+  def: subckt
+  hash: 6a943ba26645220f25b5a2a36d401081b0533ec3
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Koren_Tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+    lines:
+      '6386': [428, 432]
+      TRIODE: [2016, 2027]
+    fetched: '2026-09-21'
+  copies:
+  - source: ltwiki
+    name: '6386'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Koren_Tubes.lib
+      sha256: d3fd4b44593a5d88a9dda818f9feb3439538f8816c990c5efa100ae0942257a7
+- source: groups-io
+  name: '6386'
+  def: subckt
+  hash: fb8df3f8bc5e7519551ade1ea04c3ba51fc2bc98
+  type: SUBCKT
+  deps:
+  - TRIODE
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Koren_Tubes_23.cir
+    sha256: 8b98563ed6c88e965b8037d6caeaa3477306c8daf58218105c56c127d32b9551
+    lines:
+      '6386': [603, 607]
+      TRIODE: [2343, 2354]
+    fetched: '2026-10-09'
+- source: diyaudio
+  name: 6386_AN
+  def: subckt
+  hash: 8d3dbc1514b71bd48c63431c2756a4d0848395e2
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4183329
+    sha256: 1823f6b28b06406f9cfc2e232138b60f1d900675f590af51421ce3b2a277cb99
+    lines:
+      6386_AN: [11, 24]
+    fetched: '2026-10-22'

@@ -1,0 +1,94 @@
+part: '9002'
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: '9002'
+  def: subckt
+  hash: 5a414d7ea7eba5fcde998e36f5080728ec9d870d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 9002.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: dfd9ff8f8f3e5f8d8d7aad49aec5b2b59d27c98c631fd96219234f462158ae30
+    lines:
+      '9002': [9, 22]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: '9002'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 9002.inc
+      sha256: dfd9ff8f8f3e5f8d8d7aad49aec5b2b59d27c98c631fd96219234f462158ae30
+- source: bordodynov
+  name: '9002'
+  def: subckt
+  hash: bc81313f99c71350cfdb8e6d2c91d4421bd37a1d
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Triode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+    lines:
+      '9002': [3045, 3058]
+    fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/9002.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: 2ab3b4eba14bf89924b2c80ca38b687ded98a8776091804e34d2e03098c3129a
+  copies:
+  - source: bordodynov
+    name: '9002'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: bordodynov-qspice
+    name: '9002'
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Triode_Ayumi.txt
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+  - source: diyaudio
+    name: '9002'
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: diyaudio
+    name: '9002'
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 9002.inc
+      sha256: 8cec54e99feeca9b9843434fe55a61308c5139fb3c3fc2d122995d8b92b98758
+  - source: ltwiki
+    name: '9002'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sym/ValVol/Tubes/tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
+  - source: ltwiki
+    name: '9002'
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Triode_Ayumi.lib
+      sha256: bcef1eaffe6e778c1dd19bebb8ab13ceee8d75b92551f231ece2c096d5188b97
+- source: diyaudio
+  name: 9002_rdf
+  def: subckt
+  hash: 2a23c7eb29a0e628e7a78ce4f32660a8cc228ef1
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-7146789
+    sha256: 89da8f16f72437816aa2263fc293e1da0a560bee18451df4afb649b6cc69265d
+    lines:
+      9002_rdf: [4, 24]
+    fetched: '2026-10-22'

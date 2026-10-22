@@ -1,0 +1,120 @@
+part: E80F
+kind: tube
+priority: 3
+group: listed
+models:
+- source: bordodynov
+  name: E80F
+  def: subckt
+  hash: 99506d83f8ecf64ecc263ef13d772c352ef5b4dc
+  type: SUBCKT
+  deps:
+  - Igrid
+  - PENTH1
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Rydel_tubes.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+    lines:
+      E80F: [463, 473]
+      Igrid: [859, 863]
+      PENTH1: [845, 856]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov
+    name: E80F_RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: bordodynov-qspice
+    name: E80F_RY
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Valves.txt
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: kicad-spice-library
+    name: E80F_RY
+    get:
+      url: https://raw.githubusercontent.com/kicad-spice-library/KiCad-Spice-Library/a8688952bcaab19f567bc4db237b60bde03ef310/Models/uncategorized/Bordodynovs%20Electronics%20Lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: ltwiki
+    name: E80F_RY
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: E80F_RY
+    get:
+      url: http://ltwiki.org/files/LargeCollection.zip
+      member: LargeCollection/LTspiceIV/lib/sub/Valves.Lib
+      sha256: cf7b995102b452efb5b8e7b07168a3a7df1931ca1db84b3aa54433452ab11dfd
+  - source: ltwiki
+    name: E80F_RY
+    get:
+      url: http://bordodynov.ltwiki.org/example.zip
+      member: examples/LtSpicePlus/OpAmps/By_Marks_Type/AnalogDevices/Valves.Lib
+      sha256: b324c9dd4a2a9b9e7a7c06b7323ff45c0404965915df157e0fbdb3e141702734
+  - source: ltwiki
+    name: E80F_RY
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Valves.Lib
+      sha256: 0a4df8714e35f8707b864b5499f5ef6392b6f1e98a348d2018d6f6f2ed8996b9
+  - source: groups-io
+    name: E80F
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+      member: TUBE/Rydel_tubes.lib
+      sha256: 65129a6a416c3fce8f168b55d39e3a91f84d19aab8043a596441a23d335da6ec
+  - source: groups-io
+    name: E80F
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Rydel_tubes.lib
+      sha256: 38ddb46386dcccc55e0d236ad566e69941e07452cc9f10e23034280b4f1642b8
+  - source: ltwiki
+    name: E80F
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Rydel_tubes.lib
+      sha256: f12d3107e71c314bae928dafb5ccaa3c213b606f95f2ad6d3bf2ba502475decc
+- source: groups-io
+  name: E80F
+  def: subckt
+  hash: 8d9ea25c772a825220edfc8b6a7e8309be0c8c42
+  type: SUBCKT
+  deps:
+  - Igrid
+  - PENTH1
+  verbatim: true
+  get:
+    url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/TUBE.ZIP
+    member: TUBE/lampes.lib
+    archive_sha256: 0bfb4b439677d776cb742851f6d5553cbe1ad82a4ee3d310eb4b766ebb50f81f
+    sha256: 8cd683feb56ac4149f24dc2d1c95a6eeb6dd0ab6b37d6c7ef4cdcc9743e2779e
+    lines:
+      E80F: [163, 171]
+      Igrid: [614, 619]
+      PENTH1: [602, 612]
+    fetched: '2026-10-09'
+  copies:
+  - source: groups-io
+    name: E80F
+    get:
+      url: https://groups.io/g/LTspice/files/z_yahoo/Lib/Tubes_Valves/Excem/lampes_lt.lib
+      sha256: 2dd07932e9142c84d8d6d6203f12424cb43511286ee83e5252ecb6cc4239b034
+- source: diyaudio
+  name: E80F_P
+  def: subckt
+  hash: 5f8a69fd6ecc1f3680b3ef1413ad2f3f316d41c5
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5707900
+    sha256: 99391109c3c877f7df05309aa290013550e13c62c71f7f04a03e3e9a896e680e
+    lines:
+      E80F_P: [9, 43]
+    fetched: '2026-10-22'

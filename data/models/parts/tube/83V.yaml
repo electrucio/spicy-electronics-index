@@ -1,0 +1,59 @@
+part: 83V
+kind: tube
+priority: 3
+group: listed
+models:
+- source: ayumi
+  name: 83V
+  def: subckt
+  hash: e3697dc9f489ec8b691f46411c648195e3d56169
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://ayumi.cava.jp/audio/tubemodel_3.20_win.zip
+    member: 83V.inc
+    archive_sha256: 2d205c892acbe5f71238789325c808ea2a13a785685509bcc90bd011c0b63c83
+    sha256: ec143ee77d156aca8acd046a20c9144616438e179cfcff496ef32d520f233c4e
+    lines:
+      83V: [5, 7]
+    fetched: '2026-09-14'
+  copies:
+  - source: diyaudio
+    name: 83V
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 83V.inc
+      sha256: ec143ee77d156aca8acd046a20c9144616438e179cfcff496ef32d520f233c4e
+- source: bordodynov
+  name: 83V
+  def: subckt
+  hash: 060d431fd54f567ddd265eaab510075a9231067c
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: http://bordodynov.ltwiki.org/lib.zip
+    member: lib/sub/Diode_Ayumi.lib
+    archive_sha256: dfaae06ebeaf2a37b0a493f60067728f0f1bb80ac0f8b1f5f7a27d4250a6ea9b
+    sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+    lines:
+      83V: [180, 182]
+    fetched: '2026-09-21'
+  copies:
+  - source: bordodynov-qspice
+    name: 83V
+    get:
+      url: https://disk.yandex.ru/d/71M79VuY5sOWew
+      member: QSPICE/Diode_Ayumi.txt
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 83V
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 83V.inc
+      sha256: 40a5add412e4c2406e9862d4dfa1f76ef8dc9c8e51bdffe6731a6ebddecb95e5
+  - source: ltwiki
+    name: 83V
+    get:
+      url: http://bordodynov.ltwiki.org/lib.zip
+      member: lib/sub/Diode_Ayumi.lib
+      sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f

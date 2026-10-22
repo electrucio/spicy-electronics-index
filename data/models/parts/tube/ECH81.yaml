@@ -27,6 +27,12 @@ models:
       HepthodeD: [2187, 2207]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: ECH81_H
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: reefman
   name: ECH81_C
   def: subckt
@@ -49,6 +55,12 @@ models:
       TriodeK: [2345, 2357]
     fetched: '2026-09-14'
   note: pins from inline comment
+  copies:
+  - source: diyaudio
+    name: ECH81_C
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+      sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
 - source: suusi-tubes
   name: ECH81H
   def: subckt
@@ -94,3 +106,30 @@ models:
       TRIODE: [3019, 3033]
     fetched: '2026-09-14'
   note: pins from inline comment
+- source: diyaudio
+  name: ECH81
+  def: subckt
+  hash: 26f0cdc9cc0e798ba79249dd663d14e511ce92a4
+  type: SUBCKT
+  deps:
+  - HepthodeD
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6584084
+    sha256: b641247c313ffe61aae69ad064a18192d0c56232944c66d929a4f373f1dea86b
+    lines:
+      ECH81: [4, 13]
+      HepthodeD: [17, 37]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: ECH81_T
+  def: subckt
+  hash: 3a762eb89213db4697c9fcf8b88428f2154792b3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-6585423
+    sha256: e8f957e5f2597ccbb1d78851e3060bd02e123139cb7e6674f2636da983c02d93
+    lines:
+      ECH81_T: [9, 30]
+    fetched: '2026-10-22'

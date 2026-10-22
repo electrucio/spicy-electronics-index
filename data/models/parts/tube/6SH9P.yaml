@@ -87,6 +87,86 @@ models:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sym/ValVol/Tubes/Tube_IM.lib
       sha256: 8eed72dbd55b52f5eb6004bcaacd3d88c79e3e3df9ef28462570c887a70e0d00
+- source: diyaudio
+  name: 6J9P
+  def: subckt
+  hash: ed2f8a4364739438816021626e810268266d0ef3
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3715560
+    sha256: b29d5853dd2a0e00996f6018e75ed3512a497cd109f3c58e2af1f6203b39963e
+    lines:
+      6J9P: [33, 55]
+    fetched: '2026-10-22'
+  note: found under the alias 6J9P
+  copies:
+  - source: diyaudio
+    name: 6J9P
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-3715560
+      sha256: b29d5853dd2a0e00996f6018e75ed3512a497cd109f3c58e2af1f6203b39963e
+- source: diyaudio
+  name: E180F
+  def: subckt
+  hash: 3e13a76b029a9fd44187e4dbdb60796d7547e848
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4143223
+    sha256: 5d2f86bc6262daed005d55935651d169b87b519a982c74ff40ccb84234d9de11
+    lines:
+      E180F: [2, 20]
+    fetched: '2026-10-22'
+  note: found under the alias E180F
+  copies:
+  - source: diyaudio
+    name: E180F
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: E180F.sub
+      sha256: 1228d954734183d81d8903805776fc1eacaabff148e0f29948bd7158d1d5d72e
+- source: diyaudio
+  name: E180F_T
+  def: subckt
+  hash: 9f4749e5820863152b270a3f20e2be85b2bb2276
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/to_jan-zip.1079276/
+    member: triode-w1_dd.txt
+    archive_sha256: e8f31dd60cb081b9a1ec852e4b59260bc3bbd5bf6aea4ec7ece82901541e0576
+    sha256: 09d2ef4c1a2dc813fa593c4f236e53fd322ada528f8fc71d51592305789947c8
+    lines:
+      E180F_T: [4433, 4445]
+    fetched: '2026-10-22'
+  note: found under the alias E180F
+  copies:
+  - source: diyaudio
+    name: E180F_T
+    get:
+      url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-5041350
+      sha256: a1b688589f097f9123a120de2bcfd86a75d2651014e0afc11543b1aafe27bcc2
+- source: diyaudio
+  name: E180F_AN
+  def: subckt
+  hash: 74a3a80f92117d9ee4b2e7d32bfe4f8b3c0eae8a
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4143198
+    sha256: 894cbe98192723fec80e6308be82a718f1bebb4c850a858f366f1ffdd850f8b3
+    lines:
+      E180F_AN: [12, 32]
+    fetched: '2026-10-22'
+  note: found under the alias E180F
+  copies:
+  - source: diyaudio
+    name: E180F_AN
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+      member: E180F_AN.sub
+      sha256: fce57125fe9542f50bdda3c0b4664904b046d6d8bec03434617008761d314ff8
 - source: bordodynov
   name: 6J9PT
   def: subckt
@@ -112,8 +192,19 @@ models:
       TRIODE: [70, 80]
       TRIODENH: [6, 66]
     fetched: '2026-09-21'
+    symbol:
+      url: https://www.diyaudio.com/community/attachments/tubes_sym-zip.389559/
+      member: Tubes/Triodes/6J9P_TRIODE.asy
+      archive_sha256: 59076199b5eac52fd96a04d52425f67503ba95d64f4cc9d9fa29f891bec890db
+      sha256: b17721c92abfa6e5afed5086865a3a8cd0ece8719191e4a49a72e231ee1620dd
   note: found under the alias 6J9P
   copies:
+  - source: diyaudio
+    name: 6J9PT
+    get:
+      url: https://www.diyaudio.com/community/attachments/tube_lib-zip.389560/
+      member: tube.lib
+      sha256: 0eeca282ba6506a1a4826c5833c023b17df0c557ef46c9ade79abe98a9c24a3f
   - source: ltwiki
     name: 6J9PT
     get:
@@ -149,4 +240,19 @@ models:
     lines:
       6J9P_T: [1382, 1397]
     fetched: '2026-09-29'
+  note: found under the alias 6J9P
+- source: diyaudio
+  name: 6J9P
+  def: subckt
+  hash: b9999ea0608db0e681bcf844f981b03bb59f32e8
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tube_models-zip.496755/
+    member: 6J9P.sub
+    archive_sha256: 21bd23c332adcb1bb33b8733b1b9484368bc1747a8d5f5f87b221e7263745591
+    sha256: 5a91f62ccd7278b290a0931e970d0797859b5d812197b8315c8875a0fcb8394f
+    lines:
+      6J9P: [7, 60]
+    fetched: '2026-10-22'
   note: found under the alias 6J9P

@@ -46,6 +46,13 @@ models:
       6AL5: [5, 7]
     fetched: '2026-09-14'
   note: pins from names
+  copies:
+  - source: diyaudio
+    name: 6AL5
+    get:
+      url: https://www.diyaudio.com/community/attachments/tubemodel_3-20_win-zip.638558/
+      member: 6AL5.inc
+      sha256: a819bca98730d9a0a27d7af7db95586393a54040f300e50ff087155c90264075
 - source: duncanamps
   name: 6AL5
   def: subckt
@@ -283,12 +290,45 @@ models:
       url: https://disk.yandex.ru/d/71M79VuY5sOWew
       member: QSPICE/Diode_Ayumi.txt
       sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+  - source: diyaudio
+    name: 6AL5
+    get:
+      url: https://www.diyaudio.com/community/attachments/ayumi_ltspice-zip.689353/
+      member: 6AL5.inc
+      sha256: 842d97cdb5a84aeeadbc627560b64618e2a496bd195a9dd10258e8198d0ddfc5
   - source: ltwiki
     name: 6AL5
     get:
       url: http://bordodynov.ltwiki.org/lib.zip
       member: lib/sub/Diode_Ayumi.lib
       sha256: 58fd9e1eba78d4f20d75d4d1a7d289ff8f337f5e17184bcfcf27ad75aade4a1f
+- source: diyaudio
+  name: 6AL5
+  def: subckt
+  hash: ccfb847654ebecf29eabed0d1d5b1c0dc09341aa
+  type: SUBCKT
+  deps:
+  - DiodeK
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/attachments/tubelib_edit-txt.898813/
+    sha256: 55a1016ff38e376df177fe42486234f09c5740f2db86eae58e4b9ae63bf92fd4
+    lines:
+      6AL5: [1227, 1233]
+      DiodeK: [2122, 2125]
+    fetched: '2026-10-22'
+- source: diyaudio
+  name: 6AL5
+  def: subckt
+  hash: 3e4b528c9774a47ac8947ad5326e14cf4db3be1e
+  type: SUBCKT
+  verbatim: true
+  get:
+    url: https://www.diyaudio.com/community/threads/vacuum-tube-spice-models.243950/post-4683336
+    sha256: 7ed06907ab4e395b477ee4f70725b9611fe85fbfe532fe29b2dcf09971128669
+    lines:
+      6AL5: [6, 8]
+    fetched: '2026-10-22'
 - source: groups-io
   name: X6AL5
   def: subckt
