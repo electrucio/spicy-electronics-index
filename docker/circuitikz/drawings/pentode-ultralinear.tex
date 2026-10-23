@@ -1,0 +1,46 @@
+% Ultralinear characteristics (pentode-ultralinear): the set-up a person would wire, semantically the deck's.
+%   BSk sk 0 V=<V0>+x*(V(ak)-<V0>)   the screen at a fraction x of the way from the quiescent point to the anode   -> source (set)
+%   VSk …, VGk gk 0 <vg1>, VAk sw ak 0, XTk ak sk gk 0                                                          -> ammeters I_a, I_g2 (measured)
+%   VSW sw 0, .dc
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Ultralinear characteristics}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground
+\coordinate (g) at (T.control);
+\coordinate (gsrc) at ($(g)+(-1.4,0)$);
+\draw (g) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.45,0.02)$}{gk}
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (s);
+\coordinate (send) at ($(T.anode |- s)+(-6.4,0)$);
+\coordinate (sam) at ($(s)+(-1.6,0)$);
+\ammeterh{sam}{s}{$I_{g2}$}
+\draw (sam) -- (send);
+\draw[set] (send) to[V, l_={$V_0 + x\,(V_a - V_0)$}] (send |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(s)+(-0.35,0.05)$}{sk}
+% the definitions
+\definitions{0,-0.1}{%
+  $x = 0.2$, 0.4, 0.43, 0.5 (the sheets' taps: Mullard 20\,\% and 43\,\%, Genalex 40\,\%, Tung-Sol 43\,\% and 40\,\%);\quad $V_0$ = the sheet's quiescent point (400, 425, 450 V) and 250 to 450 V in 50 V steps\\[2pt]
+  $V_a$ swept 0 to 800 V;\quad $V_{g1}$ in the sheets' steps;\quad read $I_a$ and $I_{g2}$ against $V_a$, and $r_a$ at the quiescent point%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

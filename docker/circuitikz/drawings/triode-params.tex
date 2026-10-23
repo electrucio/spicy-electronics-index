@@ -1,0 +1,58 @@
+% Amplification factor, transconductance, anode resistance (triode-params): the set-up a person would wire, semantically the deck's.
+%   VAg0 ag0 0 <va>, VGg0 gg0 0 DC <vg> AC 1, XTg0 ag0 gg0 0   copy A: AC on the grid, the anode held   -> gm = i_a / v_g
+%   VAa0 aa0 0 DC <va> AC 1, VGa0 ga0 0 <vg>, XTa0 aa0 ga0 0   copy B: AC on the anode, the grid held   -> 1/ra = i_a / v_a
+%   .ac lin 1 1k 1k; mu = gm ra
+%   One pair per (Va, Ia) of the ladders, the grid voltage for each from the transfer sweep.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Amplification factor, transconductance, anode resistance}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (TA) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.75,0)$) {A};
+% the cathode to ground
+\draw (TA.cathode) -- (TA.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TA.cathode)+(0.1,-0.35)$}{0}
+% the triode
+\node[triode, scale=1.35] (TB) at (11,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TB.anode)!0.62!(TB.cathode)+(0.75,0)$) {B};
+% the cathode to ground
+\draw (TB.cathode) -- (TB.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TB.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Atop) at ($(TA.anode)+(0,1.6)$);
+\ammeter{TA.anode}{Atop}{$I_a + i_a$}
+\nodename{anchor=west}{$(TA.anode)+(0.1,0.25)$}{ag0}
+% the anode supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_a$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Ag) at (TA.control);
+\coordinate (Agsrc) at ($(Ag)+(-1.4,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{g1} + v_g$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Ag)+(-0.45,0.02)$}{gg0}
+% the ammeter in the anode, up to the rail
+\coordinate (Btop) at ($(TB.anode)+(0,1.6)$);
+\ammeter{TB.anode}{Btop}{$I_a + i_a$}
+\nodename{anchor=west}{$(TB.anode)+(0.1,0.25)$}{aa0}
+% the anode supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_a + v_a$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Bg) at (TB.control);
+\coordinate (Bgsrc) at ($(Bg)+(-1.4,0)$);
+\draw (Bg) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{g1}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{ga0}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_a = 100$, 250 and 400 V;\quad $I_a = 10$ \textmu A to 1 A on a 1-2-5 series;\quad $V_{g1}$ for each from the transfer sweep, a current not reached below zero bias left out\\[2pt]
+  A: $g_m = i_a / v_g$;\quad B: $r_a = v_a / i_a$;\quad $\mu = g_m r_a$, at $f = 1$ kHz, $v = 1$ V of AC (the simulator's unit signal)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

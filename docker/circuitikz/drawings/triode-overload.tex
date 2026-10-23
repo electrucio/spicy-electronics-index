@@ -1,0 +1,56 @@
+% Grid-current clipping, blocking and recovery (triode-overload): the set-up a person would wire, semantically the deck's.
+%   VIN in 0 PWL(<burst>), CIN in x <cin>, RSTOP x gj <rstop>, RGL gj 0 1meg, VGM gj g 0   the burst through the coupling capacitor and the stopper; the grid leak at the grid
+%   the rest of the stage as the RC chart's middle cell, Rk with its bypass capacitor
+%   .tran over the burst and 200 ms after it
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.6}{Grid-current clipping, blocking and recovery}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (5.6,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% copy : the anode resistor up to the rail, the anode ammeter under it
+\coordinate (am) at ($(T.anode)+(0,1.1)$);
+\ammeter{T.anode}{am}{$I_a$}
+\draw (am) to[R, l_={$R_p$}] ++(0,1.6) coordinate (top);
+\coordinate (vtop) at ($(top)+(6.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$E_{bb}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.0,0.05)$}{bb}
+\nodename{anchor=east}{$(am)+(-0.15,0.15)$}{a}
+% the cathode resistor, and its bypass
+\draw (T.cathode) to[R, l={$R_k$}] (T.cathode |- 0,\gnd) node[ground]{};
+\draw (T.cathode) -- ++(1.2,0) coordinate (ck) to[C, l={$C_k$}] (ck |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(T.cathode)+(-0.1,-0.25)$}{k}
+% the grid: its resistor to ground and the source
+\coordinate (g) at (T.control);
+\draw (g) -- ++(-0.6,0) coordinate (gj);
+\draw (gj) to[R, l_={$R_{gl}$}] (gj |- 0,\gnd) node[ground]{};
+\draw (gj) -- ++(-0.3,0) coordinate (c0);
+\draw (c0) to[R, l_={$R_{stop}$}] ++(-1.6,0) coordinate (c1);
+\draw (c1) to[C, l_={$C_{in}$}] ++(-1.6,0) coordinate (c2);
+\coordinate (vin) at (c2);
+\draw[set] (vin) to[V, l_={$v_{in}$}] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.2,0.05)$}{g}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the output: through Cc into the next grid's resistor
+\coordinate (oj) at ($(am)+(0,0.0)$);
+\draw (am) -- ++(1.6,0) to[C, l={$C_c$}] ++(1.4,0) coordinate (o);
+\draw (o) to[R, l_={$R_s$}] (o |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(o)+(0.3,0.05)$}{o}
+% the voltmeter on o
+\coordinate (vo) at ($(o)+(1.2,0)$);
+\draw (o) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$v_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.3}{%
+  a 1 kHz burst of 20 periods at 1, 3, 10 and 30 times the drive at which grid current starts, then 1/10 of that drive\\[2pt]
+  $C_{in} = 22$ nF;\quad $R_{gl} = 1$ M\ohm;\quad $R_{stop} = 0$, 1 k, 68 k\ohm;\quad $C_k = 25$ \textmu F\\[2pt]
+  read the grid's mean voltage during and after the burst (the bias the grid current charges $C_{in}$ to), the gain after it, and the time for the gain to come back within 10\,\%\\[2pt]
+  a model without grid current neither clips at the grid nor blocks: `absent', and the guitar-amplifier behaviour it stands for with it%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,44 @@
+% Frequency converter: conversion transconductance (heptode-conversion): the set-up a person would wire, semantically the deck's.
+%   VOSC osc 0 SIN(0 <Vosc> <f_osc>), CO osc g1 …, RG1 g1 0 20k   the oscillator grid, grid-leak biased   -> source (set), ammeter I_g1 (measured)
+%   VSIG g3 0 DC <vg3> SIN(…)                                      the signal grid                         -> source (set)
+%   VS g2 0 <vg2>, VA a 0 <va>, XT a g3 g2 g1 0 DUT                the screen and the anode                -> ammeter I_a (measured)
+%   .tran; the anode current's component at |f_osc - f_sig| over the signal amplitude
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Frequency converter: conversion transconductance}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (6.4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT\\(heptode)};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{a}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(4.2,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the signal grid and the screen as labelled leads (their sources in the definitions)
+\draw (T.suppressor) -- ++(-0.3,0) -- ++(0,1.3) node[above left, set, font=\small, inner sep=1pt] {$g_3$: $V_{g3} + v_{sig}$};
+\draw (T.screen) -- ++(-1.6,0) -- ++(0,1.0) node[above, set, font=\small, inner sep=1pt] {$g_2$: $V_{g2}$};
+% the oscillator grid: its 20 k leak to ground, the ammeter, the coupling capacitor and the oscillator
+\coordinate (g) at (T.control);
+\draw (g) -- ++(-0.6,0) coordinate (gj);
+\draw (gj) to[R, l={20 k\ohm}] (gj |- 0,\gnd) node[ground]{};
+\coordinate (gam) at ($(gj)+(-1.7,0)$);
+\ammeterh{gam}{gj}{$I_{g1}$}
+\draw (gam) to[C, l_={$C$}] ++(-1.4,0) coordinate (osc);
+\draw[set] (osc) to[sV, l_={$v_{osc}$}] (osc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.3,0.02)$}{g1}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_a = V_{g2} = 250$ V (the 6BE6 sheet's columns);\quad the oscillator set for $I_{g1} = 0.5$ mA (10 V rms into 20 k\ohm);\quad $V_{g3} = -1.5$ to $-30$ V\\[2pt]
+  read the conversion transconductance $g_c$ against $V_{g3}$ and against the oscillator grid current;\quad only for a model with a separate signal grid (Reefman's heptode)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

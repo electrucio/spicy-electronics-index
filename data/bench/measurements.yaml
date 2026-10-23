@@ -54,6 +54,8 @@ selectors:
   VS: {unit: V, what: "the total supply of an op-amp (±5 V is 10 V)"}
   G: {unit: "", what: "the closed-loop gain of an op-amp stage"}
   CL: {unit: F, what: "the capacitive load on an op-amp's output"}
+  Va: {unit: V, what: "the anode voltage of a tube"}
+  Vg1/step: {unit: "", what: "a trace of a tube's anode family: its grid voltage in steps of the model's own step (vg1_step, its cut-off at 250 V over eight)"}
 
 codes:
   ok: measured
@@ -5073,3 +5075,363 @@ measurements:
   standard: none
   pack: false
   engines: [qspice, ngspice, ltspice]
+
+# --- vacuum tubes ------------------------------------------------------------------------------------------
+# The first tube entries, for triodes (docs/tube-characterisation.md has the whole battery). They are measured
+# by docker/sim/preview/tube_records.py on ngspice until the simulator images carry tube decks, so they name
+# one engine and no deck lines, and the bench's fingerprint does not cover them (catalogue.RUN_KINDS). A tube
+# model is a subcircuit with named pins (anode, grid, cathode); the dialect it is read in is part of the result.
+
+- id: tube-runs
+  kind: tube
+  group: dc
+  name: Does the model load, in which dialect, and at what operating points
+  symbols: [I0, Ia, Ig]
+  what: |
+    The first fact about a tube model, and the one tube models fail most: whether ngspice reads it, and in
+    which of its modes. Tube models are written for PSpice, for LTspice or for Micro-Cap, often in one file;
+    the model is tried as it comes, then in ngspice's PSpice (psa), LTspice (lta) and combined (ltpsa)
+    compatibility modes, then again with the parameters its callers pass declared on the .SUBCKT line (an
+    LTspice habit ngspice refuses). The mode that settles, and whether parameters had to be declared, are
+    published as results; the text is never rewritten beyond that. Read at four operating points, the
+    quickest sanity check of a triode model and its own scale: I0, the anode current at 250 V and zero bias.
+  circuit: |
+    Four copies of the triode, cathode grounded: anode at 100 V and the grid at 0 V; anode at 250 V and the
+    grid at 0, −2 and −10 V; one operating point, every anode and grid current read through its source.
+  drawing: {file: bench/drawings/tube-runs.svg, elements: [DUT, anode supply, grid source, ammeters in anode and grid], differs_from_netlist: "the drawing also shows the pentode and diode copies of the battery; a triode runs copy A only"}
+  analysis: op
+  conditions:
+    points: [[100, 0], [250, 0], [250, -2], [250, -10]]
+    modes: [none, psa, lta, ltpsa]
+    declare_params: [false, true]
+  extraction: |
+    The first mode that settles to finite currents, trying every mode as the model comes before declaring
+    any parameter; the anode and grid currents at each point (a grid current is positive into the grid).
+  outputs:
+  - {key: runs, unit: "", what: "true when ngspice returned an operating point"}
+  - {key: mode, unit: "", what: "the ngspice mode that read it: none, psa, lta or ltpsa"}
+  - {key: params_declared, unit: "", what: "whether the parameters its callers pass had to be declared on the .SUBCKT line"}
+  - {key: error_class, unit: "", what: "when it does not load in any mode: params, subckt, domain or syntax"}
+  - {key: "ia@{va},{vg}", unit: A, what: "anode current at the point; at 250 V and 0 V it is I0, the model's own scale"}
+  - {key: "ig@{va},{vg}", unit: A, what: "grid current at the point"}
+  parameters: []
+  reads_high: ""
+  reads_low: ""
+  cannot_tell: "That the model is right: a model that loads in one mode only is a dialect fact, not a verdict."
+  standard: none
+  pack: true
+  engines: [ngspice]
+
+- id: tube-capacitance
+  kind: tube
+  group: capacitance
+  name: Interelectrode capacitances
+  symbols: [Cg1k, Cg1a, Cak]
+  what: |
+    The direct capacitances every sheet tabulates, measured as the sheets define them: one electrode
+    driven with 1 V of AC at 1 MHz, every other electrode held at AC ground through its source, and the
+    current into each undriven one read. The sheets give them cold; a model gives one set of constants,
+    often with the grid-current diode's junction capacitance added to Cg1k without its author having meant
+    it, which the cold and hot values show: biased at cut-off, the diode is off and adds its zero-bias
+    junction; hot, at a quarter of I0, it adds more.
+  circuit: |
+    Three copies of the triode at 250 V on the anode: the grid driven, the anode driven, the cathode
+    driven, each with 1 V of AC on its bias; the grid at the model's cut-off at 250 V (cold), and again at
+    the grid voltage that gives a quarter of I0 (hot).
+  drawing: {file: bench/drawings/tube-capacitance.svg, elements: [DUT, one electrode driven with 1 V of AC, the others at AC ground through ammeters], differs_from_netlist: "the drawing shows a pentode and its screen; a triode has no screen copy"}
+  analysis: ac
+  conditions:
+    va: 250
+    vg1: [cut-off at 10 µA, the grid voltage for I0/4]
+    f: 1.0e+6
+    v_ac: 1
+  extraction: "C = Im(i) / (2πf) for each pair of electrodes, the larger of the two directions."
+  outputs:
+  - {key: c_g1k, unit: F, what: "grid to cathode, cold (the grid at cut-off)"}
+  - {key: c_g1a, unit: F, what: "grid to anode, cold: the Miller capacitance's root"}
+  - {key: c_ak, unit: F, what: "anode to cathode, cold"}
+  - {key: "c_g1k@hot", unit: F, what: "grid to cathode at a quarter of I0"}
+  - {key: "c_g1a@hot", unit: F, what: "grid to anode at a quarter of I0"}
+  - {key: "c_ak@hot", unit: F, what: "anode to cathode at a quarter of I0"}
+  parameters: [CCG, CGP, CCP, CJO]
+  reads_high: "A Cg1k several pF above the sheet's, larger hot than cold, is the grid diode's junction in parallel."
+  reads_low: "Zero everywhere: no capacitances in the model, and no upper corner in any stage built with it."
+  cannot_tell: "The shield's effect, the socket and the wiring, and a hot cathode's space-charge increase of Cg1k."
+  standard: resembles IEC 60151 interelectrode capacitance measurement, with the shield conditions the GE sheets name
+  pack: true
+  engines: [ngspice]
+
+- id: triode-anode
+  kind: tube
+  group: dc
+  name: Anode characteristics
+  symbols: [Ia(Va), Vg1]
+  what: |
+    The chart every triode sheet opens with: anode current against anode voltage, one trace per grid
+    voltage. Three things are read at a glance: the spacing of the traces (µ: a trace's shift along the
+    voltage axis per volt of grid), their slope (ra), and their curvature (the 3/2 law that makes a
+    triode's second harmonic). The grid step is the model's own: its cut-off at 250 V over eight, on the
+    1-2-2.5-5 series, so that nine traces from zero bias reach cut-off whatever the tube (0.5 V for a
+    12AX7, as GE draws it). Near zero anode voltage, where pedals run a 12AX7, models that agree at the
+    sheet's points disagree by a factor of twenty (0.03 to 0.59 mA at 5 V and zero bias).
+  circuit: |
+    Nine copies of the triode, cathode grounded, the grid of trace k held at k steps below zero, every
+    anode on one supply swept from 0 to 600 V in 1 V steps, each anode current read through a 0 V source.
+  drawing: {file: bench/drawings/triode-anode.svg, elements: [DUT, swept anode supply, grid voltage source at −k × step, ammeter in the anode, ammeter in the grid], differs_from_netlist: "the copies are drawn as one triode with a stepped grid"}
+  analysis: dc
+  conditions:
+    traces: 9
+    step: {from: tube-runs and triode-transfer, cutoff_at_va: 250, cutoff_ia: 1.0e-5, divisor: 8, series: [1, 2, 2.5, 5]}
+    va_sweep: {from: 0, to: 600, step: 1, unit: V}
+  grid: {x: va, from: 0, to: 600, step: 5, unit: V}
+  extraction: |
+    Each trace on the grid; a trace stops where Va × Ia passes the power at the model's own I0 point
+    (250 V × I0), as a sheet dashes its traces past the dissipation limit. The zero-bias trace read at
+    0, 5, 12, 25, 50 and 250 V.
+  outputs:
+  - {key: vg1_step, unit: V, what: "the grid step: the model's cut-off at 250 V over eight, on the 1-2-2.5-5 series"}
+  - {key: "ia@{va},0V", unit: A, what: "anode current at zero bias, at 0, 5, 12, 25, 50 and 250 V: zero at 0 V in any physical model"}
+  - {key: p_limit, unit: W, what: "the power each trace stops at: 250 V × I0"}
+  curves:
+  - {name: "Ia, Vg1=0·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: 0}}
+  - {name: "Ia, Vg1=-1·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -1}}
+  - {name: "Ia, Vg1=-2·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -2}}
+  - {name: "Ia, Vg1=-3·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -3}}
+  - {name: "Ia, Vg1=-4·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -4}}
+  - {name: "Ia, Vg1=-5·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -5}}
+  - {name: "Ia, Vg1=-6·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -6}}
+  - {name: "Ia, Vg1=-7·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -7}}
+  - {name: "Ia, Vg1=-8·step", x: va, y: ia, scale: lin, unit: A, at: {Vg1/step: -8}}
+  select: {Vg1/step: all}
+  hover:
+  - {y: ia, label: P, unit: W, of: [x, "*", y], what: "power dissipated at the anode, Va × Ia"}
+  - {y: ia, label: ra, unit: "Ω", of: [dx, "/", dy], what: "anode resistance, the local slope of the trace"}
+  parameters: [MU, EX, KG1, KP, KVB]
+  reads_high: "Traces that keep climbing steeply at high anode voltage are a low ra; a current at Va = 0 is an offset in the model's 3/2 law, which no tube has."
+  reads_low: "Traces evenly spaced into cut-off are a model with constant µ: no real triode has it."
+  cannot_tell: "The thermal droop of a real anode at full dissipation, and the spread between tubes of one type."
+  standard: resembles IEC 60151-1 (electrode currents); the sheets' average plate characteristics
+  pack: true
+  engines: [ngspice]
+
+- id: triode-transfer
+  kind: tube
+  group: dc
+  name: Transfer characteristics and cut-off
+  symbols: [Ia(Vg1), Vg1(cut-off)]
+  what: |
+    Anode current against grid voltage at fixed anode voltages: the curve the bias is set on. Its foot is the
+    cut-off the sheets quote as the grid voltage for 10 µA (GE, RCA, Sylvania), its upper part the 3/2 law.
+    The sweep runs from −300 V, so it serves every triode; each curve is drawn from a quarter beyond the
+    point where its current falls to a thousandth of its zero-bias value, up to +1 V.
+  circuit: |
+    Six copies of the triode, cathode grounded, one per anode voltage held by its source, every grid on one
+    source swept from −300 V to +5 V in 20 mV steps through a 0 V source each (the grid current, read by
+    triode-grid-current from the same sweep).
+  drawing: {file: bench/drawings/triode-transfer.svg, elements: [DUT, anode supply, swept grid source, ammeter in the anode, ammeter in the grid], differs_from_netlist: "the copies are drawn as one triode"}
+  analysis: dc
+  conditions:
+    va: [100, 150, 200, 250, 300, 400]
+    vg1_sweep: {from: -300, to: 5, step: 0.02, unit: V}
+    cutoff_ia: 1.0e-5
+  grid: {x: vg1, values: [-300, -295, -290, -285, -280, -275, -270, -265, -260, -255, -250, -245, -240, -235, -230, -225, -220, -215, -210, -205, -200, -195, -190, -185, -180, -175, -170, -165, -160, -155, -150, -145, -140, -135, -130, -125, -120, -115, -110, -105, -100, -99, -98, -97, -96, -95, -94, -93, -92, -91, -90, -89, -88, -87, -86, -85, -84, -83, -82, -81, -80, -79, -78, -77, -76, -75, -74, -73, -72, -71, -70, -69, -68, -67, -66, -65, -64, -63, -62, -61, -60, -59, -58, -57, -56, -55, -54, -53, -52, -51, -50, -49, -48, -47, -46, -45, -44, -43, -42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29.75, -29.5, -29.25, -29, -28.75, -28.5, -28.25, -28, -27.75, -27.5, -27.25, -27, -26.75, -26.5, -26.25, -26, -25.75, -25.5, -25.25, -25, -24.75, -24.5, -24.25, -24, -23.75, -23.5, -23.25, -23, -22.75, -22.5, -22.25, -22, -21.75, -21.5, -21.25, -21, -20.75, -20.5, -20.25, -20, -19.75, -19.5, -19.25, -19, -18.75, -18.5, -18.25, -18, -17.75, -17.5, -17.25, -17, -16.75, -16.5, -16.25, -16, -15.75, -15.5, -15.25, -15, -14.75, -14.5, -14.25, -14, -13.75, -13.5, -13.25, -13, -12.75, -12.5, -12.25, -12, -11.75, -11.5, -11.25, -11, -10.75, -10.5, -10.25, -10, -9.95, -9.9, -9.85, -9.8, -9.75, -9.7, -9.65, -9.6, -9.55, -9.5, -9.45, -9.4, -9.35, -9.3, -9.25, -9.2, -9.15, -9.1, -9.05, -9, -8.95, -8.9, -8.85, -8.8, -8.75, -8.7, -8.65, -8.6, -8.55, -8.5, -8.45, -8.4, -8.35, -8.3, -8.25, -8.2, -8.15, -8.1, -8.05, -8, -7.95, -7.9, -7.85, -7.8, -7.75, -7.7, -7.65, -7.6, -7.55, -7.5, -7.45, -7.4, -7.35, -7.3, -7.25, -7.2, -7.15, -7.1, -7.05, -7, -6.95, -6.9, -6.85, -6.8, -6.75, -6.7, -6.65, -6.6, -6.55, -6.5, -6.45, -6.4, -6.35, -6.3, -6.25, -6.2, -6.15, -6.1, -6.05, -6, -5.95, -5.9, -5.85, -5.8, -5.75, -5.7, -5.65, -5.6, -5.55, -5.5, -5.45, -5.4, -5.35, -5.3, -5.25, -5.2, -5.15, -5.1, -5.05, -5, -4.95, -4.9, -4.85, -4.8, -4.75, -4.7, -4.65, -4.6, -4.55, -4.5, -4.45, -4.4, -4.35, -4.3, -4.25, -4.2, -4.15, -4.1, -4.05, -4, -3.95, -3.9, -3.85, -3.8, -3.75, -3.7, -3.65, -3.6, -3.55, -3.5, -3.45, -3.4, -3.35, -3.3, -3.25, -3.2, -3.15, -3.1, -3.05, -3, -2.95, -2.9, -2.85, -2.8, -2.75, -2.7, -2.65, -2.6, -2.55, -2.5, -2.45, -2.4, -2.35, -2.3, -2.25, -2.2, -2.15, -2.1, -2.05, -2, -1.95, -1.9, -1.85, -1.8, -1.75, -1.7, -1.65, -1.6, -1.55, -1.5, -1.45, -1.4, -1.35, -1.3, -1.25, -1.2, -1.15, -1.1, -1.05, -1, -0.95, -0.9, -0.85, -0.8, -0.75, -0.7, -0.65, -0.6, -0.55, -0.5, -0.45, -0.4, -0.35, -0.3, -0.25, -0.2, -0.15, -0.1, -0.05, 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1], unit: V}
+  extraction: |
+    Each curve on the grid, finer near zero; the cut-off by log interpolation where the current passes
+    10 µA; the current at zero bias. A model whose equations fail before −300 V is swept from the deepest
+    start it can be evaluated at (−100, −40, −15 or −5 V), which is published.
+  outputs:
+  - {key: "vg_cutoff@{va}", unit: V, what: "grid voltage where the anode current falls to 10 µA"}
+  - {key: "ia@{va},0V", unit: A, what: "anode current at zero bias"}
+  - {key: sweep_from, unit: V, what: "where the sweep could start: −300 V unless the model fails before"}
+  curves:
+  - {name: "Ia, Va=100V", x: vg1, y: ia, scale: lin, unit: A, at: {Va: 100}}
+  - {name: "Ia, Va=150V", x: vg1, y: ia, scale: lin, unit: A, at: {Va: 150}}
+  - {name: "Ia, Va=200V", x: vg1, y: ia, scale: lin, unit: A, at: {Va: 200}}
+  - {name: "Ia, Va=250V", x: vg1, y: ia, scale: lin, unit: A, at: {Va: 250}}
+  - {name: "Ia, Va=300V", x: vg1, y: ia, scale: lin, unit: A, at: {Va: 300}}
+  - {name: "Ia, Va=400V", x: vg1, y: ia, scale: lin, unit: A, at: {Va: 400}}
+  select: {Va: all}
+  hover:
+  - {y: ia, label: gm, unit: S, of: [dy, "/", dx], what: "transconductance, the local slope of the curve"}
+  parameters: [MU, EX, KG1, KP]
+  reads_high: "A cut-off far more negative than the sheet's is a µ fitted low."
+  reads_low: "A foot that falls off a cliff (no current below a sharp cut-off) is a URAMP or LIMIT that a real cathode has no equivalent of."
+  cannot_tell: "The exponent of the 3/2 law on its own: triode-params reads its consequences, µ and gm against current."
+  standard: resembles IEC 60151-1; the cut-off condition of the GE and RCA sheets
+  pack: true
+  engines: [ngspice]
+
+- id: triode-params
+  kind: tube
+  group: dc
+  name: Amplification factor, transconductance and anode resistance against current
+  symbols: [µ, gm, ra]
+  what: |
+    The three numbers every triode sheet prints at its operating points, and GE's curves of them against
+    plate current: measured as small-signal quantities at 1 kHz at a ladder of anode currents, at three
+    anode voltages. Real triodes lose µ at low current; a model fitted at one point usually keeps it, which
+    the ratio of µ at the lowest current to µ at its highest shows.
+  circuit: |
+    Two copies per point: AC on the grid with the anode held (gm), AC on the anode with the grid held
+    (1/ra); the grid voltage for each anode current from the transfer sweep; µ = gm · ra.
+  drawing: {file: bench/drawings/triode-params.svg, elements: [DUT, anode supply, grid bias with 1 V of AC, ammeter in the anode], differs_from_netlist: "two copies per point, drawn side by side once"}
+  analysis: ac
+  conditions:
+    va: [100, 250, 400]
+    ia: [1.0e-5, 2.0e-5, 5.0e-5, 1.0e-4, 2.0e-4, 5.0e-4, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1]
+    f: 1000
+    v_ac: 1
+  grid: {x: ia, values: [1.0e-5, 2.0e-5, 5.0e-5, 1.0e-4, 2.0e-4, 5.0e-4, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1], unit: A}
+  extraction: "gm = |i_a / v_g|, ra = |v_a / i_a|, µ = gm · ra; a current the model does not reach below zero bias is left out."
+  outputs:
+  - {key: "mu@1mA,{va}", unit: "", what: "amplification factor at 1 mA"}
+  - {key: "gm@1mA,{va}", unit: S, what: "transconductance at 1 mA"}
+  - {key: "ra@1mA,{va}", unit: "Ω", what: "anode resistance at 1 mA"}
+  - {key: "mu_ratio@250V", unit: "", what: "µ at the lowest current over the largest µ, at 250 V: 1 is a constant-µ model"}
+  curves:
+  - {name: "µ, Va=100V", x: ia, y: mu, scale: lin, unit: "", at: {Va: 100}}
+  - {name: "µ, Va=250V", x: ia, y: mu, scale: lin, unit: "", at: {Va: 250}}
+  - {name: "µ, Va=400V", x: ia, y: mu, scale: lin, unit: "", at: {Va: 400}}
+  - {name: "gm, Va=100V", x: ia, y: gm, scale: log, unit: S, at: {Va: 100}}
+  - {name: "gm, Va=250V", x: ia, y: gm, scale: log, unit: S, at: {Va: 250}}
+  - {name: "gm, Va=400V", x: ia, y: gm, scale: log, unit: S, at: {Va: 400}}
+  - {name: "ra, Va=100V", x: ia, y: ra, scale: log, unit: "Ω", at: {Va: 100}}
+  - {name: "ra, Va=250V", x: ia, y: ra, scale: log, unit: "Ω", at: {Va: 250}}
+  - {name: "ra, Va=400V", x: ia, y: ra, scale: log, unit: "Ω", at: {Va: 400}}
+  select: {Va: all}
+  parameters: [MU, EX, KG1, KP, KVB]
+  reads_high: "gm above the sheet's at the sheet's current with ra below it: a model fitted for gain at the cost of the curve's shape."
+  reads_low: "µ flat to within a percent over three decades of current: the constant-µ equation."
+  cannot_tell: "What the stage does with them: triode-rc-amplifier runs the stage."
+  standard: resembles IEC 60151-12 (electrode resistance, transconductance, amplification factor)
+  pack: true
+  engines: [ngspice]
+
+- id: triode-grid-current
+  kind: tube
+  group: dc
+  name: "Grid current: onset, contact potential and input resistance"
+  symbols: [Ig(Vg1), Vg1(Ig = 0.3 µA)]
+  what: |
+    Where the grid starts to conduct is where a stage clips asymmetrically and a coupling capacitor starts
+    charging: the guitar amplifier's blocking and the grid-leak bias both live here. Mullard and Philips
+    print it as the grid voltage at +0.3 µA; GE and RCA build their zero-bias chart cells on the small
+    negative current a real grid draws below zero, which few models have.
+  circuit: "The transfer sweep's grid ammeters, at three anode voltages."
+  drawing: {file: bench/drawings/triode-grid-current.svg, elements: [DUT, anode supply, swept grid source, ammeter in the grid], differs_from_netlist: nothing}
+  analysis: dc
+  conditions:
+    va: [100, 250, 400]
+    vg1_sweep: {from: -5, to: 5, unit: V, from_measurement: triode-transfer}
+    onset: [3.0e-7, 1.0e-6]
+  grid: {x: vg1, from: -5, to: 5, step: 0.05, unit: V}
+  extraction: |
+    The grid current on the grid (positive into the grid); the grid voltage where it passes +0.3 µA and
+    +1 µA; its value at −0.5, 0, +1 and +5 V; the input resistance at +1 V as the slope over ±50 mV.
+  outputs:
+  - {key: "vg@ig=0.3uA", unit: V, what: "grid voltage where the grid current passes +0.3 µA, Mullard's limit"}
+  - {key: "vg@ig=1uA", unit: V, what: "grid voltage where it passes +1 µA"}
+  - {key: "ig@{vg}", unit: A, what: "grid current at −0.5, 0, +1 and +5 V (250 V on the anode)"}
+  - {key: "rin@+1V", unit: "Ω", what: "the grid's input resistance at +1 V"}
+  curves:
+  - {name: "Ig, Va=100V", x: vg1, y: ig, scale: lin, unit: A, at: {Va: 100}}
+  - {name: "Ig, Va=250V", x: vg1, y: ig, scale: lin, unit: A, at: {Va: 250}}
+  - {name: "Ig, Va=400V", x: vg1, y: ig, scale: lin, unit: A, at: {Va: 400}}
+  select: {Va: 250}
+  hover:
+  - {y: ig, label: rin, unit: "Ω", of: [dx, "/", dy], what: "the grid's input resistance, the local slope"}
+  parameters: [RGI, IS, CJO]
+  reads_high: "An onset well below zero bias is a grid that loads the previous stage at rest."
+  reads_low: "No current up to +1 V: the model has no grid current (`absent`), so nothing in it clips at the grid or blocks."
+  cannot_tell: "Gas current and leakage, which add a positive grid current a real tube has and no model does."
+  standard: resembles IEC 60151-15 (spurious electrode currents)
+  pack: true
+  engines: [ngspice]
+
+- id: triode-rc-amplifier
+  kind: tube
+  group: distortion
+  name: The resistance-coupled amplifier chart
+  symbols: [gain, Eo, Ia]
+  what: |
+    GE's and RCA's chart, cell by cell, for the cells the part's own sheet prints: for a supply Ebb, a plate
+    resistor Rp and the next stage's grid resistor Rs, the cathode resistor the sheet gives, run as GE
+    defines it — the gain at 2.0 V rms out, Eo the largest output (rms) before the distortion reaches 5 %,
+    the cathode resistor "adequately by-passed" (an ideal bypass: the cathode held at Rk times the stage's
+    mean current under signal, found by iteration). The grid-leak cells (Rg1 = 10 MΩ, no cathode resistor)
+    rest on the small current a real grid draws below zero: a model without it runs them at zero bias. The
+    harmonics against the output level are drawn for the chart's middle cell (300 V, 240 kΩ, 510 kΩ).
+  circuit: |
+    Ebb through Rp and an ammeter to the anode; the cathode on its ideal bypass; the output through 10 µF
+    into Rs; a 1 kHz sine on the grid, with the stage's own grid resistor Rg1 to ground; fifteen copies per
+    cell, one per drive level in half-octave steps from the one that gives 2 V rms out.
+  drawing: {file: bench/drawings/triode-rc-amplifier.svg, elements: [DUT, supply Ebb, plate resistor Rp, ammeter in the anode, ideal cathode bypass, coupling capacitor, next grid resistor Rs, grid resistor Rg1, 1 kHz source, voltmeter on the output], differs_from_netlist: "the fifteen drive levels are drawn as one source"}
+  analysis: tran
+  conditions:
+    cells: "every cell of the part's sheet: Ebb, Rp, Rs, Rg1 and Rk as printed"
+    f: 1000
+    periods: 30
+    read_last: 10
+    vout_for_gain: 2.0
+    thd_for_eo: 5
+    bypass: ideal
+    cc: 1.0e-5
+  grid: {x: vout, values: [0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.5, 2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150], unit: V}
+  extraction: |
+    The quiescent point from an operating point with the real Rk; the bypass voltage per copy iterated to Rk
+    times the mean cathode current; the gain from the copy that gives 2 V rms; Eo by log-log interpolation of
+    THD against output to 5 %; the harmonics by Goertzel over the last ten periods; the first drive (peak) at
+    which the grid's current passes 1 µA.
+  outputs:
+  - {key: "gain@{cell}", unit: "", what: "voltage gain at 2.0 V rms out; a cell is Ebb, Rp, Rs, and grid-leak for Rg1 = 10 MΩ"}
+  - {key: "eo@{cell}", unit: V, what: "the largest output, rms, at 5 % THD"}
+  - {key: "ia0@{cell}", unit: A, what: "the quiescent anode current with the sheet's Rk"}
+  - {key: "vk@{cell}", unit: V, what: "the quiescent cathode voltage, the bias"}
+  - {key: "grid_onset@{cell}", unit: V, what: "the peak drive at which the grid current passes 1 µA"}
+  curves:
+  - {name: "THD", x: vout, y: thd, scale: log, unit: "%"}
+  - {name: "H2", x: vout, y: h2, scale: log, unit: "%"}
+  - {name: "H3", x: vout, y: h3, scale: log, unit: "%"}
+  parameters: [MU, EX, KG1, KP, RGI]
+  reads_high: "An Eo far above the sheet's is a model without grid current: nothing clips at the grid, and the 5 % point slides out to where the anode bottoms."
+  reads_low: "A gain below the sheet's at every supply is a µ fitted low or an ra fitted high."
+  cannot_tell: "The coupling capacitors' and a real bypass's low-frequency effects, and the next stage's Miller input."
+  standard: the GE and RCA resistance-coupled amplifier chart conditions
+  pack: true
+  engines: [ngspice]
+
+- id: triode-noise
+  kind: tube
+  group: noise
+  name: Noise
+  symbols: [en, Req]
+  what: |
+    A triode's anode current carries shot noise, which a sheet states as an equivalent noise resistance in
+    the grid (300 Ω for the ECC88). A behavioural source in a SPICE model is noiseless, so most tube models
+    have none: the stage's noise is read, referred to the input, with the share of it that comes from inside
+    the model. A share of zero is the finding, coded `absent`; the noise left is the resistors'.
+  circuit: |
+    A grounded-cathode stage: 250 V through 100 kΩ, 1.5 kΩ in the cathode bypassed by 1 F, the input
+    through 1 kΩ; ngspice's noise analysis from 1 Hz to 100 kHz.
+  drawing: {file: bench/drawings/triode-noise.svg, elements: [DUT, supply Ebb, plate resistor, bypassed cathode resistor, source resistance, noise source, voltmeter on the output], differs_from_netlist: nothing}
+  analysis: noise
+  conditions:
+    ebb: 250
+    rp: 100000
+    rk: 1500
+    rsrc: 1000
+    f: {from: 1, to: 1.0e+5, per_decade: 10, unit: Hz}
+  extraction: |
+    The input-referred noise at 10 Hz, 1 kHz and 10 kHz; at 1 kHz the share of the output noise from the
+    subcircuit's own elements, and the equivalent noise resistance en²/4kT less the source's.
+  outputs:
+  - {key: "en@{f}", unit: "V/√Hz", what: "input-referred noise of the stage at 10 Hz, 1 kHz, 10 kHz"}
+  - {key: "inside_share@1kHz", unit: "", what: "the share of the output noise that comes from inside the model"}
+  - {key: "req@1kHz", unit: "Ω", what: "equivalent noise resistance in the grid, less the 1 kΩ source"}
+  parameters: []
+  reads_high: ""
+  reads_low: "A share of zero: the model has no noise of its own, and the stage is as quiet as its resistors."
+  cannot_tell: "Flicker noise and its corner, which no model met here carries."
+  standard: none
+  pack: false
+  engines: [ngspice]

@@ -1,0 +1,54 @@
+% The resistance-coupled amplifier chart (triode-rc-amplifier): the set-up a person would wire, semantically the deck's.
+%   VBBi bbi 0 <ebb>, RPi bbi ami <rp>, VAMi ami ai 0   the supply, the plate resistor, the anode ammeter   -> source E_bb (set), resistor R_p, ammeter I_a (measured)
+%   VKi ki 0 <vk>                                       the cathode on an ideal bypass: Rk times the mean cathode current, iterated -> source (set)
+%   VINi ini 0 SIN(0 <drive> 1k), RG1i ini 0 <rg1>, VGMi ini gi 0   the drive, the grid resistor, the grid ammeter -> source v_in (set)
+%   CCi ami oi 10u, RSi oi 0 <rs>                       the coupling capacitor and the next grid's resistor  -> voltmeter v_out (measured)
+%   XTi ai gi ki DUT; .tran 30 periods, the last ten read; a quiescent .op with the real Rk starts the iteration
+%   Fifteen copies, one per drive level (half-octave steps from the drive that gives 2 V rms out), drawn as one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.6}{The resistance-coupled amplifier chart}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (4,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% copy : the anode resistor up to the rail, the anode ammeter under it
+\coordinate (am) at ($(T.anode)+(0,1.1)$);
+\ammeter{T.anode}{am}{$I_a$}
+\draw (am) to[R, l_={$R_p$}] ++(0,1.6) coordinate (top);
+\coordinate (vtop) at ($(top)+(6.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$E_{bb}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.0,0.05)$}{bb}
+\nodename{anchor=east}{$(am)+(-0.15,0.15)$}{a}
+% the cathode on an ideal bypass: a source set to Rk times the mean current
+\draw[set] (T.cathode) to[V, l={$R_k$\,$\bar I_k$}] (T.cathode |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=east}{$(T.cathode)+(-0.1,-0.25)$}{k}
+% the grid: its resistor to ground and the source
+\coordinate (g) at (T.control);
+\draw (g) -- ++(-0.6,0) coordinate (gj);
+\draw (gj) to[R, l_={$R_{g1}$}] (gj |- 0,\gnd) node[ground]{};
+\draw (gj) -- ++(-1.4,0) coordinate (vin);
+\draw[set] (vin) to[V, l_={$v_{in}$}] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.2,0.05)$}{g}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the output: through Cc into the next grid's resistor
+\coordinate (oj) at ($(am)+(0,0.0)$);
+\draw (am) -- ++(1.6,0) to[C, l={$C_c$}] ++(1.4,0) coordinate (o);
+\draw (o) to[R, l_={$R_s$}] (o |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(o)+(0.3,0.05)$}{o}
+% the voltmeter on o
+\coordinate (vo) at ($(o)+(1.2,0)$);
+\draw (o) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$v_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.3}{%
+  every cell of the part's own chart: $E_{bb}$, $R_p$, $R_s$ (the next stage's grid resistor), $R_{g1}$ and $R_k$ as printed (GE's 12AX7: $E_{bb} = 90$, 180, 300 V; $R_p = 0.1$, 0.24, 0.51 M\ohm)\\[2pt]
+  gain $= v_{out}/v_{in}$ at 2.0 V rms out (GE's condition);\quad $E_o$: the largest $v_{out}$ (rms) at 5\,\% THD, interpolated on the drive ladder\\[2pt]
+  also the quiescent $I_a$ and $V_k$, the drive at which grid current starts;\quad THD, H2, H3 against $v_{out}$ for the cell 300 V, 0.24 M\ohm, 0.51 M\ohm%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

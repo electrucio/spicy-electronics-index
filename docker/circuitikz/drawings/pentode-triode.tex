@@ -1,0 +1,42 @@
+% Strapped as a triode (pentode-triode): the set-up a person would wire, semantically the deck's.
+%   the triode battery (anode, transfer, params, grid current) with the screen tied to the anode: XTk ak ak gk 0 DUT
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Strapped as a triode}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_g$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{gk}
+% the screen strapped to the anode
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) coordinate (sx);
+\draw (sx) -- (sx -| T.anode);
+\fill (sx -| T.anode) circle (0.05);
+% the definitions
+\definitions{0,-0.1}{%
+  the screen to the anode (the sheets' `g2 connected to a'; through 100 \ohm{} where a sheet says so), the suppressor to the cathode\\[2pt]
+  every triode measurement over again: $I_a(V_a)$ per grid step, $I_a(V_{g1})$, $\mu$, $g_m$, $r_a$ against $I_a$, the grid current;\quad laid over the sheets' triode-connected curves and tables%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

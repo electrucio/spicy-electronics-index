@@ -1,0 +1,35 @@
+% Noise, pentode (pentode-noise): the set-up a person would wire, semantically the deck's.
+%   the triode noise deck with the screen through Rg2 from Ebb, decoupled to the cathode: .noise v(a) VIN dec 10 1 100k
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.8}{Noise, pentode}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+\draw (T.anode) -- ++(0,0.5) coordinate (aj) to[R, l_={$R_p$}] ++(0,1.6) coordinate (top);
+\coordinate (vtop) at ($(top)+(4.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$E_{bb}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) coordinate (s1);
+\coordinate (sc) at ($(T.anode |- s1)+(-4.4,0)$);
+\draw (s1) -- (sc) to[R, l={$R_{g2}$}] (sc |- top) -- (top);
+\draw (sc) -- ++(-1.3,0) coordinate (cs) to[C, l_={$C_{g2}$}] (cs |- 0,\gnd) node[ground]{};
+\draw (T.cathode) to[R, l={$R_k$}] (T.cathode |- 0,\gnd) node[ground]{};
+\draw (T.cathode) -- ++(1.2,0) coordinate (ck) to[C, l={$C_k$}] (ck |- 0,\gnd) node[ground]{};
+\draw (T.control) -- ++(-0.3,0) to[R, l_={$R_{src}$}] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_={$v_{in}$}] (vin |- 0,\gnd) node[ground, black]{};
+% the voltmeter on aj
+\coordinate (vo) at ($(aj)+(2.8,0)$);
+\draw (aj) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$e_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $E_{bb} = 250$ V, $R_p = 100$ k\ohm, $R_{g2} = 390$ k\ohm, $R_k = 1.5$ k\ohm{} (the EF86's noise condition: $V_b = 250$ V, $R_a = 100$ k\ohm)\\[2pt]
+  read $e_n$ referred to the grid, and integrated from 25 Hz to 10 kHz beside the EF86's 2 \textmu V;\quad the share from inside the model: zero is `absent' (no shot or partition noise)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

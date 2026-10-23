@@ -1,0 +1,70 @@
+% Push-pull output stage, pentode and ultralinear (pentode-power-pp): the set-up a person would wire, semantically the deck's.
+%   VB b 0 <vb>                                         the supply at the centre tap                          -> source V_b (set)
+%   BH0 an0 b V=-Raa/4*((i(VA0)+x i(VS0))-(i(VA1)+x i(VS1)))   the ideal centre-tapped primary, one half each    -> transformer, R_aa
+%   BH1 an1 b V=+Raa/4*(…)
+%   VA0 an0 at0 0, VA1 an1 at1 0                        the anode ammeters                                     -> ammeters I_a1, I_a2 (measured)
+%   VG0 g0 0 DC <vg> SIN(<vg> <drive> 1k), VG1 … -<drive>   the grids driven in antiphase                     -> sources (set), ammeters I_g (measured)
+%   VK k 0 <Rk*(Ik1+Ik2)> or per valve                  the cathodes on the ideal bypass, or grounded         -> source (set)
+%   screens on their supply through Rg2 (per valve or common), ideally decoupled; or on the taps BU = b -/+ x Raa/4 (...), through Rg2
+%   .tran 6 periods, the last four read; one copy per (load, drive)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,10.8}{Push-pull output stage, pentode and ultralinear}
+\def\gnd{0.6}
+% the pentode
+\node[pentode, scale=1.6] (TA) at (3.6,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.95,0)$) {};
+% the pentode, mirrored (its grids on the right)
+\node[pentode, scale=1.6, xscale=-1] (TB) at (11.4,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(TB.anode)!0.62!(TB.cathode)+(0.95,0)$) {};
+% the two anodes through their ammeters to the ends of the centre-tapped primary
+\coordinate (Aam) at ($(TA.anode)+(0,1.1)$);
+\ammeter{TA.anode}{Aam}{$I_{a1}$}
+\coordinate (Bam) at ($(TB.anode)+(0,1.1)$);
+\ammeter{TB.anode}{Bam}{$I_{a2}$}
+\coordinate (pl) at ($(Aam)+(0,0.9)$);
+\coordinate (pr) at ($(Bam)+(0,0.9)$);
+\coordinate (ct) at ($(pl)!0.5!(pr)$);
+\draw (Aam) -- (pl) to[L] (ct) to[L] (pr) -- (Bam);
+\draw[thick] ($(pl)+(0.3,0.42)$) -- ($(pr)+(-0.3,0.42)$) ($(pl)+(0.3,0.52)$) -- ($(pr)+(-0.3,0.52)$);
+\coordinate (sl) at ($(pl)+(1.4,0.95)$);
+\coordinate (sr) at ($(pr)+(-1.4,0.95)$);
+\draw (sl) to[L, mirror] (sr);
+\draw (sl) -- ++(0,0.9) coordinate (rlA) to[R, l={$R_L$}] (rlA -| sr) -- (sr);
+\draw (ct) -- ++(0,-0.7) coordinate (ctb) -- ++(2.2,0) coordinate (vbx);
+\coordinate (vbs) at ($(TB.anode)+(5.0,0.8)$);
+\draw (vbx) -| (vbs);
+\draw[set] (vbs) to[V, l={$V_b$}] (vbs |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(ct)+(0.3,-0.7)$}{b}
+% the cathodes joined, on their bias
+\draw (TA.cathode) -- ++(0,-0.75) coordinate (Ak) -| ($(TB.cathode)+(0,-0.75)$) -- (TB.cathode);
+\coordinate (kc) at ($(Ak)!0.5!(TB.cathode |- Ak)$);
+\draw[set] (kc) to[V, l={$R_k \bar I_k$}] (kc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(kc)+(0.4,0.05)$}{k}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (TA.control);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$I_{g1}$}
+\coordinate (Agsrc) at ($(Agam)+(-1.2,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{g1} + v_{in}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Agam)+(-0.4,0.02)$}{g0}
+% the second grid, driven in antiphase, at the right of the mirrored tube
+\coordinate (Bg) at (TB.control);
+\draw (Bg) -- ++(1.4,0) coordinate (Bgs);
+\draw[set] (Bgs) to[V, l={$V_{g1} - v_{in}$}] (Bgs |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(0.5,0.02)$}{g1}
+% the screens: on their supply through Rg2, or on the ultralinear taps (in the definitions)
+\draw (TA.screen) -- ++(-0.25,0) -- ++(0,0.9) node[above, font=\scriptsize, inner sep=1pt] {$g_2$};
+\draw (TB.screen) -- ++(0.25,0) -- ++(0,0.9) node[above, font=\scriptsize, inner sep=1pt] {$g_2$};
+% the definitions
+\definitions{0,-0.4}{%
+  $R_{aa} = 4\,(N_{half}/N_s)^2 R_L$;\quad every push-pull column of the part's sheets: pentode with fixed or cathode bias, ultralinear at the sheet's tap, triode-connected; the continuous-sine-wave tables too\\[2pt]
+  around each: $R_{aa} \times 0.25$ to 4, drive 0 to 1.25 times the sheet's, $V_b \pm 10\,\%$;\quad the screen through $R_{g2}$, common to both valves or per valve, as printed\\[2pt]
+  read $P_{out}$, THD, D3, D5; $\bar I_a$, $\bar I_{g2}$ per valve at zero and full signal; the peak $I_{g1}$; output resistance; IMD (50 Hz + 6 kHz, 4:1)\\[2pt]
+  a model whose equations fail past cut-off (the Koren screen's logarithm) cannot be driven into class AB: `failed', error class domain%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

@@ -1,13 +1,15 @@
 # The bench drawings: how every measurement circuit is drawn
 
-Companion to [model-characterisation.md](model-characterisation.md), [fet-characterisation.md](fet-characterisation.md)
-and [opamp-characterisation.md](opamp-characterisation.md). Every measurement of `data/bench/measurements.yaml`
+Companion to [model-characterisation.md](model-characterisation.md), [fet-characterisation.md](fet-characterisation.md),
+[opamp-characterisation.md](opamp-characterisation.md) and [tube-characterisation.md](tube-characterisation.md). Every measurement of `data/bench/measurements.yaml`
 whose `circuit` is simulated has a drawing, `data/bench/drawings/<id>.svg`, shown on the method page beside the
 deck lines it stands for. The drawings are typeset by LaTeX and circuitikz from `docker/circuitikz/drawings/<id>.tex`,
 which `docker/circuitikz/benches.py` writes (the building blocks and the bipolar benches), with
-`benches_fet.py` (JFET and MOSFET) and `benches_opamp.py` (op-amps) alongside it; `make bench-drawings-all`
+`benches_fet.py` (JFET and MOSFET), `benches_opamp.py` (op-amps) and `benches_tube.py` (tubes) alongside it; `make bench-drawings-all`
 rewrites and typesets every one, `make bench-drawings NAME=<id>` one, in the TeX Live image
-(`make circuitikz-image`) or, with `LOCAL=1`, with the machine's own TeX Live. The style is `bench.sty`.
+(`make circuitikz-image`) or, with `LOCAL=1`, with the machine's own TeX Live; with `TECTONIC=1`, on a machine with
+neither, tectonic typesets the PDF and PyMuPDF writes its page as the SVG, every glyph a path, at the same size.
+The style is `bench.sty`.
 
 ## One style for every kind
 
@@ -45,3 +47,12 @@ rewrites and typesets every one, `make bench-drawings NAME=<id>` one, in the TeX
   feedback then runs over the top), the input source at the left, the output node at the right with the
   voltmeter, the load resistor and the load capacitor down to ground, the feedback around the bottom. The
   model's own pin order is put in by the job builder; the drawing shows in+, in−, V+, V−, out.
+- **Tubes**: the tube at the centre, anode up, cathode to ground or to its bias; the anode ammeter straight up
+  to the rail and the anode supply at the right; the control grid's source at the left, through an ammeter
+  where the grid current is read. circuitikz draws every grid of a pentode on its left, so the screen leaves
+  to the left and rises clear of the grid's circuit before it runs to its own supply at the far left; the
+  suppressor is left unwired and the definitions say it is at the cathode. An ideal bypass (the cathode or
+  screen held at the value the iteration finds) is the voltage source it is in the deck, labelled with what
+  sets it ($R_k \bar I_k$); an ideal output transformer is a transformer, its load on the secondary; the
+  second tube of a push-pull pair is mirrored so that its grid drive sits on the outside. Rectifier plates
+  and signal diodes are vacuum-diode symbols on their side, anode left.

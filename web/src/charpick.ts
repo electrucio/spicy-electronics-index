@@ -10,6 +10,7 @@ export const AXIS: Record<string, string> = {
   vce: 'VCE', ic: 'IC', ib: 'IB', vbe: 'VBE', hfe: 'hFE', hfe_ac: 'hfe', h21: '|hfe|', ft: 'fT', f: 'f', t: 't', rs: 'RS',
   v: 'VR', vcesat: 'VCE(sat)', vbesat: 'VBE(sat)', cob: 'Cob', cib: 'Cib', en: 'en', in: 'in', nf: 'NF', vt: 'VT',
   td: 'td', tr: 'tr', ts: 'ts', tf: 'tf', dvbe_dt: 'dVBE/dT', vt_band: 'VT, 10 Hz–15.7 kHz', von: 'V',
+  va: 'Va', ia: 'Ia', vg1: 'Vg1', ig: 'Ig', mu: 'µ', gm: 'gm', ra: 'ra', vout: 'Vout (rms)', thd: 'THD', h2: 'H2', h3: 'H3',
 }
 
 /** The name a quantity is printed with: VCE, IC, hFE, |hfe|… (the catalogue's keys are lower case). */
@@ -107,6 +108,7 @@ export const QUALIFIER: Record<string, string> = {
   'bjt-hfe-ac': 'AC, 1 kHz', 'bjt-tracer': 'curve tracer', 'bjt-early': 'Early voltage', 'bjt-temperature': 'by temperature',
   'jfet-tracer': 'curve tracer', 'jfet-temperature': 'by temperature', 'jfet-gm': '1 kHz', 'jfet-ohmic': 'ohmic region',
   'mosfet-tracer': 'curve tracer', 'mosfet-temperature': 'by temperature', 'mosfet-gm': '1 kHz', 'mosfet-rdson': 'on-resistance',
+  'triode-anode': 'anode family', 'triode-transfer': 'transfer', 'triode-params': 'against current',
   'opamp-stability': 'stability', 'opamp-aol-swing': 'open loop, DC', 'opamp-zout': 'output impedance', 'opamp-noise-rs': 'against RS',
 }
 

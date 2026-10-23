@@ -5,7 +5,7 @@
 # page looks the same in every browser. (dvisvgm's PDF mode goes through Ghostscript 10 and drops most of the
 # picture; hence the DVI route.) The SVG then gets the margin standalone gives the PDF, a width that shows its
 # text at one size on every drawing, and is checked to be well-formed XML; pdflatex + gs make a PNG preview into private_material/scratch/. Build the image once:
-# make circuitikz-image
+# make circuitikz-image          (or TECTONIC=1 docker/circuitikz/draw.sh <name>, with neither Docker nor TeX Live)
 set -euo pipefail
 name=${1:?name}
 here=$(cd "$(dirname "$0")" && pwd)
@@ -17,13 +17,28 @@ work=$(mktemp -d)
 cp "$src" "$work/$name.tex"
 cp "$here/bench.sty" "$work/bench.sty"
 { echo '\def\pgfsysdriver{pgfsys-dvisvgm.def}'; cat "$src"; } > "$work/$name-dvi.tex"
+# TECTONIC=1: tectonic and PyMuPDF, for a machine with neither Docker nor TeX Live; the PDF's page is written as
+# an SVG with every glyph as a path, the standalone border taken off and the size set as dvisvgm's zoom sets it
+if [ -n "${TECTONIC:-}" ]; then
+  (cd "$work" && tectonic -X compile "$name.tex" > tectonic.log 2>&1) || { tail -20 "$work/tectonic.log"; exit 2; }
+  (cd "$root" && uv run --quiet python - "$work/$name.pdf" "$work/$name.svg" "$work/$name.png") <<'PY'
+import sys, pymupdf
+page = pymupdf.open(sys.argv[1])[0]
+svg = page.get_svg_image(text_as_path=True)
+b, w, h = 10.0, page.rect.width, page.rect.height     # the standalone border; the margin is put back below
+svg = svg.replace(f'width="{w:g}" height="{h:g}" viewBox="0 0 {w:g} {h:g}"',
+                  f'width="{(w - 2 * b) * 1.4:.2f}pt" height="{(h - 2 * b) * 1.4:.2f}pt" viewBox="{b} {b} {w - 2 * b:g} {h - 2 * b:g}"', 1)
+assert 'pt" viewBox=' in svg, svg[:300]
+open(sys.argv[2], "w", encoding="utf-8").write(svg)
+page.get_pixmap(dpi=110).save(sys.argv[3])
+PY
 # the TeX Live image, or the machine's own TeX Live when there is no Docker (LOCAL=1, or none on the PATH)
-if [ -n "${LOCAL:-}" ] || ! docker info > /dev/null 2>&1; then
+elif [ -n "${LOCAL:-}" ] || ! docker info > /dev/null 2>&1; then
   run() { bash -c "cd '$work' && $1"; }
 else
   run() { docker run --rm -u "$(id -u):$(id -g)" -v "$work":/w -e HOME=/tmp spicy-electronics-index-circuitikz bash -c "cd /w && $1"; }
 fi
-run 'latex -interaction=batchmode -halt-on-error '"$name"'-dvi.tex > /dev/null 2>&1 || { grep -A6 "^!" '"$name"'-dvi.log | head -40; exit 2; }
+[ -n "${TECTONIC:-}" ] || run 'latex -interaction=batchmode -halt-on-error '"$name"'-dvi.tex > /dev/null 2>&1 || { grep -A6 "^!" '"$name"'-dvi.log | head -40; exit 2; }
   dvisvgm --no-fonts --exact-bbox --bbox=min --zoom=1.4 -o '"$name"'.svg '"$name"'-dvi.dvi > dvisvgm.log 2>&1 || { cat dvisvgm.log; exit 2; }
   pdflatex -interaction=batchmode -halt-on-error '"$name"'.tex > /dev/null 2>&1 || { grep -A6 "^!" '"$name"'.log | head -40; exit 2; }
   gs -q -sDEVICE=png16m -r110 -o '"$name"'.png '"$name"'.pdf'

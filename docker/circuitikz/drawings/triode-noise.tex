@@ -1,0 +1,36 @@
+% Noise (triode-noise): the set-up a person would wire, semantically the deck's.
+%   VIN in 0 DC 0 AC 1, RSN in g <rs>       the source resistance, the noise input       -> resistor R_src, source v_in (set)
+%   VBB bb 0 <ebb>, RL bb a <rl>            the supply and the plate resistor            -> source E_bb (set), resistor R_p
+%   RK k 0 <rk>, CK k 0 1                   the cathode, bypassed                        -> resistor R_k, capacitor C_k
+%   XN a g k DUT; .noise v(a) VIN dec 10 1 100k, with the noise of every element listed
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.8}{Noise}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (4,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% the plate resistor up to the rail
+\draw (T.anode) -- ++(0,0.5) coordinate (aj) to[R, l_={$R_p$}] ++(0,1.6) coordinate (top);
+\coordinate (vtop) at ($(top)+(4.2,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$E_{bb}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\draw (T.cathode) to[R, l={$R_k$}] (T.cathode |- 0,\gnd) node[ground]{};
+\draw (T.cathode) -- ++(1.2,0) coordinate (ck) to[C, l={$C_k$}] (ck |- 0,\gnd) node[ground]{};
+\draw (T.control) -- ++(-0.3,0) to[R, l_={$R_{src}$}] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_={$v_{in}$}] (vin |- 0,\gnd) node[ground, black]{};
+% the voltmeter on aj
+\coordinate (vo) at ($(aj)+(2.6,0)$);
+\draw (aj) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$e_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $E_{bb} = 250$ V, $R_p = 100$ k\ohm, $R_k = 1.5$ k\ohm{} bypassed by $C_k = 1$ F;\quad $R_{src} = 1$ k\ohm;\quad $f = 1$ Hz to 100 kHz\\[2pt]
+  read the noise referred to the input, $e_n$ at 10 Hz, 1 kHz, 10 kHz, and the share of the output noise from inside the model (every element of the subcircuit)\\[2pt]
+  $R_{eq} = e_n^2/(4kT) - R_{src}$, beside the ECC88's 300 \ohm;\quad a model whose share is zero has no anode noise: `absent'%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

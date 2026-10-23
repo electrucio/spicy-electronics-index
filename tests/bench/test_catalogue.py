@@ -15,7 +15,7 @@ def test_the_published_catalogue_has_no_problem():
 def test_every_measurement_is_named_by_its_kind_and_speaks_a_known_behaviour():
     doc = C.load()
     for m in C.measurements(None, doc):
-        assert m["id"].startswith(m["kind"] + "-")
+        assert m["id"].split("-")[0] in C.prefixes(m["kind"])
         assert m["group"] in behaviours.BEHAVIOURS
         assert m["drawing"]["file"] in ("", f"bench/drawings/{m['id']}.svg")
     assert len(C.ids(None, doc)) == len(set(C.ids(None, doc)))

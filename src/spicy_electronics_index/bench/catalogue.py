@@ -25,14 +25,20 @@ import yaml
 from spicy_electronics_index.core.config import bench_measurements, docs_dir
 from spicy_electronics_index.models import behaviours
 
-KINDS = ("bjt", "jfet", "mosfet", "opamp")
+KINDS = ("bjt", "jfet", "mosfet", "opamp", "tube")
+# the kinds the simulator images run, whose conditions the bench's fingerprint covers; the tube entries are
+# measured by docker/sim/preview/tube_records.py on one machine until the images carry tube decks, so adding or
+# changing one reruns nothing
+RUN_KINDS = ("bjt", "jfet", "mosfet", "opamp")
+# a tube entry is named by what it measures: every tube, a triode, a pentode, a rectifier…
+PREFIXES = {"tube": ("tube", "triode", "pentode", "rectifier", "diode", "heptode", "indicator")}
 ENGINES = ("qspice", "ngspice", "ltspice")
 ANALYSES = ("op", "dc", "ac", "tran", "noise", "derived")
 CODES = ("ok", "absent", "n/a", "failed", "suspect")
 REQUIRED = ("id", "kind", "group", "name", "symbols", "what", "circuit", "drawing", "analysis", "conditions",
             "extraction", "outputs", "parameters", "reads_high", "reads_low", "cannot_tell", "standard", "pack",
             "engines")
-RX_ID = re.compile(r"^(bjt|jfet|mosfet|opamp)-[a-z0-9]+(-[a-z0-9]+)*$")
+RX_ID = re.compile(r"^(bjt|jfet|mosfet|opamp|tube|triode|pentode|rectifier|diode|heptode|indicator)-[a-z0-9]+(-[a-z0-9]+)*$")
 RX_VERSION = re.compile(r"^m-\d+$")
 RX_KEY = re.compile(r"^[a-z][a-z0-9_]*(@[^\s@]+)?$")
 RX_PARAM = re.compile(r"^[A-Z][A-Z0-9_]*$")
@@ -48,8 +54,14 @@ RX_MODEL_TEXT = re.compile(r"^\s*\.(model|subckt)\b", re.I | re.M)
 MARK_START, MARK_END = "<!-- measurements:start -->", "<!-- measurements:end -->"
 DOC = "model-characterisation.md"
 # the document each kind's entries are printed in; the first one also carries the codes and the uses
-DOCS = {"bjt": DOC, "jfet": "fet-characterisation.md", "mosfet": "fet-characterisation.md", "opamp": "opamp-characterisation.md"}
-KIND_NAMES = {"bjt": "Bipolar transistors", "jfet": "JFETs", "mosfet": "MOSFETs", "opamp": "Op-amps"}
+DOCS = {"bjt": DOC, "jfet": "fet-characterisation.md", "mosfet": "fet-characterisation.md", "opamp": "opamp-characterisation.md",
+        "tube": "tube-characterisation.md"}
+KIND_NAMES = {"bjt": "Bipolar transistors", "jfet": "JFETs", "mosfet": "MOSFETs", "opamp": "Op-amps", "tube": "Vacuum tubes"}
+
+
+def prefixes(kind: str) -> tuple[str, ...]:
+    """The words an entry of this kind may be named with: the kind itself, or for tubes what is measured."""
+    return PREFIXES.get(kind, (kind,))
 
 
 @lru_cache(maxsize=4)
@@ -77,10 +89,11 @@ BENCH_KEYS = ("id", "kind", "analysis", "conditions", "grid", "curves", "pack", 
 
 def bench_digest(doc: dict | None = None) -> str:
     """The sha256 of what the decks read — conditions, grids, output keys, curves, engines — and nothing
-    of the text: the prose can be improved without rerunning a simulation."""
+    of the text: the prose can be improved without rerunning a simulation. Only the kinds the images run."""
     doc = doc or load()
     slim = {"version": doc["version"], "measurements": [
-        {**{k: m.get(k) for k in BENCH_KEYS}, "outputs": [o["key"] for o in m["outputs"]]} for m in doc["measurements"]]}
+        {**{k: m.get(k) for k in BENCH_KEYS}, "outputs": [o["key"] for o in m["outputs"]]} for m in doc["measurements"]
+        if m["kind"] in RUN_KINDS]}
     return hashlib.sha256(json.dumps(slim, sort_keys=True, default=str).encode("utf-8")).hexdigest()
 
 
@@ -126,7 +139,7 @@ def problems(doc: dict | None = None, raw: str | None = None) -> list[str]:
         if missing:
             out.append(f"{mid}: missing {missing}")
             continue
-        if not RX_ID.match(mid) or not mid.startswith(m["kind"] + "-"):
+        if not RX_ID.match(mid) or mid.split("-")[0] not in prefixes(m["kind"]):
             out.append(f"{mid}: id must be <kind>-<words>, kind {m['kind']}")
         if mid in seen:
             out.append(f"{mid}: duplicate id")

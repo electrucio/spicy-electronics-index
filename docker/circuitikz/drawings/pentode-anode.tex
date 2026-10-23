@@ -1,0 +1,54 @@
+% Anode and screen characteristics (pentode-anode): the set-up a person would wire, semantically the deck's.
+%   VAk sw ak 0          a 0 V source from the swept node to the anode of copy k   -> ammeter I_a (measured)
+%   VGk gk 0 <vg1>       the control grid of copy k                                -> source V_g1 (set)
+%   VSk sk 0 <vg2>       the screen of copy k, through its 0 V source              -> source V_g2 (set), ammeter I_g2 (measured)
+%   XTk ak sk gk 0 DUT   copy k, suppressor to cathode                             -> pentode
+%   VSW sw 0, .dc        the swept anode supply                                    -> source V_a (set)
+%   One copy per (Vg2, Vg1); drawn as one pentode.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Anode and screen characteristics}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_{g1}$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{gk}
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (s);
+\coordinate (send) at ($(T.anode |- s)+(-6.4,0)$);
+\coordinate (sam) at ($(s)+(-1.6,0)$);
+\ammeterh{sam}{s}{$I_{g2}$}
+\draw (sam) -- (send);
+\draw[set] (send) to[V, l_={$V_{g2}$}] (send |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(s)+(-0.35,0.05)$}{sk}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_a$ swept 0 to 1000 V in 1 V steps (0.1 V below 50 V);\quad $V_{g2}$ = 50, 100, 150, 175, 200, 225, 250, 300, 350, 400, 450 V\\[2pt]
+  $V_{g1} = 0$ to $-10$ V in 0.25 V steps, to $-30$ V in 0.5 V, to $-60$ V in 1 V, to $-150$ V in 2.5 V, to $-300$ V in 5 V, one copy each:\\[2pt]\quad every family a sheet prints is a subset of these copies\\[2pt]
+  read $I_a(V_a)$ and $I_{g2}(V_a)$ per trace: the knee (the $V_a$ where $I_a$ is 90\,\% of its value at $V_a = V_{g2}$), $r_a$ above it, and the screen current's rise below it\\[2pt]
+  $I_{g2}(50\ \mathrm{V}) / I_{g2}(V_{g2})$: well above 1 in a real pentode; exactly 1 is a screen equation without the anode in it\\[2pt]
+  the suppressor at the cathode in every deck (most models have no suppressor pin); the beam tetrodes' beam plates the same%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

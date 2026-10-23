@@ -1,0 +1,31 @@
+% Tube voltage drop (rectifier-drop): the set-up a person would wire, semantically the deck's.
+%   VA a 0, .dc VA -5 300 0.05   the anode driven from below zero to past any rated current   -> source V_a (set) + ammeter I_a (measured)
+%   XD a 0 DUT (each plate alone, the other at the cathode)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Tube voltage drop}
+\def\gnd{1.0}
+% the diode
+\node[diodetube, scale=1.35] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{a}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_a$ swept $-5$ V to $+300$ V in 50 mV steps, each plate alone\\[2pt]
+  read $I_a(V_a)$: the drop at the sheets' currents (to 440 mA for the 5Y3), the exponent and perveance of $I_a = k V_a^n$ between 10 and 100 V,\\[2pt]
+  and the current at $V_a = 0$ and $-1$ V (a real diode's initial-velocity current, which the 6AL5 and 6H6 sheets plot)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

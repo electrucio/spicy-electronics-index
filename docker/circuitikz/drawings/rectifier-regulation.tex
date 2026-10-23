@@ -1,0 +1,53 @@
+% Full-wave rectifier: regulation, ripple and peak current (rectifier-regulation): the set-up a person would wire, semantically the deck's.
+%   VPi pi 0 SIN(0 <√2 Vac> <f>), RSPi pi pai <Rs>, VMAi pai tai 0   one half of the secondary, its supply resistance, the plate ammeter -> source (set), ammeter I_a (measured)
+%   VNi ni 0 SIN(0 -<√2 Vac> <f>), RSNi …, VMBi …                    the other half, in antiphase
+%   XTi tai tbi ci DUT                                                the twin diode
+%   C1i ci 0 <C1>, ILi ci 0 <Idc>  (capacitor input)  or  L1i ci lmi <L>, RLCi …, C2i oi 0 <C2>, ILi oi 0 <Idc>  (choke input)
+%   .tran 40 mains periods, the last five read; one copy per (Vac, Idc)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.4}{Full-wave rectifier: regulation, ripple and peak current}
+\def\gnd{0.8}
+% the two halves of the secondary, each with its supply resistance and the plate ammeter
+\coordinate (pt) at (1.0,5.0);
+\coordinate (pb) at (1.0,1.6);
+\draw[set] (pt) to[sV, l_={$\sqrt 2\,V_{ac}\sin\omega t$}] (1.0,3.3) coordinate (ctap);
+\draw[set] (ctap) to[sV, l_={$-\sqrt 2\,V_{ac}\sin\omega t$}] (pb);
+\draw (ctap) -- ++(-0.6,0) node[ground, rotate=-90]{};
+\draw (pt) to[R, l={$R_s$}] ++(2.2,0) coordinate (pa);
+\coordinate (pam) at ($(pa)+(1.6,0)$);
+\ammeterh{pa}{pam}{$I_{a1}$}
+\draw (pb) to[R, l_={$R_s$}] ++(2.2,0) coordinate (pbx);
+\coordinate (pbm) at ($(pbx)+(1.6,0)$);
+\ammeterh{pbx}{pbm}{$I_{a2}$}
+\node[diodetube, rotate=90] (D1) at ($(pam)+(1.3,0)$) {};
+\node[diodetube, rotate=90] (D2) at ($(pbm)+(1.3,0)$) {};
+\draw (pam) -- (D1.anode); \draw (pbm) -- (D2.anode);
+\draw (D1.cathode) -- ++(0.5,0) coordinate (k1); \draw (D2.cathode) -- ++(0.5,0) coordinate (k2);
+\draw (k1) -- (k2);
+\coordinate (c) at ($(k1)!0.5!(k2)+(1.0,0)$);
+\draw ($(k1)!0.5!(k2)$) -- (c);
+\node[font=\small, align=center] at ($(D1)!0.5!(D2)$) {DUT\\(twin diode)};
+\draw (c) to[C, l={$C_1$}] (c |- 0,\gnd) node[ground]{};
+\draw (c) to[L, l={$L$, $R_L$}] ++(2.6,0) coordinate (o);
+\draw (o) to[C, l={$C_2$}] (o |- 0,\gnd) node[ground]{};
+\draw (o) -- ++(1.4,0) coordinate (il);
+\draw[set] (il) to[I, l={$I_{dc}$}] (il |- 0,\gnd) node[ground, black]{};
+% the voltmeter on il
+\coordinate (vdc) at ($(il)+(2.4,0)$);
+\draw (il) -- (vdc);
+\voltmeter{vdc |- 0,\gnd}{vdc}{$V_{dc}$}
+\draw (vdc |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(c)+(0.3,0.05)$}{c}
+\nodename{anchor=south}{$(o)+(0.3,0.05)$}{o}
+% the definitions
+\definitions{0,-0.5}{%
+  capacitor input: $C_1$ straight to the load ($L$ shorted, no $C_2$);\quad choke input: no $C_1$, $L$ then $C_2$;\quad the load a constant current $I_{dc}$, 0 to 300 mA in 10 mA steps\\[2pt]
+  $V_{ac}$ per plate = 150 to 550 V in 50 V steps (the sheets' curve families);\quad $R_s$ per plate = 0, 25, 50, 75, 100, 135, 150, 200 \ohm;\quad $C_1 = 4$, 8, 10, 16, 20, 32, 40, 60 \textmu F\\[2pt]
+  $L = 5$, 10, 20, 40 H and `infinite' (the 6X4 chart's solid curves);\quad $C_2 = 10$, 40 \textmu F;\quad 50 and 60 Hz;\quad and every curve the sheets draw, with their own $C$, $L$ and $R_s$\\[2pt]
+  read $V_{dc}$ (the mean at the filter's input), the ripple, the steady peak plate current per plate, and the rectification efficiency $V_{dc}/(\sqrt 2 V_{ac})$ (GE's definition)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

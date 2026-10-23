@@ -1,0 +1,106 @@
+% Interelectrode capacitances (tube-capacitance): the set-up a person would wire, semantically the deck's.
+%   VG1g g1g 0 DC <vg> AC 1, VAg ag 0 250, VKg kg 0 0, XCg …   copy A: the grid driven, every other electrode at AC ground through its ammeter
+%   VAa aa 0 DC 250 AC 1, …, XCa …                              copy B: the anode driven
+%   (pentode) VG2s g2s 0 DC 250 AC 1, …, XCs …                  copy C: the screen driven
+%   .ac at 1 MHz; C between two electrodes = Im(i) / (2 pi f) of the current into the undriven one
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.0}{Interelectrode capacitances}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (TA) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.95,0)$) {A};
+\node[font=\small] at ($(TA.anode)+(-1.0,1.9)$) {grid driven};
+% copy A: the cathode through its ammeter to ground
+\coordinate (Akb) at ($(TA.cathode)+(0,-1.4)$);
+\ammeter{Akb}{TA.cathode}{$i_k$}
+\draw (Akb) -- (Akb |- 0,\gnd) node[ground]{};
+% the ammeter in the anode, up to the rail
+\coordinate (Atop) at ($(TA.anode)+(0,1.5)$);
+\ammeter{TA.anode}{Atop}{$i_a$}
+% the anode supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_a$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (TA.control);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$i$}
+\coordinate (Agsrc) at ($(Agam)+(-0.9,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{g1} + v$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TA.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (As);
+\coordinate (Asend) at ($(TA.anode |- As)+(-5.0,0)$);
+\coordinate (Asam) at ($(As)+(-1.6,0)$);
+\ammeterh{Asam}{As}{$i_{g2}$}
+\draw (Asam) -- (Asend);
+\draw[set] (Asend) to[V, l_={$V_{g2}$}] (Asend |- 0,\gnd) node[ground, black]{};
+% the pentode
+\node[pentode, scale=1.6] (TB) at (13.4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TB.anode)!0.62!(TB.cathode)+(0.95,0)$) {B};
+\node[font=\small] at ($(TB.anode)+(-1.0,1.9)$) {anode driven};
+% copy B: the cathode through its ammeter to ground
+\coordinate (Bkb) at ($(TB.cathode)+(0,-1.4)$);
+\ammeter{Bkb}{TB.cathode}{$i_k$}
+\draw (Bkb) -- (Bkb |- 0,\gnd) node[ground]{};
+% the ammeter in the anode, up to the rail
+\coordinate (Btop) at ($(TB.anode)+(0,1.5)$);
+\ammeter{TB.anode}{Btop}{$i$}
+% the anode supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_a + v$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Bg) at (TB.control);
+\coordinate (Bgam) at ($(Bg)+(-1.7,0)$);
+\ammeterh{Bgam}{Bg}{$i_g$}
+\coordinate (Bgsrc) at ($(Bgam)+(-0.9,0)$);
+\draw (Bgam) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{g1}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TB.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (Bs);
+\coordinate (Bsend) at ($(TB.anode |- Bs)+(-5.0,0)$);
+\coordinate (Bsam) at ($(Bs)+(-1.6,0)$);
+\ammeterh{Bsam}{Bs}{$i_{g2}$}
+\draw (Bsam) -- (Bsend);
+\draw[set] (Bsend) to[V, l_={$V_{g2}$}] (Bsend |- 0,\gnd) node[ground, black]{};
+% the pentode
+\node[pentode, scale=1.6] (TC) at (22.8,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TC.anode)!0.62!(TC.cathode)+(0.95,0)$) {C};
+\node[font=\small] at ($(TC.anode)+(-1.0,1.9)$) {screen driven};
+% copy C: the cathode through its ammeter to ground
+\coordinate (Ckb) at ($(TC.cathode)+(0,-1.4)$);
+\ammeter{Ckb}{TC.cathode}{$i_k$}
+\draw (Ckb) -- (Ckb |- 0,\gnd) node[ground]{};
+% the ammeter in the anode, up to the rail
+\coordinate (Ctop) at ($(TC.anode)+(0,1.5)$);
+\ammeter{TC.anode}{Ctop}{$i_a$}
+% the anode supply at the right, + up, - to ground
+\coordinate (Cvtop) at ($(Ctop)+(2.6,0)$);
+\draw (Ctop) -- (Cvtop);
+\draw[set] (Cvtop) to[V, l={$V_a$}] (Cvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Cg) at (TC.control);
+\coordinate (Cgam) at ($(Cg)+(-1.7,0)$);
+\ammeterh{Cgam}{Cg}{$i_g$}
+\coordinate (Cgsrc) at ($(Cgam)+(-0.9,0)$);
+\draw (Cgam) -- (Cgsrc);
+\draw[set] (Cgsrc) to[V, l_={$V_{g1}$}] (Cgsrc |- 0,\gnd) node[ground, black]{};
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TC.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (Cs);
+\coordinate (Csend) at ($(TC.anode |- Cs)+(-5.0,0)$);
+\coordinate (Csam) at ($(Cs)+(-1.6,0)$);
+\ammeterh{Csam}{Cs}{$i$}
+\draw (Csam) -- (Csend);
+\draw[set] (Csend) to[V, l_={$V_{g2} + v$}] (Csend |- 0,\gnd) node[ground, black]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_a = 250$ V, $V_{g2} = 250$ V, $V_{g1}$ at the model's cut-off (the tube cold, as the sheets measure it), and again at $I_a = I_0/4$ (hot);\quad $v = 1$ V of AC at $f = 1$ MHz\\[2pt]
+  $C = \mathrm{Im}(i)/(2\pi f)$ of each undriven electrode's current: $C_{g1k}$, $C_{g1a}$, $C_{ak}$, $C_{g1g2}$, $C_{g2k}$, $C_{ag2}$;\quad a triode is copies A and B without the screen\\[2pt]
+  the sheets' input and output capacitances: $C_{in} = C_{g1k} + C_{g1g2}$ (+ $C_{g1a}$ with the anode at AC ground), $C_{out} = C_{ak} + C_{ag2}$;\quad the Miller input $C_{g1k} + (1 + A)\,C_{g1a}$ at the gain $A$ of the RC chart's cells%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

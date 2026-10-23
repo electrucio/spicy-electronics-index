@@ -1,0 +1,66 @@
+% Single-ended output stage, pentode (pentode-power-se): the set-up a person would wire, semantically the deck's.
+%   VB b 0 <vb>                         the supply (B+)                                                   -> source V_b (set)
+%   BH an b V=-RL*(i(VA)-<mean>)        the ideal transformer: the load reflected, no DC drop            -> transformer, R_L
+%   VA an at 0                          the anode ammeter                                                 -> ammeter I_a (measured)
+%   VK k 0 <Rk*mean Ik> or 0            the cathode: on the ideal bypass, or grounded (fixed bias)        -> source (set)
+%   VG g 0 DC <vg> SIN(<vg> <drive> 1k) the grid: the bias and the drive straight in                      -> source V_g1 + v_in (set), ammeter I_g (measured)
+%   VSS sn 0 <Vg2 - Rg2*mean Ig2>, VS sn sg 0   the screen on its ideal decoupling -> source V_g2 (set), ammeter I_g2 (measured)
+%   .tran 6 periods, the last four read; the mean anode current, the cathode and screen voltages found by the secant method
+%   One copy per (load, drive); the drawing shows one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,9.4}{Single-ended output stage, pentode}
+\def\gnd{0.8}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+% the anode ammeter, then the primary of the ideal transformer up to the supply
+\coordinate (am) at ($(T.anode)+(0,1.1)$);
+\ammeter{T.anode}{am}{$I_a$}
+\draw (am) -- ++(0,0.3) coordinate (p1);
+\draw (p1) to[L] ++(0,1.5) coordinate (p2);
+\coordinate (s1) at ($(p1)+(1.0,0)$);
+\coordinate (s2) at ($(p2)+(1.0,0)$);
+\draw (s1) to[L, mirror] (s2);
+\draw[thick] ($(p1)!0.45!(s1)+(0,0.15)$) -- ($(p2)!0.45!(s2)+(0,-0.15)$) ($(p1)!0.55!(s1)+(0,0.15)$) -- ($(p2)!0.55!(s2)+(0,-0.15)$);
+\draw (s2) -- ++(1.0,0) coordinate (r2);
+\draw (r2) to[R, l_={$R_L$}] (r2 |- s1) -- (s1);
+\coordinate (vo) at ($(r2)+(2.4,0)$);
+\draw (r2) -- (vo);
+\voltmeter{vo |- s1}{vo}{$v_{out}$}
+\draw (vo |- s1) -- (r2 |- s1);
+\draw (p2) -- ++(0,0.5) coordinate (vtop) -- ++(6.6,0) coordinate (vb);
+\draw[set] (vb) to[V, l={$V_b$}] (vb |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=east}{$(T.anode)+(-0.1,0.25)$}{at}
+\nodename{anchor=east}{$(p1)+(-0.1,0)$}{an}
+\nodename{anchor=south}{$(vtop)+(4.6,0.05)$}{b}
+% the cathode on its bias
+\draw[set] (T.cathode) to[V, l={$R_k \bar I_k$}] (T.cathode |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=east}{$(T.cathode)+(-0.1,-0.25)$}{k}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_g$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1} + v_{in}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{g}
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (s);
+\coordinate (send) at ($(T.anode |- s)+(-8.2,0)$);
+\draw (s) to[R, l_={$R_{g2}$}] ++(-1.8,0) coordinate (sr);
+\coordinate (sam) at ($(sr)+(-1.6,0)$);
+\ammeterh{sam}{sr}{$I_{g2}$}
+\draw (sam) -- (send);
+\draw[set] (send) to[V, l_={$V_{g2}$}] (send |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(s)+(-0.35,0.05)$}{sg}
+% the definitions
+\definitions{0,-0.6}{%
+  every single-ended column of the part's sheets, pentode, ultralinear and triode-connected;\quad around each: $R_L \times 0.25$ to 4, $V_{g2} \pm 50$ V, drive 0 to 1.25 times the sheet's\\[2pt]
+  the screen through $R_{g2}$ ideally decoupled, or straight on its supply;\quad Mullard's sensitivity: the drive for $P_{out} = 50$ mW\\[2pt]
+  read $P_{out}$, THD, D2, D3; $\bar I_a$, $\bar I_{g2}$ at zero and full signal; the peak $I_{g1}$; the output resistance from two loads%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

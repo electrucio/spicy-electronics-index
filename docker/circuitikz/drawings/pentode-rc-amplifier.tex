@@ -1,0 +1,62 @@
+% The resistance-coupled amplifier chart, pentode (pentode-rc-amplifier): the set-up a person would wire, semantically the deck's.
+%   VBBi bbi 0 <ebb>, RPi bbi ami <rp>, VAMi ami ai 0   the supply, the plate resistor, the anode ammeter   -> source E_bb (set), resistor R_p, ammeter I_a (measured)
+%   VKi ki 0 <vk>                                       the cathode on an ideal bypass: Rk times the mean cathode current, iterated -> source (set)
+%   VINi ini 0 SIN(0 <drive> 1k), RG1i ini 0 <rg1>, VGMi ini gi 0   the drive, the grid resistor, the grid ammeter -> source v_in (set)
+%   CCi ami oi 10u, RSi oi 0 <rs>                       the coupling capacitor and the next grid's resistor  -> voltmeter v_out (measured)
+%   XTi ai gi ki DUT; .tran 30 periods, the last ten read; a quiescent .op with the real Rk starts the iteration
+%   Fifteen copies, one per drive level (half-octave steps from the drive that gives 2 V rms out), drawn as one.
+%   RG2i bbi si <rg2>, the screen ideally decoupled (held at Ebb - Rg2 times its mean current)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.6}{The resistance-coupled amplifier chart, pentode}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+% copy : the anode resistor up to the rail, the anode ammeter under it
+\coordinate (am) at ($(T.anode)+(0,1.1)$);
+\ammeter{T.anode}{am}{$I_a$}
+\draw (am) to[R, l_={$R_p$}] ++(0,1.6) coordinate (top);
+\coordinate (vtop) at ($(top)+(6.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$E_{bb}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.0,0.05)$}{bb}
+\nodename{anchor=east}{$(am)+(-0.15,0.15)$}{a}
+% the cathode on an ideal bypass: a source set to Rk times the mean current
+\draw[set] (T.cathode) to[V, l={$R_k$\,$\bar I_k$}] (T.cathode |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=east}{$(T.cathode)+(-0.1,-0.25)$}{k}
+% the grid: its resistor to ground and the source
+\coordinate (g) at (T.control);
+\draw (g) -- ++(-0.6,0) coordinate (gj);
+\draw (gj) to[R, l_={$R_{g1}$}] (gj |- 0,\gnd) node[ground]{};
+\draw (gj) -- ++(-1.4,0) coordinate (vin);
+\draw[set] (vin) to[V, l_={$v_{in}$}] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.2,0.05)$}{g}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the screen: up and to the left, through Rg2 from the rail (carried over to it), decoupled by Cg2
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) coordinate (s1);
+\coordinate (sc) at ($(T.anode |- s1)+(-4.4,0)$);
+\draw (s1) -- (sc);
+\draw (sc) to[R, l={$R_{g2}$}] (sc |- top) -- (top);
+\draw (sc) -- ++(-1.3,0) coordinate (cs) to[C, l_={$C_{g2}$}] (cs |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(s1)+(-0.6,0.05)$}{s}
+% the output: through Cc into the next grid's resistor
+\coordinate (oj) at ($(am)+(0,0.0)$);
+\draw (am) -- ++(1.6,0) to[C, l={$C_c$}] ++(1.4,0) coordinate (o);
+\draw (o) to[R, l_={$R_s$}] (o |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(o)+(0.3,0.05)$}{o}
+% the voltmeter on o
+\coordinate (vo) at ($(o)+(1.2,0)$);
+\draw (o) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$v_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.3}{%
+  each cell of the sheet's chart (6J7: 120 cells; EF86: tables A to C, and the triode-connected tables): $E_{bb}$, $R_p$, $R_{g2}$, $R_s$, $R_k$ as printed\\[2pt]
+  the zero-bias rows ($R_{g1} = 10$ M\ohm, no $R_k$) need the grid's initial-velocity current to bias: a model without it runs at $V_{g1} = 0$, and says so\\[2pt]
+  gain at 2.0 V rms out and at small signal;\quad $E_o$ at 5\,\% THD; for the EF86's triode-connected tables, $v_{out}$ and THD at the onset of grid current%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

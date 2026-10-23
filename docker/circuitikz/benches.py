@@ -1,7 +1,7 @@
 """Writes docker/circuitikz/drawings/<id>.tex for every bench, in the house style; run it from the repository
 root after editing, then `make bench-drawings NAME=<id>` for each (or `make bench-drawings-all`). This file
-holds the building blocks and the bipolar benches; benches_fet.py and benches_opamp.py draw the JFET, MOSFET
-and op-amp ones with the same blocks and are run from here.
+holds the building blocks and the bipolar benches; benches_fet.py, benches_opamp.py and benches_tube.py draw the
+JFET, MOSFET, op-amp and tube ones with the same blocks and are run from here.
 
 The style (bench.sty): one sans typeface, LaTeX mathematics for the quantities and their definitions; a title
 top-left and the colour key under it; the circuit in the middle with every quantity named beside its symbol;
@@ -478,7 +478,9 @@ def main():
 if __name__ == "__main__":
     import benches_fet
     import benches_opamp
+    import benches_tube
 
     main()
     benches_fet.main()
     benches_opamp.main()
+    benches_tube.main()

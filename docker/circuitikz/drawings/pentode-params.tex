@@ -1,0 +1,88 @@
+% Transconductance, anode resistance and the screen's amplification factor (pentode-params): the set-up a person would wire, semantically the deck's.
+%   copy A: AC on the control grid   -> g_m = i_a / v_g1
+%   copy B: AC on the anode          -> 1/r_a = i_a / v_a
+%   copy C: AC on the screen         -> g_m2 = i_a / v_g2;  mu(g1-g2) = g_m / g_m2
+%   .ac lin 1 1k 1k; one set per (Vg2, Ia) of the ladders
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transconductance, anode resistance and the screen's amplification factor}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (TA) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.95,0)$) {A};
+% the cathode to ground
+\draw (TA.cathode) -- (TA.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TA.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Atop) at ($(TA.anode)+(0,1.6)$);
+\ammeter{TA.anode}{Atop}{$I_a + i_a$}
+% the anode supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_a$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Ag) at (TA.control);
+\coordinate (Agsrc) at ($(Ag)+(-1.1,0)$);
+\draw (Ag) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{g1} + v$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TA.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (As);
+\coordinate (Asend) at ($(TA.anode |- As)+(-5.0,0)$);
+\draw (As) -- (Asend);
+\draw[set] (Asend) to[V, l_={$V_{g2}$}] (Asend |- 0,\gnd) node[ground, black]{};
+% the pentode
+\node[pentode, scale=1.6] (TB) at (13.4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TB.anode)!0.62!(TB.cathode)+(0.95,0)$) {B};
+% the cathode to ground
+\draw (TB.cathode) -- (TB.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TB.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Btop) at ($(TB.anode)+(0,1.6)$);
+\ammeter{TB.anode}{Btop}{$I_a + i_a$}
+% the anode supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.6,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_a + v$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Bg) at (TB.control);
+\coordinate (Bgsrc) at ($(Bg)+(-1.1,0)$);
+\draw (Bg) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{g1}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TB.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (Bs);
+\coordinate (Bsend) at ($(TB.anode |- Bs)+(-5.0,0)$);
+\draw (Bs) -- (Bsend);
+\draw[set] (Bsend) to[V, l_={$V_{g2}$}] (Bsend |- 0,\gnd) node[ground, black]{};
+% the pentode
+\node[pentode, scale=1.6] (TC) at (22.8,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TC.anode)!0.62!(TC.cathode)+(0.95,0)$) {C};
+% the cathode to ground
+\draw (TC.cathode) -- (TC.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TC.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Ctop) at ($(TC.anode)+(0,1.6)$);
+\ammeter{TC.anode}{Ctop}{$I_a + i_a$}
+% the anode supply at the right, + up, - to ground
+\coordinate (Cvtop) at ($(Ctop)+(2.6,0)$);
+\draw (Ctop) -- (Cvtop);
+\draw[set] (Cvtop) to[V, l={$V_a$}] (Cvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Cg) at (TC.control);
+\coordinate (Cgsrc) at ($(Cg)+(-1.1,0)$);
+\draw (Cg) -- (Cgsrc);
+\draw[set] (Cgsrc) to[V, l_={$V_{g1}$}] (Cgsrc |- 0,\gnd) node[ground, black]{};
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TC.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (Cs);
+\coordinate (Csend) at ($(TC.anode |- Cs)+(-5.0,0)$);
+\draw (Cs) -- (Csend);
+\draw[set] (Csend) to[V, l_={$V_{g2} + v$}] (Csend |- 0,\gnd) node[ground, black]{};
+% the definitions
+\definitions{0,-0.1}{%
+  $V_a = V_{g2} = 250$ V (and $V_a = 100$, 400 V);\quad $V_{g2}$ = 50, 100, 150, 175, 200, 225, 250, 300, 350, 400, 450 V;\quad $I_a = 10$ \textmu A to 500 mA, 1-2-5;\quad $v = 1$ V of AC at 1 kHz\\[2pt]
+  A: $g_m$;\quad B: $r_a$;\quad C: $g_{m2}$;\quad $\mu_{g1g2} = g_m / g_{m2}$, the amplification factor a pentode's sheet prints (11 for the EL34), not $g_m r_a$\\[2pt]
+  and at the sheets' own points, at the sheet's grid voltage and at the sheet's anode current%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

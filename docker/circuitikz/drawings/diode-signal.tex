@@ -1,0 +1,43 @@
+% Signal diode: initial-velocity current and detection (diode-signal): the set-up a person would wire, semantically the deck's.
+%   copy A: VA a 0, .dc VA -3 20 0.01; XD a 0 DUT                              -> source V_a (set), ammeter I_a (measured)
+%   copy B: VIN in 0 SIN(0 <√2 Vin> <f>), XD in o DUT, RL o 0 <RL>, CL o 0 <CL>   -> source v_in (set), voltmeter V_dc (measured)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Signal diode: initial-velocity current and detection}
+\def\gnd{1.0}
+% the diode
+\node[diodetube, scale=1.35] (TA) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.75,0)$) {A};
+% the cathode to ground
+\draw (TA.cathode) -- (TA.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TA.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Atop) at ($(TA.anode)+(0,1.6)$);
+\ammeter{TA.anode}{Atop}{$I_a$}
+\nodename{anchor=west}{$(TA.anode)+(0.1,0.25)$}{a}
+% the anode supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_a$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% copy B: the detector, the vacuum diode in series and the RC load
+\node[diodetube, rotate=90] (DB) at (13.2,3.6) {};
+\draw (DB.anode) -- ++(-1.6,0) coordinate (bin);
+\draw[set] (bin) to[sV, l_={$v_{in}$}] (bin |- 0,\gnd) node[ground, black]{};
+\draw (DB.cathode) -- ++(0.8,0) coordinate (bo);
+\draw (bo) to[R, l_={$R_L$}] (bo |- 0,\gnd) node[ground]{};
+\draw (bo) -- ++(1.4,0) coordinate (bc) to[C, l_={$C_L$}] (bc |- 0,\gnd) node[ground]{};
+\node[font=\small] at ($(DB)+(0,0.85)$) {B: DUT};
+% the voltmeter on bc
+\coordinate (bv) at ($(bc)+(2.0,0)$);
+\draw (bc) -- (bv);
+\voltmeter{bv |- 0,\gnd}{bv}{$V_{dc}$}
+\draw (bv |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_a$ swept $-3$ V to $+20$ V in 10 mV steps;\quad read $I_a$ on a log scale: the current at $V_a = 0$ and $-1$ V, and $V_a$ at 10 \textmu A\\[2pt]
+  B: $v_{in} = 1$ to 100 V rms at 1 kHz and 455 kHz;\quad $R_L = 0.1$, 0.25, 0.5, 1 M\ohm;\quad $C_L = 100$ pF;\quad read $V_{dc}$ (the 6AL5 and 6H6 operation characteristics)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

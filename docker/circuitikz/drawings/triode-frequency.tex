@@ -1,0 +1,55 @@
+% Response with source resistance and load capacitance (triode-frequency): the set-up a person would wire, semantically the deck's.
+%   VBBi bbi 0 <ebb>, RPi bbi ami <rp>, VAMi ami ai 0   the supply, the plate resistor, the anode ammeter   -> source E_bb (set), resistor R_p, ammeter I_a (measured)
+%   VKi ki 0 <vk>                                       the cathode on an ideal bypass: Rk times the mean cathode current, iterated -> source (set)
+%   VINi ini 0 AC 1, RG1i ini 0 <rg1>, VGMi ini gi 0   the drive, the grid resistor, the grid ammeter -> source v_in (set)
+%   CCi ami oi 10u, RSi oi 0 <rs>                       the coupling capacitor and the next grid's resistor  -> voltmeter v_out (measured)
+%   XTi ai gi ki DUT; .ac 1 Hz to 10 MHz; a quiescent .op with the real Rk starts the iteration
+%   Fifteen copies, one per drive level (half-octave steps from the drive that gives 2 V rms out), drawn as one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,8.6}{Response with source resistance and load capacitance}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (4,3.8) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% copy : the anode resistor up to the rail, the anode ammeter under it
+\coordinate (am) at ($(T.anode)+(0,1.1)$);
+\ammeter{T.anode}{am}{$I_a$}
+\draw (am) to[R, l_={$R_p$}] ++(0,1.6) coordinate (top);
+\coordinate (vtop) at ($(top)+(6.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$E_{bb}$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.0,0.05)$}{bb}
+\nodename{anchor=east}{$(am)+(-0.15,0.15)$}{a}
+% the cathode on an ideal bypass: a source set to Rk times the mean current
+\draw[set] (T.cathode) to[V, l={$R_k$\,$\bar I_k$}] (T.cathode |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=east}{$(T.cathode)+(-0.1,-0.25)$}{k}
+% the grid: its resistor to ground and the source
+\coordinate (g) at (T.control);
+\draw (g) -- ++(-0.6,0) coordinate (gj);
+\draw (gj) to[R, l_={$R_{g1}$}] (gj |- 0,\gnd) node[ground]{};
+\draw (gj) -- ++(-0.3,0) to[R, l_={$R_{src}$}] ++(-1.8,0) coordinate (vin);
+\draw[set] (vin) to[V, l_={$v_{in}$}] (vin |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(g)+(-0.2,0.05)$}{g}
+\nodename{anchor=south east}{$(vin)+(-0.05,0.05)$}{in}
+% the output: through Cc into the next grid's resistor
+\coordinate (oj) at ($(am)+(0,0.0)$);
+\draw (am) -- ++(1.6,0) to[C, l={$C_c$}] ++(1.4,0) coordinate (o);
+\draw (o) to[R, l_={$R_s$}] (o |- 0,\gnd) node[ground]{};
+\nodename{anchor=south}{$(o)+(0.3,0.05)$}{o}
+\draw (o) -- ++(1.1,0) coordinate (cl) to[C, l={$C_L$}] (cl |- 0,\gnd) node[ground]{};
+% the voltmeter on cl
+\coordinate (vo) at ($(cl)+(1.2,0)$);
+\draw (cl) -- (vo);
+\voltmeter{vo |- 0,\gnd}{vo}{$v_{out}$}
+\draw (vo |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.3}{%
+  the chart's cells;\quad $R_{src} = 0$, 1 k, 10 k, 47 k, 100 k, 470 k\ohm, 1 M\ohm;\quad $C_L = 0$, 10, 47, 100 pF (the next stage's Miller input and the wiring)\\[2pt]
+  read $|v_{out}/v_{in}|$ from 1 Hz to 10 MHz: the upper $-3$ dB frequency, set by $R_{src}$ against the Miller input $C_{g1k} + (1+A)\,C_{g1a}$, and by $r_a \parallel R_p \parallel R_s$ against $C_{ak} + C_L$\\[2pt]
+  a model without capacitances has no upper corner: `absent'%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

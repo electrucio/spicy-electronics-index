@@ -1,0 +1,39 @@
+% Grid current: onset, contact potential and input resistance (triode-grid-current): the set-up a person would wire, semantically the deck's.
+%   VAk ak 0 <va>, VGKk g gk 0, XTk ak gk 0 DUT   copy k at its anode voltage; the grid's current through the 0 V source -> ammeter I_g (measured)
+%   VG g 0, .dc                                   the grid drive, swept through zero                                    -> source V_g1 (set)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Grid current: onset, contact potential and input resistance}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_g$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{g}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{g1}$ swept $-5$ V to $+5$ V in 20 mV steps (the transfer sweep's grid ammeters);\quad $V_a = 100$, 250 and 400 V\\[2pt]
+  read $I_g(V_{g1})$: the onset $V_{g1}$ at $I_g = +0.3$ \textmu A (Mullard's and Philips's condition) and 1 \textmu A;\quad $I_g$ at $-0.5$, 0, +1, +5 V\\[2pt]
+  the input resistance $dV_{g1}/dI_g$ at +1 V;\quad no grid current up to +1 V: `absent'%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

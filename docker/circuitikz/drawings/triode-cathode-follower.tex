@@ -1,0 +1,60 @@
+% Cathode follower and cathodyne (triode-cathode-follower): the set-up a person would wire, semantically the deck's.
+%   VBB bb 0 <ebb>, XT bb g k DUT, RK k kx <rk>, RB kx 0 <rb>, RG g kx 1meg   copy A: the follower, the grid returned to the tap
+%   VBB, RP bb a <rl>, XT a g k, RK k 0 <rl>                                  copy B: the cathodyne, equal loads in anode and cathode
+%   VIN in 0 SIN(…) / AC 1; read v(k) (A), v(a) and v(k) (B)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,9.0}{Cathode follower and cathodyne}
+\def\gnd{0.6}
+% the triode
+\node[triode, scale=1.35] (TA) at (4,4.6) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.75,0)$) {A};
+% copy A: the anode on the rail, the cathode through Rk and Rb to ground, the grid returned between them
+\draw (TA.anode) -- ++(0,2.2) coordinate (Atop);
+\coordinate (Avtop) at ($(Atop)+(3.6,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$E_{bb}$}] (Avtop |- 0,\gnd) node[ground, black]{};
+\draw (TA.cathode) to[R, l={$R_k$}] ++(0,-1.5) coordinate (Akx) to[R, l={$R_b$}] (Akx |- 0,\gnd) node[ground]{};
+\draw (TA.control) -- ++(-0.9,0) coordinate (Agj) to[R, l_={$R_{g}$}] (Agj |- Akx) -- (Akx);
+\draw (Agj) -- ++(-1.3,0) coordinate (Ain);
+\draw[set] (Ain) to[V, l_={$v_{in}$}] (Ain |- 0,\gnd) node[ground, black]{};
+\coordinate (Akm) at ($(TA.cathode)+(0,-0.3)$);
+% the voltmeter on Akm
+\coordinate (Avk) at ($(Akm)+(2.0,0)$);
+\draw (Akm) -- (Avk);
+\voltmeter{Avk |- 0,\gnd}{Avk}{$v_k$}
+\draw (Avk |- 0,\gnd) node[ground]{};
+\nodename{anchor=east}{$(TA.cathode)+(-0.1,-0.25)$}{k}
+\nodename{anchor=south}{$(Agj)+(-0.2,0.05)$}{g}
+% the triode
+\node[triode, scale=1.35] (TB) at (14.4,4.6) {};
+\node[anchor=west, font=\small, align=left] at ($(TB.anode)!0.62!(TB.cathode)+(0.75,0)$) {B};
+% copy B: equal loads in the anode and the cathode
+\draw (TB.anode) -- ++(0,0.5) coordinate (Baj) to[R, l_={$R_L$}] ++(0,1.7) coordinate (Btop);
+\coordinate (Bvtop) at ($(Btop)+(4.8,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$E_{bb}$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+\draw (TB.cathode) to[R, l={$R_L$}] (TB.cathode |- 0,\gnd) node[ground]{};
+\draw (TB.control) -- ++(-1.4,0) coordinate (Bin);
+\draw[set] (Bin) to[V, l_={$V_{bias} + v_{in}$}] (Bin |- 0,\gnd) node[ground, black]{};
+% the voltmeter on Baj
+\coordinate (Bva) at ($(Baj)+(2.4,0)$);
+\draw (Baj) -- (Bva);
+\voltmeter{Bva |- 0,\gnd}{Bva}{$v_a$}
+\draw (Bva |- 0,\gnd) node[ground]{};
+\coordinate (Bkm) at ($(TB.cathode)+(0,-0.3)$);
+% the voltmeter on Bkm
+\coordinate (Bvk) at ($(Bkm)+(3.6,0)$);
+\draw (Bkm) -- (Bvk);
+\voltmeter{Bvk |- 0,\gnd}{Bvk}{$v_k$}
+\draw (Bvk |- 0,\gnd) node[ground]{};
+% the definitions
+\definitions{0,-0.6}{%
+  A: $E_{bb} = 250$ and 300 V;\quad $I_a = I_0/8$, $I_0/4$, $I_0/2$ ($I_0$ the model's current at 250 V and 0 V), $R_k$ for the bias, $R_b$ for the current;\quad $R_g = 1$ M\ohm\\[2pt]
+  read the gain $v_k/v_{in}$, the output resistance (a 1 mA AC current pushed into the cathode), and the largest swing at 1\,\% and 5\,\% THD\\[2pt]
+  B: $R_L = 22$, 47, 100 k\ohm{} in each;\quad the balance $|v_a| / |v_k|$ and the two outputs' resistances (unequal: the cathodyne's known asymmetry)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

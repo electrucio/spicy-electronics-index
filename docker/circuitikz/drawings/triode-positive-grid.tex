@@ -1,0 +1,40 @@
+% Positive-grid characteristics (triode-positive-grid): the set-up a person would wire, semantically the deck's.
+%   VAk sw ak 0, VGk gk 0 <+vg>, XTk ak gk 0 DUT   a copy per positive grid voltage   -> source V_g1 (set), ammeters I_a and I_g (measured)
+%   VSW sw 0, .dc                                    the swept anode supply             -> source V_a (set)
+%   Ten copies drawn as one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Positive-grid characteristics}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(top)+(1.3,0.05)$}{sw}
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_g$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$+V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{gk}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{g1} = 0$, +0.5, 1, 2, 5, 10, 15, 20, 30, 40, 50 V;\quad $V_a$ swept 0 to 600 V in 1 V steps (0.1 V below 50 V)\\[2pt]
+  read $I_a$ and $I_g$ against $V_a$: the grid's share of the cathode current $I_g/(I_a + I_g)$, largest where $V_a$ is low (class A2 and AB2, the 300B, 2A3 and 6C33C sheets)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

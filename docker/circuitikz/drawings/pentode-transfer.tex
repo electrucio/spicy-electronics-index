@@ -1,0 +1,48 @@
+% Transfer characteristics, cut-off and remote cut-off (pentode-transfer): the set-up a person would wire, semantically the deck's.
+%   VAk ak 0 <va>, VSk sk 0 <vg2> (or through Rg2 from a supply), VGKk g gk 0, XTk …   copy k   -> ammeters I_a, I_g2, I_g1 (measured)
+%   VG g 0, .dc   the control-grid drive, swept                                                 -> source V_g1 (set)
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transfer characteristics, cut-off and remote cut-off}
+\def\gnd{1.0}
+% the pentode
+\node[pentode, scale=1.6] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.95,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_{g1}$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{g}
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (T.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (s);
+\coordinate (send) at ($(T.anode |- s)+(-8.2,0)$);
+\draw (s) to[R, l_={$R_{g2}$}] ++(-1.8,0) coordinate (sr);
+\coordinate (sam) at ($(sr)+(-1.6,0)$);
+\ammeterh{sam}{sr}{$I_{g2}$}
+\draw (sam) -- (send);
+\draw[set] (send) to[V, l_={$V_{g2}$}] (send |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(s)+(-0.35,0.05)$}{sk}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{g1}$ swept $-150$ V to $+5$ V in 10 mV steps;\quad $V_a = 100$, 250, 300, 400, 500 V;\quad $V_{g2}$ = 50, 100, 150, 175, 200, 225, 250, 300, 350, 400, 450 V, direct ($R_{g2} = 0$)\\[2pt]
+  and the remote-cut-off connection: the screen through 33 k\ohm{} from 250 V (6BA6) and 250 k\ohm{} from 300 V (6SJ7)\\[2pt]
+  read $I_a$, $I_{g2}$ against $V_{g1}$, lin and log;\quad cut-off at $I_a = 10$ \textmu A;\quad $g_m = dI_a/dV_{g1}$ and $V_{g1}$ where it falls to 2, 10, 40, 100 \textmu mho (the 6K7, 6BA6 conditions)%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

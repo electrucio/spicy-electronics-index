@@ -38,6 +38,15 @@ checklist; every session that touches the bench starts here and ticks what it fi
       read, green node names): `docker/circuitikz/benches_fet.py` and `benches_opamp.py`,
       [bench-drawings.md](bench-drawings.md).
 
+- [x] **The tube bench specified** ([tube-characterisation.md](tube-characterisation.md)): the survey of 50 tube
+      sheets read page by page (`data/datasheets/survey/tube/`, 237 graphs and 5,074 table rows, each mapped to
+      the measurement that reproduces it), 41 `tube-*`, `triode-*`, `pentode-*`, `rectifier-*`, `diode-*`
+      (and `heptode-`, `indicator-`) measurements in two layers (universal ladders, and every sheet row and graph as conditions), their 29
+      drawings (`docker/circuitikz/benches_tube.py`), and a preview of them on ngspice over every curated model of
+      45 surveyed parts (`docker/sim/preview/tube_preview.py`). The triode's first eight entries are in the
+      catalogue (kind `tube`), and the 12AX7's ten curated models are measured with them on its part page, made
+      on this machine by `docker/sim/preview/tube_records.py` and kept in the records' supplement.
+
 ## Pending, in the order that unblocks the rest
 
 1. **QSPICE and LTspice runs on the maintainer's machine** (`make bench-character KIND=jfet|mosfet|amplifier
@@ -58,6 +67,15 @@ checklist; every session that touches the bench starts here and ticks what it fi
 6. **The survey's missing sheets**: Analog Devices, ST, Rohm and Intersil from the Internet Archive when it
    can be reached from the machine that runs it, and more sheets opened by hand where robots.txt says no
    (Nisshinbo, Microchip). Renesas answered 403.
+
+7. **The tubes through the pipeline**: the rest of the catalogue entries, `decks_tube.py` on the shape of
+   `tube_preview.py`'s decks (the dialect search and parameter declaration of `tube-runs`, the secant-solved
+   ideal bypasses and transformers), the `tube-card` reader in `models/cards.py`, the SVGs of the drawings
+   (`make bench-drawings-all`), QSPICE and LTspice runs, and the sheet layer reading
+   `data/datasheets/survey/tube/`. Two to three sessions.
+8. **The tube survey's missing sheets and curves**: the 6SJ7's and 12AY7's resistance-coupled charts the
+   sheets refer to and do not contain, the 6AU6's and 6BA6's screen rating charts; digitising the static
+   curves so that `tube-sheet-figures` can be scored, not only laid over the crops. One session.
 
 ## What the preview says the pipeline must handle
 

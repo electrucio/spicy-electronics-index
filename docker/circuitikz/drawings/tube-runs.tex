@@ -1,0 +1,83 @@
+% Does the model load (tube-runs): the set-up a person would wire, semantically the deck's.
+%   VA0 a0 0 250, VG10 g10 0 0, XT0 a0 g10 0 DUT         copy A, a triode at 250 V and 0 V   -> sources V_a, V_g1 (set), ammeters I_a, I_g (measured)
+%   VA0 a0 0 250, VG20 g20 0 250, VG10 g10 0 0, XT0 …    copy B, a pentode, the screen at 250 V -> source V_g2 (set), ammeter I_g2 (measured)
+%   VA0 a0 0 10, XT0 a0 0 DUT                            copy C, a diode at 10 V               -> source V_a (set), ammeter I_a (measured)
+%   .op, in each dialect of the engine in turn; the parameters a caller passes are declared on the .SUBCKT line when needed
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.4}{Does the model load}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (TA) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TA.anode)!0.62!(TA.cathode)+(0.75,0)$) {A};
+% the cathode to ground
+\draw (TA.cathode) -- (TA.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TA.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Atop) at ($(TA.anode)+(0,1.6)$);
+\ammeter{TA.anode}{Atop}{$I_a$}
+\nodename{anchor=west}{$(TA.anode)+(0.1,0.25)$}{a0}
+% the anode supply at the right, + up, - to ground
+\coordinate (Avtop) at ($(Atop)+(2.0,0)$);
+\draw (Atop) -- (Avtop);
+\draw[set] (Avtop) to[V, l={$V_a$}] (Avtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (Ag) at (TA.control);
+\coordinate (Agam) at ($(Ag)+(-1.7,0)$);
+\ammeterh{Agam}{Ag}{$I_g$}
+\coordinate (Agsrc) at ($(Agam)+(-1.0,0)$);
+\draw (Agam) -- (Agsrc);
+\draw[set] (Agsrc) to[V, l_={$V_{g1}$}] (Agsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Agam)+(-0.4,0.02)$}{g10}
+% the pentode
+\node[pentode, scale=1.6] (TB) at (14,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TB.anode)!0.62!(TB.cathode)+(0.95,0)$) {B};
+% the cathode to ground
+\draw (TB.cathode) -- (TB.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TB.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Btop) at ($(TB.anode)+(0,1.6)$);
+\ammeter{TB.anode}{Btop}{$I_a$}
+\nodename{anchor=west}{$(TB.anode)+(0.1,0.25)$}{a0}
+% the anode supply at the right, + up, - to ground
+\coordinate (Bvtop) at ($(Btop)+(2.0,0)$);
+\draw (Btop) -- (Bvtop);
+\draw[set] (Bvtop) to[V, l={$V_a$}] (Bvtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground
+\coordinate (Bg) at (TB.control);
+\coordinate (Bgsrc) at ($(Bg)+(-1.0,0)$);
+\draw (Bg) -- (Bgsrc);
+\draw[set] (Bgsrc) to[V, l_={$V_{g1}$}] (Bgsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bg)+(-0.45,0.02)$}{g10}
+% the screen, out to the left above the grid's circuit, to its own supply
+\draw (TB.screen) -- ++(-0.3,0) -- ++(0,1.25) -- ++(-0.8,0) coordinate (Bs);
+\coordinate (Bsend) at ($(TB.anode |- Bs)+(-5.4,0)$);
+\coordinate (Bsam) at ($(Bs)+(-1.6,0)$);
+\ammeterh{Bsam}{Bs}{$I_{g2}$}
+\draw (Bsam) -- (Bsend);
+\draw[set] (Bsend) to[V, l_={$V_{g2}$}] (Bsend |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(Bs)+(-0.35,0.05)$}{g20}
+% the diode
+\node[diodetube, scale=1.35] (TC) at (20.4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(TC.anode)!0.62!(TC.cathode)+(0.75,0)$) {C};
+% the cathode to ground
+\draw (TC.cathode) -- (TC.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(TC.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (Ctop) at ($(TC.anode)+(0,1.6)$);
+\ammeter{TC.anode}{Ctop}{$I_a$}
+\nodename{anchor=west}{$(TC.anode)+(0.1,0.25)$}{a0}
+% the anode supply at the right, + up, - to ground
+\coordinate (Cvtop) at ($(Ctop)+(1.8,0)$);
+\draw (Ctop) -- (Cvtop);
+\draw[set] (Cvtop) to[V, l={$V_a$}] (Cvtop |- 0,\gnd) node[ground, black]{};
+% the definitions
+\definitions{0,-0.1}{%
+  A: $V_a = 100$ and 250 V, $V_{g1} = 0$, $-2$ and $-10$ V;\quad B: $V_a = 100$ and 250 V, $V_{g2} = 250$ V, $V_{g1} = 0$ and $-10$ V;\quad C: $V_a = 10$ and 50 V\\[2pt]
+  one operating point in ngspice as it comes, then with its PSpice (psa), LTspice (lta) and both (ltpsa) compatibilities, then again with the undeclared parameters declared\\[2pt]
+  read the first dialect that settles, and $I_a$, $I_{g2}$, $I_g$ there: the model's own scale ($I_a$ at 250 V and 0 V) sets which ladder steps are shown first%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}

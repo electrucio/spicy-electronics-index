@@ -1,0 +1,42 @@
+% Transfer characteristics and cut-off (triode-transfer): the set-up a person would wire, semantically the deck's.
+%   VAk ak 0 <va>        the anode of copy k, held; its current is Ia              -> source V_a (set) + ammeter I_a (measured)
+%   VGKk g gk 0          a 0 V source from the grid drive into the grid of copy k  -> ammeter I_g (measured)
+%   XTk ak gk 0 DUT      copy k, cathode grounded                                  -> triode
+%   VG g 0, .dc          the grid drive, swept, shared by every copy               -> source V_g1 (set)
+%   Six copies, one per anode voltage; the drawing shows one.
+\documentclass[tikz, border=10pt]{standalone}
+\usepackage{bench}
+\begin{document}
+\begin{tikzpicture}
+\benchtitle{0,7.0}{Transfer characteristics and cut-off}
+\def\gnd{1.0}
+% the triode
+\node[triode, scale=1.35] (T) at (4,3.0) {};
+\node[anchor=west, font=\small, align=left] at ($(T.anode)!0.62!(T.cathode)+(0.75,0)$) {DUT};
+% the cathode to ground
+\draw (T.cathode) -- (T.cathode |- 0,\gnd) node[ground]{};
+\nodename{anchor=west}{$(T.cathode)+(0.1,-0.35)$}{0}
+% the ammeter in the anode, up to the rail
+\coordinate (top) at ($(T.anode)+(0,1.6)$);
+\ammeter{T.anode}{top}{$I_a$}
+\nodename{anchor=west}{$(T.anode)+(0.1,0.25)$}{ak}
+% the anode supply at the right, + up, - to ground
+\coordinate (vtop) at ($(top)+(2.6,0)$);
+\draw (top) -- (vtop);
+\draw[set] (vtop) to[V, l={$V_a$}] (vtop |- 0,\gnd) node[ground, black]{};
+% the gate: a voltage source from ground, through an ammeter
+\coordinate (g) at (T.control);
+\coordinate (gam) at ($(g)+(-1.7,0)$);
+\ammeterh{gam}{g}{$I_g$}
+\coordinate (gsrc) at ($(gam)+(-1.4,0)$);
+\draw (gam) -- (gsrc);
+\draw[set] (gsrc) to[V, l_={$V_{g1}$}] (gsrc |- 0,\gnd) node[ground, black]{};
+\nodename{anchor=south}{$(gam)+(-0.4,0.02)$}{g}
+% the definitions
+\definitions{0,-0.1}{%
+  $V_{g1}$ swept $-300$ V to $+5$ V in 20 mV steps;\quad $V_a = 100$, 150, 200, 250, 300 and 400 V, one copy each\\[2pt]
+  read $I_a(V_{g1})$;\quad cut-off: $V_{g1}$ at $I_a = 10$ \textmu A (the GE, RCA and Sylvania condition);\quad $I_a$ at $V_{g1} = 0$\\[2pt]
+  a model whose equations fail before $-300$ V is swept from the deepest start it can be evaluated at, which is published%ENDDEFS
+}
+\end{tikzpicture}
+\end{document}
