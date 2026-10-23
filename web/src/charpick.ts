@@ -11,6 +11,7 @@ export const AXIS: Record<string, string> = {
   v: 'VR', vcesat: 'VCE(sat)', vbesat: 'VBE(sat)', cob: 'Cob', cib: 'Cib', en: 'en', in: 'in', nf: 'NF', vt: 'VT',
   td: 'td', tr: 'tr', ts: 'ts', tf: 'tf', dvbe_dt: 'dVBE/dT', vt_band: 'VT, 10 Hz–15.7 kHz', von: 'V',
   va: 'Va', ia: 'Ia', vg1: 'Vg1', ig: 'Ig', mu: 'µ', gm: 'gm', ra: 'ra', vout: 'Vout (rms)', thd: 'THD', h2: 'H2', h3: 'H3',
+  pout: 'Pout', d2: 'D2', d3: 'D3', drive_ratio: "drive / the sheet's", load_ratio: "RL / the sheet's",
 }
 
 /** The name a quantity is printed with: VCE, IC, hFE, |hfe|… (the catalogue's keys are lower case). */

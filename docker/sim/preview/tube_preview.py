@@ -1267,10 +1267,9 @@ POUT = [("vg3", r"suppressor|^V_?g3"), ("vin_50mw", r"for p_?out|p_?out\s*=|sens
         ("drive", r"peak af grid|grid.to.grid|input voltage|^V_?in|^E_?sig|signal voltage")]
 
 
-def power_points(m, rows, pentode_sheet=False):
-    """Every column of the sheets' output-stage tables, run as `power_case` defines it, at zero and at the
-    sheet's drive."""
-    out = []
+def power_columns(m, rows, pentode_sheet=False):
+    """The columns of the sheets' output-stage tables, as `power_case`'s arguments: the supply, the load, the
+    peak drive per grid, the bias and the connection, with what the sheet printed for each."""
     for (page, section, cond), rs in cases(rows, ("power-output", "ultralinear", "triode-connected")).items():
         text = (section + " " + cond).lower()
         if strapped_only(m, pentode_sheet, text):
@@ -1310,18 +1309,31 @@ def power_points(m, rows, pentode_sheet=False):
         kw = dict(pp=pp, conn=conn if m.c["kind"] == "pentode" else "triode", vg=vg, rk=rk,
                   rk_common=not re.search(r"per valve|separate cathode", text), vg2=(q.get("vg2") or (vb,))[0],
                   rg2=(q.get("rg2") or (None,))[0], rg2_common=bool(re.search(r"common", text)), ul=ul)
-        try:
-            res = power_case(m, vb, [rl], [0.0, drive_pk], name=f"pw-{page}-{abs(hash(cond)) % 10**6}", **kw)
-        except Exception:  # a model that cannot be driven past its own cut-off
-            res = None
-        row = {"doc": rs[0]["doc"], "page": page, "section": section, "pp": pp, "conn": kw["conn"], "vb": vb, "rl": rl,
-               "drive_pk": drive_pk, "bias": f"Rk={rk}" if rk else f"Vg1={vg}"}
+        sheet = {}
         for k in ("pout", "thd", "ia0", "iamax", "ig20", "ig2max"):
             if k in q:
                 v, pv, r = q[k]
                 if pp and k.startswith(("ia", "ig2")) and not pv and r is not None and not re.search(r"per valve|each", (r["quantity"] + r["notes"]).lower()):
                     v = v / 2      # an American push-pull column gives both valves together
-                row[f"sheet_{k}"] = v
+                sheet[k] = v
+        yield {"doc": rs[0]["doc"], "page": page, "section": section, "cond": cond, "vb": vb, "rl": rl,
+               "drive_pk": drive_pk, "kw": kw, "sheet": sheet}
+
+
+def power_points(m, rows, pentode_sheet=False):
+    """Every column of the sheets' output-stage tables, run as `power_case` defines it, at zero and at the
+    sheet's drive."""
+    out = []
+    for col in power_columns(m, rows, pentode_sheet):
+        page, kw, vb, rl, drive_pk = col["page"], col["kw"], col["vb"], col["rl"], col["drive_pk"]
+        try:
+            res = power_case(m, vb, [rl], [0.0, drive_pk], name=f"pw-{page}-{abs(hash(col['cond'])) % 10**6}", **kw)
+        except Exception:  # a model that cannot be driven past its own cut-off
+            res = None
+        rk, vg = kw["rk"], kw["vg"]
+        row = {"doc": col["doc"], "page": page, "section": col["section"], "pp": kw["pp"], "conn": kw["conn"], "vb": vb,
+               "rl": rl, "drive_pk": drive_pk, "bias": f"Rk={rk}" if rk else f"Vg1={vg}"}
+        row.update({f"sheet_{k}": v for k, v in col["sheet"].items()})
         if res:
             z, s = res[0], res[-1]
             row.update({"model_pout": s["pout"], "model_thd": s["thd"], "model_ia0": z["ia_per_valve"],

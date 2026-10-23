@@ -40,6 +40,8 @@ TRANSFER_X = sorted({round(v, 3) for v in
 GRID_X = [round(-5 + 0.05 * i, 3) for i in range(201)]                        # −5 to +5 V
 IA_X = [m * 10.0 ** e for e in range(-5, 0) for m in (1, 2, 5)] + [1.0]      # 10 µA to 1 A
 VOUT_X = [0.1, 0.2, 0.3, 0.5, 0.7, 1, 1.5, 2, 3, 5, 7, 10, 15, 20, 30, 50, 70, 100, 150]
+DRIVE_X = [round(0.05 * i, 2) for i in range(26)]                              # 0 to 1.25 × the sheet's drive
+LOAD_X = [0.25, 0.35, 0.5, 0.71, 1, 1.41, 2, 2.83, 4]                         # × the sheet's load, half-octaves
 TRANSFER_VA = [100, 150, 200, 250, 300, 400]
 PARAMS_VA = [100, 250, 400]
 GRID_VA = [100, 250, 400]
@@ -251,9 +253,10 @@ def measure(m, rows) -> tuple[dict, dict, dict, dict]:
     vals["tube-capacitance"] = v
     codes["tube-capacitance"] = "absent" if v and max(x or 0 for x in v.values()) < 1e-15 else ("ok" if v else "failed")
 
-    # the resistance-coupled chart, every cell of the part's sheet
+    # the resistance-coupled chart, every cell of the part's sheet (none printed: not run)
     v, cv = {}, {}
-    for ebb, rp, rs, rg1, rk in rc_cells(rows):
+    cells = rc_cells(rows)
+    for ebb, rp, rs, rg1, rk in cells:
         res = tp.rc_cell(m, ebb, rp, rs, rg1, rk, name=f"rc-{tp.tag(ebb)}-{tp.tag(rp)}-{tp.tag(rs)}-{tp.tag(rg1)}")
         k = cell_key(ebb, rp, rs, rg1)
         if not res:
@@ -270,8 +273,11 @@ def measure(m, rows) -> tuple[dict, dict, dict, dict]:
                 cv[q.upper()] = loglog(xs, [x[q] for x in lv], VOUT_X)
     if v:
         vals["triode-rc-amplifier"], curves["triode-rc-amplifier"], codes["triode-rc-amplifier"] = v, cv, "ok"
-    else:
+    elif cells:
         codes["triode-rc-amplifier"], errors["triode-rc-amplifier"] = "failed", {"ngspice": "no cell ran"}
+
+    # the single-ended output stage, every column of the part's sheets (none printed: not run)
+    power_se(m, rows, vals, curves, codes, errors)
 
     # noise, and how much of it comes from inside the model
     nz = tp.stage_noise(m, 250, 100e3, 1500, rs=1e3)
@@ -283,9 +289,81 @@ def measure(m, rows) -> tuple[dict, dict, dict, dict]:
     return vals, curves, codes, errors
 
 
+def clean_error(why: str) -> str:
+    """ngspice's message, without the model's text: a failed subcircuit call is echoed with every parameter
+    the model passes, which is the card itself; only the error and the names in it are kept."""
+    head, _, rest = why.partition(": ")
+    if re.search(r"unknown subckt", rest, re.I):
+        names = [t for t in rest.split(":", 1)[-1].split() if "=" not in t and not re.fullmatch(r"[\w.]*\d+|0", t)]
+        called = names[-1].split(".")[-1].upper() if names else "?"
+        return f"{head}: unknown subcircuit {called} (one its file calls and does not hold)"
+    return f"{head}: " + " ".join(t for t in rest.split() if "=" not in t)[:160]
+
+
+def column_key(col) -> str:
+    kw = col["kw"]
+    bias = f"{kw['vg']:g}V" if kw["rk"] is None else f"Rk={si_tag(kw['rk'], 'Ω')}"
+    return f"{col['vb']:g}V,{si_tag(col['rl'], 'Ω')},{bias}"
+
+
+def zout(rows, r1, r2):
+    """The output resistance seen by the load, from the fundamental at two loads and one drive."""
+    a = next((x for x in rows if abs(x["load"] - r1) < 1e-6), None)
+    b = next((x for x in rows if abs(x["load"] - r2) < 1e-6), None)
+    if not a or not b or not a["pout"] or not b["pout"]:
+        return None
+    v1, v2 = math.sqrt(a["pout"] * r1), math.sqrt(b["pout"] * r2)
+    den = v1 / r1 - v2 / r2
+    return (v2 - v1) / den if den > 0 else None
+
+
+def power_se(m, rows, vals, curves, codes, errors) -> None:
+    """`triode-power-se`: each single-ended column at zero and at the sheet's drive, and its output resistance;
+    for the first column, the drive swept from 0 to 1.25 times the sheet's and the load from a quarter to four
+    times the sheet's, at the sheet's drive."""
+    cols = [c for c in tp.power_columns(m, rows) if not c["kw"]["pp"]]
+    if not cols:
+        return
+    v, cv, failed = {}, {}, []
+    for n, col in enumerate(cols):
+        k, vb, rl, d, kw = column_key(col), col["vb"], col["rl"], col["drive_pk"], col["kw"]
+        try:
+            if n == 0:
+                sweep = tp.power_case(m, vb, [rl], [d * x for x in DRIVE_X], name="power-drive", **kw)
+                loads = tp.power_case(m, vb, [rl * x for x in LOAD_X], [d], name="power-load", **kw)
+                zero, full = (sweep[0], sweep[DRIVE_X.index(1.0)]) if sweep and len(sweep) == len(DRIVE_X) else (None, None)
+                zo = zout(loads or [], rl, rl * 1.41)
+            else:
+                res = tp.power_case(m, vb, [rl, rl * 1.41], [0.0, d], name=f"power-col{n}", **kw)
+                zero, full = (res[0], res[1]) if res and len(res) == 4 else (None, None)
+                zo = zout([x for x in res or [] if x["drive_pk"] == d], rl, rl * 1.41)
+        except Exception:                                    # a model that cannot be evaluated where it is driven
+            zero = full = None
+        if not full:
+            failed.append(k)
+            continue
+        v.update({f"drive@{k}": sig(d), f"pout@{k}": sig(full["pout"]), f"thd@{k}": sig(full["thd"]),
+                  f"d2@{k}": sig(full["h2"]), f"d3@{k}": sig(full["h3"]), f"ia0@{k}": sig(zero["ia_per_valve"]),
+                  f"ia_max@{k}": sig(full["ia_per_valve"]), f"ig1_peak@{k}": sig(full["ig1_peak"]), f"zout@{k}": sig(zo)})
+        if n == 0:
+            for q, name in (("pout", "Pout"), ("thd", "THD"), ("h2", "D2"), ("h3", "D3"), ("ia_per_valve", "Ia")):
+                cv[name] = [0.0 if q == "pout" and x[q] < 1e-9 else sig(x[q]) for x in sweep]   # no drive, no power
+            if loads and len(loads) == len(LOAD_X):
+                cv["Pout against load"] = [sig(x["pout"]) for x in loads]
+                cv["THD against load"] = [sig(x["thd"]) for x in loads]
+    if v:
+        vals["triode-power-se"], curves["triode-power-se"], codes["triode-power-se"] = v, cv, "ok"
+    if failed:
+        errors["triode-power-se"] = {"ngspice": "no steady state for " + ", ".join(failed)}
+        if not v:
+            codes["triode-power-se"] = "failed"
+
+
 DECK_IDS = {"runs": ["tube-runs"], "transfer": ["triode-transfer", "triode-grid-current"], "anode": ["triode-anode"],
-            "params": ["triode-params"], "caps": ["tube-capacitance"], "rc": ["triode-rc-amplifier"], "noise": ["triode-noise"]}
-ANALYSIS = {"runs": "op", "transfer": "dc", "anode": "dc", "params": "ac", "caps": "ac", "rc": "tran", "noise": "noise"}
+            "params": ["triode-params"], "caps": ["tube-capacitance"], "rc": ["triode-rc-amplifier"], "noise": ["triode-noise"],
+            "power": ["triode-power-se"]}
+ANALYSIS = {"runs": "op", "transfer": "dc", "anode": "dc", "params": "ac", "caps": "ac", "rc": "tran", "noise": "noise",
+            "power": "tran"}
 
 
 def decks_of(m) -> dict:
@@ -352,8 +430,8 @@ def one(job) -> str:
         vals, curves, codes, errors = measure(m, rows)
         runs = "ok"
     else:                                                    # a model that does not load is a result too
-        why = (r.get("why") or ["?"])[-1]
-        cls = "params" if re.search(r"parameter", why, re.I) else "subckt" if re.search(r"subckt", why, re.I) \
+        why = clean_error((r.get("why") or ["?"])[-1])
+        cls = "params" if re.search(r"parameter", why, re.I) else "subckt" if re.search(r"subckt|subcircuit", why, re.I) \
             else "domain" if re.search(r"range|domain", why, re.I) else "syntax"
         vals = {"tube-runs": {"runs": False, "error_class": cls}}
         curves, codes, errors = {}, {"tube-runs": "failed"}, {"tube-runs": {"ngspice": why}}

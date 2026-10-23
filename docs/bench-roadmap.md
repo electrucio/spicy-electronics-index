@@ -43,9 +43,10 @@ checklist; every session that touches the bench starts here and ticks what it fi
       the measurement that reproduces it), 41 `tube-*`, `triode-*`, `pentode-*`, `rectifier-*`, `diode-*`
       (and `heptode-`, `indicator-`) measurements in two layers (universal ladders, and every sheet row and graph as conditions), their 29
       drawings (`docker/circuitikz/benches_tube.py`), and a preview of them on ngspice over every curated model of
-      45 surveyed parts (`docker/sim/preview/tube_preview.py`). The triode's first eight entries are in the
-      catalogue (kind `tube`), and the 12AX7's ten curated models are measured with them on its part page, made
-      on this machine by `docker/sim/preview/tube_records.py` and kept in the records' supplement.
+      45 surveyed parts (`docker/sim/preview/tube_preview.py`). The triode's first nine entries are in the
+      catalogue (kind `tube`, with the single-ended output stage), and the 12AX7's and 300B's curated models are
+      measured with them on their part pages, made on this machine by `docker/sim/preview/tube_records.py` and
+      kept in the records' supplement.
 
 ## Pending, in the order that unblocks the rest
 

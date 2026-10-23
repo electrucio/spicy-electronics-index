@@ -5435,3 +5435,64 @@ measurements:
   standard: none
   pack: false
   engines: [ngspice]
+
+- id: triode-power-se
+  kind: tube
+  group: output
+  name: Single-ended output stage
+  symbols: [Pout, THD, D2, D3, Ia]
+  what: |
+    The power triode sheets' operating tables, column by column: a supply, a fixed grid bias or a cathode
+    resistor, a load reflected through an output transformer, a drive, and what came out — the power, the
+    distortion and its second and third harmonics, the anode current at rest and at full signal. The
+    transformer is ideal as the makers' test sets made it: the anode sits at Vb − RL·(ia − Ī), an infinite
+    primary inductance through which the mean current Ī is free to shift with signal, and Ī (with the
+    cathode's bias, when the column has a cathode resistor, held at Rk times the mean current) is solved per
+    copy by the secant method over short transients, so the steady state is reached in a few periods. For the
+    first column, the drive is swept from zero to a quarter past the sheet's, and the load from a quarter to
+    four times the sheet's at the sheet's drive. A part whose sheets print no single-ended column is not run
+    yet.
+  circuit: |
+    The anode through an ammeter onto the ideal transformer's primary, its load RL across the secondary; the
+    cathode grounded (fixed bias) or on its bias; the grid on its bias with a 1 kHz sine of the column's peak
+    drive on top, straight from the source. One copy per drive or load step, six periods each, the last four
+    read.
+  drawing: {file: bench/drawings/triode-power-se.svg, elements: [DUT, supply Vb, ideal output transformer with RL, ammeter in the anode, grid bias with the drive, ammeter in the grid, voltmeter on the load], differs_from_netlist: "the transformer is the behavioural source Vb − RL·(ia − Ī); the copies are drawn as one stage"}
+  analysis: tran
+  conditions:
+    columns: "every single-ended column of the part's sheets: Vb, RL, the bias and the peak drive as printed"
+    drive_sweep: {of: the first column, from: 0, to: 1.25, step: 0.05, unit: "× the sheet's drive"}
+    load_sweep: {of: the first column, values: [0.25, 0.35, 0.5, 0.71, 1, 1.41, 2, 2.83, 4], unit: "× the sheet's load"}
+    f: 1000
+    periods: 6
+    read_last: 4
+  grid: {x: drive_ratio, values: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25], unit: ""}
+  extraction: |
+    Pout = v1² / RL from the fundamental of the load's voltage; THD, D2 and D3 by Goertzel over the last four
+    periods; the mean anode current at zero and at the sheet's drive; the grid's peak current; the output
+    resistance the load sees, from the fundamental at RL and 1.41 RL at the sheet's drive.
+  outputs:
+  - {key: "drive@{column}", unit: V, what: "the sheet's peak drive; a column is Vb, RL and the bias (the grid voltage, or Rk)"}
+  - {key: "pout@{column}", unit: W, what: "output power at the sheet's drive"}
+  - {key: "thd@{column}", unit: "%", what: "total harmonic distortion at the sheet's drive"}
+  - {key: "d2@{column}", unit: "%", what: "second harmonic at the sheet's drive"}
+  - {key: "d3@{column}", unit: "%", what: "third harmonic at the sheet's drive"}
+  - {key: "ia0@{column}", unit: A, what: "anode current at zero signal"}
+  - {key: "ia_max@{column}", unit: A, what: "mean anode current at the sheet's drive: how far it shifts with signal"}
+  - {key: "ig1_peak@{column}", unit: A, what: "the grid's peak current at the sheet's drive"}
+  - {key: "zout@{column}", unit: "Ω", what: "output resistance seen by the load, referred to the primary"}
+  curves:
+  - {name: "Pout", x: drive_ratio, y: pout, scale: lin, unit: W}
+  - {name: "THD", x: drive_ratio, y: thd, scale: lin, unit: "%"}
+  - {name: "D2", x: drive_ratio, y: d2, scale: lin, unit: "%"}
+  - {name: "D3", x: drive_ratio, y: d3, scale: lin, unit: "%"}
+  - {name: "Ia", x: drive_ratio, y: ia, scale: lin, unit: A}
+  - {name: "Pout against load", x: load_ratio, y: pout, scale: lin, unit: W, grid: {x: load_ratio, values: [0.25, 0.35, 0.5, 0.71, 1, 1.41, 2, 2.83, 4], unit: ""}}
+  - {name: "THD against load", x: load_ratio, y: thd, scale: lin, unit: "%", grid: {x: load_ratio, values: [0.25, 0.35, 0.5, 0.71, 1, 1.41, 2, 2.83, 4], unit: ""}}
+  parameters: [MU, EX, KG1, KP, KVB, RGI]
+  reads_high: "A power well above the sheet's at the sheet's drive: a model whose traces stay too far apart at low anode voltage."
+  reads_low: "Power falling off before the sheet's drive: grid current setting in early, or a knee too soft."
+  cannot_tell: "The transformer's own losses, its primary inductance at low frequencies and its leakage at high ones."
+  standard: resembles IEC 60151-10 (audio-frequency output power and distortion)
+  pack: true
+  engines: [ngspice]

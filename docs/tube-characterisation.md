@@ -12,8 +12,8 @@ Status: this page is the specification and the evidence behind it — the survey
 (`data/datasheets/survey/tube/`), the ladders it gives, the measurements, their drawings
 ([bench-drawings.md](bench-drawings.md), `docker/circuitikz/benches_tube.py`), and a preview of the
 measurements on ngspice over every curated model of 45 surveyed parts (`docker/sim/preview/tube_preview.py`,
-"What the preview says" below). Eight entries, the triode's, are in the catalogue (`data/bench/measurements.yaml`)
-and the 12AX7's models are measured with them on its part page, an example of what the whole battery will publish
+"What the preview says" below). Nine entries, the triode's, are in the catalogue (`data/bench/measurements.yaml`)
+and the 12AX7's and 300B's models are measured with them on their part pages, an example of what the whole battery will publish
 ("The entries published so far"); the other entries and the decks in the simulator images come after, in the
 order of [bench-roadmap.md](bench-roadmap.md).
 
@@ -1313,10 +1313,15 @@ survey's to complete, not the model's.
 
 ## The entries published so far
 
-The catalogue (`data/bench/measurements.yaml`) carries the first eight entries, the triode's, as the site's
-method page shows them; the 12AX7's ten curated models were measured with them, on ngspice, by
-`docker/sim/preview/tube_records.py`, and their records sit in `data/verification/models/supplement/` until a
-release packs them. What follows is generated from the catalogue (`sei bench methods --write`).
+The catalogue (`data/bench/measurements.yaml`) carries the first nine entries, the triode's, as the site's
+method page shows them: the small-signal battery and the single-ended output stage. Two parts are measured with
+them, on ngspice, by `docker/sim/preview/tube_records.py`: the 12AX7's ten curated models (with all 30 cells of
+GE's resistance-coupled chart) and the 300B's ten (with Western Electric's two single-ended columns, where
+Ayumi's model gives 5.96 W for the sheet's 6 W and 7.19 W for 7 W, its anode current moving from 62 to 74 mA as
+printed). Models that do not load in ngspice (two of the 12AX7's, one of the 300B's) are published as failed,
+with the error and the names in it, never the model's text. The records sit in
+`data/verification/models/supplement/` until a release packs them. What follows is generated from the
+catalogue (`sei bench methods --write`).
 
 <!-- measurements:start -->
 Catalogue version `m-13`; the codes and the uses table are in [model-characterisation.md](model-characterisation.md).
@@ -1578,6 +1583,44 @@ Drawing: DUT; supply Ebb; plate resistor; bypassed cathode resistor; source resi
 **What it cannot tell.** Flicker noise and its corner, which no model met here carries.
 
 **Standard.** none
+
+#### Single-ended output stage (`triode-power-se`)
+
+Group `output` · analysis `tran` · engines ngspice · symbols Pout, THD, D2, D3, Ia.
+
+The power triode sheets' operating tables, column by column: a supply, a fixed grid bias or a cathode resistor, a load reflected through an output transformer, a drive, and what came out — the power, the distortion and its second and third harmonics, the anode current at rest and at full signal. The transformer is ideal as the makers' test sets made it: the anode sits at Vb − RL·(ia − Ī), an infinite primary inductance through which the mean current Ī is free to shift with signal, and Ī (with the cathode's bias, when the column has a cathode resistor, held at Rk times the mean current) is solved per copy by the secant method over short transients, so the steady state is reached in a few periods. For the first column, the drive is swept from zero to a quarter past the sheet's, and the load from a quarter to four times the sheet's at the sheet's drive. A part whose sheets print no single-ended column is not run yet.
+
+**Circuit.** The anode through an ammeter onto the ideal transformer's primary, its load RL across the secondary; the cathode grounded (fixed bias) or on its bias; the grid on its bias with a 1 kHz sine of the column's peak drive on top, straight from the source. One copy per drive or load step, six periods each, the last four read.
+
+Drawing: DUT; supply Vb; ideal output transformer with RL; ammeter in the anode; grid bias with the drive; ammeter in the grid; voltmeter on the load. Differs from the netlist: the transformer is the behavioural source Vb − RL·(ia − Ī); the copies are drawn as one stage.
+
+**Conditions.** {columns: every single-ended column of the part's sheets: Vb, RL, the bias and the peak drive as printed, drive_sweep: {of: the first column, from: 0, to: 1.25, step: 0.05, unit: × the sheet's drive}, load_sweep: {of: the first column, values: [0.25, 0.35, 0.5, 0.71, 1, 1.41, 2, 2.83, 4], unit: × the sheet's load}, f: 1000, periods: 6, read_last: 4}
+
+**Extraction.** Pout = v1² / RL from the fundamental of the load's voltage; THD, D2 and D3 by Goertzel over the last four periods; the mean anode current at zero and at the sheet's drive; the grid's peak current; the output resistance the load sees, from the fundamental at RL and 1.41 RL at the sheet's drive.
+
+**Outputs.**
+
+- `drive@{column}` (V): the sheet's peak drive; a column is Vb, RL and the bias (the grid voltage, or Rk)
+- `pout@{column}` (W): output power at the sheet's drive
+- `thd@{column}` (%): total harmonic distortion at the sheet's drive
+- `d2@{column}` (%): second harmonic at the sheet's drive
+- `d3@{column}` (%): third harmonic at the sheet's drive
+- `ia0@{column}` (A): anode current at zero signal
+- `ia_max@{column}` (A): mean anode current at the sheet's drive: how far it shifts with signal
+- `ig1_peak@{column}` (A): the grid's peak current at the sheet's drive
+- `zout@{column}` (Ω): output resistance seen by the load, referred to the primary
+
+Curves: Pout (pout against drive_ratio, lin); THD (thd against drive_ratio, lin); D2 (d2 against drive_ratio, lin); D3 (d3 against drive_ratio, lin); Ia (ia against drive_ratio, lin); Pout against load (pout against load_ratio, lin); THD against load (thd against load_ratio, lin).
+
+**Card parameters that drive it:** MU, EX, KG1, KP, KVB, RGI.
+
+**A high value.** A power well above the sheet's at the sheet's drive: a model whose traces stay too far apart at low anode voltage.
+
+**A low value.** Power falling off before the sheet's drive: grid current setting in early, or a knee too soft.
+
+**What it cannot tell.** The transformer's own losses, its primary inductance at low frequencies and its leakage at high ones.
+
+**Standard.** resembles IEC 60151-10 (audio-frequency output power and distortion)
 <!-- measurements:end -->
 
 ## Next steps

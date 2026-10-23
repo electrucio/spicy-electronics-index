@@ -371,10 +371,9 @@ One copy per (load, drive); the drawing shows one.""", top=9.4, gnd=0.8, twin=Fa
 
 def triode_power_se():
     d = power_se("triode-power-se", "triode", "Single-ended output stage", "")
-    d.definitions([r"every column of the part's sheets (the 300B, 2A3, 6B4G, 6C33C tables; a pentode's triode-connected ones), and around each: $R_L \times 0.25$ to 4 in half-octaves",
-                   r"$v_{in}$ from 0 to 1.25 times the sheet's drive in 5\,\% steps (to the grid-current onset, and past it for class A2);\quad fixed bias ($V_k = 0$) or cathode bias ($R_k$, ideal bypass)",
-                   r"read $P_{out} = v_{out,1}^2/R_L$ (the fundamental), THD, D2, D3; $\bar I_a$ at zero and full signal; the peak grid current; the output resistance from two loads",
-                   r"a part with no sheet table: the model's own point, $V_b = 250$ V, $I_a = I_0/3$, $R_L = 2\,r_a$, driven to the grid-current onset"], y=-0.6)
+    d.definitions([r"every single-ended column of the part's sheets: $V_b$, $R_L$, the bias (a fixed $V_{g1}$, or $R_k$ on an ideal bypass) and the peak drive as printed (the 300B: 300 V, 3 k\ohm, $-61$ V; 350 V, 4 k\ohm, $-74$ V)",
+                   r"for the first column, $v_{in}$ from 0 to 1.25 times the sheet's drive in 5\,\% steps, and $R_L \times 0.25$ to 4 in half-octaves at the sheet's drive;\quad $\bar I_a$ solved per copy (the ideal transformer)",
+                   r"read $P_{out} = v_{out,1}^2/R_L$ (the fundamental), THD, D2, D3; $\bar I_a$ at zero and full signal; the peak grid current; the output resistance from $R_L$ and $1.41\,R_L$"], y=-0.6)
     d.write()
 
 
