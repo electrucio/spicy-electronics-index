@@ -357,6 +357,7 @@ export const RELATED: Record<string, [string, string]> = {
   next_generation_of: ['the next generation of', 'succeeded by'],
   same_product_as: ['the same product as', 'the same product as'],
   same_datasheet: ['documented in one data sheet with', 'documented in one data sheet with'],
+  approximate_analogue_of: ['an approximate analogue of', 'an approximate analogue of'],
 }
 
 export function relationWords(relation: string, direction: 'out' | 'in' | 'both'): string {

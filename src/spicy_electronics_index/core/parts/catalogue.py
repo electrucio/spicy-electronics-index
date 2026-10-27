@@ -64,9 +64,10 @@ def documented() -> dict[str, dict]:
 
 
 # What each relation says, read from the part in the first column. They are never transitive: a replacement
-# for a replacement is not a replacement. "In one datasheet with" and "the same product as" hold both ways;
-# the other two only as written.
-RELATIONS = ("next_generation_of", "replacement_for", "same_product_as", "same_datasheet")
+# for a replacement is not a replacement. "In one datasheet with", "the same product as" and "an approximate
+# analogue of" hold both ways; the other two only as written.
+RELATIONS = ("next_generation_of", "replacement_for", "same_product_as", "same_datasheet",
+             "approximate_analogue_of")
 
 # What each relation is worth to a reader who has one of the two parts and wants to know whether it does for
 # the other (the Projects tab): (which way it counts, from what strictness). "both": either part does for the
@@ -79,6 +80,8 @@ COVERAGE: dict[str, tuple[str, str]] = {
     "replacement_for": ("out", "substitute"),      # LSK170 does for a 2SK170; nothing says the reverse
     "next_generation_of": ("out", "substitute"),   # a TL072H for a TL072
     "same_datasheet": ("both", "hint"),            # TL071 and TL072 share a sheet and not a pinout
+    "approximate_analogue_of": ("both", "similar"),  # a handbook's nearest Soviet type for a foreign one (S98):
+                                                     # like it by its authors' reading, declared by nobody
 }
 
 

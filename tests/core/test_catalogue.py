@@ -54,6 +54,10 @@ def test_a_relation_reads_both_ways_and_a_shared_sheet_lists_every_other_part():
     assert ("next_generation_of", "TL072H", "in") in rel                     # TI: the H is the next generation
     assert ("same_datasheet", "TL074", "both") in rel and ("same_datasheet", "TL071", "both") in rel
     assert ("replacement_for", "2SK170", "out") in {(r[0], r[1], r[2]) for r in catalogue.related("LSK170")}
+    # Aksenov, Nefedov and Yushin (S98, through the extract S99): ГТ402И is the AC128's approximate analogue
+    ac128 = {(r[0], r[1], r[2]): r[4] for r in catalogue.related("AC128")}
+    assert "ГТ402И" in ac128[("approximate_analogue_of", "GT402I", "in")]
+    assert catalogue.COVERAGE["approximate_analogue_of"] == ("both", "similar")
     assert catalogue.related("NOTAPART") == []
 
 
