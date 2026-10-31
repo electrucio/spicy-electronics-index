@@ -17,6 +17,7 @@ import { Heading } from './anchor'
 import { SellersSection } from './sellers'
 import { DATA, follow, loadIndex, loadUsages, partPath, reloadIndex } from './data'
 import { highlights, matchDoc, queryWords } from './docmatch'
+import { FeedbackButton } from './feedback'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
@@ -244,6 +245,7 @@ function Models({ page }: { page: PartPage }) {
     <Section title="SPICE models" anchor="spice-models" defaultOpen>
       <SubSection title="Table of SPICE models" anchor="table" defaultOpen>
         {() => (
+          <>
           <div class="tablewrap">
             <table>
               <thead>
@@ -277,6 +279,8 @@ function Models({ page }: { page: PartPage }) {
                         </td>
                         <td>
                           <Get url={mo.get.url} member={mo.get.member} installed={mo.get.installed_with} via={mo.get.via} symbol={mo.get.symbol} />
+                          {' · '}<FeedbackButton icon={false} cls="linkish" about={{ kind: 'model', what: `${mo.name} from ${mo.source}`, where: mo.get.url }}
+                            title="Report a problem with this model: misattributed, not loading, the wrong source">report</FeedbackButton>
                           {mo.get.symbol?.sha256 && <> · <button type="button" class="linkish" aria-expanded={!undrawn.has(i)}
                             title="the symbol drawn" onClick={() => flip(setUndrawn, i)}>{undrawn.has(i) ? 'draw' : 'hide drawing'}</button></>}
                           {text && (
@@ -307,6 +311,13 @@ function Models({ page }: { page: PartPage }) {
               </tbody>
             </table>
           </div>
+          <p class="fbline">
+            <FeedbackButton part={page.part} about={{ kind: 'part', what: page.part }}
+              title="Tell the maintainer about a model that is wrong, misattributed, or missing from this table">
+              A model wrong, misattributed or missing here? Report it
+            </FeedbackButton>
+          </p>
+          </>
         )}
       </SubSection>
       {CHARACTERIZATION && <ModelCharacter page={page} />}
@@ -392,11 +403,19 @@ function Document({ d, words = [] }: { d: PartPage['docs'][0]; words?: string[] 
   return (
     <Fold summary={summary} level={3}>
       {() => (
-        // No link to the document on its own: every page link opens it, at a more useful place.
-        // Pages with a line each take a row; bare page links still fit several to a row.
-        <ul class={d.p.some((p) => p[4]) ? 'uselist' : 'uselist cols'}>
-          {d.p.map((p, j) => <PageLink key={j} p={p} docUrl={d.u} />)}
-        </ul>
+        <>
+          {/* No link to the document on its own: every page link opens it, at a more useful place.
+              Pages with a line each take a row; bare page links still fit several to a row. */}
+          <ul class={d.p.some((p) => p[4]) ? 'uselist' : 'uselist cols'}>
+            {d.p.map((p, j) => <PageLink key={j} p={p} docUrl={d.u} />)}
+          </ul>
+          <p class="fbline">
+            <FeedbackButton about={{ kind: 'document', what: d.t || d.u, where: d.u }}
+              title="Tell the maintainer what is wrong with this document: the part misread, the wrong page, a dead link, a better copy elsewhere">
+              Wrong part, wrong page or dead link? Report this document
+            </FeedbackButton>
+          </p>
+        </>
       )}
     </Fold>
   )
@@ -710,8 +729,15 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
             onClick={(e) => follow(e as unknown as MouseEvent, `?find&need=${encodeURIComponent(part)}`)}>
             Projects that use it with other parts →</a>
         )}
+        <FeedbackButton part={part} about={{ kind: 'part', what: part }}
+          title="Something wrong or missing about this part? Tell the maintainer">Report a problem</FeedbackButton>
       </div>
-      {error && <p class="muted">Nothing is published for {part} yet.</p>}
+      {error && (
+        <p class="muted">
+          Nothing is published for {part} yet.{' '}
+          <FeedbackButton part={part} about={{ kind: 'part', what: part }}>Know a model or a schematic of it? Tell us</FeedbackButton>
+        </p>
+      )}
       {!error && !page && <Loading what={`the page of ${part}`} />}
       {page && (
         <>
@@ -730,9 +756,15 @@ export function Detail({ part, kind, sources, kinds, stamp, onStale }: {
             <p class="muted">
               No SPICE model published and no schematic indexed yet
               {page.listed?.length ? ', which makes it one to look for.' : '.'}
+              {' '}<FeedbackButton part={part} about={{ kind: 'part', what: part }}
+                title="Tell the maintainer where a model or a schematic of it is">Know of one? Tell us</FeedbackButton>
             </p>
           )}
           <SellersSection page={page} kind={kind} />
+          <div class="fbfoot">
+            <p>Something wrong or missing on this page? A part misread, a dead link, a model or a source that should be here…</p>
+            <FeedbackButton cls="fb big" part={part} about={{ kind: 'part', what: part }}>Provide feedback about {part}</FeedbackButton>
+          </div>
         </>
       )}
     </section>

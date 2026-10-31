@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'preact/hooks'
 import { FamilyPage, MakerPage, SchemePage } from './about'
 import { SellersPage } from './sellers'
 import { DATA, follow } from './data'
-import { Feedback } from './feedback'
+import { FeedbackButton, FeedbackDialog } from './feedback'
 import { FinderPage, LAST_KEY } from './finder'
 import { LICENCE_URL, Licence } from './licence'
 import { Loading } from './loading'
@@ -98,7 +98,7 @@ function App() {
               {data && <span class="stamp">built {data.m.built}</span>}
               <Licence />
               <Unlock />
-              <Feedback part={onTopic ? undefined : part ?? undefined} />
+              <FeedbackButton cls="licence-btn feedback-btn" title="Tell the maintainer: a mistake, a missing source, an idea">Feedback</FeedbackButton>
             </div>
           </div>
         </div>
@@ -122,6 +122,7 @@ function App() {
         Built from the committed dataset. This project stores links, never documents.{' '}
         <a href="https://github.com/electrucio/spicy-electronics-index">Source</a>.
       </footer>
+      <FeedbackDialog part={onTopic ? undefined : part ?? undefined} />
     </>
   )
 }
