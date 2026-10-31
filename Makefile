@@ -11,7 +11,7 @@ WEB_HOST ?= 0.0.0.0
 WEB_PORT ?= 8026
 
 .DEFAULT_GOAL := help
-.PHONY: schematics-dump-index schematics-restore-index models-deliver models-deliver-thread vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register distributors-tme datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-survey datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-character-supplement bench-drawings bench-drawings-all circuitikz-image bench-preview bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve datasheets-libraries
+.PHONY: schematics-dump-index schematics-restore-index models-deliver models-deliver-thread vlm-image vlm-models vlm-serve vlm-stop sheets-pages sheets-extract sheets-evaluate sim-vendor sim-qspice-capture sim-images datasheets-register distributors-tme datasheets-links datasheets-harvest datasheets-catalogue datasheets-databooks datasheets-survey datasheets-rows datasheets-figures datasheets-crops crops-publish symbol-drawings symbol-drawings-publish models-seal sealed-publish web-deploy ocr-image help setup doctor test test-web lint guard check status status-write paths toragi-report models-index models-ingest models-missing models-recover models-fetch models-verify models-reconcile models-match models-found models-promote models-cards models-claims models-kinship bench-methods bench-character bench-character-publish bench-character-release bench-character-fetch bench-character-supplement bench-drawings bench-drawings-all circuitikz-image bench-preview bench-deck bench-read datasets-repos schematics-summarise schematics-summarise-bg schematics-preview schematics-export schematics-deliver backup clean web web-data web-deps serve datasheets-libraries
 
 help:  ## show this list
 	@echo "Spicy Electronics Index — make <target>"
@@ -22,10 +22,17 @@ help:  ## show this list
 	@echo "  Targets marked (maintainer) need the private data root; the rest work from a clean clone."
 
 # --- setting up ---------------------------------------------------------------------------------
-setup:  ## install dependencies and enable the pre-commit guard
+setup: doctor  ## install dependencies, Python and the site's, and enable the pre-commit guard
 	$(UV) sync
+	@if command -v npm >/dev/null; then $(MAKE) --no-print-directory web-deps; \
+	  else echo "no npm: install Node 20 or newer, then 'make web-deps', to build the site"; fi
 	git config core.hooksPath .githooks
 	@echo "ready — try 'make status'"
+
+doctor:  ## say which of the tools the project needs are missing (git, uv; node for the site)
+	@for t in git uv; do command -v $$t >/dev/null \
+	  || { echo "missing: $$t — see 'Running it' in README.md"; exit 1; }; done
+	@command -v node >/dev/null || echo "no node: the site (make web, make serve) needs Node 20 or newer"
 
 # --- checking your work -------------------------------------------------------------------------
 test:  ## run the test suite
@@ -360,13 +367,16 @@ backup:  ## (maintainer) pack the private trees into one archive to carry off th
 	$(RUN) sei backup
 
 # --- the website -------------------------------------------------------------------------------
-web-deps:  ## install the website's dependencies (once)
+web/node_modules: web/package-lock.json
 	cd web && npm install --no-fund --no-audit
+	@touch web/node_modules
+
+web-deps: web/node_modules  ## install the website's dependencies (again when package-lock.json changes)
 
 web-data:  ## write the site's data from data/ — reads nothing private
 	$(RUN) sei web build
 
-web: web-data  ## build the site into web/dist
+web: web-data web/node_modules  ## build the site into web/dist
 	cd web && npm run build
 
 web-deploy:  ## (maintainer) publish the site: run the Pages workflow on GitHub from what is pushed, and watch it
@@ -375,7 +385,7 @@ web-deploy:  ## (maintainer) publish the site: run the Pages workflow on GitHub 
 	gh workflow run pages.yml && sleep 5 && gh run watch $$(gh run list --workflow=pages.yml --limit 1 --json databaseId --jq '.[0].databaseId')
 	@echo "  https://electrucio.github.io/spicy-electronics-index/"
 
-serve: web-data  ## bring the site up with live reload, at http://0.0.0.0:8026/spicy-electronics-index/
+serve: web-data web/node_modules  ## bring the site up with live reload, at http://0.0.0.0:8026/spicy-electronics-index/
 	@echo "  http://$(WEB_HOST):$(WEB_PORT)/spicy-electronics-index/"
 	cd web && SEI_WEB_HOST=$(WEB_HOST) SEI_WEB_PORT=$(WEB_PORT) npm run dev
 

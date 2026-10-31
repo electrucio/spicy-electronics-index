@@ -6,6 +6,8 @@ is worse than no link**.
 
 ## Set-up
 
+The tools you need (git, make, uv, and Node for the site) are listed under *Running it* in the README.
+
 ```
 git clone git@github.com:electrucio/spicy-electronics-index.git
 cd spicy-electronics-index

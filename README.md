@@ -25,11 +25,21 @@ only when their licence allows it. If something listed here should not be, see [
 
 ## Running it
 
+Four tools, installed by hand: `git`, `make`, [`uv`](https://docs.astral.sh/uv/), which fetches Python itself
+(3.11 or newer), and, for the site only, [Node.js](https://nodejs.org/) 20 or newer (the published site is
+built with Node 24). Nothing is installed globally with npm: the TypeScript compiler and Vite come with
+`make setup`.
+
 ```
-make setup      # dependencies and the pre-commit guard
+make setup      # dependencies, Python and site, and the pre-commit guard
 make            # every step, one line each
 make web        # build the site from data/ into web/dist
+make serve      # the same with live reload, at http://localhost:8026/spicy-electronics-index/
 ```
+
+A local build has every page but no measurements: the characterisation records are a release asset, not
+in git. With the GitHub CLI (`gh`) installed, `make bench-character-fetch` downloads them and the next
+`make web` includes them.
 
 The public dataset is in `data/`; the code in `src/spicy_electronics_index/`, run as `sei`. Crawling, OCR, index
 builds and simulator runs need the private corpus and happen on the maintainer's machine; everything that
