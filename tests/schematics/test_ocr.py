@@ -181,6 +181,7 @@ def test_pages_already_on_disk_get_their_stamp_instead_of_being_offered_forever(
 def test_a_page_record_carries_its_size_in_points_because_the_file_will_not_stay(tmp_path):
     """The retention rule deletes a scan once read; the zoom link needs the page's points to say where
     on the sheet a part sits, and 481,319 pages were released before the record said so."""
+    pytest.importorskip("fitz")
     import fitz
     path = tmp_path / "a.pdf"
     doc = fitz.open()

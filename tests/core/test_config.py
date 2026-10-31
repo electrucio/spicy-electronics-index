@@ -76,10 +76,11 @@ def test_built_locations_are_git_ignored():
 
 
 def test_both_private_trees_are_git_ignored():
-    """One directory rule each covers every private location, which the test above proves are under them."""
+    """One directory rule each covers every private location, which the test above proves are under them.
+    Asked with its trailing slash: a directory rule matches a path that does not exist (a clean clone) only so."""
     for root in (config.material_root(), config.spice_models_root()):
         if REPO not in root.parents:
             continue                                        # kept outside the checkout
-        r = subprocess.run(["git", "check-ignore", str(root.relative_to(REPO))],
+        r = subprocess.run(["git", "check-ignore", f"{root.relative_to(REPO)}/"],
                            cwd=REPO, capture_output=True, text=True)
         assert r.returncode == 0 and r.stdout.strip(), f"the private tree {root} is NOT git-ignored"
