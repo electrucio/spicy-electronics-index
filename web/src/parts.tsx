@@ -9,13 +9,14 @@
  * `parts.json` is 61 KB gzipped and holds all of them, so filtering and sorting never ask the server.
  * Opening a part is one request for a file the build already joined and grouped.
  */
-import { Fragment } from 'preact'
+import { Fragment, type ComponentChildren } from 'preact'
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 
 import { AboutPart, Databooks } from './about'
 import { Heading } from './anchor'
 import { SellersSection } from './sellers'
 import { DATA, follow, loadIndex, loadUsages, partPath, reloadIndex } from './data'
+import { highlights, matchDoc, queryWords } from './docmatch'
 import { Fold, Section, SubSection } from './fold'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
@@ -362,15 +363,30 @@ function PageLink({ p, docUrl }: { p: PageUse; docUrl: string }) {
   )
 }
 
-function Document({ d }: { d: PartPage['docs'][0] }) {
+/** `text` with the filter box's words marked where they fall in it (docmatch.ts). */
+function Marked({ text, words }: { text: string; words: string[] }) {
+  const at = highlights(text, words)
+  if (!at.length) return <>{text}</>
+  const out: ComponentChildren[] = []
+  let from = 0
+  for (const [s, e] of at) {
+    if (s > from) out.push(text.slice(from, s))
+    out.push(<mark key={s}>{text.slice(s, e)}</mark>)
+    from = e
+  }
+  if (from < text.length) out.push(text.slice(from))
+  return <>{out}</>
+}
+
+function Document({ d, words = [] }: { d: PartPage['docs'][0]; words?: string[] }) {
   const summary = (
     <>
-      <strong>{d.t || d.u}</strong>
+      <strong><Marked text={d.t || d.u} words={words} /></strong>
       <span class="count">{n(d.p.length)} {d.p.length === 1 ? 'page' : 'pages'} · {n(usagesOf([d]))} usages</span>
       {d.schematic ? <span class="pill acc">schematic</span> : null}
-      {d.y ? <span class="small muted">{d.y}</span> : null}
-      {d.aka ? <span class="small muted">also filed as {d.aka.join(', ')}</span> : null}
-      {d.also ? <span class="small muted">also at {d.also.join(', ')}</span> : null}
+      {d.y ? <span class="small muted"><Marked text={d.y} words={words} /></span> : null}
+      {d.aka ? <span class="small muted">also filed as <Marked text={d.aka.join(', ')} words={words} /></span> : null}
+      {d.also ? <span class="small muted">also at <Marked text={d.also.join(', ')} words={words} /></span> : null}
     </>
   )
   return (
@@ -396,6 +412,65 @@ export function byDate(docs: PartPage['docs']): PartPage['docs'] {
   return docs.map((d, i) => [d, i] as const)
     .sort(([a, i], [b, j]) => (a.y ? (b.y ? a.y.localeCompare(b.y) : -1) : (b.y ? 1 : 0)) || i - j)
     .map(([d]) => d)
+}
+
+/** A list this long gets a filter box above it; a shorter one is read as it is. */
+const FILTER_FROM = 8
+
+/** The box above a long list: what is typed narrows the list to what answers it (docmatch.ts), and the
+ *  count beside it says how much is left. Escape clears it. */
+function FilterBox({ query, onQuery, shown, total, noun, placeholder }: {
+  query: string; onQuery: (q: string) => void; shown: number; total: number; noun: string; placeholder: string
+}) {
+  return (
+    <div class="docfilter">
+      <input type="search" value={query} placeholder={placeholder} aria-label={`Filter the ${noun}`}
+        onInput={(e) => onQuery((e.target as HTMLInputElement).value)}
+        onKeyDown={(e) => { if (e.key === 'Escape') onQuery('') }} />
+      {query.trim() && <span class="count">{n(shown)} of {n(total)} {noun}</span>}
+    </div>
+  )
+}
+
+/**
+ * A group's sources, each folded with its documents, under the filter box: the documents whose title, date
+ * or other names hold every word typed, the words marked. A word in a source's own name keeps every
+ * document under it, so "elektor 1995" is that magazine's issues of 1995; a source left with none is not
+ * listed, and the ones with hits open, since the hits are what the reader is after.
+ */
+function SourceList({ groups, dated }: { groups: [string, PartPage['docs']][]; dated: boolean }) {
+  const [query, setQuery] = useState('')
+  const words = queryWords(query)
+  const total = groups.reduce((t, [, ds]) => t + ds.length, 0)
+  const kept = groups
+    .map(([source, ds]) => {
+      // numbered in the order they are read, so a document's fold keeps its state whatever the box leaves beside it
+      const ordered = (dated ? byDate(ds) : ds).map((d, i) => ({ d, i }))
+      return { source, all: ds.length, docs: ordered.filter(({ d }) => matchDoc(d, words, source)) }
+    })
+    .filter((g) => g.docs.length > 0)
+  const shown = kept.reduce((t, g) => t + g.docs.length, 0)
+  return (
+    <>
+      {total >= FILTER_FROM && (
+        <FilterBox query={query} onQuery={setQuery} shown={shown} total={total} noun="documents" placeholder="Filter by title or year…" />
+      )}
+      {kept.map(({ source, all, docs }) => (
+        <Fold
+          key={source}
+          level={2}
+          open={groups.length === 1 || words.length > 0}
+          summary={<>
+            <strong>{source}</strong>{' '}
+            <span class="count">{n(docs.length)}{docs.length < all ? ` of ${n(all)}` : ''} · {n(usagesOf(docs.map((x) => x.d)))} usages</span>
+          </>}
+        >
+          {() => docs.map(({ d, i }) => <Document key={i} d={d} words={words} />)}
+        </Fold>
+      ))}
+      {words.length > 0 && shown === 0 && <p class="muted small">No document here has “{query.trim()}” in its title, date or other names.</p>}
+    </>
+  )
 }
 
 function Group({
@@ -424,16 +499,7 @@ function Group({
   )
   return (
     <Fold summary={summary} open={open} level={1} anchor={anchor}>
-      {() => groups.map(([source, ds]) => (
-        <Fold
-          key={source}
-          level={2}
-          open={groups.length === 1}
-          summary={<><strong>{source}</strong> <span class="count">{n(ds.length)} · {n(usagesOf(ds))} usages</span></>}
-        >
-          {() => (dated ? byDate(ds) : ds).map((d, i) => <Document key={i} d={d} />)}
-        </Fold>
-      ))}
+      {() => <SourceList groups={groups} dated={dated} />}
     </Fold>
   )
 }
@@ -447,6 +513,52 @@ export function repoOf(url: string): string | null {
   return owner && repo ? `${owner}/${repo}` : null
 }
 
+type Repo = { name: string; stars: number; forks: number; watchers: number; sheets: number; docs: PartPage['docs'] }
+
+const Stars = ({ r }: { r: Repo }) => (r.stars > 0
+  ? <span class="muted small" title={`${n(r.stars)} stars, ${n(r.forks)} forks, ${n(r.watchers)} watching`}>★{n(r.stars)}</span>
+  : null)
+const Out = ({ r }: { r: Repo }) => (
+  <a class="out" href={`${REPO_HOST}${r.name}`} target="_blank" rel="noopener" title="Open the repository on GitHub"
+    onClick={(e) => e.stopPropagation()}>↗ GitHub</a>
+)
+
+/** The repositories under the filter box: a word in a repository's name keeps it whole, one in a sheet's
+ *  title keeps that sheet, and a repository left with nothing is not listed. */
+function RepoList({ list, more }: { list: Repo[]; more: number }) {
+  const [query, setQuery] = useState('')
+  const words = queryWords(query)
+  const kept = list
+    .map((r) => ({ r, docs: r.docs.map((d, i) => ({ d, i })).filter(({ d }) => matchDoc(d, words, r.name)) }))
+    .filter(({ r, docs }) => docs.length > 0 || (r.docs.length === 0 && matchDoc({ t: r.name, u: '', y: '' }, words)))
+  return (
+    <div class="repolist">
+      {list.length >= FILTER_FROM && (
+        <FilterBox query={query} onQuery={setQuery} shown={kept.length} total={list.length} noun="repositories" placeholder="Filter by repository or sheet…" />
+      )}
+      {kept.map(({ r, docs }) => {
+        const sheets = Math.max(r.docs.length, r.sheets)
+        const count = sheets > 1 && <span class="count">{docs.length < r.docs.length ? `${n(docs.length)} of ` : ''}{n(sheets)} sheets</span>
+        const name = <strong><Marked text={r.name} words={words} /></strong>
+        return docs.length ? (
+          <Fold
+            key={r.name} level={2} cls="repo" open={words.length > 0}
+            summary={<>{name}<Out r={r} /><Stars r={r} />{count}</>}
+          >
+            {() => docs.map(({ d, i }) => <Document key={i} d={{ ...d, t: d.t.replace(`${r.name}: `, '') }} words={words} />)}
+          </Fold>
+        ) : (
+          <div class="plain" key={r.name}>
+            {name}<Out r={r} /><Stars r={r} />{count}
+          </div>
+        )
+      })}
+      {more > 0 && words.length === 0 && <p class="muted small">and {n(more)} more on GitHub, with fewer stars</p>}
+      {words.length > 0 && kept.length === 0 && <p class="muted small">No repository here has “{query.trim()}” in its name or its sheets’ titles.</p>}
+    </div>
+  )
+}
+
 /**
  * Boards somebody is making: every GitHub repository that places the part, in one list, once each, the
  * most starred first.
@@ -457,7 +569,6 @@ export function repoOf(url: string): string | null {
  * each with its page links; the others link to the repository.
  */
 function OpenSource({ page, docs }: { page: PartPage; docs: PartPage['docs'] }) {
-  type Repo = { name: string; stars: number; forks: number; watchers: number; sheets: number; docs: PartPage['docs'] }
   const all = new Map<string, Repo>()
   const entry = (name: string) => {
     const k = name.toLowerCase()
@@ -487,36 +598,9 @@ function OpenSource({ page, docs }: { page: PartPage; docs: PartPage['docs'] }) 
       <span class="small muted">boards on GitHub that place this part, the most starred first</span>
     </>
   )
-  const Stars = ({ r }: { r: Repo }) => (r.stars > 0
-    ? <span class="muted small" title={`${n(r.stars)} stars, ${n(r.forks)} forks, ${n(r.watchers)} watching`}>★{n(r.stars)}</span>
-    : null)
-  const Out = ({ r }: { r: Repo }) => (
-    <a class="out" href={`${REPO_HOST}${r.name}`} target="_blank" rel="noopener" title="Open the repository on GitHub"
-      onClick={(e) => e.stopPropagation()}>↗ GitHub</a>
-  )
   return (
     <Fold summary={summary} level={1} open={page.docs.length === docs.length} anchor="open-source">
-      {() => (
-        <div class="repolist">
-          {list.map((r) => {
-            const sheets = Math.max(r.docs.length, r.sheets)
-            const count = sheets > 1 && <span class="count">{n(sheets)} sheets</span>
-            return r.docs.length ? (
-              <Fold
-                key={r.name} level={2} cls="repo"
-                summary={<><strong>{r.name}</strong><Out r={r} /><Stars r={r} />{count}</>}
-              >
-                {() => r.docs.map((d, i) => <Document key={i} d={{ ...d, t: d.t.replace(`${r.name}: `, '') }} />)}
-              </Fold>
-            ) : (
-              <div class="plain" key={r.name}>
-                <strong>{r.name}</strong><Out r={r} /><Stars r={r} />{count}
-              </div>
-            )
-          })}
-          {more > 0 && <p class="muted small">and {n(more)} more on GitHub, with fewer stars</p>}
-        </div>
-      )}
+      {() => <RepoList list={list} more={more} />}
     </Fold>
   )
 }
