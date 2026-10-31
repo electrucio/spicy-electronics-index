@@ -30,7 +30,7 @@ export function ticks(axis: Axis): { v: number; major: boolean }[] {
   const p = 10 ** Math.floor(Math.log10(raw))
   const step = [1, 2, 5, 10].map((k) => k * p).find((k) => k >= raw) ?? raw
   if (!(step > 0)) return out
-  const first = Math.ceil(lo / step) * step
+  const first = Math.ceil(lo / step - 1e-9) * step   // a step of 5 * 10 ** -5 makes 1e-3 / step 20.000000000000004
   for (let k = 0; k < 40; k++) {
     const v = first + k * step
     if (v > hi + step * 1e-9) break
