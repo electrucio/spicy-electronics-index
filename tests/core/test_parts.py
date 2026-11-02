@@ -475,3 +475,14 @@ def test_burr_brown_dacs_are_read_with_their_grade():
     """PCM1704U-K beside its DF1704 filter in the Elektor DAC: the -K is the grade, PCM1704 the type."""
     hits = parts.extract("IC5 DF1704 IC6 PCM1704U-K", isolated=True)
     assert [(h.part, h.base) for h in hits if h.part.startswith("PCM")] == [("PCM1704U", "PCM1704")]
+
+
+@pytest.mark.parametrize("text, wrong", [
+    ("D2SB60A", "2SB60A"),    # Toragi's power supply: the diode D2 beside its part, read on 107 pages as a PNP
+    ("D2SK246", "2SK246"),
+    ("J2SC634SP", "2SC634SP"),  # a jack, not a JFET model
+    ("D1N13P", "1N13P"),      # D1 and something; no list knows a 1N13P
+])
+def test_a_designator_letter_before_a_number_of_another_device_is_not_a_model_name(text, wrong):
+    assert parts.model_part(text) is None
+    assert wrong not in got(text, isolated=True, pending=True)

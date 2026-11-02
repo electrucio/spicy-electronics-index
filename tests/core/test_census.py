@@ -82,3 +82,21 @@ def test_a_model_library_says_npn_or_pnp_when_its_libraries_agree(monkeypatch, t
     assert got["2N1132"] == ""
     assert got["2N5457"] == "N-channel"                         # LTspice's Q prefix taken off
     assert got.get("IRF540", "") == ""
+
+
+def test_a_library_name_that_is_a_parts_model_is_not_a_part():
+    """QBD138 and J2N5458 are the models of BD138 and 2N5458, and came out as parts on a printed netlist's
+    pages; MBD101 is a Motorola diode, L2N7002 Leshan's 2N7002, and a Q before a diode is not a model."""
+    lib = "spice_definitions"
+    rows = [{"part": p, "kind": k, "source": s} for p, k, s in [
+        ("BD138", "bjt", "onsemi"), ("QBD138", "bjt", lib), ("2N5458", "jfet", lib), ("J2N5458", "jfet", lib),
+        ("1N4148", "diode", lib), ("Q1N4148", "bjt", lib), ("BD101", "bjt", lib), ("MBD101", "diode", lib),
+        ("2N7002", "mosfet", lib), ("L2N7002", "mosfet", "lrc")]]
+    assert census.model_names(rows) == {"QBD138", "J2N5458"}
+
+
+def test_a_library_name_whose_rest_is_no_strict_number_stays_a_part():
+    """The library that lists ROHM's DAN217 lists an AN217 too; DAN217 is on 159 documents as itself."""
+    lib = "spice_definitions"
+    rows = [{"part": p, "kind": "diode", "source": lib} for p in ("DAN217", "AN217", "D1N4148", "1N4148")]
+    assert census.model_names(rows, scheme=lambda p: p.startswith("1N")) == {"D1N4148"}

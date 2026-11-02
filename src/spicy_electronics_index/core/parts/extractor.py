@@ -55,6 +55,11 @@ FAMILIES = [   # (family, kind guess, regex on the upper-cased token, strict num
 ]
 FAMILIES = [(f, k, re.compile(rx), strict) for f, k, rx, strict in FAMILIES]
 
+
+def family_of(tok):
+    return next(((f, k, strict) for f, k, rx, strict in FAMILIES if rx.fullmatch(tok)), None)
+
+
 # Parts a manufacturer will still sell you, by their numbering. Two jobs: seeding the code-search
 # discovery in schematics/listing.py, which asks GitHub which published designs use a part, and measuring
 # a source's `era`.
@@ -137,7 +142,7 @@ def _load_census():
     """Optional. Without it the extractor behaves exactly as it did before there was a census."""
     try:
         from spicy_electronics_index.core.parts import census
-        return census.load()
+        return census.load(scheme=lambda p: bool((f := family_of(p)) and f[2]))     # QBD138 is BD138's model
     except (ImportError, OSError, KeyError):
         return {}
 
@@ -169,10 +174,23 @@ def _load_truncated():
 
 TRUNCATED = _load_truncated()      # 2N390, 1N414: the start of a far commoner number, and no list holds them
 # A SPICE model is named for its part with the device's letter in front — Q2N3904, D1N4001, J2SK170 — and
-# a parts list or a netlist printed in a book uses that name for the part itself: it is the part. Only these
-# three letters and only before a JEDEC or JIS number, because MBD101 (Motorola), GBU806 (a bridge) and
-# L2N7002 (Leshan's 2N7002) are parts of their own.
-MODEL_NAME = re.compile(r"[QDJ]((?:[123]N|2S[ABCDJK])\d{2,4}[A-Z]{0,3})")
+# a parts list or a netlist printed in a book uses that name for the part itself: it is the part. The letter
+# has to be the part's device, because it is also a designator: Q2SC1344 is a transistor whichever it is, but
+# D2SB60A on a Toragi power supply is the diode D2 beside something else (107 pages of it, read once as a
+# 2SB60A), J2SC634 a jack, and D1N13P the diode D1 and not a 1N13P, which is why a D folds only into a diode
+# a list knows. MBD101 (Motorola), GBU806 (a bridge) and L2N7002 (Leshan's 2N7002) are parts of their own.
+MODEL_NAME = re.compile(r"Q((?:[23]N|2S[ABCDJK])\d{2,4}[A-Z]{0,3})|D(1N\d{2,4}[A-Z]{0,2})|J(2S[JK]\d{2,4}[A-Z]{0,3})")
+
+
+def model_part(tok):
+    """The part a SPICE model name stands for (Q2N3904 -> 2N3904), or None when the token is not one."""
+    m = MODEL_NAME.fullmatch(tok)
+    if not m:
+        return None
+    part = next(g for g in m.groups() if g)
+    if tok[0] == "D" and not (_listed(part) or _listed(base_part(part))):
+        return None
+    return part
 PENDING = "census, needs the page"        # a census part whose token shape is also something else
 PENDING_SCHEME = "closed scheme, needs the page"   # a number inside a strict numbering scheme, 7805
 WAITING = (PENDING, PENDING_SCHEME)                # settled by settle_census(), on different evidence
@@ -213,9 +231,6 @@ RESCUABLE = re.compile(r"^\d{1,2}[A-Z]{1,3}\d{1,2}[A-Z]{0,3}$|^(?!19|20)\d{4}[A-
 # about a vocabulary, not a pattern, so it is made once per string, with the evidence, and committed in
 # data/parts/verdicts.csv — see core.parts.judge. This module stays deterministic and testable.
 
-
-def family_of(tok):
-    return next(((f, k, strict) for f, k, rx, strict in FAMILIES if rx.fullmatch(tok)), None)
 
 
 def canonical(tok):
@@ -354,8 +369,8 @@ EVM = re.compile(r"(.+?)-?(?:EVM|EVAL|BOOST)$")         # ADS850-EVM is the boar
 def _judge(tok, text, pos, isolated, raw=""):
     """-> (part, family, kind, conf, fixed) or None."""
     fixed = False
-    if m := MODEL_NAME.fullmatch(tok):
-        tok = m.group(1)                                        # Q2N3904, the 2N3904's model name: the 2N3904
+    if part := model_part(tok):
+        tok = part                                              # Q2N3904, the 2N3904's model name: the 2N3904
     k = KNOWN.get(norm(tok)) or KNOWN.get(norm(base_part(tok)))
     if re.fullmatch(r"[AD]C\d{2,3}V", tok):                      # mains / supply voltages, not germanium transistors
         return None

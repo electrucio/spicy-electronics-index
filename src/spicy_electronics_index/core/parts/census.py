@@ -326,11 +326,41 @@ def norm(s: str) -> str:
     return re.sub(r"[^A-Z0-9]", "", s.upper())
 
 
-def load() -> dict[str, tuple[str, str]]:
-    """norm(part) -> (part as written, kind), for the extractor. Absent census: an empty dict, and
-    everything still works the way it did before there was one."""
+# A SPICE library names a part's model with the device's letter in front: Q2N3904, QBD138, D1N4148,
+# J2SK170. The model-library census lists those names as it finds them, and a name it lists is one the
+# extractor will publish when the page agrees — which is how QBD138 and QMJE15030 came out as parts on the
+# pages of a printed netlist. A library's name is the model of a part, not a part, when the rest of it is a
+# part the census holds, the letter is that part's device, and the rest is a number of a strict scheme: the
+# library that lists ROHM's DAN217 also lists an AN217, and DAN217 is on 159 documents as itself. MBD101 (M)
+# and L2N7002 (L) are parts of their own, and a Q before a diode is not a model name. The scheme is the
+# extractor's to say (`scheme`), since this module imports nothing from it. Measured 2026-11-02: 2,789 of the
+# 39,610 library names, and 866 more that only look like one.
+MODEL_LETTER = {"Q": {"bjt", "bjt-ge", "transistor", "darlington", "jfet", "mosfet", "bjt/jfet/mosfet"},
+                "D": {"diode", "diode-ge", "zener", "led"},
+                "J": {"jfet"}}
+MODEL_SOURCE = "spice_definitions"
+
+
+def model_names(rows: list[dict], scheme=lambda part: True) -> set[str]:
+    """The library names in `rows` that are a part's model: its device letter before a part listed too,
+    whose number `scheme` says belongs to a strict numbering scheme."""
+    kinds: dict[str, set[str]] = {}
+    for r in rows:
+        kinds.setdefault(norm(r["part"]), set()).add(r["kind"])
+    return {n for r in rows if r["source"] == MODEL_SOURCE
+            and (n := norm(r["part"]))[:1] in MODEL_LETTER and kinds.get(n[1:], set()) & MODEL_LETTER[n[0]]
+            and scheme(n[1:])}
+
+
+def load(scheme=None) -> dict[str, tuple[str, str]]:
+    """norm(part) -> (part as written, kind), for the extractor; given `scheme`, without the library's model
+    names. Absent census: an empty dict, and everything still works the way it did before there was one."""
+    rows = load_rows()
+    models = model_names(rows, scheme) if scheme else set()
     out = {}
-    for r in load_rows():
+    for r in rows:
+        if r["source"] == MODEL_SOURCE and norm(r["part"]) in models:
+            continue
         out.setdefault(norm(r["part"]), (r["part"], r["kind"]))
     return out
 
