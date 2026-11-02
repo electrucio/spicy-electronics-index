@@ -81,6 +81,14 @@ def test_an_unchanged_part_seals_to_the_same_bytes_and_a_changed_one_does_not():
                                       "salt": "c3BpY3ktZWxlY3Ryb25pY3MtaW5kZXggc2VhbGVkIG1vZGVscyB2MQ=="}
 
 
+def test_a_pack_has_one_header_whichever_python_writes_it():
+    # 3.11 and 3.12.0 wrote zlib's system code (3 on Linux, 19 on macOS) where 3.13 writes 255, and the
+    # fixture, written on Linux, stopped matching what the maintainer's 3.13 seals; this runs without the cipher
+    plain = S.pack({"k": "text"})
+    assert plain[:10] == bytes.fromhex("1f8b08000000000002ff")   # deflate, no name, no mtime, level 9, OS unknown
+    assert S.unpack(plain) == {"k": "text"}
+
+
 def test_the_passphrase_is_read_trimmed_and_in_one_spelling():
     assert S.normal("  café x \n") == "café x"
     assert S.derive(" café ", iterations=10) == S.derive("café", iterations=10)

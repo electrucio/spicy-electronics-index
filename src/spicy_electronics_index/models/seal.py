@@ -105,9 +105,13 @@ def unseal(key: bytes, aad: str, blob: bytes) -> bytes:
 
 
 def pack(models: dict[str, str]) -> bytes:
+    """The gzipped JSON, the same bytes on every Python. The header's last byte names the system that wrote
+    it, and gzip.compress writes it as zlib was built on some (3.11, 3.12.0: 3 on Linux, 19 on macOS) and as
+    255 on others; the IV is derived from these bytes, so it is fixed at 255, "unknown", as GzipFile writes it."""
     doc = {"v": VERSION, "models": models}
-    return gzip.compress(json.dumps(doc, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8"),
+    blob = gzip.compress(json.dumps(doc, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8"),
                          compresslevel=9, mtime=0)
+    return blob[:9] + b"\xff" + blob[10:]
 
 
 def unpack(plain: bytes) -> dict[str, str]:
