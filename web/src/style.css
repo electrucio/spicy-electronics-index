@@ -43,6 +43,9 @@ header.top .row { display: flex; align-items: baseline; gap: 24px; flex-wrap: wr
 .brand .logo { height: 1.8em; width: auto; display: block; transform-origin: 50% 50%; }
 .brand .wordmark { height: 1.55em; width: auto; display: block; }
 @media (max-width: 480px) { .brand { font-size: 1.15rem; } }
+/* Under the name, the line that says what it does not promise: small, so the sticky header stays short. */
+.masthead { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.masthead .disclaimer { margin: 0; max-width: 56ch; font-size: 0.74rem; line-height: 1.35; color: var(--muted); }
 /* The pepper rattles once about its centre, its two ends swinging opposite ways, when the pointer comes
    onto it: most of a second of swings that die away, played again only after the pointer has left. The box around it stays still, so the shaking
    cannot move the pepper out from under the pointer and start it over. */

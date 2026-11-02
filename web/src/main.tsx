@@ -17,6 +17,9 @@ import wordmark from './wordmark.svg'
 import './style.css'
 import type { Manifest } from './types'
 
+// A reader's review of the dataset, on r/diyelectronics: where the header's disclaimer points.
+const DISCUSSION_URL = 'https://www.reddit.com/r/diyelectronics/comments/1xjvsfm/comment/19rx6x9v36u83/'
+
 /** A page of the catalogue, when one is open: a family, a naming scheme or an organisation; or the Projects tab. */
 type Topic = { family?: string; scheme?: string; maker?: string; bench?: string; sellers?: string; find?: boolean }
 
@@ -78,13 +81,21 @@ function App() {
     <>
       <header class="top" ref={head}>
         <div class="wrap row">
-          <a
-            class="brand"
-            href="?"
-            onClick={(e) => { e.preventDefault(); go() }}
-          >
-            <span class="pepper"><img class="logo" src={logo} alt="" /></span><img class="wordmark" src={wordmark} alt="Spicy Electronics Index" />
-          </a>
+          {/* The name, and under it what the name does not promise, linked to the thread that asked for it. */}
+          <div class="masthead">
+            <a
+              class="brand"
+              href="?"
+              onClick={(e) => { e.preventDefault(); go() }}
+            >
+              <span class="pepper"><img class="logo" src={logo} alt="" /></span><img class="wordmark" src={wordmark} alt="Spicy Electronics Index" />
+            </a>
+            <p class="disclaimer">
+              <a href={DISCUSSION_URL}>Do not rely on it blindly</a>: it comes with no warranty, and the data's
+              signal-to-noise ratio might not be meaningfully better than a standard Google Web search. It is a
+              non-commercial hobby project, made by a hobbyist for hobbyists.
+            </p>
+          </div>
           {data?.m.have.finder && (
             <nav class="tabs" aria-label="Sections">
               <a href="?" aria-current={topic.find ? undefined : 'page'} onClick={(e) => { e.preventDefault(); go() }}>Parts</a>
