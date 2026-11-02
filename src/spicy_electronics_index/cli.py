@@ -211,6 +211,10 @@ def main(argv: list[str] | None = None) -> int:
     se.add_argument("--source", action="append", help="only these sources (repeatable)")
     se.add_argument("--dry", action="store_true", help="count what would be written and write nothing")
 
+    spp = sch.add_parser("printed-pages", help="the number printed on each scanned page the site links, from archive.org")
+    spp.add_argument("--source", action="append", help="only these sources (default: books)")
+    spp.add_argument("--dry", action="store_true", help="ask and count, write nothing")
+
     pt = sub.add_parser("parts", help="the part vocabulary: which numbers exist and what they are").add_subparsers(
         dest="pt_cmd", required=True)
     pj = pt.add_parser("judge", help="decide which census names mean a component in this corpus")
@@ -583,6 +587,11 @@ def main(argv: list[str] | None = None) -> int:
         from spicy_electronics_index.schematics import export as sch_export
         argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
         return sch_export.main(argv2 + (["--dry"] if args.dry else []))
+
+    if args.cmd == "schematics" and args.sch_cmd == "printed-pages":
+        from spicy_electronics_index.schematics import printed
+        argv2 = [x for pair in (("--source", s) for s in args.source or []) for x in pair]
+        return printed.main(argv2 + (["--dry"] if args.dry else []))
 
     if args.cmd == "parts" and args.pt_cmd == "judge":
         from spicy_electronics_index.core.parts import judge

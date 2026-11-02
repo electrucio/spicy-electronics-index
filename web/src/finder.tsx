@@ -18,6 +18,7 @@ import {
   type Context, type Group, type Hit, type Query, type Sort, type SourceGroup, type Tier,
 } from './find'
 import { Fold } from './fold'
+import { pageLabel } from './format'
 import { forViewer } from './links'
 import { Loading } from './loading'
 import { Splitter, n, savedWidth, search } from './parts'
@@ -196,7 +197,7 @@ function Card({ h, ctx, docs, cover, cat, terms, said }: {
       <div class="fhead">
         <a class="ftitle" href={forViewer(docs.url[u] ?? '')} target="_blank" rel="noopener">{docs.title[u] || docs.url[u]}</a>
         <span class="small muted">
-          {index.sources[docs.source[u] ?? -1] ?? ''}{date ? ` · ${date}` : ''}{page ? ` · page ${page}` : ''}
+          {index.sources[docs.source[u] ?? -1] ?? ''}{date ? ` · ${date}` : ''}{page ? ` · ${pageLabel(page, f.printed.get(u))}` : ''}
         </span>
         {f.flags[u]! & SCHEMATIC ? <span class="pill acc">schematic</span> : null}
       </div>

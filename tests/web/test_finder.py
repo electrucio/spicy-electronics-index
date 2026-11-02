@@ -205,3 +205,20 @@ def test_the_relations_travel_by_name_with_what_each_is_worth(data):
     units = build(data)[3]
     assert units["relations"] == [["LSK170", "replacement_for", "2SK170", ["S32"], "Linear Systems: a direct replacement", "draft"]]
     assert units["coverage"]["replacement_for"] == ["out", "substitute"]
+
+
+def test_a_page_whose_printed_number_is_known_is_named_by_it_on_both_tabs(data):
+    """Page 2 of the issue is printed page 47 (`printed_pages.csv`): the card and the part page say so, and a
+    row with no number read, or for a document not published, changes nothing."""
+    config.schematics_printed_pages().write_text(
+        "source,key,page,printed,how,numbers,version\n"
+        "mag,km,2,47,read,https://archive.org/download/x/x_page_numbers.json,ia-page-numbers-1\n"
+        "mag,km,3,,unread,https://archive.org/download/x/x_page_numbers.json,ia-page-numbers-1\n"
+        "forum,kf,1,9,read,https://archive.org/download/y/y_page_numbers.json,ia-page-numbers-1\n", encoding="utf-8")
+    idx, names, facets, units, docs = build(data)
+    pages = [i for i, t in enumerate(docs["title"]) if t == "Mag 1975-02"]
+    assert {k: v for k, v in units["printed"].items() if int(k) in pages} == {str(pages[1]): "47"}
+    assert units["units"]["page"][pages[1]] == 2                      # the leaf stays what the links and runs use
+    mag = next(d for d in P.part_payload("TL072", idx, None)["docs"] if d["t"] == "Mag 1975-02")
+    assert mag["pp"] == {"2": "47"}
+    assert "pp" not in next(d for d in P.part_payload("2N3055", idx, None)["docs"] if d["t"] == "Mag 1975-02")

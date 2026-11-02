@@ -34,3 +34,12 @@ export function siValue(s: string): number {
   const p = PREFIXES.find(([, q]) => q === (m[2] ?? ''))
   return Number(m[1] ?? 'x') * (p ? p[0] : (m[2] === 'u' ? 1e-6 : 1))
 }
+
+/**
+ * What a page is called: the number printed on it when that is known ("p. 623"), else the file's own
+ * ("page 656"). A scanned book's leaves run ahead of its printed numbers by the front matter, and a reader
+ * looking the page up in the book needs the printed one; the link opens the leaf either way.
+ */
+export function pageLabel(page: number, printed?: string): string {
+  return printed ? `p. ${printed}` : `page ${page}`
+}

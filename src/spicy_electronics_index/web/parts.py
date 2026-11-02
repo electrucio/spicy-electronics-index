@@ -57,6 +57,7 @@ from spicy_electronics_index.core.config import (
     schematics_documents,
     schematics_lines,
     schematics_pages,
+    schematics_printed_pages,
     schematics_registry,
     schematics_uses,
     sellers_found,
@@ -412,8 +413,14 @@ def index() -> dict:
                 uses[u["part"]].append((i, u))
             elif not gone:
                 unshown[u["part"]].add((i, u["doc"]))
+    # The number printed on a scanned page, where it is known (`schematics.printed`): a book's leaf 656 is
+    # its page 623, and a reader looking the page up in the book needs the second. The link keeps the leaf.
+    ids = {s: {r["key"]: i for i, r in docs[s].items()} for s in docs}
+    printed = {(r["source"], ids[r["source"]][r["key"]], r["page"]): r["printed"]
+               for r in rows(schematics_printed_pages())
+               if r["printed"] and r["key"] in ids.get(r["source"], {})}
     idx = {"sources": sources(), "kinds": kind, "documents": docs, "pages": pages, "lines": lines,
-           "uses": uses, "unshown": {p: len(d) for p, d in unshown.items()},
+           "printed": printed, "uses": uses, "unshown": {p: len(d) for p, d in unshown.items()},
            "repos": repos(stats), "repo_stats": stats, "wanted": wanted(),
            "wanted_kind": {r["part"]: r["kind"] for r in rows(wanted_parts()) if r.get("kind")},
            "dictionary": dictionary_kinds()}
@@ -1155,6 +1162,8 @@ def part_payload(part: str, idx: dict, recipe: dict | None) -> dict:
         d["schematic"] = max(d["schematic"], int((page or {}).get("schematic") or 0))
         line = idx["lines"].get(source, {}).get((u["doc"], u["page"], part))
         d["p"].append(page_entry(page, u, d["u"], line))
+        if printed := idx.get("printed", {}).get((source, u["doc"], u["page"])):
+            d.setdefault("pp", {})[u["page"]] = printed
 
     # One sheet published by several archives is one result that names the others. Which copy is kept
     # matters: they differ by the link they offer, and the one that puts the reader on the right part

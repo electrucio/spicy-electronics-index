@@ -29,6 +29,8 @@ export interface Finder {
   page: Uint16Array
   facet: Int16Array
   more: Map<number, number[]>
+  /** The number printed on a unit's page, where it is known: what the card names the page by. */
+  printed: Map<number, string>
   /** A unit's parts used on it, then those it only names, as rows of `parts.json`: `used[usedAt[u]..usedAt[u+1]]`. */
   usedAt: Int32Array
   used: Int32Array
@@ -94,6 +96,7 @@ export function decode(f: FinderUnits, partCount: number): Finder {
     n, role: Int8Array.from(u.role), flags: Uint8Array.from(u.flags), kinds: Uint8Array.from(u.kinds),
     year: Uint16Array.from(u.year), page: Uint16Array.from(u.page), facet: Int16Array.from(u.facet),
     more: new Map(Object.entries(f.moreFacets).map(([k, v]) => [Number(k), v])),
+    printed: new Map(Object.entries(f.printed ?? {}).map(([k, v]) => [Number(k), v])),
     usedAt, used, namedAt, named, unitsAt, units,
     up: new Map(Object.entries(f.up)), alias: new Map(Object.entries(f.alias)),
     down: backwards(f.up), aliasOf: backwards(f.alias),

@@ -90,6 +90,8 @@ export interface FinderUnits {
   negative: string[]
   facets: UsageFacet[]
   moreFacets: Record<string, number[]>
+  /** unit -> the number printed on its page (a book's "623" for its leaf 656), where it is known */
+  printed?: Record<string, string>
   eras: string[]
   units: {
     role: number[]; flags: number[]; kinds: number[]; year: number[]; page: number[]; facet: number[]
@@ -278,6 +280,9 @@ export interface PartPage {
     /** page number, link, nearby designators, times on the page — then, once the page has been
      *  summarised, the line saying what the part does there and the kind of use it is. */
     p: PageUse[]
+    /** page -> the number printed on it, where it is known and is not the scan's own: a book's leaf 656
+     *  is its page 623. The link still opens the leaf. */
+    pp?: Record<string, string>
     more?: number
     also?: string[]
     /** Other titles the same file (same sha256) is published under. */

@@ -188,6 +188,7 @@ def payloads(idx: dict, names: list[str], facets: list[dict], sources_stamp: str
     col: dict[str, list] = {k: [] for k in ("role", "flags", "kinds", "year", "page", "facet",
                                             "used", "usedIds", "named", "namedIds")}
     more_facets: dict[str, list[int]] = {}
+    printed: dict[str, str] = {}             # unit -> the number printed on its page, where it differs from the leaf's
     docs: dict[str, list] = {k: [] for k in ("title", "url", "source", "date")}
     also: dict[str, list[str]] = {}
     aka: dict[str, list[str]] = {}
@@ -225,6 +226,8 @@ def payloads(idx: dict, names: list[str], facets: list[dict], sources_stamp: str
         year = doc.get("year", "")
         col["year"].append(int(year[:4]) if year[:4].isdigit() else 0)
         col["page"].append(unit["page"])
+        if unit["page"] and (p := idx.get("printed", {}).get((source, unit["doc"], str(unit["page"])))):
+            printed[str(n)] = p
         used = sorted(at[p] for p, (_, named) in unit["parts"].items() if not named and p in at)
         named = sorted(at[p] for p, (_, only) in unit["parts"].items() if only and p in at)
         needed.update(unit["parts"])
@@ -270,7 +273,7 @@ def payloads(idx: dict, names: list[str], facets: list[dict], sources_stamp: str
     units_payload = {
         "schema": SCHEMA, "findStamp": find_stamp, "partsStamp": parts_stamp, "sourcesStamp": sources_stamp,
         "roles": list(ROLES), "kinds": list(KINDS), "negative": list(NEGATIVE),
-        "facets": menu, "moreFacets": more_facets,
+        "facets": menu, "moreFacets": more_facets, "printed": printed,
         "eras": [era.get(s, "") for s in idx["sources"]],
         "units": col, "up": up, "alias": alias,
         # What a document says one part is to another, by name — a part the reader has may be in no document

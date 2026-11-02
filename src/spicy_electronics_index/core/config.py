@@ -117,6 +117,11 @@ def schematics_withdrawn() -> Path:
     return schematics_dir() / "withdrawn.csv"
 
 
+def schematics_printed_pages() -> Path:
+    """The number printed on a scanned page (a book's p. 623 for its leaf 656), with where it was read."""
+    return schematics_dir() / "printed_pages.csv"
+
+
 def schematics_curated(part: str | None = None) -> Path:
     """References added by hand, needing no corpus."""
     d = schematics_dir() / "curated"
@@ -809,6 +814,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("schematics_parts", "public", ()),
     ("schematics_export_manifest", "public", ()),
     ("schematics_withdrawn", "public", ()),
+    ("schematics_printed_pages", "public", ()),
     ("schematics_curated", "public", ("TL072",)),
     ("schematics_overrides", "public", ()),
     ("model_sources", "public", ("onsemi",)),

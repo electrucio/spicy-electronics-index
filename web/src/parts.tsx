@@ -19,6 +19,7 @@ import { DATA, follow, loadIndex, loadUsages, partPath, reloadIndex } from './da
 import { highlights, matchDoc, queryWords } from './docmatch'
 import { FeedbackButton } from './feedback'
 import { Fold, Section, SubSection } from './fold'
+import { pageLabel } from './format'
 import { forViewer } from './links'
 import { ModelCharacter } from './character'
 import { CHARACTERIZATION } from './features'
@@ -359,13 +360,13 @@ const KIND_LABEL: Partial<Record<UseKind, string>> = {
  * the device is for, which it would guess from the type number. A page not summarised yet shows the
  * designators beside the part instead, which is all the index knew before.
  */
-function PageLink({ p, docUrl }: { p: PageUse; docUrl: string }) {
+function PageLink({ p, docUrl, printed }: { p: PageUse; docUrl: string; printed?: string }) {
   const line = p[4]
   const kind = p[5]
   const label = kind && KIND_LABEL[kind]
   return (
     <li>
-      <a href={forViewer(pageHref(docUrl, p[1]))} target="_blank" rel="noopener">page {p[0]}</a>
+      <a href={forViewer(pageHref(docUrl, p[1]))} target="_blank" rel="noopener">{pageLabel(p[0], printed)}</a>
       {label && <> <span class={`pill ${kind === 'reference' ? 'na' : 'off'}`}>{label}</span></>}
       {line
         ? <span class="line"> {line}</span>
@@ -407,7 +408,7 @@ function Document({ d, words = [] }: { d: PartPage['docs'][0]; words?: string[] 
           {/* No link to the document on its own: every page link opens it, at a more useful place.
               Pages with a line each take a row; bare page links still fit several to a row. */}
           <ul class={d.p.some((p) => p[4]) ? 'uselist' : 'uselist cols'}>
-            {d.p.map((p, j) => <PageLink key={j} p={p} docUrl={d.u} />)}
+            {d.p.map((p, j) => <PageLink key={j} p={p} docUrl={d.u} printed={d.pp?.[String(p[0])]} />)}
           </ul>
           <p class="fbline">
             <FeedbackButton about={{ kind: 'document', what: d.t || d.u, where: d.u }}

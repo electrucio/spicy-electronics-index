@@ -366,6 +366,9 @@ schematics-preview:  ## (maintainer) what the summarise pass has written so far,
 schematics-export:  ## (maintainer) write the schematic index into data/, where the site is built from
 	$(RUN) sei schematics export
 
+schematics-printed-pages:  ## the number printed on each scanned page the site links, read from archive.org; [SOURCE=books] [DRY=1]
+	$(RUN) sei schematics printed-pages $(foreach s,$(SOURCE),--source $(s)) $(if $(DRY),--dry)
+
 backup:  ## (maintainer) pack the private trees into one archive to carry off this machine
 	$(RUN) sei backup
 
