@@ -61,10 +61,11 @@ from spicy_electronics_index.core.config import (
     schematics_uses,
     sellers_found,
     sellers_registry,
+    truncated_parts,
     wanted_parts,
 )
 from spicy_electronics_index.core.parts import catalogue, polarity, schemes
-from spicy_electronics_index.core.parts.extractor import base_part, canonical, family_of
+from spicy_electronics_index.core.parts.extractor import MODEL_NAME, base_part, canonical, family_of
 from spicy_electronics_index.schematics.export import withdrawn
 from spicy_electronics_index.web import character as character_web
 
@@ -390,13 +391,18 @@ def index() -> dict:
     # A withdrawn document (`data/schematics/withdrawn.csv`) is off the site from the build after it is
     # listed, whether or not the index has been exported again since: its row goes, and its uses with it.
     pulled = withdrawn()
+    # The same goes for a number the extractor no longer reads: one the OCR cut short (2N390 for 2N3904,
+    # `data/parts/truncated.csv`) unless the dictionary holds it, and a SPICE model's name for a part
+    # (Q2N3904), which the next `reindex` folds into the part itself. Until the corpus is read again they
+    # would still be in the export, and a wrong part is worse than a missing one.
+    misread = {r["name"] for r in rows(truncated_parts())} - set(dictionary_kinds())
     for i, s in enumerate(sources()):
         docs[s] = {r["id"]: r for r in rows(schematics_documents(s)) if r.get("key") not in pulled}
         pages[s] = {(r["doc"], r["page"]): r for r in rows(schematics_pages(s))}
         lines[s] = {(r["doc"], r["page"], r["part"]): (r["kind"], r["line"])
                     for r in rows(schematics_lines(s))}
         for u in rows(schematics_uses(s)):
-            if u["doc"] not in docs[s]:
+            if u["doc"] not in docs[s] or u["part"] in misread or MODEL_NAME.fullmatch(u["part"]):
                 continue
             if lines[s].get((u["doc"], u["page"], u["part"]), ("",))[0] == NOT_THIS_PART:
                 continue

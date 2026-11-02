@@ -83,13 +83,15 @@ def explain(part: str) -> list[str]:
     if label and label[0].family in ex.WAITING:
         read = "on its own, nothing — it is read, and a page that agrees with it publishes it as high"
     elif label:
-        read = f"{label[0].conf} ({label[0].family})" + (f", in prose {prose[0].conf}" if prose else ", nothing in prose")
+        read = (f"{label[0].conf} ({label[0].family})" + (f" as {label[0].part}" if label[0].part != tok else "")
+                + (f", in prose {prose[0].conf}" if prose else ", nothing in prose"))
     else:
         read = "nothing, on a label or in prose"
     out.append(f"  read as        {read}")
     out.append(f"  family         {fam[0] + (', strict' if fam[2] else ', loose') if fam else 'none covers it'}")
     where = [name for name, hit in (("the dictionary", ex.norm(tok) in ex.KNOWN),
-                                    ("the reject list", tok in ex.REJECTED)) if hit]
+                                    ("the reject list", tok in ex.REJECTED),
+                                    ("the cut-short list", tok in ex.TRUNCATED)) if hit]
     cen = _census_row(part)
     if cen:
         where.append(f"the census ({cen['source']}, {cen['url']})")
@@ -110,7 +112,9 @@ def explain(part: str) -> list[str]:
         answers.append(r)
     out.append(f"  can answer     {'; '.join(answers) if answers else 'nothing at all'}")
 
-    if idx and int(idx["documents"]) > 0:
+    if tok in ex.TRUNCATED and ex.norm(tok) not in ex.KNOWN:
+        verdict = "dropped: the OCR cut it short of a far commoner number (data/parts/truncated.csv)"
+    elif idx and int(idx["documents"]) > 0:
         verdict = "fine — the index has it"
     elif label and label[0].family in ex.WAITING:
         verdict = "coverage: it reads on a page that agrees, no document here does"

@@ -375,6 +375,11 @@ def rejected_tokens() -> Path:
     return PUBLIC_DATA / "parts" / "rejected_tokens.txt"
 
 
+def truncated_parts() -> Path:
+    """Numbers the OCR cut short (2N390 for 2N3904), measured once on an export and committed with the evidence."""
+    return PUBLIC_DATA / "parts" / "truncated.csv"
+
+
 # --- public: what each part is — the catalogue beside the dictionary ---------------------------------
 def part_families() -> Path:
     """The families a part can belong to, each with a definition, what choosing one comes down to, and
@@ -849,6 +854,7 @@ LOCATIONS: tuple[tuple[str, str, tuple], ...] = (
     ("known_parts", "public", ()),
     ("wanted_parts", "public", ()),
     ("rejected_tokens", "public", ()),
+    ("truncated_parts", "public", ()),
     ("part_families", "public", ()),
     ("documented_families", "public", ()),
     ("part_relations", "public", ()),

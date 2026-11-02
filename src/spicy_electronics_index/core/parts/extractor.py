@@ -10,14 +10,15 @@ split tokens (BC 109), slash lists (BC107/8/9), designators that VALUE let throu
 families need context or the dictionary, package suffixes folded into base_part.
 
 data/parts/known_parts.csv and rejected_tokens.txt are the dictionary (parts judged real / not real), kept by hand. Without them
-everything still works, only with fewer `high` confidences.
+everything still works, only with fewer `high` confidences. truncated.csv holds the numbers the OCR cut short (2N390 for 2N3904),
+measured once on an export by core.parts.truncated; without it they are read as printed.
 """
 import csv
 import re
 import sys
 from collections import namedtuple
 
-from spicy_electronics_index.core.config import known_parts, rejected_tokens
+from spicy_electronics_index.core.config import known_parts, rejected_tokens, truncated_parts
 
 Hit = namedtuple("Hit", "part base raw family kind conf fixed block")      # conf: high | medium | low ; block: index in the page or None
 
@@ -155,6 +156,23 @@ def _load_verdicts():
 
 
 NOT_HERE = _load_verdicts()        # the census knows the type; this corpus means something else by it
+
+
+def _load_truncated():
+    """Numbers the OCR cut short, measured once on an export and committed — see core.parts.truncated.
+    Optional: without the file every well-formed number is read as it was printed."""
+    f = truncated_parts()
+    if not f.exists():
+        return set()
+    return {r["name"] for r in csv.DictReader(open(f, encoding="utf-8"))}
+
+
+TRUNCATED = _load_truncated()      # 2N390, 1N414: the start of a far commoner number, and no list holds them
+# A SPICE model is named for its part with the device's letter in front — Q2N3904, D1N4001, J2SK170 — and
+# a parts list or a netlist printed in a book uses that name for the part itself: it is the part. Only these
+# three letters and only before a JEDEC or JIS number, because MBD101 (Motorola), GBU806 (a bridge) and
+# L2N7002 (Leshan's 2N7002) are parts of their own.
+MODEL_NAME = re.compile(r"[QDJ]((?:[123]N|2S[ABCDJK])\d{2,4}[A-Z]{0,3})")
 PENDING = "census, needs the page"        # a census part whose token shape is also something else
 PENDING_SCHEME = "closed scheme, needs the page"   # a number inside a strict numbering scheme, 7805
 WAITING = (PENDING, PENDING_SCHEME)                # settled by settle_census(), on different evidence
@@ -206,6 +224,7 @@ def canonical(tok):
     t = re.sub(r"(?<=\d)S$", "", t) if re.fullmatch(r"[A-Z0-9]*\d[A-Z]{0,2}\dS|[A-Z]{1,4}\d{2,5}S", t) else t      # plurals: EL34s, 12AX7s, BC109s
     t = re.sub(r"^([A-Z]{2,5})-(?=\d)", r"\1", t)             # MN-3005, KSA-2240A, IRFP-240R — but not S-100, the bus
     t = re.sub(r"-(?:ND|T|TR|TP|AP|BU|G|E3|PBF)$", "", t)       # distributor / lead-free suffixes
+    t = re.sub(r"^(PCM\d{2,4}[A-Z]{0,2})-[JK]$", r"\1", t)      # PCM1704U-K, PCM63P-J: Burr-Brown's grades
     m = GRADE.match(t)
     if m:
         t = m.group("b")
@@ -335,6 +354,8 @@ EVM = re.compile(r"(.+?)-?(?:EVM|EVAL|BOOST)$")         # ADS850-EVM is the boar
 def _judge(tok, text, pos, isolated, raw=""):
     """-> (part, family, kind, conf, fixed) or None."""
     fixed = False
+    if m := MODEL_NAME.fullmatch(tok):
+        tok = m.group(1)                                        # Q2N3904, the 2N3904's model name: the 2N3904
     k = KNOWN.get(norm(tok)) or KNOWN.get(norm(base_part(tok)))
     if re.fullmatch(r"[AD]C\d{2,3}V", tok):                      # mains / supply voltages, not germanium transistors
         return None
@@ -484,6 +505,8 @@ def extract(text, isolated=False, allow_bare=False, block=None, pending=False):
             if not tok:
                 continue
             j = _judge(tok, up, m.start(), isolated, piece)
+            if j and j[0] in TRUNCATED and norm(j[0]) not in KNOWN:
+                continue                                        # however it was reached: as printed, or repaired
             if j:
                 part, family, kind, conf, fixed = j
                 if family in WAITING and not pending:

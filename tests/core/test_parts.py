@@ -433,3 +433,45 @@ def test_a_misread_with_two_possible_parts_stays_as_it_was_read(monkeypatch):
     assert parts.fix_misread("ZZ100B") is None or parts.fix_misread("ZZ100B") == "ZZ1008"   # one listed: fixed
     monkeypatch.setattr(parts, "KNOWN", {**parts.KNOWN, "ZZ1O0B": ("ZZ1O0B", "bjt")})
     assert parts.fix_misread("ZZ100B") is None                                             # two listed: a doubt
+
+
+@pytest.mark.parametrize("text", [
+    "Q50 2N390 R12",          # a Bose L1 power supply: 2N3904 cut short
+    "D306 1N414 R361",        # 1N4148
+    "Q318 2SC181",            # 2SC1815
+    "2N39O",                  # cut short and misread: repaired into a listed truncation, still dropped
+])
+def test_a_number_the_ocr_cut_short_is_dropped(text):
+    assert got(text, isolated=True) == []
+
+
+def test_the_longer_numbers_and_the_real_short_ones_stay():
+    """2N404, 1N34A, 2SK30A and 2SB56 are short and real: the dictionary holds them, so no list cuts them."""
+    assert got("2N3904 2N3906 1N4148 2N404 1N34A 2SK30A 2SB56") == \
+        ["2N3904", "2N3906", "1N4148", "2N404", "1N34A", "2SK30A", "2SB56"]
+
+
+def test_a_listed_truncation_the_dictionary_vouches_for_is_read(monkeypatch):
+    monkeypatch.setattr(parts, "KNOWN", {**parts.KNOWN, "2N390": ("2N390", "bjt-ge")})
+    assert got("Q50 2N390 R12", isolated=True) == ["2N390"]
+
+
+@pytest.mark.parametrize("read, meant", [
+    ("Q2N3904", "2N3904"),    # a DBX DriverRack parts list
+    ("D1N4001", "1N4001"),
+    ("J2SK170", "2SK170"),
+    ("Q2SA733", "2SA733"),
+])
+def test_a_spice_model_name_is_its_part(read, meant):
+    assert got(read, isolated=True) == [meant]
+
+
+def test_parts_that_only_look_like_a_model_name_stay_themselves():
+    """MBD101 is a Motorola diode, GBU806 a bridge, L2N7002 Leshan's 2N7002: not M + BD101, G + BU806, L + 2N7002."""
+    assert {"BD101", "BU806", "2N7002"}.isdisjoint(got("MBD101 GBU806 L2N7002", isolated=True, pending=True))
+
+
+def test_burr_brown_dacs_are_read_with_their_grade():
+    """PCM1704U-K beside its DF1704 filter in the Elektor DAC: the -K is the grade, PCM1704 the type."""
+    hits = parts.extract("IC5 DF1704 IC6 PCM1704U-K", isolated=True)
+    assert [(h.part, h.base) for h in hits if h.part.startswith("PCM")] == [("PCM1704U", "PCM1704")]

@@ -229,6 +229,9 @@ parts-benchmark:  ## score today's extractor against the labelled pages; BUILD=1
 parts-judge:  ## decide which census names mean a component here; COLLECT=1 then ASK=1 (ASK spends money)
 	uv run sei parts judge $(if $(COLLECT),--collect) $(if $(ASK),--ask) $(if $(BUDGET),--budget $(BUDGET))
 
+parts-truncations:  ## list the numbers the OCR cut short (2N390 for 2N3904), measured on the export; [DRY=1]
+	uv run sei parts truncations $(if $(DRY),--dry)
+
 parts-census:  ## (maintainer) read the lists that say which part numbers exist; [SOURCE='a b'] [READ=1]
 	uv run sei parts census $(foreach s,$(SOURCE),--source $(s)) $(if $(READ),--read)
 

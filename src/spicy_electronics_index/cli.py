@@ -226,6 +226,9 @@ def main(argv: list[str] | None = None) -> int:
     pb.add_argument("--budget", type=float, default=12.0, help="dollars this run may spend")
     pb.add_argument("--model", default="gpt-5")
 
+    ptr = pt.add_parser("truncations", help="list the numbers the OCR cut short (2N390 for 2N3904), measured on the export")
+    ptr.add_argument("--dry", action="store_true", help="say what would be added and write nothing")
+
     pe = pt.add_parser("explain", help="why a part gives nothing: the extractor, or no document that has it")
     pe.add_argument("part", nargs="+")
 
@@ -591,6 +594,10 @@ def main(argv: list[str] | None = None) -> int:
         from spicy_electronics_index.core.parts import benchmark
         argv2 = ["--per-source", str(args.per_source), "--budget", str(args.budget), "--model", args.model]
         return benchmark.main(argv2 + (["--build"] if args.build else []))
+
+    if args.cmd == "parts" and args.pt_cmd == "truncations":
+        from spicy_electronics_index.core.parts import truncated
+        return truncated.main(["--dry"] if args.dry else [])
 
     if args.cmd == "parts" and args.pt_cmd == "explain":
         from spicy_electronics_index.core.parts import explain

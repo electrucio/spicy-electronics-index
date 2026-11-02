@@ -718,3 +718,21 @@ def test_a_withdrawn_document_is_off_the_site_before_the_next_export(data):
     rows, _ = P.search_index(idx, {})
     assert {r[0]: (r[1], r[2]) for r in rows}.get("TL072", (0, 0)) == (0, 0)
     assert P.part_payload("12AX7", idx, None)["n"]["documents"] == 1     # the others are untouched
+
+
+def test_a_number_cut_short_and_a_model_name_are_off_the_site_before_the_corpus_is_read_again(data):
+    """2N390 on a Bose L1's Q50 is a 2N3904 the OCR cut short, and Q2N3904 is that part's SPICE model name:
+    the extractor no longer reads either, and the build drops what an older export still holds. A number
+    the dictionary vouches for stays, listed or not."""
+    with open(config.schematics_uses("esp"), "a", encoding="utf-8") as f:
+        f.write("2N390,1,1,1,Q50\nQ2N3904,1,1,1,\n1N414,1,1,1,\nD1N4001,1,1,1,\n")
+    config.truncated_parts().parent.mkdir(parents=True, exist_ok=True)
+    config.truncated_parts().write_text("name,documents,longer,longer_documents,measured\n"
+                                        "2N390,28,2N3904 2N3906 2N3905,4509,2026-11-02\n"
+                                        "1N414,152,1N4148 1N4140 1N4146,13949,2026-11-02\n", encoding="utf-8")
+    config.known_parts().write_text("name,part,kind,from\n1N414,1N414,diode,audio docs\n", encoding="utf-8")
+    idx = P.index()
+    assert {"2N390", "Q2N3904", "D1N4001"}.isdisjoint(idx["uses"]) and "1N414" in idx["uses"]
+    rows, _ = P.search_index(idx, {})
+    assert {"2N390", "Q2N3904", "D1N4001"}.isdisjoint(r[0] for r in rows)
+    assert P.part_payload("TL072", idx, None)["n"]["documents"] == 1     # the page they were read on stays
