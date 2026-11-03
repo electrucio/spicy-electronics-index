@@ -547,8 +547,36 @@ def count_values(blocks):
     return sum(1 for b in blocks if _short(b) and UNIT.fullmatch(b["text"].strip()))
 
 
+# A part number that is also a designator, on a sheet numbered in its series. A service manual numbers a
+# board's parts in one block of hundreds — R201, C205, Q203, P201 — and its connectors with them, so the
+# J201 on that sheet is the jack J-201, whatever Fairchild sells under the name, and the U401 on a sheet
+# of R401 and U407 is its IC. Measured on the export of 2026-11-02, on the three designators the export
+# keeps beside each use: 1,085 of J201's 3,319 uses sat beside one of the two hundreds, 1,047 of them in
+# service manuals, and J202 (790 of 1,774), J203 (513 of 1,149) and U401 (436 of 967) read the same way.
+# Only a designator that is not itself a part is evidence: the J112 and J176 that switch an Ampeg on one
+# sheet, and the J111, J112 and J113 a textbook lists together, number nothing.
+SERIES = re.compile(r"([A-Z]{1,4})-?(\d{3,4})[A-Z]?")
+
+
+def in_series(part, labels):
+    """The labels number `part` among them: beside a part whose name is also a designator (J201, U401,
+    or J201A with a pin letter), a designator of the same length and the same hundreds that is not a
+    part itself. -> bool"""
+    base = base_part(part)
+    if base not in DESIGNATOR_LIKE:
+        return False
+    m = SERIES.fullmatch(base)
+    for t in labels:
+        n = SERIES.fullmatch(t.strip().upper())
+        if (n and (name := n.group(1) + n.group(2)) != base and name not in DESIGNATOR_LIKE
+                and len(n.group(2)) == len(m.group(2)) and n.group(2)[:-2] == m.group(2)[:-2]):
+            return True
+    return False
+
+
 def drop_designator_misreads(hits, labels):
-    """0D3 next to D1 D2 D4 is the diode D3 with a stroke of its symbol read as 0; 1C2 next to IC1 / C-series is IC2. Both are real valves too."""
+    """0D3 next to D1 D2 D4 is the diode D3 with a stroke of its symbol read as 0; 1C2 next to IC1 / C-series is IC2. Both are real valves too.
+    And J201 next to R201 is the jack J-201 (`in_series`)."""
     letters = {}
     for t in labels:
         m = re.fullmatch(r"(I?[A-Z]{1,2})(\d{1,3})[A-Za-z]?", t.strip())
@@ -567,9 +595,7 @@ def drop_designator_misreads(hits, labels):
             return False                        # the designator it would be is already on the page in its own right
         sib = letters.get(m.group(2), set()) | (letters.get("IC", set()) if m.group(2) == "C" else set())
         return len(sib - {m.group(3)}) >= 2
-    jacks = {t.strip().upper().replace("-", "") for t in labels if re.fullmatch(r"[JUP]-?\d{3,4}", t.strip().upper())} - DESIGNATOR_LIKE
-    series = len(jacks) >= 2
-    return [h for h in hits if not misread(h.part) and not (series and h.part in DESIGNATOR_LIKE and any(j[0] == h.part[0] for j in jacks))]
+    return [h for h in hits if not misread(h.part) and not in_series(h.part, labels)]
 
 
 def settle_valves(hits, page_text):
@@ -661,6 +687,11 @@ def extract_page(page, min_conf=0.85):
     for i, b in enumerate(blocks):
         t = b["text"].strip()
         if b.get("conf", 1) < (0.90 if len(t) <= 4 else min_conf):
+            continue
+        if b.get("field") == "ref":
+            # A design's reference names a place on the board, never a part: its J201 is a connector and
+            # its U401 an IC, and `cad.py` has already said which field this is. Both were read as the
+            # JFETs on 62 and 79 openhw_parts designs on the export of 2026-11-02.
             continue
         found = extract(t, isolated=_short(b), allow_bare=allow_bare, block=i, pending=True)
         if (not found and b.get("field") == "value" and DECLARED.match(t.upper())

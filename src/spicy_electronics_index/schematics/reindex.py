@@ -31,7 +31,7 @@ from spicy_electronics_index.core import adfilter, pagesio
 from spicy_electronics_index.core.config import index_db, index_db_uri, ocr_map, ocr_root, require
 from spicy_electronics_index.core.parts import extractor as parts
 
-EXTRACTOR = (f"parts-judged-12 ({len(parts.CENSUS)} census, {len(parts.NOT_HERE)} judged out, {len(parts.KNOWN)} dictionary, "
+EXTRACTOR = (f"parts-judged-13 ({len(parts.CENSUS)} census, {len(parts.NOT_HERE)} judged out, {len(parts.KNOWN)} dictionary, "
              f"{len(parts.TRUNCATED)} cut short)")
 CONF_RANK = {"high": 3, "medium": 2, "low": 1}
 NEAR_MAX = 3

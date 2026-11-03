@@ -101,6 +101,36 @@ def test_qa_round_2():
     assert [h.part for h in parts.extract_page(mk("J201 J201 Q1 R1".split()))] == ["J201", "J201"]
 
 
+def test_a_sheet_numbered_in_hundreds_numbers_its_jacks_with_it():
+    """J201 beside R201 and C205 is the connector J-201 of a service manual's board 2, and U401 beside R401
+    its IC: 1,295 of J201's 3,319 uses were that on the export of 2026-11-02. The J201 at Q1 on a pedal,
+    with the jacks J1 and J2 on the same sheet, is the JFET, and so are the J112 and J176 that switch an
+    Ampeg, the J111 J112 J113 a textbook lists together, and a J201 whose neighbours are numbered in
+    another hundred: only a designator that is not itself a part counts, and only in the part's own
+    series."""
+    mk = lambda ts: {"blocks": [{"box": [0, 0, 1, 1], "text": t, "conf": 0.99} for t in ts]}
+    page = lambda ts: [h.part for h in parts.extract_page(mk(ts.split()))]
+    assert page("J201 R201 C205 Q203 2N3904") == ["2N3904"]
+    assert page("U401 U402 R401 TL072") == ["TL072"]                  # U402 is a part too and vouches for nothing; R401 does
+    assert page("U401 U402 TL072") == ["U401", "U402", "TL072"]
+    assert page("J201 J201 Q1 R1 J1 J2") == ["J201", "J201"]
+    assert page("J112 J176 Q1 R1") == ["J112", "J176"]
+    assert page("J111 J112 J113") == ["J111", "J112", "J113"]
+    assert page("J201 D100 Q1 IC1") == ["J201"]                        # PedalPCB numbers its diode D100
+    assert page("J201A P201A R250 J-204") == []                        # J201 with a pin letter, in the series
+    assert parts.in_series("J201", ["R201"]) and parts.in_series("J201", ["j-204"]) and parts.in_series("P1086", ["R1001"])
+    assert not parts.in_series("J201", ["R2011", "R21", "J202", "J201", "J201A"]) and not parts.in_series("BC109", ["R109"])
+
+
+def test_a_reference_in_a_design_is_never_a_part():
+    """A KiCad design's J201 is its USB connector and its U401 an IC: `cad.py` marks a reference as such,
+    and a reference names a place on the board, never a part. The J201 a designer typed as a value is
+    the JFET. 62 and 79 openhw_parts designs published the references on the export of 2026-11-02."""
+    page = {"blocks": [{"text": "U401", "conf": 1.0, "field": "ref"}, {"text": "J201", "conf": 1.0, "field": "ref"},
+                       {"text": "Q1", "conf": 1.0, "field": "ref"}, {"text": "J201", "conf": 1.0, "field": "value"}]}
+    assert [(h.part, h.block) for h in parts.extract_page(page)] == [("J201", 3)]
+
+
 def test_postcodes_are_not_transistors():
     assert got("Grassington, North Yorks. BD23 5AA") == [] and got("Bristol BS1 4DJ") == []
     assert got("BC107 BD139 BF245") == ["BC107", "BD139", "BF245"]

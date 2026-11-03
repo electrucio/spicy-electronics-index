@@ -720,6 +720,21 @@ def test_a_withdrawn_document_is_off_the_site_before_the_next_export(data):
     assert P.part_payload("12AX7", idx, None)["n"]["documents"] == 1     # the others are untouched
 
 
+def test_a_name_that_is_a_designator_on_its_sheet_is_off_the_site_before_the_corpus_is_read_again(data):
+    """J201 beside R201 and C205 is the jack J-201 of a service manual's board 2, not the JFET
+    (`extractor.in_series`); the next reindex drops it at the page, and until then the build judges each
+    use by the designators the export kept beside it. The J201 at Q1 on a pedal stays, and so does one
+    the export kept no neighbour for."""
+    with open(config.schematics_uses("esp"), "a", encoding="utf-8") as f:
+        f.write("J201,0,1,1,R201 C205\nJ201,1,1,2,Q1 R5\nJ201,1,1,1,\nU401,1,1,1,U402 R401\nJ201A,1,1,1,P201A\n")
+    idx = P.index()
+    assert [u["near"] for _, u in idx["uses"]["J201"]] == ["Q1 R5", ""]
+    assert "U401" not in idx["uses"] and "J201A" not in idx["uses"]
+    assert P.part_payload("J201", idx, None)["n"]["documents"] == 1    # the service manual is gone, the pedal stays
+    rows, _ = P.search_index(idx, {})
+    assert {r[0]: r[1] for r in rows}["J201"] == 3 and "U401" not in {r[0] for r in rows}
+
+
 def test_a_number_cut_short_and_a_model_name_are_off_the_site_before_the_corpus_is_read_again(data):
     """2N390 on a Bose L1's Q50 is a 2N3904 the OCR cut short, and Q2N3904 is that part's SPICE model name:
     the extractor no longer reads either, and the build drops what an older export still holds. A number
